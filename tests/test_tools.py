@@ -61,6 +61,14 @@ class SyncTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'differ from upstream'):
             self.invoke('check', self.consumer)
 
+    def test_check_can_verify_lock_against_public_checkout(self):
+        self.invoke('check', self.consumer, self.upstream)
+        data = json.loads((self.consumer/sync.LOCK).read_text())
+        data['revision'] = '0'*40
+        (self.consumer/sync.LOCK).write_text(json.dumps(data))
+        with self.assertRaisesRegex(ValueError, 'supplied public revision'):
+            self.invoke('check', self.consumer, self.upstream)
+
     def test_pull_updates_content_and_preserves_private_files(self):
         private = self.consumer/'private.txt'
         private.write_text('consumer-only payload')

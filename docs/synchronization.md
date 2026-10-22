@@ -23,6 +23,12 @@ not establish that the consumer tracks the newest upstream commit; updates are
 an explicit choice. A consumer can copy the sync script into its own tooling
 and use that trusted version for CI.
 
+In CI, check out the lock's full revision from the canonical public repository,
+then pass `check --upstream /path/to/that-checkout`. This also verifies that the
+lock's hashes match the actual public manifest and commit, rather than trusting
+locally edited lock metadata. The check reads the upstream files as data and does
+not execute its helpers. Offline `check` alone is a local drift check.
+
 ## Work in the consumer, contribute upstream
 
 1. Make the skill change in the consumer. Keep private policy/feature details
@@ -63,7 +69,8 @@ failures can interrupt a multi-file copy, so retain the checkout/diff for recove
 
 - Public PRs: validate the catalog, frontmatter, links, attribution, manifest and
   focused helper/sync behavior with a read-only token and no secrets.
-- Private consumer PRs/pushes: run `check` against the committed lock. A changed
+- Private consumer PRs/pushes: run `check` against the committed lock and canonical
+  public checkout at that revision. A changed
   skill must be contributed/reconciled with a public pin before the check passes.
 - A maintainer can prepare an update PR from a reviewed public revision. No
   automatic cross-repository write credential is required for drift detection.

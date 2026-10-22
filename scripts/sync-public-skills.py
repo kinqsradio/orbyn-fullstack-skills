@@ -158,6 +158,11 @@ def run(command, root, upstream=None, write=False):
         if changed:
             raise ValueError('Skills differ from upstream pin:\n' + '\n'.join(changed)
                              + '\nContribute upstream, then pull or pin the reviewed revision.')
+        if upstream is not None:
+            upstream = upstream.resolve()
+            if (baseline['revision'] != revision(upstream)
+                    or baseline['files'] != manifest(upstream)):
+                raise ValueError('Consumer lock does not match the supplied public revision/manifest')
         print(f'Skills match upstream pin {baseline["revision"]}. No network or writes.')
         return
     if upstream is None:
