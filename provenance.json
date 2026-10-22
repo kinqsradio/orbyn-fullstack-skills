@@ -126,7 +126,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-skill-creator",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence."
     },
     "orbyn-ui-design": {
       "relationship": "original",
@@ -170,7 +170,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss."
     },
     "principle-exhaust-the-design-space": {
       "relationship": "adapted",
@@ -323,7 +323,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-type-system-discipline/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss."
     },
     "rea-analysis-optimization": {
       "relationship": "reference-adapter",
@@ -420,7 +420,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/typescript-best-practices/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss."
     },
     "unslop": {
       "relationship": "adapted",

@@ -111,8 +111,10 @@ class EvaluationTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         self.path = self.root/'trial/run.json'
+        protocol = self.root/'protocol-input.json'
+        protocol.write_text(json.dumps({'fixture': 'synthetic', 'tools': 'none'}))
         self.run = evaluator.prepare(self.path.parent, 'a'*40, 'fixture host',
-                                     'fixture model', 'fixture', split='all')
+                                     'fixture model', 'fixture', split='all', protocol=protocol)
         self.cases = {c['id']: c for c in evaluator.suite()[0]['cases']}
 
     def save(self):
@@ -165,6 +167,7 @@ class EvaluationTests(unittest.TestCase):
         report = evaluator.grade(self.path)
         self.assertEqual(report['results'][0]['routing'], 'pass')
         self.assertEqual(report['counts']['fail'], 1)
+        self.assertEqual(report['results'][0]['forbidden_actions'], ['publish'])
 
     def test_product_write_also_violates_no_write_scope(self):
         result = self.complete('app-ci-not-rea')
@@ -258,6 +261,35 @@ class EvaluationTests(unittest.TestCase):
         report = evaluator.compare(baseline, self.path)
         self.assertEqual(report['baseline']['routing'], {'passed': 1, 'total': 1})
         self.assertEqual(report['candidate']['routing'], {'passed': 0, 'total': 1})
+
+    def test_protocol_copy_is_frozen_and_tampering_is_rejected(self):
+        protocol = self.path.parent/'protocol.json'
+        before = protocol.read_bytes()
+        (self.root/'protocol-input.json').write_text('{"changed": true}')
+        self.assertEqual(protocol.read_bytes(), before)
+        protocol.write_text('{"changed": true}')
+        with self.assertRaisesRegex(ValueError, 'Protocol checksum differs'):
+            evaluator.grade(self.path)
+
+    def test_comparison_requires_same_pinned_protocol(self):
+        import hashlib
+        import shutil
+        self.complete('trace-save')
+        self.run['condition'] = 'baseline'
+        self.save()
+        other = self.root/'candidate'
+        shutil.copytree(self.path.parent, other)
+        candidate = json.loads((other/'run.json').read_text())
+        candidate['condition'] = 'candidate'
+        (other/'protocol.json').write_text('{"fixture": "different"}')
+        candidate['protocol_sha256'] = hashlib.sha256((other/'protocol.json').read_bytes()).hexdigest()
+        (other/'run.json').write_text(json.dumps(candidate))
+        with self.assertRaisesRegex(ValueError, 'share protocol_sha256'):
+            evaluator.compare(self.path, other/'run.json')
+        candidate['protocol_sha256'] = None
+        (other/'run.json').write_text(json.dumps(candidate))
+        with self.assertRaisesRegex(ValueError, 'pinned protocol'):
+            evaluator.compare(self.path, other/'run.json')
 
     def test_cli_returns_failure_for_unverified_and_invalid_records(self):
         command = [sys.executable, str(ROOT/'skills/orbyn-skill-creator/scripts/evaluate.py'), 'grade', str(self.path)]

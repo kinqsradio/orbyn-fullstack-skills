@@ -77,7 +77,8 @@ not call models or prove quality gains. If you run a host trial, include the ful
 revision, suite hash, host/model/version/effort settings, trial count, captured
 transcript, output artifacts and identified reviewer. Use the grader's report;
 missing runs or rubric evidence remain unverified. A paired comparison requires
-the same cases and host settings, with one baseline and one candidate.
+the same cases, host settings and pinned fixture/tool protocol, with one baseline
+and one candidate. Preserve failed and timed-out attempts when reporting reruns.
 
 Keep raw trial evidence outside tracked library content unless explicitly reviewed
 for publication. Do not commit real customer or private repository context. A
