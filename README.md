@@ -128,7 +128,10 @@ The [evaluation toolkit](skills/orbyn-skill-creator/references/evaluations.md)
 contains 17 routing cases and five outcome cases with review rubrics. Prepare
 frozen tasks, capture trials in an authorized host, grade evidence and compare a
 complete baseline/candidate pair. Missing trials stay unverified. These are tools
-for measurement; this release does not claim measured model improvements.
+for measurement. The [23 October Codex evaluation](docs/evaluations/2026-10-23-codex.md)
+records 17/17 routing and 5/5 artifact passes against a previous-library baseline
+of 16/17 and 5/5. It supports one routing correction, with explicit trial limits;
+it does not establish general model improvement or Claude runtime behavior.
 
 CI validates metadata, references, attribution, catalog/discovery consistency,
 the distribution manifest and helper/synchronization behavior. It does not prove

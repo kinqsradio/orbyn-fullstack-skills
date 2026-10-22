@@ -1,0 +1,2832 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-23",
+  "comparison": {
+    "baseline": {
+      "routing": {
+        "passed": 16,
+        "total": 17
+      },
+      "outcome": {
+        "passed": 5,
+        "total": 5
+      }
+    },
+    "candidate": {
+      "routing": {
+        "passed": 17,
+        "total": 17
+      },
+      "outcome": {
+        "passed": 5,
+        "total": 5
+      }
+    },
+    "baseline_revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+    "candidate_revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+    "limits": "Descriptive paired results only; review failures, observer consistency and variation before inferring general improvement."
+  },
+  "host": "Codex CLI 0.163.0-alpha.10.2; ephemeral; read-only; user-config/plugins/apps/memory/delegation/browser disabled; global skills disabled; full 50-skill selection; first-response routing fixture v1",
+  "model": "gpt-6.1-sol; effort=medium; requested service_tier=default; fast/ultrafast disabled; effective server tier not independently exposed",
+  "reviewer": "Codex lead artifact and visible-command review; not independent or blinded",
+  "protocol_sha256": "d74f950a332b2db310340ec9668fe82eae83051fcaab353a3d04b29c203dbdf5",
+  "runner_source_sha256": "227279a4ed7f67c0906ecfc89548da9d03287cf084f09401d97a0dc935f9819a",
+  "suite_sha256": "fd2b41ca668782fe7232f30b37cf4b9b8f5554358ee6daf8130cf018ea857822",
+  "prompt_suffix": "\n\nAdditional supplied context, if needed, is in inputs.md and src/. Follow this project's bounded evaluation scope in AGENTS.md.",
+  "excluded_library_paths": [
+    "skills/orbyn-skill-creator/evals",
+    "docs/routing-cases.json",
+    "tests",
+    ".agents",
+    ".claude",
+    ".codex",
+    ".github",
+    "distribution"
+  ],
+  "grades": {
+    "baseline": {
+      "schema_version": 1,
+      "suite_sha256": "fd2b41ca668782fe7232f30b37cf4b9b8f5554358ee6daf8130cf018ea857822",
+      "protocol_sha256": "d74f950a332b2db310340ec9668fe82eae83051fcaab353a3d04b29c203dbdf5",
+      "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+      "host": "Codex CLI 0.163.0-alpha.10.2; ephemeral; read-only; user-config/plugins/apps/memory/delegation/browser disabled; global skills disabled; full 50-skill selection; first-response routing fixture v1",
+      "model": "gpt-6.1-sol; effort=medium; requested service_tier=default; fast/ultrafast disabled; effective server tier not independently exposed",
+      "condition": "baseline",
+      "evidence_kind": "recorded-trial",
+      "limits": "Selection/actions and rubric verdicts are observer-recorded; excerpts/hashes do not independently verify model behavior.",
+      "counts": {
+        "pass": 21,
+        "fail": 1,
+        "unverified": 0
+      },
+      "results": [
+        {
+          "case_id": "app-ci-not-rea",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "app-ci-not-rea/events.jsonl": "86dbfa703ee9573c513d6e17bc4865f706684355e162b3357a79d17c77b5db00",
+            "app-ci-not-rea/answer.md": "385bfc8b5420449464c73aa9cdbbf7a44415ec081174cd4b05291eeea6e81f7a"
+          },
+          "duration_ms": 37113,
+          "total_tokens": 56746
+        },
+        {
+          "case_id": "approval-contract",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "approval-contract/events.jsonl": "a15adc5fd747f68a3fd7d8162d3951a56e4dc37d2cb911ab09e9ac89bc9d005d",
+            "approval-contract/answer.md": "0fdf11227f1d7715d9e76e1074a8b500e52ac6954116acabd3dea3a2f64fdfff"
+          },
+          "duration_ms": 39280,
+          "total_tokens": 43438
+        },
+        {
+          "case_id": "approval-review",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "approval-review/events.jsonl": "cd7b8785f796f9e4ce611a9de600febf791e238f9dfd48644c0e1b032e7f1a80",
+            "approval-review/answer.md": "1a135d65fc33eb6b1da944e2bd9155907eeee02a581b680c86180c3128a85692"
+          },
+          "duration_ms": 33950,
+          "total_tokens": 69941
+        },
+        {
+          "case_id": "capture-preference",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "capture-preference/events.jsonl": "5eb99a246af2491cb763f40a1143fbd2a11a66a6139d85e4641bfe9abad29af5",
+            "capture-preference/answer.md": "b720cbfce3650c6b987ac09ec1cc5fce97d19af4ca18e887f9ea9cec0e4a7b4d"
+          },
+          "duration_ms": 24121,
+          "total_tokens": 58250
+        },
+        {
+          "case_id": "exact-caption",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "exact-caption/events.jsonl": "e035652f5455b28a13bfda5036ba98e1cede2b854f2e80abe0ccef8838b70297",
+            "exact-caption/answer.md": "977b722e255b3428514e888355b333fcca480d1158f5d637ea1410cb114524f8"
+          },
+          "duration_ms": 23167,
+          "total_tokens": 42228
+        },
+        {
+          "case_id": "failed-save",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "failed-save/events.jsonl": "bc01e9a17a31b8a840b429d94eaa24f232da8aef0da3a648d80c9cc9b1b76cc8",
+            "failed-save/answer.md": "61680a4e2bed6aaddaf9775c9168ce1c2870900ea6c2ffdf8c7e2f61233f586f"
+          },
+          "duration_ms": 43072,
+          "total_tokens": 51447
+        },
+        {
+          "case_id": "feature-announcement",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "feature-announcement/events.jsonl": "0977cdf7eae0bfe5367b68220de45f0bb0dce6f033d50af8ec30e49cba280610",
+            "feature-announcement/answer.md": "2a36be059463ac223156ceb8ece5b1d9bb7bdcb090933db0fcd2f8a451d4a20e"
+          },
+          "duration_ms": 20018,
+          "total_tokens": 57936
+        },
+        {
+          "case_id": "fork-ci",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "fork-ci/events.jsonl": "dbb14879ba042b55e6157bf0177ecfc0a293a8db56c5518d2ae17a119f903030",
+            "fork-ci/answer.md": "b8a280215b6bb2de00455a58989b0316b8c54f40b6b1d4dc713a9d9047e2e682"
+          },
+          "duration_ms": 23419,
+          "total_tokens": 57988
+        },
+        {
+          "case_id": "maintain-skill",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "maintain-skill/events.jsonl": "271dfa22cb4337bd8bd715022c319f4a201bde2ef5a88c712d90072a5bc6beb1",
+            "maintain-skill/answer.md": "3016b5da0ff68e8825432caacb69430ad1ff14b548ff347374ac4737407a649c"
+          },
+          "duration_ms": 32165,
+          "total_tokens": 61748
+        },
+        {
+          "case_id": "narrow-calendar",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "narrow-calendar/events.jsonl": "500c9f8f9828234c0cc3493038e34939e7892458a082e13d23912ff9e78c99cf",
+            "narrow-calendar/answer.md": "f35381ea26494965af67cd83e3513b1e50bfdddf7d05154e442c0218939860e3"
+          },
+          "duration_ms": 24698,
+          "total_tokens": 59616
+        },
+        {
+          "case_id": "plan-only",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "plan-only/events.jsonl": "022b49a17269017f5d081f9db11e5100e3ce2eed2c060f1d7808bf5db880f8e3",
+            "plan-only/answer.md": "61977cc4e751b43e750ed696cd6c820a7a0a3bce8d18d5a51360867c6b42c4e5"
+          },
+          "duration_ms": 29241,
+          "total_tokens": 61690
+        },
+        {
+          "case_id": "retry-effect",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "retry-effect/events.jsonl": "48091a513b21766d31eb54acdd288d9111cec5dc965a1b4a424b7ae19432241f",
+            "retry-effect/answer.md": "d1f216f2b12af13a528362bf1bc6344524f334701b9205adc09848ae92f7e685"
+          },
+          "duration_ms": 45485,
+          "total_tokens": 58293
+        },
+        {
+          "case_id": "settings-copy",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "settings-copy/events.jsonl": "a07d0b3654a81ad2807d673c712e3f0ef506679637e4355825c7655da6a24266",
+            "settings-copy/answer.md": "1a0372586d577bed2c8f2776f1f403a208d36bb44deb8573fc6e00994b238ba9"
+          },
+          "duration_ms": 19879,
+          "total_tokens": 43131
+        },
+        {
+          "case_id": "shared-state",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "fail",
+          "outcome": "unverified",
+          "status": "fail",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "shared-state/events.jsonl": "5d82a1080b83dab99de995b0c193ba830bd78696d1235a111d0f2858ea658b0c",
+            "shared-state/answer.md": "bbb2be02e70cf8d62661aabd21d33f524d6c8d2a8fcec588dcfb63b59247fb75"
+          },
+          "duration_ms": 21255,
+          "total_tokens": 42083
+        },
+        {
+          "case_id": "shipped-binary",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "shipped-binary/events.jsonl": "f1473dfc3329084c94d43bfebad95e5b9066a867f84b027bb3d0f4d762ff9f29",
+            "shipped-binary/answer.md": "8f34bb2a67b60e91eebec2aa76d48cd9e1adc0fe73df8c2ad7d0c226ada0615c"
+          },
+          "duration_ms": 20309,
+          "total_tokens": 41179
+        },
+        {
+          "case_id": "simple-text-edit",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "simple-text-edit/events.jsonl": "a36374f51459ef3c288151bc582679f4cf796f9cb4dcbfb4b7e0d01b0440b42f",
+            "simple-text-edit/answer.md": "bc994f5991e57ff47ff5b76c8f182bb777166f27711ba966a63daf03a88ca90c"
+          },
+          "duration_ms": 6493,
+          "total_tokens": 12895
+        },
+        {
+          "case_id": "stored-sessions",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "stored-sessions/events.jsonl": "cb4e0bf58fad6a6facaaa9735a1a46dc6929c6c8486f5691b2967e389f772fcf",
+            "stored-sessions/answer.md": "b27f08cd085513a23c58ada71f974f7c06eea98b6d02bf89e5176e1682234ed8"
+          },
+          "duration_ms": 31667,
+          "total_tokens": 55895
+        },
+        {
+          "case_id": "supported-announcement",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "supported-announcement/events.jsonl": "4c2200d8549a27778d4f0dc97449a85fd9e6716805680792a2a3bf266c176ace",
+            "supported-announcement/answer.md": "3798854af7ce65bb9b04e2be963ad3c766cef6fdc8d4e71c859986da29761236"
+          },
+          "duration_ms": 22702,
+          "total_tokens": 42558
+        },
+        {
+          "case_id": "task-move",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "task-move/events.jsonl": "8cc856d6ccf0902933d5694a6a5c4ddaecbb064b774169c3389db9b490bdf063",
+            "task-move/answer.md": "e729cb6313d4ee3388c123bccaa2904a8d21b283d59ca629a44f678f14c72315"
+          },
+          "duration_ms": 27690,
+          "total_tokens": 55787
+        },
+        {
+          "case_id": "trace-save",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "trace-save/events.jsonl": "37991b84673e4ebfd1f98932f14e50d43f974a8b4a1bf32c1f08ccb6c754c184",
+            "trace-save/answer.md": "efb0fa363fa6406b91f8d502f36e43ec14be854db451047c177559e67d9e4468"
+          },
+          "duration_ms": 29765,
+          "total_tokens": 40713
+        },
+        {
+          "case_id": "worker-history",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "worker-history/events.jsonl": "4e38ba9597e52b0436d6cceaa12876e16742ab37204e7868efa567b36771c402",
+            "worker-history/answer.md": "6be8de15ff768be729b8f74b47557cc9901300d22099c26c8d4bdcfa2d0f5bcc"
+          },
+          "duration_ms": 26144,
+          "total_tokens": 73077
+        },
+        {
+          "case_id": "writer-cutover",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "writer-cutover/events.jsonl": "9a33560aa666af94ef82710e9373c7142cc74929db42c94ae1bb9ef0978f654e",
+            "writer-cutover/answer.md": "998610ace980d6df76d48ed52218b6ce154eca8b2d4766b9754a2e86e6d8650c"
+          },
+          "duration_ms": 75112,
+          "total_tokens": 46145
+        }
+      ]
+    },
+    "candidate": {
+      "schema_version": 1,
+      "suite_sha256": "fd2b41ca668782fe7232f30b37cf4b9b8f5554358ee6daf8130cf018ea857822",
+      "protocol_sha256": "d74f950a332b2db310340ec9668fe82eae83051fcaab353a3d04b29c203dbdf5",
+      "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+      "host": "Codex CLI 0.163.0-alpha.10.2; ephemeral; read-only; user-config/plugins/apps/memory/delegation/browser disabled; global skills disabled; full 50-skill selection; first-response routing fixture v1",
+      "model": "gpt-6.1-sol; effort=medium; requested service_tier=default; fast/ultrafast disabled; effective server tier not independently exposed",
+      "condition": "candidate",
+      "evidence_kind": "recorded-trial",
+      "limits": "Selection/actions and rubric verdicts are observer-recorded; excerpts/hashes do not independently verify model behavior.",
+      "counts": {
+        "pass": 13,
+        "fail": 1,
+        "unverified": 1
+      },
+      "results": [
+        {
+          "case_id": "app-ci-not-rea",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "app-ci-not-rea/events.jsonl": "c6fe69453e5802e21a37ef89bfd33168fbc8c709b6fb68ceffcbb5f8be79da24",
+            "app-ci-not-rea/answer.md": "46a2493d861d46ff011347cb96d3fc7260ddd534d892312e493ed802c3cc5153"
+          },
+          "duration_ms": 30406,
+          "total_tokens": 58783
+        },
+        {
+          "case_id": "approval-contract",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "unverified",
+          "outcome": "unverified",
+          "status": "unverified"
+        },
+        {
+          "case_id": "approval-review",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "approval-review/events.jsonl": "505553bcc687b857a608cc2d17ef2efb0d74c03f3b264f09ad511b52b95b6b15",
+            "approval-review/answer.md": "b23367563e90e02d9c06676d3793364fe600c1736bc17a7c16933414a7d56877"
+          },
+          "duration_ms": 30815,
+          "total_tokens": 70057
+        },
+        {
+          "case_id": "failed-save",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "failed-save/events.jsonl": "c47a57e98a2d79c5c3f4ab5ed3a00e6a9d549749840e35f0e6723a2aeb972adb",
+            "failed-save/answer.md": "377c84c962e06f3927d026866a055a283b61a32e23210552be82deeeddd849af"
+          },
+          "duration_ms": 42377,
+          "total_tokens": 64866
+        },
+        {
+          "case_id": "feature-announcement",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "feature-announcement/events.jsonl": "c5fa786745b8f6c2dd30f04af087fad56e06627254e667376068e4624ed9f0a9",
+            "feature-announcement/answer.md": "f5b58c23ca7db8674f2e6d332ffb95fd396b9596298035294f50028dd7ba0ed5"
+          },
+          "duration_ms": 16146,
+          "total_tokens": 56221
+        },
+        {
+          "case_id": "maintain-skill",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "maintain-skill/events.jsonl": "2c4e6ea437ce910b37ab68272480a10c839a9cd2b549ecbbd79ff7986f08c835",
+            "maintain-skill/answer.md": "132aa4934e26be4cc0693d837f09a07e75ab9eee5333ffc9c5524f9e0e909aea"
+          },
+          "duration_ms": 26742,
+          "total_tokens": 61819
+        },
+        {
+          "case_id": "narrow-calendar",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "narrow-calendar/events.jsonl": "9ff6c9f59acf975b0d0e6a5f3b1ffe4f0c949629f02cfe80460da7806cd4d14d",
+            "narrow-calendar/answer.md": "e42c5a10e0c3b573259dfbd84b09bc1adf46a8f34dc035a47b70ee817a374686"
+          },
+          "duration_ms": 28678,
+          "total_tokens": 59086
+        },
+        {
+          "case_id": "plan-only",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "plan-only/events.jsonl": "ae0cfd75346a25ad2966d9e3a14b259878adfe1c106db68f382eb87ed075a4f5",
+            "plan-only/answer.md": "2d446592b37bce6362c87036ce0f2c4f4254676c719a60a6bafeee9350775b98"
+          },
+          "duration_ms": 53179,
+          "total_tokens": 43584
+        },
+        {
+          "case_id": "retry-effect",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "retry-effect/events.jsonl": "5804b5cdadadbc0bf949249787c7aa87ce1be685308182638f2f7cb887d4648f",
+            "retry-effect/answer.md": "192e4c4da7befffb6c51eaf339f60ef2e2d9f908813c1fa2643a499093e1d5eb"
+          },
+          "duration_ms": 50942,
+          "total_tokens": 58232
+        },
+        {
+          "case_id": "settings-copy",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "settings-copy/events.jsonl": "173da03a97fde18ddd282de852702860abf95e0683ecf26522add736d9f7ac80",
+            "settings-copy/answer.md": "91b522e5b7f4739e917b33550cecd80f30f6a85c8e518dde46bd546e605b8721"
+          },
+          "duration_ms": 15460,
+          "total_tokens": 44174
+        },
+        {
+          "case_id": "shared-state",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "fail",
+          "outcome": "unverified",
+          "status": "fail",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "shared-state/events.jsonl": "445df60b89676ea712fc4af08893bb4c4ed13cfae3364bdd89eb9ea253cd16ec",
+            "shared-state/answer.md": "f46dd9227a1f0f767bee7974dc1ae15c29b97aaa28486af16f0b57e2b7f3297b"
+          },
+          "duration_ms": 29452,
+          "total_tokens": 69241
+        },
+        {
+          "case_id": "shipped-binary",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "shipped-binary/events.jsonl": "346c6cac66ab019c84cf25662fa5b764ab17b1ff80dfd9d2b956f03532db76e2",
+            "shipped-binary/answer.md": "cb271642f21609fd3e67502ea43d0b14fe722d143650cb7a871a0219cb790216"
+          },
+          "duration_ms": 19990,
+          "total_tokens": 40474
+        },
+        {
+          "case_id": "stored-sessions",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "stored-sessions/events.jsonl": "58a6c9743df53bb6aa2c9901039c35d12b9437ba730ef8d9731191710e23a1cc",
+            "stored-sessions/answer.md": "7130ad82a85e4f003804875e11ba48d0c0829959848a6e536a1b7d2caa28fbbb"
+          },
+          "duration_ms": 31937,
+          "total_tokens": 71058
+        },
+        {
+          "case_id": "task-move",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "task-move/events.jsonl": "ad249d8f5adcb82360e83c7c02274d7512f99332a59c02e017b516f9da62fb28",
+            "task-move/answer.md": "5cce57d4b099625111c46e94271e6b8b0246666193f4feeae2809c1e4390e08a"
+          },
+          "duration_ms": 23113,
+          "total_tokens": 41454
+        },
+        {
+          "case_id": "trace-save",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "trace-save/events.jsonl": "fb934280236e3b1e8e57508c0188c3b918d680bd2560784d1631f9da0c2a9f81",
+            "trace-save/answer.md": "7bd0afbe90c785685c772f28f7e33e6141e222355939f041490026d2061b878d"
+          },
+          "duration_ms": 26739,
+          "total_tokens": 40664
+        }
+      ]
+    },
+    "candidate-fixed": {
+      "schema_version": 1,
+      "suite_sha256": "fd2b41ca668782fe7232f30b37cf4b9b8f5554358ee6daf8130cf018ea857822",
+      "protocol_sha256": "d74f950a332b2db310340ec9668fe82eae83051fcaab353a3d04b29c203dbdf5",
+      "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+      "host": "Codex CLI 0.163.0-alpha.10.2; ephemeral; read-only; user-config/plugins/apps/memory/delegation/browser disabled; global skills disabled; full 50-skill selection; first-response routing fixture v1",
+      "model": "gpt-6.1-sol; effort=medium; requested service_tier=default; fast/ultrafast disabled; effective server tier not independently exposed",
+      "condition": "candidate",
+      "evidence_kind": "recorded-trial",
+      "limits": "Selection/actions and rubric verdicts are observer-recorded; excerpts/hashes do not independently verify model behavior.",
+      "counts": {
+        "pass": 22,
+        "fail": 0,
+        "unverified": 0
+      },
+      "results": [
+        {
+          "case_id": "app-ci-not-rea",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "app-ci-not-rea/events.jsonl": "7b440fe9fc8c73c04d4319339e6b76a9698489fc1449a6654c05e3945ed040bc",
+            "app-ci-not-rea/answer.md": "5b07d027606ccbc32048ead10ad1b9ed33f93c857cc6a5ad76cafe7b099125b1"
+          },
+          "duration_ms": 41296,
+          "total_tokens": 60700
+        },
+        {
+          "case_id": "approval-contract",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "approval-contract/events.jsonl": "6439d814c6f13fba356e1166205063f405a977c9af029c35bb1732a9c4d36784",
+            "approval-contract/answer.md": "aac9b71bca70db932ce6f54ecbb7431e22af77e7bbcaaed68ed12f7463918471"
+          },
+          "duration_ms": 48768,
+          "total_tokens": 58059
+        },
+        {
+          "case_id": "approval-review",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "approval-review/events.jsonl": "d87246dcdb64d1f314ad9536a0f4446adc38fe93e803b94ed3e66da544fdb9c1",
+            "approval-review/answer.md": "8289bfa8d755aad9bf9acf6e43187d8c8a3afa29a70447581306fdc87cc0eb1c"
+          },
+          "duration_ms": 28305,
+          "total_tokens": 41656
+        },
+        {
+          "case_id": "capture-preference",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "capture-preference/events.jsonl": "a2a9c3f3be92971db71d2522cd8a0318b3716ad3c9ca715cea4d86980a9685f5",
+            "capture-preference/answer.md": "9310e94bc9a2393759871dc941c6aba9796d21a08b23a6dbb77f9785f6c48338"
+          },
+          "duration_ms": 25037,
+          "total_tokens": 59081
+        },
+        {
+          "case_id": "exact-caption",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "exact-caption/events.jsonl": "04b74f3bab66c00a8ac7d1417e55a97b07d01dbe520b721a1ed4ee2bfcfb561e",
+            "exact-caption/answer.md": "72a00635dd40c820dda39250c2545aad31f387624d4a287bc8f1eeb80becdeb7"
+          },
+          "duration_ms": 15928,
+          "total_tokens": 41019
+        },
+        {
+          "case_id": "failed-save",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "failed-save/events.jsonl": "b4f4809e6182990f5143ba6ff011a3eac3352cf61b4f4e64687986ae463822e7",
+            "failed-save/answer.md": "b1afd02ecbe4414bad0ff3e4b8f7d0f641fb969755575bcc50c759674df1102c"
+          },
+          "duration_ms": 43633,
+          "total_tokens": 67515
+        },
+        {
+          "case_id": "feature-announcement",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "feature-announcement/events.jsonl": "104657856131ec89a7a6e4b81d3beecdbe9f4921b52d98b6ed05b963e961af5b",
+            "feature-announcement/answer.md": "d01b5c434f48ced13b30916afc041245bc7e071641a4a57ba388579b9aef72d2"
+          },
+          "duration_ms": 22424,
+          "total_tokens": 56751
+        },
+        {
+          "case_id": "fork-ci",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "fork-ci/events.jsonl": "9ffedddcfcee0cff2d8ba15bd89a8a8440104f4c1de0bace5b9adade4584276c",
+            "fork-ci/answer.md": "a460dc3a1a32414ab1f57a1f989fe4ef84dc48b713f00338ea44f8ba987dcd70"
+          },
+          "duration_ms": 24202,
+          "total_tokens": 56051
+        },
+        {
+          "case_id": "maintain-skill",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "maintain-skill/events.jsonl": "ec702a16a64dff6b91eb20cf995882f29d4329a219fae9a4244fb9c449fb3f47",
+            "maintain-skill/answer.md": "a5a2e7c5a025e374352065abd3fa2ffa6240f747cb5901527bb2ade5d7806077"
+          },
+          "duration_ms": 27427,
+          "total_tokens": 80526
+        },
+        {
+          "case_id": "narrow-calendar",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "narrow-calendar/events.jsonl": "95a4ef2bdbf82a6982717860941562ed0e54fd713981115045c4c321ba4fb7e0",
+            "narrow-calendar/answer.md": "08fd8c8472dc1f07690d79a6dcba5411d06e04c817d2b0f410329c47188a7e0a"
+          },
+          "duration_ms": 24075,
+          "total_tokens": 58779
+        },
+        {
+          "case_id": "plan-only",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "plan-only/events.jsonl": "a8d73d700ef50ec41e2b5938c9264caf9f70dc530cb6b58971044d75f326209a",
+            "plan-only/answer.md": "9058f1cfff499179f2f5e7397e757ea2284d7c4ca1d51b4d13451f8e8dd08b46"
+          },
+          "duration_ms": 34641,
+          "total_tokens": 43572
+        },
+        {
+          "case_id": "retry-effect",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "retry-effect/events.jsonl": "9f53c08556ab43a4f5942dc17a107198609de28dc11578223b8932fb3c206d03",
+            "retry-effect/answer.md": "2c92a7d7946fff69568ef81fcf70baa3f345b5125a625c059d409e38abfb7375"
+          },
+          "duration_ms": 59960,
+          "total_tokens": 44373
+        },
+        {
+          "case_id": "settings-copy",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "settings-copy/events.jsonl": "bbb3d4e8651dfbdd08311af68b4717323cc6bfd4bd1f14bd5773654075159a69",
+            "settings-copy/answer.md": "91b522e5b7f4739e917b33550cecd80f30f6a85c8e518dde46bd546e605b8721"
+          },
+          "duration_ms": 19955,
+          "total_tokens": 57596
+        },
+        {
+          "case_id": "shared-state",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "shared-state/events.jsonl": "0df6447acb57adf4566d388ae8c8426008cb93eac8a46cb25cb474a6da8991d0",
+            "shared-state/answer.md": "0473139e4a4f43ab4b5e9786bc86207628ccfe28fd17806936af7cc7feb8e92d"
+          },
+          "duration_ms": 33184,
+          "total_tokens": 70758
+        },
+        {
+          "case_id": "shipped-binary",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "shipped-binary/events.jsonl": "a79363f3c0edf9766409866de6ff11968352e0e51931509c2cfa3078c8a54464",
+            "shipped-binary/answer.md": "53d327d72946bd362baab392b89ce212d3615be495cb81c61dcf94ee34aeda76"
+          },
+          "duration_ms": 25304,
+          "total_tokens": 41958
+        },
+        {
+          "case_id": "simple-text-edit",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "simple-text-edit/events.jsonl": "989b42b0f062e2d0a59d8742ed7d457bc7d55b0af57827ce377ac2391114d0d9",
+            "simple-text-edit/answer.md": "bc994f5991e57ff47ff5b76c8f182bb777166f27711ba966a63daf03a88ca90c"
+          },
+          "duration_ms": 8518,
+          "total_tokens": 12922
+        },
+        {
+          "case_id": "stored-sessions",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "stored-sessions/events.jsonl": "67c3c1f979f83786b6e2543be3f08a880a5588292251105a902b23aa0783cafa",
+            "stored-sessions/answer.md": "6f4acc829eff195b4f4732a88d866d14e5430095f29b08f358c98bac2e469e97"
+          },
+          "duration_ms": 25757,
+          "total_tokens": 41648
+        },
+        {
+          "case_id": "supported-announcement",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "supported-announcement/events.jsonl": "143c7870c97849bb6258de7c1095dd76f6db231ac1327aa2cc4a0b1352f77bc6",
+            "supported-announcement/answer.md": "25513fb02dd1f2127b8af36e85c843bff33fb8d0908318bc219729bf702542fb"
+          },
+          "duration_ms": 24716,
+          "total_tokens": 44204
+        },
+        {
+          "case_id": "task-move",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "task-move/events.jsonl": "48c96588e5c0aa4b0a28dd4b1b162e57b556db279425f25fb323d97ceba0c6cb",
+            "task-move/answer.md": "a1bf05f65fd3b0755546381edc155e95d2ab9eb9ef55e1a9be724b9ede989cb9"
+          },
+          "duration_ms": 36306,
+          "total_tokens": 71654
+        },
+        {
+          "case_id": "trace-save",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "trace-save/events.jsonl": "b10b7419dc38e1e1819d525020a6794e759d7fbcbf8ab49f773372225763830a",
+            "trace-save/answer.md": "f6d7b2e390cc1857d83351a56d8ab5d4f9650fd7297189b300f374129a38ec90"
+          },
+          "duration_ms": 21900,
+          "total_tokens": 41393
+        },
+        {
+          "case_id": "worker-history",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "worker-history/events.jsonl": "5f25dabfc47e9dce3709ea9dc96c47e3c16f7816a2e62c9518f66faae7df0d5f",
+            "worker-history/answer.md": "cff7235a17e1e9db57c474650b271cb3f929457567f946d1d9ac53125ff0bd07"
+          },
+          "duration_ms": 23389,
+          "total_tokens": 56113
+        },
+        {
+          "case_id": "writer-cutover",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "writer-cutover/events.jsonl": "de81555692aa0358baaddc2dc24b9ce7d061618ebbe5e218fafe5de0b232c0e1",
+            "writer-cutover/answer.md": "3efaf7d367c4c085b947656a9d7a6f55ef098200fc1966475dd724882903b5c8"
+          },
+          "duration_ms": 47674,
+          "total_tokens": 58850
+        }
+      ]
+    },
+    "regression-2": {
+      "schema_version": 1,
+      "suite_sha256": "fd2b41ca668782fe7232f30b37cf4b9b8f5554358ee6daf8130cf018ea857822",
+      "protocol_sha256": "d74f950a332b2db310340ec9668fe82eae83051fcaab353a3d04b29c203dbdf5",
+      "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+      "host": "Codex CLI 0.163.0-alpha.10.2; ephemeral; read-only; user-config/plugins/apps/memory/delegation/browser disabled; global skills disabled; full 50-skill selection; first-response routing fixture v1",
+      "model": "gpt-6.1-sol; effort=medium; requested service_tier=default; fast/ultrafast disabled; effective server tier not independently exposed",
+      "condition": "candidate",
+      "evidence_kind": "recorded-trial",
+      "limits": "Selection/actions and rubric verdicts are observer-recorded; excerpts/hashes do not independently verify model behavior.",
+      "counts": {
+        "pass": 1,
+        "fail": 0,
+        "unverified": 0
+      },
+      "results": [
+        {
+          "case_id": "shared-state",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "shared-state/events.jsonl": "adbaf6200c76a0b9f9b951c9991254cd7e3072c4666bc7f7be640115c26e5aed",
+            "shared-state/answer.md": "27800a0907ae96b25a7bf17ad9382351db883f58e721df8fe0818c3b8cf4ac4f"
+          },
+          "duration_ms": 30518,
+          "total_tokens": 56268
+        }
+      ]
+    },
+    "regression-3": {
+      "schema_version": 1,
+      "suite_sha256": "fd2b41ca668782fe7232f30b37cf4b9b8f5554358ee6daf8130cf018ea857822",
+      "protocol_sha256": "d74f950a332b2db310340ec9668fe82eae83051fcaab353a3d04b29c203dbdf5",
+      "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+      "host": "Codex CLI 0.163.0-alpha.10.2; ephemeral; read-only; user-config/plugins/apps/memory/delegation/browser disabled; global skills disabled; full 50-skill selection; first-response routing fixture v1",
+      "model": "gpt-6.1-sol; effort=medium; requested service_tier=default; fast/ultrafast disabled; effective server tier not independently exposed",
+      "condition": "candidate",
+      "evidence_kind": "recorded-trial",
+      "limits": "Selection/actions and rubric verdicts are observer-recorded; excerpts/hashes do not independently verify model behavior.",
+      "counts": {
+        "pass": 1,
+        "fail": 0,
+        "unverified": 0
+      },
+      "results": [
+        {
+          "case_id": "shared-state",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "shared-state/events.jsonl": "1afa27534ad38948149d2aeba0188ecd4f8b8c84a01928602a08661fd88e18a1",
+            "shared-state/answer.md": "266a4be59ffd1a7846817c027dafcee7fd142b3da15c4996396cd9840d52599c"
+          },
+          "duration_ms": 43204,
+          "total_tokens": 84263
+        }
+      ]
+    }
+  },
+  "attempt_receipts": {
+    "baseline": [
+      {
+        "case_id": "app-ci-not-rea",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 37113,
+        "usage": {
+          "input_tokens": 56012,
+          "cached_input_tokens": 50176,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 734,
+          "reasoning_output_tokens": 0
+        },
+        "observed_skill_reads": [
+          "orbyn-ci-design"
+        ],
+        "command_count": 5,
+        "events": [],
+        "visible_events_sha256": "86dbfa703ee9573c513d6e17bc4865f706684355e162b3357a79d17c77b5db00",
+        "answer_sha256": "385bfc8b5420449464c73aa9cdbbf7a44415ec081174cd4b05291eeea6e81f7a",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "approval-contract",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 39280,
+        "usage": {
+          "input_tokens": 42348,
+          "cached_input_tokens": 35840,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1090,
+          "reasoning_output_tokens": 77
+        },
+        "observed_skill_reads": [
+          "architect",
+          "how",
+          "orbyn-backend-design"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "a15adc5fd747f68a3fd7d8162d3951a56e4dc37d2cb911ab09e9ac89bc9d005d",
+        "answer_sha256": "0fdf11227f1d7715d9e76e1074a8b500e52ac6954116acabd3dea3a2f64fdfff",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "approval-review",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 33950,
+        "usage": {
+          "input_tokens": 69194,
+          "cached_input_tokens": 44288,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 747,
+          "reasoning_output_tokens": 168
+        },
+        "observed_skill_reads": [
+          "interrogate"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "cd7b8785f796f9e4ce611a9de600febf791e238f9dfd48644c0e1b032e7f1a80",
+        "answer_sha256": "1a135d65fc33eb6b1da944e2bd9155907eeee02a581b680c86180c3128a85692",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "capture-preference",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 24121,
+        "usage": {
+          "input_tokens": 57724,
+          "cached_input_tokens": 35456,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 526,
+          "reasoning_output_tokens": 14
+        },
+        "observed_skill_reads": [
+          "automate-me",
+          "orbyn-skill-creator",
+          "rea-changelog-update",
+          "social-content",
+          "unslop"
+        ],
+        "command_count": 5,
+        "events": [],
+        "visible_events_sha256": "5eb99a246af2491cb763f40a1143fbd2a11a66a6139d85e4641bfe9abad29af5",
+        "answer_sha256": "b720cbfce3650c6b987ac09ec1cc5fce97d19af4ca18e887f9ea9cec0e4a7b4d",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "exact-caption",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 23167,
+        "usage": {
+          "input_tokens": 41800,
+          "cached_input_tokens": 35584,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 428,
+          "reasoning_output_tokens": 87
+        },
+        "observed_skill_reads": [
+          "social-preview"
+        ],
+        "command_count": 2,
+        "events": [],
+        "visible_events_sha256": "e035652f5455b28a13bfda5036ba98e1cede2b854f2e80abe0ccef8838b70297",
+        "answer_sha256": "977b722e255b3428514e888355b333fcca480d1158f5d637ea1410cb114524f8",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "failed-save",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 43072,
+        "usage": {
+          "input_tokens": 50366,
+          "cached_input_tokens": 19712,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1081,
+          "reasoning_output_tokens": 41
+        },
+        "observed_skill_reads": [
+          "orbyn-content-design",
+          "orbyn-ui-design"
+        ],
+        "command_count": 13,
+        "events": [],
+        "visible_events_sha256": "bc01e9a17a31b8a840b429d94eaa24f232da8aef0da3a648d80c9cc9b1b76cc8",
+        "answer_sha256": "61680a4e2bed6aaddaf9775c9168ce1c2870900ea6c2ffdf8c7e2f61233f586f",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "feature-announcement",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 20018,
+        "usage": {
+          "input_tokens": 57620,
+          "cached_input_tokens": 41600,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 316,
+          "reasoning_output_tokens": 11
+        },
+        "observed_skill_reads": [
+          "social-content",
+          "unslop"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "0977cdf7eae0bfe5367b68220de45f0bb0dce6f033d50af8ec30e49cba280610",
+        "answer_sha256": "2a36be059463ac223156ceb8ece5b1d9bb7bdcb090933db0fcd2f8a451d4a20e",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "fork-ci",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 23419,
+        "usage": {
+          "input_tokens": 57535,
+          "cached_input_tokens": 36224,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 453,
+          "reasoning_output_tokens": 0
+        },
+        "observed_skill_reads": [
+          "orbyn-ci-design"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "dbb14879ba042b55e6157bf0177ecfc0a293a8db56c5518d2ae17a119f903030",
+        "answer_sha256": "b8a280215b6bb2de00455a58989b0316b8c54f40b6b1d4dc713a9d9047e2e682",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "maintain-skill",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 32165,
+        "usage": {
+          "input_tokens": 61184,
+          "cached_input_tokens": 51200,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 564,
+          "reasoning_output_tokens": 13
+        },
+        "observed_skill_reads": [
+          "orbyn-backend-design",
+          "orbyn-skill-creator",
+          "principle-fix-root-causes",
+          "principle-make-operations-idempotent"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "271dfa22cb4337bd8bd715022c319f4a201bde2ef5a88c712d90072a5bc6beb1",
+        "answer_sha256": "3016b5da0ff68e8825432caacb69430ad1ff14b548ff347374ac4737407a649c",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "narrow-calendar",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 24698,
+        "usage": {
+          "input_tokens": 59154,
+          "cached_input_tokens": 49280,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 462,
+          "reasoning_output_tokens": 0
+        },
+        "observed_skill_reads": [
+          "orbyn-ui-design"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "500c9f8f9828234c0cc3493038e34939e7892458a082e13d23912ff9e78c99cf",
+        "answer_sha256": "f35381ea26494965af67cd83e3513b1e50bfdddf7d05154e442c0218939860e3",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "plan-only",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 29241,
+        "usage": {
+          "input_tokens": 60695,
+          "cached_input_tokens": 50816,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 995,
+          "reasoning_output_tokens": 112
+        },
+        "observed_skill_reads": [
+          "architect",
+          "how",
+          "orbyn-plan"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "022b49a17269017f5d081f9db11e5100e3ce2eed2c060f1d7808bf5db880f8e3",
+        "answer_sha256": "61977cc4e751b43e750ed696cd6c820a7a0a3bce8d18d5a51360867c6b42c4e5",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "retry-effect",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 45485,
+        "usage": {
+          "input_tokens": 57038,
+          "cached_input_tokens": 49920,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1255,
+          "reasoning_output_tokens": 56
+        },
+        "observed_skill_reads": [
+          "architect",
+          "how",
+          "orbyn-backend-design",
+          "principle-make-operations-idempotent"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "48091a513b21766d31eb54acdd288d9111cec5dc965a1b4a424b7ae19432241f",
+        "answer_sha256": "d1f216f2b12af13a528362bf1bc6344524f334701b9205adc09848ae92f7e685",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "settings-copy",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 19879,
+        "usage": {
+          "input_tokens": 42836,
+          "cached_input_tokens": 26496,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 295,
+          "reasoning_output_tokens": 94
+        },
+        "observed_skill_reads": [
+          "orbyn-content-design"
+        ],
+        "command_count": 2,
+        "events": [],
+        "visible_events_sha256": "a07d0b3654a81ad2807d673c712e3f0ef506679637e4355825c7655da6a24266",
+        "answer_sha256": "1a0372586d577bed2c8f2776f1f403a208d36bb44deb8573fc6e00994b238ba9",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "shared-state",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 21255,
+        "usage": {
+          "input_tokens": 41625,
+          "cached_input_tokens": 20736,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 458,
+          "reasoning_output_tokens": 72
+        },
+        "observed_skill_reads": [
+          "principle-encode-lessons-in-structure",
+          "principle-type-system-discipline"
+        ],
+        "command_count": 2,
+        "events": [],
+        "visible_events_sha256": "5d82a1080b83dab99de995b0c193ba830bd78696d1235a111d0f2858ea658b0c",
+        "answer_sha256": "bbb2be02e70cf8d62661aabd21d33f524d6c8d2a8fcec588dcfb63b59247fb75",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "shipped-binary",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 20309,
+        "usage": {
+          "input_tokens": 40823,
+          "cached_input_tokens": 35200,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 356,
+          "reasoning_output_tokens": 21
+        },
+        "observed_skill_reads": [
+          "reverse-engineer-anything"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "f1473dfc3329084c94d43bfebad95e5b9066a867f84b027bb3d0f4d762ff9f29",
+        "answer_sha256": "8f34bb2a67b60e91eebec2aa76d48cd9e1adc0fe73df8c2ad7d0c226ada0615c",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "simple-text-edit",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 6493,
+        "usage": {
+          "input_tokens": 12886,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 9,
+          "reasoning_output_tokens": 0
+        },
+        "observed_skill_reads": [],
+        "command_count": 0,
+        "events": [],
+        "visible_events_sha256": "a36374f51459ef3c288151bc582679f4cf796f9cb4dcbfb4b7e0d01b0440b42f",
+        "answer_sha256": "bc994f5991e57ff47ff5b76c8f182bb777166f27711ba966a63daf03a88ca90c",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "stored-sessions",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 31667,
+        "usage": {
+          "input_tokens": 55342,
+          "cached_input_tokens": 43904,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 553,
+          "reasoning_output_tokens": 27
+        },
+        "observed_skill_reads": [
+          "architect",
+          "orbyn-data-migration"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "cb4e0bf58fad6a6facaaa9735a1a46dc6929c6c8486f5691b2967e389f772fcf",
+        "answer_sha256": "b27f08cd085513a23c58ada71f974f7c06eea98b6d02bf89e5176e1682234ed8",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "supported-announcement",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 22702,
+        "usage": {
+          "input_tokens": 41995,
+          "cached_input_tokens": 22016,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 563,
+          "reasoning_output_tokens": 0
+        },
+        "observed_skill_reads": [
+          "social-content",
+          "unslop"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "4c2200d8549a27778d4f0dc97449a85fd9e6716805680792a2a3bf266c176ace",
+        "answer_sha256": "3798854af7ce65bb9b04e2be963ad3c766cef6fdc8d4e71c859986da29761236",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "task-move",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 27690,
+        "usage": {
+          "input_tokens": 55245,
+          "cached_input_tokens": 48896,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 542,
+          "reasoning_output_tokens": 10
+        },
+        "observed_skill_reads": [
+          "how",
+          "orbyn-backend-design"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "8cc856d6ccf0902933d5694a6a5c4ddaecbb064b774169c3389db9b490bdf063",
+        "answer_sha256": "e729cb6313d4ee3388c123bccaa2904a8d21b283d59ca629a44f678f14c72315",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "trace-save",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 29765,
+        "usage": {
+          "input_tokens": 40222,
+          "cached_input_tokens": 25856,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 491,
+          "reasoning_output_tokens": 0
+        },
+        "observed_skill_reads": [
+          "how"
+        ],
+        "command_count": 2,
+        "events": [],
+        "visible_events_sha256": "37991b84673e4ebfd1f98932f14e50d43f974a8b4a1bf32c1f08ccb6c754c184",
+        "answer_sha256": "efb0fa363fa6406b91f8d502f36e43ec14be854db451047c177559e67d9e4468",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "worker-history",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 26144,
+        "usage": {
+          "input_tokens": 72600,
+          "cached_input_tokens": 59904,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 477,
+          "reasoning_output_tokens": 0
+        },
+        "observed_skill_reads": [
+          "why"
+        ],
+        "command_count": 6,
+        "events": [],
+        "visible_events_sha256": "4e38ba9597e52b0436d6cceaa12876e16742ab37204e7868efa567b36771c402",
+        "answer_sha256": "6be8de15ff768be729b8f74b47557cc9901300d22099c26c8d4bdcfa2d0f5bcc",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "writer-cutover",
+        "revision": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 75112,
+        "usage": {
+          "input_tokens": 44981,
+          "cached_input_tokens": 9088,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1164,
+          "reasoning_output_tokens": 112
+        },
+        "observed_skill_reads": [
+          "architect",
+          "how",
+          "orbyn-data-migration",
+          "orbyn-plan"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "9a33560aa666af94ef82710e9373c7142cc74929db42c94ae1bb9ef0978f654e",
+        "answer_sha256": "998610ace980d6df76d48ed52218b6ce154eca8b2d4766b9754a2e86e6d8650c",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      }
+    ],
+    "candidate": [
+      {
+        "case_id": "app-ci-not-rea",
+        "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 30406,
+        "usage": {
+          "input_tokens": 58070,
+          "cached_input_tokens": 45952,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 713,
+          "reasoning_output_tokens": 15
+        },
+        "observed_skill_reads": [
+          "orbyn-ci-design"
+        ],
+        "command_count": 5,
+        "events": [],
+        "visible_events_sha256": "c6fe69453e5802e21a37ef89bfd33168fbc8c709b6fb68ceffcbb5f8be79da24",
+        "answer_sha256": "46a2493d861d46ff011347cb96d3fc7260ddd534d892312e493ed802c3cc5153",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "approval-contract",
+        "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+        "exit_code": null,
+        "timed_out": true,
+        "duration_ms": 240016,
+        "usage": null,
+        "observed_skill_reads": [
+          "architect",
+          "how",
+          "orbyn-backend-design"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "f22bc674a3e23dea3079936a464e3548450760f0c3b00e7305af63ae79dac83f",
+        "answer_sha256": "7b52b161714736f25403ffdb309757416590777d1d3edd95e8ec20e3fcf56429",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "approval-review",
+        "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 30815,
+        "usage": {
+          "input_tokens": 69464,
+          "cached_input_tokens": 57728,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 593,
+          "reasoning_output_tokens": 42
+        },
+        "observed_skill_reads": [
+          "interrogate"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "505553bcc687b857a608cc2d17ef2efb0d74c03f3b264f09ad511b52b95b6b15",
+        "answer_sha256": "b23367563e90e02d9c06676d3793364fe600c1736bc17a7c16933414a7d56877",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "failed-save",
+        "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 42377,
+        "usage": {
+          "input_tokens": 63803,
+          "cached_input_tokens": 49792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1063,
+          "reasoning_output_tokens": 39
+        },
+        "observed_skill_reads": [
+          "orbyn-content-design",
+          "orbyn-ui-design"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "c47a57e98a2d79c5c3f4ab5ed3a00e6a9d549749840e35f0e6723a2aeb972adb",
+        "answer_sha256": "377c84c962e06f3927d026866a055a283b61a32e23210552be82deeeddd849af",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "feature-announcement",
+        "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 16146,
+        "usage": {
+          "input_tokens": 55889,
+          "cached_input_tokens": 40064,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 332,
+          "reasoning_output_tokens": 0
+        },
+        "observed_skill_reads": [
+          "social-content",
+          "unslop"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "c5fa786745b8f6c2dd30f04af087fad56e06627254e667376068e4624ed9f0a9",
+        "answer_sha256": "f5b58c23ca7db8674f2e6d332ffb95fd396b9596298035294f50028dd7ba0ed5",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "maintain-skill",
+        "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 26742,
+        "usage": {
+          "input_tokens": 61255,
+          "cached_input_tokens": 51328,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 564,
+          "reasoning_output_tokens": 16
+        },
+        "observed_skill_reads": [
+          "orbyn-skill-creator",
+          "principle-boundary-discipline",
+          "principle-make-operations-idempotent"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "2c4e6ea437ce910b37ab68272480a10c839a9cd2b549ecbbd79ff7986f08c835",
+        "answer_sha256": "132aa4934e26be4cc0693d837f09a07e75ab9eee5333ffc9c5524f9e0e909aea",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "narrow-calendar",
+        "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 28678,
+        "usage": {
+          "input_tokens": 58586,
+          "cached_input_tokens": 49664,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 500,
+          "reasoning_output_tokens": 16
+        },
+        "observed_skill_reads": [
+          "orbyn-ui-design"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "9ff6c9f59acf975b0d0e6a5f3b1ffe4f0c949629f02cfe80460da7806cd4d14d",
+        "answer_sha256": "e42c5a10e0c3b573259dfbd84b09bc1adf46a8f34dc035a47b70ee817a374686",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "plan-only",
+        "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 53179,
+        "usage": {
+          "input_tokens": 42411,
+          "cached_input_tokens": 35712,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1173,
+          "reasoning_output_tokens": 76
+        },
+        "observed_skill_reads": [
+          "architect",
+          "how",
+          "orbyn-plan"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "ae0cfd75346a25ad2966d9e3a14b259878adfe1c106db68f382eb87ed075a4f5",
+        "answer_sha256": "2d446592b37bce6362c87036ce0f2c4f4254676c719a60a6bafeee9350775b98",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "retry-effect",
+        "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 50942,
+        "usage": {
+          "input_tokens": 57031,
+          "cached_input_tokens": 45824,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1201,
+          "reasoning_output_tokens": 43
+        },
+        "observed_skill_reads": [
+          "architect",
+          "how",
+          "orbyn-backend-design",
+          "principle-make-operations-idempotent"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "5804b5cdadadbc0bf949249787c7aa87ce1be685308182638f2f7cb887d4648f",
+        "answer_sha256": "192e4c4da7befffb6c51eaf339f60ef2e2d9f908813c1fa2643a499093e1d5eb",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "settings-copy",
+        "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 15460,
+        "usage": {
+          "input_tokens": 43921,
+          "cached_input_tokens": 36480,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 253,
+          "reasoning_output_tokens": 22
+        },
+        "observed_skill_reads": [
+          "orbyn-content-design",
+          "orbyn-ui-design"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "173da03a97fde18ddd282de852702860abf95e0683ecf26522add736d9f7ac80",
+        "answer_sha256": "91b522e5b7f4739e917b33550cecd80f30f6a85c8e518dde46bd546e605b8721",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "shared-state",
+        "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 29452,
+        "usage": {
+          "input_tokens": 68646,
+          "cached_input_tokens": 53632,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 595,
+          "reasoning_output_tokens": 25
+        },
+        "observed_skill_reads": [
+          "principle-encode-lessons-in-structure",
+          "principle-type-system-discipline"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "445df60b89676ea712fc4af08893bb4c4ed13cfae3364bdd89eb9ea253cd16ec",
+        "answer_sha256": "f46dd9227a1f0f767bee7974dc1ae15c29b97aaa28486af16f0b57e2b7f3297b",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "shipped-binary",
+        "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 19990,
+        "usage": {
+          "input_tokens": 40091,
+          "cached_input_tokens": 34688,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 383,
+          "reasoning_output_tokens": 49
+        },
+        "observed_skill_reads": [
+          "reverse-engineer-anything"
+        ],
+        "command_count": 2,
+        "events": [],
+        "visible_events_sha256": "346c6cac66ab019c84cf25662fa5b764ab17b1ff80dfd9d2b956f03532db76e2",
+        "answer_sha256": "cb271642f21609fd3e67502ea43d0b14fe722d143650cb7a871a0219cb790216",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "stored-sessions",
+        "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 31937,
+        "usage": {
+          "input_tokens": 70464,
+          "cached_input_tokens": 46592,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 594,
+          "reasoning_output_tokens": 43
+        },
+        "observed_skill_reads": [
+          "architect",
+          "how",
+          "orbyn-data-migration"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "58a6c9743df53bb6aa2c9901039c35d12b9437ba730ef8d9731191710e23a1cc",
+        "answer_sha256": "7130ad82a85e4f003804875e11ba48d0c0829959848a6e536a1b7d2caa28fbbb",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "task-move",
+        "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 23113,
+        "usage": {
+          "input_tokens": 40881,
+          "cached_input_tokens": 25856,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 573,
+          "reasoning_output_tokens": 35
+        },
+        "observed_skill_reads": [
+          "how",
+          "orbyn-backend-design"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "ad249d8f5adcb82360e83c7c02274d7512f99332a59c02e017b516f9da62fb28",
+        "answer_sha256": "5cce57d4b099625111c46e94271e6b8b0246666193f4feeae2809c1e4390e08a",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "trace-save",
+        "revision": "4a0503d354f57b206507d9e49fb75b8184d12577",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 26739,
+        "usage": {
+          "input_tokens": 40223,
+          "cached_input_tokens": 31104,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 441,
+          "reasoning_output_tokens": 33
+        },
+        "observed_skill_reads": [
+          "how"
+        ],
+        "command_count": 2,
+        "events": [],
+        "visible_events_sha256": "fb934280236e3b1e8e57508c0188c3b918d680bd2560784d1631f9da0c2a9f81",
+        "answer_sha256": "7bd0afbe90c785685c772f28f7e33e6141e222355939f041490026d2061b878d",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      }
+    ],
+    "candidate-fixed": [
+      {
+        "case_id": "app-ci-not-rea",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 41296,
+        "usage": {
+          "input_tokens": 59812,
+          "cached_input_tokens": 48128,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 888,
+          "reasoning_output_tokens": 12
+        },
+        "observed_skill_reads": [
+          "orbyn-ci-design",
+          "orbyn-plan"
+        ],
+        "command_count": 6,
+        "events": [],
+        "visible_events_sha256": "7b440fe9fc8c73c04d4319339e6b76a9698489fc1449a6654c05e3945ed040bc",
+        "answer_sha256": "5b07d027606ccbc32048ead10ad1b9ed33f93c857cc6a5ad76cafe7b099125b1",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "approval-contract",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 48768,
+        "usage": {
+          "input_tokens": 56816,
+          "cached_input_tokens": 46080,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1243,
+          "reasoning_output_tokens": 77
+        },
+        "observed_skill_reads": [
+          "architect",
+          "how",
+          "orbyn-backend-design"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "6439d814c6f13fba356e1166205063f405a977c9af029c35bb1732a9c4d36784",
+        "answer_sha256": "aac9b71bca70db932ce6f54ecbb7431e22af77e7bbcaaed68ed12f7463918471",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "approval-review",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 28305,
+        "usage": {
+          "input_tokens": 41005,
+          "cached_input_tokens": 35072,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 651,
+          "reasoning_output_tokens": 117
+        },
+        "observed_skill_reads": [
+          "interrogate"
+        ],
+        "command_count": 5,
+        "events": [],
+        "visible_events_sha256": "d87246dcdb64d1f314ad9536a0f4446adc38fe93e803b94ed3e66da544fdb9c1",
+        "answer_sha256": "8289bfa8d755aad9bf9acf6e43187d8c8a3afa29a70447581306fdc87cc0eb1c",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "capture-preference",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 25037,
+        "usage": {
+          "input_tokens": 58555,
+          "cached_input_tokens": 44544,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 526,
+          "reasoning_output_tokens": 23
+        },
+        "observed_skill_reads": [
+          "automate-me",
+          "orbyn-content-design",
+          "orbyn-skill-creator",
+          "rea-changelog-update",
+          "unslop"
+        ],
+        "command_count": 5,
+        "events": [],
+        "visible_events_sha256": "a2a9c3f3be92971db71d2522cd8a0318b3716ad3c9ca715cea4d86980a9685f5",
+        "answer_sha256": "9310e94bc9a2393759871dc941c6aba9796d21a08b23a6dbb77f9785f6c48338",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "exact-caption",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 15928,
+        "usage": {
+          "input_tokens": 40621,
+          "cached_input_tokens": 12928,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 398,
+          "reasoning_output_tokens": 34
+        },
+        "observed_skill_reads": [
+          "social-preview"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "04b74f3bab66c00a8ac7d1417e55a97b07d01dbe520b721a1ed4ee2bfcfb561e",
+        "answer_sha256": "72a00635dd40c820dda39250c2545aad31f387624d4a287bc8f1eeb80becdeb7",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "failed-save",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 43633,
+        "usage": {
+          "input_tokens": 66414,
+          "cached_input_tokens": 52992,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1101,
+          "reasoning_output_tokens": 28
+        },
+        "observed_skill_reads": [
+          "orbyn-content-design",
+          "orbyn-ui-design"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "b4f4809e6182990f5143ba6ff011a3eac3352cf61b4f4e64687986ae463822e7",
+        "answer_sha256": "b1afd02ecbe4414bad0ff3e4b8f7d0f641fb969755575bcc50c759674df1102c",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "feature-announcement",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 22424,
+        "usage": {
+          "input_tokens": 56353,
+          "cached_input_tokens": 36736,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 398,
+          "reasoning_output_tokens": 11
+        },
+        "observed_skill_reads": [
+          "social-content",
+          "unslop"
+        ],
+        "command_count": 5,
+        "events": [],
+        "visible_events_sha256": "104657856131ec89a7a6e4b81d3beecdbe9f4921b52d98b6ed05b963e961af5b",
+        "answer_sha256": "d01b5c434f48ced13b30916afc041245bc7e071641a4a57ba388579b9aef72d2",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "fork-ci",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 24202,
+        "usage": {
+          "input_tokens": 55520,
+          "cached_input_tokens": 26240,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 531,
+          "reasoning_output_tokens": 26
+        },
+        "observed_skill_reads": [
+          "orbyn-ci-design"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "9ffedddcfcee0cff2d8ba15bd89a8a8440104f4c1de0bace5b9adade4584276c",
+        "answer_sha256": "a460dc3a1a32414ab1f57a1f989fe4ef84dc48b713f00338ea44f8ba987dcd70",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "maintain-skill",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 27427,
+        "usage": {
+          "input_tokens": 79960,
+          "cached_input_tokens": 69504,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 566,
+          "reasoning_output_tokens": 37
+        },
+        "observed_skill_reads": [
+          "orbyn-skill-creator",
+          "principle-fix-root-causes",
+          "principle-make-operations-idempotent"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "ec702a16a64dff6b91eb20cf995882f29d4329a219fae9a4244fb9c449fb3f47",
+        "answer_sha256": "a5a2e7c5a025e374352065abd3fa2ffa6240f747cb5901527bb2ade5d7806077",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "narrow-calendar",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 24075,
+        "usage": {
+          "input_tokens": 58332,
+          "cached_input_tokens": 34688,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 447,
+          "reasoning_output_tokens": 0
+        },
+        "observed_skill_reads": [
+          "orbyn-ui-design"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "95a4ef2bdbf82a6982717860941562ed0e54fd713981115045c4c321ba4fb7e0",
+        "answer_sha256": "08fd8c8472dc1f07690d79a6dcba5411d06e04c817d2b0f410329c47188a7e0a",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "plan-only",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 34641,
+        "usage": {
+          "input_tokens": 42543,
+          "cached_input_tokens": 35456,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1029,
+          "reasoning_output_tokens": 135
+        },
+        "observed_skill_reads": [
+          "architect",
+          "how",
+          "orbyn-plan"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "a8d73d700ef50ec41e2b5938c9264caf9f70dc530cb6b58971044d75f326209a",
+        "answer_sha256": "9058f1cfff499179f2f5e7397e757ea2284d7c4ca1d51b4d13451f8e8dd08b46",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "retry-effect",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 59960,
+        "usage": {
+          "input_tokens": 43104,
+          "cached_input_tokens": 36352,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1269,
+          "reasoning_output_tokens": 124
+        },
+        "observed_skill_reads": [
+          "architect",
+          "how",
+          "orbyn-backend-design",
+          "principle-make-operations-idempotent"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "9f53c08556ab43a4f5942dc17a107198609de28dc11578223b8932fb3c206d03",
+        "answer_sha256": "2c92a7d7946fff69568ef81fcf70baa3f345b5125a625c059d409e38abfb7375",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "settings-copy",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 19955,
+        "usage": {
+          "input_tokens": 57331,
+          "cached_input_tokens": 40448,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 265,
+          "reasoning_output_tokens": 16
+        },
+        "observed_skill_reads": [
+          "orbyn-content-design",
+          "orbyn-ui-design"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "bbb3d4e8651dfbdd08311af68b4717323cc6bfd4bd1f14bd5773654075159a69",
+        "answer_sha256": "91b522e5b7f4739e917b33550cecd80f30f6a85c8e518dde46bd546e605b8721",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "shared-state",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 33184,
+        "usage": {
+          "input_tokens": 69993,
+          "cached_input_tokens": 52992,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 765,
+          "reasoning_output_tokens": 51
+        },
+        "observed_skill_reads": [
+          "principle-encode-lessons-in-structure",
+          "typescript-best-practices"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "0df6447acb57adf4566d388ae8c8426008cb93eac8a46cb25cb474a6da8991d0",
+        "answer_sha256": "0473139e4a4f43ab4b5e9786bc86207628ccfe28fd17806936af7cc7feb8e92d",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "shipped-binary",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 25304,
+        "usage": {
+          "input_tokens": 41590,
+          "cached_input_tokens": 35584,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 368,
+          "reasoning_output_tokens": 53
+        },
+        "observed_skill_reads": [
+          "reverse-engineer-anything"
+        ],
+        "command_count": 2,
+        "events": [],
+        "visible_events_sha256": "a79363f3c0edf9766409866de6ff11968352e0e51931509c2cfa3078c8a54464",
+        "answer_sha256": "53d327d72946bd362baab392b89ce212d3615be495cb81c61dcf94ee34aeda76",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "simple-text-edit",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 8518,
+        "usage": {
+          "input_tokens": 12913,
+          "cached_input_tokens": 9088,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 9,
+          "reasoning_output_tokens": 0
+        },
+        "observed_skill_reads": [],
+        "command_count": 0,
+        "events": [],
+        "visible_events_sha256": "989b42b0f062e2d0a59d8742ed7d457bc7d55b0af57827ce377ac2391114d0d9",
+        "answer_sha256": "bc994f5991e57ff47ff5b76c8f182bb777166f27711ba966a63daf03a88ca90c",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "stored-sessions",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 25757,
+        "usage": {
+          "input_tokens": 41024,
+          "cached_input_tokens": 25600,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 624,
+          "reasoning_output_tokens": 117
+        },
+        "observed_skill_reads": [
+          "architect",
+          "orbyn-data-migration"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "67c3c1f979f83786b6e2543be3f08a880a5588292251105a902b23aa0783cafa",
+        "answer_sha256": "6f4acc829eff195b4f4732a88d866d14e5430095f29b08f358c98bac2e469e97",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "supported-announcement",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 24716,
+        "usage": {
+          "input_tokens": 43655,
+          "cached_input_tokens": 30976,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 549,
+          "reasoning_output_tokens": 0
+        },
+        "observed_skill_reads": [
+          "social-content",
+          "unslop"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "143c7870c97849bb6258de7c1095dd76f6db231ac1327aa2cc4a0b1352f77bc6",
+        "answer_sha256": "25513fb02dd1f2127b8af36e85c843bff33fb8d0908318bc219729bf702542fb",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "task-move",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 36306,
+        "usage": {
+          "input_tokens": 71014,
+          "cached_input_tokens": 55296,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 640,
+          "reasoning_output_tokens": 20
+        },
+        "observed_skill_reads": [
+          "how",
+          "orbyn-backend-design"
+        ],
+        "command_count": 5,
+        "events": [],
+        "visible_events_sha256": "48c96588e5c0aa4b0a28dd4b1b162e57b556db279425f25fb323d97ceba0c6cb",
+        "answer_sha256": "a1bf05f65fd3b0755546381edc155e95d2ab9eb9ef55e1a9be724b9ede989cb9",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "trace-save",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 21900,
+        "usage": {
+          "input_tokens": 40910,
+          "cached_input_tokens": 35200,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 483,
+          "reasoning_output_tokens": 44
+        },
+        "observed_skill_reads": [
+          "how"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "b10b7419dc38e1e1819d525020a6794e759d7fbcbf8ab49f773372225763830a",
+        "answer_sha256": "f6d7b2e390cc1857d83351a56d8ab5d4f9650fd7297189b300f374129a38ec90",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "worker-history",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 23389,
+        "usage": {
+          "input_tokens": 55630,
+          "cached_input_tokens": 49920,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 483,
+          "reasoning_output_tokens": 0
+        },
+        "observed_skill_reads": [
+          "why"
+        ],
+        "command_count": 5,
+        "events": [],
+        "visible_events_sha256": "5f25dabfc47e9dce3709ea9dc96c47e3c16f7816a2e62c9518f66faae7df0d5f",
+        "answer_sha256": "cff7235a17e1e9db57c474650b271cb3f929457567f946d1d9ac53125ff0bd07",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      },
+      {
+        "case_id": "writer-cutover",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 47674,
+        "usage": {
+          "input_tokens": 57782,
+          "cached_input_tokens": 50304,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1068,
+          "reasoning_output_tokens": 19
+        },
+        "observed_skill_reads": [
+          "architect",
+          "orbyn-data-migration",
+          "orbyn-plan"
+        ],
+        "command_count": 3,
+        "events": [],
+        "visible_events_sha256": "de81555692aa0358baaddc2dc24b9ce7d061618ebbe5e218fafe5de0b232c0e1",
+        "answer_sha256": "3efaf7d367c4c085b947656a9d7a6f55ef098200fc1966475dd724882903b5c8",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      }
+    ],
+    "regression-2": [
+      {
+        "case_id": "shared-state",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 30518,
+        "usage": {
+          "input_tokens": 55718,
+          "cached_input_tokens": 40448,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 550,
+          "reasoning_output_tokens": 40
+        },
+        "observed_skill_reads": [
+          "principle-encode-lessons-in-structure",
+          "principle-type-system-discipline",
+          "typescript-best-practices"
+        ],
+        "command_count": 4,
+        "events": [],
+        "visible_events_sha256": "adbaf6200c76a0b9f9b951c9991254cd7e3072c4666bc7f7be640115c26e5aed",
+        "answer_sha256": "27800a0907ae96b25a7bf17ad9382351db883f58e721df8fe0818c3b8cf4ac4f",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      }
+    ],
+    "regression-3": [
+      {
+        "case_id": "shared-state",
+        "revision": "7503c67f625dd6385dd5fd5d5518d05d22c58bb6",
+        "exit_code": 0,
+        "timed_out": false,
+        "duration_ms": 43204,
+        "usage": {
+          "input_tokens": 83612,
+          "cached_input_tokens": 72832,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 651,
+          "reasoning_output_tokens": 20
+        },
+        "observed_skill_reads": [
+          "principle-encode-lessons-in-structure",
+          "principle-type-system-discipline",
+          "typescript-best-practices"
+        ],
+        "command_count": 5,
+        "events": [],
+        "visible_events_sha256": "1afa27534ad38948149d2aeba0188ecd4f8b8c84a01928602a08661fd88e18a1",
+        "answer_sha256": "266a4be59ffd1a7846817c027dafcee7fd142b3da15c4996396cd9840d52599c",
+        "runner_logical_protocol_sha256": "e28987b03f6d191658ec97bc3d66f9e7974650d3d456bdeb5cb1e1f669b5d8b5"
+      }
+    ]
+  },
+  "reviewed_rubric_excerpts": {
+    "baseline": {
+      "approval-contract": {
+        "authority": "Membership revocation and apply must share a serialization mechanism, such as coordinated locking or serializable transactions with retries. A membership read alone is insufficient.",
+        "concurrency": "Apply executes in one transaction:\n\n1. Load the proposal and establish current project membership.\n2. Require `status = ready` and the exact reviewed version.\n3. Validate the stored payload against current domain constraints.\n4. Perform the domain writes, record the operation result and mark the proposal applied.\n5. Commit all changes together.",
+        "evidence": "No implementation or verification has been performed."
+      },
+      "retry-effect": {
+        "identity": "A client creates one operation identity per intended calendar event, persists it before sending, and reuses it after timeouts, reconnects, or repeated clicks:",
+        "recovery": "Keep database transactions short and outside provider calls.\n\n**Reconciliation and concurrency**\n\nThe worker uses reclaimable leases and conditional writes fenced by lease generation. Every provider attempt uses the persisted provider key and identical payload.\n\nAfter a timeout, lost response, crash after submission, or expired execution lease, the next worker looks up that key before attempting creation:",
+        "client": "Clients preserve drafts and keys after transport failures, poll accepted operations, and display “Checking whether the event was created” for unknown outcomes. Report success only after a durable provider receipt is recorded."
+      },
+      "failed-save": {
+        "draft": "Keep the editor open, preserving text, selection, and scroll position. Show persistent feedback near Save:",
+        "context": "Preserve the approved **green accent, comfortable spacing, existing typography, and shared controls**.",
+        "evidence": "Automated checks would establish state behavior; rendered web and installed-native usability remain unverified until separately inspected."
+      },
+      "writer-cutover": {
+        "writers": "If fencing cannot be established, retain the old range as authoritative and postpone multiple-session editing.",
+        "resume": "Commit data and progress together. Retries must converge without duplicates. Handle concurrent changes through the same locking or revision protocol; use capture to reconcile updates behind the cursor.",
+        "recovery": "After multiple sessions exist, keep the legacy fence active. Disable editing if necessary and repair forward, or restore and replay from retained recovery data. Restarting legacy writes would permit data loss: multiple sessions cannot be faithfully collapsed into one range."
+      },
+      "supported-announcement": {
+        "claims": "The PR is open. No release or deployment has happened, and I haven’t measured performance.",
+        "voice": "I opened a PR to keep drafts after a failed save. One local fixture passed; review is still ahead.",
+        "handoff": "**Alt text:** “The pull request is open. The change has not been released or deployed. No performance measurements exist.”"
+      }
+    },
+    "candidate": {
+      "retry-effect": {
+        "identity": "The client generates one key per intended creation and preserves it across timeouts, reloads, and retries.",
+        "recovery": "### Reconciliation and concurrency\n\nThe worker owns recovery independently of the client connection:\n\n1. Claim the operation using the existing durable lease mechanism.\n2. For an unknown outcome, look up the event using the original provider key.\n3. If found, persist its receipt and finish successfully.\n4. If lookup is unavailable or inconclusive, retain `unknown` and retry with bounded exponential backoff and jitter.\n5. If absent, resend the identical request with the **same provider key**, provided the provider’s deduplication guarantee still applies.\n\nA negative lookup alone may reflect eventual consistency. Never substitute a new key to escape uncertainty.\n\nFence local state updates with the lease generation; overlapping workers must use the same provider key. Keep database transactions short and outside network calls.\n\nDocument provider key retention and lookup consistency before implementation. If deduplication expires while the outcome remains unresolved, stop automatic creation and retain the operation for reconciliation. Retain local identity records long enough to prevent duplicate replays.",
+        "client": "Provider ambiguity must not become a definitive failure. Clients preserve input and the key, poll the operation, and show “Checking whether your event was created.”"
+      },
+      "failed-save": {
+        "draft": "Closing or navigating away must offer a route to keep the draft. Discarding requires an explicit choice. A failed request must never close the editor or imply success.",
+        "context": "Preserve the approved green accent, comfortable spacing, typography, and shared controls.",
+        "evidence": "No implementation, tests, browser inspection, or device verification was performed; rendering and native behavior remain unverified."
+      }
+    },
+    "candidate-fixed": {
+      "approval-contract": {
+        "authority": "A membership read followed by an unrelated write is insufficient. Revocation and apply must share a locking or equivalent serialization protocol: revocation ordered first denies apply; apply ordered first may complete.",
+        "concurrency": "5. Requires `status=pending` and `version=expected_version`.\n6. Validates the payload and affected resource preconditions.\n7. Writes the effects and terminal proposal/result together.",
+        "evidence": "No implementation or verification was performed."
+      },
+      "retry-effect": {
+        "identity": "Generate and retain the key before sending. All retries of this intent use that key and the same payload.",
+        "recovery": "**Durable owner and lifecycle**\n\nAtomically persist the operation and durable work item before any provider call. Store the accepted payload, fingerprint, provider account/key, attempt metadata and eventual receipt. Do not hold a database transaction open across provider calls.\n\nUse a discriminated result:\n\n```ts\ntype Outcome =\n  | { state: \"pending\" }\n  | { state: \"unknown\"; reason: string }\n  | { state: \"succeeded\"; result: { providerEventId: string } }\n  | { state: \"failed\"; error: { code: string; message: string } };\n```\n\n`pending` means accepted without a recorded terminal outcome. `unknown` means the provider may have created the event. `failed` requires definitive evidence that no event was created.\n\nA timeout, lost response or worker crash after submission cannot establish failure. Expired leases permit recovery; use claim versions to prevent stale workers from overwriting newer results. Provider idempotency protects overlapping submissions.\n\n**Reconciliation**\n\nBefore submitting recovered work whose outcome may be unknown, look up the persisted provider key:\n\n1. **Found:** validate the returned event belongs to this operation, then persist its receipt and `succeeded` atomically.\n2. **Lookup unavailable or inconclusive:** retain `unknown`, back off and retry lookup.\n3. **Absent:** resubmit the identical payload with the identical provider key only while the provider’s deduplication guarantee remains valid. An eventually consistent negative lookup is not proof of failure.\n\nUse bounded backoff with jitter. Exhausting automatic attempts leaves the operation unresolved and eligible for later reconciliation; it does not convert uncertainty into failure. If the provider key expires before resolution, require deliberate recovery rather than issuing a fresh create.\n\nA crash after provider creation but before local persistence is recovered through lookup. Any associated local task update must be committed atomically with recording success and be safe to repeat.",
+        "client": "After any transport failure, the client preserves its draft and key and retries or polls. For `unknown`, show “Checking whether the event was created.”"
+      },
+      "writer-cutover": {
+        "writers": "If that fence cannot be established and verified, remain in compatibility mode with multi-session editing disabled. Do not claim cutover readiness.",
+        "resume": "Use a durable cursor over stable task IDs and a migration identity. For each task, capture its range and source revision, then transactionally reconcile its migration-owned session and record progress. Use a unique source key so retries cannot duplicate rows; update or remove that projection when the range changes or clears.",
+        "recovery": "After multi-session writes begin, retain sessions as authority and use forward repair or a compatible prior application version. Do not flatten sessions into a range or restart legacy writers as rollback."
+      },
+      "supported-announcement": {
+        "claims": "The PR is open. Review is ahead; nothing has been released or deployed.",
+        "voice": "I opened a PR to keep drafts after a failed save. One local fixture passed; review is still ahead.",
+        "handoff": "**Alt text:** “Status summary: locally implemented, one fixture passed, PR open, and no release or deployment.”"
+      },
+      "failed-save": {
+        "draft": "Reconnect should make retry available without silently submitting or overwriting anything. Retry uses the version on which editing began.",
+        "context": "Preserve the approved green accent, comfortable spacing, typography, and shared controls.",
+        "evidence": "Rendering, screen-reader behavior, and installed-mobile behavior remain unverified; no browser or device was available."
+      }
+    }
+  },
+  "integrity": [
+    {
+      "condition": "baseline",
+      "case_id": "app-ci-not-rea",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "approval-contract",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "approval-review",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "capture-preference",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "exact-caption",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "failed-save",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "feature-announcement",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "fork-ci",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "maintain-skill",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "narrow-calendar",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "plan-only",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "retry-effect",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "settings-copy",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "shared-state",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "shipped-binary",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "simple-text-edit",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "stored-sessions",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "supported-announcement",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "task-move",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "trace-save",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "worker-history",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "baseline",
+      "case_id": "writer-cutover",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate",
+      "case_id": "app-ci-not-rea",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate",
+      "case_id": "approval-contract",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate",
+      "case_id": "approval-review",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate",
+      "case_id": "failed-save",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate",
+      "case_id": "feature-announcement",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate",
+      "case_id": "maintain-skill",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate",
+      "case_id": "narrow-calendar",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate",
+      "case_id": "plan-only",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate",
+      "case_id": "retry-effect",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate",
+      "case_id": "settings-copy",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate",
+      "case_id": "shared-state",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate",
+      "case_id": "shipped-binary",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate",
+      "case_id": "stored-sessions",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate",
+      "case_id": "task-move",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate",
+      "case_id": "trace-save",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "app-ci-not-rea",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "approval-contract",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "approval-review",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "capture-preference",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "exact-caption",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "failed-save",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "feature-announcement",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "fork-ci",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "maintain-skill",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "narrow-calendar",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "plan-only",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "retry-effect",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "settings-copy",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "shared-state",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "shipped-binary",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "simple-text-edit",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "stored-sessions",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "supported-announcement",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "task-move",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "trace-save",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "worker-history",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "candidate-fixed",
+      "case_id": "writer-cutover",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "regression-2",
+      "case_id": "shared-state",
+      "fixture_and_library_bytes_unchanged": true
+    },
+    {
+      "condition": "regression-3",
+      "case_id": "shared-state",
+      "fixture_and_library_bytes_unchanged": true
+    }
+  ],
+  "limits": "One trial per case and condition; two additional targeted candidate routing trials. Same lead graded artifacts. Configured processing tier only. Raw visible transcripts are retained locally, not included here. No product implementation, rendered/native, Claude, cost, latency or general quality qualification."
+}
