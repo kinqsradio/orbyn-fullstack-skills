@@ -11,8 +11,8 @@ from domain model to user-visible behavior.
 
 Created and maintained by [Anh Dang](https://github.com/kinqsradio) under the
 **Orbyn Engineering** brand. This library grows out of Orbyn's engineering
-workflow and includes credited third-party adaptations. It is not the private
-Orbyn application or an official OpenAI, Anthropic, Cursor or REA product.
+workflow and includes credited third-party adaptations. The application is a
+separate repository; this is not an official OpenAI, Anthropic, Cursor or REA product.
 See [credits](#credits-and-license) and the [per-skill provenance](provenance.json).
 
 ## The approach
@@ -31,18 +31,18 @@ explains the handoffs. [The catalog](skills/README.md) lists every skill.
 
 ## Start with a task
 
-| Your task | Start here | Result |
-| --- | --- | --- |
-| Understand unfamiliar behavior | `how` / `why` | Source trace or documented rationale |
-| Deliver a cross-stack feature | `orbyn-workflow` | Owned changes and proportional evidence |
-| Decide the data/interface model | `architect` | Caller-facing contract and lifecycle |
-| Implement an API effect | `orbyn-backend-design` | Validation, authority, transaction and client errors |
-| Change a stored format | `orbyn-data-migration` | Compatibility, writer cutover and recovery |
-| Improve web/mobile task flows | `orbyn-ui-design` + `orbyn-content-design` | Rendered UI with concise product language |
-| Model TypeScript state | `typescript-best-practices` | Shared schemas and explicit valid variants |
-| Review a risky patch | `interrogate` | Concrete findings with scenarios and evidence |
-| Build contribution/release CI | `orbyn-ci-design` | Scoped execution and reviewable promotion |
-| Draft a post or carousel | `social-content` + `social-preview` | Evidence-backed copy and local visuals |
+| Your task                       | Start here                                 | Result                                               |
+| ------------------------------- | ------------------------------------------ | ---------------------------------------------------- |
+| Understand unfamiliar behavior  | `how` / `why`                              | Source trace or documented rationale                 |
+| Deliver a cross-stack feature   | `orbyn-workflow`                           | Owned changes and proportional evidence              |
+| Decide the data/interface model | `architect`                                | Caller-facing contract and lifecycle                 |
+| Implement an API effect         | `orbyn-backend-design`                     | Validation, authority, transaction and client errors |
+| Change a stored format          | `orbyn-data-migration`                     | Compatibility, writer cutover and recovery           |
+| Improve web/mobile task flows   | `orbyn-ui-design` + `orbyn-content-design` | Rendered UI with concise product language            |
+| Model TypeScript state          | `typescript-best-practices`                | Shared schemas and explicit valid variants           |
+| Review a risky patch            | `interrogate`                              | Concrete findings with scenarios and evidence        |
+| Build contribution/release CI   | `orbyn-ci-design`                          | Scoped execution and reviewable promotion            |
+| Draft a post or carousel        | `social-content` + `social-preview`        | Evidence-backed copy and local visuals               |
 
 Twenty focused principle skills refine difficult decisions; they are not twenty
 mandatory stages. Five REA-related skills are optional specialists for artifact
@@ -61,8 +61,11 @@ python3 scripts/install.py --project /path/to/your-project --host both
 ```
 
 The installer links selected canonical skill folders into `.agents/skills` for
-Codex and `.claude/skills` for Claude Code. Add `--skill how --skill architect` to
-install a subset. Keep the library clone at a stable path. Conflicting files and
+Codex and `.claude/skills` for Claude Code. The default `core` preset registers
+10 skills. Add `--preset core --preset creator` for engineering and social work,
+use `--skill how --skill architect` for a custom selection, or `--all` for all 50.
+Use `--list-presets` to explore and `--dry-run` to preview. Selections are additive;
+existing links remain installed. Keep the library clone at a stable path. Conflicting files and
 links are refused; project instructions, models, MCP connections and credentials
 are not overwritten. [Installation details](docs/installation.md) include pinned
 copies for consumers that do not want external symlinks.
@@ -86,7 +89,10 @@ not execute its helpers or grant permission for external actions.
 Orbyn uses TypeScript, React, Electron, React Native, API services and PostgreSQL;
 those are examples, not prerequisites. The workflow resolves **your** schema,
 transport, persistence, component and operational owners from current source.
-See [project context](docs/agents/stack.md). Framework-specific examples do not
+Use the optional [project context map](skills/orbyn-setup/references/project-context.md)
+to point to your existing stack, design, brand and verification guides. The map
+belongs to your project and stays outside skill synchronization. See
+[stack ownership](docs/agents/stack.md). Framework-specific examples do not
 authorize adding that framework to your project.
 
 The optional host model presets describe Orbyn's reference setup, not a required
@@ -97,7 +103,7 @@ only when requested and supported by your environment.
 
 You can use, modify and redistribute the MIT-licensed material with the required
 notices. A fork can carry local conventions without needing access to Orbyn's
-private product repository. To contribute, fork this repository, create a branch,
+product repository. To contribute, fork this repository, create a branch,
 make a focused change, run validation and open a pull request here. New skills
 need a concrete routing gap and a useful input/output contract.
 
@@ -106,6 +112,23 @@ need a concrete routing gap and a useful input/output contract.
 shared content can be edited while working in a private consumer, exported through
 an explicit skill-only allowlist, reviewed here, and pinned back into the consumer.
 No private history, application source or project configuration is exported.
+
+## Examples and evaluations
+
+Start with the worked examples for [architecture](skills/architect/examples/proposal-approval.md),
+[backend effects](skills/orbyn-backend-design/examples/retry-safe-effect.md),
+[data migration](skills/orbyn-data-migration/examples/session-cutover.md),
+[UI recovery](skills/orbyn-ui-design/examples/failed-save.md) and
+[social writing](skills/social-content/examples/engineering-update.md). Each shows
+synthetic inputs, a useful result and a concrete failure to avoid. An optional
+[task record](skills/orbyn-workflow/references/task-record.md) connects decisions,
+verification and continuation without a second project tracker.
+
+The [evaluation toolkit](skills/orbyn-skill-creator/references/evaluations.md)
+contains 17 routing cases and five outcome cases with review rubrics. Prepare
+frozen tasks, capture trials in an authorized host, grade evidence and compare a
+complete baseline/candidate pair. Missing trials stay unverified. These are tools
+for measurement; this release does not claim measured model improvements.
 
 CI validates metadata, references, attribution, catalog/discovery consistency,
 the distribution manifest and helper/synchronization behavior. It does not prove

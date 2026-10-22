@@ -70,7 +70,9 @@ Social writing and rendering remain separate from in-app copy and product UI.
 | [unslop](../skills/unslop/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | adapted |
 | [why](../skills/why/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | adapted |
 
-[Static routing cases](routing-cases.json) record expected primary owners and adjacent
-non-triggers. CI checks their references; only a separately authorized live model
-trial could establish observed selection behavior. Contributor and source attribution
+The [versioned evaluation suite](../skills/orbyn-skill-creator/evals/cases.json)
+contains routing, adjacent, no-skill and outcome cases. The
+[evaluation guide](../skills/orbyn-skill-creator/references/evaluations.md) distinguishes
+static validation, deterministic helper fixtures and observed host trials.
+This historical catalog review does not claim live evaluation results. Contributor and source attribution
 are maintained in [provenance](../provenance.json), not invented commit history.

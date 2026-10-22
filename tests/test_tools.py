@@ -70,14 +70,15 @@ class SyncTests(unittest.TestCase):
             self.invoke('check', self.consumer, self.upstream)
 
     def test_pull_updates_content_and_preserves_private_files(self):
-        private = self.consumer/'private.txt'
-        private.write_text('consumer-only payload')
+        private = self.consumer/'.agents/orbyn-context.json'
+        private.parent.mkdir()
+        private.write_text('consumer-only pointers')
         self.edit(self.upstream, 'Reviewed public update')
         self.invoke('manifest', self.upstream, write=True)
         self.commit()
         self.invoke('pull', self.consumer, self.upstream)
         self.assertEqual((self.consumer/'skills/example/SKILL.md').read_text(), 'Reviewed public update')
-        self.assertEqual(private.read_text(), 'consumer-only payload')
+        self.assertEqual(private.read_text(), 'consumer-only pointers')
         self.invoke('check', self.consumer)
 
     def test_pull_refuses_local_edits_before_mutation(self):
@@ -89,12 +90,15 @@ class SyncTests(unittest.TestCase):
     def test_export_dry_run_and_allowlist(self):
         self.edit(self.consumer, 'Public-safe contribution')
         (self.consumer/'private.txt').write_text('not exported')
+        (self.consumer/'.agents').mkdir()
+        (self.consumer/'.agents/orbyn-context.json').write_text('consumer-only pointers')
         self.git('checkout','-b','feat/contract-improvement')
         self.invoke('export', self.consumer, self.upstream)
         self.assertIn('Initial behavior', (self.upstream/'skills/example/SKILL.md').read_text())
         self.invoke('export', self.consumer, self.upstream, write=True)
         self.assertEqual((self.upstream/'skills/example/SKILL.md').read_text(), 'Public-safe contribution')
         self.assertFalse((self.upstream/'private.txt').exists())
+        self.assertFalse((self.upstream/'.agents/orbyn-context.json').exists())
         sync.manifest(self.upstream)
 
     def test_export_requires_contribution_branch(self):

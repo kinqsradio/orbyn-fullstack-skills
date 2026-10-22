@@ -14,6 +14,11 @@ Describe the concrete request or failure and what changes for a user of the skil
 List commands and observed results. Distinguish static checks, helper behavior,
 live agent routing and rendered output. Mark checks that were not performed.
 
+- Evaluation case IDs changed (or why inapplicable):
+- Static/helper checks:
+- Recorded host trials, suite hash and host/model settings (or not run):
+- Baseline/candidate comparison and remaining limitations (if measured):
+
 ## Attribution and publication boundary
 
 - [ ] I can contribute this material under MIT and preserved applicable notices.

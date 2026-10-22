@@ -1,7 +1,7 @@
 # Contributing to Orbyn Fullstack Engineering Skills
 
 Everyone can use the public library and propose improvements without access to
-the private Orbyn product. Anh Dang (`@kinqsradio`) is the creator and maintainer;
+the Orbyn product repository. Anh Dang (`@kinqsradio`) is the creator and maintainer;
 outside contributions use the same review and validation path.
 
 ## Make a contribution
@@ -15,7 +15,12 @@ outside contributions use the same review and validation path.
    upstream URL/revision, applicable notice and a `provenance.json` entry. Reviewed
    inspiration is labelled separately; do not imply original authors contributed
    directly to this repository. Do not invent source history or Git authorship.
-4. Run the checks below. Include a realistic use case and actual results in the
+4. For routing or output-contract changes, add or adjust a case in the
+   [evaluation suite](skills/orbyn-skill-creator/evals/cases.json). Include an
+   adjacent non-trigger and a failure-sensitive rubric where appropriate. Keep
+   public examples synthetic and preserve frozen holdout criteria for an actual
+   comparison. Follow the [evaluation guide](skills/orbyn-skill-creator/references/evaluations.md).
+   Run the checks below. Include a realistic use case and actual results in the
    PR template; clearly label any live routing/rendering checks not performed.
 5. Push your branch and open a PR to `kinqsradio/orbyn-fullstack-skills:main`.
    Maintainers review routing, authority, portability, evidence and licensing.
@@ -64,3 +69,17 @@ By submitting a contribution, you represent that you can license it under this
 repository's MIT terms and include required third-party notices. No CLA or DCO
 signature requirement is currently imposed. Security reports go through
 [private reporting](SECURITY.md), not public issues.
+
+## Evidence for skill evaluations
+
+CI validates case structure and tests the evaluator with synthetic files. It does
+not call models or prove quality gains. If you run a host trial, include the full
+revision, suite hash, host/model/version/effort settings, trial count, captured
+transcript, output artifacts and identified reviewer. Use the grader's report;
+missing runs or rubric evidence remain unverified. A paired comparison requires
+the same cases and host settings, with one baseline and one candidate.
+
+Keep raw trial evidence outside tracked library content unless explicitly reviewed
+for publication. Do not commit real customer or private repository context. A
+project's `.agents/orbyn-context.json` and design/brand guides belong to that
+consumer, not the managed public skill export.
