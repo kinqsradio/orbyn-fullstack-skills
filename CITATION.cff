@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you reference this workflow in research or documentation, cite the repository and the revision you used."
+title: "Orbyn Fullstack Engineering Skills"
+type: software
+authors:
+  - family-names: Dang
+    given-names: Anh
+    alias: kinqsradio
+repository-code: "https://github.com/kinqsradio/orbyn-fullstack-skills"
+license: MIT

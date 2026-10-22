@@ -1,0 +1,31 @@
+name: Bug or misleading guidance
+description: Report a reproducible helper failure, routing problem or incorrect instruction.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include secrets or private project content. Vulnerabilities use SECURITY.md."
+  - type: input
+    id: revision
+    attributes:
+      label: Revision and affected skill/helper
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal request or reproduction
+      description: Use synthetic inputs; include host/version only when relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and limits
+      description: Commands/results, source anchors or a redacted visual; distinguish observation from inference.

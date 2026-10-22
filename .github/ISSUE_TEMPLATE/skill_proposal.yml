@@ -1,0 +1,22 @@
+name: Skill improvement or proposal
+description: Suggest a concrete engineering decision or workflow improvement.
+title: "[Skill]: "
+body:
+  - type: textarea
+    id: request
+    attributes:
+      label: Realistic user request and desired outcome
+    validations:
+      required: true
+  - type: textarea
+    id: ownership
+    attributes:
+      label: Existing owner, routing gap and proposed change
+      description: Explain why an existing skill cannot own it; include an adjacent non-trigger.
+    validations:
+      required: true
+  - type: textarea
+    id: resources
+    attributes:
+      label: Useful resources, evidence and attribution
+      description: Include source/license information for any material you propose adapting.

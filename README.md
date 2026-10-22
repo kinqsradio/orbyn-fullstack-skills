@@ -1,0 +1,135 @@
+# Orbyn Fullstack Engineering Skills
+
+**50 connected agent skills for full-stack engineering with Codex and Claude Code.**
+
+Architecture, API design, data migrations, TypeScript, web and mobile UX,
+debugging, review, CI and delivery—organized around a feature's complete path
+from domain model to user-visible behavior.
+
+[![Validate skills](https://github.com/kinqsradio/orbyn-fullstack-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/kinqsradio/orbyn-fullstack-skills/actions/workflows/validate.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+Created and maintained by [Anh Dang](https://github.com/kinqsradio) under the
+**Orbyn Engineering** brand. This library grows out of Orbyn's engineering
+workflow and includes credited third-party adaptations. It is not the private
+Orbyn application or an official OpenAI, Anthropic, Cursor or REA product.
+See [credits](#credits-and-license) and the [per-skill provenance](provenance.json).
+
+## The approach
+
+**Ground the work → define its contract → change the connected layers → obtain
+the right evidence → report actual delivery.**
+
+A feature can involve a shared schema, API, transaction, background job and two
+clients. The skills keep ownership and failure behavior visible across that path.
+They distinguish a source finding from a runtime observation, a web preview from
+native evidence, and a pushed commit from a deployment.
+
+This is an opinionated engineering workflow, not a claim that prompts guarantee
+correct software. [The engineering contract](skills/orbyn-workflow/references/fullstack-contract.md)
+explains the handoffs. [The catalog](skills/README.md) lists every skill.
+
+## Start with a task
+
+| Your task | Start here | Result |
+| --- | --- | --- |
+| Understand unfamiliar behavior | `how` / `why` | Source trace or documented rationale |
+| Deliver a cross-stack feature | `orbyn-workflow` | Owned changes and proportional evidence |
+| Decide the data/interface model | `architect` | Caller-facing contract and lifecycle |
+| Implement an API effect | `orbyn-backend-design` | Validation, authority, transaction and client errors |
+| Change a stored format | `orbyn-data-migration` | Compatibility, writer cutover and recovery |
+| Improve web/mobile task flows | `orbyn-ui-design` + `orbyn-content-design` | Rendered UI with concise product language |
+| Model TypeScript state | `typescript-best-practices` | Shared schemas and explicit valid variants |
+| Review a risky patch | `interrogate` | Concrete findings with scenarios and evidence |
+| Build contribution/release CI | `orbyn-ci-design` | Scoped execution and reviewable promotion |
+| Draft a post or carousel | `social-content` + `social-preview` | Evidence-backed copy and local visuals |
+
+Twenty focused principle skills refine difficult decisions; they are not twenty
+mandatory stages. Five REA-related skills are optional specialists for artifact
+investigation and REA maintenance. They do not install reverse-engineering tools.
+
+## Install into a project
+
+Python 3.11+ and Git are sufficient for the library's tooling. No API key, paid
+model call, application database or npm installation is required for static checks.
+
+```sh
+git clone https://github.com/kinqsradio/orbyn-fullstack-skills.git
+cd orbyn-fullstack-skills
+python3 scripts/check-library.py
+python3 scripts/install.py --project /path/to/your-project --host both
+```
+
+The installer links selected canonical skill folders into `.agents/skills` for
+Codex and `.claude/skills` for Claude Code. Add `--skill how --skill architect` to
+install a subset. Keep the library clone at a stable path. Conflicting files and
+links are refused; project instructions, models, MCP connections and credentials
+are not overwritten. [Installation details](docs/installation.md) include pinned
+copies for consumers that do not want external symlinks.
+
+Examples after discovery:
+
+```text
+Use how to trace this save action from the screen to its database effect.
+Use orbyn-workflow and orbyn-backend-design to implement this API change.
+Use orbyn-data-migration to plan the format transition; do not run it in production.
+Use social-content and social-preview to introduce this implemented feature.
+```
+
+Host syntax and discovery can vary. A fresh session may be required. Read the
+skill's `SKILL.md` directly if the host does not follow symlinks. The consuming
+project's instructions and actual tools take precedence. Installing a skill does
+not execute its helpers or grant permission for external actions.
+
+## Bring your own stack
+
+Orbyn uses TypeScript, React, Electron, React Native, API services and PostgreSQL;
+those are examples, not prerequisites. The workflow resolves **your** schema,
+transport, persistence, component and operational owners from current source.
+See [project context](docs/agents/stack.md). Framework-specific examples do not
+authorize adding that framework to your project.
+
+The optional host model presets describe Orbyn's reference setup, not a required
+model purchase. The installer does not apply them. Use the host/model guidance
+only when requested and supported by your environment.
+
+## Use it, adapt it, contribute back
+
+You can use, modify and redistribute the MIT-licensed material with the required
+notices. A fork can carry local conventions without needing access to Orbyn's
+private product repository. To contribute, fork this repository, create a branch,
+make a focused change, run validation and open a pull request here. New skills
+need a concrete routing gap and a useful input/output contract.
+
+[CONTRIBUTING.md](CONTRIBUTING.md) covers skill changes, provenance and checks.
+[Synchronization](docs/synchronization.md) explains the upstream/consumer model:
+shared content can be edited while working in a private consumer, exported through
+an explicit skill-only allowlist, reviewed here, and pinned back into the consumer.
+No private history, application source or project configuration is exported.
+
+CI validates metadata, references, attribution, catalog/discovery consistency,
+the distribution manifest and helper/synchronization behavior. It does not prove
+live model routing, rendered design quality, native UX or production correctness.
+
+## Credits and license
+
+- **Orbyn / Anh Dang and contributors:** maintained integration, full-stack
+  contracts, project-aware routing, original skills and local tooling.
+- **Lauren Tan's pstack**, from [cursor/plugins](https://github.com/cursor/plugins/tree/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack):
+  engineering skill adaptations. Original MIT copyright and permission notices
+  are retained in the affected skill folders and [notices](tools/THIRD_PARTY_NOTICES.md).
+- **morluto's REA**, [pinned source](https://github.com/morluto/rea/tree/ccc7da309d7db385d5c6d73b0a3a8e093be33504):
+  optional investigation/maintenance adapters, with MIT attribution. Runtime source
+  and engines are not bundled or installed by this library.
+- **Corey Haines's marketing skills** and **Anthropic's canvas-design** informed
+  the social-workflow comparison. Their code/assets were not copied; the
+  [research record](tools/research/social-content.md) distinguishes inspiration
+  from adaptation.
+
+See [LICENSE](LICENSE), [AUTHORS.md](AUTHORS.md), [provenance.json](provenance.json)
+and [third-party notices](tools/THIRD_PARTY_NOTICES.md). Orbyn branding identifies
+this project; it does not imply endorsement of forks or third-party services.
+
+Report bugs with the issue forms. Report vulnerabilities privately using
+[SECURITY.md](SECURITY.md); do not include credentials or private project content
+in an issue or PR.
