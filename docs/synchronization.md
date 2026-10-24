@@ -80,7 +80,6 @@ Branch protection must require the check to enforce it against direct pushes;
 the files alone cannot guarantee maintainers will not bypass their own policy.
 Human-reviewed CI is not live agent behavior qualification.
 
-
 ## Company-owned skill boundary
 
 `project-skills/<company-or-repo>/<namespaced-skill>/` belongs to the consumer,
@@ -96,3 +95,11 @@ source/host/model integrity rules; teach them to validate the local namespace
 separately, rather than accepting arbitrary discovery entries. A library clone
 must not carry a consumer's actual `project-skills/` directory. This boundary
 prevents automatic export; public authors still review content and Git history.
+
+## One shared candidate and a complete release handoff
+
+Use the portable [release-handoff method](../skills/orbyn-upstream-review/references/release-handoff.md)
+for existing-PR inspection, one authoring candidate, ordered dependency merges,
+the actual merged public pin and final consumer evidence. The method travels
+with the managed skill files; a consumer does not need this library-specific
+root guide installed at the same path. Preserve the consumer's owning sync guide.

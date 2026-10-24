@@ -13,8 +13,12 @@ Required instructions must work from disk under the
 
 ## Make a contribution
 
-1. Fork this repository and clone your fork. Create a purpose-based branch such
-   as `fix/preview-overflow` or `feat/api-contract-example`.
+1. Start locally or in permitted private contribution storage under the
+   [worktree/privacy policy](skills/orbyn-worktree/SKILL.md). GitHub native forks
+   of this public library are public. When deliberately proposing a public PR,
+   use a verified public fork and promote only the reviewed library changes.
+   Create a purpose-based branch such as `fix/preview-overflow` or
+   `feat/api-contract-example`; never publish private company material or backups.
 2. Change the owning skill or helper. Explain the user request, the decision it
    improves, expected input/output and adjacent tasks that should not select it.
    Improve an existing owner before adding another overlapping skill.
@@ -91,3 +95,9 @@ Keep raw trial evidence outside tracked library content unless explicitly review
 for publication. Do not commit real customer or private repository context. A
 project's `.agents/orbyn-context.json` and design/brand guides belong to that
 consumer, not the managed public skill export.
+
+Skill maintenance also checks recursive discovery and Markdown heading fragments.
+Use `SOURCE.md` for bundled upstream entrypoint text, preserving its original path
+and byte hash in snapshot metadata. A catalog entry must link to a real maintained
+owner; imported text cannot introduce active aliases or missing workflow dependencies.
+Update [the catalog audit](docs/skill-audit.md) when ownership or evidence limits change.

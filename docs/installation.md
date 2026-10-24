@@ -37,23 +37,26 @@ links for each developer. This library's own discovery links are relative and po
 
 ## Presets and existing installations
 
-The default is `core` (13 skills), including setup and skill ownership routing, instead of all 52. Existing links stay
-installed: this is additive selection, not an uninstall or reset. Use `--all` to
-reproduce the former default. An explicit `--skill` or `--preset` replaces the
-default selection for that invocation; combine `--preset core` when you want both.
-`--all` cannot be combined with either selector. Dry runs preflight conflicts
-without creating directories or links.
+The default is `core` (15 skills), including language-aware implementation,
+stack-selection, setup and ownership routing. Existing links stay installed:
+this is additive selection, not an uninstall or reset. Use `--all` for the full
+55-skill catalog. An explicit `--skill` or `--preset` replaces the default selection
+for that invocation; combine `--preset core` when useful. `--all` cannot be combined
+with either selector. Dry runs preflight conflicts without creating directories
+or links.
 
-| Preset       | Purpose                                                                   | Skills |
-| ------------ | ------------------------------------------------------------------------- | ------ |
-| `core`       | Investigation, planning, architecture, review, TypeScript, backend and UI | 13     |
-| `web`        | Web task flow and product copy                                            | 4      |
-| `data`       | API, persistence, migrations and CI                                       | 5      |
-| `mobile`     | Mobile interaction and connected API work                                 | 4      |
-| `creator`    | Social copy, carousels and previews                                       | 3      |
-| `maintainer` | Setup, skill authoring, CI and reflection                                 | 4      |
-| `security` | Explicit local audit and findings/CI boundaries                          | 4      |
-| `rea`        | Optional artifact investigation and REA maintenance                       | 5      |
+| Preset         | Purpose                                                                                                     | Skills |
+| -------------- | ----------------------------------------------------------------------------------------------------------- | ------ |
+| `core`         | Everyday investigation, design, implementation and review                                                   | 15     |
+| `web`          | Web UI, content and project-aware JavaScript/TypeScript guidance                                            | 5      |
+| `data`         | API effects, stored-data compatibility and CI                                                               | 6      |
+| `mobile`       | Client contracts, native-aware UI and product language                                                      | 5      |
+| `creator`      | Social writing, previews and prose refinement                                                               | 3      |
+| `maintainer`   | Skill authoring, project setup and contribution automation                                                  | 5      |
+| `rea`          | Optional artifact investigation and REA maintenance                                                         | 5      |
+| `security`     | Explicit portable source audit, existing findings and CI trust boundaries; never starts a scan on install   | 4      |
+| `languages`    | Language-aware implementation with local guides for 12 languages and the existing TypeScript contract owner | 3      |
+| `architecture` | Evidence-led stack selection and interface design, without automatic implementation                         | 5      |
 
 The [preset catalog](../skills/orbyn-setup/assets/presets.json) owns membership.
 Selections overlap and are deduplicated. Presets do not install a framework,
@@ -72,12 +75,13 @@ python3 skills/orbyn-setup/scripts/project_context.py init --project /path/to/pr
 python3 skills/orbyn-setup/scripts/project_context.py check --project /path/to/project
 ```
 
-Review `.agents/orbyn-context.json` in that project and fill missing owner paths.
+The setup agent inspects `.agents/orbyn-context.json` in that project and fills
+only owner paths grounded in existing source/guides; it asks only about a
+consequential unresolved ownership decision. The human need not fill a second form.
 Existing valid maps are preserved. It stores relative pointers, not guide contents,
 commands, credentials or a personal voice profile. Root instructions and user
 scope retain precedence. The [context guide](../skills/orbyn-setup/references/project-context.md)
 describes the contract; this file is excluded from public skill synchronization.
-
 
 ## Existing company projects and local skills
 

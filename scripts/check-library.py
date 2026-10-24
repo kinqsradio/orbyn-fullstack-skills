@@ -8,6 +8,8 @@ import runpy
 import subprocess
 import sys
 
+from skill_contracts import check_audit, check_discovery, check_links
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -25,6 +27,8 @@ def main():
     provenance = json.loads((ROOT/'provenance.json').read_text())['skills']
     names = {entry['name'] for entry in catalog['skills']}
     require(names == set(provenance), 'Catalog/provenance coverage differs')
+    errors.extend(check_discovery(ROOT, names, catalog['skills']))
+    errors.extend(check_audit(ROOT, names))
     for name in sorted(names):
         skill = ROOT/'skills'/name/'SKILL.md'
         text = skill.read_text()
@@ -44,12 +48,7 @@ def main():
         if path in snapshots:
             continue  # Immutable upstream text is checked byte-for-byte, not rewritten to local style.
         body = re.sub(r'```.*?```', '', path.read_text(), flags=re.S)
-        for target in re.findall(r'\[[^\]]*\]\(([^)]+)\)', body):
-            target = target.split('#', 1)[0].strip('<>')
-            if not target or re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*:', target):
-                continue
-            resolved = (path.parent/target).resolve()
-            require(resolved.is_relative_to(ROOT) and resolved.exists(), f'Broken/escaping link: {path.relative_to(ROOT)} -> {target}')
+        errors.extend(check_links(ROOT, path, snapshots))
         require('/'+'Users/' not in body and '/'+'home/' not in body, f'Local home path in public document: {path.relative_to(ROOT)}')
     for script in ['sync-agent-skills.py','sync-agent-models.py']:
         result = subprocess.run([sys.executable, str(ROOT/'scripts'/script), '--check'], capture_output=True, text=True)

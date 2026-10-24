@@ -4,16 +4,16 @@ The library maintains one active owner for each engineering decision. Improvemen
 are integrated into these skills rather than installing overlapping collections
 or making the user invoke a sequence of helper skills.
 
-| Decision | Owning guidance |
-| --- | --- |
-| Caller burden, useful hidden complexity, actual variation and public/private module boundaries | `architect` |
-| Complete narrow delivery outcomes, prerequisites, blocking edges and acceptance | `orbyn-plan` |
-| Investigation, scoped implementation, verification and delivery handoffs | `orbyn-workflow` / `figure-it-out` |
-| Repeatable symptom, source tracing, one material hypothesis change and missing runtime evidence | `how` and the defect playbook |
-| Observable behavior, effect seams and one verified failing contract at a time | `tdd` |
-| Concrete caller/contract risks, counterexamples and proportionate evidence | `interrogate` |
-| Existing project discovery, local company namespaces and backed-up setup | `orbyn-setup` |
-| Explicit portable source audit, coverage, independent verification and structured records | `orbyn-security-audit` |
+| Decision                                                                                        | Owning guidance                    |
+| ----------------------------------------------------------------------------------------------- | ---------------------------------- |
+| Caller burden, useful hidden complexity, actual variation and public/private module boundaries  | `architect`                        |
+| Complete narrow delivery outcomes, prerequisites, blocking edges and acceptance                 | `orbyn-plan`                       |
+| Investigation, scoped implementation, verification and delivery handoffs                        | `orbyn-workflow` / `figure-it-out` |
+| Repeatable symptom, source tracing, one material hypothesis change and missing runtime evidence | `how` and the defect playbook      |
+| Observable behavior, effect seams and one verified failing contract at a time                   | `tdd`                              |
+| Concrete caller/contract risks, counterexamples and proportionate evidence                      | `interrogate`                      |
+| Existing project discovery, local company namespaces and backed-up setup                        | `orbyn-setup`                      |
+| Explicit portable source audit, coverage, independent verification and structured records       | `orbyn-security-audit`             |
 
 The user describes the outcome. The agent chooses relevant owners, uses the
 consumer’s terminology, completes authorized helper steps and reports actual
@@ -29,3 +29,12 @@ copyright, license, revision and hashes in their legal/provenance records.
 CI validates metadata, links, managed hashes and helper behavior using synthetic
 fixtures. These checks do not establish live model quality, application runtime
 behavior or a completed independently verified target audit.
+
+## Languages and stack decisions
+
+`language-best-practices` selects a local reference from actual code and runtime
+evidence; the TypeScript contract owner remains specialized. `orbyn-stack-selection`
+connects research to architect with a constraint-led decision and operating/exit
+costs. Neither route replaces API/migration/UI/CI owners or requires an additional
+human invocation. Written examples and evaluation definitions are not live-agent
+qualification.

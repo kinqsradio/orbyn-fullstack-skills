@@ -270,7 +270,7 @@ class OfflineSourceTests(unittest.TestCase):
             self.checker.check(self.root)
 
     def test_tampered_source_missing_license_and_extra_file_are_rejected(self):
-        source = self.base/'SKILL.md'
+        source = self.base/'SOURCE.md'
         before = source.read_bytes()
         source.write_bytes(before+b'changed')
         with self.assertRaisesRegex(ValueError, 'Changed/missing'):
