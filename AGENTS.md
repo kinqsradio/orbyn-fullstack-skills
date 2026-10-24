@@ -51,3 +51,7 @@ inspect the actual diff, and report artifacts, evidence, limits and actual
 local/committed/pushed/merged/published state. Do not claim independent review for
 your own edits. New branches use purpose-based `feat/`, `fix/`, `docs/`, `chore/`
 or `refactor/` names without agent/vendor/model branding.
+
+For worktree isolation, naming and cleanup, follow
+[orbyn-worktree](skills/orbyn-worktree/SKILL.md). Use the primary clone’s sibling
+`<repo>-wt/<purpose>/` root by default; preserve existing owned work and output.

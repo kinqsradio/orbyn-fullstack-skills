@@ -496,6 +496,14 @@
       "source": "https://github.com/cloudflare/security-audit-skill/tree/c1c8a8c1471069fb0e188eeaff69b8e8db6564a8/skills/security-audit",
       "revision": "c1c8a8c1471069fb0e188eeaff69b8e8db6564a8",
       "changes": "Orbyn-owned audit workflow, protocol and threat-boundary guide. Only the licensed record schema, validators and their synthetic fixtures are retained as support files; no upstream skill entry point or workflow text is installed."
+    },
+    "orbyn-worktree": {
+      "relationship": "original",
+      "credit": "Anh Dang and Orbyn contributors",
+      "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
+      "license": "MIT",
+      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-worktree",
+      "changes": "Original worktree ownership/lifecycle guidance: sibling repo-wt roots, neutral purpose names, reuse, verified base and preservation before cleanup. Includes local-first branch ownership, bounded delegate branches, stable personal contribution fork names and verified authorized publication."
     }
   }
 }

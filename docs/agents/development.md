@@ -18,3 +18,15 @@ When checks are authorized, use disposable data and the project's own isolation
 guards. Never substitute production credentials or an ordinary user's database.
 Mock evidence and live-provider evidence are different. Documents need document
 checks; changed native behavior needs appropriate native evidence when in scope.
+
+
+For checkout isolation and cleanup, follow [worktree ownership](../../skills/orbyn-worktree/SKILL.md).
+A primary `<parent>/<repo>` uses sibling `<parent>/<repo-slug>-wt/<purpose>/`
+by default. Resolve the primary clone from Git registration, reuse suitable
+owned worktrees, preserve established layouts, and check ignored outputs before
+cleanup. A new worktree does not create a chat or isolate databases/services.
+
+Local isolation does not imply remote publication. Keep task branches local until
+delivery is authorized, then prefer an approved permitted personal contribution
+fork such as `<Repository>-contributions`; verify company visibility/policy and
+the actual push destination. Never publish restricted code to an unauthorized fork.

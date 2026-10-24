@@ -115,3 +115,7 @@ findings → remediation. Installing or adapting either does not start a scan.
 Contract, delivery-slice and behavior-check guidance lives directly in the
 existing architect/planner/diagnosis/TDD/review owners, without extra manual
 invocations. [Workflow coverage](../engineering-workflows.md) records those owners.
+
+Worktree location, branch/path naming, reuse and preservation/cleanup belong to
+[orbyn-worktree](../../skills/orbyn-worktree/SKILL.md), selected by the main workflow
+from the task’s isolation needs without a separate human invocation.

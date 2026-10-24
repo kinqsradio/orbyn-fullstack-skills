@@ -1,6 +1,6 @@
 # Orbyn Fullstack Engineering Skills
 
-**51 connected agent skills for full-stack engineering with Codex and Claude Code.**
+**52 connected agent skills for full-stack engineering with Codex and Claude Code.**
 
 Architecture, API design, data migrations, TypeScript, web and mobile UX,
 debugging, review, CI and delivery—organized around a feature's complete path
@@ -69,6 +69,9 @@ select flags, create catalogs or move folders by hand. The default core includes
 setup and skill ownership routing. The clone also works with a local model and
 available filesystem/shell tools; no hosted subscription or API key is required
 for static setup checks. Python 3.11+ and Git are tooling prerequisites.
+
+For isolated work, agents use a sibling `<repo>-wt/<purpose>/` checkout under the
+[worktree policy](skills/orbyn-worktree/SKILL.md), preserving active existing work.
 
 The agent preserves existing docs, instructions, models, connectors and secrets.
 It inventories conflicting skill copies before migration and keeps a recoverable
