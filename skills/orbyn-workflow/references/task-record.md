@@ -2,6 +2,9 @@
 
 Use only the sections that resolve a real handoff or review need. Keep one record
 in the task's existing owning document; do not create a parallel tracker.
+For a substantive transfer or context-loss recovery, use the optional
+[versioned continuation record](handoffs.md) and its offline consistency checker.
+The agent prepares it; a small task needs only a clear continuation sentence.
 
 ## Change map
 

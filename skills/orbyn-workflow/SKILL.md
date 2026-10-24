@@ -100,6 +100,8 @@ for a nested worker.
 
 Before dispatch, establish the requested end state, exclusions, current checkout
 and candidate, owning data/contracts, failure behavior and authorized evidence.
+For substantive continuation, prepare the [checkable handoff](references/handoffs.md)
+inside the existing task record; reconcile stale revisions before acting.
 Resolve blocking facts first. Use the selected playbook to shape the work rather
 than repeating every workflow phase.
 

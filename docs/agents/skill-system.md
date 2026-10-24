@@ -74,6 +74,16 @@ it must not add another competing policy document for the same concern.
 
 ## Static routing examples
 
+First identify the requested result and allowed effects, then choose one owner
+from the table above. Load its body and only the references needed for the next
+decision. Add another skill when a real contract crosses its boundary; do not
+load a chain merely because the catalog lists related skills. An explicit
+prompt rewrite ends with a usable brief; a clear implementation request proceeds
+without a prompt-rewriting detour. A missing tool changes the evidence claim,
+not the task's authority or another owner's instructions. For substantive
+continuation, use the [handoff contract](../../skills/orbyn-workflow/references/handoffs.md)
+without creating another tracker. Keep trivial edits direct.
+
 - “Plan a shared schema migration”: planner reads stack and current callers, uses
   architecture for the contract and produces a plan; plan-only does not edit code.
 - “Fix a typo”: current session makes the small edit; no research or agent panel.

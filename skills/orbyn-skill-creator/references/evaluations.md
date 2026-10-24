@@ -124,6 +124,13 @@ and [SkillsBench](https://arxiv.org/abs/2602.12670v4). No evaluator code was imp
 
 ## Consolidating a skill owner
 
+For a bounded development question, `prepare --case <id>` can select an explicit
+subset; repeat it for each case in the chosen `--split`. Pin the same subset,
+rubrics, fixtures, tool configuration and trial count for both conditions before
+observing output. Report the subset denominator, not the full suite count. The
+helper rejects duplicates, unknown IDs and cases outside that split. No model
+is invoked by preparation. A focused trial does not qualify unrun cases or hosts.
+
 Keep observed historical trials tied to their original suite and revision. The
 released 61-case suite before TypeScript consolidation is retained verbatim in
 [the baseline archive](../evals/baselines/2026-10-24-55-skills.json). The active

@@ -1,6 +1,6 @@
 # Orbyn Fullstack Engineering Skills
 
-**54 connected agent skills for full-stack engineering with Codex and Claude Code.**
+**54 connected agent skills for full-stack engineering with Codex, Claude Code and Cursor.**
 
 Architecture, API design, data migrations, language-aware implementation, web and mobile UX,
 debugging, review, CI and delivery—organized around a feature's complete path
@@ -86,6 +86,11 @@ setup and skill ownership routing. The clone also works with a local model and
 available filesystem/shell tools; no hosted subscription or API key is required
 for static setup checks. Python 3.11+ and Git are tooling prerequisites.
 
+Project installation supports Codex, Claude Code and Cursor discovery paths while
+preserving existing target instructions and settings. Host-path checks establish
+file layout; runtime compatibility is reported separately. No model, user-wide
+configuration or provider is installed automatically.
+
 For isolated work, agents use a sibling `<repo>-wt/<purpose>/` checkout under the
 [worktree policy](skills/orbyn-worktree/SKILL.md), preserving active existing work.
 
@@ -160,13 +165,18 @@ synthetic inputs, a useful result and a concrete failure to avoid. An optional
 verification and continuation without a second project tracker.
 
 The [evaluation toolkit](skills/orbyn-skill-creator/references/evaluations.md)
-contains 17 routing cases and five outcome cases with review rubrics. Prepare
+contains versioned routing and outcome cases with review rubrics. Prepare
 frozen tasks, capture trials in an authorized host, grade evidence and compare a
 complete baseline/candidate pair. Missing trials stay unverified. These are tools
 for measurement. The [23 October Codex evaluation](docs/evaluations/2026-10-23-codex.md)
 records 17/17 routing and 5/5 artifact passes against a previous-library baseline
 of 16/17 and 5/5. It supports one routing correction, with explicit trial limits;
 it does not establish general model improvement or Claude runtime behavior.
+
+For substantive continuation, the optional [handoff contract](skills/orbyn-workflow/references/handoffs.md)
+records scope, candidate, ownership, observed checks and next action. Its offline
+checker rejects stale revisions and inconsistent completion claims; receiving
+agents still inspect the actual evidence. Small tasks do not need a packet.
 
 CI validates metadata, references, attribution, catalog/discovery consistency,
 the distribution manifest and helper/synchronization behavior. It does not prove

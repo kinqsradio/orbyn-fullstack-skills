@@ -166,6 +166,18 @@ class EvaluationTests(unittest.TestCase):
         self.save()
         self.assertEqual(evaluator.grade(self.path)['counts']['unverified'], 2)
 
+    def test_prepare_subset_is_explicit_and_rejects_unknown_duplicate_or_wrong_split(self):
+        chosen = ['trace-save']
+        folder = self.root/'subset'
+        run = evaluator.prepare(folder, 'a'*40, 'fixture', 'fixture', 'fixture', case_ids=chosen)
+        self.assertEqual(run['case_ids'], chosen)
+        self.assertEqual(evaluator.grade(folder/'run.json')['counts']['unverified'], 1)
+        for cases in [['missing'], ['trace-save', 'trace-save'], ['worker-history']]:
+            output = self.root/'invalid'
+            with self.subTest(cases=cases), self.assertRaisesRegex(ValueError, 'requested split'):
+                evaluator.prepare(output, 'a'*40, 'fixture', 'fixture', 'fixture', case_ids=cases)
+            self.assertFalse(output.exists())
+
     def test_wrong_route_and_forbidden_effect_fail(self):
         result = self.complete('settings-copy')
         result['selected_skills'] = ['orbyn-content-design', 'social-content']

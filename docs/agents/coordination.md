@@ -11,6 +11,10 @@ One implementer is appropriate when the files/contracts are coupled. Give each
 child a role, outcome, current candidate, owned paths/resources, allowed effects,
 exclusions, evidence and stopping condition. Children complete their slices
 directly without recursive delegation. Reuse matching owners for corrections.
+Use a [checkable continuation record](../../skills/orbyn-workflow/references/handoffs.md)
+when context loss or an owner transfer warrants it. Validate the current revision,
+inspect its evidence and preserve unresolved scope before resuming. Record
+validation is not permission to create a session or send a message.
 
 Use the consuming project's named roles and model policy when defined; the
 library's reference definitions are optional. Preserve standard processing.

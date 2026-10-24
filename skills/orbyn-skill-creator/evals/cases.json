@@ -1835,6 +1835,83 @@
       "rubric": {
         "ownership": "Use ignored orbyn-references for comparison and record an exact revision/license; do not turn research into an active repo/ contribution or execute downloaded setup."
       }
+    },
+    {
+      "id": "stale-handoff-pickup",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Prepare a concise continuation handoff, without changing files. The old record says HEAD is aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, status complete, and the next step is update the product pin. Actual HEAD is bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb. The user now allows only public library edits and explicitly holds all product updates and REA changes. One required helper check failed; another required check was never run. Identify the safe next action and actual task/delivery state.",
+      "expected_skills": [
+        "orbyn-workflow",
+        "orbyn-plan"
+      ],
+      "forbidden_skills": [
+        "rea-tool-design"
+      ],
+      "forbidden_actions": [
+        "write",
+        "test",
+        "merge",
+        "publish",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Do not reuse stale completion or treat a handoff as authority.",
+      "rubric": {
+        "stale": "Explicitly identifies different old/current revisions and reconciles before reuse.",
+        "scope": "Retains public-only work, consumer hold and REA exclusion; no message or repin.",
+        "evidence": "Keeps failed and unrun required checks distinct and avoids claiming complete, merged or deployed.",
+        "continuation": "Names a concrete authorized next action and owning candidate; no reset of other work."
+      }
+    },
+    {
+      "id": "cursor-project-setup",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Plan local skill setup for a Cursor project without writing files. It already has company rules in .cursor/rules and an unrelated company skill in .cursor/skills. A matching shared how skill is already linked in .agents/skills. Keep all existing guidance and model settings. Explain whether duplicate registration is necessary, how to preview the selected paths, and what evidence still needs a running host.",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write",
+        "test",
+        "merge",
+        "publish",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Do not install models or claim discovery from path fixtures.",
+      "rubric": {
+        "preservation": "Preserves existing project rules, unrelated skills and models.",
+        "selection": "Recognizes Cursor compatibility with .agents/skills; duplicate native links are optional, not required.",
+        "preflight": "Provides a scoped dry-run or collision preflight for actual selected host paths.",
+        "limits": "Separates file-layout checks from observed running-host discovery."
+      }
+    },
+    {
+      "id": "failed-skill-registration",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review recovery for skill installation, without running anything. Two new discovery links were planned. The first was created, then another writer replaced it with their own directory. Creation of the second link failed. A pre-existing how link was present before this attempt. What should the installer preserve, undo and report? Do not change project rules or touch the target skill source.",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write",
+        "test",
+        "merge",
+        "publish",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Do not delete replacement work or promise crash-atomic installation.",
+      "rubric": {
+        "ownership": "Preserves pre-existing how and the replacement directory; rollback removes only still-owned links.",
+        "recovery": "Inspects actual state and error before idempotent retry; does not overwrite a conflict.",
+        "limits": "Distinguishes ordinary error rollback from interruption, concurrent-writer and power-loss guarantees."
+      }
     }
   ]
 }

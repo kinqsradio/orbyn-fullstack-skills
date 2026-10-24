@@ -43,26 +43,25 @@ def install(project, host, selected=(), presets=(), all_skills=False, dry_run=Fa
     project = project.resolve(strict=True)
     if not project.is_dir():
         raise ValueError('Project must be an existing directory')
-    if host not in {'both', 'codex', 'claude'}:
-        raise ValueError('Unknown host')
+    hosts = PROJECT_SKILLS['hosts_for'](host)
     wanted = selection(selected, presets, all_skills)
     for name in sorted(wanted):
         base = ROOT/'skills'/name
         nested = [p for p in base.rglob('SKILL.md') if p != base/'SKILL.md']
         if nested:
             raise ValueError(f'Nested active entrypoints in {name}; keep reference text as SOURCE.md')
-    if migrate_skills and host != 'both':
-        raise ValueError('Migration reconciles both hosts; use --host both')
+    if migrate_skills and host not in {'both', 'all'}:
+        raise ValueError('Migration reconciles host copies; use --host both or --host all')
     local = PROJECT_SKILLS['inventory'](project, selection(all_skills=True))
-    migrations = MIGRATION['plan'](project, migrate_skills, namespace, selection(all_skills=True))
+    migrations = MIGRATION['plan'](project, migrate_skills, namespace, selection(all_skills=True), hosts)
     sources = {name: ROOT / 'skills' / name for name in wanted}
     if project_skills:
         sources.update(local)
     sources.update({item['name']: item['target'] for item in migrations})
     retired = PROJECT_SKILLS['retirements'](json.loads((ROOT/'skills/catalog.json').read_text()))
-    retired_links = PROJECT_SKILLS['plan_retired_links'](project, ROOT, retired, sources, PROJECT_SKILLS['hosts_for'](host))
+    retired_links = PROJECT_SKILLS['plan_retired_links'](project, ROOT, retired, sources, hosts)
     replacing = {path for item in migrations for path in item['legacy']}
-    pending = PROJECT_SKILLS['plan_links'](project, sources, PROJECT_SKILLS['hosts_for'](host),
+    pending = PROJECT_SKILLS['plan_links'](project, sources, hosts,
                                           replacing=replacing,
                                           planned_sources={item['target'] for item in migrations})
     MIGRATION['describe'](migrations)
@@ -80,7 +79,7 @@ def install(project, host, selected=(), presets=(), all_skills=False, dry_run=Fa
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--project', type=Path)
-    parser.add_argument('--host', choices=['codex', 'claude', 'both'], default='both')
+    parser.add_argument('--host', choices=['codex', 'claude', 'cursor', 'both', 'all'], default='both')
     parser.add_argument('--skill', action='append', default=[])
     parser.add_argument('--preset', action='append', default=[])
     parser.add_argument('--all', action='store_true', help='explicitly register every skill')
