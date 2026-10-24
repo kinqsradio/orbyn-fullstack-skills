@@ -14,6 +14,8 @@ MIGRATION = runpy.run_path(str(ROOT / 'skills/orbyn-setup/scripts/migrate_skills
 def selection(selected=(), presets=(), all_skills=False):
     catalog = json.loads((ROOT / 'skills/catalog.json').read_text())
     names = {entry['name'] for entry in catalog['skills']}
+    retired = PROJECT_SKILLS['retirements'](catalog)
+    selected = [retired.get(name, name) for name in selected]
     config = json.loads(PRESETS.read_text())
     if config.get('schema_version') != 1 or config.get('default') not in config.get('presets', {}):
         raise ValueError('Invalid preset configuration')
@@ -57,6 +59,8 @@ def install(project, host, selected=(), presets=(), all_skills=False, dry_run=Fa
     if project_skills:
         sources.update(local)
     sources.update({item['name']: item['target'] for item in migrations})
+    retired = PROJECT_SKILLS['retirements'](json.loads((ROOT/'skills/catalog.json').read_text()))
+    retired_links = PROJECT_SKILLS['plan_retired_links'](project, ROOT, retired, sources, PROJECT_SKILLS['hosts_for'](host))
     replacing = {path for item in migrations for path in item['legacy']}
     pending = PROJECT_SKILLS['plan_links'](project, sources, PROJECT_SKILLS['hosts_for'](host),
                                           replacing=replacing,
@@ -67,6 +71,9 @@ def install(project, host, selected=(), presets=(), all_skills=False, dry_run=Fa
             MIGRATION['apply'](project, migrations, pending, PROJECT_SKILLS['write_links'])
         else:
             PROJECT_SKILLS['write_links'](pending)
+        PROJECT_SKILLS['remove_retired_links'](retired_links)
+    if retired_links:
+        print(f'{len(retired_links)} known retired discovery links ' + ('would be removed.' if dry_run else 'removed; content preserved.'))
     return len(pending)
 
 

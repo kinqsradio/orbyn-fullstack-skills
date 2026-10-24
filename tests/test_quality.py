@@ -4,6 +4,7 @@ All evaluation observations here are synthetic fixtures, never model results.
 """
 import copy
 import json
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -17,9 +18,16 @@ evaluator = module('skill_evaluator', ROOT/'skills/orbyn-skill-creator/scripts/e
 
 
 class PresetTests(unittest.TestCase):
+    def test_documented_presets_match_current_membership(self):
+        config = json.loads((ROOT/'skills/orbyn-setup/assets/presets.json').read_text())
+        text = (ROOT/'docs/installation.md').read_text()
+        rows = re.findall(r'^\| `([a-z-]+)`\s*\|[^\n|]+\|\s*(\d+)\s*\|$', text, re.M)
+        self.assertEqual(len(rows), len(config['presets']))
+        self.assertEqual(dict(rows), {name:str(len(preset['skills'])) for name,preset in config['presets'].items()})
+
     def test_default_is_core_and_all_is_explicit(self):
         self.assertEqual(installer.selection(), installer.selection(presets=['core']))
-        self.assertEqual(len(installer.selection()), 15)
+        self.assertEqual(len(installer.selection()), 14)
         self.assertEqual(len(installer.selection(all_skills=True)), len(json.loads((ROOT/'skills/catalog.json').read_text())['skills']))
         self.assertIn('orbyn-security-audit', installer.selection(presets=['security']))
         self.assertEqual(installer.selection(['how']), {'how'})
@@ -31,7 +39,7 @@ class PresetTests(unittest.TestCase):
     def test_dry_run_and_bad_names_leave_project_untouched(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            self.assertEqual(installer.install(root, 'both', dry_run=True), 30)
+            self.assertEqual(installer.install(root, 'both', dry_run=True), 28)
             for kwargs in [{'presets': ['missing']}, {'selected': ['missing']}]:
                 with self.subTest(kwargs=kwargs), self.assertRaises(ValueError):
                     installer.install(root, 'both', **kwargs)

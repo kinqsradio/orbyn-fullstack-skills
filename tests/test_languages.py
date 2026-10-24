@@ -23,11 +23,11 @@ installer = load('language_installer', ROOT / 'scripts/install.py')
 
 
 class LanguageRoutingTests(unittest.TestCase):
-    def test_polyglot_contract_keeps_typescript_owner(self):
+    def test_polyglot_contract_selects_local_typescript_guide(self):
         result = router.route(['api/main.go', 'ui/state.ts', 'db/change.sql', 'README.md'])
         selected = {row['language']: row['reference'] for row in result['guides']}
         self.assertEqual(set(selected), {'go', 'typescript', 'sql'})
-        self.assertEqual(selected['typescript'], '../typescript-best-practices/SKILL.md')
+        self.assertEqual(selected['typescript'], 'references/typescript.md')
         self.assertEqual(result['unmatched'], ['README.md'])
 
     def test_header_is_ambiguous_and_uppercase_c_is_cpp(self):
@@ -36,6 +36,14 @@ class LanguageRoutingTests(unittest.TestCase):
         selected = {row['language']: row['paths'] for row in result['guides']}
         self.assertEqual(selected['cpp'], ['native/entry.C', 'native/types.hpp'])
         self.assertEqual(selected['c'], ['native/api.c'])
+
+    def test_all_typescript_module_variants_use_the_same_offline_owner(self):
+        paths = ['ui/View.tsx', 'src/types.d.ts', 'src/index.mts', 'scripts/build.cts']
+        result = router.route(paths)
+        self.assertEqual(result['guides'], [{'language':'typescript',
+            'reference':'references/typescript.md', 'paths':sorted(paths)}])
+        self.assertEqual(result['ambiguous'], [])
+        self.assertEqual(result['unmatched'], [])
 
     def test_relative_path_boundary(self):
         for path in ('', '.', '../secret.py', '/tmp/code.py', 'drive:code.py', 'a\\code.py', 'bad\x00.py'):

@@ -1,6 +1,6 @@
 # Full skill-system audit — 24 October 2026
 
-This audit covers all **55 canonical skills** in the candidate stacked after PRs
+The initial audit covered **55 canonical skills** in the candidate stacked after PRs
 #8–#9, their authored local references/playbooks, catalog relationships, host
 entrypoints and pinned source records. Public `main` still has 52 skills at this
 review; the earlier 22 October 50-skill audit was a historical editorial review.
@@ -67,7 +67,8 @@ This audit is not limited to TypeScript. It covers all 20 engineering principles
 architecture, backend/data contracts, security, CI, testing, worktrees, UI/content,
 social production and the language owner. The local language references cover
 JavaScript, Python, Go, Rust, Java, Kotlin, C#, Swift, C, C++, SQL and shell; the
-TypeScript owner remains separate. Each language guide has target discovery,
+TypeScript owner was separate at the released 55-skill baseline. The consolidated
+candidate below places its guide under the language owner. Each guide has target discovery,
 resource/error contracts, an original failure example and evidence limitations.
 No claim is made that these guides cover every language feature or have been
 compiled on every supported toolchain.
@@ -143,7 +144,6 @@ to their owner instead of duplicating a complete workflow.
 | [social-content](../skills/social-content/SKILL.md)                                                                         | Discovery fixed; retained method  | Supplied facts, author intent and platform → Copyable post and claim notes or visual handoff                           | Unsupported release claims, assumed personal voice and platform freshness |
 | [social-preview](../skills/social-preview/SKILL.md)                                                                         | Discovery fixed; retained method  | Approved copy, assets and requested output → Editable preview, inspected exports and alt text                          | Source versus rendered/export evidence and optional font/tool absence     |
 | [tdd](../skills/tdd/SKILL.md)                                                                                               | Expanded local method             | Observable regression and authorized test boundary → Failing-before receipt, correction and legitimate control         | Fixture failure, unrealistic mocks and tests without baseline evidence    |
-| [typescript-best-practices](../skills/typescript-best-practices/SKILL.md)                                                   | Expanded local method             | Runtime schema, target compiler and callers → Valid-state types, parsing and migrated consumers                        | Unsafe assertions, stale authority and released-client compatibility      |
 | [unslop](../skills/unslop/SKILL.md)                                                                                         | Expanded local method             | Supported prose, audience and requested voice → Clear edited copy preserving evidence                                  | Invented specificity, lost caveats and incidental user-content rewrites   |
 | [why](../skills/why/SKILL.md)                                                                                               | Expanded local method             | Anchored design question and bounded history → Documented rationale separated from inference                           | Empty search scope and source mechanics mistaken for intent               |
 
@@ -178,3 +178,59 @@ approve a separate REA adapter decision. Before claiming improved agent behavior
 run authorized paired host trials on the frozen candidate and retained baseline.
 Public and Orbyn PRs remain separate from merged-main delivery; a candidate pin
 must be replaced with the actual merged public revision after an authorized merge.
+
+## Follow-up: one language owner
+
+The next candidate has **54 active skills** and 13 language guides. TypeScript
+now lives in language-best-practices/references/typescript.md, including its
+local contract example and preserved MIT notice. The old standalone name is a
+declarative installer upgrade alias, not an active wrapper or nested SKILL.md.
+All related skills, presets, routes and two active case selections move to the
+language owner. The released 61-case baseline is preserved verbatim under
+evals/baselines/2026-10-24-55-skills.json; old observed trials retain their
+historical skill identities and revision rather than being silently regraded.
+
+## Follow-up: production best-practice coverage
+
+The isolated follow-up adds original local methods for maintainable modules,
+production service contracts, privacy-aware diagnostics, test strategy, async UI
+state and consumer verification maps, with polyglot/pagination/retry examples.
+Each of the 12 other language guides gains idiomatic maintainability/check
+guidance; TypeScript's full existing method/example moves into the same owner.
+The active suite has 79 cases: two existing selection identities migrate with
+TypeScript, and 18 development cases cover seven previously unrepresented
+execution owners plus production contracts and adjacent exclusions. All original
+61 case objects remain in the released baseline archive; historical trial
+records and frozen holdout criteria are not rewritten. These are prepared
+criteria, not new live-agent results.
+
+## Pre-merge review corrections
+
+The review found that discovery synchronization removed known retired links
+before creating their replacements. A disposable filesystem-failure regression
+failed on that ordering; replacement creation now completes before retirement.
+A failed registration retains old links and can be retried without deleting
+content. Preflight and idempotence do not make the operation an atomic filesystem
+transaction. The installer already used the safe order.
+
+Installation docs now match the smaller preset memberships and explain the
+retirement alias. Current routing points to the incorporated TypeScript guide;
+historical evaluation identities remain historical. The language overview
+distinguishes original additions from retained adapted guidance. The complete
+TypeScript notice has a pinned hash, so retaining only its copyright line cannot
+satisfy the incorporated-material check.
+
+The TypeScript guide now also covers compiler/config inheritance, strictness,
+module/emitter/runtime boundaries, deliberate public types and evidence. Added
+development cases exercise runtime module failures and interrupted retirement,
+without changing frozen holdouts or claiming fresh model measurements. No REA
+engine, adapter, setup or pin change belongs to this review.
+
+Review validation: 94 helper tests and static library checks pass for 54 skills,
+230 managed files, 176 Markdown documents and 79 case definitions. The unchanged
+TypeScript contract example compiles with the locally installed TypeScript
+5.9.3 under an isolated strict configuration; adding an unhandled lifecycle
+variant produces the expected exhaustive-consumer error. This qualifies that
+example only, not every consuming project, runtime or language toolchain. The
+frozen holdout objects, released baseline archive and original TypeScript
+notice/example bytes remain unchanged. No fresh live-model comparison was run.

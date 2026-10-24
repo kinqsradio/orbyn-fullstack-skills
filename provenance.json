@@ -8,7 +8,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/architect/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an original synthetic approval-contract example. Added independently authored vertical code organization guidance and a synthetic task-editor example; TkDodo is cited as reviewed inspiration, with no article material imported. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an original synthetic approval-contract example. Added independently authored vertical code organization guidance and a synthetic task-editor example; TkDodo is cited as reviewed inspiration, with no article material imported. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
@@ -85,7 +85,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-backend-design",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original retry/reconciliation example."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original retry/reconciliation example. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines."
     },
     "orbyn-ci-design": {
       "relationship": "original",
@@ -93,7 +93,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-ci-design",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added original proportional-verification policy and portable conservative Git change classifier, required-result gate and exact-revision deployment-decision validation; no line-count heuristic or automatic deployment authority."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added original proportional-verification policy and portable conservative Git change classifier, required-result gate and exact-revision deployment-decision validation; no line-count heuristic or automatic deployment authority. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines."
     },
     "orbyn-content-design": {
       "relationship": "original",
@@ -150,7 +150,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/setup-pstack/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original additive presets and consumer-owned context tooling. Added consumer-owned skill namespaces, explicit backed-up host-skill migration and offline setup guidance. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original additive presets and consumer-owned context tooling. Added consumer-owned skill namespaces, explicit backed-up host-skill migration and offline setup guidance. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines."
     },
     "orbyn-skill-creator": {
       "relationship": "original",
@@ -158,7 +158,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-skill-creator",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence. Added company/public ownership routing and offline source requirements. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence. Added company/public ownership routing and offline source requirements. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines."
     },
     "orbyn-ui-design": {
       "relationship": "original",
@@ -166,7 +166,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-ui-design",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Moved product conventions to consumer-owned profiles and added an original failed-save example."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Moved product conventions to consumer-owned profiles and added an original failed-save example. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines."
     },
     "orbyn-workflow": {
       "relationship": "adapted",
@@ -463,7 +463,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/tdd/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
@@ -472,15 +472,6 @@
           "relationship": "reviewed-inspiration; no upstream workflow text imported"
         }
       ]
-    },
-    "typescript-best-practices": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/typescript-best-practices/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss. Added an original self-contained TypeScript contract guide and synthetic exhaustive-union example."
     },
     "unslop": {
       "relationship": "adapted",
@@ -531,7 +522,21 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/language-best-practices",
-      "changes": "Independently authored project-aware guidance and synthetic worked examples, informed by dated primary references linked locally; no external skill text or documentation snapshots imported."
+      "changes": "Independently authored project-aware guidance and synthetic worked examples, informed by dated primary references linked locally; no external skill text or documentation snapshots imported. Consolidated the historically adapted TypeScript reference and its original Orbyn contract example into this owner, preserving the original MIT notice and source record; retired the separate discovery entrypoint. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Review corrections clarify compiler/runtime and module contracts, distinguish original additions from retained adaptation, and pin the complete incorporated notice.",
+      "incorporated_material": [
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/typescript-best-practices/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss. Added an original self-contained TypeScript contract guide and synthetic exhaustive-union example.",
+          "local_path": "skills/language-best-practices/references/typescript.md",
+          "license_file": "skills/language-best-practices/references/typescript-LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        }
+      ]
     },
     "orbyn-stack-selection": {
       "relationship": "original",

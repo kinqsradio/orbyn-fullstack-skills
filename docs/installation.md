@@ -37,26 +37,26 @@ links for each developer. This library's own discovery links are relative and po
 
 ## Presets and existing installations
 
-The default is `core` (15 skills), including language-aware implementation,
+The default is `core` (14 skills), including language-aware implementation,
 stack-selection, setup and ownership routing. Existing links stay installed:
 this is additive selection, not an uninstall or reset. Use `--all` for the full
-55-skill catalog. An explicit `--skill` or `--preset` replaces the default selection
+54-skill catalog. An explicit `--skill` or `--preset` replaces the default selection
 for that invocation; combine `--preset core` when useful. `--all` cannot be combined
 with either selector. Dry runs preflight conflicts without creating directories
 or links.
 
-| Preset         | Purpose                                                                                                     | Skills |
-| -------------- | ----------------------------------------------------------------------------------------------------------- | ------ |
-| `core`         | Everyday investigation, design, implementation and review                                                   | 15     |
-| `web`          | Web UI, content and project-aware JavaScript/TypeScript guidance                                            | 5      |
-| `data`         | API effects, stored-data compatibility and CI                                                               | 6      |
-| `mobile`       | Client contracts, native-aware UI and product language                                                      | 5      |
-| `creator`      | Social writing, previews and prose refinement                                                               | 3      |
-| `maintainer`   | Skill authoring, project setup and contribution automation                                                  | 5      |
-| `rea`          | Optional artifact investigation and REA maintenance                                                         | 5      |
-| `security`     | Explicit portable source audit, existing findings and CI trust boundaries; never starts a scan on install   | 4      |
-| `languages`    | Language-aware implementation with local guides for 12 languages and the existing TypeScript contract owner | 3      |
-| `architecture` | Evidence-led stack selection and interface design, without automatic implementation                         | 5      |
+| Preset         | Purpose                                                                                                   | Skills |
+| -------------- | --------------------------------------------------------------------------------------------------------- | ------ |
+| `core`         | Everyday investigation, design, implementation and review                                                 | 14     |
+| `web`          | Web UI, content and project-aware JavaScript/TypeScript guidance                                          | 4      |
+| `data`         | API effects, stored-data compatibility and CI                                                             | 6      |
+| `mobile`       | Client contracts, native-aware UI and product language                                                    | 4      |
+| `creator`      | Social writing, previews and prose refinement                                                             | 3      |
+| `maintainer`   | Skill authoring, project setup and contribution automation                                                | 5      |
+| `rea`          | Optional artifact investigation and REA maintenance                                                       | 5      |
+| `security`     | Explicit portable source audit, existing findings and CI trust boundaries; never starts a scan on install | 4      |
+| `languages`    | Language-aware implementation with 13 local guides, including TypeScript                                  | 2      |
+| `architecture` | Evidence-led stack selection and interface design, without automatic implementation                       | 5      |
 
 The [preset catalog](../skills/orbyn-setup/assets/presets.json) owns membership.
 Selections overlap and are deduplicated. Presets do not install a framework,
@@ -65,6 +65,13 @@ vendor integration retain all discovery links so maintainers can validate the
 whole catalog; a fresh external installation uses the smaller default. To remove
 a selection, explicitly review and remove its owned discovery links. The installer
 does not infer removal intent from a smaller preset.
+
+The retired `typescript-best-practices` selection upgrades to
+`language-best-practices`. Its complete TypeScript guidance and notice remain
+local under that owner. Only known old discovery links into the same library
+source are retired, after replacement links are created successfully. Foreign
+skills stay intact; a dry-run reports the plan without changing either host.
+See the [retirement contract](../skills/orbyn-setup/references/project-skills.md#retired-shared-entrypoints).
 
 ## Customize the consuming project
 

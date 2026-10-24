@@ -37,8 +37,8 @@ never treat a library clone's stack or design as the consumer's settings.
 
 Use [language guidance](../../skills/language-best-practices/SKILL.md) for the
 actual implementation language and target version. It has local guides for
-JavaScript, Python, Go, Rust, Java, Kotlin, C#, Swift, C, C++, SQL and shell;
-TypeScript schema work keeps its existing specialized owner. Resolve ambiguous
+TypeScript, JavaScript, Python, Go, Rust, Java, Kotlin, C#, Swift, C, C++, SQL and
+shell. TypeScript schemas use that owner's [local TypeScript guide](../../skills/language-best-practices/references/typescript.md). Resolve ambiguous
 headers, mixed runtimes and build-only scripts before choosing guidance.
 
 For a new or challenged technology decision, use

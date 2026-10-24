@@ -1,5 +1,6 @@
 """Regression checks for discovered source aliases and broken handoffs."""
 import json
+import hashlib
 from pathlib import Path
 import tempfile
 import unittest
@@ -108,3 +109,23 @@ class SkillContractTests(unittest.TestCase):
                 self.assertTrue(method.is_relative_to(consumer))
                 self.assertTrue(method.is_file())
                 self.assertEqual(contracts.check_links(consumer, method), [])
+
+    def test_moved_material_requires_its_own_portable_license(self):
+        source = self.skill.parent/'references/moved.md'
+        source.parent.mkdir(); source.write_text('Moved maintained guidance')
+        notice = source.with_name('moved-LICENSE.txt')
+        original_notice = 'Copyright Original Author\nMIT\nPermission and conditions retained.\n'
+        record = {'incorporated_material':[{'source':'https://example.com/source',
+            'revision':'a'*40, 'copyright':'Copyright Original Author','license':'MIT',
+            'local_path':str(source.relative_to(self.root)), 'license_file':str(notice.relative_to(self.root)),
+            'license_sha256':hashlib.sha256(original_notice.encode()).hexdigest()}]}
+        self.assertTrue(contracts.check_incorporated_material(self.root,'example',record))
+        notice.write_text(original_notice)
+        self.assertEqual(contracts.check_incorporated_material(self.root,'example',record),[])
+        notice.write_text('Copyright Original Author\nMIT')
+        self.assertIn('differs from pinned notice',' '.join(contracts.check_incorporated_material(self.root,'example',record)))
+        notice.write_text('Removed notice')
+        self.assertIn('copyright missing',' '.join(contracts.check_incorporated_material(self.root,'example',record)))
+        notice.write_text(original_notice)
+        del record['incorporated_material'][0]['revision']
+        self.assertIn('incomplete',' '.join(contracts.check_incorporated_material(self.root,'example',record)))

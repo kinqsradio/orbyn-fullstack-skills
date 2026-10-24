@@ -33,8 +33,18 @@ behavior or a completed independently verified target audit.
 ## Languages and stack decisions
 
 `language-best-practices` selects a local reference from actual code and runtime
-evidence; the TypeScript contract owner remains specialized. `orbyn-stack-selection`
+evidence; TypeScript schemas use the local TypeScript reference under that same owner. `orbyn-stack-selection`
 connects research to architect with a constraint-led decision and operating/exit
 costs. Neither route replaces API/migration/UI/CI owners or requires an additional
 human invocation. Written examples and evaluation definitions are not live-agent
 qualification.
+
+## Production best practices at existing owners
+
+Maintainable modules and polyglot contracts stay with architect. Bounded APIs,
+pagination/retry semantics and useful private diagnostics stay with backend
+design. TDD selects practical contract-test boundaries when testing is requested;
+CI maintains consumer-owned recipes and last-confirmed evidence. Async screen
+state remains with the UI owner. Language guidance selects one local reference
+for all 13 languages, including TypeScript; no overlapping collection or extra
+human invocation is required.
