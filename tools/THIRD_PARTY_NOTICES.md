@@ -17,12 +17,18 @@ remove the original author's credit. Full upstream source is not bundled here.
 
 ## REA — morluto
 
-Five optional adapters reference
+Five optional skills adapt
 [morluto/rea](https://github.com/morluto/rea/tree/ccc7da309d7db385d5c6d73b0a3a8e093be33504),
 revision `ccc7da309d7db385d5c6d73b0a3a8e093be33504`, package 6.7.0.
 Copyright (c) 2026 morluto. [Original MIT license](licenses/rea-MIT.txt).
-References point to the pinned source; REA runtime, engines and dependencies are
-not included or installed. Their own licenses apply when obtained separately.
+The historical source revision remains unchanged. The maintained local methods
+and synthetic examples no longer require fetching the upstream skill bodies.
+Selected investigation recovery/evidence guidance also draws on documentation
+reviewed at `2250e67bc271c83f9e200ee298aa04a2457438a6`; the
+[source record](../skills/reverse-engineer-anything/references/source-record.md)
+distinguishes that review from an engine pin. No complete upstream manual or
+runtime source snapshot is added. REA runtime, engines and dependencies are not
+included or installed. Their own licenses apply when obtained separately.
 
 ## Reviewed inspiration and external guidance
 

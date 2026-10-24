@@ -56,10 +56,10 @@ commit authorship or a claim that pstack is our active instruction system.
   installer preflight refuses them before consumer writes; snapshot validation
   rejects active source filenames. Both-host installation fixtures inspect all
   recursive entrypoints instead of checking top-level link names alone.
-- **Five optional REA adapters:** their full method still requires matching local
-  REA source or a network reference. This is a real standalone-offline gap. It is
-  explicitly deferred under the user's renewed instruction, “Keep all REA changes
-  deferred”; no REA adapter body, engine source, pin or setup was changed.
+- **Five optional REA skills:** the original audit deferred their standalone-offline
+  gap. The separately authorized offline milestone below now supplies maintained
+  local methods and examples. Runtime availability and engine qualification remain
+  separate; the engine/source pin and setup are unchanged.
 
 ## Release drift and broad best-practice coverage
 
@@ -134,12 +134,12 @@ to their owner instead of duplicating a complete workflow.
 | [principle-sequence-verifiable-units](../skills/principle-sequence-verifiable-units/SKILL.md)                               | Expanded local method             | Relevant engineering decision and actual owner → Reversible dependency boundaries with useful evidence                 | Concrete falsifying case; handoff to linked execution owner               |
 | [principle-subtract-before-you-add](../skills/principle-subtract-before-you-add/SKILL.md)                                   | Expanded local method             | Relevant engineering decision and actual owner → Existing owner reused without losing consequences                     | Concrete falsifying case; handoff to linked execution owner               |
 | [principle-type-system-discipline](../skills/principle-type-system-discipline/SKILL.md)                                     | Expanded local method             | Relevant engineering decision and actual owner → Invalid states excluded and runtime boundaries validated              | Concrete falsifying case; handoff to linked execution owner               |
-| [rea-analysis-optimization](../skills/rea-analysis-optimization/SKILL.md)                                                   | Deferred adapter gap              | Explicit REA performance request and local source/runtime → Scoped REA analysis with upstream method                   | Deferred: essential upstream method absent in standalone offline install  |
-| [rea-changelog-update](../skills/rea-changelog-update/SKILL.md)                                                             | Deferred adapter gap              | Explicit REA release-note request and actual REA history → Bounded release note evidence                               | Deferred: no bundled upstream method; Orbyn history is not REA history    |
-| [rea-ci-tests-audit](../skills/rea-ci-tests-audit/SKILL.md)                                                                 | Deferred adapter gap              | Explicit REA qualification request and candidate → Scoped REA CI/test assessment                                       | Deferred: no bundled upstream method or runtime qualification             |
-| [rea-tool-design](../skills/rea-tool-design/SKILL.md)                                                                       | Deferred adapter gap              | Explicit REA tool/CLI/MCP contract change → Scoped REA tool contract                                                   | Deferred: no bundled upstream method; engine update unapproved            |
+| [rea-analysis-optimization](../skills/rea-analysis-optimization/SKILL.md) | Local analysis-cost method | Explicit REA bottleneck + source/artifact identity → Oracle, owning cost and equivalent-task comparison | Measurements and real-provider performance remain unverified until run |
+| [rea-changelog-update](../skills/rea-changelog-update/SKILL.md) | Local release-note method | Actual REA baseline/target history → Bounded notes, verified attribution and migration limits | Missing REA history or account associations stay unknown; no publication |
+| [rea-ci-tests-audit](../skills/rea-ci-tests-audit/SKILL.md) | Local CI/test assessment method | Explicit REA CI scope + revision/workflow → Discovery, failure-gate and provider-evidence assessment | Source assessment and synthetic cases do not qualify hosted or real-provider lanes |
+| [rea-tool-design](../skills/rea-tool-design/SKILL.md) | Local tool-contract method | Explicit REA tool change → Inputs, evidence, effects, lifecycle and compatibility plan | Design-only scope does not authorize implementation or provider tests |
 | [reflect](../skills/reflect/SKILL.md)                                                                                       | Expanded local method             | Current task, failed assumption and authorized skill scope → Bounded structural lesson at canonical owner              | Plugin caches, unsupported generalization and memory authority            |
-| [reverse-engineer-anything](../skills/reverse-engineer-anything/SKILL.md)                                                   | Deferred adapter gap              | Authorized shipped artifact, actual tools and evidence scope → Provenance-preserving artifact observations             | Deferred: core method is external without matching consumer-local REA     |
+| [reverse-engineer-anything](../skills/reverse-engineer-anything/SKILL.md) | Local artifact investigation method | Authorized artifact + actual tools → Selected facts, provenance, coverage and cleanup state | Offline guidance is complete; runtime, target bytes and schema support remain prerequisites |
 | [show-me-your-work](../skills/show-me-your-work/SKILL.md)                                                                   | Expanded local method             | Task candidate, decisions and check receipts → Compact single-writer evidence trail                                    | Missing terminal results, sensitive payloads and competing logs           |
 | [social-content](../skills/social-content/SKILL.md)                                                                         | Discovery fixed; retained method  | Supplied facts, author intent and platform → Copyable post and claim notes or visual handoff                           | Unsupported release claims, assumed personal voice and platform freshness |
 | [social-preview](../skills/social-preview/SKILL.md)                                                                         | Discovery fixed; retained method  | Approved copy, assets and requested output → Editable preview, inspected exports and alt text                          | Source versus rendered/export evidence and optional font/tool absence     |
@@ -173,8 +173,8 @@ session chose the intended method or performed a task better than a baseline.
 The existing 61 evaluation cases are preserved; this audit does not alter frozen
 holdout criteria or reuse old live results as evidence for the new candidate.
 
-Before describing the whole optional catalog as offline-complete, review and
-approve a separate REA adapter decision. Before claiming improved agent behavior,
+The separately authorized REA offline milestone below addresses the five adapter
+methods. Before claiming improved agent behavior,
 run authorized paired host trials on the frozen candidate and retained baseline.
 Public and Orbyn PRs remain separate from merged-main delivery; a candidate pin
 must be replaced with the actual merged public revision after an authorized merge.
@@ -248,3 +248,28 @@ active suite adds six development cases (85 definitions); previous case objects
 and frozen holdouts are unchanged. These are helper/static expectations, not
 fresh live-host behavior results. See the [pinned comparison](../tools/research/2026-10-24-prompt-me.md)
 for evidence and licensing limits. Orbyn integration and all REA changes are held.
+
+## Follow-up: offline REA methods, engine upgrade deferred
+
+The five former reference adapters now contain local procedures for investigation,
+analysis optimization, tool contracts, CI assessment and release-note preparation.
+Shared local references cover artifact modes, evidence identity/coverage, summary
+composition, bounded recovery and exact resource ownership. Nine synthetic worked
+scenarios show decisions and counterexamples without pretending to be runtime runs.
+No essential method requires fetching an upstream webpage. Full local library
+installation still supplies cross-skill support; a lone copied SKILL.md is not the
+complete distribution.
+
+Historical REA lineage at `ccc7da309d7db385d5c6d73b0a3a8e093be33504` and all MIT
+notices remain. Selected guidance reviewed at
+`2250e67bc271c83f9e200ee298aa04a2457438a6` is recorded separately; it is not an
+engine pin. Actual schemas govern optional newer summary/route capabilities.
+No REA source, submodule, runtime requirement, client setup or consumer pin changes
+are included. Earlier sections describe their own historical deferrals; this
+milestone authorizes only the local guidance change.
+
+New development cases cover offline limits, evidence composition, uncertain
+effects, cleanup ownership, static coverage and the four maintenance outcomes;
+existing holdouts and recorded results stay unchanged. Static library and
+installation checks establish packaging/link integrity, not live Codex/Claude
+selection, performance gains or REA provider qualification.
