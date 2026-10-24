@@ -70,8 +70,7 @@ Update the same plan when evidence changes the design; explain the change. Use
 the [checkable handoff](../orbyn-workflow/references/handoffs.md) for a substantive
 owner transfer or resumed task, preserving the current candidate and scope.
 Do not expand a prompt rewrite into a mandatory packet or implementation phase.
-Use
-`figure-it-out` to execute a large plan and `show-me-your-work` for consequential
+Use `figure-it-out` to execute a large plan and `show-me-your-work` for consequential
 decisions. Session creation follows [coordination](../../docs/agents/coordination.md).
 Do not invent extra stages, stacked PRs, sessions or recurring monitors.
 

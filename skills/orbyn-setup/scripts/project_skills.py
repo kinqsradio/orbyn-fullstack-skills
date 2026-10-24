@@ -146,19 +146,26 @@ def write_links(pending):
             created.append((link, relative, identity.st_dev, identity.st_ino))
     except Exception as error:
         cleanup_errors = []
+        preserved = []
         for link, relative, device, inode in reversed(created):
             try:
                 identity = link.lstat()
                 if (link.is_symlink() and (identity.st_dev, identity.st_ino) == (device, inode)
                         and os.readlink(link) == relative):
                     link.unlink()
+                else:
+                    preserved.append(str(link))
             except FileNotFoundError:
                 pass
             except OSError as cleanup_error:
                 cleanup_errors.append(f'{link}: {cleanup_error}')
         if cleanup_errors:
             raise RuntimeError(f'Registration failed: {error}; rollback incomplete; inspect before retry: '
-                               + '; '.join(cleanup_errors)) from error
+                               + '; '.join(cleanup_errors) + '; preserved changed entries: '
+                               + ', '.join(preserved)) from error
+        if preserved:
+            raise RuntimeError(f'Registration failed: {error}; preserved changed entries: '
+                               + ', '.join(preserved) + '; inspect before retry') from error
         raise
 
 

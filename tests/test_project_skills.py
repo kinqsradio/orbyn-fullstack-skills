@@ -103,9 +103,10 @@ class ProjectSkillTests(unittest.TestCase):
                 raise OSError('Writer replaced an earlier link')
             return original(link, target, **kwargs)
         with mock.patch.object(Path, 'symlink_to', replace_then_fail):
-            with self.assertRaisesRegex(OSError, 'Writer replaced'):
+            with self.assertRaisesRegex(RuntimeError, 'preserved changed entries') as error:
                 installer.install(self.root, 'both', ['how'])
         self.assertEqual((first/'owned.txt').read_text(), 'Concurrent work')
+        self.assertIn(str(first), str(error.exception))
 
     def test_host_parent_changed_after_preflight_is_refused(self):
         sources = {'how': ROOT/'skills/how'}

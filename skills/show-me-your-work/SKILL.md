@@ -17,6 +17,13 @@ old conclusions with a superseding entry. Do not invent measurements or links.
 Keep secrets and private payloads out of logs. Retain failures and unverified
 results; an attempted command is not a completed check.
 
+For a substantive owner transfer or context-loss recovery, use the workflow's
+[versioned continuation contract](../orbyn-workflow/references/handoffs.md) in
+the same owning task record. Reconcile current HEAD, dirty work and user scope
+before reusing a completion claim. The optional offline checker catches stale
+revisions and inconsistent records; inspect actual evidence yourself. A concise
+status explanation or small task does not require a JSON packet.
+
 Before delivery, follow the evidence pointers and reconcile the trail with actual
 artifacts. The lead may assign a review subagent for a substantial independent
 concern under [coordination](../../docs/agents/coordination.md); children reconcile
