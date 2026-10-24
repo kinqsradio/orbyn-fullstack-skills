@@ -273,3 +273,10 @@ effects, cleanup ownership, static coverage and the four maintenance outcomes;
 existing holdouts and recorded results stay unchanged. Static library and
 installation checks establish packaging/link integrity, not live Codex/Claude
 selection, performance gains or REA provider qualification.
+
+The pre-merge review also checks the actual skills-only distribution, without
+root library docs, provenance or tools. It found and removed four root-file links
+from the REA entrypoint/source record. A socket-disabled regression exercises
+managed-file copy, three-host dry-run/install/reinstall, local REA support links,
+portable licenses, manifest identity and preservation of consumer guidance/settings.
+The regression failed on the original PR candidate before this correction.

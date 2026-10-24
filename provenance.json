@@ -434,7 +434,7 @@
       "license": "MIT",
       "source": "https://github.com/morluto/rea/blob/ccc7da309d7db385d5c6d73b0a3a8e093be33504/.agents/skills/reverse-engineer-anything/SKILL.md",
       "revision": "ccc7da309d7db385d5c6d73b0a3a8e093be33504",
-      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority. Replaced mandatory remote reading with a maintained local method, failure boundaries and synthetic worked examples; retained historical source revision and MIT notices. Shared evidence/recovery guidance discovers actual schemas and does not upgrade or install the REA engine.",
+      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority. Replaced mandatory remote reading with a maintained local method, failure boundaries and synthetic worked examples; retained historical source revision and MIT notices. Shared evidence/recovery guidance discovers actual schemas and does not upgrade or install the REA engine. Pre-merge review removed root-library file dependencies from the REA method/source record so a managed skills-only copy retains local support and notices.",
       "reviewed_guidance": [
         {
           "source": "https://github.com/morluto/rea/tree/2250e67bc271c83f9e200ee298aa04a2457438a6/.agents/skills/reverse-engineer-anything",

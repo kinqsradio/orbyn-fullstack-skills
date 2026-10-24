@@ -2,9 +2,12 @@
 
 These maintained local methods adapt REA's MIT-licensed investigation and
 development guidance. Copyright (c) 2026 morluto; local adaptations by Anh Dang
-and Orbyn contributors. Each affected skill retains its portable `LICENSE`;
-[library notices](../../../tools/THIRD_PARTY_NOTICES.md) and
-[provenance](../../../provenance.json) preserve the source relationship.
+and Orbyn contributors. Every affected skill retains its own portable `LICENSE`,
+including the [REA and local MIT notices](../LICENSE) beside this investigation
+skill. The source relationship and immutable revisions needed for an offline
+skills-only import are recorded here. A full library clone additionally carries
+root-level `provenance.json` and `tools/THIRD_PARTY_NOTICES.md`; those files are
+optional library metadata, not dependencies of the imported method.
 
 The links below are attribution and update pointers. They are not required
 reading to execute the local method, and no remote text is fetched on install,

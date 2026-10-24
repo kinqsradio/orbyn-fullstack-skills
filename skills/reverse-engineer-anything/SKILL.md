@@ -23,7 +23,8 @@ A catalog entry is not proof an engine is ready. Prefer an already available
 matching local runtime/source, including `tools/rea` when provided. Copying this
 skill does not install REA. If a capability is absent, continue supported static
 work and report the missing observation; do not install latest npm, register MCP,
-change host settings or fetch dependencies implicitly. See [tooling](../../docs/agents/tooling.md).
+change host settings or fetch dependencies implicitly. Missing setup does not
+prevent a bounded answer from supplied artifacts or source observations.
 
 Choose the smallest evidence path in [investigation modes](references/investigation-modes.md):
 static inspection, selected analysis, paired comparison, or explicitly scoped
@@ -60,6 +61,7 @@ Use the [worked examples](references/worked-examples.md) for offline operation,
 summary handling and uncertain effects.
 
 The consuming project's policy and requested scope govern all effects and
-delegation; [coordination](../../docs/agents/coordination.md) applies where needed.
+delegation. Use its established coordination rules for substantial work; the
+[portable workflow](../orbyn-workflow/SKILL.md) supplies the shared handoff method.
 The [source record](references/source-record.md) preserves lineage and separates
 guidance review from the deferred engine upgrade.
