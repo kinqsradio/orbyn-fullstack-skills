@@ -78,4 +78,4 @@ on functional cohesion and explicit public interfaces. This reference and exampl
 are independently written for Orbyn Engineering. No article text, code or images
 were imported; its website's copyright remains with the author. This citation is
 reviewed inspiration, not an MIT license grant or a claim of author endorsement.
-The architect skill's existing pstack attribution and license remain applicable.
+The architect skill's existing source attribution and license remain applicable.
