@@ -8,3 +8,6 @@ output/
 
 # Downloaded research references stay local; never publish this directory.
 /openSrc/
+
+# Pinned upstream/research downloads are local reference material only.
+/orbyn-references/

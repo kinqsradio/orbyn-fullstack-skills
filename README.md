@@ -1,6 +1,6 @@
 # Orbyn Fullstack Engineering Skills
 
-**52 connected agent skills for full-stack engineering with Codex and Claude Code.**
+**53 connected agent skills for full-stack engineering with Codex and Claude Code.**
 
 Architecture, API design, data migrations, TypeScript, web and mobile UX,
 debugging, review, CI and delivery—organized around a feature's complete path
@@ -41,6 +41,7 @@ explains the handoffs. [The catalog](skills/README.md) lists every skill.
 | Review a risky patch            | `interrogate`                              | Concrete findings with scenarios and evidence        |
 | Build contribution/release CI   | `orbyn-ci-design`                          | Scoped execution and reviewable promotion            |
 | Draft a post or carousel        | `social-content` + `social-preview`        | Evidence-backed copy and local visuals               |
+| Review external code/skill updates | `orbyn-upstream-review`                 | Pinned comparison, ignored references and scoped updates |
 
 Twenty focused principle skills refine difficult decisions; they are not twenty
 mandatory stages. Five REA-related skills are optional specialists for artifact
@@ -72,6 +73,10 @@ for static setup checks. Python 3.11+ and Git are tooling prerequisites.
 
 For isolated work, agents use a sibling `<repo>-wt/<purpose>/` checkout under the
 [worktree policy](skills/orbyn-worktree/SKILL.md), preserving active existing work.
+
+Downloaded upstream code and research stay in ignored `orbyn-references/`.
+Agents [review freshness and selectively adapt improvements](skills/orbyn-upstream-review/SKILL.md)
+without committing raw research, replacing company skills or editing plugin caches.
 
 The agent preserves existing docs, instructions, models, connectors and secrets.
 It inventories conflicting skill copies before migration and keeps a recoverable
