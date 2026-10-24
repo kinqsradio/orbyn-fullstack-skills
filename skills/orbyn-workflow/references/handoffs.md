@@ -1,9 +1,11 @@
 # Checkable continuation without a second tracker
 
-Use this record when a substantive task changes owner or must survive context
-loss. A short explanation or clear one-file edit needs no packet. Keep the record
-beside the existing owning task document, outside the shared skill export. The
-agent prepares it internally; the human does not need another invocation.
+Use this structured form when an owner transfer or context-loss recovery benefits
+from machine validation. First choose the minimum useful record under the
+[task-record defaults](task-record.md); a paragraph can be enough even for a
+substantive task. Keep any JSON beside the existing owning document, outside the
+shared skill export. The agent prepares it internally; the human does not need
+another invocation. The template ships synthetic examples, not project run logs.
 
 The version-1 JSON format is shown in the [worked record](../examples/public-only-handoff.json).
 Use the same fields; the local [validator](../scripts/check_handoff.py) rejects

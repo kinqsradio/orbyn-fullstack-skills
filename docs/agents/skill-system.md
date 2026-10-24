@@ -80,9 +80,10 @@ decision. Add another skill when a real contract crosses its boundary; do not
 load a chain merely because the catalog lists related skills. An explicit
 prompt rewrite ends with a usable brief; a clear implementation request proceeds
 without a prompt-rewriting detour. A missing tool changes the evidence claim,
-not the task's authority or another owner's instructions. For substantive
-continuation, use the [handoff contract](../../skills/orbyn-workflow/references/handoffs.md)
-without creating another tracker. Keep trivial edits direct.
+not the task's authority or another owner's instructions. For continuation, follow
+the [task-record defaults](../../skills/orbyn-workflow/references/task-record.md)
+and select structured validation only when useful. Routine edits need no extra
+log or tracker.
 
 - “Plan a shared schema migration”: planner reads stack and current callers, uses
   architecture for the contract and produces a plan; plan-only does not edit code.

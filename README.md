@@ -164,6 +164,12 @@ synthetic inputs, a useful result and a concrete failure to avoid. An optional
 [task record](skills/orbyn-workflow/references/task-record.md) connects decisions,
 verification and continuation without a second project tracker.
 
+Routine work relies on its diff, PR and CI. When a long task or handoff needs a
+checkpoint, the agent maintains the minimum useful project-owned record without
+another human invocation. The template includes helpers and synthetic examples;
+actual task logs and raw traces stay outside public skill sync in the consumer's
+approved local output or CI artifacts. Installation creates no logging directory.
+
 The [evaluation toolkit](skills/orbyn-skill-creator/references/evaluations.md)
 contains versioned routing and outcome cases with review rubrics. Prepare
 frozen tasks, capture trials in an authorized host, grade evidence and compare a
@@ -177,8 +183,9 @@ The [24 October setup and handoff trials](docs/evaluations/2026-10-24-setup-hand
 compare six focused cases against the released library. The final candidate
 passed 1/1 routing and 5/5 outcome cases versus 1/1 and 4/5 at baseline. The
 corrected recovery answer explicitly states crash/power-loss limits. Earlier
-failures and captured evidence are retained; these are single-run development
-results with unblinded lead grading, not independent qualification.
+failures are retained in the report and full captures stay in ignored local output.
+These are single-run development results with unblinded lead grading, not
+independent qualification.
 
 For substantive continuation, the optional [handoff contract](skills/orbyn-workflow/references/handoffs.md)
 records scope, candidate, ownership, observed checks and next action. Its offline

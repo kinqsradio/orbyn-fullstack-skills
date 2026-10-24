@@ -112,6 +112,15 @@ retain their evidence outside the shared distribution unless it is synthetic or
 reviewed for publication. Add only the public task, rubric and a concise result
 summary to a contribution. Never give untrusted PR code a model key merely to grade it.
 
+By default, commit the concise result report and a reproducible declarative
+protocol with synthetic fixtures, exact revisions and grading criteria. Keep full
+answers, visible tool captures, run records and debug traces in ignored local
+output or explicitly approved CI artifacts. Preserve failed attempts there, and
+retain their verdicts and limitations in the summary. Do not add per-run captures
+to the template merely because they were useful during development. Checkpoint
+and evidence retention belongs to the consuming project; setup must not create
+log folders or export that project's records automatically.
+
 Choose code-based checks for executable behavior, and calibrated human or model
 review for subjective outcomes. Do not grade only output keywords, require a single
 wording, or accept a task's own success assertion as proof. Extend helpers with an

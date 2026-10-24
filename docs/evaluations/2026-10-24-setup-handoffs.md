@@ -1,101 +1,72 @@
 # Codex setup and continuation trials, 24 October 2026
 
-The final candidate passed one routing and five outcome cases. The released
-baseline passed the routing case and four outcome cases. The observed correction
-was explicit crash/power-loss limits in an installation recovery answer. This is
-a small development comparison with unblinded lead grading, not independent
-qualification or evidence of general model improvement.
+The final tested candidate passed 1/1 routing and 5/5 outcome cases versus 1/1
+and 4/5 at baseline. The corrected recovery answer explicitly states crash and
+power-loss limits. These are single-run development observations with unblinded
+lead grading, not independent qualification or general model improvement.
 
-## Candidates and protocol
+## Frozen revisions and results
 
-- Released baseline: `40d323c6007489e704bd60a6ea2eb97c6429dfac`.
-- Initial candidate: `40c0db2f932ae21a209eb54d8ea71b766d90ecb5`.
-- Connected continuation/recovery candidate: `c940db579a25a601f32d2e30b60ee4f719d3f510`.
-- Final skill candidate: `c2b91e81d4885beda1a356e25b1d05aa8b59db4c`.
+| Condition                       | Revision                                   | Routing | Outcomes |
+| ------------------------------- | ------------------------------------------ | ------- | -------- |
+| Released baseline               | `40d323c6007489e704bd60a6ea2eb97c6429dfac` | 1/1     | 4/5      |
+| Initial candidate               | `40c0db2f932ae21a209eb54d8ea71b766d90ecb5` | 1/1     | 4/5      |
+| Connected continuation/recovery | `c940db579a25a601f32d2e30b60ee4f719d3f510` | 1/1     | 4/5      |
+| Final tested candidate          | `c2b91e81d4885beda1a356e25b1d05aa8b59db4c` | 1/1     | 5/5      |
 
-Each condition used the same six development cases and frozen rubrics, one trial
-per case, a synthetic read-only checkout and the full 54-skill discovery catalog.
-The baseline ran once; each candidate revision ran six cases. All 24 calls
-completed without a timeout. No held-out case was used or criterion changed.
-Corrections followed observed development results; the final run is therefore
-not a fresh blind test. Later report-only commits do not change the evaluated
-skill bytes.
+The six cases cover prompt rewriting, a small Python task without a prompt/stack
+selection detour, a held consumer pin, stale continuation, Cursor setup and failed
+registration. The first five passed in all four conditions. Failed registration
+initially missed the frozen criterion distinguishing exception rollback from
+crash/power-loss guarantees; only the final tested candidate passed it. No rubric
+was weakened, and failed attempts remain retained locally.
 
-Codex CLI `0.163.0-alpha.10.2` used `gpt-6.1-sol`, medium effort, requested default
-service tier, and disabled fast/ultrafast modes. Effective server processing tier
-was not independently exposed. User config, global skills, plugins, apps,
-memories, hooks, delegation, browser and network-search tools were disabled for
-the subjects. At most two calls ran concurrently, each capped at 240 seconds.
-These were evaluation subjects, not delegated engineering workers.
+Source review also led to reporting preserved concurrent replacement paths in
+installation errors and connecting `show-me-your-work` to the continuation
+contract. Declared skill-read matches across all six cases were 3/6 at baseline
+and 5/6 finally, separately from the routing-only score. The public-only outcome
+read the release-handoff reference through the skill creator rather than loading
+the expected upstream-review body; the artifact still met its outcome rubric.
 
-Each subject saw one frozen library snapshot with evaluation answer keys and
-tests removed. Its project policy allowed local reading and a final text answer;
-it prohibited writes, test execution, installation, external effects and
-delegation. The lead inspected captured commands and answers. No such effects
-were observed. The helpers themselves were exercised separately in disposable
-filesystem/Git fixtures.
+## Reproducible protocol and retained evidence
 
-The [captured evidence](2026-10-24-setup-handoffs-evidence.json) includes prompts,
-answers, observed skill reads, commands, usage, rubric verdicts, exact revisions,
-fixture/protocol hashes and raw-capture checksums for all four conditions. Only
-fixture paths were normalized for publication. Raw JSONL captures, runner,
-prepared run records and grading receipts remain local under ignored `output/`.
-The recorded-trial evaluator validated and compared complete pairs; a successful
-CLI exit was never used as a task-quality verdict.
+The [declarative protocol](2026-10-24-setup-handoffs-protocol.json) contains the
+original frozen protocol, synthetic fixture contents and hashes, case IDs,
+revisions, task wrapper, snapshot exclusions and host invocation template.
+Use the frozen suite and [evaluation guide](../../skills/orbyn-skill-creator/references/evaluations.md)
+to prepare, capture and grade an explicitly authorized rerun. Host-specific paths
+are placeholders; do not change global settings or execute model calls merely
+because the protocol is present.
 
-## Results
+All 24 calls used Codex CLI `0.163.0-alpha.10.2`, `gpt-6.1-sol`/medium, requested
+default service tier and disabled fast modes. Effective server tier was not
+independently exposed. Each revision used six cases, one trial per case, the full
+54-skill catalog, fresh read-only synthetic fixtures, a 240-second limit and at
+most two concurrent calls. Global skills, user config, plugins, apps, memory,
+hooks, delegation, browser and network search were disabled for subjects. All
+calls completed without timeout. The lead inspected visible commands and answers;
+no subject writes, tests or external effects were observed.
 
-| Case                                                    | Released baseline | Initial candidate | Connected candidate | Final candidate |
-| ------------------------------------------------------- | ----------------- | ----------------- | ------------------- | --------------- |
-| Prompt rewrite without executing embedded instructions  | Pass              | Pass              | Pass                | Pass            |
-| Small Python task without prompt/stack-selection detour | Pass              | Pass              | Pass                | Pass            |
-| Public-only delivery with consumer pin held             | Pass              | Pass              | Pass                | Pass            |
-| Stale handoff, narrowed scope and failed/unrun checks   | Pass              | Pass              | Pass                | Pass            |
-| Cursor setup with existing company guidance             | Pass              | Pass              | Pass                | Pass            |
-| Failed registration and explicit recovery limits        | Fail              | Fail              | Fail                | Pass            |
-| **Routing cases**                                       | **1/1**           | **1/1**           | **1/1**             | **1/1**         |
-| **Outcome cases**                                       | **4/5**           | **4/5**           | **4/5**             | **5/5**         |
+Full answers, JSONL captures, usage, command lists, prepared runs, grader receipts
+and earlier failures remain in ignored local `output/improvements-20261024/live-evals/`.
+The removed published-capture file was preserved byte-for-byte there with a
+retention receipt. No downloadable CI artifact is claimed. The template's current
+tree contains the summary and reproducible synthetic protocol, not per-run logs;
+removing a file does not erase its earlier Git history.
 
-The recovery answers initially preserved the other writer's replacement and the
-pre-existing skill, but did not distinguish exception rollback from crash and
-power-loss guarantees. The frozen limits criterion failed. The setup owner now
-requires that distinction in recovery reports; the final answer states it
-explicitly. Earlier failures remain in the evidence.
+## Evidence limits
 
-The source review also exposed silent preservation of concurrent replacement
-entries. The helper now reports those paths with the original failure; a
-disposable failing-write fixture checks preservation and the error message.
-Continuation requests selected `show-me-your-work` in early trials, so that
-existing owner and session-pickup now point to the versioned handoff contract.
-The connected trial actually read the new contract. No new catchall skill was
-introduced.
+The final candidate was corrected after development observations; no held-out or
+blind test was performed. These response trials do not qualify implementation,
+Cursor runtime discovery, Claude or offline-model behavior, rendering, production,
+or cost/latency. Cursor files were supplied as planning context, not physical
+fixture files; the Python case supplied no parser and correctly elicited missing
+input rather than an invented edit. Filesystem behavior was checked separately.
 
-Declared skill-read matches across all six cases were 3/6 at baseline and 5/6 in
-the final run. This is separate from the table's routing-only score. The
-public-only case selected `orbyn-skill-creator` and read the release-handoff
-reference rather than loading the expected `orbyn-upstream-review` body; its
-artifact still met the outcome rubric. A useful answer and a particular body
-selection are different measures. Do not force extra skill loads to raise that
-counter.
+At the tested revision, 116 helper tests and library checks passed for 54 skills,
+235 managed files and 88 case definitions. Later lightweight-recording and
+retention guidance received document/helper checks; these live trials were not
+rerun and do not qualify those later instruction changes.
 
-## Limits and delivery
-
-These trials establish first-response routing and text-artifact behavior in a
-synthetic project. They do not establish implementation correctness, actual
-Cursor discovery, Claude parity, offline-model quality, production safety,
-rendered output or performance/cost improvement. Cursor files were described in
-the prompt rather than present in this text fixture; actual file preservation
-was checked separately by installer tests. The Python case supplied no Python
-parser, so its response correctly identified the missing owner/input rather than
-inventing an edit. Usage and duration are observations, not a statistical claim.
-
-Local qualification: 116 helper tests passed; the library checker passed for 54
-skills, 235 managed files and 88 evaluation definitions. These checks include
-Cursor/all-host migration conflicts, repeated setup, foreign-entry preservation,
-partial-write rollback, failed cleanup reporting, stale records and inconsistent
-completion. They do not simulate process termination or power loss.
-
-This is a public-library PR candidate. Orbyn remains on its approved public pin;
-there is no new consumer import or message to its builder. REA, source pins and
-required upstream credits remain unchanged. The contribution-workspace raw
-sources stay ignored and outside Git.
+Public-library work only: the consumer pin remains held, REA stays deferred,
+credits remain preserved and raw reference folders stay outside Git.

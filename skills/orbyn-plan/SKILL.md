@@ -57,8 +57,11 @@ check into permission to run tests, native builds or live providers.
 
 ## Deliver and maintain
 
-Use a concise in-chat plan for small work. For a substantial durable handoff use
-one `docs/work/<task>.md` unless the user chooses another location. Include:
+Use a concise in-chat plan for small work. Reuse the existing owning document
+when a durable handoff is useful; otherwise use one `docs/work/<task>.md` only
+when needed and consistent with the consumer's policy. Do not create a separate
+log merely because planning occurred. Follow the
+[task-record defaults](../orbyn-workflow/references/task-record.md). Include:
 
 - Outcome, scope and current source evidence.
 - Selected design and relevant rejected alternative.
@@ -67,8 +70,8 @@ one `docs/work/<task>.md` unless the user chooses another location. Include:
 - Material assumptions, unresolved decisions and next action.
 
 Update the same plan when evidence changes the design; explain the change. Use
-the [checkable handoff](../orbyn-workflow/references/handoffs.md) for a substantive
-owner transfer or resumed task, preserving the current candidate and scope.
+the [checkable handoff](../orbyn-workflow/references/handoffs.md) when structured
+validation helps a transfer or resumed task, preserving candidate and scope.
 Do not expand a prompt rewrite into a mandatory packet or implementation phase.
 Use `figure-it-out` to execute a large plan and `show-me-your-work` for consequential
 decisions. Session creation follows [coordination](../../docs/agents/coordination.md).
