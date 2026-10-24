@@ -28,6 +28,13 @@ Use [local resources first](skills/orbyn-setup/references/offline.md); external
 citations are attribution/update pointers, and current online facts remain
 unverified when network access is unavailable.
 
+For external code/skill freshness and downloaded research, follow
+[upstream review](skills/orbyn-upstream-review/SKILL.md). Use ignored
+`orbyn-references/` for raw downloads; never commit that directory or `openSrc/`.
+Only reviewed adaptations and deliberately licensed offline support enter the
+public library. Do not edit installed plugin caches or replace our skill owners
+with an upstream collection.
+
 Use evidence-led investigation and explicit ownership across the domain, API,
 persistence, clients and operations. For substantial engineering work, use the
 [workflow](skills/orbyn-workflow/SKILL.md) and bounded delegation when the required

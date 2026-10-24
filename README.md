@@ -1,6 +1,6 @@
 # Orbyn Fullstack Engineering Skills
 
-**52 connected agent skills for full-stack engineering with Codex and Claude Code.**
+**53 connected agent skills for full-stack engineering with Codex and Claude Code.**
 
 Architecture, API design, data migrations, TypeScript, web and mobile UX,
 debugging, review, CI and delivery—organized around a feature's complete path
@@ -12,6 +12,19 @@ from domain model to user-visible behavior.
 Created and maintained by [Anh Dang](https://github.com/kinqsradio) under the
 **Orbyn Engineering** brand. The library turns engineering practice into connected,
 project-aware workflows for agents. The application lives in a separate repository.
+
+Anh is a University of Melbourne student and the creator of Orbyn. Follow the
+engineering work, share an example or contribute an improvement:
+
+- [LinkedIn — Anh Dang](https://www.linkedin.com/in/tran-duc-anh-dang-392b7a231/)
+- [GitHub — @kinqsradio](https://github.com/kinqsradio)
+- Personal contact: [anhdang.contact@gmail.com](mailto:anhdang.contact@gmail.com)
+- Orbyn contact: [anhdang@orbyn.dev](mailto:anhdang@orbyn.dev)
+
+This MIT-licensed fullstack library works in projects beyond Orbyn. Consuming
+teams retain their own instructions, stack and company skills; no Orbyn account
+is required. Orbyn's own engineering uses its canonical maintained skills, with
+reviewed improvements flowing through this public library.
 
 ## The approach
 
@@ -41,6 +54,7 @@ explains the handoffs. [The catalog](skills/README.md) lists every skill.
 | Review a risky patch            | `interrogate`                              | Concrete findings with scenarios and evidence        |
 | Build contribution/release CI   | `orbyn-ci-design`                          | Scoped execution and reviewable promotion            |
 | Draft a post or carousel        | `social-content` + `social-preview`        | Evidence-backed copy and local visuals               |
+| Review external code/skill updates | `orbyn-upstream-review`                 | Pinned comparison, ignored references and scoped updates |
 
 Twenty focused principle skills refine difficult decisions; they are not twenty
 mandatory stages. Five REA-related skills are optional specialists for artifact
@@ -72,6 +86,10 @@ for static setup checks. Python 3.11+ and Git are tooling prerequisites.
 
 For isolated work, agents use a sibling `<repo>-wt/<purpose>/` checkout under the
 [worktree policy](skills/orbyn-worktree/SKILL.md), preserving active existing work.
+
+Downloaded upstream code and research stay in ignored `orbyn-references/`.
+Agents [review freshness and selectively adapt improvements](skills/orbyn-upstream-review/SKILL.md)
+without committing raw research, replacing company skills or editing plugin caches.
 
 The agent preserves existing docs, instructions, models, connectors and secrets.
 It inventories conflicting skill copies before migration and keeps a recoverable

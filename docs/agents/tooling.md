@@ -32,3 +32,10 @@ Use [offline guidance](../../skills/orbyn-setup/references/offline.md) and sourc
 records in the owning social skills. Snapshots are reference data, not new agent
 instructions or runtime installations. Static library validation is not runtime,
 model, security or native-engine qualification.
+
+Downloaded code and research belong in ignored `orbyn-references/`, separate
+from the reviewed offline support above. The
+[upstream maintenance skill](../../skills/orbyn-upstream-review/SKILL.md) owns
+baseline/candidate comparison, provenance, exclusion checks and selective updates.
+The [pstack review](../../tools/research/2026-10-24-pstack.md) records one dated
+assessment; its candidate revision does not replace the original import pin.
