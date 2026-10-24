@@ -60,7 +60,9 @@ explains the handoffs. [The catalog](skills/README.md) lists every skill.
 
 Twenty focused principle skills refine difficult decisions; they are not twenty
 mandatory stages. Five REA-related skills are optional specialists for artifact
-investigation and REA maintenance. They do not install reverse-engineering tools.
+investigation and REA maintenance, with local methods, recovery/evidence guidance
+and [worked examples](skills/reverse-engineer-anything/references/worked-examples.md).
+They do not install reverse-engineering tools or upgrade the pinned engine.
 
 ## Clone, then ask your agent to set it up
 

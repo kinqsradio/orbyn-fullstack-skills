@@ -44,7 +44,10 @@ Select principle leaves when the decision needs them: ownership and boundaries,
 root cause, idempotency, shared-state isolation, simpler design, compatibility,
 context cost and evidence. They refine the task; they are not separate obligatory
 phases or approval gates. REA maintenance skills apply only when that tooling is
-the requested target.
+the requested target. Their local methods and examples work without fetching
+upstream instructions; [REA evidence/recovery](../../skills/reverse-engineer-anything/references/evidence-and-recovery.md)
+owns shared evidence and failure interpretation. Runtime, source/history inputs
+and provider availability remain separate requirements.
 
 ## Orbyn Engineering identity
 

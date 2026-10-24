@@ -16,10 +16,14 @@ by the consumer. It never applies model presets, registers MCP or installs a run
 
 [Third-party notices](../../tools/THIRD_PARTY_NOTICES.md) and
 [provenance](../../provenance.json) retain the source/license distinction. Full
-third-party runtime snapshots are not bundled here. The optional REA adapters
-link to their pinned upstream skills and prefer a matching consumer-local source
-when present. Read the selected upstream's own contribution/setup rules only when
-the requested task actually needs that runtime.
+third-party runtime snapshots are not bundled here. The five optional REA skills
+carry local operating methods and worked examples; their source URLs are attribution
+and update pointers. Read the [REA evidence/recovery method](../../skills/reverse-engineer-anything/references/evidence-and-recovery.md)
+for summaries, retained evidence and resource ownership. The
+[source record](../../skills/reverse-engineer-anything/references/source-record.md)
+separates reviewed guidance from the unchanged engine pin. A consumer-local REA
+checkout supplies implementation-specific contracts when maintenance needs them;
+the local skill method itself does not require an upstream webpage.
 
 Copying a skill does not install REA, an engine or a provider. Discover available
 tools, versions and authority before setup or execution. Do not silently use a
