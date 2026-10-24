@@ -25,3 +25,8 @@ A primary `<parent>/<repo>` uses sibling `<parent>/<repo-slug>-wt/<purpose>/`
 by default. Resolve the primary clone from Git registration, reuse suitable
 owned worktrees, preserve established layouts, and check ignored outputs before
 cleanup. A new worktree does not create a chat or isolate databases/services.
+
+Local isolation does not imply remote publication. Keep task branches local until
+delivery is authorized, then prefer an approved permitted personal contribution
+fork such as `<Repository>-contributions`; verify company visibility/policy and
+the actual push destination. Never publish restricted code to an unauthorized fork.

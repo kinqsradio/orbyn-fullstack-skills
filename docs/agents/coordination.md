@@ -33,3 +33,7 @@ A primary `<parent>/<repo>` uses sibling `<parent>/<repo-slug>-wt/<purpose>/`
 by default. Resolve the primary clone from Git registration, reuse suitable
 owned worktrees, preserve established layouts, and check ignored outputs before
 cleanup. A new worktree does not create a chat or isolate databases/services.
+
+The owning task reuses its branch through corrections. Delegate branches are
+bounded local implementation details, not a reason to create company-remote
+branches or another hosted fork. One owner serializes shared Git ref/remote writes.

@@ -1,6 +1,6 @@
 ---
 name: orbyn-worktree
-description: "Choose, create, reuse and clean up Git worktrees for isolated repository work; enforce sibling <repo>-wt directories, purpose-based names and preservation of local work."
+description: "Manage local task branches, personal-fork delivery and Git worktree isolation; use sibling <repo>-wt directories, purpose-based names and preservation before cleanup."
 ---
 
 # Worktree ownership and lifecycle
@@ -56,6 +56,56 @@ unrelated or still owned, choose a distinct purpose or a suffix such as `-2`;
 never overwrite a directory, reuse a foreign branch or use force to bypass Git's
 already-checked-out protection. Keep existing legacy paths/branch names intact.
 An explicit user location or an established consuming-project policy wins.
+
+## Keep task branches local and publish deliberately
+
+A worktree and its branch are local Git state. Creating them does not require a
+branch on the company's remote. Reuse one owned task branch and worktree through
+implementation, correction and review. Do not create another branch for each
+agent, phase or retry. Independent writers may need bounded temporary local
+branches/worktrees; consolidate their changes into the owning task branch and
+retire them only after preserving the work. Never push every delegate branch.
+Serialize operations on shared Git refs, remotes and configuration under one owner.
+
+Keep work local by default. Publish only when pushing/PR delivery is authorized
+and the patch is concrete and reviewable. Inspect existing project contribution
+policy, sanitized remote identities, upstream relationship, repository visibility,
+account permission and fork restrictions before choosing a push destination.
+A remote named `origin` is not evidence that it is a personal fork.
+
+For company upstreams, prefer one existing permitted personal contribution fork
+for the approved account. Create one only within authorized delivery/setup scope
+and when company/host policy allows it. Use a meaningful stable name such as
+`<Repository>-contributions`, retaining the upstream identity:
+
+| Identity | Example |
+| --- | --- |
+| Company upstream | `company/Orbyn` |
+| Reused personal fork | `approved-account/Orbyn-contributions` |
+| Task branch on that fork, when publication is needed | `feat/task-rescheduling` |
+| Local task checkout | `Documents/GitHub/orbyn-wt/task-rescheduling` |
+
+Verify that a candidate fork actually belongs to the intended upstream; matching
+names are insufficient. Preserve an established fork/name rather than renaming it
+or creating one per task. A local worktree stays within the primary clone's Git
+repository and can push its task branch to the permitted fork remote; it is not
+another hosted fork. Keep fetch/base selection tied to the canonical upstream
+and target the contribution PR back to the correct upstream branch.
+
+Never copy private/restricted company code into a public or otherwise unauthorized
+fork, standalone mirror or account. An available API token does not establish
+redistribution authority. If forks are disallowed, use an explicitly authorized
+internal contribution path; otherwise preserve the local branch/commits and prepare
+a reviewable patch with the exact publishing blocker. Do not silently fall back
+to pushing a new company branch or stop independent local work. Respect an existing
+explicit company-branch instruction instead of inventing a fork requirement.
+
+Before any push, verify the destination account/repository/visibility, source
+branch and refspec. Add/change a remote or branch tracking only within scope;
+do not rewrite `origin`, alter global Git settings, force-push a foreign branch
+or publish merely because a branch exists. Report where work is local, backed up,
+pushed and proposed for review. A local branch is recoverable only while its
+checkout/Git data remain; preserve valuable unpushed work before cleanup.
 
 ## Create and verify the selected checkout
 
