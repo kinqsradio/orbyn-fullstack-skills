@@ -19,7 +19,7 @@ in `docs/agents/`. This index is generated from `catalog.json` and frontmatter b
 
 - [automate-me](automate-me/SKILL.md) — Capture explicitly requested working preferences in a reusable local skill, using the current conversation or user-selected examples.
 - [figure-it-out](figure-it-out/SKILL.md) — Plan and execute an authorized large migration or cross-cutting task with measurable completion criteria and a concise evidence trail.
-- [orbyn-plan](orbyn-plan/SKILL.md) — Scope and sequence an Orbyn change, migration or investigation before implementation; use for explicit planning requests and consequential cross-cutting work.
+- [orbyn-plan](orbyn-plan/SKILL.md) — Refine an engineering request or scope and sequence a change, migration or investigation. Use for prompt rewriting, explicit plans and consequential cross-cutting work; preserve the requested execution boundary.
 - [orbyn-research](orbyn-research/SKILL.md) — Resolve a specific architectural, dependency, platform or design uncertainty using local evidence and authoritative external sources before choosing an implementation.
 - [orbyn-setup](orbyn-setup/SKILL.md) — Set up Orbyn skills in an existing project, migrate company-owned skills and configure requested host roles/models for Codex or Claude Code.
 - [orbyn-skill-creator](orbyn-skill-creator/SKILL.md) — Create, refine, merge or retire Orbyn repository skills while keeping task routing, technology boundaries, host discovery and documentation consistent.

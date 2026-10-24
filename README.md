@@ -196,6 +196,15 @@ Guidance and worked examples run from disk; current online support/pricing still
 requires verification. Contribution work stays local/private until deliberate
 publication under the [fork policy](skills/orbyn-worktree/SKILL.md).
 
+## Contribution workspaces
+
+For contribution work, the optional ignored `repo/<project>/` and
+`repo/<project>-wt/<purpose>/` layout keeps target repositories together without
+adding them to this library. Agents follow each target's own instructions and
+skills, using our methods where compatible. See [nested workspaces](skills/orbyn-setup/references/repository-workspaces.md).
+Public library changes and downstream product adoption remain separate decisions;
+updating this library does not automatically repin a consuming project.
+
 ## Production best practices
 
 The existing owners also cover maintainable modules, polyglot contracts, bounded

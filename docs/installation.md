@@ -73,6 +73,16 @@ source are retired, after replacement links are created successfully. Foreign
 skills stay intact; a dry-run reports the plan without changing either host.
 See the [retirement contract](../skills/orbyn-setup/references/project-skills.md#retired-shared-entrypoints).
 
+## Optional nested contribution workspace
+
+The library can live beside independent targets in ignored `repo/<project>/`
+and sibling `repo/<project>-wt/<purpose>/` paths. Follow the
+[workspace contract](../skills/orbyn-setup/references/repository-workspaces.md):
+select the target root explicitly, preserve its own instructions and skills,
+and distinguish local assistance from upstream adoption of our tooling. Existing
+projects do not need to move. Research-only source stays in `orbyn-references/`.
+Never add target repositories or gitlinks to the public library.
+
 ## Customize the consuming project
 
 From the library checkout, create an optional map of existing project guides:

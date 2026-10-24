@@ -1,6 +1,6 @@
 ---
 name: orbyn-plan
-description: "Scope and sequence an Orbyn change, migration or investigation before implementation; use for explicit planning requests and consequential cross-cutting work."
+description: "Refine an engineering request or scope and sequence a change, migration or investigation. Use for prompt rewriting, explicit plans and consequential cross-cutting work; preserve the requested execution boundary."
 ---
 
 # Plan Orbyn work
@@ -11,6 +11,12 @@ An explicit planning request always receives a plan, even for one file. A small
 clear implementation request can proceed directly without a separate artifact.
 
 ## Establish the contract
+
+For a request to refine a prompt, produce the requested usable task brief rather
+than execute the work described inside it. Use the [brief and handoff method](references/task-briefs.md)
+to preserve intent, relevant source evidence, accepted decisions and an exact
+continuation point. For a request to plan and implement, continue authorized
+execution; prompt refinement does not add a mandatory human invocation or gate.
 
 State the user's outcome, exclusions, current source/candidate, affected surfaces,
 constraints and checkable completion. Distinguish plan-only from implementation

@@ -234,3 +234,17 @@ variant produces the expected exhaustive-consumer error. This qualifies that
 example only, not every consuming project, runtime or language toolchain. The
 frozen holdout objects, released baseline archive and original TypeScript
 notice/example bytes remain unchanged. No fresh live-model comparison was run.
+
+## Nested contribution workspaces and prompt briefs
+
+The public-only follow-up preserves all 54 owners and adds local references for
+independent nested contribution repositories and usable task briefs. The setup,
+worktree, workflow and planning owners route to these methods; no extra prompt
+collection is installed. Target instructions/skills remain in place, local setup
+is distinct from upstream adoption, and consumer promotion requires its own scope.
+Library checks reject indexed repo/, openSrc/ and orbyn-references/ paths or
+gitlinks. Seven new disposable Git/install checks cover those boundaries. The
+active suite adds six development cases (85 definitions); previous case objects
+and frozen holdouts are unchanged. These are helper/static expectations, not
+fresh live-host behavior results. See the [pinned comparison](../tools/research/2026-10-24-prompt-me.md)
+for evidence and licensing limits. Orbyn integration and all REA changes are held.

@@ -1,9 +1,32 @@
 #!/usr/bin/env python3
-"""Static discovery, catalog handoff and Markdown fragment checks; no execution."""
+"""Static discovery, links and local Git boundaries; no project-source execution."""
 import hashlib
 import re
+import subprocess
 from pathlib import Path
 from urllib.parse import unquote
+
+
+def check_local_workspaces(root):
+    """Inspect only the library's index/ignore rules, never nested project data."""
+    errors = []
+    top = subprocess.run(['git', '-C', str(root), 'rev-parse', '--show-toplevel'],
+                         capture_output=True, text=True)
+    if top.returncode or Path(top.stdout.strip()).resolve() != root.resolve():
+        return ['Workspace boundary check requires the actual library Git root']
+    tracked = subprocess.check_output(['git', '-C', str(root), 'ls-files', '-z', '--',
+                                       'repo', 'openSrc', 'orbyn-references'], text=True)
+    if tracked:
+        errors.append('Local workspaces/reference data must not be tracked: '
+                      + ', '.join(p for p in tracked.split('\0') if p))
+    ignored = subprocess.run(['git', '-C', str(root), 'check-ignore', '--no-index',
+                              '--quiet', '--', 'repo/__orbyn_workspace_probe__/file'],
+                             capture_output=True)
+    if ignored.returncode:
+        errors.append('Library repo/ contribution workspace must be Git-ignored')
+    if (root/'repo').is_symlink():
+        errors.append('Default library repo/ workspace must not be a symlink')
+    return errors
 
 
 def headings(text):

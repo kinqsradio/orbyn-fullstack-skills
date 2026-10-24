@@ -53,6 +53,12 @@ independent setup. Do not silently guess ownership of a foreign installation.
 
 ## Consumer-aware setup
 
+For targets inside a library-root `repo/`, follow the
+[workspace contract](references/repository-workspaces.md). Resolve the target's
+Git root and preserve upstream-owned instructions and skills in place. Local
+contribution assistance differs from proposing adoption of this library. Setup,
+local migration and model changes retain their separate scope.
+
 Read the consuming project’s host definitions before applying the reference registry. The library may be installed without its model presets; installing skills does not authorize replacing the user’s preferred model. If the named tier or required processing mode is unavailable, report it and use only the permitted direct fallback.
 
 Use [worktree policy](../orbyn-worktree/SKILL.md) when configuring repository

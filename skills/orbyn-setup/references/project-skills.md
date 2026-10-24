@@ -25,6 +25,13 @@ public distribution manifest or `skills/upstream-lock.json`.
 
 ## Instructions for the agent
 
+An open-source target's checked-in instructions and skills are upstream project
+files. Preserve their established paths during ordinary contributions; do not
+treat them as company-local material that must migrate. Follow the
+[workspace contract](repository-workspaces.md) for compatible method selection,
+name collisions and local-only setup. Explicit upstream adoption or authorized
+local migration is a separate task.
+
 Before creating or adapting a skill, classify its audience and owner. A request
 such as “teach the agent our company release process” belongs to that company's
 namespace. Use existing company/repo naming and instructions. Inspect existing
