@@ -37,7 +37,7 @@ links for each developer. This library's own discovery links are relative and po
 
 ## Presets and existing installations
 
-The default is `core` (12 skills), including setup and skill ownership routing, instead of all 51. Existing links stay
+The default is `core` (13 skills), including setup and skill ownership routing, instead of all 52. Existing links stay
 installed: this is additive selection, not an uninstall or reset. Use `--all` to
 reproduce the former default. An explicit `--skill` or `--preset` replaces the
 default selection for that invocation; combine `--preset core` when you want both.
@@ -46,7 +46,7 @@ without creating directories or links.
 
 | Preset       | Purpose                                                                   | Skills |
 | ------------ | ------------------------------------------------------------------------- | ------ |
-| `core`       | Investigation, planning, architecture, review, TypeScript, backend and UI | 12     |
+| `core`       | Investigation, planning, architecture, review, TypeScript, backend and UI | 13     |
 | `web`        | Web task flow and product copy                                            | 4      |
 | `data`       | API, persistence, migrations and CI                                       | 5      |
 | `mobile`     | Mobile interaction and connected API work                                 | 4      |

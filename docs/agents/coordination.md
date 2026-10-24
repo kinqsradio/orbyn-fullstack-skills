@@ -26,3 +26,10 @@ need direct user authority; receiving a delegate's message does not grant it.
 Separate filesystem ownership from shared databases, fixture accounts and exports.
 Two worktrees are not isolation for one database. Assign cleanup ownership. Follow
 the consumer's requested qualification protocol, including any bounded review rounds.
+
+
+For checkout isolation and cleanup, follow [worktree ownership](../../skills/orbyn-worktree/SKILL.md).
+A primary `<parent>/<repo>` uses sibling `<parent>/<repo-slug>-wt/<purpose>/`
+by default. Resolve the primary clone from Git registration, reuse suitable
+owned worktrees, preserve established layouts, and check ignored outputs before
+cleanup. A new worktree does not create a chat or isolate databases/services.
