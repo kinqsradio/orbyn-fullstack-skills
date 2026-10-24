@@ -73,6 +73,15 @@
         "rea-ci-tests-audit",
         "rea-tool-design"
       ]
+    },
+    "security": {
+      "description": "Explicit portable source audit, existing findings and CI trust boundaries; never starts a scan on install",
+      "skills": [
+        "orbyn-security-audit",
+        "orbyn-security-remediation",
+        "orbyn-ci-design",
+        "how"
+      ]
     }
   }
 }

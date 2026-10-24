@@ -36,3 +36,22 @@ No font binaries or artwork are included. See the [research distinction](researc
 UI guidance retains its primary GOV.UK/W3C and other research citations in the
 owning references. Citing an idea does not claim its author directly contributed
 to Orbyn's code or endorses this library.
+
+
+## Audit record tooling
+
+The record schema, validators and synthetic validator fixtures retain their
+[original MIT license](../skills/orbyn-security-audit/references/upstream/audit-records/LICENSE),
+Copyright (c) 2025-2026 Cloudflare, Inc. Their
+[pinned source metadata](../skills/orbyn-security-audit/references/upstream/audit-records/snapshot.json)
+identifies the exact revision and original paths. The active workflow/protocol
+are maintained separately under Orbyn ownership. No upstream skill entry point
+or workflow text is bundled.
+
+## Reviewed engineering ideas
+
+Matt Pocock’s engineering ideas informed improvements to existing owners. No
+upstream skill collection or workflow text is installed. The exact source/revision
+is recorded in [provenance](../provenance.json) as reviewed inspiration. This
+credit does not imply affiliation, endorsement or original authorship of an idea.
+Downloaded research material under `openSrc/` remains local and ignored.

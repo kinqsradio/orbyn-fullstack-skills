@@ -529,6 +529,76 @@
         "message"
       ],
       "excluded": "Do not turn helper usage into extra human setup homework or overwrite ambiguous third-party skills."
+    },
+    {
+      "split": "development",
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "id": "portable-audit-missing-verifier",
+      "kind": "outcome",
+      "prompt": "Design the report for an explicitly requested offline source security audit of a synthetic object-read handler. Visible code checks sign-in; tenant membership middleware and deployed route configuration are not supplied. No independent agent or OS-enforced execution sandbox is available. Use Markdown only. Do not run a scan or claim a verified vulnerability.",
+      "expected_skills": [
+        "orbyn-security-audit"
+      ],
+      "forbidden_skills": [],
+      "excluded": "A missing control in supplied source is not proof that no reachable guard exists; absent verifier/execution capability must limit the result.",
+      "rubric": {
+        "scope": "Record source/scope and unavailable middleware, route configuration, independent roles and sandbox execution; keep the target unchanged.",
+        "verdict": "Keep a precise unresolved boundary hypothesis with no severity; do not claim confirmed tenant exposure or independently completed audit.",
+        "coverage": "Keep inspected/blocked/deferred coverage distinct and provide bounded owner evidence needed for resolution; do not substitute production probing.",
+        "tools": "Use bundled local protocol/schema/validators as optional structural tools without treating their success as source truth or executing unavailable tools."
+      }
+    },
+    {
+      "split": "development",
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "id": "audit-skill-authoring-only",
+      "kind": "routing",
+      "prompt": "Improve our portable security audit skill wording and its local source credits. This is skill authoring only; do not inspect or scan an application.",
+      "expected_skills": [
+        "orbyn-skill-creator"
+      ],
+      "forbidden_skills": [
+        "orbyn-security-audit"
+      ],
+      "excluded": "Creating or improving security instructions does not authorize an audit."
+    },
+    {
+      "split": "development",
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "id": "narrow-feature-slice",
+      "kind": "outcome",
+      "prompt": "A synthetic product needs task rescheduling through shared schema, API persistence and web presentation. Plan a small complete first delivery slice, with dependencies and acceptance. Use existing owner names and no issue tracker writes or implementation.",
+      "expected_skills": [
+        "orbyn-plan"
+      ],
+      "forbidden_skills": [],
+      "excluded": "Do not require manual source skill invocations, create tracker tickets or split only by technical folder with no end-to-end outcome.",
+      "rubric": {
+        "slice": "Choose a narrow complete user outcome spanning the necessary contract/effect/client owners, with a relevant integration or failure risk.",
+        "sequence": "Name prerequisites, blocking edges and an observable completion condition without artificial package-count limits.",
+        "authority": "Keep plan-only scope and explicit unexecuted checks; no mandatory source setup, tracker publication or implementation."
+      }
     }
   ]
 }

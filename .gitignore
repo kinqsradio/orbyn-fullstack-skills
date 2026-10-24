@@ -5,3 +5,6 @@ __pycache__/
 output/
 .env
 .env.*
+
+# Downloaded research references stay local; never publish this directory.
+/openSrc/

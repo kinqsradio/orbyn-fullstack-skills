@@ -109,3 +109,9 @@ namespace with both host links and stay outside the shared catalog/export.
 Read relevant local skills with the portable method; preserve user/project policy.
 Use the [offline contract](../../skills/orbyn-setup/references/offline.md) for
 local-first instructions, licensed snapshots and honest freshness limits.
+
+Explicit local/offline source security audit → `orbyn-security-audit`; existing
+findings → remediation. Installing or adapting either does not start a scan.
+Contract, delivery-slice and behavior-check guidance lives directly in the
+existing architect/planner/diagnosis/TDD/review owners, without extra manual
+invocations. [Workflow coverage](../engineering-workflows.md) records those owners.

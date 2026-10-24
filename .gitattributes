@@ -1,2 +1,2 @@
 # Preserve immutable upstream bytes; snapshot hashes validate these files.
-skills/**/references/upstream/** -whitespace
+skills/**/references/upstream/** -text -whitespace

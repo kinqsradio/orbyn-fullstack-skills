@@ -16,6 +16,8 @@ def main():
         print('Python 3.11+ is required for library validation.', file=sys.stderr)
         return 1
     errors = []
+    if subprocess.check_output(['git', 'ls-files', '--', 'openSrc/'], cwd=ROOT, text=True).strip():
+        errors.append('openSrc is local research material and must not be tracked')
     if (ROOT/'project-skills').exists() or (ROOT/'project-skills').is_symlink():
         errors.append('Consumer-owned project-skills must stay in the consuming repository, outside the public library')
     def require(ok, message):

@@ -1,6 +1,6 @@
 # Orbyn Fullstack Engineering Skills
 
-**50 connected agent skills for full-stack engineering with Codex and Claude Code.**
+**51 connected agent skills for full-stack engineering with Codex and Claude Code.**
 
 Architecture, API design, data migrations, TypeScript, web and mobile UX,
 debugging, review, CI and delivery—organized around a feature's complete path
@@ -10,10 +10,8 @@ from domain model to user-visible behavior.
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Created and maintained by [Anh Dang](https://github.com/kinqsradio) under the
-**Orbyn Engineering** brand. This library grows out of Orbyn's engineering
-workflow and includes credited third-party adaptations. The application is a
-separate repository; this is not an official OpenAI, Anthropic, Cursor or REA product.
-See [credits](#credits-and-license) and the [per-skill provenance](provenance.json).
+**Orbyn Engineering** brand. The library turns engineering practice into connected,
+project-aware workflows for agents. The application lives in a separate repository.
 
 ## The approach
 
@@ -151,24 +149,13 @@ CI validates metadata, references, attribution, catalog/discovery consistency,
 the distribution manifest and helper/synchronization behavior. It does not prove
 live model routing, rendered design quality, native UX or production correctness.
 
-## Credits and license
+## License
 
-- **Orbyn / Anh Dang and contributors:** maintained integration, full-stack
-  contracts, project-aware routing, original skills and local tooling.
-- **Lauren Tan's pstack**, from [cursor/plugins](https://github.com/cursor/plugins/tree/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack):
-  engineering skill adaptations. Original MIT copyright and permission notices
-  are retained in the affected skill folders and [notices](tools/THIRD_PARTY_NOTICES.md).
-- **morluto's REA**, [pinned source](https://github.com/morluto/rea/tree/ccc7da309d7db385d5c6d73b0a3a8e093be33504):
-  optional investigation/maintenance adapters, with MIT attribution. Runtime source
-  and engines are not bundled or installed by this library.
-- **Corey Haines's marketing skills** and **Anthropic's canvas-design** informed
-  the social-workflow comparison. Their code/assets were not copied; the
-  [research record](tools/research/social-content.md) distinguishes inspiration
-  from adaptation.
-
-See [LICENSE](LICENSE), [AUTHORS.md](AUTHORS.md), [provenance.json](provenance.json)
-and [third-party notices](tools/THIRD_PARTY_NOTICES.md). Orbyn branding identifies
-this project; it does not imply endorsement of forks or third-party services.
+Original Orbyn material is MIT licensed. Applicable support-file licenses,
+copyrights and provenance are preserved in [LICENSE](LICENSE),
+[AUTHORS.md](AUTHORS.md), [provenance.json](provenance.json) and
+[license notices](tools/THIRD_PARTY_NOTICES.md). Orbyn branding identifies this
+project; it does not imply endorsement of forks or third-party services.
 
 Report bugs with the issue forms. Report vulnerabilities privately using
 [SECURITY.md](SECURITY.md); do not include credentials or private project content

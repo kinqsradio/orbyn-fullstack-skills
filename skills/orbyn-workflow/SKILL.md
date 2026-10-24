@@ -62,6 +62,10 @@ Backend effect design belongs to [orbyn-backend-design](../orbyn-backend-design/
 stored-format transitions to [orbyn-data-migration](../orbyn-data-migration/SKILL.md),
 and trusted automation to [orbyn-ci-design](../orbyn-ci-design/SKILL.md).
 
+For an explicitly requested portable/offline source audit, use
+[orbyn-security-audit](../orbyn-security-audit/SKILL.md); existing findings remain
+with remediation and a hosted security scan retains its own workflow.
+
 Use [how](../how/SKILL.md) before changing unfamiliar behavior,
 [architect](../architect/SKILL.md) for consequential data/ownership decisions,
 [why](../why/SKILL.md) for historical constraints, and
