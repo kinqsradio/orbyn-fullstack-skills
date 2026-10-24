@@ -108,6 +108,13 @@ same-name target skills before setup; never assume which copy wins. Preserve
 Cursor rules/settings and require `--host all` to reconcile selected Cursor copies
 during a migration. These are skill paths, not portable model/role settings.
 
+For an installation failure, report the original error, changes still owned by
+the attempt, preserved concurrent replacements, cleanup failures and any backup
+receipt. State the recovery boundary explicitly: ordinary exception rollback
+does not provide crash or power-loss atomicity. Process interruption, a failed
+cleanup or another writer requires inspecting actual paths before retrying.
+Preserving a replacement is correct recovery behavior, not a successful install.
+
 Use the [project-context guide](references/project-context.md) to create or check
 `.agents/orbyn-context.json` in the **consuming checkout**, when setup is requested.
 It points to existing instructions, stack, design, brand and verification guides.
