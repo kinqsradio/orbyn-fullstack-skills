@@ -123,6 +123,6 @@ qualification when optional adapters or live behavior remain unverified.
 
 Before a shared edit, inspect relevant open PR heads/bases and the consumer lock.
 Reuse the owned shared candidate for related corrections and serialize shared
-writes with the consumer owner. Follow the [release handoff](../../docs/synchronization.md#one-shared-candidate-and-a-complete-release-handoff):
+writes with the consumer owner. Follow the [release handoff](../orbyn-upstream-review/references/release-handoff.md):
 finish authorized dependency merges, pin the actual merged public SHA and verify
 both repos' final state. An unmerged candidate is not current public `main`.

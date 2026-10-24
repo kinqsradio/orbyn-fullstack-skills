@@ -76,7 +76,7 @@ The reported stale-main problem is a release-handoff gap, not evidence that ever
 pending file currently conflicts. Public #8 and #9 and Orbyn #230/#231/#232 were
 reported mergeable at this checkpoint; that state must be rechecked at merge.
 Related audit corrections join the existing #9 candidate rather than creating
-another shared release stack. The [synchronization owner](synchronization.md#one-shared-candidate-and-a-complete-release-handoff)
+another shared release stack. The [portable release-handoff owner](../skills/orbyn-upstream-review/references/release-handoff.md)
 now requires existing-PR inspection, one shared writer/candidate, dependency
 reconciliation, the actual merged public pin and terminal checks on both mains.
 The agent completes those steps when merge is authorized; without that authority,
@@ -146,6 +146,12 @@ to their owner instead of duplicating a complete workflow.
 | [typescript-best-practices](../skills/typescript-best-practices/SKILL.md)                                                   | Expanded local method             | Runtime schema, target compiler and callers → Valid-state types, parsing and migrated consumers                        | Unsafe assertions, stale authority and released-client compatibility      |
 | [unslop](../skills/unslop/SKILL.md)                                                                                         | Expanded local method             | Supported prose, audience and requested voice → Clear edited copy preserving evidence                                  | Invented specificity, lost caveats and incidental user-content rewrites   |
 | [why](../skills/why/SKILL.md)                                                                                               | Expanded local method             | Anchored design question and bounded history → Documented rationale separated from inference                           | Empty search scope and source mechanics mistaken for intent               |
+
+The consumer integration check also caught two new links to a public-only root
+synchronization guide. Move the essential release procedure into the managed
+upstream-review reference and link active skills there; the consumer needs no
+new root shim. This is why library-only link checks do not replace the separate
+consumer check.
 
 ## Authorship and provenance
 

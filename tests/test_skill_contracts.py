@@ -92,3 +92,19 @@ class SkillContractTests(unittest.TestCase):
         self.assertTrue(contracts.check_audit(self.root, {'example','new-skill'}))
         audit.write_text(row+row)
         self.assertTrue(contracts.check_audit(self.root, {'example'}))
+
+    def test_release_handoff_survives_vendoring_without_public_root_docs(self):
+        import re
+        import shutil
+        consumer = self.root/'consumer'
+        shutil.copytree(ROOT/'skills', consumer/'skills')
+        self.assertFalse((consumer/'docs/synchronization.md').exists())
+        for name in ['orbyn-skill-creator','orbyn-upstream-review']:
+            entry = consumer/'skills'/name/'SKILL.md'
+            links = re.findall(r'\]\(([^)]+release-handoff\.md)\)', entry.read_text())
+            self.assertTrue(links, name)
+            for target in links:
+                method = (entry.parent/target).resolve()
+                self.assertTrue(method.is_relative_to(consumer))
+                self.assertTrue(method.is_file())
+                self.assertEqual(contracts.check_links(consumer, method), [])
