@@ -9,6 +9,11 @@ Keep one canonical skill folder in `skills/`, catalog relationships in
 `skills/catalog.json`, and generated discovery links for both hosts. Read
 [skill maintenance](skills/orbyn-skill-creator/SKILL.md) for changes. Do not
 load every skill or install runtime providers merely because a skill mentions them.
+Consumer-owned skills belong in that consumer’s `project-skills/` namespace, outside
+the public catalog and sync; follow the [ownership guide](skills/orbyn-setup/references/project-skills.md).
+Use [local resources first](skills/orbyn-setup/references/offline.md); external
+citations are attribution/update pointers, and current online facts remain
+unverified when network access is unavailable.
 
 Use evidence-led investigation and explicit ownership across the domain, API,
 persistence, clients and operations. For substantial engineering work, use the

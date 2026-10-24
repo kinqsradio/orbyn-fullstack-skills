@@ -35,11 +35,25 @@ discovery or effective model selection. State which changes affect future sessio
 and which were actually observed. Project defaults cannot override every host flag,
 environment setting or managed policy; do not claim a hard billing cap.
 
+Follow the [offline setup contract](references/offline.md). Use local instructions
+and references first; inspect available local tools without assuming internet,
+a hosted model or a model subscription. Source URLs remain attribution/update
+pointers. Setup and validation must not silently download missing dependencies.
+
 ## Consumer-aware setup
 
 Read the consuming project’s host definitions before applying the reference registry. The library may be installed without its model presets; installing skills does not authorize replacing the user’s preferred model. If the named tier or required processing mode is unavailable, report it and use only the permitted direct fallback.
 
 ## Select skills and project context
+
+Inspect existing company/repo skills before setup. Follow the
+[local ownership guide](references/project-skills.md): keep their canonical
+content under the consumer's `project-skills/` namespace, preserve supporting
+assets/credits, and register both host links. Reconcile legacy locations only
+within authorized scope after classifying ownership; never overwrite collisions.
+Keep local skills outside the shared catalog and public export. Use
+`--project-skills` to register them with the installer, or the local helper for
+registration without installing library skills.
 
 Use the [preset catalog](assets/presets.json) with the library installer. New
 installations default to `core`; `--all` is explicit. Presets are additive skill

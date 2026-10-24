@@ -102,8 +102,12 @@ only when requested and supported by your environment.
 ## Use it, adapt it, contribute back
 
 You can use, modify and redistribute the MIT-licensed material with the required
-notices. A fork can carry local conventions without needing access to Orbyn's
-product repository. To contribute, fork this repository, create a branch,
+notices. Company conventions belong in your consuming repository’s
+[project-skills namespace](skills/orbyn-setup/references/project-skills.md),
+separate from the shared library and public sync. The installer supports explicit
+backed-up migration of selected existing host skills and preserves company docs.
+The [offline contract](skills/orbyn-setup/references/offline.md) keeps instructions
+and licensed source references available locally. To contribute, fork this repository, create a branch,
 make a focused change, run validation and open a pull request here. New skills
 need a concrete routing gap and a useful input/output contract.
 

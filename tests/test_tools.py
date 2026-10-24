@@ -107,6 +107,30 @@ class SyncTests(unittest.TestCase):
             self.invoke('export', self.consumer, self.upstream, write=True)
         self.assertIn('Initial behavior', (self.upstream/'skills/example/SKILL.md').read_text())
 
+    def test_company_skills_are_never_imported_exported_or_hashed(self):
+        local = self.consumer/'project-skills/acme/acme-release'
+        local.mkdir(parents=True)
+        (local/'SKILL.md').write_text('Internal release policy')
+        (local/'LICENSE').write_text('Existing local credit')
+        before = sync.inventory(self.consumer)
+        self.invoke('check', self.consumer, self.upstream)
+        self.edit(self.upstream, 'Public update')
+        self.invoke('manifest', self.upstream, write=True)
+        self.commit()
+        self.invoke('pull', self.consumer, self.upstream)
+        (local/'SKILL.md').write_text('Updated internal release policy')
+        self.invoke('check', self.consumer, self.upstream)
+        self.git('checkout', '-b', 'feat/public-improvement')
+        self.edit(self.consumer, 'Public-safe contribution')
+        self.invoke('export', self.consumer, self.upstream, write=True)
+        self.assertEqual((local/'SKILL.md').read_text(), 'Updated internal release policy')
+        self.assertEqual((local/'LICENSE').read_text(), 'Existing local credit')
+        self.assertFalse((self.upstream/'project-skills').exists())
+        self.assertEqual(set(before), set(sync.inventory(self.consumer)))
+        self.assertFalse(any(p.startswith('project-skills/') for p in sync.inventory(self.consumer)))
+        with self.assertRaisesRegex(ValueError, 'allowlist'):
+            sync.safe_path(self.consumer, 'project-skills/acme/acme-release/SKILL.md')
+
     def test_divergent_edits_are_conflicts(self):
         self.edit(self.consumer, 'Consumer design')
         self.edit(self.upstream, 'Different public design')

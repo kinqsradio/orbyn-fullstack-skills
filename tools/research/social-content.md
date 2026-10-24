@@ -37,3 +37,19 @@ exact truncation, accessibility certification or upload acceptance. Live platfor
 requirements must be checked when a deliverable depends on them. Posting and
 scheduling remain separately instructed effects, with no automatic connector,
 global skill installation, account access or publication.
+
+
+## Offline source addition — 24 October 2026
+
+The original workflow was independently written after reviewing sources. We now
+also distribute unmodified, hash-pinned text references for offline inspection:
+
+- [Corey Haines social source record](../../skills/social-content/references/source-record.md),
+  with its MIT license and local Markdown references.
+- [Anthropic canvas-design source record](../../skills/social-preview/references/source-record.md),
+  with its Apache-2.0 license; font binaries/runtime are excluded.
+
+This addition changes the distribution, not the authorship of the active Orbyn
+social methods. Imported source text remains data with its own terms and authority
+limits. Attribution URLs remain source/update pointers; ordinary writing and
+preview work uses local instructions and supplied evidence.

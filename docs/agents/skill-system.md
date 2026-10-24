@@ -98,3 +98,14 @@ it must not add another competing policy document for the same concern.
   and identify the missing export step; HTML generation is not PDF/PNG evidence.
 
 These examples are routing expectations, not claims of executed model trials.
+
+
+## Consumer-owned skills and offline resources
+
+Before skill authoring or setup, classify shared library versus company/repo
+ownership with the [local skill guide](../../skills/orbyn-setup/references/project-skills.md).
+Company-specific skills live in the consuming checkout’s `project-skills/`
+namespace with both host links and stay outside the shared catalog/export.
+Read relevant local skills with the portable method; preserve user/project policy.
+Use the [offline contract](../../skills/orbyn-setup/references/offline.md) for
+local-first instructions, licensed snapshots and honest freshness limits.

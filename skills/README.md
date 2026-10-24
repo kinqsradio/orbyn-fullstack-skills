@@ -6,7 +6,11 @@ Start with [orbyn-workflow](orbyn-workflow/SKILL.md) and the
 [orbyn-plan](orbyn-plan/SKILL.md) for planning and
 [orbyn-setup](orbyn-setup/SKILL.md) for host configuration.
 
-Canonical folders are linked into Codex and Claude Code. Load only the relevant
+Shared folders are linked into Codex and Claude Code. Consumer-owned skills live
+separately under `project-skills/<company-or-repo>/<namespaced-skill>/`; follow the
+[ownership guide](orbyn-setup/references/project-skills.md). They are discovered
+by both hosts but excluded from this shared catalog and public sync.
+Load only the relevant
 skill body and references. Roles, stack boundaries and model/session policy live
 in `docs/agents/`. This index is generated from `catalog.json` and frontmatter by
 `python3 scripts/sync-agent-skills.py --write`.

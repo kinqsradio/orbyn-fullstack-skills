@@ -27,8 +27,12 @@ not included or installed. Their own licenses apply when obtained separately.
 ## Reviewed inspiration and external guidance
 
 Corey Haines's marketing/social skills and Anthropic's canvas-design were reviewed
-to inform the social workflow. No source text, code, fonts or artwork from those
-skills was copied. See the [research distinction](research/social-content.md).
+to inform the social workflow. The original active methods were independently authored. Later offline additions
+bundle unmodified text references: [Corey Haines social source record](../skills/social-content/references/source-record.md)
+(MIT, Copyright (c) 2025 Corey Haines) and
+[Anthropic canvas-design source record](../skills/social-preview/references/source-record.md)
+(Apache-2.0, with the original license). Each record pins its revision and hashes.
+No font binaries or artwork are included. See the [research distinction](research/social-content.md).
 UI guidance retains its primary GOV.UK/W3C and other research citations in the
 owning references. Citing an idea does not claim its author directly contributed
 to Orbyn's code or endorses this library.

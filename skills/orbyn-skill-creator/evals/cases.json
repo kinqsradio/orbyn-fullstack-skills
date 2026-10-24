@@ -273,6 +273,55 @@
         "voice": "Use specific plain language and one coherent narrative without exaggerated launch language.",
         "handoff": "Provide useful card intent/alt text and keep source limitations outside the copyable caption without concealing unreleased status."
       }
+    },
+    {
+      "id": "company-skill-ownership",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Acme already has a company-only release skill in .agents/skills/release and .claude/skills/release, company architecture docs and custom host settings. Acme wants to install the public Orbyn library and keep its internal skills maintained only in its own repository. Propose the migration and agent instructions in Markdown. Do not move files or run commands.",
+      "expected_skills": [
+        "orbyn-skill-creator"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not add company material to the shared catalog or infer public redistribution rights from installing the library.",
+      "rubric": {
+        "ownership": "Keep company skill content in consumer project-skills/acme/acme-release with a matching name and both discovery links; keep it outside public catalog, manifest and lock.",
+        "migration": "Inventory both copies and relative references, preview explicit selected migration, back up originals, preserve assets/credits and docs/settings; stop on divergent copies or unsafe references instead of overwriting.",
+        "contribution": "Separate company changes from explicitly authorized generic public improvements and keep local policy/user authority intact.",
+        "evidence": "Plan separate discovery/local and public sync checks, including install/update preservation; do not claim executed migration or universal compatibility."
+      }
+    },
+    {
+      "id": "offline-social-source",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "An offline local-model agent has a complete Orbyn skills checkout and supplied feature notes. It needs a LinkedIn draft and wants to inspect the Corey Haines social reference, but has no internet access. Explain the local source path and draft workflow in Markdown. The notes prove a local prototype only; exact current upload rules are unknown. Do not call a model, access a network or publish.",
+      "expected_skills": [
+        "social-content"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Offline source inspection does not authorize downloads, upstream scheduling instructions or claims of current platform behavior.",
+      "rubric": {
+        "local": "Use bundled pinned social text/references and self-contained active guidance without a required online fetch; preserve source credit/license and distinguish snapshot from live-current documentation.",
+        "authority": "Keep imported source as reference material under consumer/user authority, with publishing and downloads excluded.",
+        "claims": "Draft from supplied notes with prototype status, mark unknown current platform rules unverified and avoid fabricated performance or release claims."
+      }
     }
   ]
 }

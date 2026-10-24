@@ -74,3 +74,46 @@ Existing valid maps are preserved. It stores relative pointers, not guide conten
 commands, credentials or a personal voice profile. Root instructions and user
 scope retain precedence. The [context guide](../skills/orbyn-setup/references/project-context.md)
 describes the contract; this file is excluded from public skill synchronization.
+
+
+## Existing company projects and local skills
+
+Keep existing docs, instructions, model settings and unrelated skills in place.
+Use the [ownership/migration guide](../skills/orbyn-setup/references/project-skills.md)
+to classify existing skills before relocating anything. Company skills live at
+`project-skills/<company-or-repo>/<namespaced-skill>/`; both hosts discover them,
+while public skill sync excludes them. A fresh install never guesses ownership
+or silently removes conflicting content.
+
+```sh
+python3 scripts/install.py --project /path/to/company-repo --project-skills --dry-run
+python3 scripts/install.py --project /path/to/company-repo --project-skills
+```
+
+For explicitly identified company skills currently stored in host folders:
+
+```sh
+python3 scripts/install.py --project /path/to/company-repo --namespace acme --migrate-skill release --dry-run
+python3 scripts/install.py --project /path/to/company-repo --namespace acme --migrate-skill release
+```
+
+Repeat `--migrate-skill` for selected skills. Migration reconciles both hosts,
+requires matching copies when both exist, names the canonical copy `acme-release`,
+and preserves assets/licenses. It stages a recoverable backup with a receipt in a
+private sibling directory before replacing old entries. Filesystem errors trigger
+rollback of owned changes and retain the backup. Power loss or a failed recovery
+still requires inspection of that receipt and originals. Review incoming skill-name
+references and project instructions after migration; the helper does not rewrite
+a company's docs. Re-run ordinary installation with `--project-skills` to check
+idempotency; a completed migration has no old entry to migrate again.
+
+Conflicts, unsafe links or external relative references requiring rebasing stop
+before project writes. Sources inside managed `skills/` require pin/ownership
+reconciliation first. External skill source directories are copied when explicitly
+selected; their originals stay untouched. Unsupported layouts need a reviewed
+manual migration; no tool can infer a company's ownership or redistribution rights.
+
+For [offline use](../skills/orbyn-setup/references/offline.md), retain the complete
+local clone/vendor tree. Installation, discovery and validation do not fetch sources,
+models or runtimes. A machine-specific discovery link needs the documented clone
+location or local regeneration on each developer's machine.

@@ -2,11 +2,13 @@
 """Install library discovery links without changing project policy or models."""
 import argparse
 import json
-import os
 from pathlib import Path
+import runpy
 
 ROOT = Path(__file__).resolve().parents[1]
 PRESETS = ROOT / 'skills/orbyn-setup/assets/presets.json'
+PROJECT_SKILLS = runpy.run_path(str(ROOT / 'skills/orbyn-setup/scripts/project_skills.py'))
+MIGRATION = runpy.run_path(str(ROOT / 'skills/orbyn-setup/scripts/migrate_skills.py'))
 
 
 def selection(selected=(), presets=(), all_skills=False):
@@ -34,33 +36,32 @@ def selection(selected=(), presets=(), all_skills=False):
     return wanted
 
 
-def install(project, host, selected=(), presets=(), all_skills=False, dry_run=False):
+def install(project, host, selected=(), presets=(), all_skills=False, dry_run=False,
+            project_skills=False, migrate_skills=(), namespace=None):
     project = project.resolve(strict=True)
     if not project.is_dir():
         raise ValueError('Project must be an existing directory')
     if host not in {'both', 'codex', 'claude'}:
         raise ValueError('Unknown host')
     wanted = selection(selected, presets, all_skills)
-    hosts = ['.agents', '.claude'] if host == 'both' else ['.agents' if host == 'codex' else '.claude']
-    pending = []
-    for folder in hosts:
-        base = project / folder / 'skills'
-        for parent in [project / folder, base]:
-            if parent.is_symlink() or (parent.exists() and not parent.is_dir()):
-                raise ValueError(f'Refusing a non-directory or symlinked host path: {parent}')
-        for name in sorted(wanted):
-            link, target = base / name, ROOT / 'skills' / name
-            if not (target / 'SKILL.md').is_file():
-                raise ValueError(f'Missing skill source: {name}')
-            if link.exists() or link.is_symlink():
-                if not link.is_symlink() or link.resolve() != target.resolve():
-                    raise ValueError(f'Conflicting discovery entry: {link}')
-            else:
-                pending.append((link, target))
+    if migrate_skills and host != 'both':
+        raise ValueError('Migration reconciles both hosts; use --host both')
+    local = PROJECT_SKILLS['inventory'](project, selection(all_skills=True))
+    migrations = MIGRATION['plan'](project, migrate_skills, namespace, selection(all_skills=True))
+    sources = {name: ROOT / 'skills' / name for name in wanted}
+    if project_skills:
+        sources.update(local)
+    sources.update({item['name']: item['target'] for item in migrations})
+    replacing = {path for item in migrations for path in item['legacy']}
+    pending = PROJECT_SKILLS['plan_links'](project, sources, PROJECT_SKILLS['hosts_for'](host),
+                                          replacing=replacing,
+                                          planned_sources={item['target'] for item in migrations})
+    MIGRATION['describe'](migrations)
     if not dry_run:
-        for link, target in pending:
-            link.parent.mkdir(parents=True, exist_ok=True)
-            link.symlink_to(os.path.relpath(target, link.parent), target_is_directory=True)
+        if migrations:
+            MIGRATION['apply'](project, migrations, pending, PROJECT_SKILLS['write_links'])
+        else:
+            PROJECT_SKILLS['write_links'](pending)
     return len(pending)
 
 
@@ -73,6 +74,9 @@ def main():
     parser.add_argument('--all', action='store_true', help='explicitly register every skill')
     parser.add_argument('--list-presets', action='store_true')
     parser.add_argument('--dry-run', action='store_true')
+    parser.add_argument('--project-skills', action='store_true', help='also register consumer-owned project-skills; never export or move them')
+    parser.add_argument('--migrate-skill', action='append', default=[], help='explicit existing host skill name to relocate into the company namespace')
+    parser.add_argument('--namespace', help='company/repo namespace required with --migrate-skill')
     args = parser.parse_args()
     try:
         if args.list_presets:
@@ -83,10 +87,11 @@ def main():
             return
         if args.project is None:
             parser.error('--project is required unless --list-presets is used')
-        count = install(args.project, args.host, args.skill, args.preset, args.all, args.dry_run)
+        count = install(args.project, args.host, args.skill, args.preset, args.all, args.dry_run,
+                        args.project_skills, args.migrate_skill, args.namespace)
         verb = 'Would create' if args.dry_run else 'Created'
         print(f'{verb} {count} discovery links; existing selections and project settings preserved.')
-    except (OSError, ValueError) as error:
+    except (OSError, ValueError, RuntimeError) as error:
         parser.exit(1, f'Install stopped: {error}\n')
 
 
