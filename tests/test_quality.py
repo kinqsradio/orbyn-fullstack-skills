@@ -140,10 +140,11 @@ class EvaluationTests(unittest.TestCase):
 
     def test_prepare_keeps_answers_out_and_results_unverified(self):
         tasks = json.loads((self.path.parent/'tasks.json').read_text())
-        self.assertEqual(len(tasks), 22)
+        self.assertEqual(len(tasks), len(self.cases))
+        self.assertEqual({task['case_id'] for task in tasks}, set(self.cases))
         self.assertEqual(set(tasks[0]), {'case_id', 'trial', 'prompt'})
         report = evaluator.grade(self.path)
-        self.assertEqual(report['counts'], {'pass': 0, 'fail': 0, 'unverified': 22})
+        self.assertEqual(report['counts'], {'pass': 0, 'fail': 0, 'unverified': len(self.cases)})
         self.assertEqual(report['evidence_kind'], 'synthetic-fixture')
         before = self.path.read_bytes()
         with self.assertRaises(FileExistsError):
@@ -295,7 +296,7 @@ class EvaluationTests(unittest.TestCase):
         command = [sys.executable, str(ROOT/'skills/orbyn-skill-creator/scripts/evaluate.py'), 'grade', str(self.path)]
         result = subprocess.run(command, capture_output=True, text=True)
         self.assertEqual(result.returncode, 1)
-        self.assertEqual(json.loads(result.stdout)['counts']['unverified'], 22)
+        self.assertEqual(json.loads(result.stdout)['counts']['unverified'], len(self.cases))
         self.run['suite_sha256'] = '0'*64
         self.save()
         result = subprocess.run(command, capture_output=True, text=True)
