@@ -81,6 +81,12 @@ an explicit reuse decision, compatible license/notices, pinned snapshot hashes
 and existing source checks. Do not relocate approved offline support into an
 ignored folder and leave an active skill dependent on an absent download.
 
+Existing intentionally vendored code that the project builds or runs remains
+under its dependency/source owner and licensing contract. This research rule
+does not authorize deleting, moving or untracking that dependency. Promote new
+vendored code only as an explicit reviewed dependency change at its owning path,
+with the required notices and source manifest; do not commit the research folder.
+
 ## Compare to the Orbyn owner
 
 Map each material upstream change to the existing local module, dependency,
