@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Static discovery, catalog handoff and Markdown fragment checks; no execution."""
+import hashlib
 import re
 from pathlib import Path
 from urllib.parse import unquote
@@ -72,7 +73,8 @@ def check_incorporated_material(root, name, record):
     errors = []
     owner = (root/'skills'/name).resolve()
     for item in record.get('incorporated_material', []):
-        if not isinstance(item, dict) or not all(item.get(key) for key in ['source','copyright','license','local_path','license_file']):
+        if not isinstance(item, dict) or not all(isinstance(item.get(key), str) and item[key]
+                for key in ['source','revision','copyright','license','local_path','license_file','license_sha256']):
             errors.append(f'{name}: incomplete incorporated-material provenance')
             continue
         source = (root/item['local_path']).resolve()
@@ -82,4 +84,6 @@ def check_incorporated_material(root, name, record):
             errors.append(f'{name}: missing/escaping incorporated reference or license')
         elif item['copyright'] not in notice.read_text():
             errors.append(f'{name}: incorporated source copyright missing')
+        elif hashlib.sha256(notice.read_bytes()).hexdigest() != item['license_sha256']:
+            errors.append(f'{name}: incorporated license differs from pinned notice')
     return errors

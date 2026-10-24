@@ -522,7 +522,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/language-best-practices",
-      "changes": "Independently authored project-aware guidance and synthetic worked examples, informed by dated primary references linked locally; no external skill text or documentation snapshots imported. Consolidated the historically adapted TypeScript reference and its original Orbyn contract example into this owner, preserving the original MIT notice and source record; retired the separate discovery entrypoint. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines.",
+      "changes": "Independently authored project-aware guidance and synthetic worked examples, informed by dated primary references linked locally; no external skill text or documentation snapshots imported. Consolidated the historically adapted TypeScript reference and its original Orbyn contract example into this owner, preserving the original MIT notice and source record; retired the separate discovery entrypoint. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Review corrections clarify compiler/runtime and module contracts, distinguish original additions from retained adaptation, and pin the complete incorporated notice.",
       "incorporated_material": [
         {
           "relationship": "adapted",
@@ -533,7 +533,8 @@
           "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
           "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss. Added an original self-contained TypeScript contract guide and synthetic exhaustive-union example.",
           "local_path": "skills/language-best-practices/references/typescript.md",
-          "license_file": "skills/language-best-practices/references/typescript-LICENSE.txt"
+          "license_file": "skills/language-best-practices/references/typescript-LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
         }
       ]
     },

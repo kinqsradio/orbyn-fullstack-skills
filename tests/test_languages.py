@@ -37,6 +37,14 @@ class LanguageRoutingTests(unittest.TestCase):
         self.assertEqual(selected['cpp'], ['native/entry.C', 'native/types.hpp'])
         self.assertEqual(selected['c'], ['native/api.c'])
 
+    def test_all_typescript_module_variants_use_the_same_offline_owner(self):
+        paths = ['ui/View.tsx', 'src/types.d.ts', 'src/index.mts', 'scripts/build.cts']
+        result = router.route(paths)
+        self.assertEqual(result['guides'], [{'language':'typescript',
+            'reference':'references/typescript.md', 'paths':sorted(paths)}])
+        self.assertEqual(result['ambiguous'], [])
+        self.assertEqual(result['unmatched'], [])
+
     def test_relative_path_boundary(self):
         for path in ('', '.', '../secret.py', '/tmp/code.py', 'drive:code.py', 'a\\code.py', 'bad\x00.py'):
             with self.subTest(path=path), self.assertRaises(ValueError):

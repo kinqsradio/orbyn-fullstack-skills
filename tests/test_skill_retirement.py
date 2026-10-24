@@ -1,12 +1,14 @@
 """TypeScript consolidation upgrades known links without deleting foreign work."""
 import json
 import os
+import runpy
 from pathlib import Path
 import shutil
 import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 
 from test_tools import ROOT, installer, module
 
@@ -116,3 +118,31 @@ class SkillRetirementTests(unittest.TestCase):
         self.assertTrue((self.root/'.agents/skills'/OLD).is_symlink())
         self.assertEqual(changed.resolve(),foreign)
         self.assertEqual((foreign/'SKILL.md').read_text(),'New company work')
+
+    def test_generator_keeps_retired_links_when_replacement_creation_fails(self):
+        scripts = self.root/'scripts'; scripts.mkdir()
+        shutil.copy2(ROOT/'scripts/sync-agent-skills.py', scripts/'sync-agent-skills.py')
+        helper = self.root/'skills/orbyn-setup/scripts'; helper.mkdir(parents=True)
+        shutil.copy2(ROOT/'skills/orbyn-setup/scripts/project_skills.py', helper/'project_skills.py')
+        for name in ['orbyn-setup', NEW]:
+            base = self.root/'skills'/name; base.mkdir(exist_ok=True)
+            (base/'SKILL.md').write_text(f'---\nname: {name}\ndescription: Synthetic owner\n---\n')
+        (self.root/'skills/catalog.json').write_text(json.dumps({
+            'categories':['Setup'], 'skills':[{'name':n,'category':'Setup'} for n in ['orbyn-setup',NEW]],
+            'retired_skills':{OLD:NEW}}))
+        for host in ['.agents', '.claude']:
+            link = self.root/host/'skills'/OLD; link.parent.mkdir(parents=True)
+            link.symlink_to(os.path.relpath(self.root/'skills'/OLD, link.parent))
+        cli = scripts/'sync-agent-skills.py'
+        with mock.patch.object(sys, 'argv', [str(cli), '--write']), \
+                mock.patch.object(Path, 'symlink_to', side_effect=OSError('Injected filesystem failure')):
+            with self.assertRaisesRegex(OSError, 'Injected filesystem failure'):
+                runpy.run_path(str(cli), run_name='__main__')
+        for host in ['.agents', '.claude']:
+            self.assertTrue((self.root/host/'skills'/OLD).is_symlink())
+        self.assertFalse((self.root/'skills/README.md').exists())
+        retry = subprocess.run([sys.executable, str(cli), '--write'], capture_output=True, text=True)
+        self.assertEqual(retry.returncode, 0, retry.stderr)
+        for host in ['.agents', '.claude']:
+            self.assertTrue((self.root/host/'skills'/NEW/'SKILL.md').is_file())
+            self.assertFalse((self.root/host/'skills'/OLD).is_symlink())

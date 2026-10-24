@@ -67,7 +67,8 @@ This audit is not limited to TypeScript. It covers all 20 engineering principles
 architecture, backend/data contracts, security, CI, testing, worktrees, UI/content,
 social production and the language owner. The local language references cover
 JavaScript, Python, Go, Rust, Java, Kotlin, C#, Swift, C, C++, SQL and shell; the
-TypeScript owner remains separate. Each language guide has target discovery,
+TypeScript owner was separate at the released 55-skill baseline. The consolidated
+candidate below places its guide under the language owner. Each guide has target discovery,
 resource/error contracts, an original failure example and evidence limitations.
 No claim is made that these guides cover every language feature or have been
 compiled on every supported toolchain.
@@ -196,9 +197,40 @@ production service contracts, privacy-aware diagnostics, test strategy, async UI
 state and consumer verification maps, with polyglot/pagination/retry examples.
 Each of the 12 other language guides gains idiomatic maintainability/check
 guidance; TypeScript's full existing method/example moves into the same owner.
-The active suite has 77 cases: two existing selection identities migrate with
-TypeScript, and 16 development cases cover seven previously unrepresented
+The active suite has 79 cases: two existing selection identities migrate with
+TypeScript, and 18 development cases cover seven previously unrepresented
 execution owners plus production contracts and adjacent exclusions. All original
 61 case objects remain in the released baseline archive; historical trial
 records and frozen holdout criteria are not rewritten. These are prepared
 criteria, not new live-agent results.
+
+## Pre-merge review corrections
+
+The review found that discovery synchronization removed known retired links
+before creating their replacements. A disposable filesystem-failure regression
+failed on that ordering; replacement creation now completes before retirement.
+A failed registration retains old links and can be retried without deleting
+content. Preflight and idempotence do not make the operation an atomic filesystem
+transaction. The installer already used the safe order.
+
+Installation docs now match the smaller preset memberships and explain the
+retirement alias. Current routing points to the incorporated TypeScript guide;
+historical evaluation identities remain historical. The language overview
+distinguishes original additions from retained adapted guidance. The complete
+TypeScript notice has a pinned hash, so retaining only its copyright line cannot
+satisfy the incorporated-material check.
+
+The TypeScript guide now also covers compiler/config inheritance, strictness,
+module/emitter/runtime boundaries, deliberate public types and evidence. Added
+development cases exercise runtime module failures and interrupted retirement,
+without changing frozen holdouts or claiming fresh model measurements. No REA
+engine, adapter, setup or pin change belongs to this review.
+
+Review validation: 94 helper tests and static library checks pass for 54 skills,
+230 managed files, 176 Markdown documents and 79 case definitions. The unchanged
+TypeScript contract example compiles with the locally installed TypeScript
+5.9.3 under an isolated strict configuration; adding an unhandled lifecycle
+variant produces the expected exhaustive-consumer error. This qualifies that
+example only, not every consuming project, runtime or language toolchain. The
+frozen holdout objects, released baseline archive and original TypeScript
+notice/example bytes remain unchanged. No fresh live-model comparison was run.

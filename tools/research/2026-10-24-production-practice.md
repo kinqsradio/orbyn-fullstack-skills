@@ -36,3 +36,14 @@ Versions and framework recommendations stay conditional on consuming manifests.
 No language toolchains, external providers, telemetry services or security scans
 were installed/run. Prepared evaluation cases and synthetic examples do not
 prove live agent improvement or all-runtime compatibility.
+
+## TypeScript consolidation review
+
+The pre-merge review checked the official TypeScript handbook's
+[narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html),
+[strict configuration](https://www.typescriptlang.org/tsconfig/strict.html) and
+[module reference](https://www.typescriptlang.org/docs/handbook/modules/reference.html).
+Original local additions explain target/configuration inspection, public type
+contracts, module resolution versus runtime behavior and suitable evidence.
+The formerly adapted TypeScript guidance retains its source record and complete
+notice; no handbook text or additional upstream skill was imported.
