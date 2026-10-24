@@ -23,11 +23,11 @@ installer = load('language_installer', ROOT / 'scripts/install.py')
 
 
 class LanguageRoutingTests(unittest.TestCase):
-    def test_polyglot_contract_keeps_typescript_owner(self):
+    def test_polyglot_contract_selects_local_typescript_guide(self):
         result = router.route(['api/main.go', 'ui/state.ts', 'db/change.sql', 'README.md'])
         selected = {row['language']: row['reference'] for row in result['guides']}
         self.assertEqual(set(selected), {'go', 'typescript', 'sql'})
-        self.assertEqual(selected['typescript'], '../typescript-best-practices/SKILL.md')
+        self.assertEqual(selected['typescript'], 'references/typescript.md')
         self.assertEqual(result['unmatched'], ['README.md'])
 
     def test_header_is_ambiguous_and_uppercase_c_is_cpp(self):

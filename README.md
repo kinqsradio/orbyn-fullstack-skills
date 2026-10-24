@@ -1,6 +1,6 @@
 # Orbyn Fullstack Engineering Skills
 
-**55 connected agent skills for full-stack engineering with Codex and Claude Code.**
+**54 connected agent skills for full-stack engineering with Codex and Claude Code.**
 
 Architecture, API design, data migrations, language-aware implementation, web and mobile UX,
 debugging, review, CI and delivery—organized around a feature's complete path
@@ -52,7 +52,7 @@ explains the handoffs. [The catalog](skills/README.md) lists every skill.
 | Improve web/mobile task flows      | `orbyn-ui-design` + `orbyn-content-design` | Rendered UI with concise product language                |
 | Implement across languages         | `language-best-practices`                  | Target-aware local guides and resource/error contracts   |
 | Choose a technology stack          | `orbyn-stack-selection`                    | Constraint-led comparison, operating costs and exit path |
-| Model TypeScript state             | `typescript-best-practices`                | Shared schemas and explicit valid variants               |
+| Model TypeScript state             | `language-best-practices`                  | Shared schemas and explicit valid variants               |
 | Review a risky patch               | `interrogate`                              | Concrete findings with scenarios and evidence            |
 | Build contribution/release CI      | `orbyn-ci-design`                          | Scoped execution and reviewable promotion                |
 | Draft a post or carousel           | `social-content` + `social-preview`        | Evidence-backed copy and local visuals                   |
@@ -195,3 +195,12 @@ The agent routes these from the task; no separate skill invocation is required.
 Guidance and worked examples run from disk; current online support/pricing still
 requires verification. Contribution work stays local/private until deliberate
 publication under the [fork policy](skills/orbyn-worktree/SKILL.md).
+
+## Production best practices
+
+The existing owners also cover maintainable modules, polyglot contracts, bounded
+APIs and pagination, retry-safe effects, privacy-aware diagnostics, useful test
+boundaries, async UI recovery and consumer-owned verification recipes. TypeScript
+lives beside the other language guides under language-best-practices; its old
+installer name upgrades to that owner without creating another active skill.
+The agent selects the relevant methods from the task and preserves project policy.

@@ -30,7 +30,7 @@ routes complex work to the standard tier and bounded work to the light tier in
 | Social graphics and feed previews  | `social-preview`                           | Chosen copy + assets → editable visual source, rendered review and requested exports                |
 | Implementation in another language | `language-best-practices`                  | Actual files/manifests → one local language guide, preserved lifecycle and boundary contracts       |
 | Language/framework/storage choice  | `orbyn-stack-selection`                    | Constraints + baseline + primary evidence → recommendation, operating cost and exit/revisit trigger |
-| TypeScript contract                | `typescript-best-practices`                | Existing schema/callers → precise valid states                                                      |
+| TypeScript contract                | `language-best-practices`                  | Existing schema/callers → precise valid states                                                      |
 | Requested tests/TDD                | `tdd`                                      | Failure contract + allowed environment → focused regression and fix                                 |
 | Existing security findings         | `orbyn-security-remediation`               | Saved findings + current source → scoped fixes and authorized evidence; no new scan                 |
 | Concrete adversarial review        | `interrogate`                              | Candidate + intended behavior → actionable findings                                                 |

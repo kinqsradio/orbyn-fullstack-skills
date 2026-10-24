@@ -108,3 +108,14 @@ class SkillContractTests(unittest.TestCase):
                 self.assertTrue(method.is_relative_to(consumer))
                 self.assertTrue(method.is_file())
                 self.assertEqual(contracts.check_links(consumer, method), [])
+
+    def test_moved_material_requires_its_own_portable_license(self):
+        source = self.skill.parent/'references/moved.md'
+        source.parent.mkdir(); source.write_text('Moved maintained guidance')
+        notice = source.with_name('moved-LICENSE.txt')
+        record = {'incorporated_material':[{'source':'https://example.com/source','copyright':'Copyright Original Author','license':'MIT','local_path':str(source.relative_to(self.root)),'license_file':str(notice.relative_to(self.root))}]}
+        self.assertTrue(contracts.check_incorporated_material(self.root,'example',record))
+        notice.write_text('Copyright Original Author\nMIT')
+        self.assertEqual(contracts.check_incorporated_material(self.root,'example',record),[])
+        notice.write_text('Removed notice')
+        self.assertIn('copyright missing',' '.join(contracts.check_incorporated_material(self.root,'example',record)))

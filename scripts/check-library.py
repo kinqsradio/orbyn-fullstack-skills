@@ -8,7 +8,7 @@ import runpy
 import subprocess
 import sys
 
-from skill_contracts import check_audit, check_discovery, check_links
+from skill_contracts import check_audit, check_discovery, check_incorporated_material, check_links
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -38,6 +38,7 @@ def main():
         require(bool(re.search(r'^description: \S.+$', front, re.M)), f'{name}: missing single-line description')
         require((skill.parent/'LICENSE').is_file(), f'{name}: missing portable license')
         record = provenance.get(name, {})
+        errors.extend(check_incorporated_material(ROOT, name, record))
         require(bool(record.get('credit')) and bool(record.get('source')), f'{name}: incomplete attribution')
         require(record.get('relationship') in {'adapted','original','reference-adapter'}, f'{name}: unknown provenance relationship')
         if (skill.parent/'LICENSE').exists():
