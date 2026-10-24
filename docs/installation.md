@@ -1,5 +1,7 @@
 # Installation and project context
 
+The primary flow is [clone, then ask the agent to set up the target project](../README.md).
+The commands below are the agent/CI execution reference, not required human steps.
 Keep a clone of the complete library at a stable path. Python 3.11+ is needed
 for its helpers. From the library clone:
 
@@ -110,8 +112,8 @@ idempotency; a completed migration has no old entry to migrate again.
 Conflicts, unsafe links or external relative references requiring rebasing stop
 before project writes. Sources inside managed `skills/` require pin/ownership
 reconciliation first. External skill source directories are copied when explicitly
-selected; their originals stay untouched. Unsupported layouts need a reviewed
-manual migration; no tool can infer a company's ownership or redistribution rights.
+selected; their originals stay untouched. Unsupported layouts need an agent-led migration with reviewed
+path reconciliation; no tool can infer a company's ownership or redistribution rights.
 
 For [offline use](../skills/orbyn-setup/references/offline.md), retain the complete
 local clone/vendor tree. Installation, discovery and validation do not fetch sources,

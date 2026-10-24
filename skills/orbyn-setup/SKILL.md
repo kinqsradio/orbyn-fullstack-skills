@@ -55,6 +55,24 @@ independent setup. Do not silently guess ownership of a foreign installation.
 
 Read the consuming project’s host definitions before applying the reference registry. The library may be installed without its model presets; installing skills does not authorize replacing the user’s preferred model. If the named tier or required processing mode is unavailable, report it and use only the permitted direct fallback.
 
+## Agent-owned setup result
+
+Within an authorized setup request, resolve the actual consumer root and library
+clone, read consumer instructions, inventory current skills/docs/config and
+identify the relevant stack. Choose the default/core or justified additive
+selection yourself. Preview helper changes, migrate only clearly owned selected
+skills with backups, register shared/local discovery, then initialize/check the
+context map and add only source-grounded guide/owner pointers. Run local skill,
+context and applicable shared-pin checks. Do not ask the human to fill out a map
+or run a second setup invocation when you can inspect and complete it.
+
+Report the consumer path, installed/retained skill sets, canonical local namespace,
+preserved docs/config, backup/receipt, checks and unavailable host capabilities.
+The human's requested setup is the authorization for these local reversible steps;
+new models/providers, external publication and production effects retain their
+own authority requirements. A dry-run is an internal preflight, not an automatic
+additional approval gate.
+
 ## Select skills and project context
 
 Inspect existing company/repo skills before setup. Follow the

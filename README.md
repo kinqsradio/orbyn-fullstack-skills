@@ -48,41 +48,51 @@ Twenty focused principle skills refine difficult decisions; they are not twenty
 mandatory stages. Five REA-related skills are optional specialists for artifact
 investigation and REA maintenance. They do not install reverse-engineering tools.
 
-## Install into a project
-
-Python 3.11+ and Git are sufficient for the library's tooling. No API key, paid
-model call, application database or npm installation is required for static checks.
+## Clone, then ask your agent to set it up
 
 ```sh
 git clone https://github.com/kinqsradio/orbyn-fullstack-skills.git
-cd orbyn-fullstack-skills
-python3 scripts/check-library.py
-python3 scripts/install.py --project /path/to/your-project --host both
 ```
 
-The installer links selected canonical skill folders into `.agents/skills` for
-Codex and `.claude/skills` for Claude Code. The default `core` preset registers
-12 skills. Add `--preset core --preset creator` for engineering and social work,
-use `--skill how --skill architect` for a custom selection, or `--all` for all 50.
-Use `--list-presets` to explore and `--dry-run` to preview. Selections are additive;
-existing links remain installed. Keep the library clone at a stable path. Conflicting files and
-links are refused; project instructions, models, MCP connections and credentials
-are not overwritten. [Installation details](docs/installation.md) include pinned
-copies for consumers that do not want external symlinks.
+Open your existing project in Codex, Claude Code or another tool-using agent and
+provide the local clone path. For example:
 
-Examples after discovery:
+> Set up Orbyn Engineering skills from `/path/to/orbyn-fullstack-skills` in my
+> existing project at `/path/to/my-project`. Read its instructions first. Inspect
+> existing skills and docs, preserve company work and settings, choose the relevant
+> skills, migrate clear company-owned skills into a local namespace with a backup,
+> configure discovery and project pointers, and run the setup checks yourself.
+> Keep company content outside public sync. Ask only for a consequential decision
+> you cannot resolve from the project.
+
+The agent reads the clone’s `AGENTS.md` and setup skill, chooses its helpers and
+completes the authorized steps. You do not need to invoke individual skills,
+select flags, create catalogs or move folders by hand. The default core includes
+setup and skill ownership routing. The clone also works with a local model and
+available filesystem/shell tools; no hosted subscription or API key is required
+for static setup checks. Python 3.11+ and Git are tooling prerequisites.
+
+The agent preserves existing docs, instructions, models, connectors and secrets.
+It inventories conflicting skill copies before migration and keeps a recoverable
+backup. It can complete clear owned changes autonomously; unresolved ownership
+or missing permissions remain explicit. Keep the clone at a stable path or ask
+for a reviewed pinned vendor copy for a portable team installation.
+
+Then describe ordinary work:
 
 ```text
-Use how to trace this save action from the screen to its database effect.
-Use orbyn-workflow and orbyn-backend-design to implement this API change.
-Use orbyn-data-migration to plan the format transition; do not run it in production.
-Use social-content and social-preview to introduce this implemented feature.
+Trace this save action from the screen to its database effect.
+Implement an authenticated task move API using our existing patterns.
+Plan this stored-format transition; do not run it in production.
+Write a LinkedIn introduction from these feature notes and preview the carousel.
 ```
 
-Host syntax and discovery can vary. A fresh session may be required. Read the
-skill's `SKILL.md` directly if the host does not follow symlinks. The consuming
-project's instructions and actual tools take precedence. Installing a skill does
-not execute its helpers or grant permission for external actions.
+The workflow selects relevant methods and local company skills. CLI options,
+presets and explicit helper commands are available to the agent and CI in the
+[installation guide](docs/installation.md); they are not extra required human
+invocations. Host discovery can vary and may need a fresh session. Agents can
+read the local `SKILL.md` directly when discovery is unavailable; installing
+instructions does not prove a host loaded them or grant external-action authority.
 
 ## Bring your own stack
 

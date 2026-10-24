@@ -5,6 +5,19 @@ private-repository history. The consuming project's instructions, user scope and
 host permissions take precedence over these reference defaults. Resolve the
 target checkout and [project context](docs/agents/stack.md) before applying examples.
 
+## Agent-led initial setup
+
+When the human asks to set up this library in an existing project, read
+[orbyn-setup](skills/orbyn-setup/SKILL.md) and complete the setup yourself. Resolve
+the consuming root from the request/workspace; ask for a path only when it is
+missing or ambiguous. Read that project's instructions before any writes.
+Inventory skills/docs/config, classify ownership, choose a suitable preset, run
+the helper dry-run, perform authorized backed-up migration/registration, create
+or preserve valid context pointers and run the checks. Return the actual result,
+backup location and limitations. Do not send the human a chain of skill names or
+commands to execute. Preserve ambiguous foreign material and continue independent
+work; never infer permission for model/provider changes or public export.
+
 Keep one canonical skill folder in `skills/`, catalog relationships in
 `skills/catalog.json`, and generated discovery links for both hosts. Read
 [skill maintenance](skills/orbyn-skill-creator/SKILL.md) for changes. Do not
