@@ -8,7 +8,7 @@ import unittest
 from test_tools import ROOT, module
 
 scope = module('ci_scope', ROOT/'skills/orbyn-ci-design/scripts/ci_scope.py')
-POLICY = dict(schema_version=1, docs_files=['README.md'], docs_prefixes=['docs/'],
+POLICY = dict(schema_version=1, docs_files=['README.md', 'LICENSE'], docs_prefixes=['docs/'],
               skills_files=['AGENTS.md', 'scripts/install.py'],
               skills_prefixes=['skills/', 'project-skills/', 'docs/agents/'],
               deployment_files=['package-lock.json'], deployment_prefixes=['backend/', 'packages/'],
@@ -20,7 +20,7 @@ class ScopeTests(unittest.TestCase):
         return scope.classify(paths, POLICY, complete)
 
     def test_docs_do_not_run_or_deploy_the_application(self):
-        data = self.decision(['README.md', 'docs/setup.md'])
+        data = self.decision(['README.md', 'docs/setup.md', 'LICENSE'])
         self.assertEqual(data['scope'], 'docs')
         self.assertFalse(data['run_app'])
         self.assertFalse(data['deploy'])
