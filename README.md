@@ -173,6 +173,13 @@ records 17/17 routing and 5/5 artifact passes against a previous-library baselin
 of 16/17 and 5/5. It supports one routing correction, with explicit trial limits;
 it does not establish general model improvement or Claude runtime behavior.
 
+The [24 October setup and handoff trials](docs/evaluations/2026-10-24-setup-handoffs.md)
+compare six focused cases against the released library. The final candidate
+passed 1/1 routing and 5/5 outcome cases versus 1/1 and 4/5 at baseline. The
+corrected recovery answer explicitly states crash/power-loss limits. Earlier
+failures and captured evidence are retained; these are single-run development
+results with unblinded lead grading, not independent qualification.
+
 For substantive continuation, the optional [handoff contract](skills/orbyn-workflow/references/handoffs.md)
 records scope, candidate, ownership, observed checks and next action. Its offline
 checker rejects stale revisions and inconsistent completion claims; receiving

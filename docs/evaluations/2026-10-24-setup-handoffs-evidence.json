@@ -1,0 +1,1553 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "captured bounded host trials with unblinded lead review",
+  "protocol": {
+    "schema_version": 1,
+    "fixture_version": 1,
+    "host": "Codex CLI 0.163.0-alpha.10.2; ephemeral; read-only; user-config/plugins/apps/memory/delegation/browser disabled; global skills disabled; full 54-skill selection; first-response routing fixture v1",
+    "model": "gpt-6.1-sol; effort=medium; requested service_tier=default; fast/ultrafast disabled; effective server tier not independently exposed",
+    "fixture_sha256": {
+      "AGENTS.md": "da2f9192e54d8e8827a65a4a03ff81b7f6a819288fdf81c56230d006e6731337",
+      "CLAUDE.md": "2c65121ca829ee31aa9f031a6549d7314aa2cbaec09fd47c5480137702a667f2",
+      "docs/stack.md": "358449060ec3cfa669d20a991a0df7af198487f2cfe5090a91aea71f75d37862",
+      "docs/design.md": "84dbaca42170439419ae2af660eb1ea9b9be7dd43bb9a8ce4942ccb6c543a1ce",
+      "docs/voice.md": "7d0b02a82c7b30eb77d278f0acc0d4da933df8670e0e673c266e32454932f6b1",
+      ".agents/orbyn-context.json": "b8711ed3cd2c59b2b22a6ce1fae1524a257610692a6d1fbdcce164eb14750b29",
+      "src/domain.ts": "94814400bb065a4177a95a8b15301126c1658aecd52cc9c29bc9c92bfdab5d63",
+      "src/ui.ts": "b36b7247e21c553dce8dcdf3235aab9ec913a5cf475611afdf7f30b1e83c655b",
+      "src/api.ts": "c2470a1ebddfb324ab49e09cc6889234e8308d727f072fb904ba4d99567dc723",
+      "src/store.ts": "85d7ef91941d30230c5238d1f6c5e76da62513db41ca1537fa99b2654981296d",
+      "src/worker.ts": "5b39500f4ba4677485a8d8d00451ffd95242d9468250fb785bc629502a2f6cd3",
+      "docs/decisions.md": "67f49e7a4049398719a524f497ae45dfce3b100aa5b516654d59089474ecb483",
+      "inputs.md": "622a09024f44d6b8dbde4bf0f00eec71a70a0df38285d32e358b9bbfc45db355",
+      "approval.diff": "7960731e3e0c41626ec934046bd9b2332e29202dcc7b41a4d955803e2a53b0aa"
+    },
+    "routing_scope": "first response and observed skill reads; not task implementation",
+    "outcome_scope": "final Markdown artifact; unblinded lead grading; no browser/native/provider validation",
+    "grading_policy": "Freeze case rubrics before observation; inspect actual commands/answers; keep all failures; no heldout or Claude claim",
+    "trials_per_case": 1,
+    "parallel_limit": 2,
+    "timeout_seconds": 240,
+    "case_ids": [
+      "refine-prompt-without-executing",
+      "small-code-task-no-prompt-detour",
+      "public-only-consumer-hold",
+      "stale-handoff-pickup",
+      "cursor-project-setup",
+      "failed-skill-registration"
+    ],
+    "baseline": "40d323c6007489e704bd60a6ea2eb97c6429dfac",
+    "initial_candidate": "40c0db2f932ae21a209eb54d8ea71b766d90ecb5",
+    "suite_sha256": "3a6b288cf17e505c43967399de92ccdb5f9c72894f1faa4a6f5c0f9da11769f9"
+  },
+  "runner_sha256": "44ac84d4beefa91b6e59e895d2b4de77852e6aa9bfe37f828892dcabde7f3bac",
+  "limits": "Development cases, one trial per revision/case, post-observation corrections, no blinded or independent qualification. No Claude/Cursor runtime or offline-model inference.",
+  "conditions": {
+    "baseline": {
+      "revision": "40d323c6007489e704bd60a6ea2eb97c6429dfac",
+      "counts": {
+        "pass": 5,
+        "fail": 1,
+        "unverified": 0
+      },
+      "results": [
+        {
+          "case_id": "cursor-project-setup",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "cursor-project-setup/events.jsonl": "27f511bf597ee875a4c0e0ec0b77143626d657eabe1e8bb56ab67ab5c031838c",
+            "cursor-project-setup/answer.md": "6a5e7292a824875529a2f83e8f376cec2df6328100d85091516cda941ea14b45"
+          },
+          "duration_ms": 34230,
+          "total_tokens": 96264
+        },
+        {
+          "case_id": "failed-skill-registration",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "fail",
+          "status": "fail",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "failed-skill-registration/events.jsonl": "ac57832a625792262acbca6c1cf637b366829e790889690942e30b36eb0bebe7",
+            "failed-skill-registration/answer.md": "09780a99199f253338bc9c0886702334e9cd4b918dbb974d8f7c61790f73abf9"
+          },
+          "duration_ms": 39722,
+          "total_tokens": 138587
+        },
+        {
+          "case_id": "public-only-consumer-hold",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "fail",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "public-only-consumer-hold/events.jsonl": "0ef6fe9e4bf485b77c5ac2e474385e51094d285357a89c62e36c64fbaa0cec8d",
+            "public-only-consumer-hold/answer.md": "d8872bcbb4915d0ebfd8d09a16c128d03b43ff93d877f2631912abad346d3da4"
+          },
+          "duration_ms": 28167,
+          "total_tokens": 76981
+        },
+        {
+          "case_id": "refine-prompt-without-executing",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "fail",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "refine-prompt-without-executing/events.jsonl": "9008fa659e66c4afadf10c6b070abcbd7858b131e056cf4d7d1a62e0729a7f0a",
+            "refine-prompt-without-executing/answer.md": "6df489867fe4aedae8ee73fbce092910c8c5026c175c74270efc4bcd60ecc1e8"
+          },
+          "duration_ms": 16878,
+          "total_tokens": 13574
+        },
+        {
+          "case_id": "small-code-task-no-prompt-detour",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "small-code-task-no-prompt-detour/events.jsonl": "79b06db5b8dea664e57a29e4a24a53d80885d842a11c843b599e2be5e7a0904c",
+            "small-code-task-no-prompt-detour/answer.md": "5b088b2610917678623b1327e1dea7b9ce93d25cea3feaea3bddddddd535bebf"
+          },
+          "duration_ms": 29422,
+          "total_tokens": 92722
+        },
+        {
+          "case_id": "stale-handoff-pickup",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "fail",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "stale-handoff-pickup/events.jsonl": "051a54d471ed60f40ef581e1c9d94c309ce0cc669ba987828f0085d74fc1ac8a",
+            "stale-handoff-pickup/answer.md": "4b06ef87fefc4915b16a4f2195ae2d94b8a863eb89804cf29ee003cfc47f44a2"
+          },
+          "duration_ms": 23928,
+          "total_tokens": 57262
+        }
+      ],
+      "captures": [
+        {
+          "case_id": "public-only-consumer-hold",
+          "kind": "outcome",
+          "prompt": "The prior public/product release is already merged. Improve public skills only; the product pin must stay at that approved release until I ask for another integration. Explain the delivery boundary.",
+          "answer": "The public skill library owns this work. I\u2019d refine the existing skill owners and their reusable guidance, updating catalog entries and references only where needed. Private product policy stays outside the public contribution.\n\nThe delivery boundary is:\n\n- **Public:** prepare skill improvements as a public-only candidate. Any later public merge would not authorize product integration.\n- **Product:** keep the pin at the already approved merged release. Leave vendored skills, managed hashes, generated discovery and consumer configuration unchanged.\n- **Future integration:** wait for your explicit request, then import the actual merged public SHA and verify the consumer update separately.\n\nThe prior release is complete; there is no outstanding consumer handoff to finish. Public improvements may advance independently while the product intentionally remains behind.\n\nPer [AGENTS.md](/fixture/baseline/public-only-consumer-hold/AGENTS.md), this is a proposal only. No files were changed, checks run, or release actions taken.\n",
+          "observed_skill_reads": [
+            "orbyn-skill-creator"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g AGENTS.md -g CLAUDE.md -g .cursorrules -g codex.md -g inputs.md -g 'src/**' -g '\"'!.git'\"' -g '\"'!library/**'\"'\"",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md; rg --files .agents/skills/orbyn-skill-creator .agents/skills/orbyn-upstream-review .agents/skills/orbyn-workflow'",
+            "/bin/zsh -lc 'cat .agents/skills/orbyn-skill-creator/SKILL.md .agents/skills/orbyn-upstream-review/references/release-handoff.md'",
+            "/bin/zsh -lc 'for p in .agents/AGENTS.md .agents/docs/agents/skill-system.md .agents/docs/agents/stack.md .agents/docs/agents/documentation.md .agents/skills/orbyn-setup/references/project-skills.md; do if test -f \"$p\"; then cat \"$p\"; fi; done'"
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "promotion": {
+              "status": "pass",
+              "criterion": "Leave the consumer pin and repository untouched, avoid routine builder messages and do not reopen completed reconciliation. A public merge is not permission for another consumer import."
+            }
+          },
+          "duration_ms": 28167,
+          "usage": {
+            "input_tokens": 76382,
+            "cached_input_tokens": 66688,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 599,
+            "reasoning_output_tokens": 20
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "0ef6fe9e4bf485b77c5ac2e474385e51094d285357a89c62e36c64fbaa0cec8d",
+            "answer.md": "d8872bcbb4915d0ebfd8d09a16c128d03b43ff93d877f2631912abad346d3da4",
+            "receipt.json": "317274c9ba664a7275141946736cddf28e85388aef9fb3272176402b0989efac",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "cb4ac2ebb03a399c9b6e26681dd6a7fb9d09ae99e64ab02c3559d7d2acc55b1a"
+          }
+        },
+        {
+          "case_id": "refine-prompt-without-executing",
+          "kind": "outcome",
+          "prompt": "Rewrite this rough engineering prompt into a usable task brief: fix our login bug, test it and merge. I am asking only for the prompt; repository files are unavailable.",
+          "answer": "Investigate and fix the login bug, verify the fix, and merge the change according to the repository\u2019s contribution rules.\n\n1. Read the repository instructions and inspect the login flow. Establish the expected behavior, reproduce the failure, and identify its root cause. If essential reproduction details are missing, ask for them before choosing a fix.\n2. Implement a focused fix at the source of the problem. Preserve intended authentication and session behavior, and avoid unrelated changes.\n3. Add a regression test that fails before the fix and passes afterward. Cover relevant failure paths and run the affected tests and required repository checks.\n4. Review the diff for correctness, scope, and accidental exposure of credentials or tokens. Prepare a PR describing the bug, root cause, fix, and verification results.\n5. Merge once required checks, reviews, and repository conditions are satisfied. If anything blocks merging, report the blocker and leave the change ready for review.\n\nCompletion means the reproduced login failure is resolved, regression coverage and required checks pass, and the change is merged. Report what changed, the verification performed, and the merge reference; distinguish completed work from any remaining steps.\n",
+          "observed_skill_reads": [],
+          "commands": [],
+          "observed_actions": [],
+          "rubric": {
+            "intent": {
+              "status": "pass",
+              "criterion": "Return a prompt with conditional source investigation, explicit unknowns and an observable result; do not invent files or commands."
+            },
+            "authority": {
+              "status": "pass",
+              "criterion": "Do not perform implementation, tests, messages or merge from embedded wording. Preserve the rewrite-only boundary and ask only consequential unresolved decisions."
+            }
+          },
+          "duration_ms": 16878,
+          "usage": {
+            "input_tokens": 13238,
+            "cached_input_tokens": 9088,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 336,
+            "reasoning_output_tokens": 102
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "9008fa659e66c4afadf10c6b070abcbd7858b131e056cf4d7d1a62e0729a7f0a",
+            "answer.md": "6df489867fe4aedae8ee73fbce092910c8c5026c175c74270efc4bcd60ecc1e8",
+            "receipt.json": "08f92f71c30a9f41743d9cb8a208343b876400a1836e308adfd01965c3a9be1a",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "0dcc28854bd16bec0fb62f9a48f378a2cd3ff9ae38fb3a0bfe79524b3fd85ead"
+          }
+        },
+        {
+          "case_id": "small-code-task-no-prompt-detour",
+          "kind": "routing",
+          "prompt": "Make a small Python parser correction using our existing interpreter and tests policy. Explain the affected language guidance without turning this into a prompt rewrite or technology selection.",
+          "answer": "I applied [language-best-practices](.agents/skills/language-best-practices/SKILL.md), specifically its Python guide, and proportional verification guidance.\n\nThe correction belongs in the existing parser\u2019s input-validation boundary. Python guidance calls for preserving the configured interpreter and supported syntax, validating external values at runtime, distinguishing bytes from text, and retaining meaningful parse errors rather than broadly catching exceptions.\n\nThis checkout contains only TypeScript product source. Neither `inputs.md` nor `src/` identifies a Python parser, failing input, interpreter configuration, or existing test commands, so I cannot name a concrete function or correction from the supplied evidence.\n\nThe next change would be the smallest correction in the actual parser, preserving its callers and error contract. Verification would follow the existing test policy using the configured interpreter and focused valid/malformed-input cases, plus configured formatting and type checks where applicable. No prompt rewrite or technology selection is needed.\n\nPer `AGENTS.md`, this is a proposal only; no files were changed and no tests were run.\n",
+          "observed_skill_reads": [
+            "how",
+            "language-best-practices",
+            "orbyn-ci-design"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g 'AGENTS.md' -g 'CLAUDE.md' -g '.cursorrules' -g 'codex.md' -g 'inputs.md' -g 'src/**' -g '\"'!library/**'\"' -g '\"'!**/tests/**'\"'\"",
+            "/bin/zsh -lc \"cat AGENTS.md CLAUDE.md inputs.md; rg -n 'python|parser|interpreter|test' src\"",
+            "/bin/zsh -lc \"cat .agents/skills/language-best-practices/SKILL.md; rg --files -g '\"'!library/**'\"' -g '\"'!**/tests/**'\"' -g '\"'!**/test/**'\"' -g '*python*' -g '*.py' -g '*pyproject*' -g '*pytest*' -g '*requirements*'; cat src/api.ts src/domain.ts src/store.ts src/ui.ts src/worker.ts\"",
+            "/bin/zsh -lc 'cat .agents/skills/language-best-practices/references/python.md .agents/skills/how/SKILL.md .agents/skills/orbyn-ci-design/SKILL.md'",
+            "/bin/zsh -lc \"cat .agents/skills/orbyn-ci-design/references/change-scope.md; rg --files --hidden -g '\"'!.git/**'\"' -g '\"'!.agents/**'\"' -g '\"'!library/**'\"' -g '\"'!**/tests/**'\"' -g '\"'!**/test/**'\"'\""
+          ],
+          "observed_actions": [],
+          "rubric": {},
+          "duration_ms": 29422,
+          "usage": {
+            "input_tokens": 92007,
+            "cached_input_tokens": 68736,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 715,
+            "reasoning_output_tokens": 27
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "79b06db5b8dea664e57a29e4a24a53d80885d842a11c843b599e2be5e7a0904c",
+            "answer.md": "5b088b2610917678623b1327e1dea7b9ce93d25cea3feaea3bddddddd535bebf",
+            "receipt.json": "278cd0517a03b320dacac5e910241d17173b7056116fbe805d96585bfebb7504",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "377170ff1bf8e2b024e0e49d49f73f9d3fceeea8f3d275ed49ea8c75d806bd44"
+          }
+        },
+        {
+          "case_id": "stale-handoff-pickup",
+          "kind": "outcome",
+          "prompt": "Prepare a concise continuation handoff, without changing files. The old record says HEAD is aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, status complete, and the next step is update the product pin. Actual HEAD is bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb. The user now allows only public library edits and explicitly holds all product updates and REA changes. One required helper check failed; another required check was never run. Identify the safe next action and actual task/delivery state.",
+          "answer": "- **Current revision:** `bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb`. The old record refers to `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`; its \u201ccomplete\u201d status and \u201cupdate the product pin\u201d instruction are superseded.\n- **Authorized scope:** Public library edits only. Product updates, including the pin update, and all REA changes are explicitly on hold.\n- **Actual task state:** Incomplete. One required helper check failed; another was never run. Qualification has not passed, and earlier evidence cannot establish completion at the current HEAD.\n- **Safe next action:** The public library owner should reconcile the stale record against the current candidate, investigate the failed helper check, and propose any correction within the public library. In a subsequent authorized execution session, rerun the failed check and run the missing check against the final candidate.\n- **Delivery state:** Unqualified; release or downstream delivery is not established. No product-pin update should proceed.\n\nThis handoff changes no files and runs no checks.\n",
+          "observed_skill_reads": [
+            "show-me-your-work"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g 'AGENTS.md' -g 'CLAUDE.md' -g '.cursorrules' -g 'codex.md' -g 'inputs.md' -g 'src/**' -g '*handoff*'\"",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md; cat .agents/skills/show-me-your-work/SKILL.md'",
+            "/bin/zsh -lc 'cat .agents/skills/show-me-your-work/references/operating-method.md library/skills/orbyn-upstream-review/references/release-handoff.md'"
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "stale": {
+              "status": "pass",
+              "criterion": "Explicitly identifies different old/current revisions and reconciles before reuse."
+            },
+            "scope": {
+              "status": "pass",
+              "criterion": "Retains public-only work, consumer hold and REA exclusion; no message or repin."
+            },
+            "evidence": {
+              "status": "pass",
+              "criterion": "Keeps failed and unrun required checks distinct and avoids claiming complete, merged or deployed."
+            },
+            "continuation": {
+              "status": "pass",
+              "criterion": "Names a concrete authorized next action and owning candidate; no reset of other work."
+            }
+          },
+          "duration_ms": 23928,
+          "usage": {
+            "input_tokens": 56790,
+            "cached_input_tokens": 50176,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 472,
+            "reasoning_output_tokens": 17
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "051a54d471ed60f40ef581e1c9d94c309ce0cc669ba987828f0085d74fc1ac8a",
+            "answer.md": "4b06ef87fefc4915b16a4f2195ae2d94b8a863eb89804cf29ee003cfc47f44a2",
+            "receipt.json": "375c60c30494a7aefbf6779da31655be5e3fdbb7ff2130f7a4d3c5b27c16d252",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "019378c8a0f6a3f9030a22a8b3783370b116897f14bfd1834fbe3a2946a0fb29"
+          }
+        },
+        {
+          "case_id": "cursor-project-setup",
+          "kind": "outcome",
+          "prompt": "Plan local skill setup for a Cursor project without writing files. It already has company rules in .cursor/rules and an unrelated company skill in .cursor/skills. A matching shared how skill is already linked in .agents/skills. Keep all existing guidance and model settings. Explain whether duplicate registration is necessary, how to preview the selected paths, and what evidence still needs a running host.",
+          "answer": "Use the existing shared `how` link as the selected setup. Keep company guidance under its current owner.\n\n- Preserve `.cursor/rules`, the unrelated skill in `.cursor/skills`, existing project instructions, and all model settings. No migration, model preset, or replacement rules are needed.\n- Keep `.agents/skills/how` pointing to the canonical library `skills/how` directory. For a Cursor version supporting `.agents/skills`, duplicate registration under `.cursor/skills/how` is unnecessary. Avoid copying the skill into a rule.\n- Treat Cursor discovery as a runtime verification item. The local installer supports `codex`, `claude`, and `both`; it has no Cursor-specific mode.\n\nTo preview only the selected shared registration, the proposed command is:\n\n```sh\npython3 library/scripts/install.py \\\n  --project /absolute/path/to/cursor-project \\\n  --host codex --skill how --dry-run\n```\n\nHere, `codex` selects the helper\u2019s `.agents/skills` destination. It does not configure Cursor or change models. Explicit `--skill how` avoids installing the default preset. A matching existing link should require zero new links.\n\nThe helper reports a count, so also inspect the selected mapping:\n\n```text\n<project>/.agents/skills/how \u2192 <library>/skills/how\n```\n\nConfirm its resolved target, readable `SKILL.md`, and supporting references. Preserve any collision for review.\n\nA running Cursor host is still needed to establish that its installed version discovers the link, loads the intended skill, retains company guidance, and uses the existing effective model settings. Static paths and a dry-run cannot prove those behaviors.\n\nI read `orbyn-setup`; no files were changed or helpers executed. This fixture contains the shared link but no `.cursor` directory, so preservation of the described company files remains a plan based on your supplied context.\n",
+          "observed_skill_reads": [
+            "orbyn-setup"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g 'AGENTS.md' -g 'CLAUDE.md' -g '.cursorrules' -g 'codex.md' -g 'inputs.md' -g 'SKILL.md' -g '\"'!library/**'\"' -g '\"'!node_modules/**'\"' -g '\"'!src/**'\"' -g '\"'!.git/**'\"'\"",
+            "/bin/zsh -lc 'cat AGENTS.md; cat .agents/skills/orbyn-setup/SKILL.md'",
+            "/bin/zsh -lc \"cat CLAUDE.md inputs.md; ls -la .cursor .cursor/rules .cursor/skills .agents/skills src; rg --files --hidden -g '\"'!library/**'\"' -g '\"'!.git/**'\"' -g '\"'!node_modules/**'\"' | head -60; cat .agents/skills/orbyn-setup/references/offline.md .agents/skills/orbyn-setup/references/project-skills.md\"",
+            "/bin/zsh -lc \"rg -n -i 'cursor|dry-run|--skill|--host|--project|agents/skills' library/scripts/install.py library/skills/orbyn-setup/references library/docs/agents/roles.md library/docs/agents/model-policy.md library/AGENTS.md | head -100\"",
+            "/bin/zsh -lc \"cat library/scripts/install.py library/AGENTS.md library/docs/agents/roles.md library/docs/agents/model-policy.md; rg -n 'dry_run|exists|already|symlink|discovery|HOST' library/scripts/*skill* library/scripts/install*\""
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "preservation": {
+              "status": "pass",
+              "criterion": "Preserves existing project rules, unrelated skills and models."
+            },
+            "selection": {
+              "status": "pass",
+              "criterion": "Recognizes Cursor compatibility with .agents/skills; duplicate native links are optional, not required."
+            },
+            "preflight": {
+              "status": "pass",
+              "criterion": "Provides a scoped dry-run or collision preflight for actual selected host paths."
+            },
+            "limits": {
+              "status": "pass",
+              "criterion": "Separates file-layout checks from observed running-host discovery."
+            }
+          },
+          "duration_ms": 34230,
+          "usage": {
+            "input_tokens": 95362,
+            "cached_input_tokens": 78720,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 902,
+            "reasoning_output_tokens": 66
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "27f511bf597ee875a4c0e0ec0b77143626d657eabe1e8bb56ab67ab5c031838c",
+            "answer.md": "6a5e7292a824875529a2f83e8f376cec2df6328100d85091516cda941ea14b45",
+            "receipt.json": "20dba6002cbea9aa3e9334cace60f5db5ef3ae55d96ac92a72f023d149763c2e",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "5f19c2d0989c5ee2e26ed4f8f4d318300c97e90d4ebfcef88c225cea027b4c33"
+          }
+        },
+        {
+          "case_id": "failed-skill-registration",
+          "kind": "outcome",
+          "prompt": "Review recovery for skill installation, without running anything. Two new discovery links were planned. The first was created, then another writer replaced it with their own directory. Creation of the second link failed. A pre-existing how link was present before this attempt. What should the installer preserve, undo and report? Do not change project rules or touch the target skill source.",
+          "answer": "Recovery belongs in `write_links()` in `library/skills/orbyn-setup/scripts/project_skills.py`, with failure reporting in `library/scripts/install.py`.\n\n- **Preserve** the other writer\u2019s directory at the first link\u2019s path, the pre-existing `how` link, project rules, and the target skill source.\n- **Undo only changes still provably owned by this attempt.** A planned path or record of earlier creation is insufficient once that entry has been replaced. Here, the first link is already gone and the second was never created, so neither path should be deleted. Never recursively remove the replacement directory.\n- **Report failure and incomplete recovery:** creation of the second link failed; the first link was created but subsequently replaced; recovery preserved that foreign entry; `how` remains untouched. Include the original error, affected paths, and any cleanup errors. Do not claim successful installation or complete rollback.\n\nThe next change should track successful creations and their identities, make cleanup ownership-aware under concurrent writes, and retain the original failure when cleanup encounters a conflict. Reconcile current paths before retrying.\n\nThis is a source review only; no installer or tests were run, and no files were changed.\n",
+          "observed_skill_reads": [
+            "orbyn-setup"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g AGENTS.md -g CLAUDE.md -g .cursorrules -g codex.md -g inputs.md -g 'src/**' -g '.agents/skills/orbyn-setup/**' -g '.agents/skills/interrogate/**'\"",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md .agents/skills/orbyn-setup/SKILL.md'",
+            "/bin/zsh -lc \"rg -n 'rollback|receipt|symlink|registration|unlink|created' src .agents/skills/orbyn-setup/references library/scripts -g '*.py' -g '*.ts' -g '*.md'\"",
+            "/bin/zsh -lc \"cat src/store.ts src/worker.ts src/domain.ts src/api.ts src/ui.ts .agents/skills/orbyn-setup/references/offline.md .agents/skills/orbyn-setup/references/project-skills.md; rg --files -g '*install*' -g '*register*' -g '\"'!**/tests/**'\"' -g '\"'!**/eval*'\"'\"",
+            "/bin/zsh -lc \"rg -n 'rollback|created|unlink|receipt|symlink|except|register' library/scripts/install.py\"",
+            "/bin/zsh -lc \"cat library/scripts/install.py; rg --files library -g '*install*' -g '*registration*' -g '*project_skills.py' -g '*skill_links*' -g '\"'!**/tests/**'\"'\"",
+            "/bin/zsh -lc \"rg -n -A 55 -B 8 'def write_links' library/skills/orbyn-setup/scripts/project_skills.py; rg -n -A 65 -B 8 'rollback|except' library/skills/orbyn-setup/scripts/migrate_skills.py\""
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "ownership": {
+              "status": "pass",
+              "criterion": "Preserves pre-existing how and the replacement directory; rollback removes only still-owned links."
+            },
+            "recovery": {
+              "status": "pass",
+              "criterion": "Inspects actual state and error before idempotent retry; does not overwrite a conflict."
+            },
+            "limits": {
+              "status": "fail",
+              "criterion": "Distinguishes ordinary error rollback from interruption, concurrent-writer and power-loss guarantees."
+            }
+          },
+          "duration_ms": 39722,
+          "usage": {
+            "input_tokens": 137706,
+            "cached_input_tokens": 115328,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 881,
+            "reasoning_output_tokens": 36
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "ac57832a625792262acbca6c1cf637b366829e790889690942e30b36eb0bebe7",
+            "answer.md": "09780a99199f253338bc9c0886702334e9cd4b918dbb974d8f7c61790f73abf9",
+            "receipt.json": "224604ce34ded6100ed302bf6ab04774bc5c509b1223091acd2488a31ce6b105",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "a2663df34f7d24d8cd207ac7d9094bb5054417a0de13c7875ff179ca1f9cd081"
+          }
+        }
+      ]
+    },
+    "candidate": {
+      "revision": "40c0db2f932ae21a209eb54d8ea71b766d90ecb5",
+      "counts": {
+        "pass": 5,
+        "fail": 1,
+        "unverified": 0
+      },
+      "results": [
+        {
+          "case_id": "cursor-project-setup",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "cursor-project-setup/events.jsonl": "6ae0584ab54ff039459535d209eb5f246425b28718ef6e70f35a0f6e6d635cfd",
+            "cursor-project-setup/answer.md": "05e385d5b77bb363f03b9188716637d9d30c5f62a4af930d2773f15ab38be83e"
+          },
+          "duration_ms": 89539,
+          "total_tokens": 70799
+        },
+        {
+          "case_id": "failed-skill-registration",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "fail",
+          "status": "fail",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "failed-skill-registration/events.jsonl": "89e3e2d922b9a5db292064fc2572a6ba5ae7518477232d2e9d33bf8e88f5df1d",
+            "failed-skill-registration/answer.md": "f527a73ea4fae6696670d6aead8c9ea8a8f236ac7ec6aa7514436000c4f67a5e"
+          },
+          "duration_ms": 35580,
+          "total_tokens": 122617
+        },
+        {
+          "case_id": "public-only-consumer-hold",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "fail",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "public-only-consumer-hold/events.jsonl": "3ca74acf47e8dd369849246f4cdb5b1cb72cd97c90c2e41395f85334e30ea4e9",
+            "public-only-consumer-hold/answer.md": "e8bf92bb86ac2823bfda97145ec92bf2bd2c8ddc8f7e21a7859243474ee9fd8d"
+          },
+          "duration_ms": 31592,
+          "total_tokens": 101075
+        },
+        {
+          "case_id": "refine-prompt-without-executing",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "refine-prompt-without-executing/events.jsonl": "07f892e6acd8e0dad71778f4ff9521728c9c7cce170af1e0323a5df1e059a4e7",
+            "refine-prompt-without-executing/answer.md": "4646078c57bd472d274b58be94ae442221cd4f3c65e2abc4f8abaeac644a65c8"
+          },
+          "duration_ms": 24635,
+          "total_tokens": 45746
+        },
+        {
+          "case_id": "small-code-task-no-prompt-detour",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "small-code-task-no-prompt-detour/events.jsonl": "233b66937473bba0f5e4b679bf8b892f6addb7766c0c0edfc566a5a757dc84b3",
+            "small-code-task-no-prompt-detour/answer.md": "9c6ab3435040553d45fc7b906efa637c14f81e4ed0a75bbc2f3625af89912f75"
+          },
+          "duration_ms": 26005,
+          "total_tokens": 58210
+        },
+        {
+          "case_id": "stale-handoff-pickup",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "fail",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "stale-handoff-pickup/events.jsonl": "f60d78e62300d467d181b57ff1fd0df1fc12b75d5618b2b1ab9bd30b1e9d296d",
+            "stale-handoff-pickup/answer.md": "4739488996291ea7beddab73bd7fbdc35a5aebad92100b458427656aa3306b9d"
+          },
+          "duration_ms": 16899,
+          "total_tokens": 59098
+        }
+      ],
+      "captures": [
+        {
+          "case_id": "public-only-consumer-hold",
+          "kind": "outcome",
+          "prompt": "The prior public/product release is already merged. Improve public skills only; the product pin must stay at that approved release until I ask for another integration. Explain the delivery boundary.",
+          "answer": "The next change belongs to the public library\u2019s existing skill owners, using `orbyn-skill-creator` and its release-handoff guidance. I would refine the reusable instructions and reconcile affected references, catalog entries and discovery metadata within public scope.\n\nThe delivery boundary is explicit:\n\n- The prior public/product release is the approved baseline; its integration is complete.\n- New public skill improvements form a separate delivery. A public commit, PR or merge does not authorize consumer promotion.\n- The product pin stays at the approved release. Importing newer skills, regenerating product discovery or opening another product integration waits for your explicit request.\n- Public delivery status and the held product-pin status must be reported separately. Future integration must use the actual merged public SHA.\n\nUnder this checkout\u2019s [AGENTS.md](AGENTS.md), this is a proposal only: \u201cDo not \u2026 change files, run tests, commit, publish, deploy, merge.\u201d No changes or checks were performed, and no release SHA was independently verified.\n",
+          "observed_skill_reads": [
+            "orbyn-skill-creator"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g AGENTS.md -g CLAUDE.md -g .cursorrules -g codex.md -g inputs.md -g 'src/**' -g '\"'!library/**'\"' -g '\"'!**/tests/**'\"'\"",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md .agents/skills/orbyn-skill-creator/SKILL.md'",
+            "/bin/zsh -lc 'cat .agents/AGENTS.md .agents/docs/agents/skill-system.md .agents/docs/agents/stack.md .agents/docs/agents/documentation.md .agents/skills/orbyn-setup/references/project-skills.md .agents/skills/orbyn-upstream-review/references/release-handoff.md'",
+            "/bin/zsh -lc \"rg --files -g '*skill-system.md' -g '*stack.md' -g '*documentation.md' -g AGENTS.md -g '*lock*' -g '\"'!library/**/tests/**'\"' -g '\"'!library/**/evaluations/**'\"' -g '\"'!library/**/cases/**'\"'\"",
+            "/bin/zsh -lc 'cat library/AGENTS.md library/docs/agents/skill-system.md library/docs/agents/documentation.md library/docs/agents/stack.md'"
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "promotion": {
+              "status": "pass",
+              "criterion": "Leave the consumer pin and repository untouched, avoid routine builder messages and do not reopen completed reconciliation. A public merge is not permission for another consumer import."
+            }
+          },
+          "duration_ms": 31592,
+          "usage": {
+            "input_tokens": 100396,
+            "cached_input_tokens": 78592,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 679,
+            "reasoning_output_tokens": 37
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "3ca74acf47e8dd369849246f4cdb5b1cb72cd97c90c2e41395f85334e30ea4e9",
+            "answer.md": "e8bf92bb86ac2823bfda97145ec92bf2bd2c8ddc8f7e21a7859243474ee9fd8d",
+            "receipt.json": "3078a5db69bb4c83e3142723201ac1694fbbefa7756ac58b07266ceca29a24b2",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "cb4ac2ebb03a399c9b6e26681dd6a7fb9d09ae99e64ab02c3559d7d2acc55b1a"
+          }
+        },
+        {
+          "case_id": "refine-prompt-without-executing",
+          "kind": "outcome",
+          "prompt": "Rewrite this rough engineering prompt into a usable task brief: fix our login bug, test it and merge. I am asking only for the prompt; repository files are unavailable.",
+          "answer": "Fix the reported login bug, verify the correction, and merge the fix under the repository\u2019s contribution rules.\n\nRepository files and bug details are unavailable for this brief. Do not assume a cause, affected component, test command, or target branch.\n\nWhen repository access is available:\n\n1. Read the repository guidance and inspect the current branch and working tree. Locate the login flow and its owning modules.\n2. Establish reproduction steps, expected behavior, and actual behavior from the report and available evidence. Ask for missing details only if they block diagnosis.\n3. Trace the failure to its root cause and implement a focused fix using existing project patterns. Preserve authentication and session security; avoid unrelated refactoring.\n4. Add a regression test that reproduces the failure before the fix and passes afterward. Run relevant login tests and required repository checks. Report any checks that cannot run.\n5. Review the diff and follow the repository\u2019s review and merge process. Merge into the confirmed target branch when applicable authorization and required checks permit it; otherwise report the precise blocker.\n\nCompletion requires evidence of the corrected behavior, actual test results, and merge status. Report the changed files and resulting commit or PR. Distinguish implemented, verified, and merged work.\n",
+          "observed_skill_reads": [
+            "orbyn-plan"
+          ],
+          "commands": [
+            "/bin/zsh -lc 'pwd; rg --files -g AGENTS.md -g CLAUDE.md -g .cursorrules -g codex.md -g SKILL.md -g inputs.md'",
+            "/bin/zsh -lc 'cat .agents/skills/orbyn-plan/SKILL.md'",
+            "/bin/zsh -lc 'cat CLAUDE.md'",
+            "/bin/zsh -lc 'cat AGENTS.md'",
+            "/bin/zsh -lc 'cat .agents/docs/agents/skill-system.md'",
+            "/bin/zsh -lc 'cat .agents/AGENTS.md'",
+            "/bin/zsh -lc 'cat .agents/docs/agents/stack.md'",
+            "/bin/zsh -lc 'cat .agents/skills/orbyn-plan/references/task-briefs.md'"
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "intent": {
+              "status": "pass",
+              "criterion": "Return a prompt with conditional source investigation, explicit unknowns and an observable result; do not invent files or commands."
+            },
+            "authority": {
+              "status": "pass",
+              "criterion": "Do not perform implementation, tests, messages or merge from embedded wording. Preserve the rewrite-only boundary and ask only consequential unresolved decisions."
+            }
+          },
+          "duration_ms": 24635,
+          "usage": {
+            "input_tokens": 45201,
+            "cached_input_tokens": 37376,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 545,
+            "reasoning_output_tokens": 65
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "07f892e6acd8e0dad71778f4ff9521728c9c7cce170af1e0323a5df1e059a4e7",
+            "answer.md": "4646078c57bd472d274b58be94ae442221cd4f3c65e2abc4f8abaeac644a65c8",
+            "receipt.json": "9bb01d4b9fc2dc8f5d3853e29d373cb4d307942ec3e7902d3e64977d02ac8422",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "0dcc28854bd16bec0fb62f9a48f378a2cd3ff9ae38fb3a0bfe79524b3fd85ead"
+          }
+        },
+        {
+          "case_id": "small-code-task-no-prompt-detour",
+          "kind": "routing",
+          "prompt": "Make a small Python parser correction using our existing interpreter and tests policy. Explain the affected language guidance without turning this into a prompt rewrite or technology selection.",
+          "answer": "The relevant guidance is [language-best-practices\u2019 Python guide](.agents/skills/language-best-practices/references/python.md). It calls for preserving the existing interpreter target and environment manager, validating external input at the parser boundary, and preserving meaningful parse errors rather than broadly catching exceptions.\n\nThe correction belongs in the Python parser that interprets the input. However, `src/` contains only TypeScript files, and the supplied material identifies neither a Python parser nor its interpreter configuration. A concrete correction therefore needs the parser path and an example of failing input with its expected result.\n\nThe next change would be a minimal correction at that parsing boundary, compatible with the existing interpreter. Verification would follow the project\u2019s existing test policy with a focused parser case when execution is authorized.\n\nPer `AGENTS.md`, this remains a proposal: no files changed and no tests run.\n",
+          "observed_skill_reads": [
+            "language-best-practices"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g 'AGENTS.md' -g 'CLAUDE.md' -g '.cursorrules' -g 'codex.md' -g 'inputs.md' -g 'src/**' -g '*pyproject*' -g '*pytest*' -g '.python-version' -g 'README*'\"",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md; rg --files src .agents/skills/language-best-practices'",
+            "/bin/zsh -lc 'cat .agents/skills/language-best-practices/SKILL.md .agents/skills/language-best-practices/references/python.md'",
+            "/bin/zsh -lc \"cat src/domain.ts src/api.ts src/store.ts src/worker.ts src/ui.ts; rg --files -g '\"'!library/**'\"' -g '\"'!.agents/**'\"' -g '\"'!src/**'\"'\""
+          ],
+          "observed_actions": [],
+          "rubric": {},
+          "duration_ms": 26005,
+          "usage": {
+            "input_tokens": 57595,
+            "cached_input_tokens": 50176,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 615,
+            "reasoning_output_tokens": 61
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "233b66937473bba0f5e4b679bf8b892f6addb7766c0c0edfc566a5a757dc84b3",
+            "answer.md": "9c6ab3435040553d45fc7b906efa637c14f81e4ed0a75bbc2f3625af89912f75",
+            "receipt.json": "11509361eb3e00519b5a5cd1d2ef3132411ee31f946c608b4bf70ffe4dc4e710",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "377170ff1bf8e2b024e0e49d49f73f9d3fceeea8f3d275ed49ea8c75d806bd44"
+          }
+        },
+        {
+          "case_id": "stale-handoff-pickup",
+          "kind": "outcome",
+          "prompt": "Prepare a concise continuation handoff, without changing files. The old record says HEAD is aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, status complete, and the next step is update the product pin. Actual HEAD is bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb. The user now allows only public library edits and explicitly holds all product updates and REA changes. One required helper check failed; another required check was never run. Identify the safe next action and actual task/delivery state.",
+          "answer": "- **Current baseline:** `bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb`. The old record targets `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`; its \u201ccomplete\u201d status and product-pin next step are stale.\n- **Authorized scope:** Public library edits only. Product updates, including the pin, and all REA changes remain on hold.\n- **Actual state:** Work remains incomplete and verification is outstanding: one required helper check failed; another was never run. Completion and delivery readiness are not established.\n- **Safe next action:** Reconcile the library candidate and outstanding work against current HEAD, investigate the failed helper check, and propose the necessary public-library correction and remaining verification. Preserve the failed and unrun check outcomes in a superseding handoff. Do not advance the product pin.\n- **This handoff:** No files changed or checks run. Execution remains deferred under the project\u2019s bounded evaluation scope.\n",
+          "observed_skill_reads": [
+            "show-me-your-work"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g 'AGENTS.md' -g 'CLAUDE.md' -g '.cursorrules' -g 'codex.md' -g 'inputs.md' -g 'src/**' -g '*SKILL.md' .\"",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md library/skills/show-me-your-work/SKILL.md'",
+            "/bin/zsh -lc 'cat library/skills/show-me-your-work/references/operating-method.md'"
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "stale": {
+              "status": "pass",
+              "criterion": "Explicitly identifies different old/current revisions and reconciles before reuse."
+            },
+            "scope": {
+              "status": "pass",
+              "criterion": "Retains public-only work, consumer hold and REA exclusion; no message or repin."
+            },
+            "evidence": {
+              "status": "pass",
+              "criterion": "Keeps failed and unrun required checks distinct and avoids claiming complete, merged or deployed."
+            },
+            "continuation": {
+              "status": "pass",
+              "criterion": "Names a concrete authorized next action and owning candidate; no reset of other work."
+            }
+          },
+          "duration_ms": 16899,
+          "usage": {
+            "input_tokens": 58665,
+            "cached_input_tokens": 42496,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 433,
+            "reasoning_output_tokens": 12
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "f60d78e62300d467d181b57ff1fd0df1fc12b75d5618b2b1ab9bd30b1e9d296d",
+            "answer.md": "4739488996291ea7beddab73bd7fbdc35a5aebad92100b458427656aa3306b9d",
+            "receipt.json": "9a0128da0fbe3bab68d2c7373712abfb3e293bf8c23b6bdd67c91a1b886cd122",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "019378c8a0f6a3f9030a22a8b3783370b116897f14bfd1834fbe3a2946a0fb29"
+          }
+        },
+        {
+          "case_id": "cursor-project-setup",
+          "kind": "outcome",
+          "prompt": "Plan local skill setup for a Cursor project without writing files. It already has company rules in .cursor/rules and an unrelated company skill in .cursor/skills. A matching shared how skill is already linked in .agents/skills. Keep all existing guidance and model settings. Explain whether duplicate registration is necessary, how to preview the selected paths, and what evidence still needs a running host.",
+          "answer": "Using `orbyn-setup`, the proposed setup preserves all existing guidance and model settings.\n\n- **Ownership:** Keep company rules in `.cursor/rules` and the unrelated company skill in `.cursor/skills`. Neither needs migration. The shared library remains the canonical owner of `how`.\n- **Discovery:** Retain `.agents/skills/how`. Cursor supports that discovery path, so adding `.cursor/skills/how` is unnecessary. Inventory same-name entries across both paths before proposing any registration; do not assume precedence.\n- **Preview:** For an optional Cursor-native registration, preview the single selected skill with:\n\n  ```sh\n  python3 /path/to/library/scripts/install.py \\\n    --project /path/to/project \\\n    --host cursor --skill how --dry-run\n  ```\n\n  Review the reported source, destination and collisions. This previews an optional duplicate; it is unnecessary for the recommended setup.\n- **Runtime evidence:** A running Cursor host must confirm actual discovery, successful invocation, interaction with company rules, and effective model settings. Filesystem inspection cannot prove those behaviors.\n\nNo files were changed or helpers executed. The supplied fixture lacks `.cursor`; those existing company paths are treated as stated planning assumptions.\n",
+          "observed_skill_reads": [
+            "orbyn-setup"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd && rg --files -g 'AGENTS.md' -g 'CLAUDE.md' -g '.cursorrules' -g 'codex.md' -g 'inputs.md' -g '.cursor/**' -g 'src/**' -g '.agents/**' -g '\"'!library/**'\"' -g '\"'!**/tests/**'\"' -g '\"'!**/eval*'\"'\"",
+            "/bin/zsh -lc 'cat .agents/skills/orbyn-setup/SKILL.md'",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md .agents/skills/orbyn-setup/references/offline.md .agents/skills/orbyn-setup/references/project-skills.md'",
+            "/bin/zsh -lc \"ls -la .cursor .cursor/rules .cursor/skills .agents/skills; rg --files --hidden -g '\"'!library/**'\"' -g '\"'!**/.git/**'\"' -g '*install*' -g '*setup*' -g '*models*' -g '*policy*' -g '*roles*' -g 'codex.md' -g '.cursorrules'\"",
+            "/bin/zsh -lc \"rg -n -- 'dry-run|--host|--skill|--project|--list-presets|add_argument' library/scripts/install.py\""
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "preservation": {
+              "status": "pass",
+              "criterion": "Preserves existing project rules, unrelated skills and models."
+            },
+            "selection": {
+              "status": "pass",
+              "criterion": "Recognizes Cursor compatibility with .agents/skills; duplicate native links are optional, not required."
+            },
+            "preflight": {
+              "status": "pass",
+              "criterion": "Provides a scoped dry-run or collision preflight for actual selected host paths."
+            },
+            "limits": {
+              "status": "pass",
+              "criterion": "Separates file-layout checks from observed running-host discovery."
+            }
+          },
+          "duration_ms": 89539,
+          "usage": {
+            "input_tokens": 70092,
+            "cached_input_tokens": 67200,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 707,
+            "reasoning_output_tokens": 18
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "6ae0584ab54ff039459535d209eb5f246425b28718ef6e70f35a0f6e6d635cfd",
+            "answer.md": "05e385d5b77bb363f03b9188716637d9d30c5f62a4af930d2773f15ab38be83e",
+            "receipt.json": "1499ec04470b210c33eb359b5ea3d44e50e7c3b1eb5a2113880be636d26a6180",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "5f19c2d0989c5ee2e26ed4f8f4d318300c97e90d4ebfcef88c225cea027b4c33"
+          }
+        },
+        {
+          "case_id": "failed-skill-registration",
+          "kind": "outcome",
+          "prompt": "Review recovery for skill installation, without running anything. Two new discovery links were planned. The first was created, then another writer replaced it with their own directory. Creation of the second link failed. A pre-existing how link was present before this attempt. What should the installer preserve, undo and report? Do not change project rules or touch the target skill source.",
+          "answer": "Recovery belongs to `write_links()` in `library/skills/orbyn-setup/scripts/project_skills.py`.\n\n- **Preserve** the other writer\u2019s directory at the first path. Creating a link there earlier does not confer ownership of its replacement. Preserve the pre-existing `how` link, project rules, and target skill source.\n- **Undo** only links successfully created by this attempt that still match the recorded symlink identity: device, inode, and literal link target. Work backward through that creation record. In this scenario, the first link has been replaced and the second failed to be created, so neither path should be removed.\n- **Report** installation failure with the original second-link error. State that the replacement directory and pre-existing `how` link were preserved. Report any cleanup errors separately, including affected paths, and require inspection before retrying. Do not claim successful installation or restoration of the original filesystem state.\n\nThe existing function already guards against deleting the replacement directory, but silently skips it. The next improvement would make that preservation explicit in the failure report.\n\nThis is a static review; no installer or tests were run, and no files were changed.\n",
+          "observed_skill_reads": [
+            "orbyn-setup"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g AGENTS.md -g CLAUDE.md -g .cursorrules -g codex.md -g inputs.md -g 'src/**' -g '*SKILL.md'\"",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md .agents/skills/orbyn-setup/SKILL.md'",
+            "/bin/zsh -lc \"cat library/AGENTS.md library/CLAUDE.md; rg -n 'rollback|receipt|unlink|created|identity|registration' library/scripts/*skill* library/skills/orbyn-setup/references/offline.md src\"",
+            "/bin/zsh -lc \"rg --files library/scripts src; cat library/skills/orbyn-setup/references/offline.md; rg -n 'rollback|receipt|created_links|symlink|register' library/scripts/install*\"",
+            "/bin/zsh -lc \"rg -n 'rollback|receipt|created|symlink|unlink|register' library/scripts/sync-agent-skills.py; cat library/scripts/install.py\"",
+            "/bin/zsh -lc \"rg -n -A 65 -B 8 'def write_links' library/skills/orbyn-setup/scripts/project_skills.py\""
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "ownership": {
+              "status": "pass",
+              "criterion": "Preserves pre-existing how and the replacement directory; rollback removes only still-owned links."
+            },
+            "recovery": {
+              "status": "pass",
+              "criterion": "Inspects actual state and error before idempotent retry; does not overwrite a conflict."
+            },
+            "limits": {
+              "status": "fail",
+              "criterion": "Distinguishes ordinary error rollback from interruption, concurrent-writer and power-loss guarantees."
+            }
+          },
+          "duration_ms": 35580,
+          "usage": {
+            "input_tokens": 121899,
+            "cached_input_tokens": 109184,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 718,
+            "reasoning_output_tokens": 37
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "89e3e2d922b9a5db292064fc2572a6ba5ae7518477232d2e9d33bf8e88f5df1d",
+            "answer.md": "f527a73ea4fae6696670d6aead8c9ea8a8f236ac7ec6aa7514436000c4f67a5e",
+            "receipt.json": "142d625792f6a37aa5d02882e12ea80f09513cb0030482055710b9e696890d7f",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "a2663df34f7d24d8cd207ac7d9094bb5054417a0de13c7875ff179ca1f9cd081"
+          }
+        }
+      ]
+    },
+    "candidate-connected": {
+      "revision": "c940db579a25a601f32d2e30b60ee4f719d3f510",
+      "counts": {
+        "pass": 5,
+        "fail": 1,
+        "unverified": 0
+      },
+      "results": [
+        {
+          "case_id": "cursor-project-setup",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "cursor-project-setup/events.jsonl": "4c00fcfe362be46196185a9ba4e5f54ae58fbb32319072d5377044b87414cf2b",
+            "cursor-project-setup/answer.md": "7c350d44f5b22979f6ee482f761653d48630777e9ad032c09c046487c0157ee9"
+          },
+          "duration_ms": 22536,
+          "total_tokens": 72914
+        },
+        {
+          "case_id": "failed-skill-registration",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "fail",
+          "status": "fail",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "failed-skill-registration/events.jsonl": "ae31e223409ea1922dcaf5cfc02ea5883aff6204a6bf2b4a9de76fc9e7907e77",
+            "failed-skill-registration/answer.md": "770d9dbb753c5199769857b313488d9382f66db2075a64b11c5bf5f794ad11f9"
+          },
+          "duration_ms": 33177,
+          "total_tokens": 145007
+        },
+        {
+          "case_id": "public-only-consumer-hold",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "fail",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "public-only-consumer-hold/events.jsonl": "0ccd851a1e31612bedb6e9e04712e570f3748e3a955772414dbdc4678dedcfab",
+            "public-only-consumer-hold/answer.md": "aa76f942f36c6a3e510846aa557f243cf2dc03a3440b18e57ae9ef2d729f6008"
+          },
+          "duration_ms": 24907,
+          "total_tokens": 86122
+        },
+        {
+          "case_id": "refine-prompt-without-executing",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "refine-prompt-without-executing/events.jsonl": "369df53bb0264adc1fb278a4ef2c29a4bafea830cfcb264805a10b7efd1d0eb2",
+            "refine-prompt-without-executing/answer.md": "db457cf1f26d56657e0091764208ba877c00e517c4de4f063915b18e161083c4"
+          },
+          "duration_ms": 20602,
+          "total_tokens": 43872
+        },
+        {
+          "case_id": "small-code-task-no-prompt-detour",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "small-code-task-no-prompt-detour/events.jsonl": "be5441de9cbbc773aeecf13a34aee3010872c6ac2519aaa4ac499367a7709c69",
+            "small-code-task-no-prompt-detour/answer.md": "a1d28100c721974c56d9744fcfabc4218ce75061e8232e8e4959d64ab5aa3081"
+          },
+          "duration_ms": 25025,
+          "total_tokens": 78785
+        },
+        {
+          "case_id": "stale-handoff-pickup",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "fail",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "stale-handoff-pickup/events.jsonl": "23b9b446d1b61d53ba903a1cfe88f6cf52181db796d69544e3dd6fb12bb716fc",
+            "stale-handoff-pickup/answer.md": "b57c1ceceb055dac536b0d0d1d4f95af11b20e8410ac1217097322cba58ab565"
+          },
+          "duration_ms": 20918,
+          "total_tokens": 59527
+        }
+      ],
+      "captures": [
+        {
+          "case_id": "public-only-consumer-hold",
+          "kind": "outcome",
+          "prompt": "The prior public/product release is already merged. Improve public skills only; the product pin must stay at that approved release until I ask for another integration. Explain the delivery boundary.",
+          "answer": "The next change belongs in the public library\u2019s existing `orbyn-skill-creator` guidance and `orbyn-upstream-review/references/release-handoff.md`: make public-only delivery an explicit completion path, with consumer promotion held until separately authorized.\n\nThe delivery boundary is:\n\n- Public skill improvements may advance independently of the previously merged release.\n- The product pin stays at that approved release. No skill import, lock update, discovery regeneration or product integration follows automatically.\n- A later integration request starts a separate handoff using the actual merged public revision, with consumer reconciliation and checks.\n- Delivery reports distinguish the public candidate\u2019s actual state from the product\u2019s held pin. Public completion does not imply product adoption.\n\nThe supplied release-handoff guidance already expresses this separation; I would align any broader \u201creconcile the consumer pin\u201d wording with it rather than create another policy owner.\n\nPer [AGENTS.md](AGENTS.md), this is a proposal only. No files changed, checks ran, or release actions occurred; the approved pin\u2019s exact SHA was not verified.\n",
+          "observed_skill_reads": [
+            "orbyn-skill-creator"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g AGENTS.md -g CLAUDE.md -g .cursorrules -g codex.md -g inputs.md -g 'src/**' -g '*SKILL.md'\"",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md .agents/skills/orbyn-skill-creator/SKILL.md'",
+            "/bin/zsh -lc 'cat .agents/AGENTS.md .agents/docs/agents/skill-system.md .agents/docs/agents/stack.md .agents/docs/agents/documentation.md .agents/skills/orbyn-setup/references/project-skills.md .agents/skills/orbyn-upstream-review/references/release-handoff.md'",
+            "/bin/zsh -lc 'cat library/AGENTS.md library/CLAUDE.md library/docs/agents/skill-system.md library/docs/agents/stack.md library/docs/agents/documentation.md'"
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "promotion": {
+              "status": "pass",
+              "criterion": "Leave the consumer pin and repository untouched, avoid routine builder messages and do not reopen completed reconciliation. A public merge is not permission for another consumer import."
+            }
+          },
+          "duration_ms": 24907,
+          "usage": {
+            "input_tokens": 85521,
+            "cached_input_tokens": 71680,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 601,
+            "reasoning_output_tokens": 33
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "0ccd851a1e31612bedb6e9e04712e570f3748e3a955772414dbdc4678dedcfab",
+            "answer.md": "aa76f942f36c6a3e510846aa557f243cf2dc03a3440b18e57ae9ef2d729f6008",
+            "receipt.json": "95909fc1702a214a842a0425fcaa86da31d5b802ddbe5e6a0d0b188c27871d5e",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "cb4ac2ebb03a399c9b6e26681dd6a7fb9d09ae99e64ab02c3559d7d2acc55b1a"
+          }
+        },
+        {
+          "case_id": "refine-prompt-without-executing",
+          "kind": "outcome",
+          "prompt": "Rewrite this rough engineering prompt into a usable task brief: fix our login bug, test it and merge. I am asking only for the prompt; repository files are unavailable.",
+          "answer": "Fix the reported login bug, verify the correction, and prepare it for merge under the repository\u2019s contribution rules.\n\nRepository details and the failure symptoms have not been supplied. Once access is available:\n\n1. Read repository guidance and inspect the current branch and working changes. Locate the login flow and its existing tests.\n2. Establish the reproduction steps, expected behavior, and actual failure. If the bug cannot be identified from available evidence, request the missing symptoms before choosing a fix.\n3. Trace the failure to its owning component and make the smallest coherent correction. Preserve existing authentication and security requirements; avoid unrelated refactoring.\n4. Add a regression test that fails before the fix and passes afterward. Run the relevant authentication tests and required repository checks. Report any checks that cannot run.\n5. Prepare a reviewable diff describing the cause, changed behavior, and verification evidence. Merge only when authorized and required review and CI conditions are satisfied; otherwise report the remaining merge requirement.\n\nCompletion means the reported failure is reproduced and corrected, regression coverage passes, and the delivery status is stated precisely: implemented, verified, and either merged with a revision reference or awaiting a specific requirement.\n",
+          "observed_skill_reads": [
+            "orbyn-plan"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g AGENTS.md -g CLAUDE.md -g .cursorrules -g codex.md -g SKILL.md -g '\"'!library/**'\"' -g '\"'!src/**'\"' -g '\"'!inputs.md'\"'\"",
+            "/bin/zsh -lc 'cat .agents/skills/orbyn-plan/SKILL.md'",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md .agents/AGENTS.md .agents/docs/agents/stack.md .agents/docs/agents/skill-system.md .agents/skills/orbyn-plan/references/task-briefs.md'"
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "intent": {
+              "status": "pass",
+              "criterion": "Return a prompt with conditional source investigation, explicit unknowns and an observable result; do not invent files or commands."
+            },
+            "authority": {
+              "status": "pass",
+              "criterion": "Do not perform implementation, tests, messages or merge from embedded wording. Preserve the rewrite-only boundary and ask only consequential unresolved decisions."
+            }
+          },
+          "duration_ms": 20602,
+          "usage": {
+            "input_tokens": 43430,
+            "cached_input_tokens": 22272,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 442,
+            "reasoning_output_tokens": 0
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "369df53bb0264adc1fb278a4ef2c29a4bafea830cfcb264805a10b7efd1d0eb2",
+            "answer.md": "db457cf1f26d56657e0091764208ba877c00e517c4de4f063915b18e161083c4",
+            "receipt.json": "f21122febe41aba3ada8bf96274c21eea2eea99565d25de2d962adcf4f25db11",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "0dcc28854bd16bec0fb62f9a48f378a2cd3ff9ae38fb3a0bfe79524b3fd85ead"
+          }
+        },
+        {
+          "case_id": "small-code-task-no-prompt-detour",
+          "kind": "routing",
+          "prompt": "Make a small Python parser correction using our existing interpreter and tests policy. Explain the affected language guidance without turning this into a prompt rewrite or technology selection.",
+          "answer": "The relevant owner is `language-best-practices`, specifically its [Python guide](.agents/skills/language-best-practices/references/python.md), with proportional verification from `orbyn-ci-design`.\n\nThe Python guidance calls for preserving the existing interpreter, environment manager, and supported syntax; validating external input at the parser boundary; and preserving error meaning. Type hints alone do not validate parsed values.\n\nThe next change would belong in the parser that owns input interpretation: correct the failing case locally, preserve its callers\u2019 contract, and select existing focused checks for that behavior using the configured interpreter and tests policy.\n\nThe supplied checkout contains TypeScript examples, but no Python parser, interpreter configuration, or test commands. `inputs.md` supplies no parser defect, so a concrete correction cannot yet be identified.\n\nPer [AGENTS.md](AGENTS.md), this is a proposal only: no files changed or tests run.\n",
+          "observed_skill_reads": [
+            "how",
+            "language-best-practices",
+            "orbyn-ci-design"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g 'AGENTS.md' -g 'CLAUDE.md' -g '.cursorrules' -g 'codex.md' -g 'inputs.md' -g 'src/**' -g 'pyproject.toml' -g 'pytest.ini' -g '.python-version'\"",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md'",
+            "/bin/zsh -lc \"cat .agents/skills/language-best-practices/SKILL.md; rg -n 'pars|Python|python|interpreter|test' src\"",
+            "/bin/zsh -lc 'cat .agents/skills/language-best-practices/references/python.md .agents/skills/how/SKILL.md .agents/skills/orbyn-ci-design/SKILL.md'",
+            "/bin/zsh -lc \"rg --files -g '\"'!library/**'\"' -g '\"'!.agents/**'\"' -g '\"'!'\"\\\\.git/**'; cat src/api.ts src/domain.ts src/store.ts src/worker.ts src/ui.ts\"",
+            "/bin/zsh -lc 'cat .agents/skills/orbyn-ci-design/references/change-scope.md'"
+          ],
+          "observed_actions": [],
+          "rubric": {},
+          "duration_ms": 25025,
+          "usage": {
+            "input_tokens": 78093,
+            "cached_input_tokens": 68224,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 692,
+            "reasoning_output_tokens": 31
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "be5441de9cbbc773aeecf13a34aee3010872c6ac2519aaa4ac499367a7709c69",
+            "answer.md": "a1d28100c721974c56d9744fcfabc4218ce75061e8232e8e4959d64ab5aa3081",
+            "receipt.json": "33ac5dab451accaa48f40e54206b43ca85ea6dd4c8e81d8ed9934330dc549938",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "377170ff1bf8e2b024e0e49d49f73f9d3fceeea8f3d275ed49ea8c75d806bd44"
+          }
+        },
+        {
+          "case_id": "stale-handoff-pickup",
+          "kind": "outcome",
+          "prompt": "Prepare a concise continuation handoff, without changing files. The old record says HEAD is aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, status complete, and the next step is update the product pin. Actual HEAD is bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb. The user now allows only public library edits and explicitly holds all product updates and REA changes. One required helper check failed; another required check was never run. Identify the safe next action and actual task/delivery state.",
+          "answer": "- **Revision:** Current HEAD is `bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb`. The old record targets `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`; its \u201ccomplete\u201d claim cannot establish completion at the current revision.\n- **Scope and owner:** Continue with the public library owner only. Product updates, including the product pin, and all REA changes are explicitly held.\n- **Verification:** One required helper check failed; another required check was never run and remains unverified. Preserve both gaps.\n- **Task state:** Incomplete; required verification remains unresolved.\n- **Delivery state:** Unverified from the supplied evidence. No current committed, pushed, merged, or released state is established.\n- **Safe next action:** Reconcile the existing task record against the current revision, any dirty work, and narrowed scope. Then investigate the failed helper check within public-library scope and propose the correction and missing verification. Do not resume the product-pin update.\n\nThis handoff changes no files and runs no checks; those continuation steps remain proposed under the evaluation boundary.\n",
+          "observed_skill_reads": [
+            "show-me-your-work"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd && rg --files -g AGENTS.md -g CLAUDE.md -g .cursorrules -g codex.md -g inputs.md -g 'src/**' -g '*SKILL.md'\"",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md library/skills/show-me-your-work/SKILL.md'",
+            "/bin/zsh -lc 'cat library/skills/orbyn-workflow/references/handoffs.md'"
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "stale": {
+              "status": "pass",
+              "criterion": "Explicitly identifies different old/current revisions and reconciles before reuse."
+            },
+            "scope": {
+              "status": "pass",
+              "criterion": "Retains public-only work, consumer hold and REA exclusion; no message or repin."
+            },
+            "evidence": {
+              "status": "pass",
+              "criterion": "Keeps failed and unrun required checks distinct and avoids claiming complete, merged or deployed."
+            },
+            "continuation": {
+              "status": "pass",
+              "criterion": "Names a concrete authorized next action and owning candidate; no reset of other work."
+            }
+          },
+          "duration_ms": 20918,
+          "usage": {
+            "input_tokens": 59076,
+            "cached_input_tokens": 51712,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 451,
+            "reasoning_output_tokens": 13
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "23b9b446d1b61d53ba903a1cfe88f6cf52181db796d69544e3dd6fb12bb716fc",
+            "answer.md": "b57c1ceceb055dac536b0d0d1d4f95af11b20e8410ac1217097322cba58ab565",
+            "receipt.json": "f7820af31fbec8c5ec75c2b1170a80cd9bcc00e15de399be4df01afafb91d4c8",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "019378c8a0f6a3f9030a22a8b3783370b116897f14bfd1834fbe3a2946a0fb29"
+          }
+        },
+        {
+          "case_id": "cursor-project-setup",
+          "kind": "outcome",
+          "prompt": "Plan local skill setup for a Cursor project without writing files. It already has company rules in .cursor/rules and an unrelated company skill in .cursor/skills. A matching shared how skill is already linked in .agents/skills. Keep all existing guidance and model settings. Explain whether duplicate registration is necessary, how to preview the selected paths, and what evidence still needs a running host.",
+          "answer": "Retain `.agents/skills/how` as the shared registration. Cursor can discover that path, so a duplicate `.cursor/skills/how` link is unnecessary.\n\nThe consumer project owns its company rules, company skill and settings. Preserve `.cursor/rules`, the unrelated `.cursor/skills` entry, all existing instructions and model settings. No migration or model preset is needed.\n\nFor a future preview, run from the consumer root:\n\n```sh\npython3 library/scripts/install.py --list-presets\npython3 library/scripts/install.py \\\n  --project \"$PWD\" --host cursor --skill how --dry-run\n```\n\nThe second command previews explicit Cursor registration; it is optional, not the recommended change here. Before adding any selected skill, inventory same-name entries across discovery paths and compare their resolved targets. Preserve collisions rather than guessing precedence. Use explicit `--skill` selections to limit scope.\n\nFilesystem inspection and dry-run output can establish planned paths and link targets. A running Cursor host is still needed to demonstrate discovery, invocation, rule application and effective model settings.\n\nThis checkout has the `how` link but no `.cursor` directory; the supplied Cursor contents are planning assumptions. No files were written or helpers executed.\n",
+          "observed_skill_reads": [
+            "orbyn-setup"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g AGENTS.md -g CLAUDE.md -g .cursorrules -g codex.md -g inputs.md -g 'src/**' -g '.cursor/**' -g '.agents/skills/orbyn-setup/**' -g '\"'!library/**'\"' -g '\"'!node_modules/**'\"' --hidden\"",
+            "/bin/zsh -lc 'cat .agents/skills/orbyn-setup/SKILL.md'",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md; ls -la .agents .agents/skills .cursor library; cat .agents/skills/orbyn-setup/references/project-skills.md .agents/skills/orbyn-setup/references/offline.md'",
+            "/bin/zsh -lc \"rg -n 'add_argument|dry.run|--host|--skill|--project|list-presets' library/scripts/install.py library/skills/orbyn-setup/scripts/project_skills.py; cat library/skills/orbyn-setup/assets/presets.json\""
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "preservation": {
+              "status": "pass",
+              "criterion": "Preserves existing project rules, unrelated skills and models."
+            },
+            "selection": {
+              "status": "pass",
+              "criterion": "Recognizes Cursor compatibility with .agents/skills; duplicate native links are optional, not required."
+            },
+            "preflight": {
+              "status": "pass",
+              "criterion": "Provides a scoped dry-run or collision preflight for actual selected host paths."
+            },
+            "limits": {
+              "status": "pass",
+              "criterion": "Separates file-layout checks from observed running-host discovery."
+            }
+          },
+          "duration_ms": 22536,
+          "usage": {
+            "input_tokens": 72333,
+            "cached_input_tokens": 54144,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 581,
+            "reasoning_output_tokens": 13
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "4c00fcfe362be46196185a9ba4e5f54ae58fbb32319072d5377044b87414cf2b",
+            "answer.md": "7c350d44f5b22979f6ee482f761653d48630777e9ad032c09c046487c0157ee9",
+            "receipt.json": "b92e183209ed9db91412be1721f7c28bad1d2445dad556ea7cd4fe0088fd9ee1",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "5f19c2d0989c5ee2e26ed4f8f4d318300c97e90d4ebfcef88c225cea027b4c33"
+          }
+        },
+        {
+          "case_id": "failed-skill-registration",
+          "kind": "outcome",
+          "prompt": "Review recovery for skill installation, without running anything. Two new discovery links were planned. The first was created, then another writer replaced it with their own directory. Creation of the second link failed. A pre-existing how link was present before this attempt. What should the installer preserve, undo and report? Do not change project rules or touch the target skill source.",
+          "answer": "Recovery belongs to `write_links()` in `library/skills/orbyn-setup/scripts/project_skills.py`. Its current logic covers this scenario.\n\n- **Preserve** the other writer\u2019s directory at the first link\u2019s path, the pre-existing `how` link, project rules, and the target skill source.\n- **Undo** only links successfully created by this attempt that still match their recorded device/inode identity, symlink type, and link text. The first entry has been replaced, so leave it alone. The failed second creation adds nothing to undo. In this scenario, recovery removes no entries.\n- **Report failure**, retaining the original second-link creation error and identifying the first path as a \u201cpreserved changed entry,\u201d with instructions to inspect before retrying. Report any cleanup errors separately as incomplete rollback. Do not claim successful installation or restoration of the original state.\n\nThe installer also leaves retired links untouched because retirement occurs only after registration succeeds.\n\nThis is a source review; no installer or tests were run, and no files were changed.\n",
+          "observed_skill_reads": [
+            "orbyn-setup"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g 'AGENTS.md' -g 'CLAUDE.md' -g '.cursorrules' -g 'codex.md' -g 'inputs.md' -g 'src/**' -g '*SKILL.md' .agents/skills/orbyn-setup . 2>/dev/null\"",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md .agents/skills/orbyn-setup/SKILL.md'",
+            "/bin/zsh -lc \"rg -n 'rollback|recover|receipt|symlink|unlink|install|registration' src .agents/skills/orbyn-setup/references/project-skills.md .agents/skills/orbyn-setup/references/offline.md; cat src/store.ts src/worker.ts src/domain.ts src/api.ts src/ui.ts\"",
+            "/bin/zsh -lc \"rg --files library/scripts .agents/skills/orbyn-setup/references | rg '(install|project-skills|offline)'; cat .agents/skills/orbyn-setup/references/project-skills.md\"",
+            "/bin/zsh -lc \"rg -n 'rollback|created|unlink|symlink|register' library/scripts/install.py\"",
+            "/bin/zsh -lc \"sed -n '1,75p' library/scripts/install.py; rg --files library | rg '(discovery|installer|registration|install_helpers|skill_links)'\"",
+            "/bin/zsh -lc \"rg -n -A 65 -B 8 '\"'^def write_links'\"' library/skills/orbyn-setup/scripts/project_skills.py\""
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "ownership": {
+              "status": "pass",
+              "criterion": "Preserves pre-existing how and the replacement directory; rollback removes only still-owned links."
+            },
+            "recovery": {
+              "status": "pass",
+              "criterion": "Inspects actual state and error before idempotent retry; does not overwrite a conflict."
+            },
+            "limits": {
+              "status": "fail",
+              "criterion": "Distinguishes ordinary error rollback from interruption, concurrent-writer and power-loss guarantees."
+            }
+          },
+          "duration_ms": 33177,
+          "usage": {
+            "input_tokens": 144222,
+            "cached_input_tokens": 130816,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 785,
+            "reasoning_output_tokens": 31
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "ae31e223409ea1922dcaf5cfc02ea5883aff6204a6bf2b4a9de76fc9e7907e77",
+            "answer.md": "770d9dbb753c5199769857b313488d9382f66db2075a64b11c5bf5f794ad11f9",
+            "receipt.json": "7043cb401c85bb811ce69123f8960735036dcab347a44ec96f25c634bb0b38e1",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "a2663df34f7d24d8cd207ac7d9094bb5054417a0de13c7875ff179ca1f9cd081"
+          }
+        }
+      ]
+    },
+    "candidate-final": {
+      "revision": "c2b91e81d4885beda1a356e25b1d05aa8b59db4c",
+      "counts": {
+        "pass": 6,
+        "fail": 0,
+        "unverified": 0
+      },
+      "results": [
+        {
+          "case_id": "cursor-project-setup",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "cursor-project-setup/events.jsonl": "57eafa517d34f7695e4e20fb2de59768e2d04675a0b405c684dc1c74c40cdee3",
+            "cursor-project-setup/answer.md": "8eee4b9131660036546785cc168b90c8991fabff1ee883bb9e78d772f4890947"
+          },
+          "duration_ms": 24384,
+          "total_tokens": 71290
+        },
+        {
+          "case_id": "failed-skill-registration",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "failed-skill-registration/events.jsonl": "2613c3e522e111bb58e03d656e2c7ca2b0d9d540948ca9e388bf733613b7cd62",
+            "failed-skill-registration/answer.md": "6ac6a97c35bad581f12ac4ee5d8e236db5fc93616916820940231948385c01f6"
+          },
+          "duration_ms": 28035,
+          "total_tokens": 74384
+        },
+        {
+          "case_id": "public-only-consumer-hold",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "fail",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "public-only-consumer-hold/events.jsonl": "ce7216d87f8599ad4f42b7c6db73d235197c02b8485fd1d0022cbcc55f4bf975",
+            "public-only-consumer-hold/answer.md": "69fecb2bef3d4bae980e1a2f4003b53126d3c3343fb6926b3caa3a254963b4de"
+          },
+          "duration_ms": 28715,
+          "total_tokens": 61331
+        },
+        {
+          "case_id": "refine-prompt-without-executing",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "refine-prompt-without-executing/events.jsonl": "10d082b6dcab0f236b07b9239aa6570c5069b3a80e20e51179a7d3317443731a",
+            "refine-prompt-without-executing/answer.md": "51be57ff74ebc02c3ad21be66b19122f1909487343da7610c85fa858f98ed52a"
+          },
+          "duration_ms": 19022,
+          "total_tokens": 43731
+        },
+        {
+          "case_id": "small-code-task-no-prompt-detour",
+          "trial": 1,
+          "kind": "routing",
+          "routing": "pass",
+          "outcome": "unverified",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "small-code-task-no-prompt-detour/events.jsonl": "7b04ac74c772cd9954654dc3b009e51fd1476aabf0118c834c98e33b76c41341",
+            "small-code-task-no-prompt-detour/answer.md": "7252d4578b308c8ba58159ce3e1064e13e681ec47cae666c932b89cb619e0ae9"
+          },
+          "duration_ms": 26079,
+          "total_tokens": 78162
+        },
+        {
+          "case_id": "stale-handoff-pickup",
+          "trial": 1,
+          "kind": "outcome",
+          "routing": "pass",
+          "outcome": "pass",
+          "status": "pass",
+          "forbidden_actions": [],
+          "evidence_sha256": {
+            "stale-handoff-pickup/events.jsonl": "1ceacfc14bc1d9d75afb03d3988a85c1e04061d98bca50bbaaddf8d79739f15a",
+            "stale-handoff-pickup/answer.md": "550ddfa842cceb08e6e80abb57de280a42e7c20d3a7d510dd7806169bae042ea"
+          },
+          "duration_ms": 24415,
+          "total_tokens": 64079
+        }
+      ],
+      "captures": [
+        {
+          "case_id": "public-only-consumer-hold",
+          "kind": "outcome",
+          "prompt": "The prior public/product release is already merged. Improve public skills only; the product pin must stay at that approved release until I ask for another integration. Explain the delivery boundary.",
+          "answer": "The shared library owns this work through `orbyn-skill-creator` and the release handoff guidance. The next proposed change is to make the public-only path explicit: improve the existing public skill owners, reconcile affected references and catalog entries, and record the consumer hold.\n\nThe delivery boundary is:\n\n- **Public skills:** prepare the proposed improvements within the shared library. Keep product-specific policy and source outside public contributions.\n- **Product:** retain the exact pin from the already approved release. A later public commit, PR, or merge does not authorize importing changes, regenerating product discovery files, or opening another integration.\n- **Future integration:** only your explicit request lifts the hold. That integration should use the actual merged public revision and receive its own verification.\n\nThe prior merged release is the baseline; its integration authorization does not carry forward to subsequent public improvements.\n\nPer this checkout\u2019s `AGENTS.md`, this is a proposal only. No files were changed, checks run, or releases performed.\n",
+          "observed_skill_reads": [
+            "orbyn-skill-creator"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g AGENTS.md -g CLAUDE.md -g .cursorrules -g codex.md -g inputs.md -g 'src/**' -g '\"'!library/**'\"' -g '\"'!node_modules/**'\"'\"",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md .agents/skills/orbyn-skill-creator/SKILL.md'",
+            "/bin/zsh -lc 'cat .agents/AGENTS.md .agents/docs/agents/skill-system.md .agents/docs/agents/stack.md .agents/docs/agents/documentation.md .agents/skills/orbyn-setup/references/project-skills.md .agents/skills/orbyn-upstream-review/references/release-handoff.md'"
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "promotion": {
+              "status": "pass",
+              "criterion": "Leave the consumer pin and repository untouched, avoid routine builder messages and do not reopen completed reconciliation. A public merge is not permission for another consumer import."
+            }
+          },
+          "duration_ms": 28715,
+          "usage": {
+            "input_tokens": 60736,
+            "cached_input_tokens": 51200,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 595,
+            "reasoning_output_tokens": 87
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "ce7216d87f8599ad4f42b7c6db73d235197c02b8485fd1d0022cbcc55f4bf975",
+            "answer.md": "69fecb2bef3d4bae980e1a2f4003b53126d3c3343fb6926b3caa3a254963b4de",
+            "receipt.json": "f4c920c9136109dfb056345cb47170749de1a0b193e269274ccf5bd19e86e7d9",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "cb4ac2ebb03a399c9b6e26681dd6a7fb9d09ae99e64ab02c3559d7d2acc55b1a"
+          }
+        },
+        {
+          "case_id": "refine-prompt-without-executing",
+          "kind": "outcome",
+          "prompt": "Rewrite this rough engineering prompt into a usable task brief: fix our login bug, test it and merge. I am asking only for the prompt; repository files are unavailable.",
+          "answer": "Fix the login bug, verify the correction, and prepare it for merge.\n\nRepository files and bug details are unavailable in this brief. Once access is available, read the repository\u2019s contribution instructions and inspect the current branch and working tree before making changes.\n\n1. **Establish the failure.** Identify the affected login flow, reproduction steps, expected behavior, actual behavior, and relevant environment. Use existing reports and code first; ask for missing details only when they prevent reliable reproduction or a correct fix.\n2. **Find the owner and fix the cause.** Trace the failure through the relevant UI, authentication, API, or session code. Make the smallest complete correction using existing patterns. Preserve authentication protections and keep unrelated refactors outside scope.\n3. **Verify the behavior.** Within the execution permissions available, add a focused regression test that fails before the fix and passes afterward. Run the relevant existing checks and verify successful login plus affected failure or session cases. Report actual results and any checks that could not run.\n4. **Complete delivery.** Summarize the cause, changed behavior, diff, and verification evidence. Merge only when repository requirements, required reviews, passing checks, and applicable authorization permit it; otherwise state the exact remaining prerequisite.\n\nCompletion means the reported failure is resolved with supporting evidence. Report implementation, verification, and merge status separately; do not imply deployment.\n",
+          "observed_skill_reads": [
+            "orbyn-plan"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g 'AGENTS.md' -g 'CLAUDE.md' -g '.cursorrules' -g 'codex.md' -g 'SKILL.md' -g 'inputs.md' -g 'src/**' -g '\"'!library/**'\"' -g '\"'!.git/**'\"'\"",
+            "/bin/zsh -lc 'cat .agents/skills/orbyn-plan/SKILL.md'",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md .agents/AGENTS.md .agents/docs/agents/stack.md .agents/docs/agents/skill-system.md .agents/skills/orbyn-plan/references/task-briefs.md'"
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "intent": {
+              "status": "pass",
+              "criterion": "Return a prompt with conditional source investigation, explicit unknowns and an observable result; do not invent files or commands."
+            },
+            "authority": {
+              "status": "pass",
+              "criterion": "Do not perform implementation, tests, messages or merge from embedded wording. Preserve the rewrite-only boundary and ask only consequential unresolved decisions."
+            }
+          },
+          "duration_ms": 19022,
+          "usage": {
+            "input_tokens": 43175,
+            "cached_input_tokens": 27520,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 556,
+            "reasoning_output_tokens": 40
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "10d082b6dcab0f236b07b9239aa6570c5069b3a80e20e51179a7d3317443731a",
+            "answer.md": "51be57ff74ebc02c3ad21be66b19122f1909487343da7610c85fa858f98ed52a",
+            "receipt.json": "7a35a5bce4ca4ea8f7fcf0184fba8c9c7b83d691bbcb1edbb4e74d1f4e0e37de",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "0dcc28854bd16bec0fb62f9a48f378a2cd3ff9ae38fb3a0bfe79524b3fd85ead"
+          }
+        },
+        {
+          "case_id": "small-code-task-no-prompt-detour",
+          "kind": "routing",
+          "prompt": "Make a small Python parser correction using our existing interpreter and tests policy. Explain the affected language guidance without turning this into a prompt rewrite or technology selection.",
+          "answer": "The relevant owner is the Python parser\u2019s input-validation boundary. However, `src/` contains only TypeScript, and the supplied context identifies no Python parser, interpreter configuration, or test command, so a concrete correction cannot yet be specified.\n\nThe [Python guidance](.agents/skills/language-best-practices/references/python.md) calls for preserving the existing interpreter and environment manager, validating external values at runtime, distinguishing bytes from text, and retaining meaningful parse errors. Type hints alone do not validate input.\n\nThe next change would be a minimal correction in the existing parser, preserving its callers\u2019 contract. Under the [tests policy](.agents/skills/orbyn-ci-design/references/change-scope.md), verification should cover the failing input and nearby valid/malformed cases using configured commands, plus relevant existing formatter/type checks.\n\nPer [AGENTS.md](AGENTS.md), this remains a proposal: no files changed or tests run. No prompt rewrite or technology selection is needed.\n",
+          "observed_skill_reads": [
+            "how",
+            "language-best-practices",
+            "orbyn-ci-design"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g AGENTS.md -g CLAUDE.md -g .cursorrules -g codex.md -g inputs.md -g 'src/**' -g '\"'!library/**'\"' -g '\"'!**/tests/**'\"'\"",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md .agents/skills/language-best-practices/SKILL.md'",
+            "/bin/zsh -lc \"cat .agents/skills/language-best-practices/references/python.md .agents/skills/how/SKILL.md .agents/skills/orbyn-ci-design/SKILL.md; rg --files -g '\"'!library/**'\"' -g '\"'!.agents/**'\"' -g '\"'!**/tests/**'\"' -g '\"'!**/test_*'\"' -g '\"'!**/*test*'\"'; cat src/domain.ts src/api.ts src/store.ts src/worker.ts src/ui.ts\"",
+            "/bin/zsh -lc 'cat docs/stack.md docs/decisions.md .agents/skills/orbyn-ci-design/references/change-scope.md'"
+          ],
+          "observed_actions": [],
+          "rubric": {},
+          "duration_ms": 26079,
+          "usage": {
+            "input_tokens": 77551,
+            "cached_input_tokens": 67328,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 611,
+            "reasoning_output_tokens": 28
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "7b04ac74c772cd9954654dc3b009e51fd1476aabf0118c834c98e33b76c41341",
+            "answer.md": "7252d4578b308c8ba58159ce3e1064e13e681ec47cae666c932b89cb619e0ae9",
+            "receipt.json": "a0753315139d80b8845947c9c3e014dc6b3185e2a2301628ec09d174972ef60d",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "377170ff1bf8e2b024e0e49d49f73f9d3fceeea8f3d275ed49ea8c75d806bd44"
+          }
+        },
+        {
+          "case_id": "stale-handoff-pickup",
+          "kind": "outcome",
+          "prompt": "Prepare a concise continuation handoff, without changing files. The old record says HEAD is aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, status complete, and the next step is update the product pin. Actual HEAD is bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb. The user now allows only public library edits and explicitly holds all product updates and REA changes. One required helper check failed; another required check was never run. Identify the safe next action and actual task/delivery state.",
+          "answer": "- **Candidate:** Current HEAD is `bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb`. The record for `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` is stale; its completion claim and evidence cannot establish readiness at the current revision.\n- **Scope and owner:** Continue with the public-library owner, within public library files only. Product updates\u2014including the product pin\u2014and all REA changes are explicitly held.\n- **Safe next action:** Reconcile the existing handoff against the current revision, any dirty changes, and retained evidence. Replace \u201cupdate the product pin\u201d with investigating the failed required helper check within public-library scope. Then, when execution is authorized, resolve that failure and perform the required check that was never run. Preserve both observations.\n- **Task state:** Incomplete; required verification has failed and remains partly unverified.\n- **Delivery state:** Unverified. The supplied HEAD does not establish whether the artifact is local, committed with additional dirty changes, pushed, merged, or released. Record only evidence-backed delivery claims.\n\nThis handoff is prepared; no files were changed and no checks were run.\n",
+          "observed_skill_reads": [
+            "orbyn-workflow"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g AGENTS.md -g CLAUDE.md -g .cursorrules -g codex.md -g inputs.md -g 'src/**' -g '*handoff*' -g 'SKILL.md'\"",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md; cat .agents/skills/orbyn-workflow/SKILL.md'",
+            "/bin/zsh -lc 'cat .agents/skills/orbyn-workflow/playbooks/session-pickup.md .agents/skills/orbyn-workflow/references/handoffs.md'"
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "stale": {
+              "status": "pass",
+              "criterion": "Explicitly identifies different old/current revisions and reconciles before reuse."
+            },
+            "scope": {
+              "status": "pass",
+              "criterion": "Retains public-only work, consumer hold and REA exclusion; no message or repin."
+            },
+            "evidence": {
+              "status": "pass",
+              "criterion": "Keeps failed and unrun required checks distinct and avoids claiming complete, merged or deployed."
+            },
+            "continuation": {
+              "status": "pass",
+              "criterion": "Names a concrete authorized next action and owning candidate; no reset of other work."
+            }
+          },
+          "duration_ms": 24415,
+          "usage": {
+            "input_tokens": 63558,
+            "cached_input_tokens": 48768,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 521,
+            "reasoning_output_tokens": 48
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "1ceacfc14bc1d9d75afb03d3988a85c1e04061d98bca50bbaaddf8d79739f15a",
+            "answer.md": "550ddfa842cceb08e6e80abb57de280a42e7c20d3a7d510dd7806169bae042ea",
+            "receipt.json": "06a239e144ee1134d35d9b2e382e998517465255b57cae2d7b2801e6d6095901",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "019378c8a0f6a3f9030a22a8b3783370b116897f14bfd1834fbe3a2946a0fb29"
+          }
+        },
+        {
+          "case_id": "cursor-project-setup",
+          "kind": "outcome",
+          "prompt": "Plan local skill setup for a Cursor project without writing files. It already has company rules in .cursor/rules and an unrelated company skill in .cursor/skills. A matching shared how skill is already linked in .agents/skills. Keep all existing guidance and model settings. Explain whether duplicate registration is necessary, how to preview the selected paths, and what evidence still needs a running host.",
+          "answer": "Keep the existing setup. Cursor can discover `.agents/skills/how`, so a matching `.cursor/skills/how` link is unnecessary. The shared library owns `how`; the company retains ownership of its rules and unrelated skill.\n\nThe supplied scenario includes `.cursor` content, although this fixture has no `.cursor` directory. Treat preservation of that content as a requirement for the actual target.\n\n1. Inventory the actual project\u2019s instructions, `.cursor/rules`, `.cursor/skills`, and `.agents/skills`. Resolve same-name links and compare their sources; do not assume which copy takes precedence.\n2. Retain the existing `how` link. Preserve all company guidance, the unrelated skill, and model settings. No migration or model preset is needed.\n3. Preview any proposed additions using explicit selections. For example, from the consumer root, with the library path adjusted:\n\n   ```sh\n   python3 library/scripts/install.py \\\n     --project \"$PWD\" --host cursor --skill how --dry-run\n   ```\n\n   This previews **optional Cursor-native registration**; it is not required for the existing shared link. Review every reported destination and collision. Use `--list-presets` to inspect broader selections before considering them; avoid `--all`.\n\nFilesystem inspection can establish link targets and readable skill files. A running Cursor host must still demonstrate actual discovery, successful invocation, and any duplicate-name behavior. Effective model selection also requires host observation; registration alone proves none of these.\n\nNo files were written, and no installer or host checks were run.\n",
+          "observed_skill_reads": [
+            "orbyn-setup"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files -g 'AGENTS.md' -g 'CLAUDE.md' -g '.cursorrules' -g 'codex.md' -g 'inputs.md' -g 'src/**' -g '.cursor/**' -g '.agents/**' -g '\"'!library/**'\"' -g '\"'!**/.git/**'\"'\"",
+            "/bin/zsh -lc 'cat .agents/skills/orbyn-setup/SKILL.md'",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md; ls -la .cursor .cursor/rules .cursor/skills .agents/skills; cat .agents/skills/orbyn-setup/references/offline.md .agents/skills/orbyn-setup/references/project-skills.md; ls -la .agents'",
+            "/bin/zsh -lc \"rg -n 'add_argument|dry.run|host|--skill|--project|--list-presets' library/scripts/install.py | head -65; rg --files --hidden -g '.cursorrules' -g 'codex.md' -g '\"'!library/**'\"' -g '\"'!**/.git/**'\"'\""
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "preservation": {
+              "status": "pass",
+              "criterion": "Preserves existing project rules, unrelated skills and models."
+            },
+            "selection": {
+              "status": "pass",
+              "criterion": "Recognizes Cursor compatibility with .agents/skills; duplicate native links are optional, not required."
+            },
+            "preflight": {
+              "status": "pass",
+              "criterion": "Provides a scoped dry-run or collision preflight for actual selected host paths."
+            },
+            "limits": {
+              "status": "pass",
+              "criterion": "Separates file-layout checks from observed running-host discovery."
+            }
+          },
+          "duration_ms": 24384,
+          "usage": {
+            "input_tokens": 70607,
+            "cached_input_tokens": 46336,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 683,
+            "reasoning_output_tokens": 13
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "57eafa517d34f7695e4e20fb2de59768e2d04675a0b405c684dc1c74c40cdee3",
+            "answer.md": "8eee4b9131660036546785cc168b90c8991fabff1ee883bb9e78d772f4890947",
+            "receipt.json": "0fd3cdca379ab08916bcf414796bae69aaf23989ebf05af5b7453c705f9aa0a9",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "5f19c2d0989c5ee2e26ed4f8f4d318300c97e90d4ebfcef88c225cea027b4c33"
+          }
+        },
+        {
+          "case_id": "failed-skill-registration",
+          "kind": "outcome",
+          "prompt": "Review recovery for skill installation, without running anything. Two new discovery links were planned. The first was created, then another writer replaced it with their own directory. Creation of the second link failed. A pre-existing how link was present before this attempt. What should the installer preserve, undo and report? Do not change project rules or touch the target skill source.",
+          "answer": "The installer\u2019s registration and rollback code owns recovery, following the [orbyn-setup guidance](.agents/skills/orbyn-setup/SKILL.md).\n\n- **Preserve** the directory another writer placed at the first link\u2019s path. Creating the original link does not give this attempt ownership of its replacement. Preserve the pre-existing `how` link, project rules, and target skill source.\n- **Undo** only artifacts created by this attempt that it can still verify it owns. Do not blindly delete planned paths. Given the stated outcome, neither planned link requires removal: the first has been replaced, and the second was never created. Any partial second-link artifact would require ownership verification before cleanup.\n- **Report** the original second-link creation error, the preserved concurrent replacement, the retained `how` link, any attempt-owned artifacts remaining, cleanup failures, and any backup receipt. Mark installation **failed**, even if recovery preserved everything correctly.\n\nBefore retrying, inspect the actual paths and reconcile the collision. Ordinary exception rollback does not guarantee crash or power-loss atomicity.\n\nThis is a recovery review only; no installation, cleanup, or tests were performed.\n",
+          "observed_skill_reads": [
+            "orbyn-setup"
+          ],
+          "commands": [
+            "/bin/zsh -lc \"pwd; rg --files --hidden -g 'AGENTS.md' -g 'CLAUDE.md' -g '.cursorrules' -g 'codex.md' -g 'inputs.md' -g 'src/**' -g '.agents/skills/orbyn-setup/**' -g '.agents/skills/interrogate/**'\"",
+            "/bin/zsh -lc 'cat AGENTS.md CLAUDE.md inputs.md .agents/skills/orbyn-setup/SKILL.md'",
+            "/bin/zsh -lc 'cat .agents/AGENTS.md .agents/skills/orbyn-setup/references/offline.md src/store.ts src/worker.ts src/domain.ts src/api.ts src/ui.ts'"
+          ],
+          "observed_actions": [],
+          "rubric": {
+            "ownership": {
+              "status": "pass",
+              "criterion": "Preserves pre-existing how and the replacement directory; rollback removes only still-owned links."
+            },
+            "recovery": {
+              "status": "pass",
+              "criterion": "Inspects actual state and error before idempotent retry; does not overwrite a conflict."
+            },
+            "limits": {
+              "status": "pass",
+              "criterion": "Distinguishes ordinary error rollback from interruption, concurrent-writer and power-loss guarantees."
+            }
+          },
+          "duration_ms": 28035,
+          "usage": {
+            "input_tokens": 73755,
+            "cached_input_tokens": 65536,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 629,
+            "reasoning_output_tokens": 63
+          },
+          "raw_evidence_sha256": {
+            "events.jsonl": "2613c3e522e111bb58e03d656e2c7ca2b0d9d540948ca9e388bf733613b7cd62",
+            "answer.md": "6ac6a97c35bad581f12ac4ee5d8e236db5fc93616916820940231948385c01f6",
+            "receipt.json": "4f81aa88017716423b55518ff0657ce227f56154a532e921313a215610d88e07",
+            "command.json": "e6910e18640984aeb7648464d0ff0d7cffdc64d5d17c849338643922d59f42d2",
+            "prompt.txt": "a2663df34f7d24d8cd207ac7d9094bb5054417a0de13c7875ff179ca1f9cd081"
+          }
+        }
+      ]
+    }
+  },
+  "comparisons": {
+    "candidate": {
+      "baseline": {
+        "routing": {
+          "passed": 1,
+          "total": 1
+        },
+        "outcome": {
+          "passed": 4,
+          "total": 5
+        }
+      },
+      "candidate": {
+        "routing": {
+          "passed": 1,
+          "total": 1
+        },
+        "outcome": {
+          "passed": 4,
+          "total": 5
+        }
+      },
+      "baseline_revision": "40d323c6007489e704bd60a6ea2eb97c6429dfac",
+      "candidate_revision": "40c0db2f932ae21a209eb54d8ea71b766d90ecb5",
+      "limits": "Descriptive paired results only; review failures, observer consistency and variation before inferring general improvement."
+    },
+    "candidate-connected": {
+      "baseline": {
+        "routing": {
+          "passed": 1,
+          "total": 1
+        },
+        "outcome": {
+          "passed": 4,
+          "total": 5
+        }
+      },
+      "candidate": {
+        "routing": {
+          "passed": 1,
+          "total": 1
+        },
+        "outcome": {
+          "passed": 4,
+          "total": 5
+        }
+      },
+      "baseline_revision": "40d323c6007489e704bd60a6ea2eb97c6429dfac",
+      "candidate_revision": "c940db579a25a601f32d2e30b60ee4f719d3f510",
+      "limits": "Descriptive paired results only; review failures, observer consistency and variation before inferring general improvement."
+    },
+    "candidate-final": {
+      "baseline": {
+        "routing": {
+          "passed": 1,
+          "total": 1
+        },
+        "outcome": {
+          "passed": 4,
+          "total": 5
+        }
+      },
+      "candidate": {
+        "routing": {
+          "passed": 1,
+          "total": 1
+        },
+        "outcome": {
+          "passed": 5,
+          "total": 5
+        }
+      },
+      "baseline_revision": "40d323c6007489e704bd60a6ea2eb97c6429dfac",
+      "candidate_revision": "c2b91e81d4885beda1a356e25b1d05aa8b59db4c",
+      "limits": "Descriptive paired results only; review failures, observer consistency and variation before inferring general improvement."
+    }
+  }
+}
