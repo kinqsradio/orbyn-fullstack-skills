@@ -84,15 +84,20 @@ signature requirement is currently imposed. Security reports go through
 ## Evidence for skill evaluations
 
 CI validates case structure and tests the evaluator with synthetic files. It does
-not call models or prove quality gains. If you run a host trial, include the full
+not call models or prove quality gains. If you run a host trial, record the full
 revision, suite hash, host/model/version/effort settings, trial count, captured
-transcript, output artifacts and identified reviewer. Use the grader's report;
+transcript, output artifacts and identified reviewer. Publish a concise result
+summary and reproducible protocol; retain complete captures in ignored local
+output or approved CI artifacts, with access pointers when available. Do not
+imply local captures are downloadable public artifacts. Use the grader's report;
 missing runs or rubric evidence remain unverified. A paired comparison requires
 the same cases, host settings and pinned fixture/tool protocol, with one baseline
 and one candidate. Preserve failed and timed-out attempts when reporting reruns.
 
-Keep raw trial evidence outside tracked library content unless explicitly reviewed
-for publication. Do not commit real customer or private repository context. A
+Keep raw trial evidence outside tracked library content by default. A separate
+reviewed publication can be appropriate, but is not required for each contribution.
+Ship synthetic examples and reusable helpers rather than project session logs.
+Do not commit real customer or private repository context. A
 project's `.agents/orbyn-context.json` and design/brand guides belong to that
 consumer, not the managed public skill export.
 

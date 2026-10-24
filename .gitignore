@@ -11,3 +11,6 @@ output/
 
 # Pinned upstream/research downloads are local reference material only.
 /orbyn-references/
+
+# Independent contribution clones and worktrees; never library content.
+/repo/

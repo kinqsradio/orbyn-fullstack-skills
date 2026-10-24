@@ -48,6 +48,95 @@ class ProjectSkillTests(unittest.TestCase):
         self.assertEqual(before, {p.relative_to(target): p.read_bytes() for p in target.rglob('*') if p.is_file()})
         self.assertEqual((self.root/'AGENTS.md').read_text(), 'Company policy')
 
+    def test_cursor_and_all_are_explicit_and_preserve_rules_and_existing_skills(self):
+        settings = self.root/'.cursor/rules/company.mdc'
+        settings.parent.mkdir(parents=True)
+        settings.write_text('Existing company rules')
+        foreign = self.root/'.cursor/skills/company-own/SKILL.md'
+        foreign.parent.mkdir(parents=True)
+        foreign.write_text('Existing independent skill')
+        self.assertEqual(installer.install(self.root, 'cursor', ['how'], dry_run=True), 1)
+        self.assertFalse((self.root/'.cursor/skills/how').exists())
+        self.assertEqual(installer.install(self.root, 'cursor', ['how']), 1)
+        self.assertFalse((self.root/'.agents').exists())
+        self.assertEqual(installer.install(self.root, 'all', ['how']), 2)
+        self.assertEqual(installer.install(self.root, 'all', ['how']), 0)
+        self.assertEqual(settings.read_text(), 'Existing company rules')
+        self.assertEqual(foreign.read_text(), 'Existing independent skill')
+        self.assertEqual(local.hosts_for('both'), ['.agents', '.claude'])
+
+    def test_cursor_collision_preflights_all_hosts(self):
+        path = self.root/'.cursor/skills/how'
+        path.mkdir(parents=True)
+        (path/'SKILL.md').write_text('Target-owned how skill')
+        with self.assertRaisesRegex(ValueError, 'Conflicting'):
+            installer.install(self.root, 'all', ['how'])
+        self.assertFalse((self.root/'.agents').exists())
+
+    def test_partial_link_failure_rolls_back_only_this_attempt(self):
+        installer.install(self.root, 'codex', ['how'])
+        original = Path.symlink_to
+        calls = 0
+        def fail_second(link, target, **kwargs):
+            nonlocal calls
+            calls += 1
+            if calls == 2:
+                raise OSError('Synthetic second-link failure')
+            return original(link, target, **kwargs)
+        with mock.patch.object(Path, 'symlink_to', fail_second):
+            with self.assertRaisesRegex(OSError, 'second-link'):
+                installer.install(self.root, 'all', ['how', 'architect'])
+        self.assertTrue((self.root/'.agents/skills/how').is_symlink())
+        self.assertFalse((self.root/'.agents/skills/architect').is_symlink())
+        self.assertFalse((self.root/'.claude/skills/architect').is_symlink())
+        self.assertEqual(installer.install(self.root, 'all', ['how', 'architect']), 5)
+
+    def test_rollback_preserves_another_writers_replacement(self):
+        first = self.root.resolve()/'.agents/skills/how'
+        second = self.root.resolve()/'.claude/skills/how'
+        original = Path.symlink_to
+        def replace_then_fail(link, target, **kwargs):
+            if link == second:
+                first.unlink()
+                first.mkdir()
+                (first/'owned.txt').write_text('Concurrent work')
+                raise OSError('Writer replaced an earlier link')
+            return original(link, target, **kwargs)
+        with mock.patch.object(Path, 'symlink_to', replace_then_fail):
+            with self.assertRaisesRegex(RuntimeError, 'preserved changed entries') as error:
+                installer.install(self.root, 'both', ['how'])
+        self.assertEqual((first/'owned.txt').read_text(), 'Concurrent work')
+        self.assertIn(str(first), str(error.exception))
+
+    def test_host_parent_changed_after_preflight_is_refused(self):
+        sources = {'how': ROOT/'skills/how'}
+        pending = local.plan_links(self.root, sources, ['.cursor'])
+        external = self.root/'external'
+        external.mkdir()
+        (self.root/'.cursor').symlink_to(external, target_is_directory=True)
+        with self.assertRaisesRegex(ValueError, 'changed after preflight'):
+            local.write_links(pending)
+        self.assertEqual(list(external.iterdir()), [])
+
+    def test_failed_rollback_reports_remaining_owned_link(self):
+        first = self.root.resolve()/'.agents/skills/how'
+        original_link = Path.symlink_to
+        original_unlink = Path.unlink
+        def fail_second(link, target, **kwargs):
+            if link.parent.parent.name == '.claude':
+                raise OSError('Creation failed')
+            return original_link(link, target, **kwargs)
+        def fail_cleanup(path, **kwargs):
+            if path == first:
+                raise PermissionError('Cleanup failed')
+            return original_unlink(path, **kwargs)
+        with mock.patch.object(Path, 'symlink_to', fail_second), mock.patch.object(Path, 'unlink', fail_cleanup):
+            with self.assertRaisesRegex(RuntimeError, 'Creation failed; rollback incomplete') as error:
+                installer.install(self.root, 'both', ['how'])
+        self.assertIn(str(first), str(error.exception))
+        self.assertTrue(first.is_symlink())
+        self.assertEqual(installer.install(self.root, 'both', ['how']), 1)
+
     def test_local_link_only_cli_is_idempotent_and_dry_run_does_not_write(self):
         target = make_skill(self.root)
         cli = [sys.executable, str(ROOT/'skills/orbyn-setup/scripts/project_skills.py')]
@@ -186,6 +275,28 @@ class ExistingProjectMigrationTests(unittest.TestCase):
         self.assertFalse((self.root/'project-skills').exists())
         self.assertFalse(list(self.base.glob('project-skill-migration-*')))
         self.assertEqual((self.sources[1]/'references/steps.md').read_text(), 'Different local work')
+
+    def test_cursor_migration_reconciles_all_copies_only_with_all(self):
+        cursor = self.root/'.cursor/skills/release'
+        shutil.copytree(self.sources[0], cursor)
+        with self.assertRaisesRegex(ValueError, '--host all'):
+            self.install()
+        self.assertFalse((self.root/'project-skills').exists())
+        installer.install(self.root, 'all', ['how'], migrate_skills=['release'], namespace='acme')
+        target = self.root/'project-skills/acme/acme-release'
+        for host in ['.agents', '.claude', '.cursor']:
+            self.assertFalse((self.root/host/'skills/release').exists())
+            self.assertEqual((self.root/host/'skills/acme-release').resolve(), target)
+        self.assertIn('Retain original credit', (target/'LICENSE').read_text())
+
+    def test_divergent_cursor_copy_stops_before_writes(self):
+        cursor = self.root/'.cursor/skills/release'
+        shutil.copytree(self.sources[0], cursor)
+        (cursor/'LICENSE').write_text('Different ownership')
+        with self.assertRaisesRegex(ValueError, 'Conflicting host copies'):
+            installer.install(self.root, 'all', ['how'], migrate_skills=['release'], namespace='acme')
+        self.assertFalse((self.root/'project-skills').exists())
+        self.assertFalse(list(self.base.glob('project-skill-migration-*')))
 
     def test_write_failure_rolls_back_legacy_entries_and_removes_partial_install(self):
         original = installer.PROJECT_SKILLS['write_links']

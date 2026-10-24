@@ -11,6 +11,11 @@ One implementer is appropriate when the files/contracts are coupled. Give each
 child a role, outcome, current candidate, owned paths/resources, allowed effects,
 exclusions, evidence and stopping condition. Children complete their slices
 directly without recursive delegation. Reuse matching owners for corrections.
+Choose the minimum useful [task record](../../skills/orbyn-workflow/references/task-record.md)
+when context loss or an owner transfer warrants it. Use structured validation only
+when it helps. Reconcile the current revision,
+inspect its evidence and preserve unresolved scope before resuming. Record
+validation is not permission to create a session or send a message.
 
 Use the consuming project's named roles and model policy when defined; the
 library's reference definitions are optional. Preserve standard processing.
@@ -27,7 +32,6 @@ Separate filesystem ownership from shared databases, fixture accounts and export
 Two worktrees are not isolation for one database. Assign cleanup ownership. Follow
 the consumer's requested qualification protocol, including any bounded review rounds.
 
-
 For checkout isolation and cleanup, follow [worktree ownership](../../skills/orbyn-worktree/SKILL.md).
 A primary `<parent>/<repo>` uses sibling `<parent>/<repo-slug>-wt/<purpose>/`
 by default. Resolve the primary clone from Git registration, reuse suitable
@@ -37,3 +41,9 @@ cleanup. A new worktree does not create a chat or isolate databases/services.
 The owning task reuses its branch through corrections. Delegate branches are
 bounded local implementation details, not a reason to create company-remote
 branches or another hosted fork. One owner serializes shared Git ref/remote writes.
+
+In an optional library-root `repo/` workspace, the target clone still owns its
+instructions, skills and common Git metadata. Follow the [workspace contract](../../skills/orbyn-setup/references/repository-workspaces.md)
+for target-root selection, local-only setup and publication boundaries. Shared
+library promotion and each downstream consumer update require their own scope;
+a public-only task does not automatically contact a consumer owner or repin it.

@@ -8,7 +8,7 @@ import runpy
 import subprocess
 import sys
 
-from skill_contracts import check_audit, check_discovery, check_incorporated_material, check_links
+from skill_contracts import check_audit, check_discovery, check_incorporated_material, check_links, check_local_workspaces
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -18,6 +18,7 @@ def main():
         print('Python 3.11+ is required for library validation.', file=sys.stderr)
         return 1
     errors = []
+    errors.extend(check_local_workspaces(ROOT))
     if (ROOT/'project-skills').exists() or (ROOT/'project-skills').is_symlink():
         errors.append('Consumer-owned project-skills must stay in the consuming repository, outside the public library')
     def require(ok, message):

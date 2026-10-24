@@ -11,6 +11,8 @@ python3 scripts/install.py --list-presets
 python3 scripts/install.py --project /path/to/project --preset core --preset creator --dry-run
 python3 scripts/install.py --project /path/to/project --preset core --preset creator
 python3 scripts/install.py --project /path/to/project --host codex --skill how --skill architect
+python3 scripts/install.py --project /path/to/project --host cursor --preset core --dry-run
+python3 scripts/install.py --project /path/to/project --host all --preset core
 python3 scripts/install.py --project /path/to/project --all
 ```
 
@@ -19,6 +21,24 @@ links are idempotent; a file or link owned by something else is refused. It does
 not replace root instructions, model settings or connectors. The full clone
 keeps cross-skill references, guides, resources and notices available even when
 only some skills are registered for automatic discovery.
+
+`codex` uses `.agents/skills`, `claude` uses `.claude/skills`, and `cursor` uses
+`.cursor/skills`. `both` keeps the original Codex/Claude meaning; `all` explicitly
+selects all three. Cursor also supports `.agents/skills`, so an existing Codex
+installation can already supply those skills; avoid duplicate registration when
+unnecessary. Inspect same-name skills across the host's compatible locations and
+resolve collisions before setup. The installer only reconciles selected paths,
+not undocumented host precedence. See [Cursor's discovery documentation](https://cursor.com/docs/skills).
+Host path fixtures are not runtime/model parity evidence. Helpers remain
+project-scoped; this update does not write to the user's home or configure models.
+
+If ordinary link creation fails partway through a batch, the helper removes only
+links it created that still have the same identity and target. It preserves
+pre-existing selections and another writer's replacements; empty host directories
+may remain. Re-run the idempotent installer after inspecting the error. Retirement
+is a separate final phase; process termination, power loss or rollback failure
+still requires inspection. Serialize setup writers; this is not a cross-process
+filesystem transaction.
 
 The consuming project's rules take precedence. Read its [actual stack](agents/stack.md)
 and commands rather than copying the example architecture. `orbyn-*` identifies
@@ -73,6 +93,16 @@ source are retired, after replacement links are created successfully. Foreign
 skills stay intact; a dry-run reports the plan without changing either host.
 See the [retirement contract](../skills/orbyn-setup/references/project-skills.md#retired-shared-entrypoints).
 
+## Optional nested contribution workspace
+
+The library can live beside independent targets in ignored `repo/<project>/`
+and sibling `repo/<project>-wt/<purpose>/` paths. Follow the
+[workspace contract](../skills/orbyn-setup/references/repository-workspaces.md):
+select the target root explicitly, preserve its own instructions and skills,
+and distinguish local assistance from upstream adoption of our tooling. Existing
+projects do not need to move. Research-only source stays in `orbyn-references/`.
+Never add target repositories or gitlinks to the public library.
+
 ## Customize the consuming project
 
 From the library checkout, create an optional map of existing project guides:
@@ -112,6 +142,8 @@ python3 scripts/install.py --project /path/to/company-repo --namespace acme --mi
 ```
 
 Repeat `--migrate-skill` for selected skills. Migration reconciles both hosts,
+or all three with `--host all`. A selected copy in `.cursor/skills` requires
+`--host all`, so it cannot silently retain a competing old name. Migration
 requires matching copies when both exist, names the canonical copy `acme-release`,
 and preserves assets/licenses. It stages a recoverable backup with a receipt in a
 private sibling directory before replacing old entries. Filesystem errors trigger

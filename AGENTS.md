@@ -5,6 +5,21 @@ private-repository history. The consuming project's instructions, user scope and
 host permissions take precedence over these reference defaults. Resolve the
 target checkout and [project context](docs/agents/stack.md) before applying examples.
 
+## Nested contribution repositories
+
+The optional ignored `repo/` workspace holds independent target clones and
+sibling worktrees. Follow the [workspace contract](skills/orbyn-setup/references/repository-workspaces.md).
+Resolve the target's own Git root and read its applicable instructions and skills
+before editing. Library maintenance defaults do not replace target contribution
+rules, stack, tests or agents. Higher-priority host/user instructions still apply;
+do not assume a nested `.git` automatically stops ancestor instruction loading.
+
+Preserve upstream-owned instructions and skills in their established locations.
+Use portable methods where compatible; do not relocate their guidance merely to
+fit our namespace. A target contribution does not itself authorize installing
+skills or changing this library. Keep target source, history, credentials and
+local setup additions outside the public library's index, catalog and exports.
+
 ## Agent-led initial setup
 
 When the human asks to set up this library in an existing project, read

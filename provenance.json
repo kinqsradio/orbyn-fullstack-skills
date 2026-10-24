@@ -117,13 +117,18 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-plan",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed.",
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Connected substantive task handoffs to the local versioned continuation contract while keeping simple prompt rewrites direct. Reuse the owning project document for durable handoffs and avoid creating a separate log solely because planning occurred.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
           "source": "https://github.com/mattpocock/skills/tree/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering",
           "revision": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
           "relationship": "reviewed-inspiration; no upstream workflow text imported"
+        },
+        {
+          "source": "https://github.com/Lelekhoa1812/prompt-me/tree/fd90c6b9de3bb4af019b310c8af77d5c8a07ff00",
+          "revision": "fd90c6b9de3bb4af019b310c8af77d5c8a07ff00",
+          "relationship": "reviewed comparison only; no source text/code imported; repository states no license selected"
         }
       ]
     },
@@ -150,7 +155,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/setup-pstack/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original additive presets and consumer-owned context tooling. Added consumer-owned skill namespaces, explicit backed-up host-skill migration and offline setup guidance. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original additive presets and consumer-owned context tooling. Added consumer-owned skill namespaces, explicit backed-up host-skill migration and offline setup guidance. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Added explicit Cursor project discovery, all-host migration preflight and ownership-aware rollback for ordinary link-registration errors; existing host selections remain compatible. Recorded preserved concurrent replacements explicitly in registration failure reports after a bounded development review. Made exception-versus-crash recovery limits explicit in the setup result contract after a retained failed development criterion."
     },
     "orbyn-skill-creator": {
       "relationship": "original",
@@ -158,7 +163,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-skill-creator",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence. Added company/public ownership routing and offline source requirements. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence. Added company/public ownership routing and offline source requirements. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added explicit evaluation subsets and development cases for stale continuation, Cursor setup and failed registration. Clarified concise public evaluation summaries and reproducible synthetic protocols; retain complete per-run captures outside tracked template content by default."
     },
     "orbyn-ui-design": {
       "relationship": "original",
@@ -175,7 +180,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/poteto-mode/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an optional task record and context/evaluation handoffs. Added consumer-owned skill and offline-reference handoffs. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added independently written performance-harness guidance after reviewing upstream benchmark-checklist at e73df471; original import and license retained. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Expanded runtime/trace forensics, prototype and visual comparison playbooks with original operational guidance.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an optional task record and context/evaluation handoffs. Added consumer-owned skill and offline-reference handoffs. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added independently written performance-harness guidance after reviewing upstream benchmark-checklist at e73df471; original import and license retained. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Expanded runtime/trace forensics, prototype and visual comparison playbooks with original operational guidance. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Added an independently authored versioned offline continuation contract, worked record and consistency checker; no external protocol text or code imported. Clarified template defaults: no separate routine-task log, minimum useful consumer-owned checkpoints, optional structured validation and local raw-evidence retention.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
@@ -438,7 +443,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/show-me-your-work/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Connected substantive owner transfers and context-loss recovery to the original local versioned continuation contract; historical notices remain unchanged. Made logging conditional on continuation or consequential review, with agent-maintained project-owned checkpoints rather than required human invocations or per-task logs."
     },
     "social-content": {
       "relationship": "original",
@@ -506,7 +511,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-worktree",
-      "changes": "Original worktree ownership/lifecycle guidance: sibling repo-wt roots, neutral purpose names, reuse, verified base and preservation before cleanup. Includes local-first branch ownership, bounded delegate branches, stable personal contribution fork names and verified authorized publication. Prefer private contribution storage when supported, retain local work if privacy is unavailable, and distinguish a public native fork from a private standalone backup."
+      "changes": "Original worktree ownership/lifecycle guidance: sibling repo-wt roots, neutral purpose names, reuse, verified base and preservation before cleanup. Includes local-first branch ownership, bounded delegate branches, stable personal contribution fork names and verified authorized publication. Prefer private contribution storage when supported, retain local work if privacy is unavailable, and distinguish a public native fork from a private standalone backup. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported."
     },
     "orbyn-upstream-review": {
       "relationship": "original",
@@ -514,7 +519,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-upstream-review",
-      "changes": "Original maintenance workflow across external code, skills and research: pinned comparisons, excluded local references, offline limits, selective adaptation and honest import/review/consumer revision ownership. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision."
+      "changes": "Original maintenance workflow across external code, skills and research: pinned comparisons, excluded local references, offline limits, selective adaptation and honest import/review/consumer revision ownership. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported."
     },
     "language-best-practices": {
       "relationship": "original",
