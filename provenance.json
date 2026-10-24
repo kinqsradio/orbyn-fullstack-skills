@@ -8,7 +8,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/architect/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an original synthetic approval-contract example. Added independently authored vertical code organization guidance and a synthetic task-editor example; TkDodo is cited as reviewed inspiration, with no article material imported. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an original synthetic approval-contract example. Added independently authored vertical code organization guidance and a synthetic task-editor example; TkDodo is cited as reviewed inspiration, with no article material imported. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
@@ -25,7 +25,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/arena/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
     },
     "automate-me": {
       "relationship": "adapted",
@@ -34,7 +34,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/automate-me/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
     },
     "figure-it-out": {
       "relationship": "adapted",
@@ -43,7 +43,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/figure-it-out/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
     },
     "how": {
       "relationship": "adapted",
@@ -52,7 +52,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/how/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
@@ -69,7 +69,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/interrogate/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
@@ -150,7 +150,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/setup-pstack/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original additive presets and consumer-owned context tooling. Added consumer-owned skill namespaces, explicit backed-up host-skill migration and offline setup guidance."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original additive presets and consumer-owned context tooling. Added consumer-owned skill namespaces, explicit backed-up host-skill migration and offline setup guidance. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision."
     },
     "orbyn-skill-creator": {
       "relationship": "original",
@@ -158,7 +158,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-skill-creator",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence. Added company/public ownership routing and offline source requirements."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence. Added company/public ownership routing and offline source requirements. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision."
     },
     "orbyn-ui-design": {
       "relationship": "original",
@@ -175,7 +175,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/poteto-mode/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an optional task record and context/evaluation handoffs. Added consumer-owned skill and offline-reference handoffs. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added independently written performance-harness guidance after reviewing upstream benchmark-checklist at e73df471; original import and license retained.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an optional task record and context/evaluation handoffs. Added consumer-owned skill and offline-reference handoffs. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added independently written performance-harness guidance after reviewing upstream benchmark-checklist at e73df471; original import and license retained. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Expanded runtime/trace forensics, prototype and visual comparison playbooks with original operational guidance.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
@@ -197,7 +197,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-boundary-discipline/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-build-the-lever": {
       "relationship": "adapted",
@@ -206,7 +206,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-build-the-lever/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-encode-lessons-in-structure": {
       "relationship": "adapted",
@@ -215,7 +215,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-exhaust-the-design-space": {
       "relationship": "adapted",
@@ -224,7 +224,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-exhaust-the-design-space/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-experience-first": {
       "relationship": "adapted",
@@ -233,7 +233,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-experience-first/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-fix-root-causes": {
       "relationship": "adapted",
@@ -242,7 +242,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-fix-root-causes/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-foundational-thinking": {
       "relationship": "adapted",
@@ -251,7 +251,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-foundational-thinking/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-guard-the-context-window": {
       "relationship": "adapted",
@@ -260,7 +260,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-guard-the-context-window/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-laziness-protocol": {
       "relationship": "adapted",
@@ -269,7 +269,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-laziness-protocol/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-make-operations-idempotent": {
       "relationship": "adapted",
@@ -278,7 +278,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-make-operations-idempotent/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-migrate-callers-then-delete-legacy-apis": {
       "relationship": "adapted",
@@ -287,7 +287,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-minimize-reader-load": {
       "relationship": "adapted",
@@ -296,7 +296,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-minimize-reader-load/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-never-block-on-the-human": {
       "relationship": "adapted",
@@ -305,7 +305,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-never-block-on-the-human/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-outcome-oriented-execution": {
       "relationship": "adapted",
@@ -314,7 +314,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-outcome-oriented-execution/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-prove-it-works": {
       "relationship": "adapted",
@@ -323,7 +323,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-prove-it-works/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-redesign-from-first-principles": {
       "relationship": "adapted",
@@ -332,7 +332,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-redesign-from-first-principles/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-separate-before-serializing-shared-state": {
       "relationship": "adapted",
@@ -341,7 +341,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-separate-before-serializing-shared-state/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-sequence-verifiable-units": {
       "relationship": "adapted",
@@ -350,7 +350,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-sequence-verifiable-units/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-subtract-before-you-add": {
       "relationship": "adapted",
@@ -359,7 +359,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-subtract-before-you-add/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "principle-type-system-discipline": {
       "relationship": "adapted",
@@ -368,7 +368,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-type-system-discipline/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution."
     },
     "rea-analysis-optimization": {
       "relationship": "reference-adapter",
@@ -413,7 +413,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/reflect/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified canonical writable ownership, replaceable plugin-cache boundaries and local-edit versus public contribution authority after reviewing upstream commit 7054003c3723e82d099fb7620e3bc8d7d63eebc6; independently written local guidance.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified canonical writable ownership, replaceable plugin-cache boundaries and local-edit versus public contribution authority after reviewing upstream commit 7054003c3723e82d099fb7620e3bc8d7d63eebc6; independently written local guidance. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged.",
       "reviewed_inspiration": [
         {
           "source": "https://github.com/cursor/plugins/commit/7054003c3723e82d099fb7620e3bc8d7d63eebc6",
@@ -438,7 +438,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/show-me-your-work/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
     },
     "social-content": {
       "relationship": "original",
@@ -463,7 +463,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/tdd/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
@@ -480,7 +480,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/typescript-best-practices/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss. Added an original self-contained TypeScript contract guide and synthetic exhaustive-union example."
     },
     "unslop": {
       "relationship": "adapted",
@@ -489,7 +489,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/unslop/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
     },
     "why": {
       "relationship": "adapted",
@@ -498,7 +498,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/why/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
     },
     "orbyn-security-audit": {
       "relationship": "adapted",
@@ -523,7 +523,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-upstream-review",
-      "changes": "Original maintenance workflow across external code, skills and research: pinned comparisons, excluded local references, offline limits, selective adaptation and honest import/review/consumer revision ownership."
+      "changes": "Original maintenance workflow across external code, skills and research: pinned comparisons, excluded local references, offline limits, selective adaptation and honest import/review/consumer revision ownership. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision."
     },
     "language-best-practices": {
       "relationship": "original",

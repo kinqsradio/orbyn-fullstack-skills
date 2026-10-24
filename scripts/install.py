@@ -44,6 +44,11 @@ def install(project, host, selected=(), presets=(), all_skills=False, dry_run=Fa
     if host not in {'both', 'codex', 'claude'}:
         raise ValueError('Unknown host')
     wanted = selection(selected, presets, all_skills)
+    for name in sorted(wanted):
+        base = ROOT/'skills'/name
+        nested = [p for p in base.rglob('SKILL.md') if p != base/'SKILL.md']
+        if nested:
+            raise ValueError(f'Nested active entrypoints in {name}; keep reference text as SOURCE.md')
     if migrate_skills and host != 'both':
         raise ValueError('Migration reconciles both hosts; use --host both')
     local = PROJECT_SKILLS['inventory'](project, selection(all_skills=True))

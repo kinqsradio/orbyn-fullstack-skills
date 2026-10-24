@@ -95,3 +95,9 @@ Keep raw trial evidence outside tracked library content unless explicitly review
 for publication. Do not commit real customer or private repository context. A
 project's `.agents/orbyn-context.json` and design/brand guides belong to that
 consumer, not the managed public skill export.
+
+Skill maintenance also checks recursive discovery and Markdown heading fragments.
+Use `SOURCE.md` for bundled upstream entrypoint text, preserving its original path
+and byte hash in snapshot metadata. A catalog entry must link to a real maintained
+owner; imported text cannot introduce active aliases or missing workflow dependencies.
+Update [the catalog audit](docs/skill-audit.md) when ownership or evidence limits change.

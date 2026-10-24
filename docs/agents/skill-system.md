@@ -121,3 +121,16 @@ invocations. [Workflow coverage](../engineering-workflows.md) records those owne
 Worktree location, branch/path naming, reuse and preservation/cleanup belong to
 [orbyn-worktree](../../skills/orbyn-worktree/SKILL.md), selected by the main workflow
 from the task’s isolation needs without a separate human invocation.
+
+## Entrypoints, source data and audit evidence
+
+Only a catalog owner's top-level `SKILL.md` is an active shared entrypoint.
+Pinned upstream entrypoint text is stored as `SOURCE.md` so recursive discovery
+cannot expose foreign aliases or missing upstream skill calls. The original path
+and unchanged hashes remain in each snapshot; required notices remain bundled.
+Use the maintained local method, not an upstream collection's routing.
+
+The [current full-catalog audit](../skill-audit.md) records decisions and evidence
+limits for every entry. Focused principles refine a task and link to an execution
+owner. Entry-point length alone is not a quality measure: check whether a method
+actually specifies decisions, failure handling, a useful result and verification.
