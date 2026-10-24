@@ -10,6 +10,11 @@ Read [AGENTS.md](../../AGENTS.md), [skill system](../../docs/agents/skill-system
 Inspect nearby skills before editing. Prefer improving the existing owner over
 creating a second skill that attracts the same requests.
 
+Route from the user’s natural-language request. Complete authorized ownership,
+authoring, migration, registration and validation steps without asking the user
+to invoke separate skills. Helper flags are an execution contract for the agent;
+they are not mandatory manual homework for the user.
+
 ## Choose the owner before authoring
 
 Classify the request using the [company/repository skill boundary](../orbyn-setup/references/project-skills.md).

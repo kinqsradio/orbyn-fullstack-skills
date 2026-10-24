@@ -512,6 +512,23 @@
         "message"
       ],
       "excluded": "An existing-mechanism explanation is not a request for vertical architecture or repository restructuring."
+    },
+    {
+      "id": "natural-setup-handoff",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Set up these Orbyn engineering skills in our existing company repo. Inspect and preserve our docs and existing skills, complete the safe migration and checks yourself; I should not have to invoke setup or creator commands separately.",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not turn helper usage into extra human setup homework or overwrite ambiguous third-party skills."
     }
   ]
 }

@@ -62,7 +62,7 @@ python3 scripts/install.py --project /path/to/your-project --host both
 
 The installer links selected canonical skill folders into `.agents/skills` for
 Codex and `.claude/skills` for Claude Code. The default `core` preset registers
-10 skills. Add `--preset core --preset creator` for engineering and social work,
+12 skills. Add `--preset core --preset creator` for engineering and social work,
 use `--skill how --skill architect` for a custom selection, or `--all` for all 50.
 Use `--list-presets` to explore and `--dry-run` to preview. Selections are additive;
 existing links remain installed. Keep the library clone at a stable path. Conflicting files and

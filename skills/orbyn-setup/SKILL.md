@@ -1,6 +1,6 @@
 ---
 name: orbyn-setup
-description: "Configure Orbyn repository skills, agent roles, models and session coordination for Codex or Claude Code when requested."
+description: "Set up Orbyn skills in an existing project, migrate company-owned skills and configure requested host roles/models for Codex or Claude Code."
 ---
 
 # Orbyn agent setup
@@ -39,6 +39,17 @@ Follow the [offline setup contract](references/offline.md). Use local instructio
 and references first; inspect available local tools without assuming internet,
 a hosted model or a model subscription. Source URLs remain attribution/update
 pointers. Setup and validation must not silently download missing dependencies.
+
+## Complete setup from the user’s goal
+
+A request to set up or migrate this project selects this workflow directly.
+Inspect existing instructions, skills, docs and host settings; infer clear
+company/repo ownership from that evidence, preview the selected changes, then
+perform authorized registration/migration and checks. Do not ask the human to
+invoke another skill or run helper commands the agent can execute. Use the
+creator for authoring changes internally. Ask only for a consequential unresolved
+ownership conflict or unavailable authority; preserve that material and continue
+independent setup. Do not silently guess ownership of a foreign installation.
 
 ## Consumer-aware setup
 
