@@ -5,7 +5,11 @@ for its helpers. From the library clone:
 
 ```sh
 python3 scripts/install.py --project /path/to/project --host both
+python3 scripts/install.py --list-presets
+python3 scripts/install.py --project /path/to/project --preset core --preset creator --dry-run
+python3 scripts/install.py --project /path/to/project --preset core --preset creator
 python3 scripts/install.py --project /path/to/project --host codex --skill how --skill architect
+python3 scripts/install.py --project /path/to/project --all
 ```
 
 The installer preflights every destination before writing. Existing canonical
@@ -28,3 +32,45 @@ redistributing adapted material; installing a selection is not a license exempti
 Do not commit a local symlink to a machine-specific clone as a portable shared
 installation. Use a pinned copy, a documented checkout location or regenerate the
 links for each developer. This library's own discovery links are relative and portable.
+
+## Presets and existing installations
+
+The default is now `core` (10 skills), instead of all 50. Existing links stay
+installed: this is additive selection, not an uninstall or reset. Use `--all` to
+reproduce the former default. An explicit `--skill` or `--preset` replaces the
+default selection for that invocation; combine `--preset core` when you want both.
+`--all` cannot be combined with either selector. Dry runs preflight conflicts
+without creating directories or links.
+
+| Preset       | Purpose                                                                   | Skills |
+| ------------ | ------------------------------------------------------------------------- | ------ |
+| `core`       | Investigation, planning, architecture, review, TypeScript, backend and UI | 10     |
+| `web`        | Web task flow and product copy                                            | 4      |
+| `data`       | API, persistence, migrations and CI                                       | 5      |
+| `mobile`     | Mobile interaction and connected API work                                 | 4      |
+| `creator`    | Social copy, carousels and previews                                       | 3      |
+| `maintainer` | Setup, skill authoring, CI and reflection                                 | 4      |
+| `rea`        | Optional artifact investigation and REA maintenance                       | 5      |
+
+The [preset catalog](../skills/orbyn-setup/assets/presets.json) owns membership.
+Selections overlap and are deduplicated. Presets do not install a framework,
+provider or model configuration. This library's development checkout and Orbyn's
+vendor integration retain all discovery links so maintainers can validate the
+whole catalog; a fresh external installation uses the smaller default. To remove
+a selection, explicitly review and remove its owned discovery links. The installer
+does not infer removal intent from a smaller preset.
+
+## Customize the consuming project
+
+From the library checkout, create an optional map of existing project guides:
+
+```sh
+python3 skills/orbyn-setup/scripts/project_context.py init --project /path/to/project
+python3 skills/orbyn-setup/scripts/project_context.py check --project /path/to/project
+```
+
+Review `.agents/orbyn-context.json` in that project and fill missing owner paths.
+Existing valid maps are preserved. It stores relative pointers, not guide contents,
+commands, credentials or a personal voice profile. Root instructions and user
+scope retain precedence. The [context guide](../skills/orbyn-setup/references/project-context.md)
+describes the contract; this file is excluded from public skill synchronization.

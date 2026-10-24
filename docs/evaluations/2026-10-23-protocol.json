@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "fixture_version": 1,
+  "host": "Codex CLI 0.163.0-alpha.10.2; ephemeral; read-only; user-config/plugins/apps/memory/delegation/browser disabled; global skills disabled; full 50-skill selection; first-response routing fixture v1",
+  "model": "gpt-6.1-sol; effort=medium; requested service_tier=default; fast/ultrafast disabled; effective server tier not independently exposed",
+  "fixture_sha256": {
+    "AGENTS.md": "da2f9192e54d8e8827a65a4a03ff81b7f6a819288fdf81c56230d006e6731337",
+    "CLAUDE.md": "2c65121ca829ee31aa9f031a6549d7314aa2cbaec09fd47c5480137702a667f2",
+    "docs/stack.md": "358449060ec3cfa669d20a991a0df7af198487f2cfe5090a91aea71f75d37862",
+    "docs/design.md": "84dbaca42170439419ae2af660eb1ea9b9be7dd43bb9a8ce4942ccb6c543a1ce",
+    "docs/voice.md": "7d0b02a82c7b30eb77d278f0acc0d4da933df8670e0e673c266e32454932f6b1",
+    ".agents/orbyn-context.json": "b8711ed3cd2c59b2b22a6ce1fae1524a257610692a6d1fbdcce164eb14750b29",
+    "src/domain.ts": "94814400bb065a4177a95a8b15301126c1658aecd52cc9c29bc9c92bfdab5d63",
+    "src/ui.ts": "b36b7247e21c553dce8dcdf3235aab9ec913a5cf475611afdf7f30b1e83c655b",
+    "src/api.ts": "c2470a1ebddfb324ab49e09cc6889234e8308d727f072fb904ba4d99567dc723",
+    "src/store.ts": "85d7ef91941d30230c5238d1f6c5e76da62513db41ca1537fa99b2654981296d",
+    "src/worker.ts": "5b39500f4ba4677485a8d8d00451ffd95242d9468250fb785bc629502a2f6cd3",
+    "docs/decisions.md": "67f49e7a4049398719a524f497ae45dfce3b100aa5b516654d59089474ecb483",
+    "inputs.md": "622a09024f44d6b8dbde4bf0f00eec71a70a0df38285d32e358b9bbfc45db355",
+    "approval.diff": "7960731e3e0c41626ec934046bd9b2332e29202dcc7b41a4d955803e2a53b0aa"
+  },
+  "routing_scope": "first response and observed skill reads; not task implementation",
+  "outcome_scope": "final Markdown artifact; observer grading; no browser/native/provider validation",
+  "trials_per_case": 1,
+  "parallel_limit": 2,
+  "timeout_seconds": 240,
+  "baseline": "8f537de6a56bde9a4770f2e457cd946db7e5295f",
+  "initial_candidate": "4a0503d354f57b206507d9e49fb75b8184d12577",
+  "suite_sha256": "fd2b41ca668782fe7232f30b37cf4b9b8f5554358ee6daf8130cf018ea857822"
+}

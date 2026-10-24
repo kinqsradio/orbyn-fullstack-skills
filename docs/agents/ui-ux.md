@@ -5,33 +5,25 @@ and the [content skill](../../skills/orbyn-content-design/SKILL.md) for visible 
 Use existing shared components and tokens; inspect the current screen before
 adding an override. Preserve drafts, selection, focus, permissions and run states.
 
-## Product conventions
+## Consumer conventions
 
-- Keep one clear action per outcome. Remove duplicate controls, competing toolbars
-  and explanations of obvious actions. Put rare management actions in the existing
-  overflow menu. Icon-only controls need accessible names and keyboard focus.
-- Use the current accent, neutral surfaces, text roles and spacing tokens. Do not
-  introduce a new palette or shrink text to hide layout problems. Filled/bordered
-  controls need padding and consistent heights; mobile touch targets remain usable.
-- Respond to the actual pane width. Preserve user-selected sidebar widths; opening
-  another pane must not reset them. Align pane/tab headers and avoid duplicate
-  gutters. Keep primary work usable with a compact navigation rail and secondary
-  panels. Hover labels also need keyboard and touch alternatives.
-- Reuse one Library layout inside and outside documents. Keep source and preview
-  together where requested and retain synchronization/error location semantics.
-  Selection menus appear after selection settles, not while dragging.
-- Keep settings compact, statuses factual and error recovery close to the action.
-  Separate connected external agents from Background/Overnight work. Do not put
-  implementation details in routine product flows.
+Find the target project's design and brand guides using the optional
+[context map](../../skills/orbyn-setup/references/project-context.md). Read those
+guides and current components before choosing palette, type scale, density,
+navigation or motion. Keep product-specific rules there so shared skills can be
+updated without replacing local decisions.
 
-For a full redesign, assess every screen family and shared surface: layout,
-style, spacing, positions, copy, states and interactions. Keep a coverage ledger;
-shared token changes alone do not establish that every layout has been reviewed.
+Use one clear action per outcome, preserve draft/focus/recovery behavior and adapt
+to actual pane width. Accessible names, keyboard focus and reachable actions matter
+independently of visual style. A document needs room to write; a settings surface
+needs a clear route to the setting. Shared token changes alone do not establish
+that every layout has been reviewed.
 
 ## Scoped visual evidence
 
-When visual verification is authorized, preview shared web/desktop UI in the web
-app and mobile UI through Expo web. Record the actual URL, source revision,
+When visual verification is authorized, use the project's supported preview
+commands and platforms. Orbyn uses web and Expo web previews; other projects use
+their actual equivalents. Record the actual URL, source revision,
 viewport, zoom, theme and checked states; browser evidence does not establish
 native integration behavior. Do not require native builds unless in scope.
 

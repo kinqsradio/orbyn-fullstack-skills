@@ -50,12 +50,19 @@ def main():
         require(result.returncode == 0, result.stderr.strip() or f'{script} failed')
     result = subprocess.run([sys.executable, str(ROOT/'scripts/sync-public-skills.py'), 'manifest', '--root', str(ROOT)], capture_output=True, text=True)
     require(result.returncode == 0, result.stderr.strip() or 'Manifest failed')
-    for case in json.loads((ROOT/'docs/routing-cases.json').read_text()):
-        require(case['primary'] in names and bool(case['request']) and bool(case['excluded']), 'Invalid static routing case')
+    spec = importlib.util.spec_from_file_location('installer', ROOT/'scripts/install.py')
+    installer = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(installer)
+    try:
+        installer.selection()  # Validate every preset against the catalog.
+    except (ValueError, KeyError, TypeError) as error:
+        errors.append(f'Invalid presets: {error}')
+    result = subprocess.run([sys.executable, str(ROOT/'skills/orbyn-skill-creator/scripts/evaluate.py'), 'validate'], capture_output=True, text=True)
+    require(result.returncode == 0, result.stderr.strip() or 'Evaluation suite failed')
     if errors:
         print('\n'.join(errors), file=sys.stderr)
         return 1
-    print(f'OK: {len(names)} skills, provenance/licenses, {len(docs)} Markdown documents, links, host assets and manifest.')
+    print(f'OK: {len(names)} skills, provenance/licenses, {len(docs)} Markdown documents, links, host assets, presets, evaluation cases and manifest.')
     print('Static expectations only; no live model, product, native or security qualification.')
     return 0
 

@@ -8,7 +8,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/architect/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an original synthetic approval-contract example."
     },
     "arena": {
       "relationship": "adapted",
@@ -61,7 +61,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-backend-design",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original retry/reconciliation example."
     },
     "orbyn-ci-design": {
       "relationship": "original",
@@ -85,7 +85,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-data-migration",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original writer-cutover example."
     },
     "orbyn-plan": {
       "relationship": "original",
@@ -118,7 +118,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/setup-pstack/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original additive presets and consumer-owned context tooling."
     },
     "orbyn-skill-creator": {
       "relationship": "original",
@@ -126,7 +126,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-skill-creator",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence."
     },
     "orbyn-ui-design": {
       "relationship": "original",
@@ -134,7 +134,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-ui-design",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Moved product conventions to consumer-owned profiles and added an original failed-save example."
     },
     "orbyn-workflow": {
       "relationship": "adapted",
@@ -143,7 +143,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/poteto-mode/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an optional task record and context/evaluation handoffs."
     },
     "principle-boundary-discipline": {
       "relationship": "adapted",
@@ -170,7 +170,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss."
     },
     "principle-exhaust-the-design-space": {
       "relationship": "adapted",
@@ -323,7 +323,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-type-system-discipline/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss."
     },
     "rea-analysis-optimization": {
       "relationship": "reference-adapter",
@@ -394,7 +394,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/social-content",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original source-bound announcement example and project voice pointers."
     },
     "social-preview": {
       "relationship": "original",
@@ -420,7 +420,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/typescript-best-practices/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss."
     },
     "unslop": {
       "relationship": "adapted",
