@@ -1,8 +1,8 @@
 # Orbyn Fullstack Engineering Skills
 
-**53 connected agent skills for full-stack engineering with Codex and Claude Code.**
+**55 connected agent skills for full-stack engineering with Codex and Claude Code.**
 
-Architecture, API design, data migrations, TypeScript, web and mobile UX,
+Architecture, API design, data migrations, language-aware implementation, web and mobile UX,
 debugging, review, CI and delivery—organized around a feature's complete path
 from domain model to user-visible behavior.
 
@@ -42,19 +42,21 @@ explains the handoffs. [The catalog](skills/README.md) lists every skill.
 
 ## Start with a task
 
-| Your task                       | Start here                                 | Result                                               |
-| ------------------------------- | ------------------------------------------ | ---------------------------------------------------- |
-| Understand unfamiliar behavior  | `how` / `why`                              | Source trace or documented rationale                 |
-| Deliver a cross-stack feature   | `orbyn-workflow`                           | Owned changes and proportional evidence              |
-| Decide the data/interface model | `architect`                                | Caller-facing contract and lifecycle                 |
-| Implement an API effect         | `orbyn-backend-design`                     | Validation, authority, transaction and client errors |
-| Change a stored format          | `orbyn-data-migration`                     | Compatibility, writer cutover and recovery           |
-| Improve web/mobile task flows   | `orbyn-ui-design` + `orbyn-content-design` | Rendered UI with concise product language            |
-| Model TypeScript state          | `typescript-best-practices`                | Shared schemas and explicit valid variants           |
-| Review a risky patch            | `interrogate`                              | Concrete findings with scenarios and evidence        |
-| Build contribution/release CI   | `orbyn-ci-design`                          | Scoped execution and reviewable promotion            |
-| Draft a post or carousel        | `social-content` + `social-preview`        | Evidence-backed copy and local visuals               |
-| Review external code/skill updates | `orbyn-upstream-review`                 | Pinned comparison, ignored references and scoped updates |
+| Your task                          | Start here                                 | Result                                                   |
+| ---------------------------------- | ------------------------------------------ | -------------------------------------------------------- |
+| Understand unfamiliar behavior     | `how` / `why`                              | Source trace or documented rationale                     |
+| Deliver a cross-stack feature      | `orbyn-workflow`                           | Owned changes and proportional evidence                  |
+| Decide the data/interface model    | `architect`                                | Caller-facing contract and lifecycle                     |
+| Implement an API effect            | `orbyn-backend-design`                     | Validation, authority, transaction and client errors     |
+| Change a stored format             | `orbyn-data-migration`                     | Compatibility, writer cutover and recovery               |
+| Improve web/mobile task flows      | `orbyn-ui-design` + `orbyn-content-design` | Rendered UI with concise product language                |
+| Implement across languages         | `language-best-practices`                  | Target-aware local guides and resource/error contracts   |
+| Choose a technology stack          | `orbyn-stack-selection`                    | Constraint-led comparison, operating costs and exit path |
+| Model TypeScript state             | `typescript-best-practices`                | Shared schemas and explicit valid variants               |
+| Review a risky patch               | `interrogate`                              | Concrete findings with scenarios and evidence            |
+| Build contribution/release CI      | `orbyn-ci-design`                          | Scoped execution and reviewable promotion                |
+| Draft a post or carousel           | `social-content` + `social-preview`        | Evidence-backed copy and local visuals                   |
+| Review external code/skill updates | `orbyn-upstream-review`                    | Pinned comparison, ignored references and scoped updates |
 
 Twenty focused principle skills refine difficult decisions; they are not twenty
 mandatory stages. Five REA-related skills are optional specialists for artifact
@@ -181,3 +183,15 @@ project; it does not imply endorsement of forks or third-party services.
 Report bugs with the issue forms. Report vulnerabilities privately using
 [SECURITY.md](SECURITY.md); do not include credentials or private project content
 in an issue or PR.
+
+## Language-aware engineering and stack decisions
+
+Use the library with JavaScript, Python, Go, Rust, Java, Kotlin, C#, Swift, C,
+C++, SQL and shell projects, plus the existing TypeScript contract guidance.
+The [language skill](skills/language-best-practices/SKILL.md) loads a focused local
+guide for the affected code; [stack selection](skills/orbyn-stack-selection/SKILL.md)
+compares project constraints, primary evidence, operating costs and migration paths.
+The agent routes these from the task; no separate skill invocation is required.
+Guidance and worked examples run from disk; current online support/pricing still
+requires verification. Contribution work stays local/private until deliberate
+publication under the [fork policy](skills/orbyn-worktree/SKILL.md).

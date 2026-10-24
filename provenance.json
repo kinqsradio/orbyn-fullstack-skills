@@ -515,7 +515,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-worktree",
-      "changes": "Original worktree ownership/lifecycle guidance: sibling repo-wt roots, neutral purpose names, reuse, verified base and preservation before cleanup. Includes local-first branch ownership, bounded delegate branches, stable personal contribution fork names and verified authorized publication."
+      "changes": "Original worktree ownership/lifecycle guidance: sibling repo-wt roots, neutral purpose names, reuse, verified base and preservation before cleanup. Includes local-first branch ownership, bounded delegate branches, stable personal contribution fork names and verified authorized publication. Prefer private contribution storage when supported, retain local work if privacy is unavailable, and distinguish a public native fork from a private standalone backup."
     },
     "orbyn-upstream-review": {
       "relationship": "original",
@@ -524,6 +524,22 @@
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-upstream-review",
       "changes": "Original maintenance workflow across external code, skills and research: pinned comparisons, excluded local references, offline limits, selective adaptation and honest import/review/consumer revision ownership."
+    },
+    "language-best-practices": {
+      "relationship": "original",
+      "credit": "Anh Dang and Orbyn contributors",
+      "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
+      "license": "MIT",
+      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/language-best-practices",
+      "changes": "Independently authored project-aware guidance and synthetic worked examples, informed by dated primary references linked locally; no external skill text or documentation snapshots imported."
+    },
+    "orbyn-stack-selection": {
+      "relationship": "original",
+      "credit": "Anh Dang and Orbyn contributors",
+      "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
+      "license": "MIT",
+      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-stack-selection",
+      "changes": "Independently authored project-aware guidance and synthetic worked examples, informed by dated primary references linked locally; no external skill text or documentation snapshots imported."
     }
   }
 }

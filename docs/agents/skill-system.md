@@ -18,16 +18,18 @@ routes complex work to the standard tier and bounded work to the light tier in
 | Unknown current behavior           | `how`                                      | Owning files → mechanism and evidence                                                               |
 | Historical reason                  | `why`                                      | Relevant Git/source history → constraints, with uncertainty                                         |
 | External/version uncertainty       | `orbyn-research`                           | Specific question → cited finding for the planner/designer                                          |
-| Upstream code/skill freshness      | `orbyn-upstream-review`                    | Pinned source + local owner → reviewed differences, dispositions and scoped update                 |
-| Interface/ownership/module layout  | `architect`                                | Grounded requirements → contracts, lifecycle and allowed module dependencies                                              |
-| API/service effects                | `orbyn-backend-design`                    | Caller contract + authority → transactional effect and client errors                              |
-| Stored-data/schema transition      | `orbyn-data-migration`                    | Reader/writer inventory → compatible cutover and recovery                                          |
-| CI and contribution automation     | `orbyn-ci-design`                         | Event/trust model → scoped checks and reviewable promotion                                        |
+| Upstream code/skill freshness      | `orbyn-upstream-review`                    | Pinned source + local owner → reviewed differences, dispositions and scoped update                  |
+| Interface/ownership/module layout  | `architect`                                | Grounded requirements → contracts, lifecycle and allowed module dependencies                        |
+| API/service effects                | `orbyn-backend-design`                     | Caller contract + authority → transactional effect and client errors                                |
+| Stored-data/schema transition      | `orbyn-data-migration`                     | Reader/writer inventory → compatible cutover and recovery                                           |
+| CI and contribution automation     | `orbyn-ci-design`                          | Event/trust model → scoped checks and reviewable promotion                                          |
 | Consequential competing designs    | `arena`                                    | Shared criteria → bounded alternatives and one decision                                             |
 | Large execution                    | `figure-it-out`                            | Agreed plan → completed units and concise handoffs                                                  |
 | UI flow/layout                     | `orbyn-ui-design` + `orbyn-content-design` | User task + actual tokens → coherent UI/copy                                                        |
-| Social posts and carousel copy     | `social-content`                          | Supplied facts + author voice → copy, claim notes and optional visual brief                         |
-| Social graphics and feed previews  | `social-preview`                          | Chosen copy + assets → editable visual source, rendered review and requested exports                 |
+| Social posts and carousel copy     | `social-content`                           | Supplied facts + author voice → copy, claim notes and optional visual brief                         |
+| Social graphics and feed previews  | `social-preview`                           | Chosen copy + assets → editable visual source, rendered review and requested exports                |
+| Implementation in another language | `language-best-practices`                  | Actual files/manifests → one local language guide, preserved lifecycle and boundary contracts       |
+| Language/framework/storage choice  | `orbyn-stack-selection`                    | Constraints + baseline + primary evidence → recommendation, operating cost and exit/revisit trigger |
 | TypeScript contract                | `typescript-best-practices`                | Existing schema/callers → precise valid states                                                      |
 | Requested tests/TDD                | `tdd`                                      | Failure contract + allowed environment → focused regression and fix                                 |
 | Existing security findings         | `orbyn-security-remediation`               | Saved findings + current source → scoped fixes and authorized evidence; no new scan                 |
@@ -99,7 +101,6 @@ it must not add another competing policy document for the same concern.
   and identify the missing export step; HTML generation is not PDF/PNG evidence.
 
 These examples are routing expectations, not claims of executed model trials.
-
 
 ## Consumer-owned skills and offline resources
 

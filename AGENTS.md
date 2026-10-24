@@ -62,3 +62,10 @@ or `refactor/` names without agent/vendor/model branding.
 For worktree isolation, naming and cleanup, follow
 [orbyn-worktree](skills/orbyn-worktree/SKILL.md). Use the primary clone’s sibling
 `<repo>-wt/<purpose>/` root by default; preserve existing owned work and output.
+
+For implementation, route actual files/manifests through
+[language guidance](skills/language-best-practices/SKILL.md), loading only the
+applicable reference. For a requested technology choice, use
+[stack selection](skills/orbyn-stack-selection/SKILL.md) before architecture and
+implementation. Existing project decisions and a research-only boundary remain
+in force; examples do not mandate Orbyn's TypeScript stack.

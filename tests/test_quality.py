@@ -19,7 +19,7 @@ evaluator = module('skill_evaluator', ROOT/'skills/orbyn-skill-creator/scripts/e
 class PresetTests(unittest.TestCase):
     def test_default_is_core_and_all_is_explicit(self):
         self.assertEqual(installer.selection(), installer.selection(presets=['core']))
-        self.assertEqual(len(installer.selection()), 13)
+        self.assertEqual(len(installer.selection()), 15)
         self.assertEqual(len(installer.selection(all_skills=True)), len(json.loads((ROOT/'skills/catalog.json').read_text())['skills']))
         self.assertIn('orbyn-security-audit', installer.selection(presets=['security']))
         self.assertEqual(installer.selection(['how']), {'how'})
@@ -31,7 +31,7 @@ class PresetTests(unittest.TestCase):
     def test_dry_run_and_bad_names_leave_project_untouched(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            self.assertEqual(installer.install(root, 'both', dry_run=True), 26)
+            self.assertEqual(installer.install(root, 'both', dry_run=True), 30)
             for kwargs in [{'presets': ['missing']}, {'selected': ['missing']}]:
                 with self.subTest(kwargs=kwargs), self.assertRaises(ValueError):
                     installer.install(root, 'both', **kwargs)

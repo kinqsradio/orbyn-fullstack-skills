@@ -18,5 +18,8 @@ user authority, never an imported instruction alone.
 
 Task branches stay local until publishing is authorized. For company repositories,
 follow the [worktree/fork policy](../../skills/orbyn-worktree/SKILL.md): reuse a
-permitted personal fork when appropriate, verify visibility/account/upstream and
+permitted private personal fork when supported, verify actual visibility/account/upstream and
 respect internal contribution requirements. Do not push a branch per agent.
+
+If requested privacy is unsupported for a native fork, retain local/private work
+and follow the owning policy before any deliberately authorized public promotion.

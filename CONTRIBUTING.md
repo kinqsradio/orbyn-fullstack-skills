@@ -13,8 +13,12 @@ Required instructions must work from disk under the
 
 ## Make a contribution
 
-1. Fork this repository and clone your fork. Create a purpose-based branch such
-   as `fix/preview-overflow` or `feat/api-contract-example`.
+1. Start locally or in permitted private contribution storage under the
+   [worktree/privacy policy](skills/orbyn-worktree/SKILL.md). GitHub native forks
+   of this public library are public. When deliberately proposing a public PR,
+   use a verified public fork and promote only the reviewed library changes.
+   Create a purpose-based branch such as `fix/preview-overflow` or
+   `feat/api-contract-example`; never publish private company material or backups.
 2. Change the owning skill or helper. Explain the user request, the decision it
    improves, expected input/output and adjacent tasks that should not select it.
    Improve an existing owner before adding another overlapping skill.
