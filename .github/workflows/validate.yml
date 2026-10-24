@@ -29,4 +29,8 @@ jobs:
         run: python3 scripts/check-library.py
       - name: Verify helpers with synthetic fixtures (no model calls)
         run: python3 -m unittest discover -s tests -v
+      - name: Verify bundled audit record validators (synthetic data, no target audit)
+        run: |
+          node --version
+          node --test skills/orbyn-security-audit/references/upstream/audit-records/validate-findings.test.cjs skills/orbyn-security-audit/references/upstream/audit-records/validate-coverage-ledger.test.cjs
       - run: git diff --check

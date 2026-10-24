@@ -20,7 +20,8 @@ class PresetTests(unittest.TestCase):
     def test_default_is_core_and_all_is_explicit(self):
         self.assertEqual(installer.selection(), installer.selection(presets=['core']))
         self.assertEqual(len(installer.selection()), 12)
-        self.assertEqual(len(installer.selection(all_skills=True)), 50)
+        self.assertEqual(len(installer.selection(all_skills=True)), len(json.loads((ROOT/'skills/catalog.json').read_text())['skills']))
+        self.assertIn('orbyn-security-audit', installer.selection(presets=['security']))
         self.assertEqual(installer.selection(['how']), {'how'})
         combined = installer.selection(['how'], ['core', 'creator', 'core'])
         self.assertEqual(combined, installer.selection(presets=['core']) | installer.selection(presets=['creator']))

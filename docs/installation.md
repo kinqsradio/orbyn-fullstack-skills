@@ -37,7 +37,7 @@ links for each developer. This library's own discovery links are relative and po
 
 ## Presets and existing installations
 
-The default is `core` (12 skills), including setup and skill ownership routing, instead of all 50. Existing links stay
+The default is `core` (12 skills), including setup and skill ownership routing, instead of all 51. Existing links stay
 installed: this is additive selection, not an uninstall or reset. Use `--all` to
 reproduce the former default. An explicit `--skill` or `--preset` replaces the
 default selection for that invocation; combine `--preset core` when you want both.
@@ -52,6 +52,7 @@ without creating directories or links.
 | `mobile`     | Mobile interaction and connected API work                                 | 4      |
 | `creator`    | Social copy, carousels and previews                                       | 3      |
 | `maintainer` | Setup, skill authoring, CI and reflection                                 | 4      |
+| `security` | Explicit local audit and findings/CI boundaries                          | 4      |
 | `rea`        | Optional artifact investigation and REA maintenance                       | 5      |
 
 The [preset catalog](../skills/orbyn-setup/assets/presets.json) owns membership.
