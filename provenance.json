@@ -8,7 +8,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/architect/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an original synthetic approval-contract example."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an original synthetic approval-contract example. Added independently authored vertical code organization guidance and a synthetic task-editor example; TkDodo is cited as reviewed inspiration, with no article material imported."
     },
     "arena": {
       "relationship": "adapted",
