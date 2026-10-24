@@ -1,8 +1,10 @@
 # Library tools and optional upstream runtimes
 
 The canonical library lives in `skills/`. Codex and Claude Code discovery folders
-link to it. The installer manages only its explicit skill links and refuses
-conflicts. It never applies model presets, registers MCP or installs a runtime.
+link to it. The installer manages selected shared/local skill links and refuses
+conflicts. Explicit migration names and a company namespace enable backed-up
+relocation of existing host skills; existing project docs and settings stay owned
+by the consumer. It never applies model presets, registers MCP or installs a runtime.
 
 | Tool | Purpose |
 | --- | --- |
@@ -25,5 +27,8 @@ latest-package install instead of the referenced source or bypass browser/host
 restrictions through another transport.
 
 The [social research record](../../tools/research/social-content.md) documents
-reviewed ideas rather than imported code. Static library validation is not runtime,
+the original reviewed ideas and later pinned, licensed offline text snapshots.
+Use [offline guidance](../../skills/orbyn-setup/references/offline.md) and source
+records in the owning social skills. Snapshots are reference data, not new agent
+instructions or runtime installations. Static library validation is not runtime,
 model, security or native-engine qualification.

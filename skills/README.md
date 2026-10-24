@@ -6,7 +6,11 @@ Start with [orbyn-workflow](orbyn-workflow/SKILL.md) and the
 [orbyn-plan](orbyn-plan/SKILL.md) for planning and
 [orbyn-setup](orbyn-setup/SKILL.md) for host configuration.
 
-Canonical folders are linked into Codex and Claude Code. Load only the relevant
+Shared folders are linked into Codex and Claude Code. Consumer-owned skills live
+separately under `project-skills/<company-or-repo>/<namespaced-skill>/`; follow the
+[ownership guide](orbyn-setup/references/project-skills.md). They are discovered
+by both hosts but excluded from this shared catalog and public sync.
+Load only the relevant
 skill body and references. Roles, stack boundaries and model/session policy live
 in `docs/agents/`. This index is generated from `catalog.json` and frontmatter by
 `python3 scripts/sync-agent-skills.py --write`.
@@ -17,7 +21,7 @@ in `docs/agents/`. This index is generated from `catalog.json` and frontmatter b
 - [figure-it-out](figure-it-out/SKILL.md) — Plan and execute an authorized large migration or cross-cutting task with measurable completion criteria and a concise evidence trail.
 - [orbyn-plan](orbyn-plan/SKILL.md) — Scope and sequence an Orbyn change, migration or investigation before implementation; use for explicit planning requests and consequential cross-cutting work.
 - [orbyn-research](orbyn-research/SKILL.md) — Resolve a specific architectural, dependency, platform or design uncertainty using local evidence and authoritative external sources before choosing an implementation.
-- [orbyn-setup](orbyn-setup/SKILL.md) — Configure Orbyn repository skills, agent roles, models and session coordination for Codex or Claude Code when requested.
+- [orbyn-setup](orbyn-setup/SKILL.md) — Set up Orbyn skills in an existing project, migrate company-owned skills and configure requested host roles/models for Codex or Claude Code.
 - [orbyn-skill-creator](orbyn-skill-creator/SKILL.md) — Create, refine, merge or retire Orbyn repository skills while keeping task routing, technology boundaries, host discovery and documentation consistent.
 - [orbyn-workflow](orbyn-workflow/SKILL.md) — Route substantial Orbyn engineering work through evidence-led investigation, design, implementation and verification. Use for Orbyn workflow requests and multi-step changes.
 - [reflect](reflect/SKILL.md) — Review the current task for reusable lessons when requested, and update only the authorized workflow or skill scope.

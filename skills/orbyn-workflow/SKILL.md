@@ -10,8 +10,21 @@ Follow the consuming project's instructions first. Use [Orbyn Engineering policy
 Read the consuming checkout's optional `.agents/orbyn-context.json` using the
 [context contract](../orbyn-setup/references/project-context.md). Follow relevant
 pointers to existing guides; root instructions and user scope retain precedence.
+Read relevant consumer-owned skills from `project-skills/` when the task needs
+company/repository conventions. Follow the [ownership boundary](../orbyn-setup/references/project-skills.md)
+when creating, adapting or relocating them; keep them outside public skill sync.
 For work that needs a durable handoff, use the optional
 [task record](references/task-record.md) without duplicating an existing tracker.
+
+Use [local resources first](../orbyn-setup/references/offline.md). External citations
+identify origins; fetch only when current information is required and network
+access is available and authorized. Report stale or unavailable evidence.
+
+Select skills and helpers from the user's ordinary task request; the human does
+not need to name or invoke each step. Read the relevant reference directly when
+a host lacks a Skill tool. Carry authorized work through its handoffs and checks;
+do not hand executable setup commands back merely because another skill owns
+them. Keep consequential authority and missing human-only decisions explicit.
 
 Start from the user's requested outcome, current source and
 [stack ownership](../../docs/agents/stack.md). Use the

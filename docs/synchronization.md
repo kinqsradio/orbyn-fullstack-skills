@@ -79,3 +79,20 @@ CI does not silently publish a private diff or auto-merge a public contribution.
 Branch protection must require the check to enforce it against direct pushes;
 the files alone cannot guarantee maintainers will not bypass their own policy.
 Human-reviewed CI is not live agent behavior qualification.
+
+
+## Company-owned skill boundary
+
+`project-skills/<company-or-repo>/<namespaced-skill>/` belongs to the consumer,
+including its local references, licenses and company procedures. It is outside
+inventory, import/export, public manifest and lock hashes. An edit there must not
+require a public contribution. The [ownership guide](../skills/orbyn-setup/references/project-skills.md)
+explains classification and migration. Host discovery supports both shared and
+local skills without adding local names to `skills/catalog.json`.
+
+When updating an older vendored integration, adopt the matching discovery helper
+and asset-check support as well as the new shared references. Keep the consumer's
+source/host/model integrity rules; teach them to validate the local namespace
+separately, rather than accepting arbitrary discovery entries. A library clone
+must not carry a consumer's actual `project-skills/` directory. This boundary
+prevents automatic export; public authors still review content and Git history.

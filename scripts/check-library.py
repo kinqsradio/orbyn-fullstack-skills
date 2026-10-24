@@ -4,6 +4,7 @@ import importlib.util
 import json
 from pathlib import Path
 import re
+import runpy
 import subprocess
 import sys
 
@@ -15,6 +16,8 @@ def main():
         print('Python 3.11+ is required for library validation.', file=sys.stderr)
         return 1
     errors = []
+    if (ROOT/'project-skills').exists() or (ROOT/'project-skills').is_symlink():
+        errors.append('Consumer-owned project-skills must stay in the consuming repository, outside the public library')
     def require(ok, message):
         if not ok:
             errors.append(message)
@@ -35,8 +38,11 @@ def main():
         require(record.get('relationship') in {'adapted','original','reference-adapter'}, f'{name}: unknown provenance relationship')
         if (skill.parent/'LICENSE').exists():
             require(record.get('copyright', '') in (skill.parent/'LICENSE').read_text(), f'{name}: source copyright missing')
+    snapshots = runpy.run_path(str(ROOT/'skills/orbyn-skill-creator/scripts/check_sources.py'))['check'](ROOT)
     docs = list(ROOT.glob('*.md')) + list((ROOT/'docs').rglob('*.md')) + list((ROOT/'skills').rglob('*.md')) + list((ROOT/'tools').rglob('*.md'))
     for path in docs:
+        if path in snapshots:
+            continue  # Immutable upstream text is checked byte-for-byte, not rewritten to local style.
         body = re.sub(r'```.*?```', '', path.read_text(), flags=re.S)
         for target in re.findall(r'\[[^\]]*\]\(([^)]+)\)', body):
             target = target.split('#', 1)[0].strip('<>')

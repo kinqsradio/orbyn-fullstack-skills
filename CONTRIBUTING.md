@@ -4,6 +4,13 @@ Everyone can use the public library and propose improvements without access to
 the Orbyn product repository. Anh Dang (`@kinqsradio`) is the creator and maintainer;
 outside contributions use the same review and validation path.
 
+Company-specific skills stay in the consuming repository under
+`project-skills/<company-or-repo>/<namespaced-skill>/`; follow the
+[ownership guide](skills/orbyn-setup/references/project-skills.md). Contributing
+a reusable method does not authorize publishing company procedures or assets.
+Required instructions must work from disk under the
+[offline contract](skills/orbyn-setup/references/offline.md).
+
 ## Make a contribution
 
 1. Fork this repository and clone your fork. Create a purpose-based branch such

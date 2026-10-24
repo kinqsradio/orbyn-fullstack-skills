@@ -14,7 +14,9 @@
         "interrogate",
         "typescript-best-practices",
         "orbyn-backend-design",
-        "orbyn-ui-design"
+        "orbyn-ui-design",
+        "orbyn-setup",
+        "orbyn-skill-creator"
       ]
     },
     "web": {
@@ -47,7 +49,11 @@
     },
     "creator": {
       "description": "Social writing, previews and prose refinement",
-      "skills": ["social-content", "social-preview", "unslop"]
+      "skills": [
+        "social-content",
+        "social-preview",
+        "unslop"
+      ]
     },
     "maintainer": {
       "description": "Skill authoring, project setup and contribution automation",

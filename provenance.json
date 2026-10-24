@@ -118,7 +118,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/setup-pstack/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original additive presets and consumer-owned context tooling."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original additive presets and consumer-owned context tooling. Added consumer-owned skill namespaces, explicit backed-up host-skill migration and offline setup guidance."
     },
     "orbyn-skill-creator": {
       "relationship": "original",
@@ -126,7 +126,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-skill-creator",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence. Added company/public ownership routing and offline source requirements."
     },
     "orbyn-ui-design": {
       "relationship": "original",
@@ -143,7 +143,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/poteto-mode/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an optional task record and context/evaluation handoffs."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an optional task record and context/evaluation handoffs. Added consumer-owned skill and offline-reference handoffs."
     },
     "principle-boundary-discipline": {
       "relationship": "adapted",
@@ -394,7 +394,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/social-content",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original source-bound announcement example and project voice pointers."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original source-bound announcement example and project voice pointers. Added an unmodified, pinned MIT social source/reference snapshot with its license; active guidance remains independently authored."
     },
     "social-preview": {
       "relationship": "original",
@@ -402,7 +402,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/social-preview",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an unmodified Apache-2.0 canvas-design text snapshot with its license; source is optional reference material, not an active workflow import."
     },
     "tdd": {
       "relationship": "adapted",
