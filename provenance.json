@@ -93,7 +93,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-ci-design",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added original proportional-verification policy and portable conservative Git change classifier, required-result gate and exact-revision deployment-decision validation; no line-count heuristic or automatic deployment authority."
     },
     "orbyn-content-design": {
       "relationship": "original",

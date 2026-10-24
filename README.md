@@ -13,6 +13,19 @@ Created and maintained by [Anh Dang](https://github.com/kinqsradio) under the
 **Orbyn Engineering** brand. The library turns engineering practice into connected,
 project-aware workflows for agents. The application lives in a separate repository.
 
+Anh is a University of Melbourne student and the creator of Orbyn. Follow the
+engineering work, share an example or contribute an improvement:
+
+- [LinkedIn — Anh Dang](https://www.linkedin.com/in/tran-duc-anh-dang-392b7a231/)
+- [GitHub — @kinqsradio](https://github.com/kinqsradio)
+- Personal contact: [anhdang.contact@gmail.com](mailto:anhdang.contact@gmail.com)
+- Orbyn contact: [anhdang@orbyn.dev](mailto:anhdang@orbyn.dev)
+
+This MIT-licensed fullstack library works in projects beyond Orbyn. Consuming
+teams retain their own instructions, stack and company skills; no Orbyn account
+is required. Orbyn's own engineering uses its canonical maintained skills, with
+reviewed improvements flowing through this public library.
+
 ## The approach
 
 **Ground the work → define its contract → change the connected layers → obtain
