@@ -57,16 +57,25 @@ def check_discovery(root, names, catalog):
     return errors
 
 
+def local_link_targets(text):
+    """Read authored inline links and reference definitions outside fenced code."""
+    body = re.sub(r'```.*?```|~~~.*?~~~', '', text, flags=re.S)
+    targets = re.findall(r'\[[^\]]*\]\(([^)]+)\)', body)
+    targets += re.findall(r'^ {0,3}\[[^\]]+\]:\s*(<[^>]+>|\S+)', body, re.M)
+    for raw in targets:
+        # An optional Markdown title is not part of the destination.
+        match = re.fullmatch(r'(<[^>]+>|\S+?)(?:\s+["\'].*["\'])?', raw.strip())
+        target = (match.group(1) if match else raw).strip('<>')
+        if not re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*:', target):
+            yield target
+
+
 def check_links(root, path, snapshots=()):
     errors = []
     # Pinned source text has its own integrity checks and is never active routing.
     if path in snapshots:
         return errors
-    body = re.sub(r'```.*?```|~~~.*?~~~', '', path.read_text(), flags=re.S)
-    for raw in re.findall(r'\[[^\]]*\]\(([^)]+)\)', body):
-        target = raw.strip('<>')
-        if re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*:', target):
-            continue
+    for target in local_link_targets(path.read_text()):
         filename, _, fragment = target.partition('#')
         resolved = (path.parent/unquote(filename)).resolve() if filename else path.resolve()
         if not resolved.is_relative_to(root) or not resolved.exists():
@@ -89,6 +98,33 @@ def check_audit(root, names):
     if len(rows) != len(set(rows)) or set(rows) != names:
         return ['Full-catalog audit coverage differs from the catalog']
     return []
+
+
+def check_portable_links(root, managed_files, snapshots=()):
+    """Every authored Markdown dependency must survive the skills-only copy.
+
+    Consumer instructions are discovered in place, not linked as bundled policy.
+    Only byte-validated upstream snapshots may opt out of active link checks.
+    """
+    root = root.resolve()
+    managed = {(root/name).resolve() for name in managed_files}
+    errors = []
+    for path in sorted(managed):
+        if path.suffix != '.md' or path in snapshots:
+            continue
+        if not path.is_relative_to(root) or not path.is_file():
+            errors.append(f'Missing/escaping distributed document: {path}')
+            continue
+        errors.extend(check_links(root, path))
+        for target in local_link_targets(path.read_text()):
+            filename = unquote(target.partition('#')[0])
+            resolved = (path.parent/filename).resolve() if filename else path
+            # Directory links are portable only when the export contains children.
+            included = resolved in managed or (
+                resolved.is_dir() and any(p.is_relative_to(resolved) for p in managed))
+            if not resolved.is_relative_to(root) or not included:
+                errors.append(f'Unexported dependency: {path.relative_to(root)} -> {target}')
+    return errors
 
 
 def check_incorporated_material(root, name, record):

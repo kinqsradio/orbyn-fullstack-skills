@@ -176,3 +176,14 @@ For [offline use](../skills/orbyn-setup/references/offline.md), retain the compl
 local clone/vendor tree. Installation, discovery and validation do not fetch sources,
 models or runtimes. A machine-specific discovery link needs the documented clone
 location or local regeneration on each developer's machine.
+
+
+## Retired principle selections
+
+The 20 former `principle-*` selections map to their maintained execution owners
+through `catalog.json` retirement metadata. Installation and discovery sync replace
+only known owned links and preflight replacement conflicts before retirement.
+Foreign directories/symlinks remain untouched. Old direct host slash-command or
+skill invocations are not guaranteed aliases; use the owner shown in the
+[retirement map](work/skill-consolidation.md). Preserve consumer pins until their
+promotion is explicitly authorized. Default core stays at 14; `--all` exposes 34.

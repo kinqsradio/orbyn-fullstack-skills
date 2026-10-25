@@ -11,7 +11,10 @@ Engineering adaptations derive from `pstack` in
 [cursor/plugins](https://github.com/cursor/plugins/tree/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack),
 revision `74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12`.
 Copyright (c) 2026 Lauren Tan. [Original MIT license](licenses/pstack-MIT.txt).
-The source-to-local mapping is preserved in [skill-adaptations.json](skill-adaptations.json).
+The 20 retired principle entrypoints retain their methods and original MIT notices
+under the execution owners' `references/principles/` directories. Incorporated
+source/revision/license hashes remain in provenance; each method also carries an
+offline attribution pointer. The source-to-local mapping is preserved in [skill-adaptations.json](skill-adaptations.json).
 Orbyn's decision examples, authority boundaries and integration changes do not
 remove the original author's credit. Full upstream source is not bundled here.
 
@@ -70,3 +73,12 @@ pins revisions and retains the reproduction brief's transitive source credit.
 The new methods and examples are independently authored; no text, scripts or
 upstream workflow collection from those reviews is redistributed. Existing
 pstack source notices and portable licenses remain unchanged.
+
+## Hallmark design methods
+
+Selected guidance is adapted from Nutlope/hallmark, Copyright (c) 2026 Hallmark
+contributors, under MIT. The [source record](../skills/orbyn-ui-design/references/hallmark-source.md)
+pins the reviewed revision, paths and hashes; the complete
+[MIT notice](../skills/orbyn-ui-design/references/hallmark-LICENSE.txt) is distributed
+with the local adaptations. No themes, photos, fonts, scripts or upstream skill
+entrypoint are installed. Orbyn maintains the adapted UI methods.
