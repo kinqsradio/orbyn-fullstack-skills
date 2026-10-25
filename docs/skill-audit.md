@@ -326,3 +326,23 @@ prompt inventory resolved those preparation gaps before scoring. Updated local
 evaluation guidance preserves this isolation and input-correction method. The
 public release contains concise results and reproducible synthetic protocols; raw
 answers/captures remain ignored. Consumer synchronization and REA upgrade are held.
+
+## Executed contribution workflow — 25 October 2026
+
+The [disposable execution comparison](evaluations/2026-10-25-contribution-execution.md)
+adds real source/test/Git evidence behind the contribution method. Both conditions
+eventually delivered correct local PR heads and feedback coverage in 2/2 trials.
+The corrected workflow passed a controlled failed-commit dependency gate in 2/2;
+baseline passed it in 0/2. Eight primary-clone calls completed; four earlier
+linked-worktree calls preserved correct patches but could not commit because of
+host metadata restrictions. Their delivery stays unverified, and their dependent
+feedback stages were not run. Results and frozen protocols remain separate.
+
+The workflow owns the explicit commit/push gate and PR iteration link; the worktree
+owner now requires topology-matched capability probes. The creator owner owns an
+original offline execution lab, method, seven calibration tests and two additional
+development cases. All **54 owners**, the previous 111 cases/holdouts and source
+credits are preserved. The resulting **113 definitions** are not 113 executed
+trials. Calibration/packaging checks and controlled local PR behavior are distinct
+from live-model and hosted-provider qualification. No model credentials or calls
+enter CI. Orbyn synchronization and the REA engine upgrade remain deferred.

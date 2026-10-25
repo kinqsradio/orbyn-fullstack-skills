@@ -197,6 +197,14 @@ new workflow. A separate clarified-case pair passed 1/1 in both conditions.
 These observations support connected routing, not an outcome-quality gain or
 end-to-end contribution qualification.
 
+The [disposable contribution execution study](docs/evaluations/2026-10-25-contribution-execution.md)
+then exercised real reproduction, fixes, tests, commits, local pushes and paginated
+PR feedback. Both conditions eventually produced correct outcomes in 2/2 trials;
+the corrected candidate also stopped dependent pushes after a failed commit in
+2/2, versus 0/2 at baseline. The local PR service is a controlled offline fixture,
+and an earlier host-blocked worktree experiment is reported separately. These
+small development trials do not qualify hosted GitHub behavior.
+
 For substantive continuation, the optional [handoff contract](skills/orbyn-workflow/references/handoffs.md)
 records scope, candidate, ownership, observed checks and next action. Its offline
 checker rejects stale revisions and inconsistent completion claims; receiving
