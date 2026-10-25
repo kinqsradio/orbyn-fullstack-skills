@@ -1,9 +1,11 @@
 # Fullstack engineering capability audit — 25 October 2026
 
-Scope: improve the uncommitted 34-skill consolidation, address its observed
+Initial scope: improve the then-uncommitted 34-skill consolidation, address its observed
 writer-fencing omission, and cover junior/senior/staff responsibilities across
 backend, frontend, UI/UX, prototypes, verification, operations and resource cleanup.
-No commit, publication, consumer promotion or production action is authorized.
+That initial pass excluded commits and publication. The subsequent request
+authorized independent qualification, Hallmark integration and a PR for human
+review. Consumer promotion, merge and production actions remain outside scope.
 
 The catalog remains 34 skills. The changes strengthen existing task owners and
 conditional methods; job levels are not additional entrypoints or reduced quality
@@ -14,7 +16,7 @@ specialism or organizational responsibility is now qualified.
 
 Primary sources were inspected on 25 October 2026. The table distinguishes what
 the source establishes from the library decision. No external code, templates,
-visual assets or full text were imported. The maintained procedures are original
+visual assets or full text were imported in this research pass. Its procedures are original
 syntheses and remain usable offline. Sources are attribution and review pointers.
 
 | Question | Source and finding | Local decision |
@@ -98,7 +100,18 @@ cases or holdouts. All new methods ship through existing owners and generated
 host discovery. Research, methods and static checks alone do not demonstrate
 full engineering capability.
 
-Next validation beyond this pass should exercise a real multi-package candidate,
+Validation beyond this initial pass should exercise a real multi-package candidate,
 shared-environment teardown in a disposable integration fixture, native UI where
 required, and independent review of representative outcomes. Do not convert these
 remaining evidence gaps into claims of completeness or indiscriminately add skills.
+
+## Design adaptation and executable qualification
+
+The later Hallmark integration adds selectively adapted visual-direction and
+behavior-preserving redesign methods under the existing UI owner. The
+[pinned source record](../../skills/orbyn-ui-design/references/hallmark-source.md)
+identifies the MIT material and exclusions. This adaptation retains attribution;
+the original-research statement above does not claim authorship of these methods.
+The catalog stays at 34, with three additional development cases for design,
+polish and audit scope. The final qualification report records new package,
+database and frontend/backend evidence separately from the historical results.

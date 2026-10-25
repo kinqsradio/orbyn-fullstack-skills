@@ -123,5 +123,12 @@ coaching, incident handoff, human-preview artifacts and resource retention/clean
 Three observed output gaps received concise owning-entrypoint corrections and a
 separate six-call development recheck. See the [capability map](engineering-capability-gaps.md)
 for coverage and remaining large-repository/native/operational evidence gaps.
-All work remains local and uncommitted. The earlier hold checkpoint and failed
+At that follow-up checkpoint, all work remained local and uncommitted. The earlier hold checkpoint and failed
 receipts remain historical evidence; no broad enterprise qualification is claimed.
+
+## Subsequent delivery scope
+
+The later request authorizes a PR for human review after independent review and
+new executable trials. Selected Hallmark methods are integrated into the existing
+UI owner with pinned provenance and its original MIT notice. The prior hold and
+scores remain historical records; they do not describe the final delivery state.
