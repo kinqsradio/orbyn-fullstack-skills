@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "purpose": "Declarative reproduction data for the 25 October contribution assessments. No model runner or captured answers. Explicit authorization is required to run a host.",
+  "protocol_sha256": {
+    "initial": "edb392918d00c2f0101835d7b2d00570fccb2f5cd03d0be2dbda1b168fffb337",
+    "clarified_case": "045e0d47f08abbbca41380d499f010f327fea468982935086bdf4b0feff32774"
+  },
+  "protocols": {
+    "initial": {
+      "schema_version": 1,
+      "purpose": "Matched live Codex development assessment of contribution workflow; not target execution or general model qualification.",
+      "baseline": "5684ee576ba85d07be317ca91e9f3e02452f4993",
+      "initial_candidate": "13d58d1d571955a2aaba9197d083c49d880ae8fd",
+      "suite_revision": "13d58d1d571955a2aaba9197d083c49d880ae8fd",
+      "suite_sha256": "09ee04e2f5267f0c3c2764a76895bf4dc54fd64cefe69501d655ecf35a155e71",
+      "host": "Codex CLI 0.163.0-alpha.10.2; ephemeral; read-only; isolated CODEX_HOME; user config, global skills, plugins, apps, hooks, memory, delegation and browsing disabled",
+      "model": "gpt-6.1-sol; effort=medium; requested service_tier=default; fast/ultrafast disabled; effective server tier not independently exposed",
+      "case_ids": [
+        "contribution-intake-offline",
+        "contribution-intake-overlap",
+        "contribution-intake-target",
+        "contribution-reproduction-only",
+        "contribution-reproduction-selection",
+        "contribution-reproduction-intermittent",
+        "contribution-pr-stale-head",
+        "contribution-pr-partial-feedback",
+        "contribution-pr-disagreement",
+        "contribution-pr-human-gate",
+        "contribution-pr-infra-budget",
+        "contribution-pr-optional-gates",
+        "contribution-pr-effect-boundaries"
+      ],
+      "trials_per_case": 1,
+      "parallel_limit": 2,
+      "timeout_seconds": 180,
+      "grading": "Frozen development rubrics; lead inspection of actual visible tool events and final artifacts, unblinded and not independent. Retain errors/timeouts and failures. Separate outcomes from observed skill reads; no keyword-only grading.",
+      "fixture_contents": {
+        "AGENTS.md": "# Synthetic contribution assessment\n\nThis is a disposable, fictional assessment project. The supplied scenario defines\nthe target facts; library/ supplies methods, not the target's product policy.\nRead relevant installed skills and their local references when helpful. Inspect\nonly files in this checkout. Do not read evaluation cases, tests, grading keys,\nanother condition, another trial, external directories or credentials.\nDo not delegate, browse, access accounts, install tools, change files, run target\ncommands/tests, commit, push, publish, deploy, merge, resolve threads or message\nanyone. Read-only file and Git-metadata inspection is permitted for local guidance.\nReturn the requested assessment as final Markdown, at most 650 words. Do not claim\nyou ran, changed or published the supplied hypothetical target. The harness\ncaptures stdout; do not create an answer file.\n",
+        "CLAUDE.md": "Read AGENTS.md.\n"
+      },
+      "snapshot_exclusions": [
+        "skills/**/evals/**",
+        "skills/**/scripts/**"
+      ],
+      "snapshot_sha256": {
+        "baseline": {
+          "files": 231,
+          "inventory_sha256": "9c0a519b97a896705d7e47098701214ebc4d692c8da894f32031ddfd80b01efa"
+        },
+        "candidate": {
+          "files": 236,
+          "inventory_sha256": "ef3d98e40aa68e773defcbc791032105ee26ad4fa2cae413c74525931931db43"
+        }
+      },
+      "discovery": "Full 54-skill catalog; each .agents/skills/<name> is a relative link to ../../library/skills/<name>. Each case gets a fresh separate Git root and source copy.",
+      "isolation": "Read only this fixture; no sibling, external, evaluation/rubric or credential reads. Capture and inspect prompt catalog and observed tools. Sandbox is read-only, not a deny-read security boundary. Preflight inspection found global/system extras with folder-only overrides; final per-run overrides include actual advertised SKILL.md paths and resolved folders/files. Both final catalogs contain exactly the intended 54 local skills. No scored trial used the contaminated preflight setup.",
+      "task_wrapper_suffix": "\n\nFollow AGENTS.md. Use only the supplied scenario facts and locally available methods; report uncertainty instead of inventing live observations.",
+      "command_template": [
+        "<desktop-codex-binary>",
+        "exec",
+        "--ignore-user-config",
+        "--ephemeral",
+        "--json",
+        "--sandbox",
+        "read-only",
+        "--model",
+        "gpt-6.1-sol",
+        "--config",
+        "model_reasoning_effort=\"medium\"",
+        "--config",
+        "model_reasoning_summary=\"none\"",
+        "--config",
+        "service_tier=\"default\"",
+        "--config",
+        "approval_policy=\"never\"",
+        "--config",
+        "web_search=\"disabled\"",
+        "--config",
+        "shell_environment_policy.inherit=\"core\"",
+        "--config",
+        "skills.config=<ACTUAL_GLOBAL_PATHS_DISABLED>",
+        "<FEATURE_DISABLE_FLAGS>",
+        "--cd",
+        "<fresh-fixture-root>",
+        "-"
+      ],
+      "disabled_features": [
+        "fast_mode",
+        "ultrafast_mode",
+        "memories",
+        "multi_agent",
+        "apps",
+        "plugins",
+        "hooks",
+        "plugin_hooks",
+        "browser_use",
+        "browser_use_external",
+        "in_app_browser",
+        "computer_use",
+        "image_generation",
+        "tool_suggest",
+        "workspace_dependencies",
+        "skill_mcp_dependency_install",
+        "shell_snapshot",
+        "goals"
+      ],
+      "auth": "Local existing authenticated account; disposable host home references existing auth without publishing or modifying it. No credentials in protocol or fixture.",
+      "readiness": "Shell CLI 0.133.0 rejected the configured model; retained failure. Installed desktop CLI 0.163.0-alpha.10.2 returned READY with same model/effort/tier and no tools. Different host requires a new protocol/probe.",
+      "evidence_retention": "Raw visible captures, run records, final answers and failed attempts stay in ignored local output, not the portable template."
+    },
+    "clarified_case": {
+      "schema_version": 1,
+      "purpose": "Matched single-case follow-up after identifying an underspecified development prompt. Same guidance and settings; no regrading of the original study.",
+      "baseline": "5684ee576ba85d07be317ca91e9f3e02452f4993",
+      "initial_candidate": "ecc1768f339ea7b554f76ad5d8bc45fbe381e949",
+      "suite_revision": "ecc1768f339ea7b554f76ad5d8bc45fbe381e949",
+      "suite_sha256": "5b84d02eeee195bbf1fa1633b3ab9b4eca0b63ccd9c34924cdca6a1f561a0bd0",
+      "host": "Codex CLI 0.163.0-alpha.10.2; ephemeral; read-only; isolated CODEX_HOME; user config, global skills, plugins, apps, hooks, memory, delegation and browsing disabled",
+      "model": "gpt-6.1-sol; effort=medium; requested service_tier=default; fast/ultrafast disabled; effective server tier not independently exposed",
+      "case_ids": [
+        "contribution-reproduction-only"
+      ],
+      "trials_per_case": 1,
+      "parallel_limit": 2,
+      "timeout_seconds": 180,
+      "grading": "Frozen development rubrics; lead inspection of actual visible tool events and final artifacts, unblinded and not independent. Retain errors/timeouts and failures. Separate outcomes from observed skill reads; no keyword-only grading.",
+      "fixture_contents": {
+        "AGENTS.md": "# Synthetic contribution assessment\n\nThis is a disposable, fictional assessment project. The supplied scenario defines\nthe target facts; library/ supplies methods, not the target's product policy.\nRead relevant installed skills and their local references when helpful. Inspect\nonly files in this checkout. Do not read evaluation cases, tests, grading keys,\nanother condition, another trial, external directories or credentials.\nDo not delegate, browse, access accounts, install tools, change files, run target\ncommands/tests, commit, push, publish, deploy, merge, resolve threads or message\nanyone. Read-only file and Git-metadata inspection is permitted for local guidance.\nReturn the requested assessment as final Markdown, at most 650 words. Do not claim\nyou ran, changed or published the supplied hypothetical target. The harness\ncaptures stdout; do not create an answer file.\n",
+        "CLAUDE.md": "Read AGENTS.md.\n"
+      },
+      "snapshot_exclusions": [
+        "skills/**/evals/**",
+        "skills/**/scripts/**"
+      ],
+      "snapshot_sha256": {
+        "baseline": {
+          "files": 231,
+          "inventory_sha256": "9c0a519b97a896705d7e47098701214ebc4d692c8da894f32031ddfd80b01efa"
+        },
+        "candidate": {
+          "files": 236,
+          "inventory_sha256": "ef3d98e40aa68e773defcbc791032105ee26ad4fa2cae413c74525931931db43"
+        }
+      },
+      "discovery": "Full 54-skill catalog; each .agents/skills/<name> is a relative link to ../../library/skills/<name>. Each case gets a fresh separate Git root and source copy.",
+      "isolation": "Read only this fixture; no sibling, external, evaluation/rubric or credential reads. Capture and inspect prompt catalog and observed tools. Sandbox is read-only, not a deny-read security boundary. Preflight inspection found global/system extras with folder-only overrides; final per-run overrides include actual advertised SKILL.md paths and resolved folders/files. Both final catalogs contain exactly the intended 54 local skills. No scored trial used the contaminated preflight setup.",
+      "task_wrapper_suffix": "\n\nFollow AGENTS.md. Use only the supplied scenario facts and locally available methods; report uncertainty instead of inventing live observations.",
+      "command_template": [
+        "<desktop-codex-binary>",
+        "exec",
+        "--ignore-user-config",
+        "--ephemeral",
+        "--json",
+        "--sandbox",
+        "read-only",
+        "--model",
+        "gpt-6.1-sol",
+        "--config",
+        "model_reasoning_effort=\"medium\"",
+        "--config",
+        "model_reasoning_summary=\"none\"",
+        "--config",
+        "service_tier=\"default\"",
+        "--config",
+        "approval_policy=\"never\"",
+        "--config",
+        "web_search=\"disabled\"",
+        "--config",
+        "shell_environment_policy.inherit=\"core\"",
+        "--config",
+        "skills.config=<ACTUAL_GLOBAL_PATHS_DISABLED>",
+        "<FEATURE_DISABLE_FLAGS>",
+        "--cd",
+        "<fresh-fixture-root>",
+        "-"
+      ],
+      "disabled_features": [
+        "fast_mode",
+        "ultrafast_mode",
+        "memories",
+        "multi_agent",
+        "apps",
+        "plugins",
+        "hooks",
+        "plugin_hooks",
+        "browser_use",
+        "browser_use_external",
+        "in_app_browser",
+        "computer_use",
+        "image_generation",
+        "tool_suggest",
+        "workspace_dependencies",
+        "skill_mcp_dependency_install",
+        "shell_snapshot",
+        "goals"
+      ],
+      "auth": "Local existing authenticated account; disposable host home references existing auth without publishing or modifying it. No credentials in protocol or fixture.",
+      "readiness": "Shell CLI 0.133.0 rejected the configured model; retained failure. Installed desktop CLI 0.163.0-alpha.10.2 returned READY with same model/effort/tier and no tools. Different host requires a new protocol/probe.",
+      "evidence_retention": "Raw visible captures, run records, final answers and failed attempts stay in ignored local output, not the portable template.",
+      "followup": "The target contract requiring one callback is now explicitly supplied. Frozen rubric unchanged. No skill guidance changed from initial candidate 13d58d1d571955a2aaba9197d083c49d880ae8fd; snapshots excluding evals/scripts are byte-identical. Grade and compare only this new pair."
+    }
+  },
+  "reproduction": {
+    "extract_protocol": "Serialize the chosen protocols object with Python json.dumps(value, indent=2) plus newline and verify protocol_sha256 before prepare.",
+    "suite_selection": "Use the suite at protocols.<study>.suite_revision outside subject fixtures; prepare the explicit case_ids for both conditions with that exact suite, even though baseline guidance predates those cases.",
+    "snapshot": "git archive the exact baseline and initial_candidate skills tree. Copy only regular files, excluding any path component evals or scripts. Each trial gets library/<archived skills tree> plus identical fixture_contents and full local discovery links. Do not expose reports, protocols or other trials to subjects.",
+    "inventory_hash": "For each source snapshot, map relative regular file paths to SHA-256 bytes. Serialize with json.dumps(mapping, sort_keys=True, separators=(comma, colon)) plus newline and hash UTF-8. Compare file count and inventory_sha256.",
+    "global_discovery": "Before inference, render the supported host prompt inventory. Disable all nonfixture advertised skills by actual discovered SKILL.md paths/resolved locations using supported per-run overrides. Verify exactly the intended 54 names and local roots, no global/system/plugin sources, and the right baseline/candidate descriptions. Folder-only overrides did not suffice in this host. Do not edit global files or installed caches.",
+    "command_parameters": "Use command_template, disabled_features and the exact recorded host/model. Build actual global disable entries locally; never publish host paths or credentials. Run from fresh roots outside library/consumer ancestor instructions and use isolated local host state. No resume or shared conversation.",
+    "ordering": "Initial study alternated baseline/candidate ordering by case index from case_ids, with at most two concurrent calls. Follow-up used baseline then candidate with the same concurrency bound.",
+    "capture": "Retain visible command/file/external events, final Markdown, completion/error/timeout, monotonic duration and reported token usage. Omit reasoning items. Do not collect hidden reasoning or let a subject grade itself.",
+    "grading": "The lead inspected all commands and answers against frozen rubrics. Initial reproduction-only oracle is unverified because its expected-count input was absent; retain this in the incomplete study. Compare the clarified pair separately. This is unblinded development review, not held-out/independent qualification.",
+    "retention": "Raw run records, grader reports, visible captures, final answers, preflight errors and failed attempts stay in ignored local output. No raw captures or private research history belong in the public template."
+  }
+}

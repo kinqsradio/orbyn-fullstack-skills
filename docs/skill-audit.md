@@ -308,3 +308,21 @@ trials, hosted PR qualification or a Codex/Claude comparison.
 Normal library CI discovers the checks without new credentials or model calls.
 This change does not advance any REA engine/source pin or promote the public
 revision into Orbyn. Consumer synchronization remains explicitly deferred.
+
+## Live contribution assessments — 25 October 2026
+
+The [recorded Codex study](evaluations/2026-10-25-contribution.md) inspected 26
+initial assessments and a two-call clarified-case follow-up. Each initial
+condition has 12 passing and one unverified outcome; observed expected-owner
+body reads were 9/13 at baseline and 13/13 at candidate. The unverified callback
+oracle lacked a supplied expected-count contract. Only that development prompt
+was clarified; its rubric, all other cases and holdouts remain unchanged. Both
+follow-up answers passed, reported as a separate pair rather than a new 13/13
+score. No outcome-quality gain or end-to-end contribution qualification is claimed.
+
+Host preflight caught a PATH-runner model rejection and ineffective folder-only
+global-skill disable entries. The supported desktop runner and verified per-run
+prompt inventory resolved those preparation gaps before scoring. Updated local
+evaluation guidance preserves this isolation and input-correction method. The
+public release contains concise results and reproducible synthetic protocols; raw
+answers/captures remain ignored. Consumer synchronization and REA upgrade are held.
