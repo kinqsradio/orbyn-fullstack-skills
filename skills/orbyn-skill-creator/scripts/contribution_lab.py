@@ -65,6 +65,7 @@ def create(root, layout='worktree', transient_commit_failure=False):
     git(primary, 'commit', '-q', '-m', 'Seed disposable contribution fixture', env=env)
     base = git(primary, 'rev-parse', 'HEAD')
     git(root, 'init', '-q', '--bare', '-b', 'main', str(root/'remote.git'))
+    git(root/'remote.git', 'config', 'core.logAllRefUpdates', 'true')
     git(primary, 'remote', 'add', 'origin', str(root/'remote.git'))
     git(primary, 'push', '-q', 'origin', 'main')
     if layout == 'worktree':
