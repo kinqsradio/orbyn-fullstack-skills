@@ -45,6 +45,7 @@ explains the handoffs. [The catalog](skills/README.md) lists every skill.
 | Your task                          | Start here                                 | Result                                                   |
 | ---------------------------------- | ------------------------------------------ | -------------------------------------------------------- |
 | Understand unfamiliar behavior     | `how` / `why`                              | Source trace or documented rationale                     |
+| Remember, classify, correct or forget engineering context | `reflect` | Explicit local memory CRUD with scoped tags/categories and evidence |
 | Deliver a cross-stack feature      | `orbyn-workflow`                           | Owned changes and proportional evidence                  |
 | Decide the data/interface model    | `architect`                                | Caller-facing contract and lifecycle                     |
 | Implement an API effect            | `orbyn-backend-design`                     | Validation, authority, transaction and client errors     |
@@ -194,6 +195,14 @@ or automatic cross-user learning; silence does not upload anything, and a public
 merge does not authorize changing your target repository.
 
 ## Examples and evaluations
+
+Optional [local engineering memory](skills/reflect/references/memory.md) supports
+explicit remember/find/update/archive/forget requests, categories, domains and
+namespaced tags. It works offline with Python/SQLite and private JSON, Markdown
+or HTML review exports. Memory stays outside Git and host-native stores; ordinary
+setup does not enable capture. Selected lessons can become reviewed local patches
+or authorized fork contributions through the existing skill owners. No automatic
+model learning, background collection or remote upload is included.
 
 Start with the worked examples for [architecture](skills/architect/examples/proposal-approval.md),
 [backend effects](skills/orbyn-backend-design/examples/retry-safe-effect.md),

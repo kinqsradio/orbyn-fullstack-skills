@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "purpose": "Explicit pre-commit memory CRUD/classification/concurrency/forgetting qualification; no commits or remote effects",
+  "base_revision": "0bb824e0a84281e72abda6f86545dc792101de5d",
+  "initial_snapshot_sha256": "dd59173aa4deea1019b328114f453354b853a5f3c0874763748277898dc9a801",
+  "corrected_snapshot_sha256": "994be3047012fd9d8a146f513463d7b0b4fe98982c0eb50502cd67d45a3960a3",
+  "host": {
+    "version": "Codex CLI 0.163.0-alpha.10.2",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "service_tier": "default/standard",
+    "sandbox": "workspace-write plus explicitly selected disposable data directory",
+    "timeout_seconds": 480,
+    "readiness_timeout_seconds": 120
+  },
+  "advertised_skills": [
+    "reflect",
+    "orbyn-skill-creator",
+    "orbyn-workflow",
+    "orbyn-setup"
+  ],
+  "model_calls": {
+    "initial_scored": 4,
+    "corrected_scored": 4,
+    "unscored_readiness": 4,
+    "focused_review_round_2_scored": 2,
+    "terminal_review_round_3_scored": 1,
+    "total_scored": 11
+  },
+  "cases": {
+    "crud": "exact corrected statement, solution-pattern, retained tags, one active record revision 4 after archive/reactivate",
+    "classification": "two A records recategorized atomically, alias pg->postgresql, old-tag retrieval and scoped facets; B unchanged",
+    "concurrency": "one real initial winner/one conflict, explicit recovery, final revision 3 contains both changes, winner retry does not overwrite",
+    "forgetting": "record/draft absent; stale update/import/backup cannot resurrect; survivor stale; foreign target and unmanaged copy preserved; cleanup pending reported",
+    "import_boundary": "Future-only/mixed/oversized import and malformed brief reject atomically with structured errors; healthy seed remains usable through update/archive/forget",
+    "alias_boundary": "Existing alias merges twice, empty and already-canonical selections reject without mutation, all prior lookups and scope B preserved",
+    "terminal_forgetting": "Reject insufficient relation headroom; import safe dependent, forget three targets with strict monotonic revisions and stale CAS rejection, forget dependent at maximum, verify empty database and four tombstones"
+  },
+  "controller_races": {
+    "update_update": 8,
+    "update_forget": 8,
+    "source_snapshot_sha256": "994be3047012fd9d8a146f513463d7b0b4fe98982c0eb50502cd67d45a3960a3"
+  },
+  "corrected_runtime_hashes": {
+    "skills/reflect/scripts/learning/__init__.py": "6701cfe2488d394a63bffdb1da93e238d99b38ec4d85a91690e6857d6da8f806",
+    "skills/reflect/scripts/learning/artifacts.py": "fa6c9a1c893dd8212148eb17672b5b419559e3475229712dd9cc4f529b211ca7",
+    "skills/reflect/scripts/learning/cli.py": "d459fd5fa0cd41fd65ce34ad1111f4694670390a44cecc984b403ff02793586b",
+    "skills/reflect/scripts/learning/schema.py": "cad121ae9d2b23029dc94f8354c2f97153a2c5003bddf928ab01d82aab649dac",
+    "skills/reflect/scripts/learning/store.py": "ff1902ac62025d8a3d0a0d63a9a92bd6d1e9e0c57f1e1e3660f8dd3f0354d2fc",
+    "skills/reflect/scripts/memory.py": "152cc872f58cf53fb13fd2bdccef112cd5c6dd6fd9d2b805aa90c944f2890abf"
+  },
+  "independent_review": {
+    "state": "complete_no_blocking_findings",
+    "reviewer": "native orbyn-agent, gpt-6.1-sol, medium",
+    "processing": "available priority tier explicitly authorized by user for this review only; provider-side effective tier not independently verified",
+    "completed_rounds": 3,
+    "maximum_rounds": 3,
+    "rounds": [
+      {
+        "number": 1,
+        "snapshot": "70db7ee68cbd6fadd96eeddfa8cae91cdc484f61b018698f22fb55bc3e47c819",
+        "state": "changes-requested"
+      },
+      {
+        "number": 2,
+        "snapshot": "f9b218451eba680b2c31ee965b2bedc26f22901d7977021e8fccbb7e3a182ca6",
+        "state": "changes-requested"
+      },
+      {
+        "number": 3,
+        "snapshot": "c5e202882f820842aa5939016d8bbd728acfbdb7f5cee040588a2e953d891c7b",
+        "state": "no-blocking-findings"
+      }
+    ],
+    "scope": "Frozen source, independent offline probes and 42-test memory suite; final model call and full151 completion subsequently verified by lead"
+  },
+  "limitations": [
+    "One repetition per case and candidate; no paired baseline or statistical claim",
+    "No remote delivery or real-user memory",
+    "Lead transcript/runtime review is not independent review",
+    "Visible events only; hidden reasoning excluded",
+    "Earlier calls and 16 controller races are not reruns on final source",
+    "Trusted single OS user; no multi-user/network-share or enterprise-scale qualification",
+    "Logical deletion does not control unmanaged copies, published history, host context or filesystem snapshots"
+  ],
+  "final_reviewed_snapshot_sha256": "c5e202882f820842aa5939016d8bbd728acfbdb7f5cee040588a2e953d891c7b",
+  "trial_groups": [
+    {
+      "group": "initial",
+      "snapshot": "dd59173aa4deea1019b328114f453354b853a5f3c0874763748277898dc9a801",
+      "scored": 4,
+      "passed_runtime_and_lead_review": 4
+    },
+    {
+      "group": "followup",
+      "snapshot": "994be3047012fd9d8a146f513463d7b0b4fe98982c0eb50502cd67d45a3960a3",
+      "scored": 4,
+      "passed_runtime_and_lead_review": 4
+    },
+    {
+      "group": "focused-review-fixes",
+      "snapshot": "f9b218451eba680b2c31ee965b2bedc26f22901d7977021e8fccbb7e3a182ca6",
+      "scored": 2,
+      "passed_runtime_and_lead_review": 2
+    },
+    {
+      "group": "terminal-forgetting",
+      "snapshot": "c5e202882f820842aa5939016d8bbd728acfbdb7f5cee040588a2e953d891c7b",
+      "scored": 1,
+      "passed_runtime_and_lead_review": 1
+    }
+  ],
+  "final_runtime_hashes": {
+    "skills/reflect/scripts/learning/__init__.py": "6701cfe2488d394a63bffdb1da93e238d99b38ec4d85a91690e6857d6da8f806",
+    "skills/reflect/scripts/learning/artifacts.py": "91a3618ffd4414f1569a6b0ec413d4f82cf4f2b255ce010af50e6ce45ec34f9c",
+    "skills/reflect/scripts/learning/cli.py": "d459fd5fa0cd41fd65ce34ad1111f4694670390a44cecc984b403ff02793586b",
+    "skills/reflect/scripts/learning/schema.py": "e1aa051f20b2fdcb26c326c26eaae50f92abba9a1b34a292ecd348b160d81676",
+    "skills/reflect/scripts/learning/store.py": "d0261f56d4c710c42949836bd99bb730cdcaa2ec16b56d07181410c541d2f918",
+    "skills/reflect/scripts/memory.py": "152cc872f58cf53fb13fd2bdccef112cd5c6dd6fd9d2b805aa90c944f2890abf"
+  },
+  "final_checks": {
+    "python_runtime": "3.13",
+    "full_suite_tests": 151,
+    "memory_tests": 42,
+    "skill_owners": 34,
+    "managed_assets": 283,
+    "task_commits": 0
+  }
+}

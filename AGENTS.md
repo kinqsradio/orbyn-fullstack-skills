@@ -37,6 +37,10 @@ PR, local draft or no contribution. Honor existing exact-scope authority; silenc
 does not authorize publication. Preserve the main task, company-only material and
 local work. No telemetry, persistent memory or automatic self-publication is implied.
 
+Explicit engineering-memory requests use [reflect's local memory flow](skills/reflect/references/memory.md).
+Keep records outside Git, resolve the target scope and verify revision/deletion
+receipts. Ordinary setup and reflection do not enable capture or host-memory writes.
+
 Keep one canonical skill folder in `skills/`, catalog relationships in
 `skills/catalog.json`, and generated discovery links for both hosts. Read
 [skill maintenance](skills/orbyn-skill-creator/SKILL.md) for changes. Do not

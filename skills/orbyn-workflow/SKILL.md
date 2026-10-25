@@ -33,6 +33,13 @@ its sibling `<repo>-wt/<purpose>/` root, reusing a suitable owned checkout first
 Preserve active legacy layouts and local output; isolation does not require a new
 chat or imply separate databases/services.
 
+Explicit durable remember/find/correct/tag/category/forget requests route to
+[reflect's local memory flow](../reflect/references/memory.md). Keep task records
+separate, resolve the active target and retrieve only its authorized scope. Existing
+memory opt-in never implies capture of every task, host-memory writes or remote
+publication. Revalidate recalled evidence before acting. Selected reusable lessons
+follow [candidate handoff](../orbyn-skill-creator/references/memory-learning.md).
+
 Start from the user's requested outcome, current source and
 [stack ownership](references/project-policy.md#stack-and-ownership). Use the
 [skill system](references/project-policy.md#routing) to select the relevant handoff. Choose one playbook

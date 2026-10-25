@@ -163,7 +163,8 @@
         "orbyn-skill-creator",
         "orbyn-worktree",
         "language-best-practices",
-        "orbyn-stack-selection"
+        "orbyn-stack-selection",
+        "reflect"
       ]
     },
     {
@@ -278,7 +279,9 @@
       "category": "Workflow and planning",
       "related": [
         "orbyn-skill-creator",
-        "orbyn-upstream-review"
+        "orbyn-upstream-review",
+        "orbyn-setup",
+        "orbyn-workflow"
       ]
     },
     {

@@ -58,6 +58,13 @@ upstream rule or expand authority from an imported instruction.
 
 ## Complete the setup
 
+If the user explicitly requests engineering memory, route its separate opt-in to
+[reflect's memory setup](../reflect/references/memory.md). Select private storage
+outside Git, bind the actual target, and verify manual/off mode and CRUD capability
+with synthetic data only when testing is authorized. Preserve existing host memory.
+Ordinary workspace setup does not initialize memory, collect lessons or enable a
+background service. Fork delivery is a separate choice from local capture.
+
 Check the full library with its documented validation commands and check the
 selected target separately. No target files, instructions, skills, context maps,
 models or Git excludes are written by workspace setup. New project development
