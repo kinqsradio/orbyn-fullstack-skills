@@ -8,7 +8,7 @@ import runpy
 import subprocess
 import sys
 
-from skill_contracts import check_audit, check_discovery, check_incorporated_material, check_links, check_local_workspaces
+from skill_contracts import check_audit, check_discovery, check_incorporated_material, check_links, check_local_workspaces, check_portable_links
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -45,6 +45,8 @@ def main():
         if (skill.parent/'LICENSE').exists():
             require(record.get('copyright', '') in (skill.parent/'LICENSE').read_text(), f'{name}: source copyright missing')
     snapshots = runpy.run_path(str(ROOT/'skills/orbyn-skill-creator/scripts/check_sources.py'))['check'](ROOT)
+    distributed = runpy.run_path(str(ROOT/'scripts/sync-public-skills.py'))['inventory'](ROOT)
+    errors.extend(check_portable_links(ROOT, distributed, snapshots))
     docs = list(ROOT.glob('*.md')) + list((ROOT/'docs').rglob('*.md')) + list((ROOT/'skills').rglob('*.md')) + list((ROOT/'tools').rglob('*.md'))
     for path in docs:
         if path in snapshots:

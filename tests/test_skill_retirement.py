@@ -1,4 +1,4 @@
-"""TypeScript consolidation upgrades known links without deleting foreign work."""
+"""Skill consolidation upgrades known links without deleting foreign work."""
 import json
 import os
 import runpy
@@ -33,6 +33,27 @@ class SkillRetirementTests(unittest.TestCase):
     def test_old_explicit_selection_maps_to_one_owner(self):
         self.assertEqual(installer.selection([OLD]),{NEW})
         self.assertNotIn(OLD,installer.selection(all_skills=True))
+
+    def test_all_principle_selections_upgrade_both_hosts_to_unique_owners(self):
+        catalog = json.loads((ROOT/'skills/catalog.json').read_text())
+        retired = {old: owner for old, owner in catalog['retired_skills'].items()
+                   if old.startswith('principle-')}
+        for host in ['.agents', '.claude']:
+            base = self.root/host/'skills'
+            base.mkdir(parents=True)
+            for old in retired:
+                (base/old).symlink_to(os.path.relpath(ROOT/'skills'/old, base))
+        self.assertEqual(installer.selection(list(retired)), set(retired.values()))
+        installer.install(self.root, 'both', list(retired), dry_run=True)
+        self.assertTrue((self.root/'.agents/skills'/next(iter(retired))).is_symlink())
+        installer.install(self.root, 'both', list(retired))
+        for host in ['.agents', '.claude']:
+            base = self.root/host/'skills'
+            self.assertEqual({p.name for p in base.iterdir()}, set(retired.values()))
+            for owner in retired.values():
+                self.assertTrue((base/owner/'SKILL.md').is_file())
+        self.assertEqual(installer.install(self.root, 'both', list(retired)), 0)
+        self.assertEqual((self.root/'AGENTS.md').read_text(), 'Existing company policy')
 
     def test_dry_run_then_both_host_upgrade_is_idempotent_and_keeps_policy(self):
         self.old_links()

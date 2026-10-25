@@ -33,7 +33,7 @@ routes complex work to the standard tier and bounded work to the light tier in
 | Implementation in another language  | `language-best-practices`                  | Actual files/manifests → one local language guide, preserved lifecycle and boundary contracts       |
 | Language/framework/storage choice   | `orbyn-stack-selection`                    | Constraints + baseline + primary evidence → recommendation, operating cost and exit/revisit trigger |
 | TypeScript contract                 | `language-best-practices`                  | Existing schema/callers → precise valid states                                                      |
-| Requested tests/TDD                 | `tdd`                                      | Failure contract + allowed environment → focused regression and fix                                 |
+| Implementation tests / TDD                 | `tdd`                                      | Failure contract + allowed environment → focused regression and fix                                 |
 | Existing security findings          | `orbyn-security-remediation`               | Saved findings + current source → scoped fixes and authorized evidence; no new scan                 |
 | Concrete adversarial review         | `interrogate`                              | Candidate + intended behavior → actionable findings                                                 |
 | Artifact/runtime investigation      | `reverse-engineer-anything`                | Target + authority + actual tools → traceable evidence                                              |
@@ -42,9 +42,10 @@ routes complex work to the standard tier and bounded work to the light tier in
 | Lessons/preferences                 | `reflect` / `automate-me`                  | Current-task evidence + authorization → owning instruction change                                   |
 | Prose / durable evidence            | `unslop` / `show-me-your-work`             | Supported facts → concise result or decision record                                                 |
 
-Select principle leaves when the decision needs them: ownership and boundaries,
+Select an owning skill and its conditional method when the decision needs it: ownership and boundaries,
 root cause, idempotency, shared-state isolation, simpler design, compatibility,
-context cost and evidence. They refine the task; they are not separate obligatory
+context cost and evidence. The 20 former principle entrypoints are references, not discoverable skills.
+They refine the task; they are not separate obligatory
 phases or approval gates. REA maintenance skills apply only when that tooling is
 the requested target. Their local methods and examples work without fetching
 upstream instructions; [REA evidence/recovery](../../skills/reverse-engineer-anything/references/evidence-and-recovery.md)
@@ -156,6 +157,20 @@ and unchanged hashes remain in each snapshot; required notices remain bundled.
 Use the maintained local method, not an upstream collection's routing.
 
 The [current full-catalog audit](../skill-audit.md) records decisions and evidence
-limits for every entry. Focused principles refine a task and link to an execution
-owner. Entry-point length alone is not a quality measure: check whether a method
+limits for every entry. The 34 active owners retain the 20 principle methods
+under their reference directories. Entry-point length alone is not a quality measure: check whether a method
 actually specifies decisions, failure handling, a useful result and verification.
+
+## Engineering scope and human handoff
+
+Use the workflow's [scope guide](../../skills/orbyn-workflow/references/engineering-scope.md)
+for onboarding, ordinary review and responsibility across junior/senior/staff work.
+The planning owner handles cross-team strategy; architecture handles service
+readiness; CI handles incident coordination and verified recovery. These are
+conditional methods, not additional skills or authority to act as an organization.
+
+A requested UI prototype must have an actual [preview and opening path](../../skills/orbyn-ui-design/references/prototypes.md),
+with simulated effects and evidence limits explicit. Fullstack implementation
+connects that flow to real domain/API contracts. Use [artifact lifecycle](../../skills/orbyn-workflow/references/artifact-lifecycle.md)
+for storage, retained human review, dev-resource ownership and cleanup; worktree
+removal still belongs to its existing owner.

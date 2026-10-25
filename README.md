@@ -1,6 +1,6 @@
 # Orbyn Fullstack Engineering Skills
 
-**54 connected agent skills for full-stack engineering with Codex, Claude Code and Cursor.**
+**34 connected agent skills for full-stack engineering with Codex, Claude Code and Cursor.**
 
 Architecture, API design, data migrations, language-aware implementation, web and mobile UX,
 debugging, review, CI and delivery—organized around a feature's complete path
@@ -59,8 +59,10 @@ explains the handoffs. [The catalog](skills/README.md) lists every skill.
 | Draft a post or carousel           | `social-content` + `social-preview`        | Evidence-backed copy and local visuals                   |
 | Review external code/skill updates | `orbyn-upstream-review`                    | Pinned comparison, ignored references and scoped updates |
 
-Twenty focused principle skills refine difficult decisions; they are not twenty
-mandatory stages. Five REA-related skills are optional specialists for artifact
+Twenty engineering principles are now conditional methods under their execution
+owners, with essential rules in those owners' entrypoints. They retain their
+examples and licenses without adding discovery choices. The default core preset
+remains 14 skills; see the [consolidation record](docs/work/skill-consolidation.md). Five REA-related skills are optional specialists for artifact
 investigation and REA maintenance, with local methods, recovery/evidence guidance
 and [worked examples](skills/reverse-engineer-anything/references/worked-examples.md).
 They do not install reverse-engineering tools or upgrade the pinned engine.

@@ -1,4 +1,27 @@
-# Full skill-system audit — 24 October 2026
+# Skill-system audit — current candidate and historical evidence
+
+
+## Current consolidation candidate — 25 October 2026
+
+This candidate has **34 active skills**, down from the 54 at baseline
+`4510c750f96af62a094e1193a473d6aad315e7ee`. The 20 principles are maintained
+references under their execution owners, with essential rules in those owners.
+Their methods, worked checks, source records and licenses are retained. The
+[disposition and implementation record](work/skill-consolidation.md) maps all
+retirements and separates implemented work from future behavior experiments.
+The active owner rows below still cover every catalog entry; principle rows now
+link to retained methods. Default core remains 14; presets and the two proposed
+workflow merges remain separate experiments. Skills-only dependencies are checked
+against the export inventory, including copied-consumer regression tests.
+
+Large-repository methods now cover bounded impact discovery, organizational
+ownership, quantitative constraints, staged changes, affected-target selection,
+and operational rollout/recovery. Product-specific examples are conditional.
+These are authored procedures with static and helper evidence, not demonstrated
+Microsoft/Google/Xero-scale agent performance. New evaluation cases are prepared
+development criteria; frozen historical suites and holdouts remain unchanged.
+
+## Historical audit — 24 October 2026
 
 The initial audit covered **55 canonical skills** in the candidate stacked after PRs
 #8–#9, their authored local references/playbooks, catalog relationships, host
@@ -114,26 +137,26 @@ to their owner instead of duplicating a complete workflow.
 | [orbyn-upstream-review](../skills/orbyn-upstream-review/SKILL.md)                                                           | Retained substantive local method | Imported baseline and candidate source/research → Dated comparison and per-owner update disposition                    | Raw reference publication, truncated diffs and pin confusion              |
 | [orbyn-workflow](../skills/orbyn-workflow/SKILL.md)                                                                         | Expanded local method             | Ordinary task request, context and delivery scope → Connected owner handoffs and evidence-backed result                | Missing host/delegate capability and partial end state                    |
 | [orbyn-worktree](../skills/orbyn-worktree/SKILL.md)                                                                         | Retained substantive local method | Git registration, task owner and existing work → Owned sibling checkout and deliberate contribution destination        | Ignored output, shared resources and public-fork privacy limits           |
-| [principle-boundary-discipline](../skills/principle-boundary-discipline/SKILL.md)                                           | Expanded local method             | Relevant engineering decision and actual owner → Trust transition and current effect authorization                     | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-build-the-lever](../skills/principle-build-the-lever/SKILL.md)                                                   | Expanded local method             | Relevant engineering decision and actual owner → Scoped repeatable helper with refusal and convergence                 | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-encode-lessons-in-structure](../skills/principle-encode-lessons-in-structure/SKILL.md)                           | Expanded local method             | Relevant engineering decision and actual owner → Invariant encoded at its producing representation                     | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-exhaust-the-design-space](../skills/principle-exhaust-the-design-space/SKILL.md)                                 | Expanded local method             | Relevant engineering decision and actual owner → Decision-changing observation and stopping rule                       | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-experience-first](../skills/principle-experience-first/SKILL.md)                                                 | Expanded local method             | Relevant engineering decision and actual owner → Recoverable person-level task outcome                                 | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-fix-root-causes](../skills/principle-fix-root-causes/SKILL.md)                                                   | Expanded local method             | Relevant engineering decision and actual owner → First invalid-state producer and discriminating check                 | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-foundational-thinking](../skills/principle-foundational-thinking/SKILL.md)                                       | Expanded local method             | Relevant engineering decision and actual owner → Identity, lifecycle and single effect/result owner                    | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-guard-the-context-window](../skills/principle-guard-the-context-window/SKILL.md)                                 | Expanded local method             | Relevant engineering decision and actual owner → Decisive source pointers and retained evidence gaps                   | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-laziness-protocol](../skills/principle-laziness-protocol/SKILL.md)                                               | Expanded local method             | Relevant engineering decision and actual owner → Removed maintenance path with its contract preserved                  | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-make-operations-idempotent](../skills/principle-make-operations-idempotent/SKILL.md)                             | Expanded local method             | Relevant engineering decision and actual owner → Operation identity and unknown-outcome reconciliation                 | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-migrate-callers-then-delete-legacy-apis](../skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md)   | Expanded local method             | Relevant engineering decision and actual owner → Caller inventory and explicit retirement condition                    | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-minimize-reader-load](../skills/principle-minimize-reader-load/SKILL.md)                                         | Expanded local method             | Relevant engineering decision and actual owner → One value/interpretation owner with useful seams                      | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-never-block-on-the-human](../skills/principle-never-block-on-the-human/SKILL.md)                                 | Expanded local method             | Relevant engineering decision and actual owner → Routine decisions separated from consequential authority              | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-outcome-oriented-execution](../skills/principle-outcome-oriented-execution/SKILL.md)                             | Expanded local method             | Relevant engineering decision and actual owner → Actual end-state inventory and unfinished units                       | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-prove-it-works](../skills/principle-prove-it-works/SKILL.md)                                                     | Expanded local method             | Relevant engineering decision and actual owner → Claim-to-observation mapping at the exact candidate                   | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-redesign-from-first-principles](../skills/principle-redesign-from-first-principles/SKILL.md)                     | Expanded local method             | Relevant engineering decision and actual owner → New requirement integrated at the owning model                        | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-separate-before-serializing-shared-state](../skills/principle-separate-before-serializing-shared-state/SKILL.md) | Expanded local method             | Relevant engineering decision and actual owner → Distinct resources or explicit serialization owner                    | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-sequence-verifiable-units](../skills/principle-sequence-verifiable-units/SKILL.md)                               | Expanded local method             | Relevant engineering decision and actual owner → Reversible dependency boundaries with useful evidence                 | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-subtract-before-you-add](../skills/principle-subtract-before-you-add/SKILL.md)                                   | Expanded local method             | Relevant engineering decision and actual owner → Existing owner reused without losing consequences                     | Concrete falsifying case; handoff to linked execution owner               |
-| [principle-type-system-discipline](../skills/principle-type-system-discipline/SKILL.md)                                     | Expanded local method             | Relevant engineering decision and actual owner → Invalid states excluded and runtime boundaries validated              | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-boundary-discipline](../skills/orbyn-backend-design/references/principles/boundary-discipline.md)                                           | Expanded local method             | Relevant engineering decision and actual owner → Trust transition and current effect authorization                     | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-build-the-lever](../skills/orbyn-workflow/references/principles/build-the-lever.md)                                                   | Expanded local method             | Relevant engineering decision and actual owner → Scoped repeatable helper with refusal and convergence                 | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-encode-lessons-in-structure](../skills/architect/references/principles/encode-lessons-in-structure.md)                           | Expanded local method             | Relevant engineering decision and actual owner → Invariant encoded at its producing representation                     | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-exhaust-the-design-space](../skills/architect/references/principles/exhaust-the-design-space.md)                                 | Expanded local method             | Relevant engineering decision and actual owner → Decision-changing observation and stopping rule                       | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-experience-first](../skills/orbyn-ui-design/references/principles/experience-first.md)                                                 | Expanded local method             | Relevant engineering decision and actual owner → Recoverable person-level task outcome                                 | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-fix-root-causes](../skills/how/references/principles/fix-root-causes.md)                                                   | Expanded local method             | Relevant engineering decision and actual owner → First invalid-state producer and discriminating check                 | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-foundational-thinking](../skills/architect/references/principles/foundational-thinking.md)                                       | Expanded local method             | Relevant engineering decision and actual owner → Identity, lifecycle and single effect/result owner                    | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-guard-the-context-window](../skills/how/references/principles/guard-the-context-window.md)                                 | Expanded local method             | Relevant engineering decision and actual owner → Decisive source pointers and retained evidence gaps                   | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-laziness-protocol](../skills/architect/references/principles/laziness-protocol.md)                                               | Expanded local method             | Relevant engineering decision and actual owner → Removed maintenance path with its contract preserved                  | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-make-operations-idempotent](../skills/orbyn-backend-design/references/principles/make-operations-idempotent.md)                             | Expanded local method             | Relevant engineering decision and actual owner → Operation identity and unknown-outcome reconciliation                 | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-migrate-callers-then-delete-legacy-apis](../skills/architect/references/principles/migrate-callers-then-delete-legacy-apis.md)   | Expanded local method             | Relevant engineering decision and actual owner → Caller inventory and explicit retirement condition                    | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-minimize-reader-load](../skills/architect/references/principles/minimize-reader-load.md)                                         | Expanded local method             | Relevant engineering decision and actual owner → One value/interpretation owner with useful seams                      | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-never-block-on-the-human](../skills/orbyn-plan/references/principles/never-block-on-the-human.md)                                 | Expanded local method             | Relevant engineering decision and actual owner → Routine decisions separated from consequential authority              | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-outcome-oriented-execution](../skills/orbyn-workflow/references/principles/outcome-oriented-execution.md)                             | Expanded local method             | Relevant engineering decision and actual owner → Actual end-state inventory and unfinished units                       | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-prove-it-works](../skills/orbyn-workflow/references/principles/prove-it-works.md)                                                     | Expanded local method             | Relevant engineering decision and actual owner → Claim-to-observation mapping at the exact candidate                   | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-redesign-from-first-principles](../skills/architect/references/principles/redesign-from-first-principles.md)                     | Expanded local method             | Relevant engineering decision and actual owner → New requirement integrated at the owning model                        | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-separate-before-serializing-shared-state](../skills/orbyn-workflow/references/principles/separate-before-serializing-shared-state.md) | Expanded local method             | Relevant engineering decision and actual owner → Distinct resources or explicit serialization owner                    | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-sequence-verifiable-units](../skills/orbyn-plan/references/principles/sequence-verifiable-units.md)                               | Expanded local method             | Relevant engineering decision and actual owner → Reversible dependency boundaries with useful evidence                 | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-subtract-before-you-add](../skills/architect/references/principles/subtract-before-you-add.md)                                   | Expanded local method             | Relevant engineering decision and actual owner → Existing owner reused without losing consequences                     | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-type-system-discipline](../skills/language-best-practices/references/principles/type-system-discipline.md)                                     | Expanded local method             | Relevant engineering decision and actual owner → Invalid states excluded and runtime boundaries validated              | Concrete falsifying case; handoff to linked execution owner               |
 | [rea-analysis-optimization](../skills/rea-analysis-optimization/SKILL.md) | Local analysis-cost method | Explicit REA bottleneck + source/artifact identity → Oracle, owning cost and equivalent-task comparison | Measurements and real-provider performance remain unverified until run |
 | [rea-changelog-update](../skills/rea-changelog-update/SKILL.md) | Local release-note method | Actual REA baseline/target history → Bounded notes, verified attribution and migration limits | Missing REA history or account associations stay unknown; no publication |
 | [rea-ci-tests-audit](../skills/rea-ci-tests-audit/SKILL.md) | Local CI/test assessment method | Explicit REA CI scope + revision/workflow → Discovery, failure-gate and provider-evidence assessment | Source assessment and synthetic cases do not qualify hosted or real-provider lanes |
@@ -403,3 +426,28 @@ definitions bring the suite from 127 to **134**, preserving all earlier objects
 and holdouts, including the five pending layout cases. These definitions are not
 observed live conversations. All **54 owners** and notices remain; Orbyn sync
 and REA are still held. Both related updates use the same reviewed PR candidate.
+
+## Fullstack responsibility and lifecycle follow-up — 25 October 2026
+
+The [capability gap audit](work/engineering-capability-gaps.md) maps backend,
+frontend, UI/UX, prototype/human preview, onboarding/review, strategy, operations
+and cleanup to the existing 34 owners. It records primary research, actual method
+changes and unqualified boundaries. Writer cutover now has an explicit deliverable
+and enforcement/control method; UI prototypes now have storage/opening/inspection
+and human handoff requirements. Artifact lifecycle links dev-resource teardown to
+ownership, retained evidence and worktree eligibility. No new skill entrypoints,
+role/model changes or consumer promotion are implied.
+
+Follow-up live evidence is in [migration and breadth results](evaluations/2026-10-25-migration-followup.md).
+The final three-case development recheck passed for the corrected candidate;
+original failures and snapshot identities remain separate. This does not replace
+independent review or qualification on an actual large consuming repository.
+
+## Hallmark integration, 25 October 2026
+
+The 34-skill candidate retains one UI owner. Its optional visual-direction and
+redesign methods adapt pinned Hallmark guidance while preserving project style,
+functional contracts, scope and artifact lifecycle. See the
+[source/disposition record](../skills/orbyn-ui-design/references/hallmark-source.md).
+Three development cases cover task-specific design, behavior-preserving polish
+and audit-only boundaries. Structural validation is not rendered qualification.
