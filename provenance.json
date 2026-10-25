@@ -8,13 +8,111 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/architect/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an original synthetic approval-contract example. Added independently authored vertical code organization guidance and a synthetic task-editor example; TkDodo is cited as reviewed inspiration, with no article material imported. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an original synthetic approval-contract example. Added independently authored vertical code organization guidance and a synthetic task-editor example; TkDodo is cited as reviewed inspiration, with no article material imported. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
           "source": "https://github.com/mattpocock/skills/tree/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering",
           "revision": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
           "relationship": "reviewed-inspiration; no upstream workflow text imported"
+        }
+      ],
+      "incorporated_material": [
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/architect/references/principles/encode-lessons-in-structure.md",
+          "license_file": "skills/architect/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-exhaust-the-design-space/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/architect/references/principles/exhaust-the-design-space.md",
+          "license_file": "skills/architect/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-foundational-thinking/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/architect/references/principles/foundational-thinking.md",
+          "license_file": "skills/architect/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-laziness-protocol/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/architect/references/principles/laziness-protocol.md",
+          "license_file": "skills/architect/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/architect/references/principles/migrate-callers-then-delete-legacy-apis.md",
+          "license_file": "skills/architect/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-minimize-reader-load/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/architect/references/principles/minimize-reader-load.md",
+          "license_file": "skills/architect/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-redesign-from-first-principles/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/architect/references/principles/redesign-from-first-principles.md",
+          "license_file": "skills/architect/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-subtract-before-you-add/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/architect/references/principles/subtract-before-you-add.md",
+          "license_file": "skills/architect/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
         }
       ]
     },
@@ -25,7 +123,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/arena/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
     },
     "automate-me": {
       "relationship": "adapted",
@@ -34,7 +132,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/automate-me/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
     },
     "figure-it-out": {
       "relationship": "adapted",
@@ -43,7 +141,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/figure-it-out/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
     },
     "how": {
       "relationship": "adapted",
@@ -52,13 +150,53 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/how/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored contribution intake, reproduction/discovery and bounded PR-iteration handoffs, with synthetic examples and packaging/evaluation checks. Historical source licenses and credits retained; no upstream workflow text or code imported. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
           "source": "https://github.com/mattpocock/skills/tree/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering",
           "revision": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
           "relationship": "reviewed-inspiration; no upstream workflow text imported"
+        },
+        {
+          "credit": "Jesse Vincent (obra/superpowers)",
+          "source": "https://github.com/obra/superpowers/tree/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b/skills",
+          "revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "license": "MIT",
+          "relationship": "reviewed-inspiration; independently authored local method; no upstream text or code imported"
+        },
+        {
+          "credit": "GitHub awesome-copilot contributors; bug-reproduction-brief credits skyestrela/ai-agent-skill-preview",
+          "source": "https://github.com/github/awesome-copilot/tree/d85f762d6e521abf5fe16703946e9b38adc42da7/skills",
+          "revision": "d85f762d6e521abf5fe16703946e9b38adc42da7",
+          "license": "MIT",
+          "relationship": "reviewed-inspiration; independently authored local method; no upstream text or code imported"
+        }
+      ],
+      "incorporated_material": [
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-fix-root-causes/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/how/references/principles/fix-root-causes.md",
+          "license_file": "skills/how/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-guard-the-context-window/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/how/references/principles/guard-the-context-window.md",
+          "license_file": "skills/how/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
         }
       ]
     },
@@ -69,7 +207,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/interrogate/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
@@ -85,7 +223,33 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-backend-design",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original retry/reconciliation example."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original retry/reconciliation example. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines.",
+      "incorporated_material": [
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-boundary-discipline/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/orbyn-backend-design/references/principles/boundary-discipline.md",
+          "license_file": "skills/orbyn-backend-design/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-make-operations-idempotent/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/orbyn-backend-design/references/principles/make-operations-idempotent.md",
+          "license_file": "skills/orbyn-backend-design/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        }
+      ]
     },
     "orbyn-ci-design": {
       "relationship": "original",
@@ -93,7 +257,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-ci-design",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added original proportional-verification policy and portable conservative Git change classifier, required-result gate and exact-revision deployment-decision validation; no line-count heuristic or automatic deployment authority. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported."
     },
     "orbyn-content-design": {
       "relationship": "original",
@@ -117,13 +281,44 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-plan",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed.",
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Connected substantive task handoffs to the local versioned continuation contract while keeping simple prompt rewrites direct. Reuse the owning project document for durable handoffs and avoid creating a separate log solely because planning occurred.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
           "source": "https://github.com/mattpocock/skills/tree/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering",
           "revision": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
           "relationship": "reviewed-inspiration; no upstream workflow text imported"
+        },
+        {
+          "source": "https://github.com/Lelekhoa1812/prompt-me/tree/fd90c6b9de3bb4af019b310c8af77d5c8a07ff00",
+          "revision": "fd90c6b9de3bb4af019b310c8af77d5c8a07ff00",
+          "relationship": "reviewed comparison only; no source text/code imported; repository states no license selected"
+        }
+      ],
+      "incorporated_material": [
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-never-block-on-the-human/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/orbyn-plan/references/principles/never-block-on-the-human.md",
+          "license_file": "skills/orbyn-plan/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-sequence-verifiable-units/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/orbyn-plan/references/principles/sequence-verifiable-units.md",
+          "license_file": "skills/orbyn-plan/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
         }
       ]
     },
@@ -150,7 +345,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/setup-pstack/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original additive presets and consumer-owned context tooling. Added consumer-owned skill namespaces, explicit backed-up host-skill migration and offline setup guidance."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original additive presets and consumer-owned context tooling. Added consumer-owned skill namespaces, explicit backed-up host-skill migration and offline setup guidance. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Added explicit Cursor project discovery, all-host migration preflight and ownership-aware rollback for ordinary link-registration errors; existing host selections remain compatible. Recorded preserved concurrent replacements explicitly in registration failure reports after a bounded development review. Made exception-versus-crash recovery limits explicit in the setup result contract after a retained failed development criterion. Clarified independently authored one-time workspace layout selection: ask when unresolved, recommend nested for new contribution workspaces, honor explicit existing paths/delegated default and preserve active work. Installer destination API and source lineage remain unchanged."
     },
     "orbyn-skill-creator": {
       "relationship": "original",
@@ -158,7 +353,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-skill-creator",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence. Added company/public ownership routing and offline source requirements."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence. Added company/public ownership routing and offline source requirements. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added explicit evaluation subsets and development cases for stale continuation, Cursor setup and failed registration. Clarified concise public evaluation summaries and reproducible synthetic protocols; retain complete per-run captures outside tracked template content by default. Added live-evaluation input and discovery-isolation guidance: inspect actual prompt inventory, retain ambiguous observations as unverified, and freeze/report corrected development follow-ups separately. No upstream code or workflow text imported. Added independently authored disposable source/Git/PR fixtures and execution cases, calibration, fail-before source/test receipts, packaging preflight and controlled commit-failure support; no model calls in helpers or CI. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Added independently authored optional contribution feedback: current-task evidence, concrete general proposal, scoped user consent, company/public separation, no repeated solicitation or automatic publication, and separate consumer promotion. Existing source notices retained."
     },
     "orbyn-ui-design": {
       "relationship": "original",
@@ -166,7 +361,45 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-ui-design",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Moved product conventions to consumer-owned profiles and added an original failed-save example."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Moved product conventions to consumer-owned profiles and added an original failed-save example. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added selective Hallmark visual-direction and redesign adaptations with exact source revision and complete MIT notice; no upstream runtime, themes, assets or active entrypoint imported.",
+      "incorporated_material": [
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-experience-first/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/orbyn-ui-design/references/principles/experience-first.md",
+          "license_file": "skills/orbyn-ui-design/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Hallmark contributors; Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Hallmark contributors",
+          "license": "MIT",
+          "source": "https://github.com/nutlope/hallmark/tree/7ec868225c6caa040558c321ee0fefa0e73f83a8/skills/hallmark",
+          "revision": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+          "changes": "Selective portable design and behavior-preserving redesign method; source paths and hashes in hallmark-source.md.",
+          "local_path": "skills/orbyn-ui-design/references/visual-direction.md",
+          "license_file": "skills/orbyn-ui-design/references/hallmark-LICENSE.txt",
+          "license_sha256": "06088a8b94598626f27612dea42300154bf7be967c85d9d3eee4490cb056af7d"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Hallmark contributors; Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Hallmark contributors",
+          "license": "MIT",
+          "source": "https://github.com/nutlope/hallmark/tree/7ec868225c6caa040558c321ee0fefa0e73f83a8/skills/hallmark",
+          "revision": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
+          "changes": "Selective portable design and behavior-preserving redesign method; source paths and hashes in hallmark-source.md.",
+          "local_path": "skills/orbyn-ui-design/references/redesign-contract.md",
+          "license_file": "skills/orbyn-ui-design/references/hallmark-LICENSE.txt",
+          "license_sha256": "06088a8b94598626f27612dea42300154bf7be967c85d9d3eee4490cb056af7d"
+        }
+      ]
     },
     "orbyn-workflow": {
       "relationship": "adapted",
@@ -175,231 +408,127 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/poteto-mode/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an optional task record and context/evaluation handoffs. Added consumer-owned skill and offline-reference handoffs. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an optional task record and context/evaluation handoffs. Added consumer-owned skill and offline-reference handoffs. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added independently written performance-harness guidance after reviewing upstream benchmark-checklist at e73df471; original import and license retained. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Expanded runtime/trace forensics, prototype and visual comparison playbooks with original operational guidance. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Added an independently authored versioned offline continuation contract, worked record and consistency checker; no external protocol text or code imported. Clarified template defaults: no separate routine-task log, minimum useful consumer-owned checkpoints, optional structured validation and local raw-evidence retention. Added independently authored contribution intake, reproduction/discovery and bounded PR-iteration handoffs, with synthetic examples and packaging/evaluation checks. Historical source licenses and credits retained; no upstream workflow text or code imported. Added an evidence-led dependent commit/push gate after disposable execution exposed pushes of an unchanged baseline following failed commits; no upstream workflow text imported. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Clarified independently authored one-time workspace layout selection: ask when unresolved, recommend nested for new contribution workspaces, honor explicit existing paths/delegated default and preserve active work. Installer destination API and source lineage remain unchanged. Added independently authored optional contribution feedback: current-task evidence, concrete general proposal, scoped user consent, company/public separation, no repeated solicitation or automatic publication, and separate consumer promotion. Existing source notices retained.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
           "source": "https://github.com/mattpocock/skills/tree/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering",
           "revision": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
           "relationship": "reviewed-inspiration; no upstream workflow text imported"
+        },
+        {
+          "source": "https://github.com/cursor/plugins/blob/e73df471cd4bd918367e99f3dd9c51bd53ddf5f0/pstack/skills/benchmark-checklist/SKILL.md",
+          "revision": "e73df471cd4bd918367e99f3dd9c51bd53ddf5f0",
+          "relationship": "reviewed-inspiration; no new upstream skill installed"
+        },
+        {
+          "credit": "Jesse Vincent (obra/superpowers)",
+          "source": "https://github.com/obra/superpowers/tree/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b/skills",
+          "revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "license": "MIT",
+          "relationship": "reviewed-inspiration; independently authored local method; no upstream text or code imported"
+        },
+        {
+          "credit": "Sentry (getsentry/skills)",
+          "source": "https://github.com/getsentry/skills/blob/d12f250460ffd961f549dbebf7eeb0cf4afd4c2e/skills/iterate-pr/SKILL.md",
+          "revision": "d12f250460ffd961f549dbebf7eeb0cf4afd4c2e",
+          "license": "Apache-2.0",
+          "relationship": "reviewed-inspiration; independently authored local method; no upstream text or code imported"
+        },
+        {
+          "credit": "GitHub awesome-copilot contributors; bug-reproduction-brief credits skyestrela/ai-agent-skill-preview",
+          "source": "https://github.com/github/awesome-copilot/tree/d85f762d6e521abf5fe16703946e9b38adc42da7/skills",
+          "revision": "d85f762d6e521abf5fe16703946e9b38adc42da7",
+          "license": "MIT",
+          "relationship": "reviewed-inspiration; independently authored local method; no upstream text or code imported"
+        }
+      ],
+      "incorporated_material": [
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-build-the-lever/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/orbyn-workflow/references/principles/build-the-lever.md",
+          "license_file": "skills/orbyn-workflow/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-outcome-oriented-execution/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/orbyn-workflow/references/principles/outcome-oriented-execution.md",
+          "license_file": "skills/orbyn-workflow/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-prove-it-works/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/orbyn-workflow/references/principles/prove-it-works.md",
+          "license_file": "skills/orbyn-workflow/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-separate-before-serializing-shared-state/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/orbyn-workflow/references/principles/separate-before-serializing-shared-state.md",
+          "license_file": "skills/orbyn-workflow/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
         }
       ]
     },
-    "principle-boundary-discipline": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-boundary-discipline/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-build-the-lever": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-build-the-lever/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-encode-lessons-in-structure": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss."
-    },
-    "principle-exhaust-the-design-space": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-exhaust-the-design-space/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-experience-first": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-experience-first/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-fix-root-causes": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-fix-root-causes/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-foundational-thinking": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-foundational-thinking/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-guard-the-context-window": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-guard-the-context-window/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-laziness-protocol": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-laziness-protocol/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-make-operations-idempotent": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-make-operations-idempotent/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-migrate-callers-then-delete-legacy-apis": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-minimize-reader-load": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-minimize-reader-load/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-never-block-on-the-human": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-never-block-on-the-human/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-outcome-oriented-execution": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-outcome-oriented-execution/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-prove-it-works": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-prove-it-works/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-redesign-from-first-principles": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-redesign-from-first-principles/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-separate-before-serializing-shared-state": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-separate-before-serializing-shared-state/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-sequence-verifiable-units": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-sequence-verifiable-units/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-subtract-before-you-add": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-subtract-before-you-add/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
-    },
-    "principle-type-system-discipline": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-type-system-discipline/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss."
-    },
     "rea-analysis-optimization": {
-      "relationship": "reference-adapter",
-      "credit": "morluto (REA); Orbyn adapter maintained by Anh Dang and contributors",
+      "relationship": "adapted",
+      "credit": "morluto (REA); Orbyn adaptations by Anh Dang and contributors",
       "copyright": "Copyright (c) 2026 morluto",
       "license": "MIT",
       "source": "https://github.com/morluto/rea/blob/ccc7da309d7db385d5c6d73b0a3a8e093be33504/.agents/skills/rea-analysis-optimization/SKILL.md",
       "revision": "ccc7da309d7db385d5c6d73b0a3a8e093be33504",
-      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority."
+      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority. Replaced mandatory remote reading with a maintained local method, failure boundaries and synthetic worked examples; retained historical source revision and MIT notices. Shared evidence/recovery guidance discovers actual schemas and does not upgrade or install the REA engine."
     },
     "rea-changelog-update": {
-      "relationship": "reference-adapter",
-      "credit": "morluto (REA); Orbyn adapter maintained by Anh Dang and contributors",
+      "relationship": "adapted",
+      "credit": "morluto (REA); Orbyn adaptations by Anh Dang and contributors",
       "copyright": "Copyright (c) 2026 morluto",
       "license": "MIT",
       "source": "https://github.com/morluto/rea/blob/ccc7da309d7db385d5c6d73b0a3a8e093be33504/.agents/skills/rea-changelog-update/SKILL.md",
       "revision": "ccc7da309d7db385d5c6d73b0a3a8e093be33504",
-      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority."
+      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority. Replaced mandatory remote reading with a maintained local method, failure boundaries and synthetic worked examples; retained historical source revision and MIT notices. Shared evidence/recovery guidance discovers actual schemas and does not upgrade or install the REA engine."
     },
     "rea-ci-tests-audit": {
-      "relationship": "reference-adapter",
-      "credit": "morluto (REA); Orbyn adapter maintained by Anh Dang and contributors",
+      "relationship": "adapted",
+      "credit": "morluto (REA); Orbyn adaptations by Anh Dang and contributors",
       "copyright": "Copyright (c) 2026 morluto",
       "license": "MIT",
       "source": "https://github.com/morluto/rea/blob/ccc7da309d7db385d5c6d73b0a3a8e093be33504/.agents/skills/rea-ci-tests-audit/SKILL.md",
       "revision": "ccc7da309d7db385d5c6d73b0a3a8e093be33504",
-      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority."
+      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority. Replaced mandatory remote reading with a maintained local method, failure boundaries and synthetic worked examples; retained historical source revision and MIT notices. Shared evidence/recovery guidance discovers actual schemas and does not upgrade or install the REA engine."
     },
     "rea-tool-design": {
-      "relationship": "reference-adapter",
-      "credit": "morluto (REA); Orbyn adapter maintained by Anh Dang and contributors",
+      "relationship": "adapted",
+      "credit": "morluto (REA); Orbyn adaptations by Anh Dang and contributors",
       "copyright": "Copyright (c) 2026 morluto",
       "license": "MIT",
       "source": "https://github.com/morluto/rea/blob/ccc7da309d7db385d5c6d73b0a3a8e093be33504/.agents/skills/rea-tool-design/SKILL.md",
       "revision": "ccc7da309d7db385d5c6d73b0a3a8e093be33504",
-      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority."
+      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority. Replaced mandatory remote reading with a maintained local method, failure boundaries and synthetic worked examples; retained historical source revision and MIT notices. Shared evidence/recovery guidance discovers actual schemas and does not upgrade or install the REA engine."
     },
     "reflect": {
       "relationship": "adapted",
@@ -408,16 +537,31 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/reflect/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified canonical writable ownership, replaceable plugin-cache boundaries and local-edit versus public contribution authority after reviewing upstream commit 7054003c3723e82d099fb7620e3bc8d7d63eebc6; independently written local guidance. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored optional contribution feedback: current-task evidence, concrete general proposal, scoped user consent, company/public separation, no repeated solicitation or automatic publication, and separate consumer promotion. Existing source notices retained. Added original opt-in local memory helper, structured classification, revision-checked CRUD, scoped retrieval, deletion/recovery and private preview/lesson handoff. Existing adapted guidance and source notices remain.",
+      "reviewed_inspiration": [
+        {
+          "source": "https://github.com/cursor/plugins/commit/7054003c3723e82d099fb7620e3bc8d7d63eebc6",
+          "revision": "7054003c3723e82d099fb7620e3bc8d7d63eebc6",
+          "relationship": "reviewed-inspiration; original import and license retained"
+        }
+      ]
     },
     "reverse-engineer-anything": {
-      "relationship": "reference-adapter",
-      "credit": "morluto (REA); Orbyn adapter maintained by Anh Dang and contributors",
+      "relationship": "adapted",
+      "credit": "morluto (REA); Orbyn adaptations by Anh Dang and contributors",
       "copyright": "Copyright (c) 2026 morluto",
       "license": "MIT",
       "source": "https://github.com/morluto/rea/blob/ccc7da309d7db385d5c6d73b0a3a8e093be33504/.agents/skills/reverse-engineer-anything/SKILL.md",
       "revision": "ccc7da309d7db385d5c6d73b0a3a8e093be33504",
-      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority."
+      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority. Replaced mandatory remote reading with a maintained local method, failure boundaries and synthetic worked examples; retained historical source revision and MIT notices. Shared evidence/recovery guidance discovers actual schemas and does not upgrade or install the REA engine. Pre-merge review removed root-library file dependencies from the REA method/source record so a managed skills-only copy retains local support and notices.",
+      "reviewed_guidance": [
+        {
+          "source": "https://github.com/morluto/rea/tree/2250e67bc271c83f9e200ee298aa04a2457438a6/.agents/skills/reverse-engineer-anything",
+          "revision": "2250e67bc271c83f9e200ee298aa04a2457438a6",
+          "relationship": "selected-guidance-adaptation; documentation review only, historical engine/source pin unchanged",
+          "local_record": "skills/reverse-engineer-anything/references/source-record.md"
+        }
+      ]
     },
     "show-me-your-work": {
       "relationship": "adapted",
@@ -426,7 +570,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/show-me-your-work/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Connected substantive owner transfers and context-loss recovery to the original local versioned continuation contract; historical notices remain unchanged. Made logging conditional on continuation or consequential review, with agent-maintained project-owned checkpoints rather than required human invocations or per-task logs."
     },
     "social-content": {
       "relationship": "original",
@@ -451,24 +595,22 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/tdd/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added independently authored contribution intake, reproduction/discovery and bounded PR-iteration handoffs, with synthetic examples and packaging/evaluation checks. Historical source licenses and credits retained; no upstream workflow text or code imported. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
           "source": "https://github.com/mattpocock/skills/tree/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering",
           "revision": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
           "relationship": "reviewed-inspiration; no upstream workflow text imported"
+        },
+        {
+          "credit": "Jesse Vincent (obra/superpowers)",
+          "source": "https://github.com/obra/superpowers/tree/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b/skills",
+          "revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+          "license": "MIT",
+          "relationship": "reviewed-inspiration; independently authored local method; no upstream text or code imported"
         }
       ]
-    },
-    "typescript-best-practices": {
-      "relationship": "adapted",
-      "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
-      "copyright": "Copyright (c) 2026 Lauren Tan",
-      "license": "MIT",
-      "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/typescript-best-practices/SKILL.md",
-      "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss."
     },
     "unslop": {
       "relationship": "adapted",
@@ -477,7 +619,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/unslop/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
     },
     "why": {
       "relationship": "adapted",
@@ -486,7 +628,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/why/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
     },
     "orbyn-security-audit": {
       "relationship": "adapted",
@@ -503,7 +645,57 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-worktree",
-      "changes": "Original worktree ownership/lifecycle guidance: sibling repo-wt roots, neutral purpose names, reuse, verified base and preservation before cleanup. Includes local-first branch ownership, bounded delegate branches, stable personal contribution fork names and verified authorized publication."
+      "changes": "Original worktree ownership/lifecycle guidance: sibling repo-wt roots, neutral purpose names, reuse, verified base and preservation before cleanup. Includes local-first branch ownership, bounded delegate branches, stable personal contribution fork names and verified authorized publication. Prefer private contribution storage when supported, retain local work if privacy is unavailable, and distinguish a public native fork from a private standalone backup. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Added exact-topology host readiness and blocked-metadata preservation guidance; primary-clone readiness does not qualify linked-worktree writes. Clarified independently authored one-time workspace layout selection: ask when unresolved, recommend nested for new contribution workspaces, honor explicit existing paths/delegated default and preserve active work. Installer destination API and source lineage remain unchanged."
+    },
+    "orbyn-upstream-review": {
+      "relationship": "original",
+      "credit": "Anh Dang and Orbyn contributors",
+      "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
+      "license": "MIT",
+      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-upstream-review",
+      "changes": "Original maintenance workflow across external code, skills and research: pinned comparisons, excluded local references, offline limits, selective adaptation and honest import/review/consumer revision ownership. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported."
+    },
+    "language-best-practices": {
+      "relationship": "original",
+      "credit": "Anh Dang and Orbyn contributors",
+      "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
+      "license": "MIT",
+      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/language-best-practices",
+      "changes": "Independently authored project-aware guidance and synthetic worked examples, informed by dated primary references linked locally; no external skill text or documentation snapshots imported. Consolidated the historically adapted TypeScript reference and its original Orbyn contract example into this owner, preserving the original MIT notice and source record; retired the separate discovery entrypoint. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Review corrections clarify compiler/runtime and module contracts, distinguish original additions from retained adaptation, and pin the complete incorporated notice.",
+      "incorporated_material": [
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/typescript-best-practices/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss. Added an original self-contained TypeScript contract guide and synthetic exhaustive-union example.",
+          "local_path": "skills/language-best-practices/references/typescript.md",
+          "license_file": "skills/language-best-practices/references/typescript-LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-type-system-discipline/SKILL.md",
+          "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
+          "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified the TypeScript contract owner and supporting-principle handoffs after a recorded routing miss. Added original application steps, falsifying example and linked execution owner in the full-catalog audit; retained historical attribution.",
+          "local_path": "skills/language-best-practices/references/principles/type-system-discipline.md",
+          "license_file": "skills/language-best-practices/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        }
+      ]
+    },
+    "orbyn-stack-selection": {
+      "relationship": "original",
+      "credit": "Anh Dang and Orbyn contributors",
+      "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
+      "license": "MIT",
+      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-stack-selection",
+      "changes": "Independently authored project-aware guidance and synthetic worked examples, informed by dated primary references linked locally; no external skill text or documentation snapshots imported."
     }
   }
 }

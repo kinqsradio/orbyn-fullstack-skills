@@ -11,14 +11,17 @@ formatter or an Orbyn-specific test database exists.
 
 Match the requested behavior, preserve public/stored compatibility and keep
 authority at real effects. Work in the requested checkout and preserve unrelated
-changes. New branches use purpose-based names such as `fix/retry-state` or
+changes.
+
+## Branch naming
+
+New branches use purpose-based names such as `fix/retry-state` or
 `docs/skill-routing`, without agent/vendor/model branding.
 
 When checks are authorized, use disposable data and the project's own isolation
 guards. Never substitute production credentials or an ordinary user's database.
 Mock evidence and live-provider evidence are different. Documents need document
 checks; changed native behavior needs appropriate native evidence when in scope.
-
 
 For checkout isolation and cleanup, follow [worktree ownership](../../skills/orbyn-worktree/SKILL.md).
 A primary `<parent>/<repo>` uses sibling `<parent>/<repo-slug>-wt/<purpose>/`

@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "purpose": "Reproduce deterministic multi-suite pipeline, adversarial evidence and capacity checks. No models, hosted execution or deployment.",
+  "implementation_revision": "5c623c708a04400fd913ad8117505d362c0745d5",
+  "previous_public_revision": "c4dc8de84f1072e8405b37aee658ff53df27c407",
+  "source_sha256": {
+    "skills/orbyn-ci-design/scripts/ci_evidence.py": "daf12f985749ce19c9ec5ebcb31b23dfbca04d5a16cb6f92507751ae302f132a",
+    "skills/orbyn-ci-design/scripts/junit_evidence.py": "cbf1c1e9cd5b3b54a00bca47684c5172b1e13c286d815c8c56b8d052ddca42b9",
+    "skills/orbyn-skill-creator/scripts/pipeline_lab.py": "1512c5b96a17ad69ed7d86088f981c6f3a484bb459d0efaad9146baab28e98ce",
+    "tests/test_ci_evidence.py": "dee1718aadd331e1eadce2bbb9e5481792f6c757c9d4d2a53f0a977ca99a901f",
+    "skills/orbyn-skill-creator/evals/cases.json": "e9461932f7e9f4b13d9dc3a955e5de121619eef9daebaa438c7413d4d32e947e"
+  },
+  "pipeline": {
+    "created": {
+      "matrix_slots": 18,
+      "tests_per_phase": 18000,
+      "actual_test_executions": 54000,
+      "preserved": {
+        "notes.md": "4356d56c24729daf3c9333a34818288374ca4c46c97027fe28a10f1171a774a2",
+        "output/keep.txt": "3716f4b25fc1291ef1831e8180d6cfd159b9e21e314661a4f2ab504376ddd73b"
+      },
+      "limits": "Actual stdlib test invocations and Git commits; dependency outage and promotion are synthetic/local. Controller applies known fixture corrections, not a live agent evaluation."
+    },
+    "broken_counts": {
+      "error": 6000,
+      "failed": 4800,
+      "passed": 7200
+    },
+    "broken_comparison": {
+      "changed_failure": 1200,
+      "existing_failure": 2400,
+      "new_failure": 7200
+    },
+    "fixed_counts": {
+      "passed": 18000
+    },
+    "resolved_baseline_failures": 3600,
+    "ci_evidence_ready": true,
+    "release_evidence_ready": true
+  },
+  "cli_scenarios": [
+    {
+      "scenario": "broken",
+      "exit_code": 1,
+      "expected": 1
+    },
+    {
+      "scenario": "corrected-release",
+      "exit_code": 0,
+      "expected": 0
+    },
+    {
+      "scenario": "missing-shard",
+      "exit_code": 1,
+      "expected": 1
+    },
+    {
+      "scenario": "partial-inventory",
+      "exit_code": 1,
+      "expected": 1
+    },
+    {
+      "scenario": "recovered-retry",
+      "exit_code": 1,
+      "expected": 1
+    },
+    {
+      "scenario": "wrong-artifact",
+      "exit_code": 1,
+      "expected": 1
+    },
+    {
+      "scenario": "stale-stage",
+      "exit_code": 1,
+      "expected": 1
+    }
+  ],
+  "capacity": [
+    {
+      "normalized_records": 100000,
+      "wall_seconds": 0.833609790999617,
+      "peak_rss_bytes": 29327360,
+      "database_bytes": 28708864,
+      "ci_evidence_ready": true,
+      "candidate_selected": 50000,
+      "runtime": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+      "platform": "darwin",
+      "sqlite_version": "3.53.1",
+      "helper_sha256": "daf12f985749ce19c9ec5ebcb31b23dfbca04d5a16cb6f92507751ae302f132a",
+      "condition": "scale-100k",
+      "candidate_failures": 0,
+      "failure_comparison": {},
+      "visible_cluster_limit": 20
+    },
+    {
+      "normalized_records": 100000,
+      "wall_seconds": 0.9082607910022489,
+      "peak_rss_bytes": 30703616,
+      "database_bytes": 30543872,
+      "ci_evidence_ready": false,
+      "candidate_selected": 50000,
+      "runtime": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+      "platform": "darwin",
+      "sqlite_version": "3.53.1",
+      "helper_sha256": "daf12f985749ce19c9ec5ebcb31b23dfbca04d5a16cb6f92507751ae302f132a",
+      "condition": "failing-100k",
+      "candidate_failures": 5000,
+      "failure_comparison": {
+        "new_failure": 5000
+      },
+      "visible_cluster_limit": 20
+    },
+    {
+      "normalized_records": 1000000,
+      "wall_seconds": 9.030124500000966,
+      "peak_rss_bytes": 29294592,
+      "database_bytes": 288681984,
+      "ci_evidence_ready": true,
+      "candidate_selected": 500000,
+      "runtime": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+      "platform": "darwin",
+      "sqlite_version": "3.53.1",
+      "helper_sha256": "daf12f985749ce19c9ec5ebcb31b23dfbca04d5a16cb6f92507751ae302f132a",
+      "condition": "scale-1m",
+      "candidate_failures": 0,
+      "failure_comparison": {},
+      "visible_cluster_limit": 20
+    },
+    {
+      "normalized_records": 1000000,
+      "wall_seconds": 9.730285583005752,
+      "peak_rss_bytes": 35602432,
+      "database_bytes": 307007488,
+      "ci_evidence_ready": false,
+      "candidate_selected": 500000,
+      "runtime": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+      "platform": "darwin",
+      "sqlite_version": "3.53.1",
+      "helper_sha256": "daf12f985749ce19c9ec5ebcb31b23dfbca04d5a16cb6f92507751ae302f132a",
+      "condition": "failing-1m",
+      "candidate_failures": 50000,
+      "failure_comparison": {
+        "new_failure": 50000
+      },
+      "visible_cluster_limit": 20
+    },
+    {
+      "normalized_records": 1000000,
+      "wall_seconds": 19.869642833997204,
+      "peak_rss_bytes": 35749888,
+      "database_bytes": 481136640,
+      "ci_evidence_ready": false,
+      "candidate_selected": 500000,
+      "runtime": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+      "platform": "darwin",
+      "sqlite_version": "3.53.1",
+      "helper_sha256": "daf12f985749ce19c9ec5ebcb31b23dfbca04d5a16cb6f92507751ae302f132a",
+      "condition": "all-failing-1m",
+      "candidate_failures": 500000,
+      "failure_comparison": {
+        "new_failure": 500000
+      },
+      "visible_cluster_limit": 20
+    }
+  ],
+  "junit_adapter": {
+    "source_sha256": "50ce61d579ab60e039c430a7758ae8f9d0a8457c2da003de65de9ad25cdd0139",
+    "normalized_sha256": "7984c9186ad8d4cc304c551172d808c726c048addef3f5bc424eb7bbd27407b8",
+    "selected": 100000,
+    "counts": {
+      "failed": 1000,
+      "passed": 99000
+    },
+    "limits": "UTF-8 unnamespaced JUnit subset. Suite/class/name identity; retries need separate attempt reports. No provider completeness proof.",
+    "wall_seconds": 0.5105137079954147
+  },
+  "full_failure_export": {
+    "exported_failures": 500000,
+    "sha256": "f2d9d0c0a6e1e31e470d98d00dcaa6a6bc3816464dbd46095f9fea4427e84851",
+    "wall_seconds": 7.851378958002897,
+    "mode": "Streaming stdout verification; full rows remain reconstructible from preserved SQLite, no top-N truncation."
+  },
+  "regression_observation": {
+    "pre_fix_100k_wall_seconds": 23.461495249997824,
+    "pre_fix_source_sha256": "4b40ba1b2f35522a3d8cc4594e0a57a06d222f84b79e73cfae5e1c912097012c",
+    "pre_fix_million_row_attempt": "Stopped after prolonged query; raw input and partial database retained; not a completed measurement.",
+    "mechanism": "SQLite 3.53.1 EXPLAIN materialized the baseline view and scanned it for each candidate failure. An indexed current-result snapshot removes that scan; full history remains separate."
+  },
+  "reproduction": {
+    "setup": "Use exact implementation revision in an isolated checkout and Python 3.11+. Create new lab/output destinations under an existing physical parent; do not overwrite evidence. All fixture/controller source is independently authored.",
+    "pipeline": "python3 skills/orbyn-skill-creator/scripts/pipeline_lab.py create --root <new-lab> --tests-per-suite 1000",
+    "broken": "python3 skills/orbyn-ci-design/scripts/ci_evidence.py analyze --plan <lab>/broken-plan.json --output <lab>/broken-analysis ; expected exit 1",
+    "fixed": "python3 skills/orbyn-ci-design/scripts/ci_evidence.py verify-release --plan <lab>/fixed-plan.json --policy <lab>/fixed-policy.json --evidence <lab>/fixed-stages.json --artifact <lab>/fixed-artifact.bin --output <lab>/fixed-analysis ; expected exit 0",
+    "faults": "Preserve original inputs. Missing-shard/partial-inventory/recovered-retry are controlled mutations of copied plan/report metadata beside original report files, analyzed in fresh output directories. Wrong-artifact hashes different local bytes; stale-stage uses a past completion beyond policy. Expected blocked exits are separately captured; malformed schema/input exits 2. Full fixtures are in tests/test_ci_evidence.py.",
+    "scale": "pipeline_lab.py stress --root <new-scale> --records-per-cohort N --failure-every K; N=50000 or 500000, K=0,10 or1 as named. analyze in a fresh directory. Records are generated, not executed tests. No model call.",
+    "measurement": "For each final scale point use a fresh Python process. After importing ci_evidence, time analyze with time.perf_counter. Peak resource.getrusage(RUSAGE_SELF).ru_maxrss is bytes on the observed Darwin host; convert KiB on Linux. Measure SQLite file bytes and SELECT count(*) FROM results. Excludes input generation/module import time and full export time; RSS includes process imports. Each point is one local observation, not a statistical benchmark.",
+    "export": "Stream ci_evidence.py failures output without collecting rows in memory. Verify all 500000 rows have status=failed and comparison=new_failure, count lines and hash raw stdout; preserve the SQLite source for reconstruction. No top-N filtering.",
+    "junit": "Generate a testsuite with 100000 uniquely named testcases, every 100th with an AssertionError failure and message bad 42. Include matching tests/failures/errors/skipped counters. Convert with junit_evidence.py and verify 99000 passes/1000 failures plus source/normalized hashes. These are generated report records, not executed testcases.",
+    "calibration": "python3 -m unittest discover -s tests -v; includes 1000-slot completeness, report/candidate integrity, retry history, coverage, release faults, JUnit rejection and managed skills-only packaging. No credentials/models.",
+    "retention": "Complete raw reports, fixtures/Git state, partial and successful databases, commands, logs and receipts remain ignored local output/bulk-ci-20261025. Public summary/protocol are not downloadable raw evidence.",
+    "source_recovery": "This repository squash-merges and deletes feature branches. In an isolated clone, git fetch origin refs/pull/16/head retains the reviewed head ancestry, including implementation_revision. Use git show/archive of the pinned full revision; do not reset an active checkout."
+  },
+  "limits": [
+    "Offline synthetic exercise and generated capacity data; no live-agent routing/outcome qualification.",
+    "Dependency availability and promotion are simulated; real unittest calls/source commits and report processing are exercised.",
+    "No hosted provider authentication, pagination API, VM fleet, production deployment, concurrent-writer or arbitrary maximum-input qualification.",
+    "Single host and single observation per final scale point; no portable throughput guarantee.",
+    "Orbyn synchronization and REA engine/source upgrade deferred."
+  ],
+  "review_pull_request": "https://github.com/kinqsradio/orbyn-fullstack-skills/pull/16"
+}

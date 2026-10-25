@@ -8,6 +8,8 @@ import runpy
 import subprocess
 import sys
 
+from skill_contracts import check_audit, check_discovery, check_incorporated_material, check_links, check_local_workspaces, check_portable_links
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -16,8 +18,7 @@ def main():
         print('Python 3.11+ is required for library validation.', file=sys.stderr)
         return 1
     errors = []
-    if subprocess.check_output(['git', 'ls-files', '--', 'openSrc/'], cwd=ROOT, text=True).strip():
-        errors.append('openSrc is local research material and must not be tracked')
+    errors.extend(check_local_workspaces(ROOT))
     if (ROOT/'project-skills').exists() or (ROOT/'project-skills').is_symlink():
         errors.append('Consumer-owned project-skills must stay in the consuming repository, outside the public library')
     def require(ok, message):
@@ -27,6 +28,8 @@ def main():
     provenance = json.loads((ROOT/'provenance.json').read_text())['skills']
     names = {entry['name'] for entry in catalog['skills']}
     require(names == set(provenance), 'Catalog/provenance coverage differs')
+    errors.extend(check_discovery(ROOT, names, catalog['skills']))
+    errors.extend(check_audit(ROOT, names))
     for name in sorted(names):
         skill = ROOT/'skills'/name/'SKILL.md'
         text = skill.read_text()
@@ -36,33 +39,31 @@ def main():
         require(bool(re.search(r'^description: \S.+$', front, re.M)), f'{name}: missing single-line description')
         require((skill.parent/'LICENSE').is_file(), f'{name}: missing portable license')
         record = provenance.get(name, {})
+        errors.extend(check_incorporated_material(ROOT, name, record))
         require(bool(record.get('credit')) and bool(record.get('source')), f'{name}: incomplete attribution')
         require(record.get('relationship') in {'adapted','original','reference-adapter'}, f'{name}: unknown provenance relationship')
         if (skill.parent/'LICENSE').exists():
             require(record.get('copyright', '') in (skill.parent/'LICENSE').read_text(), f'{name}: source copyright missing')
     snapshots = runpy.run_path(str(ROOT/'skills/orbyn-skill-creator/scripts/check_sources.py'))['check'](ROOT)
+    distributed = runpy.run_path(str(ROOT/'scripts/library_manifest.py'))['inventory'](ROOT)
+    errors.extend(check_portable_links(ROOT, distributed, snapshots))
     docs = list(ROOT.glob('*.md')) + list((ROOT/'docs').rglob('*.md')) + list((ROOT/'skills').rglob('*.md')) + list((ROOT/'tools').rglob('*.md'))
     for path in docs:
         if path in snapshots:
             continue  # Immutable upstream text is checked byte-for-byte, not rewritten to local style.
         body = re.sub(r'```.*?```', '', path.read_text(), flags=re.S)
-        for target in re.findall(r'\[[^\]]*\]\(([^)]+)\)', body):
-            target = target.split('#', 1)[0].strip('<>')
-            if not target or re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*:', target):
-                continue
-            resolved = (path.parent/target).resolve()
-            require(resolved.is_relative_to(ROOT) and resolved.exists(), f'Broken/escaping link: {path.relative_to(ROOT)} -> {target}')
+        errors.extend(check_links(ROOT, path, snapshots))
         require('/'+'Users/' not in body and '/'+'home/' not in body, f'Local home path in public document: {path.relative_to(ROOT)}')
     for script in ['sync-agent-skills.py','sync-agent-models.py']:
         result = subprocess.run([sys.executable, str(ROOT/'scripts'/script), '--check'], capture_output=True, text=True)
         require(result.returncode == 0, result.stderr.strip() or f'{script} failed')
-    result = subprocess.run([sys.executable, str(ROOT/'scripts/sync-public-skills.py'), 'manifest', '--root', str(ROOT)], capture_output=True, text=True)
+    result = subprocess.run([sys.executable, str(ROOT/'scripts/library_manifest.py'), '--root', str(ROOT)], capture_output=True, text=True)
     require(result.returncode == 0, result.stderr.strip() or 'Manifest failed')
-    spec = importlib.util.spec_from_file_location('installer', ROOT/'scripts/install.py')
-    installer = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(installer)
+    spec = importlib.util.spec_from_file_location('reading_groups', ROOT/'scripts/skill_selection.py')
+    groups = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(groups)
     try:
-        installer.selection()  # Validate every preset against the catalog.
+        groups.selection()  # Validate every preset against the catalog.
     except (ValueError, KeyError, TypeError) as error:
         errors.append(f'Invalid presets: {error}')
     result = subprocess.run([sys.executable, str(ROOT/'skills/orbyn-skill-creator/scripts/evaluate.py'), 'validate'], capture_output=True, text=True)
