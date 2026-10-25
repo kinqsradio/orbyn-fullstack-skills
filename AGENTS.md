@@ -1,8 +1,8 @@
 # Orbyn Engineering library instructions
 
 This is a public skill library. Its tracked content excludes target application
-source and private repository history; nested targets keep independent Git roots. The consuming project's instructions, user scope and
-host permissions take precedence over these reference defaults. Resolve the
+source and private repository history; nested targets keep independent Git roots.
+The consuming project's instructions, user scope and host permissions take precedence over these reference defaults. Resolve the
 target checkout and [project context](docs/agents/stack.md) before applying examples.
 
 ## Nested contribution repositories
@@ -13,6 +13,8 @@ Open the outer library as the agent workspace and identify the target Git root
 before editing. Read both the relevant shared methods and the target's own
 instructions, contribution rules and skills. Preserve upstream guidance in place;
 shared methods never replace target policy, user scope or host permissions.
+Targets, including Orbyn, may add project-owned AGENT.md/AGENTS.md or skills later;
+retiring a duplicated installation does not ban these names or move local guidance.
 Nesting alone does not prove effective host discovery; read required local files
 explicitly and report what was actually observed.
 

@@ -24,7 +24,7 @@ a library dependency inside every target repository.
 ## Instructions and ownership
 
 Before changing a target, resolve its actual Git root and worktree/common Git
-metadata. Read its AGENTS.md, CLAUDE.md, codex.md, .cursorrules, applicable nested
+metadata. Read its AGENT.md, AGENTS.md, CLAUDE.md, codex.md, .cursorrules, applicable nested
 instructions, contribution rules and existing skills. Preserve all upstream-owned
 guidance in place. Orbyn's explicitly authorized retirement of its duplicated
 installation is a project migration, never a rule to delete another project's
@@ -43,6 +43,33 @@ applicable session scope, and never copy instructions as a silent workaround.
 Company or upstream skills stay with their owner in its existing paths. A same-name
 skill does not authorize replacement or renaming. Select the target-specific rule
 and compatible library method explicitly; name collisions remain visible.
+
+## Project-owned instructions now and later
+
+Every target, including Orbyn, can own or later add `AGENT.md`, `AGENTS.md`,
+`CLAUDE.md`, nested instructions and local skills. Names alone do not make them a
+copied installation. Keep project commands, module ownership, data constraints,
+verification rules and guide pointers with that target's existing owner. Shared
+engineering methods remain in the outer library. No setup step creates these
+files or moves the target's own skills automatically.
+
+Orbyn's cleanup retires its current duplicated shared-policy wrappers and copied
+skillset. It does not permanently ban project instruction filenames or legitimate
+local guidance. A future Orbyn instruction file can point to CONTRIBUTING.md and
+its development/operations/design guides without embedding another library copy.
+A CI guard can reject known copied library assets and sync tooling; it cannot
+prove from a filename that prose is project-specific or that an agent read it.
+Review the actual instructions and their owner.
+
+The agent reads the outer entrypoint and relevant shared skills, resolves the
+selected target Git root, then reads its root and applicable nested guidance.
+User instructions and host permissions take precedence. Target-specific stack,
+checks and contribution rules specialize compatible shared methods. If a real
+conflict remains, identify both files/rules, continue independent safe work and
+resolve the conflict before dependent actions. Do not merge the files, silently
+ignore the project rule or claim that nesting determines a host's discovery order.
+`AGENT.md` is a supported file to inspect, not a promise that every host loads it
+automatically; read it directly when required.
 
 ## Git, runtime and publication boundaries
 

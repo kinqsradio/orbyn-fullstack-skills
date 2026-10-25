@@ -4087,6 +4087,33 @@
         "priority": "Report clipping and invisible focus as concrete defects; do not automatically ban established styles.",
         "scope": "Audit findings and smallest fixes only; no product edits or installation."
       }
+    },
+    {
+      "id": "nested-project-guidance-future",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Explain onboarding for two independent nested targets, Orbyn and another-project. Each may need a task worktree, and Orbyn later adds its own project-specific AGENT.md and local skill. Give the layout and instruction ownership contract only; do not execute commands or edit files.",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [
+        "reverse-engineer-anything"
+      ],
+      "forbidden_actions": [
+        "write",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Explanation only; no target installation, root-instruction deletion, host discovery claim or automatic relocation.",
+      "rubric": {
+        "layout": "Pair each target with its own sibling lowercase repo-slug-wt/purpose container; worktrees share only their primary target Git history and exist when needed.",
+        "ownership": "Allow current and future target-owned AGENT.md/AGENTS.md and local skills in place, including Orbyn; shared methods remain in the outer library without copied policy or pin synchronization.",
+        "precedence": "Read relevant outer methods and root/nested target guidance under actual user/host authority; identify material conflicts before dependent actions rather than assuming nesting or filename bans solve them.",
+        "evidence": "Distinguish direct file reads and static layout checks from observed host loading; no claim of execution."
+      }
     }
   ]
 }
