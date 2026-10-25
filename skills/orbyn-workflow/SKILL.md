@@ -63,6 +63,7 @@ permits. Do not load the whole library or repeat a checklist in every reply.
 | User requests PR delivery            | [Opening a PR](playbooks/opening-a-pr.md)           |
 | Investigate or contribute upstream   | [Contribution intake](playbooks/contribution-intake.md) |
 | Address PR feedback or check CI      | [Bounded PR iteration](playbooks/pr-iteration.md) |
+| Diagnose bulk CI or verify release evidence | [Pipeline failures](playbooks/pipeline-failures.md) |
 
 Use [orbyn-plan](../orbyn-plan/SKILL.md) for explicit plans or a complex change;
 use [orbyn-research](../orbyn-research/SKILL.md) for unresolved external facts and

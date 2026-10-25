@@ -39,6 +39,11 @@ Use the [reproduction and reduction method](references/reproduction.md) to pin
 the environment, confirm real runner selection and choose a behavioral oracle.
 Keep reproduction-only scope distinct from an authorized repair.
 
+For many CI failures, use [pipeline diagnosis](references/pipeline-diagnosis.md)
+after the CI owner validates the complete report matrix. Preserve separate source,
+test, dependency and environment hypotheses; a symptom cluster is not a confirmed
+root cause. Reproduce a discriminating case and controls before correcting its owner.
+
 ## Operational method
 
 Use the [local operating method](references/operating-method.md) for the execution

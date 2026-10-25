@@ -64,6 +64,11 @@ remain distinct claims.
 
 ## Bound the loop and preserve progress
 
+When failures span many suites or instances, use
+[pipeline failure analysis](pipeline-failures.md) to establish the full inventory,
+compare the baseline and diagnose shared causes before iterating. A readable
+top list must not hide required failures, missing shards or discarded retries.
+
 Before waiting, choose an in-turn time/attempt budget appropriate to the task and
 host limits; for example, at most two attempts for the same infrastructure failure
 and a ten-minute CI observation window. These are example bounds, not mandatory

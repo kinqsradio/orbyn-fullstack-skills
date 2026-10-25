@@ -23,6 +23,7 @@ routes complex work to the standard tier and bounded work to the light tier in
 | API/service effects                 | `orbyn-backend-design`                     | Caller contract + authority → transactional effect and client errors                                |
 | Stored-data/schema transition       | `orbyn-data-migration`                     | Reader/writer inventory → compatible cutover and recovery                                           |
 | CI and contribution automation      | `orbyn-ci-design`                          | Event/trust model → scoped checks and reviewable promotion                                          |
+| Bulk CI failures or release evidence | `orbyn-ci-design` → `how` / `tdd` → `orbyn-workflow` | Complete indexed matrix → supported causes/regressions → current artifact/stage gate |
 | Consequential competing designs     | `arena`                                    | Shared criteria → bounded alternatives and one decision                                             |
 | Large execution                     | `figure-it-out`                            | Agreed plan → completed units and concise handoffs                                                  |
 | UI flow/layout                      | `orbyn-ui-design` + `orbyn-content-design` | User task + actual tokens → coherent UI/copy                                                        |

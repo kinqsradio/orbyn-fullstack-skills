@@ -104,6 +104,11 @@ For an explicitly requested reproduce/fix/PR-feedback execution trial, use the
 source/tests/Git and local PR fixture supply stronger evidence than scenario
 answers; they do not qualify a hosted provider or authorize ordinary model calls.
 
+For explicitly requested multi-suite CI or release/capacity exercises, use the
+[disposable pipeline method](references/pipeline-execution.md). Distinguish actual
+fixture tests from generated report records and from live agent behavior. Measure
+resource usage and retain missing/failed attempts; no blanket scale guarantee follows.
+
 ## Audit completeness without inflating the catalog
 
 For a full sweep, inventory every catalog entry and its local support files.

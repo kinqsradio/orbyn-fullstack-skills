@@ -54,7 +54,8 @@
       "related": [
         "why",
         "orbyn-workflow",
-        "tdd"
+        "tdd",
+        "orbyn-ci-design"
       ]
     },
     {
@@ -94,7 +95,9 @@
       "category": "Fullstack contracts and delivery",
       "related": [
         "orbyn-workflow",
-        "orbyn-skill-creator"
+        "orbyn-skill-creator",
+        "how",
+        "tdd"
       ]
     },
     {
@@ -460,7 +463,8 @@
       "related": [
         "principle-prove-it-works",
         "how",
-        "orbyn-workflow"
+        "orbyn-workflow",
+        "orbyn-ci-design"
       ]
     },
     {
