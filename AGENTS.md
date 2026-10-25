@@ -1,7 +1,7 @@
 # Orbyn Engineering library instructions
 
-This is a public skill library. It contains no Orbyn application source or
-private-repository history. The consuming project's instructions, user scope and
+This is a public skill library. Its tracked content excludes target application
+source and private repository history; nested targets keep independent Git roots. The consuming project's instructions, user scope and
 host permissions take precedence over these reference defaults. Resolve the
 target checkout and [project context](docs/agents/stack.md) before applying examples.
 
