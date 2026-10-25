@@ -1,0 +1,11 @@
+{
+  "title": "Retain edits made during an asynchronous save",
+  "statement": "A save response confirms the submitted snapshot. Keep newer unsaved input and show its unsaved state.",
+  "category": "failure-pattern",
+  "domains": ["frontend", "backend", "ux"],
+  "tags": ["tech:react", "topic:async-save", "concern:data-loss"],
+  "status": "active",
+  "evidence_level": "user-stated",
+  "sensitivity": "internal",
+  "related_skills": ["orbyn-ui-design", "orbyn-backend-design"]
+}

@@ -7,7 +7,7 @@ Describe the concrete request or failure and what changes for a user of the skil
 - Owning skill/helper:
 - Expected trigger and input/output:
 - Adjacent request that should not select it:
-- Compatibility or downstream consumer impact:
+- Compatibility and nested workspace impact:
 
 ## Evidence
 
@@ -24,6 +24,8 @@ live agent routing and rendered output. Mark checks that were not performed.
 - [ ] I can contribute this material under MIT and preserved applicable notices.
 - [ ] New/adapted material has an accurate provenance entry and source revision.
 - [ ] I reviewed the diff for private content, credentials and consumer-only files.
-- [ ] Catalog, generated links/index and distribution manifest are current.
+- [ ] Any agent-prepared public submission is within the user's explicit scope; no private consent transcript is included as proof.
+- [ ] Catalog, library discovery/index and asset inventory are current.
+- [ ] Target repositories and their instructions/skills stay independent under ignored repo/; this change adds no target installation or pin-sync step.
 
 Related issue, if any:

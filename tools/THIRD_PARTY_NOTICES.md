@@ -11,18 +11,27 @@ Engineering adaptations derive from `pstack` in
 [cursor/plugins](https://github.com/cursor/plugins/tree/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack),
 revision `74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12`.
 Copyright (c) 2026 Lauren Tan. [Original MIT license](licenses/pstack-MIT.txt).
-The source-to-local mapping is preserved in [skill-adaptations.json](skill-adaptations.json).
+The 20 retired principle entrypoints retain their methods and original MIT notices
+under the execution owners' `references/principles/` directories. Incorporated
+source/revision/license hashes remain in provenance; each method also carries an
+offline attribution pointer. The source-to-local mapping is preserved in [skill-adaptations.json](skill-adaptations.json).
 Orbyn's decision examples, authority boundaries and integration changes do not
 remove the original author's credit. Full upstream source is not bundled here.
 
 ## REA — morluto
 
-Five optional adapters reference
+Five optional skills adapt
 [morluto/rea](https://github.com/morluto/rea/tree/ccc7da309d7db385d5c6d73b0a3a8e093be33504),
 revision `ccc7da309d7db385d5c6d73b0a3a8e093be33504`, package 6.7.0.
 Copyright (c) 2026 morluto. [Original MIT license](licenses/rea-MIT.txt).
-References point to the pinned source; REA runtime, engines and dependencies are
-not included or installed. Their own licenses apply when obtained separately.
+The historical source revision remains unchanged. The maintained local methods
+and synthetic examples no longer require fetching the upstream skill bodies.
+Selected investigation recovery/evidence guidance also draws on documentation
+reviewed at `2250e67bc271c83f9e200ee298aa04a2457438a6`; the
+[source record](../skills/reverse-engineer-anything/references/source-record.md)
+distinguishes that review from an engine pin. No complete upstream manual or
+runtime source snapshot is added. REA runtime, engines and dependencies are not
+included or installed. Their own licenses apply when obtained separately.
 
 ## Reviewed inspiration and external guidance
 
@@ -55,3 +64,21 @@ upstream skill collection or workflow text is installed. The exact source/revisi
 is recorded in [provenance](../provenance.json) as reviewed inspiration. This
 credit does not imply affiliation, endorsement or original authorship of an idea.
 Downloaded research material under `openSrc/` remains local and ignored.
+
+The contribution milestone also reviewed Jesse Vincent's `obra/superpowers`
+(MIT), Sentry's `getsentry/skills` (Apache-2.0), and GitHub's
+`awesome-copilot` (MIT). Its
+[portable source record](../skills/orbyn-workflow/references/contribution-sources.md)
+pins revisions and retains the reproduction brief's transitive source credit.
+The new methods and examples are independently authored; no text, scripts or
+upstream workflow collection from those reviews is redistributed. Existing
+pstack source notices and portable licenses remain unchanged.
+
+## Hallmark design methods
+
+Selected guidance is adapted from Nutlope/hallmark, Copyright (c) 2026 Hallmark
+contributors, under MIT. The [source record](../skills/orbyn-ui-design/references/hallmark-source.md)
+pins the reviewed revision, paths and hashes; the complete
+[MIT notice](../skills/orbyn-ui-design/references/hallmark-LICENSE.txt) is distributed
+with the local adaptations. No themes, photos, fonts, scripts or upstream skill
+entrypoint are installed. Orbyn maintains the adapted UI methods.

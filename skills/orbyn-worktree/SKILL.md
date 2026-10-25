@@ -1,6 +1,6 @@
 ---
 name: orbyn-worktree
-description: "Manage local task branches, personal-fork delivery and Git worktree isolation; use sibling <repo>-wt directories, purpose-based names and preservation before cleanup."
+description: "Manage local task branches, private contribution storage when supported and Git worktree isolation; use sibling <repo>-wt directories, purpose-based names and preservation before cleanup."
 ---
 
 # Worktree ownership and lifecycle
@@ -30,13 +30,22 @@ or move existing worktrees merely to enforce this convention.
 
 ## Sibling location and names
 
+Targets use the library-root ignored `repo/` workspace exclusively; follow the
+[nested repository contract](../orbyn-setup/references/repository-workspaces.md).
+For `orbyn-fullstack-skills/repo/widget`, use sibling `repo/widget-wt/<purpose>/`.
+Preserve target instructions/skills and inspect its Git state separately. Existing
+external checkouts remain preservation inputs until a coordinated authorized move;
+never move active work merely to satisfy the layout. The library's own maintenance
+worktrees can use its established external sibling root, keeping library and target
+ownership distinct.
+
 For a primary clone `<parent>/<repo>`, the default root is its sibling
 `<parent>/<repo-slug>-wt/`. Use a stable lowercase hyphenated repo slug; reuse an
 existing established sibling root rather than creating a case-only alternative.
 Each worktree has one direct child directory named for its purpose:
 
 ```text
-Documents/GitHub/
+orbyn-fullstack-skills/repo/
   orbyn/                         primary clone
   orbyn-wt/
     task-rescheduling/           feat/task-rescheduling
@@ -73,17 +82,49 @@ policy, sanitized remote identities, upstream relationship, repository visibilit
 account permission and fork restrictions before choosing a push destination.
 A remote named `origin` is not evidence that it is a personal fork.
 
-For company upstreams, prefer one existing permitted personal contribution fork
+For company upstreams, prefer one existing permitted **private** personal contribution fork
 for the approved account. Create one only within authorized delivery/setup scope
 and when company/host policy allows it. Use a meaningful stable name such as
 `<Repository>-contributions`, retaining the upstream identity:
 
-| Identity | Example |
-| --- | --- |
-| Company upstream | `company/Orbyn` |
-| Reused personal fork | `approved-account/Orbyn-contributions` |
-| Task branch on that fork, when publication is needed | `feat/task-rescheduling` |
-| Local task checkout | `Documents/GitHub/orbyn-wt/task-rescheduling` |
+| Identity                                             | Example                                       |
+| ---------------------------------------------------- | --------------------------------------------- |
+| Company upstream                                     | `company/Orbyn`                               |
+| Reused personal fork                                 | `approved-account/Orbyn-contributions`        |
+| Task branch on that fork, when publication is needed | `feat/task-rescheduling`                      |
+| Local task checkout                                  | `Documents/GitHub/orbyn-wt/task-rescheduling` |
+
+### Privacy before publication
+
+Prefer private contribution storage whenever the host, upstream visibility and
+organization policy support it. Inspect the actual API/host result after creation;
+a requested flag or a private-sounding name is not visibility evidence. Verify
+upstream permissions and organization approval before copying restricted code
+into any personal account, including a private repository.
+
+On GitHub, native forks of a public repository are public and cannot independently
+be made private. Private upstream forks stay private where forking is permitted;
+internal-repository behavior also depends on account/enterprise policy. Do not
+attempt to bypass these rules or promise a private public-parent native fork.
+
+If the desired privacy is unavailable, keep task branches/commits local. Within
+explicit backup scope, a permitted private standalone repository can hold work,
+but it is a separate repository, not a native fork or an automatic upstream PR
+source. Verify its actual visibility, access and remotes before any push. Do not
+create it merely because an API token can. Never detach, delete or recreate an
+existing fork, rewrite its history or change upstream visibility to enforce a
+naming/privacy preference.
+
+When a public upstream PR is explicitly authorized, promote only its reviewed
+allowlisted changes through the required public contribution path. Keep unrelated
+branches, company-only material, reports and backups local/private. Explain the
+visibility boundary before a public push when privacy was requested; if public
+publication is not authorized, preserve the patch and report the specific limit.
+A private backup does not retract commits already published to a public network.
+
+Verified 24 October 2026 against [GitHub fork visibility and permissions](https://docs.github.com/en/pull-requests/reference/forks).
+Other providers require their own current policy check; do not generalize GitHub's
+constraints into a universal claim about forks.
 
 Verify that a candidate fork actually belongs to the intended upstream; matching
 names are insufficient. Preserve an established fork/name rather than renaming it
@@ -109,6 +150,15 @@ checkout/Git data remain; preserve valuable unpushed work before cleanup.
 
 ## Create and verify the selected checkout
 
+For unattended execution, verify required host capabilities on a disposable
+checkout with the actual topology before expensive work. A primary-clone commit
+probe does not establish write access to a linked worktree's separate Git index
+or common metadata. Test only effects already authorized by the task.
+If the host denies metadata writes, preserve the patch and report delivery as
+blocked; do not rewrite `.git`, supply an alternate index or bypass the sandbox.
+A separately authorized new workspace must have its own readiness evidence;
+never move or reset existing owned work to manufacture a passing probe.
+
 Resolve the requested base revision before writes. Continue an existing task/PR
 from its actual branch or reviewed commit. For new work, use the project's
 verified default branch/ref; do not assume that an unrelated current feature
@@ -127,9 +177,9 @@ new project chat or authorize messaging another owner.
 For a **new** branch with a verified base, an example operation is:
 
 ```sh
-git -C /work/orbyn worktree add -b feat/task-rescheduling /work/orbyn-wt/task-rescheduling origin/main
-git -C /work/orbyn-wt/task-rescheduling status --short --branch
-git -C /work/orbyn-wt/task-rescheduling rev-parse --show-toplevel HEAD
+git -C /work/orbyn-fullstack-skills/repo/orbyn worktree add -b feat/task-rescheduling /work/orbyn-fullstack-skills/repo/orbyn-wt/task-rescheduling origin/main
+git -C /work/orbyn-fullstack-skills/repo/orbyn-wt/task-rescheduling status --short --branch
+git -C /work/orbyn-fullstack-skills/repo/orbyn-wt/task-rescheduling rev-parse --show-toplevel HEAD
 ```
 
 These paths/ref are examples, not values to copy into another project. Reuse an
@@ -162,3 +212,9 @@ leave the worktree intact, record the reason and continue independent work.
 Return the primary clone, sibling root, selected path, branch/base/HEAD, owner,
 preserved data and actual retained/removed/archived state. A merged PR does not
 prove its local checkout or outputs are safe to delete.
+
+For preview/evidence storage and task servers, ports, volumes and test environments,
+use [artifact lifecycle](../orbyn-workflow/references/artifact-lifecycle.md).
+Before removing a tree, check whether a human still needs its preview and move/reopen
+needed ignored artifacts in an approved retained location. Stop only identified
+owned processes; a clean Git status is not a resource inventory.

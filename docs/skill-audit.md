@@ -1,78 +1,490 @@
-# Full-catalog refinement for public use
+> Current setup policy (25 October 2026): nested-only workspaces supersede the
+> installer, company-skill migration and consumer-pin model in the dated audit
+> narrative below. Shared skills stay in the outer library; target guidance stays
+> in place. Installer-specific fixtures were retired and replaced with nested
+> root/ownership/preservation fixtures. Historical trial results remain historical.
 
-Reviewed 22 October 2026 before initial publication. All 50 skill entrypoints were
-reviewed for trigger, ownership, input/output, project portability and evidence
-boundaries. This is a structural/editorial review, not 50 live agent trials or an
-independent review. Existing references and source credits remain with their owners.
+# Skill-system audit — current candidate and historical evidence
 
-The material is differentiated by Orbyn Engineering’s connected fullstack contract:
-current-source grounding, explicit lifecycle/effect ownership, coordinated client
-changes, artifact-specific evidence and truthful delivery state. Original adaptations
-remain attributed; refinements do not make upstream methods exclusively original.
 
-Three routing gaps gained dedicated owners: API/service effects, durable data
-transitions and trusted CI. Twenty principle leaves gained concrete decision
-questions and fullstack examples. Core workflows gained specific handoff scenarios;
-UI/context guidance now distinguishes Orbyn application examples from consumer rules.
-Optional REA adapters work through pinned upstream references without bundling engines.
-Social writing and rendering remain separate from in-app copy and product UI.
+## Current consolidation candidate — 25 October 2026
 
-| Skill | Review disposition | Source relationship |
-| --- | --- | --- |
-| [architect](../skills/architect/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | adapted |
-| [arena](../skills/arena/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | adapted |
-| [automate-me](../skills/automate-me/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | adapted |
-| [figure-it-out](../skills/figure-it-out/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | adapted |
-| [how](../skills/how/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | adapted |
-| [interrogate](../skills/interrogate/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | adapted |
-| [orbyn-backend-design](../skills/orbyn-backend-design/SKILL.md) | New owner for a distinct fullstack contract gap | original |
-| [orbyn-ci-design](../skills/orbyn-ci-design/SKILL.md) | New owner for a distinct fullstack contract gap | original |
-| [orbyn-content-design](../skills/orbyn-content-design/SKILL.md) | Consumer-aware product conventions and explicit social handoff | original |
-| [orbyn-data-migration](../skills/orbyn-data-migration/SKILL.md) | New owner for a distinct fullstack contract gap | original |
-| [orbyn-plan](../skills/orbyn-plan/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | original |
-| [orbyn-research](../skills/orbyn-research/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | original |
-| [orbyn-security-remediation](../skills/orbyn-security-remediation/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | original |
-| [orbyn-setup](../skills/orbyn-setup/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | adapted |
-| [orbyn-skill-creator](../skills/orbyn-skill-creator/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | original |
-| [orbyn-ui-design](../skills/orbyn-ui-design/SKILL.md) | Consumer-aware product conventions and explicit social handoff | original |
-| [orbyn-workflow](../skills/orbyn-workflow/SKILL.md) | Connected fullstack contract and backend/data/CI handoffs | adapted |
-| [principle-boundary-discipline](../skills/principle-boundary-discipline/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-build-the-lever](../skills/principle-build-the-lever/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-encode-lessons-in-structure](../skills/principle-encode-lessons-in-structure/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-exhaust-the-design-space](../skills/principle-exhaust-the-design-space/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-experience-first](../skills/principle-experience-first/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-fix-root-causes](../skills/principle-fix-root-causes/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-foundational-thinking](../skills/principle-foundational-thinking/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-guard-the-context-window](../skills/principle-guard-the-context-window/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-laziness-protocol](../skills/principle-laziness-protocol/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-make-operations-idempotent](../skills/principle-make-operations-idempotent/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-migrate-callers-then-delete-legacy-apis](../skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-minimize-reader-load](../skills/principle-minimize-reader-load/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-never-block-on-the-human](../skills/principle-never-block-on-the-human/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-outcome-oriented-execution](../skills/principle-outcome-oriented-execution/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-prove-it-works](../skills/principle-prove-it-works/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-redesign-from-first-principles](../skills/principle-redesign-from-first-principles/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-separate-before-serializing-shared-state](../skills/principle-separate-before-serializing-shared-state/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-sequence-verifiable-units](../skills/principle-sequence-verifiable-units/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-subtract-before-you-add](../skills/principle-subtract-before-you-add/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [principle-type-system-discipline](../skills/principle-type-system-discipline/SKILL.md) | Retained focused decision; added concrete cross-stack example | adapted |
-| [rea-analysis-optimization](../skills/rea-analysis-optimization/SKILL.md) | Scoped optional adapter; pinned reference and local-source fallback | reference-adapter |
-| [rea-changelog-update](../skills/rea-changelog-update/SKILL.md) | Scoped optional adapter; pinned reference and local-source fallback | reference-adapter |
-| [rea-ci-tests-audit](../skills/rea-ci-tests-audit/SKILL.md) | Scoped optional adapter; pinned reference and local-source fallback | reference-adapter |
-| [rea-tool-design](../skills/rea-tool-design/SKILL.md) | Scoped optional adapter; pinned reference and local-source fallback | reference-adapter |
-| [reflect](../skills/reflect/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | adapted |
-| [reverse-engineer-anything](../skills/reverse-engineer-anything/SKILL.md) | Scoped optional adapter; pinned reference and local-source fallback | reference-adapter |
-| [show-me-your-work](../skills/show-me-your-work/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | adapted |
-| [social-content](../skills/social-content/SKILL.md) | Retained separate message/visual owners and checked resource boundaries | original |
-| [social-preview](../skills/social-preview/SKILL.md) | Retained separate message/visual owners and checked resource boundaries | original |
-| [tdd](../skills/tdd/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | adapted |
-| [typescript-best-practices](../skills/typescript-best-practices/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | adapted |
-| [unslop](../skills/unslop/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | adapted |
-| [why](../skills/why/SKILL.md) | Consumer-first policy and concrete input/result handoff reviewed | adapted |
+This candidate has **34 active skills**, down from the 54 at baseline
+`4510c750f96af62a094e1193a473d6aad315e7ee`. The 20 principles are maintained
+references under their execution owners, with essential rules in those owners.
+Their methods, worked checks, source records and licenses are retained. The
+[disposition and implementation record](work/skill-consolidation.md) maps all
+retirements and separates implemented work from future behavior experiments.
+The active owner rows below still cover every catalog entry; principle rows now
+link to retained methods. Default core remains 14; presets and the two proposed
+workflow merges remain separate experiments. Skills-only dependencies are checked
+against the export inventory, including copied-consumer regression tests.
 
-The [versioned evaluation suite](../skills/orbyn-skill-creator/evals/cases.json)
-contains routing, adjacent, no-skill and outcome cases. The
-[evaluation guide](../skills/orbyn-skill-creator/references/evaluations.md) distinguishes
-static validation, deterministic helper fixtures and observed host trials.
-This historical catalog review does not claim live evaluation results. Contributor and source attribution
-are maintained in [provenance](../provenance.json), not invented commit history.
+Large-repository methods now cover bounded impact discovery, organizational
+ownership, quantitative constraints, staged changes, affected-target selection,
+and operational rollout/recovery. Product-specific examples are conditional.
+These are authored procedures with static and helper evidence, not demonstrated
+Microsoft/Google/Xero-scale agent performance. New evaluation cases are prepared
+development criteria; frozen historical suites and holdouts remain unchanged.
+
+## Historical audit — 24 October 2026
+
+The initial audit covered **55 canonical skills** in the candidate stacked after PRs
+#8–#9, their authored local references/playbooks, catalog relationships, host
+entrypoints and pinned source records. Public `main` still has 52 skills at this
+review; the earlier 22 October 50-skill audit was a historical editorial review.
+This is a source/contract audit with deterministic helper checks, not 55 live
+model evaluations or independent qualification.
+
+## Previous requests and actual delivery
+
+| Request                                                                | Verified artifact                                                                                                               | Delivery boundary                                                                                                                                  |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| External code, skills and research freshness                           | [Upstream-review skill](../skills/orbyn-upstream-review/SKILL.md), ignored `orbyn-references/`, source guard                    | Implemented in open PR #8; raw research is excluded from Git                                                                                       |
+| Investigate current pstack changes                                     | [Dated pinned comparison](../tools/research/2026-10-24-pstack.md)                                                               | Rechecked the latest pstack-touching commit: still `e73df471cd4bd918367e99f3dd9c51bd53ddf5f0`; selective reflection/performance improvements in #8 |
+| Creator, student affiliation, LinkedIn and contacts                    | [README creator block](../README.md), both supplied email addresses and LinkedIn                                                | Present in #8/#9 candidate; public-main promotion awaits merge                                                                                     |
+| Orbyn uses its maintained canonical skills; public skills are portable | [README scope](../README.md), shared/company ownership guidance                                                                 | Builder notified; consumer integration is in separate Orbyn PR #230; product/creator/MIT docs in #231                                              |
+| Language and technology-choice expansion                               | [Language owner](../skills/language-best-practices/SKILL.md), [stack-selection owner](../skills/orbyn-stack-selection/SKILL.md) | Open PR #9; no claim of compiling all supported languages or live model improvement                                                                |
+
+## Why earlier entrypoints were shorter
+
+The initial public export at commit `860e2dc` already contained condensed
+portable entrypoints; this was not a recent disappearance from the current PR.
+A source comparison of the recorded pstack import `74dd2291…` and that export
+shows `how` at 134 → 31 lines and `architect` at 79 → 36. The TypeScript entrypoint
+was 24 → 28, so the reduction was not uniform. Length alone does not establish
+coverage or quality. The recorded public refinement describes project-aware
+routing, policy boundaries and focused principles; it does not prove every
+removed procedural detail was replaced. The previous audit's generic dispositions
+were insufficient evidence of full operational completeness.
+
+Sources: [initial public export](https://github.com/kinqsradio/orbyn-fullstack-skills/commit/860e2dc),
+[pinned source how](https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/how/SKILL.md),
+[pinned source architect](https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/architect/SKILL.md).
+The import/source relationship is recorded in provenance, not reconstructed
+commit authorship or a claim that pstack is our active instruction system.
+
+## Concrete gaps and corrections
+
+- **Foreign active entrypoints:** bundled social/design source text used the
+  `SKILL.md` filename. Recursive discovery could expose `social` and `canvas-design`,
+  including references to upstream skills/providers absent from this catalog.
+  Store these two texts as `SOURCE.md`; retain their exact bytes, source paths,
+  hashes, licenses and notices. Active Orbyn methods remain self-contained.
+- **Thin execution guidance:** add 12 independently authored local operating
+  methods for the core engineering owners, four expanded workflow playbooks and
+  an original TypeScript contract guide/example. Keep entrypoints navigable;
+  essential procedures no longer depend on an upstream skill name.
+- **Principle-to-execution gap:** all 20 leaves now identify an application step,
+  concrete counterexample/check, result and actual linked execution owner.
+  Repair empty related-owner catalog edges where those handoffs were missing.
+- **Unchecked heading links:** file-only validation missed the PR playbook's
+  nonexistent `development.md#branch-naming`. Add the owning heading and validate
+  authored Markdown fragments as well as files and catalog relationships.
+- **Future alias regression:** library checks reject noncanonical nested entrypoints;
+  installer preflight refuses them before consumer writes; snapshot validation
+  rejects active source filenames. Both-host installation fixtures inspect all
+  recursive entrypoints instead of checking top-level link names alone.
+- **Five optional REA skills:** the original audit deferred their standalone-offline
+  gap. The separately authorized offline milestone below now supplies maintained
+  local methods and examples. Runtime availability and engine qualification remain
+  separate; the engine/source pin and setup are unchanged.
+
+## Release drift and broad best-practice coverage
+
+This audit is not limited to TypeScript. It covers all 20 engineering principles,
+architecture, backend/data contracts, security, CI, testing, worktrees, UI/content,
+social production and the language owner. The local language references cover
+JavaScript, Python, Go, Rust, Java, Kotlin, C#, Swift, C, C++, SQL and shell; the
+TypeScript owner was separate at the released 55-skill baseline. The consolidated
+candidate below places its guide under the language owner. Each guide has target discovery,
+resource/error contracts, an original failure example and evidence limitations.
+No claim is made that these guides cover every language feature or have been
+compiled on every supported toolchain.
+
+The reported stale-main problem is a release-handoff gap, not evidence that every
+pending file currently conflicts. Public #8 and #9 and Orbyn #230/#231/#232 were
+reported mergeable at this checkpoint; that state must be rechecked at merge.
+Related audit corrections join the existing #9 candidate rather than creating
+another shared release stack. The [portable release-handoff owner](../skills/orbyn-upstream-review/references/release-handoff.md)
+now requires existing-PR inspection, one shared writer/candidate, dependency
+reconciliation, the actual merged public pin and terminal checks on both mains.
+The agent completes those steps when merge is authorized; without that authority,
+it must explicitly report the release gap instead of saying the repos are synced.
+
+## Per-skill disposition
+
+Every row records the input/result contract and a failure/evidence boundary.
+“Retained” means this source audit found a substantive local method; it is not a
+live outcome guarantee. Focused principles refine a decision and hand execution
+to their owner instead of duplicating a complete workflow.
+
+| Skill                                                                                                                       | Disposition                       | Input → useful result                                                                                                  | Failure / evidence boundary                                               |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [architect](../skills/architect/SKILL.md)                                                                                   | Expanded local method             | Current callers and constraints → Owner/interface/state contract and migration order                                   | Stale writes, compatibility and interrupted effects                       |
+| [arena](../skills/arena/SKILL.md)                                                                                           | Expanded local method             | One unresolved choice and frozen criteria → Selected candidate and rejected rationale                                  | Shared constraints; no agreement-as-proof                                 |
+| [automate-me](../skills/automate-me/SKILL.md)                                                                               | Expanded local method             | Explicit preference and selected examples → Scoped rule in its canonical writable owner                                | One-off constraints and unauthorized global effects                       |
+| [figure-it-out](../skills/figure-it-out/SKILL.md)                                                                           | Expanded local method             | Authorized end state and current inventory → Completed units with evidence and remaining dependencies                  | Partial migration and unverified operator steps                           |
+| [how](../skills/how/SKILL.md)                                                                                               | Expanded local method             | Behavior question and source entrypoint → Cited entry-to-effect trace                                                  | Dynamic gaps and source versus runtime evidence                           |
+| [interrogate](../skills/interrogate/SKILL.md)                                                                               | Expanded local method             | Frozen candidate and intended behavior → Concrete validated findings and dismissed hypotheses                          | Guarded false positives and missing execution evidence                    |
+| [language-best-practices](../skills/language-best-practices/SKILL.md)                                                       | Retained substantive local method | Actual files, manifests and target versions → Relevant local language contracts and caller changes                     | Ambiguous headers, runtime ownership and unsafe path inputs               |
+| [orbyn-backend-design](../skills/orbyn-backend-design/SKILL.md)                                                             | Retained substantive local method | Caller input, identity and effect owner → Authorized effect and recoverable shared client result                       | Denied scope, stale version and unknown remote outcome                    |
+| [orbyn-ci-design](../skills/orbyn-ci-design/SKILL.md)                                                                       | Retained substantive local method | Patch, base/head and project verification policy → Conservative lane decision and required result gate                 | Unknown impact, untrusted fork input and stale deployment receipt         |
+| [orbyn-content-design](../skills/orbyn-content-design/SKILL.md)                                                             | Retained substantive local method | Product task, vocabulary and visible content → Concise labels/status/help with consequences retained                   | Long values, secrets and user-authored content                            |
+| [orbyn-data-migration](../skills/orbyn-data-migration/SKILL.md)                                                             | Retained substantive local method | Old/new representation and active readers/writers → Compatible phases, bounded backfill and cutover evidence           | Legacy writers, partial batches and lossy recovery                        |
+| [orbyn-plan](../skills/orbyn-plan/SKILL.md)                                                                                 | Retained substantive local method | Requested outcome, scope and current source → Ordered owned units and checkable completion                             | Plan-only boundary and consequential missing decisions                    |
+| [orbyn-research](../skills/orbyn-research/SKILL.md)                                                                         | Retained substantive local method | Decision and specific unresolved fact → Primary-source evidence, implication and uncertainty                           | Version/account applicability and offline freshness                       |
+| [orbyn-security-audit](../skills/orbyn-security-audit/SKILL.md)                                                             | Retained substantive local method | Explicit audit scope and source candidate → Coverage, structured findings and honest independence limits               | Unreachable claims, blocked execution and unavailable verifier            |
+| [orbyn-security-remediation](../skills/orbyn-security-remediation/SKILL.md)                                                 | Retained substantive local method | Saved finding IDs and current source → Boundary fix, finding ledger and preventive control                             | Duplicate/stale findings and no implicit new scan                         |
+| [orbyn-setup](../skills/orbyn-setup/SKILL.md)                                                                               | Retained substantive local method | Consumer checkout, existing skills/docs and host capability → Backed-up setup, selected discovery and context pointers | Foreign collisions, private content and unauthorized model changes        |
+| [orbyn-skill-creator](../skills/orbyn-skill-creator/SKILL.md)                                                               | Retained substantive local method | Routing gap and shared versus consumer ownership → Integrated local method, links, provenance and checks               | Duplicate owners, source aliases and false originality claims             |
+| [orbyn-stack-selection](../skills/orbyn-stack-selection/SKILL.md)                                                           | Retained substantive local method | Workload, team, constraints and installed baseline → Bounded evidence-led recommendation and revisit trigger           | Hard constraint failure, invented scores and unverified current cost      |
+| [orbyn-ui-design](../skills/orbyn-ui-design/SKILL.md)                                                                       | Retained substantive local method | Actual screen, task and design/token owners → Recoverable reachable flow with scoped visual evidence                   | Draft loss, narrow panes and browser/native evidence limits               |
+| [orbyn-upstream-review](../skills/orbyn-upstream-review/SKILL.md)                                                           | Retained substantive local method | Imported baseline and candidate source/research → Dated comparison and per-owner update disposition                    | Raw reference publication, truncated diffs and pin confusion              |
+| [orbyn-workflow](../skills/orbyn-workflow/SKILL.md)                                                                         | Expanded local method             | Ordinary task request, context and delivery scope → Connected owner handoffs and evidence-backed result                | Missing host/delegate capability and partial end state                    |
+| [orbyn-worktree](../skills/orbyn-worktree/SKILL.md)                                                                         | Retained substantive local method | Git registration, task owner and existing work → Owned sibling checkout and deliberate contribution destination        | Ignored output, shared resources and public-fork privacy limits           |
+| [principle-boundary-discipline](../skills/orbyn-backend-design/references/principles/boundary-discipline.md)                                           | Expanded local method             | Relevant engineering decision and actual owner → Trust transition and current effect authorization                     | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-build-the-lever](../skills/orbyn-workflow/references/principles/build-the-lever.md)                                                   | Expanded local method             | Relevant engineering decision and actual owner → Scoped repeatable helper with refusal and convergence                 | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-encode-lessons-in-structure](../skills/architect/references/principles/encode-lessons-in-structure.md)                           | Expanded local method             | Relevant engineering decision and actual owner → Invariant encoded at its producing representation                     | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-exhaust-the-design-space](../skills/architect/references/principles/exhaust-the-design-space.md)                                 | Expanded local method             | Relevant engineering decision and actual owner → Decision-changing observation and stopping rule                       | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-experience-first](../skills/orbyn-ui-design/references/principles/experience-first.md)                                                 | Expanded local method             | Relevant engineering decision and actual owner → Recoverable person-level task outcome                                 | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-fix-root-causes](../skills/how/references/principles/fix-root-causes.md)                                                   | Expanded local method             | Relevant engineering decision and actual owner → First invalid-state producer and discriminating check                 | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-foundational-thinking](../skills/architect/references/principles/foundational-thinking.md)                                       | Expanded local method             | Relevant engineering decision and actual owner → Identity, lifecycle and single effect/result owner                    | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-guard-the-context-window](../skills/how/references/principles/guard-the-context-window.md)                                 | Expanded local method             | Relevant engineering decision and actual owner → Decisive source pointers and retained evidence gaps                   | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-laziness-protocol](../skills/architect/references/principles/laziness-protocol.md)                                               | Expanded local method             | Relevant engineering decision and actual owner → Removed maintenance path with its contract preserved                  | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-make-operations-idempotent](../skills/orbyn-backend-design/references/principles/make-operations-idempotent.md)                             | Expanded local method             | Relevant engineering decision and actual owner → Operation identity and unknown-outcome reconciliation                 | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-migrate-callers-then-delete-legacy-apis](../skills/architect/references/principles/migrate-callers-then-delete-legacy-apis.md)   | Expanded local method             | Relevant engineering decision and actual owner → Caller inventory and explicit retirement condition                    | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-minimize-reader-load](../skills/architect/references/principles/minimize-reader-load.md)                                         | Expanded local method             | Relevant engineering decision and actual owner → One value/interpretation owner with useful seams                      | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-never-block-on-the-human](../skills/orbyn-plan/references/principles/never-block-on-the-human.md)                                 | Expanded local method             | Relevant engineering decision and actual owner → Routine decisions separated from consequential authority              | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-outcome-oriented-execution](../skills/orbyn-workflow/references/principles/outcome-oriented-execution.md)                             | Expanded local method             | Relevant engineering decision and actual owner → Actual end-state inventory and unfinished units                       | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-prove-it-works](../skills/orbyn-workflow/references/principles/prove-it-works.md)                                                     | Expanded local method             | Relevant engineering decision and actual owner → Claim-to-observation mapping at the exact candidate                   | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-redesign-from-first-principles](../skills/architect/references/principles/redesign-from-first-principles.md)                     | Expanded local method             | Relevant engineering decision and actual owner → New requirement integrated at the owning model                        | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-separate-before-serializing-shared-state](../skills/orbyn-workflow/references/principles/separate-before-serializing-shared-state.md) | Expanded local method             | Relevant engineering decision and actual owner → Distinct resources or explicit serialization owner                    | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-sequence-verifiable-units](../skills/orbyn-plan/references/principles/sequence-verifiable-units.md)                               | Expanded local method             | Relevant engineering decision and actual owner → Reversible dependency boundaries with useful evidence                 | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-subtract-before-you-add](../skills/architect/references/principles/subtract-before-you-add.md)                                   | Expanded local method             | Relevant engineering decision and actual owner → Existing owner reused without losing consequences                     | Concrete falsifying case; handoff to linked execution owner               |
+| [principle-type-system-discipline](../skills/language-best-practices/references/principles/type-system-discipline.md)                                     | Expanded local method             | Relevant engineering decision and actual owner → Invalid states excluded and runtime boundaries validated              | Concrete falsifying case; handoff to linked execution owner               |
+| [rea-analysis-optimization](../skills/rea-analysis-optimization/SKILL.md) | Local analysis-cost method | Explicit REA bottleneck + source/artifact identity → Oracle, owning cost and equivalent-task comparison | Measurements and real-provider performance remain unverified until run |
+| [rea-changelog-update](../skills/rea-changelog-update/SKILL.md) | Local release-note method | Actual REA baseline/target history → Bounded notes, verified attribution and migration limits | Missing REA history or account associations stay unknown; no publication |
+| [rea-ci-tests-audit](../skills/rea-ci-tests-audit/SKILL.md) | Local CI/test assessment method | Explicit REA CI scope + revision/workflow → Discovery, failure-gate and provider-evidence assessment | Source assessment and synthetic cases do not qualify hosted or real-provider lanes |
+| [rea-tool-design](../skills/rea-tool-design/SKILL.md) | Local tool-contract method | Explicit REA tool change → Inputs, evidence, effects, lifecycle and compatibility plan | Design-only scope does not authorize implementation or provider tests |
+| [reflect](../skills/reflect/SKILL.md)                                                                                       | Expanded local method             | Current task, failed assumption and authorized skill scope → Bounded structural lesson at canonical owner              | Plugin caches, unsupported generalization and memory authority            |
+| [reverse-engineer-anything](../skills/reverse-engineer-anything/SKILL.md) | Local artifact investigation method | Authorized artifact + actual tools → Selected facts, provenance, coverage and cleanup state | Offline guidance is complete; runtime, target bytes and schema support remain prerequisites |
+| [show-me-your-work](../skills/show-me-your-work/SKILL.md)                                                                   | Expanded local method             | Task candidate, decisions and check receipts → Compact single-writer evidence trail                                    | Missing terminal results, sensitive payloads and competing logs           |
+| [social-content](../skills/social-content/SKILL.md)                                                                         | Discovery fixed; retained method  | Supplied facts, author intent and platform → Copyable post and claim notes or visual handoff                           | Unsupported release claims, assumed personal voice and platform freshness |
+| [social-preview](../skills/social-preview/SKILL.md)                                                                         | Discovery fixed; retained method  | Approved copy, assets and requested output → Editable preview, inspected exports and alt text                          | Source versus rendered/export evidence and optional font/tool absence     |
+| [tdd](../skills/tdd/SKILL.md)                                                                                               | Expanded local method             | Observable regression and authorized test boundary → Failing-before receipt, correction and legitimate control         | Fixture failure, unrealistic mocks and tests without baseline evidence    |
+| [unslop](../skills/unslop/SKILL.md)                                                                                         | Expanded local method             | Supported prose, audience and requested voice → Clear edited copy preserving evidence                                  | Invented specificity, lost caveats and incidental user-content rewrites   |
+| [why](../skills/why/SKILL.md)                                                                                               | Expanded local method             | Anchored design question and bounded history → Documented rationale separated from inference                           | Empty search scope and source mechanics mistaken for intent               |
+
+The consumer integration check also caught two new links to a public-only root
+synchronization guide. Move the essential release procedure into the managed
+upstream-review reference and link active skills there; the consumer needs no
+new root shim. This is why library-only link checks do not replace the separate
+consumer check.
+
+## Authorship and provenance
+
+New operating methods, application checks, examples and validation code are
+independently authored Orbyn work. The maintained active system has its own owner
+contracts, handoffs and local methods rather than importing an upstream collection.
+Historical `adapted` relationships remain truthful for material with that lineage;
+new wording or added original resources do not erase required notices. The two
+source snapshots remain unmodified licensed reference data, with only local
+filenames changed. No claim is made that all engineering concepts originated here.
+
+## Evidence and remaining work
+
+Run the normal [contribution checks](../CONTRIBUTING.md): metadata/links/fragments,
+recursive discovery, source hashes, generated assets, manifest and helper fixtures.
+Fixtures cover both hosts, installation refusal before writes, missing related
+owners and source tampering. They do not establish that a running Codex or Claude
+session chose the intended method or performed a task better than a baseline.
+The existing 61 evaluation cases are preserved; this audit does not alter frozen
+holdout criteria or reuse old live results as evidence for the new candidate.
+
+The separately authorized REA offline milestone below addresses the five adapter
+methods. Before claiming improved agent behavior,
+run authorized paired host trials on the frozen candidate and retained baseline.
+Public and Orbyn PRs remain separate from merged-main delivery; a candidate pin
+must be replaced with the actual merged public revision after an authorized merge.
+
+## Follow-up: one language owner
+
+The next candidate has **54 active skills** and 13 language guides. TypeScript
+now lives in language-best-practices/references/typescript.md, including its
+local contract example and preserved MIT notice. The old standalone name is a
+declarative installer upgrade alias, not an active wrapper or nested SKILL.md.
+All related skills, presets, routes and two active case selections move to the
+language owner. The released 61-case baseline is preserved verbatim under
+evals/baselines/2026-10-24-55-skills.json; old observed trials retain their
+historical skill identities and revision rather than being silently regraded.
+
+## Follow-up: production best-practice coverage
+
+The isolated follow-up adds original local methods for maintainable modules,
+production service contracts, privacy-aware diagnostics, test strategy, async UI
+state and consumer verification maps, with polyglot/pagination/retry examples.
+Each of the 12 other language guides gains idiomatic maintainability/check
+guidance; TypeScript's full existing method/example moves into the same owner.
+The active suite has 79 cases: two existing selection identities migrate with
+TypeScript, and 18 development cases cover seven previously unrepresented
+execution owners plus production contracts and adjacent exclusions. All original
+61 case objects remain in the released baseline archive; historical trial
+records and frozen holdout criteria are not rewritten. These are prepared
+criteria, not new live-agent results.
+
+## Pre-merge review corrections
+
+The review found that discovery synchronization removed known retired links
+before creating their replacements. A disposable filesystem-failure regression
+failed on that ordering; replacement creation now completes before retirement.
+A failed registration retains old links and can be retried without deleting
+content. Preflight and idempotence do not make the operation an atomic filesystem
+transaction. The installer already used the safe order.
+
+Installation docs now match the smaller preset memberships and explain the
+retirement alias. Current routing points to the incorporated TypeScript guide;
+historical evaluation identities remain historical. The language overview
+distinguishes original additions from retained adapted guidance. The complete
+TypeScript notice has a pinned hash, so retaining only its copyright line cannot
+satisfy the incorporated-material check.
+
+The TypeScript guide now also covers compiler/config inheritance, strictness,
+module/emitter/runtime boundaries, deliberate public types and evidence. Added
+development cases exercise runtime module failures and interrupted retirement,
+without changing frozen holdouts or claiming fresh model measurements. No REA
+engine, adapter, setup or pin change belongs to this review.
+
+Review validation: 94 helper tests and static library checks pass for 54 skills,
+230 managed files, 176 Markdown documents and 79 case definitions. The unchanged
+TypeScript contract example compiles with the locally installed TypeScript
+5.9.3 under an isolated strict configuration; adding an unhandled lifecycle
+variant produces the expected exhaustive-consumer error. This qualifies that
+example only, not every consuming project, runtime or language toolchain. The
+frozen holdout objects, released baseline archive and original TypeScript
+notice/example bytes remain unchanged. No fresh live-model comparison was run.
+
+## Nested contribution workspaces and prompt briefs
+
+The public-only follow-up preserves all 54 owners and adds local references for
+independent nested contribution repositories and usable task briefs. The setup,
+worktree, workflow and planning owners route to these methods; no extra prompt
+collection is installed. Target instructions/skills remain in place, local setup
+is distinct from upstream adoption, and consumer promotion requires its own scope.
+Library checks reject indexed repo/, openSrc/ and orbyn-references/ paths or
+gitlinks. Seven new disposable Git/install checks cover those boundaries. The
+active suite adds six development cases (85 definitions); previous case objects
+and frozen holdouts are unchanged. These are helper/static expectations, not
+fresh live-host behavior results. See the [pinned comparison](../tools/research/2026-10-24-prompt-me.md)
+for evidence and licensing limits. Orbyn integration and all REA changes are held.
+
+## Follow-up: offline REA methods, engine upgrade deferred
+
+The five former reference adapters now contain local procedures for investigation,
+analysis optimization, tool contracts, CI assessment and release-note preparation.
+Shared local references cover artifact modes, evidence identity/coverage, summary
+composition, bounded recovery and exact resource ownership. Nine synthetic worked
+scenarios show decisions and counterexamples without pretending to be runtime runs.
+No essential method requires fetching an upstream webpage. Full local library
+installation still supplies cross-skill support; a lone copied SKILL.md is not the
+complete distribution.
+
+Historical REA lineage at `ccc7da309d7db385d5c6d73b0a3a8e093be33504` and all MIT
+notices remain. Selected guidance reviewed at
+`2250e67bc271c83f9e200ee298aa04a2457438a6` is recorded separately; it is not an
+engine pin. Actual schemas govern optional newer summary/route capabilities.
+No REA source, submodule, runtime requirement, client setup or consumer pin changes
+are included. Earlier sections describe their own historical deferrals; this
+milestone authorizes only the local guidance change.
+
+New development cases cover offline limits, evidence composition, uncertain
+effects, cleanup ownership, static coverage and the four maintenance outcomes;
+existing holdouts and recorded results stay unchanged. Static library and
+installation checks establish packaging/link integrity, not live Codex/Claude
+selection, performance gains or REA provider qualification.
+
+The pre-merge review also checks the actual skills-only distribution, without
+root library docs, provenance or tools. It found and removed four root-file links
+from the REA entrypoint/source record. A socket-disabled regression exercises
+managed-file copy, three-host dry-run/install/reinstall, local REA support links,
+portable licenses, manifest identity and preservation of consumer guidance/settings.
+The regression failed on the original PR candidate before this correction.
+
+## Contribution workflow milestone — 25 October 2026
+
+This public-only milestone keeps all **54 owners** and extends `orbyn-workflow`,
+`how` and `tdd` rather than installing a competing upstream collection.
+
+- [Intake](../skills/orbyn-workflow/playbooks/contribution-intake.md) resolves
+  target instructions, issue overlap, feasibility and authority.
+- [Reproduction](../skills/how/references/reproduction.md) owns reduction, safe
+  repeatability, actual runner selection and baseline/candidate evidence.
+- [PR iteration](../skills/orbyn-workflow/playbooks/pr-iteration.md) owns complete
+  feedback context, current-head gates, bounded retries and effect boundaries.
+- [Synthetic examples](../skills/orbyn-workflow/references/contribution-examples.md)
+  demonstrate local/offline and disputed-review outcomes; the
+  [source record](../skills/orbyn-workflow/references/contribution-sources.md)
+  preserves original lineage and reviewed inspiration.
+
+The suite grows from 98 to **111 definitions** by appending 13 development cases;
+existing cases/holdouts remain unchanged. Managed-copy fixtures remove root docs,
+tools and provenance, disable networking, install core/all discovery for three
+host paths, preserve target guidance and reject missing or disconnected support.
+Evaluator fixtures reject incomplete evidence and forbidden external actions.
+These are deterministic packaging/evaluation contracts, not 111 observed agent
+trials, hosted PR qualification or a Codex/Claude comparison.
+
+Normal library CI discovers the checks without new credentials or model calls.
+This change does not advance any REA engine/source pin or promote the public
+revision into Orbyn. Consumer synchronization remains explicitly deferred.
+
+## Live contribution assessments — 25 October 2026
+
+The [recorded Codex study](evaluations/2026-10-25-contribution.md) inspected 26
+initial assessments and a two-call clarified-case follow-up. Each initial
+condition has 12 passing and one unverified outcome; observed expected-owner
+body reads were 9/13 at baseline and 13/13 at candidate. The unverified callback
+oracle lacked a supplied expected-count contract. Only that development prompt
+was clarified; its rubric, all other cases and holdouts remain unchanged. Both
+follow-up answers passed, reported as a separate pair rather than a new 13/13
+score. No outcome-quality gain or end-to-end contribution qualification is claimed.
+
+Host preflight caught a PATH-runner model rejection and ineffective folder-only
+global-skill disable entries. The supported desktop runner and verified per-run
+prompt inventory resolved those preparation gaps before scoring. Updated local
+evaluation guidance preserves this isolation and input-correction method. The
+public release contains concise results and reproducible synthetic protocols; raw
+answers/captures remain ignored. Consumer synchronization and REA upgrade are held.
+
+## Executed contribution workflow — 25 October 2026
+
+The [disposable execution comparison](evaluations/2026-10-25-contribution-execution.md)
+adds real source/test/Git evidence behind the contribution method. Both conditions
+eventually delivered correct local PR heads and feedback coverage in 2/2 trials.
+The corrected workflow passed a controlled failed-commit dependency gate in 2/2;
+baseline passed it in 0/2. Eight primary-clone calls completed; four earlier
+linked-worktree calls preserved correct patches but could not commit because of
+host metadata restrictions. Their delivery stays unverified, and their dependent
+feedback stages were not run. Results and frozen protocols remain separate.
+
+The workflow owns the explicit commit/push gate and PR iteration link; the worktree
+owner now requires topology-matched capability probes. The creator owner owns an
+original offline execution lab, method, seven calibration tests and two additional
+development cases. All **54 owners**, the previous 111 cases/holdouts and source
+credits are preserved. The resulting **113 definitions** are not 113 executed
+trials. Calibration/packaging checks and controlled local PR behavior are distinct
+from live-model and hosted-provider qualification. No model credentials or calls
+enter CI. Orbyn synchronization and the REA engine upgrade remain deferred.
+
+## Bulk CI failure analysis and release verification — 25 October 2026
+
+The [measured exercise](evaluations/2026-10-25-bulk-ci.md) extends existing owners:
+CI owns complete report/matrix collection, disk-backed failure indexing and release
+evidence; `how` owns cause confirmation; `tdd` owns meaningful regressions; workflow
+owns their handoff; creator owns disposable pipeline and capacity exercises.
+No competing skill or mandatory human invocation is added.
+
+The local pipeline ran 54,000 actual fixture cases across 18 slots. The broken
+candidate retained all 10,800 failures/errors and was blocked; the corrected
+candidate passed 18,000 checks and local release-evidence verification. Separate
+generated-record runs measured up to one million rows and 500,000 candidate
+failures. An observed quadratic baseline-view scan was corrected with an indexed
+current snapshot, preserving full attempt history. Compact summaries do not
+truncate the database/export. A 1,000-slot completeness fixture is also covered.
+
+The 13 new helper tests bring the suite to 142 Python tests. Nine development case
+definitions bring the case catalog to **122**, preserving prior 113 objects and
+holdouts. All **54 owners** and upstream notices remain. Helper/capacity evidence
+is distinct from hosted collection, authentic provider evidence, live model
+behavior and deployment qualification. Consumer data and full raw results stay
+outside public sync. Orbyn synchronization and the REA engine upgrade remain held.
+
+## Setup layout choice — 25 October 2026
+
+Setup now asks once between nested (recommended/default for a new contribution
+workspace) and an existing project in place when the user has not chosen a
+destination/layout. Explicit existing paths and delegated defaults answer that
+choice; silence does not. Continuations retain the chosen location. Existing
+checkouts/output are never relocated merely to enforce the recommendation.
+
+The setup owner and local workspace contract own the decision. README, installation,
+root policy, workflow and worktree routing explain it consistently. Layout stays
+separate from skill presets and distribution; the installer still takes an exact
+`--project` path and has no interactive layout flag. All 54 owners and source
+notices remain. Five development cases bring the catalog to **127**, preserving
+the prior 122 objects/holdouts. They are assessment definitions, not observed live
+setup conversations. Orbyn synchronization and REA remain deferred.
+
+## Optional contribution feedback — 25 October 2026
+
+Workflow can notice a demonstrated shared-skill gap during authorized current
+work, then hand reflection and a concrete general proposal to the existing
+creator owner. The user chooses public PR, local draft or no contribution; the
+main task is not blocked. Existing exact-scope authority carries through, while
+silence/draft permission does not authorize publication. Company-only lessons
+stay local; no telemetry, persistent memory, new mandatory logs or automatic
+self-publication is added.
+
+The portable feedback method includes worked ownership/consent boundaries.
+README, contribution guidance/template, synchronization and root routing link it;
+public submission and consumer promotion remain separate. Seven development case
+definitions bring the suite from 127 to **134**, preserving all earlier objects
+and holdouts, including the five pending layout cases. These definitions are not
+observed live conversations. All **54 owners** and notices remain; Orbyn sync
+and REA are still held. Both related updates use the same reviewed PR candidate.
+
+## Fullstack responsibility and lifecycle follow-up — 25 October 2026
+
+The [capability gap audit](work/engineering-capability-gaps.md) maps backend,
+frontend, UI/UX, prototype/human preview, onboarding/review, strategy, operations
+and cleanup to the existing 34 owners. It records primary research, actual method
+changes and unqualified boundaries. Writer cutover now has an explicit deliverable
+and enforcement/control method; UI prototypes now have storage/opening/inspection
+and human handoff requirements. Artifact lifecycle links dev-resource teardown to
+ownership, retained evidence and worktree eligibility. No new skill entrypoints,
+role/model changes or consumer promotion are implied.
+
+Follow-up live evidence is in [migration and breadth results](evaluations/2026-10-25-migration-followup.md).
+The final three-case development recheck passed for the corrected candidate;
+original failures and snapshot identities remain separate. This does not replace
+independent review or qualification on an actual large consuming repository.
+
+## Hallmark integration, 25 October 2026
+
+The 34-skill candidate retains one UI owner. Its optional visual-direction and
+redesign methods adapt pinned Hallmark guidance while preserving project style,
+functional contracts, scope and artifact lifecycle. See the
+[source/disposition record](../skills/orbyn-ui-design/references/hallmark-source.md).
+Three development cases cover task-specific design, behavior-preserving polish
+and audit-only boundaries. Structural validation is not rendered qualification.
+
+## Optional structured engineering memory — 25 October 2026
+
+The existing `reflect` owner now handles explicit local memory CRUD and retrieval,
+with categories, multiple domains, scoped namespaced tags, expected revisions and
+honest forgetting. Setup/workflow/creator route opt-in and selected lesson patches
+without another skill entrypoint or automatic capture. See the
+[memory contract](../skills/reflect/references/memory.md) and
+[implementation checkpoint](work/learning-memory-design.md#implementation-checkpoint--25-october-2026).
+The independently authored helper retains the reflect owner's earlier attribution.
+
+All 34 owners remain. Six development definitions bring the current suite to 186;
+these are not live trial results. The 140-test Python suite includes 31 memory tests
+using real disposable SQLite/Git/CLI processes, including concurrency, deletion,
+restore and classification failures. Desktop browser walkthrough of the synthetic
+read-only export is lead evidence, not independent review or full accessibility
+qualification. No personal memory, provider settings, fork push or commit occurred.
+
+## Memory live qualification follow-up — 25 October 2026
+
+[Memory qualification](evaluations/2026-10-25-memory.md) records four initial,
+four corrected and three focused live model-operated tasks, plus 16 separate
+controller races. It preserves the initial expiry/patch-header failures, UUID
+usability observation, malformed-receipt regression and failed harness attempts.
+Three independent native review rounds completed under a user-approved tier
+exception; all five findings were resolved and the final source has no blocking
+findings. Focused trials verify transformed-import rejection, existing-alias
+merges and terminal forgetting with reserved revision headroom. The final suite
+passes 151 tests, including 42 memory tests. Earlier calls/races remain attributed
+to their actual snapshots; lead checks are distinguished from the independent
+review. All 34 skill owners remain; no real-memory capture or task commit occurred.

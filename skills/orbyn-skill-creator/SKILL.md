@@ -5,8 +5,9 @@ description: "Create, refine, merge or retire Orbyn repository skills while keep
 
 # Maintain Orbyn skills
 
-Read [AGENTS.md](../../AGENTS.md), [skill system](../../docs/agents/skill-system.md),
-[stack boundaries](../../docs/agents/stack.md) and [documentation ownership](../../docs/agents/documentation.md).
+Read the consuming project's instructions and relevant guides in place. Use the
+[portable policy and routing defaults](../orbyn-workflow/references/project-policy.md)
+only where guidance is missing.
 Inspect nearby skills before editing. Prefer improving the existing owner over
 creating a second skill that attracts the same requests.
 
@@ -38,8 +39,9 @@ another product exist here. Make examples realistic to Orbyn's architecture.
 
 Keep essential choices in `SKILL.md`; put conditional templates or deep guidance
 in linked references. Do not duplicate model/session/permission policy in every
-skill. Name Orbyn-specific entrypoints `orbyn-*`; descriptive generic principles
-can retain meaningful names. Keep third-party attribution in source/provenance
+skill. Name Orbyn-specific entrypoints `orbyn-*`. A decision principle normally
+belongs in an existing owner's entrypoint and conditional reference; a separate
+skill needs a distinct task trigger and useful result. Keep third-party attribution in source/provenance
 records, never as an inherited active agent identity.
 
 Keep essential instructions and required references usable from disk under the
@@ -82,9 +84,29 @@ remaining behavior gaps, changed files and local/committed delivery state.
 
 ## Maintain the public contract
 
-Treat the shared library as an upstream dependency of consuming projects. Keep private product policy and source outside public contributions. A useful skill change alters a decision or supplies a reusable artifact, not just vocabulary. Check expected and adjacent routing cases, then reconcile the catalog and consumer pin through the documented contribution path.
+When current work demonstrates a meaningful reusable gap, use the
+[contribution feedback policy](references/contribution-feedback.md). Prepare a
+concrete, sanitized proposal and offer it once at a natural checkpoint. The user
+can approve a public PR, request a local draft or decline. Existing exact-scope
+authority carries through. Silence and local improvement permission do not
+authorize publication. Keep company-only lessons local and continue the main task.
+
+Treat the shared library as an upstream dependency of consuming projects. Keep private product policy and source outside public contributions. A useful skill change alters a decision or supplies a reusable artifact, not just vocabulary. Check expected and adjacent routing cases, then reconcile the catalog and library release through the documented contribution path.
+
+For external skill freshness and source comparisons, use
+[upstream review](../orbyn-upstream-review/SKILL.md). Keep downloaded research in
+ignored `orbyn-references/`, preserve existing local references and adopt selected
+improvements into the owning skill. Do not replace our adaptations with an
+upstream collection or advance an import pin after a review-only change.
 
 ## Evaluate a change
+
+For an explicitly selected remembered lesson, use the
+[memory-to-skill handoff](references/memory-learning.md): freeze source revisions,
+write the general correction and synthetic counterexample, and prepare only the
+reviewed owner patch. Keep private records outside Git. Manual/local and optional
+fork-branch delivery reuse the same checks and authorization; neither implies
+automatic learning, acceptance or an upstream PR.
 
 Use the [evaluation guide](references/evaluations.md) and its versioned suite for
 positive, adjacent, no-skill and outcome cases. Update a case when its contract
@@ -93,3 +115,46 @@ changes; do not change frozen criteria after observing a held-out result.
 Prepared or incomplete trials remain unverified. Helper fixtures test the tooling;
 only captured, reviewed host trials provide evidence of skill behavior. Record
 baseline and candidate results separately before claiming an improvement.
+For an explicitly requested reproduce/fix/PR-feedback execution trial, use the
+[disposable contribution lab](references/contribution-execution.md). Its real
+source/tests/Git and local PR fixture supply stronger evidence than scenario
+answers; they do not qualify a hosted provider or authorize ordinary model calls.
+
+For explicitly requested multi-suite CI or release/capacity exercises, use the
+[disposable pipeline method](references/pipeline-execution.md). Distinguish actual
+fixture tests from generated report records and from live agent behavior. Measure
+resource usage and retain missing/failed attempts; no blanket scale guarantee follows.
+
+## Audit completeness without inflating the catalog
+
+For a full sweep, inventory every catalog entry and its local support files.
+Record its input, useful result, failure boundary, execution owner and actual
+evidence; distinguish a focused principle from a complete workflow. Essential
+execution must work from the local method rather than a link to a missing skill.
+Add concrete operational guidance where a short summary loses the method, and
+retain concise entrypoints when their linked resources supply it.
+
+Keep only canonical entrypoints named `SKILL.md`. Bundled upstream entrypoint
+text uses `SOURCE.md`, retaining original `source_path`, bytes, hashes and notices
+in the snapshot record. Historical mentions inside that text are source data,
+not installed skills or permission to fetch them. Validate recursive discovery,
+related catalog owners, local files and Markdown heading fragments.
+
+Maintained Orbyn guidance can be independently written while earlier derived
+material retains its provenance. New wording, a renamed title or extra length
+does not justify deleting attribution or asserting exclusive origin. Describe
+original additions and retained lineage separately. A full audit is not complete
+qualification when optional adapters or live behavior remain unverified.
+
+Before a shared edit, inspect library main, relevant open PR heads/bases and owned
+local diffs. Reuse one canonical authoring candidate and coordinate shared writes.
+Follow the [release handoff](../orbyn-upstream-review/references/release-handoff.md).
+An unmerged candidate is not released main. Targets use the same outer source;
+there is no copied installation or consumer pin promotion.
+
+When consolidating an owner, migrate incoming links, presets, examples, active
+cases and host discovery together. Preserve old measured suites/revisions as
+historical evidence. A declared catalog retirement maps an old reading-group
+selection to the maintained owner; remove only known owned discovery links,
+preflight both hosts and retain foreign/company content. Preserve incorporated
+source/license records when moving a derived reference into an original skill.

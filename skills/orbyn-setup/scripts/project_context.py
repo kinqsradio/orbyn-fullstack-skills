@@ -1,18 +1,10 @@
 #!/usr/bin/env python3
-"""Create/check consumer-owned context pointers. Never execute commands or copy document content."""
+"""Read existing project-owned context pointers. Never execute commands or copy document content."""
 import argparse
 import json
 from pathlib import Path, PurePosixPath
 
 CONTEXT = '.agents/orbyn-context.json'
-DOCUMENTS = {
-    'instructions': ['AGENTS.md', 'CLAUDE.md'],
-    'stack': ['docs/agents/stack.md', 'docs/architecture.md'],
-    'development': ['docs/agents/development.md', 'CONTRIBUTING.md'],
-    'verification': ['docs/agents/delivery.md'],
-    'design': ['docs/agents/ui-ux.md'],
-    'brand': ['docs/brand.md'],
-}
 
 
 def local_path(project, value, file_only=False):
@@ -53,44 +45,14 @@ def check(project):
     return data
 
 
-def initialize(project, name=None):
-    project = project.resolve(strict=True)
-    if not project.is_dir():
-        raise ValueError('Project must be an existing directory')
-    target = context_path(project)
-    if target.exists():
-        check(project)
-        return False
-    if name is not None and not name.strip():
-        raise ValueError('Project name must not be blank')
-    documents = {}
-    for role, candidates in DOCUMENTS.items():
-        for candidate in candidates:
-            if (project / candidate).is_file():
-                local_path(project, candidate, file_only=True)
-                documents[role] = candidate
-                break
-    data = {'schema_version': 1, 'project_name': name or project.name,
-            'documents': documents, 'owners': {}}
-    target.parent.mkdir(parents=True, exist_ok=True)
-    with target.open('x') as stream:
-        stream.write(json.dumps(data, indent=2) + '\n')
-    return True
-
-
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['init', 'check'])
+    parser.add_argument('command', choices=['check'])
     parser.add_argument('--project', type=Path, required=True)
-    parser.add_argument('--name')
     args = parser.parse_args()
     try:
-        if args.command == 'init':
-            created = initialize(args.project, args.name)
-            print('Created context pointers; review owners and missing roles.' if created else 'Existing context preserved.')
-        else:
-            check(args.project)
-            print('Context pointers resolve inside the project; content and authority are not inferred.')
+        check(args.project)
+        print('Existing project pointers validated; no files changed.')
     except (OSError, ValueError, TypeError) as error:
         parser.exit(1, f'Project context stopped: {error}\n')
 

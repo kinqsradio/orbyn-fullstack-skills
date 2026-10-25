@@ -24,7 +24,7 @@ paths, allowed tools, execution scope, output location and budget. Inspect only
 the relevant instructions and source. Keep the target read-only. Resolve domain,
 API, storage, client, worker, infrastructure and external trust boundaries from
 actual source; absent layers stay inapplicable. Existing company audit policy
-stays in the consumer's guides or `project-skills/`, outside public sync.
+stays in the target's existing guides or skills, outside public library content.
 
 Use a new owned output directory outside the target unless the user selected an
 ignored in-repo location. The lead owns run metadata, architecture, coverage

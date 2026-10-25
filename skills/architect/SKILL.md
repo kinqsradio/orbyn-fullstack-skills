@@ -5,9 +5,10 @@ description: "Design data shapes, interfaces, ownership and module boundaries fo
 
 # Architect
 
-Follow the consuming project's instructions first. Use [Orbyn Engineering policy](../../AGENTS.md) and [host/model guidance](../../docs/agents/model-policy.md) where applicable; load only relevant references.
+Follow the consuming project's instructions and requested scope; use the
+[portable defaults](../orbyn-workflow/references/project-policy.md) only where guidance is missing.
 
-Read the relevant [stack boundaries](../../docs/agents/stack.md). Use
+Read the relevant [stack boundaries](../orbyn-workflow/references/project-policy.md#stack-and-ownership). Use
 [orbyn-research](../orbyn-research/SKILL.md) for a consequential external unknown
 and [orbyn-plan](../orbyn-plan/SKILL.md) when the design needs a delivery sequence.
 
@@ -67,3 +68,54 @@ reasoning shape with the consuming project's actual owners.
 [Organizing a task editor](examples/vertical-task-editor.md) demonstrates functional
 cohesion, a public interface and shared ownership without merging client/server
 or platform boundaries.
+
+## Technology choice versus interface design
+
+When language/framework/storage choice is unresolved, use
+[stack selection](../orbyn-stack-selection/SKILL.md) for constraint/evidence comparison,
+then own interfaces and lifecycle here. An established project's bounded feature
+usually retains its stack. Pair implementation with the relevant
+[language reference](../language-best-practices/SKILL.md), preserving FFI/transport
+encoding, ownership and failure contracts across polyglot boundaries.
+
+## Operational method
+
+Use the [local operating method](references/operating-method.md) for the execution
+sequence, concrete failure case, expected result and stopping condition. It is
+Orbyn-authored guidance; historical source notices remain in provenance.
+
+## Maintainability and polyglot interfaces
+
+For caller complexity, dependency cycles or API longevity, use [maintainable modules](references/maintainable-modules.md). The [Python/Go/SQL example](examples/polyglot-contract.md) connects one contract across language boundaries without imposing a framework.
+
+## Essential design rules
+
+Choose authoritative data, ownership and lifecycle before adding logic. Simplify
+the affected design before extending it; remove needless indirection without losing
+required behavior. Integrate new requirements into that design, and encode a
+demonstrated recurring failure at the boundary that can prevent it. Compare
+concrete alternatives only for consequential uncertainty. Migrate controlled
+callers and retire the old API once compatibility evidence permits it.
+
+Conditional methods with worked checks:
+[foundations](references/principles/foundational-thinking.md),
+[subtraction](references/principles/subtract-before-you-add.md),
+[simplification](references/principles/laziness-protocol.md),
+[reader load](references/principles/minimize-reader-load.md),
+[coherent redesign](references/principles/redesign-from-first-principles.md),
+[structural prevention](references/principles/encode-lessons-in-structure.md),
+[alternatives](references/principles/exhaust-the-design-space.md), and
+[API retirement](references/principles/migrate-callers-then-delete-legacy-apis.md).
+Read only the method needed for the current decision.
+
+For cross-team, independently released or quantitatively constrained systems,
+use [large changes](references/large-changes.md). Name measured/required/assumed
+constraints, distinguish code and organizational ownership, pilot a complete slice,
+then migrate resumable batches. Never infer deployed adoption from local edits.
+
+For durable transitions, return the migration owner's concrete writer/admission
+contract in the design, including stale-writer rejection and current-writer
+controls. A link to migration guidance alone is not the deliverable.
+For a new service or materially changed operating envelope, use
+[service readiness](references/service-readiness.md); small internal changes
+retain their existing operating contract.

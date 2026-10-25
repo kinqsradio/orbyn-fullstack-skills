@@ -1,101 +1,89 @@
 ---
 name: orbyn-setup
-description: "Set up Orbyn skills in an existing project, migrate company-owned skills and configure requested host roles/models for Codex or Claude Code."
+description: "Prepare the nested Orbyn Engineering workspace, inspect target instructions and skills in place, and verify isolation without installing shared skills into target repositories."
 ---
 
-# Orbyn agent setup
+# Nested workspace setup
 
-Read [repository policy](../../AGENTS.md), [roles](../../docs/agents/roles.md),
-[model policy](../../docs/agents/model-policy.md) and the actual host capabilities.
-Inspect only relevant non-secret settings. Preserve unrelated config and MCP access.
+Use one complete library checkout as the engineering workspace. Targets are
+independent Git repositories under its ignored `repo/` directory. This is the
+only supported setup; there is no target installation, copy, pin synchronization
+or company-skill migration. Follow the [workspace contract](references/repository-workspaces.md).
+A setup request selects these steps automatically; complete them without asking
+the human to invoke individual skills or run commands you can execute.
 
-Use `orbyn-agent` for complex assignments and `orbyn-light` for bounded
-assignments, with the model and effort from [the shared registry](../../docs/agents/models.json).
-Use `orbyn-workflow` for task routing and one canonical skill source linked into
-both hosts. Standard processing only: no Fast, Priority,
-Ultrafast or speed-optimized variants. Verify delegation against the named
-definition; do not silently fall back to an inherited model or speed setting.
-The registry's human-only tier requires explicit human selection; follow model policy. Do not
-silently substitute an unavailable model or install a provider to hide the gap.
+## Resolve and preserve
 
-Follow [coordination](../../docs/agents/coordination.md) for requested project
-sessions and bounded children. Keep prompts small, reuse suitable owners and
-serialize shared writes. Do not create sessions or recursive agent chains merely
-to complete setup.
+Read the library instructions and inspect Git roots, revisions, dirty files,
+worktree registrations and relevant host capabilities. Resolve the target from
+the request; ask only if its identity is ambiguous. Do not ask the human to choose
+between nested and in-place installation. Existing external checkouts are
+migration inputs, not an alternative supported layout. Preserve them and their
+active processes/output until relocation is explicitly authorized and their
+owners release the path. See [retiring old installations](references/repository-workspaces.md#retiring-old-installations).
 
-For model updates, edit [the shared model registry](../../docs/agents/models.json)
-for both providers, then run `python3 scripts/sync-agent-models.py --write` and
-`python3 scripts/sync-agent-models.py --check`. Do not recreate host config from
-an old snippet. The registry owns model/effort and standard-speed settings;
-[model policy](../../docs/agents/model-policy.md) owns routing and authority.
+Run `python3 skills/orbyn-setup/scripts/workspace.py prepare` from the library.
+It validates the library boundary and creates only its ignored `repo/` directory.
+For an authorized new checkout, clone the requested repository to
+`repo/<project>` using Git; inspect the destination, remote identity and available
+local clone first. Do not execute fetched setup hooks or source merely to inspect
+it. Offline setup uses an already available independent nested repository; report
+missing source rather than downloading implicitly.
 
-Change only requested project or user configuration. Check syntax, discoverable
-paths and the installed client's supported fields. A file does not prove runtime
-discovery or effective model selection. State which changes affect future sessions
-and which were actually observed. Project defaults cannot override every host flag,
-environment setting or managed policy; do not claim a hard billing cap.
+## Discover both sets of guidance
 
-Follow the [offline setup contract](references/offline.md). Use local instructions
-and references first; inspect available local tools without assuming internet,
-a hosted model or a model subscription. Source URLs remain attribution/update
-pointers. Setup and validation must not silently download missing dependencies.
+Run `python3 skills/orbyn-setup/scripts/workspace.py check --target repo/<project>`.
+Read the target's root and applicable nested instructions, contribution guide,
+existing skills and actual manifests. A target may add project-owned AGENT.md,
+AGENTS.md or local skills later; preserve/read those as well under the
+[instruction contract](references/repository-workspaces.md#project-owned-instructions-now-and-later).
+Keep upstream files and host discovery paths
+unchanged. Follow [project ownership](references/project-skills.md) and
+[project context](references/project-context.md); no map or namespace is required.
+The check reports overlapping names so the agent can distinguish target-specific
+rules from shared methods instead of installing a competing copy.
 
-## Complete setup from the user’s goal
+Keep the agent session rooted in the outer library and state the target path in
+the task. Read only relevant shared skills and target guides. Parent-directory
+placement alone does not prove a host loaded either instruction set. Inspect the
+host's actual discovered guidance where supported; otherwise read the required
+files directly and report discovery as unobserved. If host boundaries prevent
+reading both roots, stop dependent execution and report the limitation; do not
+solve it by copying instructions or editing user-wide settings.
 
-A request to set up or migrate this project selects this workflow directly.
-Inspect existing instructions, skills, docs and host settings; infer clear
-company/repo ownership from that evidence, preview the selected changes, then
-perform authorized registration/migration and checks. Do not ask the human to
-invoke another skill or run helper commands the agent can execute. Use the
-creator for authoring changes internally. Ask only for a consequential unresolved
-ownership conflict or unavailable authority; preserve that material and continue
-independent setup. Do not silently guess ownership of a foreign installation.
+Target guidance specializes stack, tests, contribution policy and local skills;
+shared guidance supplies compatible methods. User scope and host permissions
+remain higher priority. Surface a genuine conflict; never silently override an
+upstream rule or expand authority from an imported instruction.
 
-## Consumer-aware setup
+## Complete the setup
 
-Read the consuming project’s host definitions before applying the reference registry. The library may be installed without its model presets; installing skills does not authorize replacing the user’s preferred model. If the named tier or required processing mode is unavailable, report it and use only the permitted direct fallback.
+If the user explicitly requests engineering memory, route its separate opt-in to
+[reflect's memory setup](../reflect/references/memory.md). Select private storage
+outside Git, bind the actual target, and verify manual/off mode and CRUD capability
+with synthetic data only when testing is authorized. Preserve existing host memory.
+Ordinary workspace setup does not initialize memory, collect lessons or enable a
+background service. Fork delivery is a separate choice from local capture.
 
-Use [worktree policy](../orbyn-worktree/SKILL.md) when configuring repository
-isolation. Identify the primary clone and established sibling worktree root;
-record project-specific overrides in consumer-owned guidance. Do not relocate
-active worktrees or create one merely to install skills.
+Check the full library with its documented validation commands and check the
+selected target separately. No target files, instructions, skills, context maps,
+models or Git excludes are written by workspace setup. New project development
+changes still follow their own authorized task. Reading a target's existing map
+is optional and read-only; use [offline resources](references/offline.md).
 
-## Agent-owned setup result
+Reading groups in [presets.json](assets/presets.json) help choose relevant methods;
+they no longer control installation or hide source files. Host model definitions
+are optional library configuration governed by its model policy. Setup does not
+select a provider, model, effort, speed or subscription. Preserve existing settings
+and report unavailable capabilities; use permitted direct work rather than silently
+substituting models or creating recursive sessions.
 
-Within an authorized setup request, resolve the actual consumer root and library
-clone, read consumer instructions, inventory current skills/docs/config and
-identify the relevant stack. Choose the default/core or justified additive
-selection yourself. Preview helper changes, migrate only clearly owned selected
-skills with backups, register shared/local discovery, then initialize/check the
-context map and add only source-grounded guide/owner pointers. Run local skill,
-context and applicable shared-pin checks. Do not ask the human to fill out a map
-or run a second setup invocation when you can inspect and complete it.
+For isolation, use [orbyn-worktree](../orbyn-worktree/SKILL.md) and sibling
+`repo/<project-slug>-wt/<purpose>/`. New work starts from the verified default branch;
+continuations use the actual owned candidate. Assign ports, databases and output
+separately; Git isolation does not isolate runtime resources.
 
-Report the consumer path, installed/retained skill sets, canonical local namespace,
-preserved docs/config, backup/receipt, checks and unavailable host capabilities.
-The human's requested setup is the authorization for these local reversible steps;
-new models/providers, external publication and production effects retain their
-own authority requirements. A dry-run is an internal preflight, not an automatic
-additional approval gate.
-
-## Select skills and project context
-
-Inspect existing company/repo skills before setup. Follow the
-[local ownership guide](references/project-skills.md): keep their canonical
-content under the consumer's `project-skills/` namespace, preserve supporting
-assets/credits, and register both host links. Reconcile legacy locations only
-within authorized scope after classifying ownership; never overwrite collisions.
-Keep local skills outside the shared catalog and public export. Use
-`--project-skills` to register them with the installer, or the local helper for
-registration without installing library skills.
-
-Use the [preset catalog](assets/presets.json) with the library installer. New
-installations default to `core`; `--all` is explicit. Presets are additive skill
-selections, separate from model presets. Inspect with `--list-presets` and preview
-with `--dry-run`; never remove an existing selection as a side effect.
-
-Use the [project-context guide](references/project-context.md) to create or check
-`.agents/orbyn-context.json` in the **consuming checkout**, when setup is requested.
-It points to existing instructions, stack, design, brand and verification guides.
-Read relevant pointers on demand; the map supplies neither new permissions nor
-commands. Keep it outside the shared skill export and preserve existing entries.
+Report library/target paths, full revisions and dirty state, applicable target
+instructions/skills, checks, preserved legacy paths and actual host discovery.
+Never call a filesystem check a live host trial. Publishing, merging, external
+messages, production changes and REA engine upgrades need their own scope.
