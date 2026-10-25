@@ -170,6 +170,11 @@ applies to requested independent qualification, not ordinary lead correction loo
 
 Deliver only the requested scope. Report changed behavior/artifacts, actual
 evidence, unresolved limits and local/committed/pushed/merged/deployed state.
+For authorized delivery, verify the successful owned commit and its validated
+tree before pushing. A failed stage/commit stops dependent push, PR and CI actions;
+a later command's success cannot repair that missing prerequisite. Use the
+[commit and push gate](playbooks/opening-a-pr.md#commit-and-push-gate) for the
+execution and remote-ref checks. Preserve the patch when host metadata is blocked.
 No automatic PR, merge, publish, deployment, external message or monitor follows
 from delegation or a playbook.
 
