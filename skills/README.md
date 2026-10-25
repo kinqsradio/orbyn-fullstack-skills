@@ -24,7 +24,7 @@ in `docs/agents/`. This index is generated from `catalog.json` and frontmatter b
 - [orbyn-setup](orbyn-setup/SKILL.md) — Set up Orbyn skills in an existing project for Codex, Claude Code or Cursor; preserve target guidance and migrate explicitly owned company skills. Model/role configuration requires separate scope and host support.
 - [orbyn-skill-creator](orbyn-skill-creator/SKILL.md) — Create, refine, merge or retire Orbyn repository skills while keeping task routing, technology boundaries, host discovery and documentation consistent.
 - [orbyn-upstream-review](orbyn-upstream-review/SKILL.md) — Review freshness and changes in external skills, source code or research references; keep downloads in ignored orbyn-references, compare pinned revisions and selectively adapt existing owners.
-- [orbyn-workflow](orbyn-workflow/SKILL.md) — Route substantial Orbyn engineering work through evidence-led investigation, design, implementation and verification. Use for Orbyn workflow requests and multi-step changes.
+- [orbyn-workflow](orbyn-workflow/SKILL.md) — Route engineering work through investigation, design, implementation and verification, including open-source contribution intake and bounded PR feedback/CI iteration. Follow the consuming project's instructions.
 - [orbyn-worktree](orbyn-worktree/SKILL.md) — Manage local task branches, private contribution storage when supported and Git worktree isolation; use sibling <repo>-wt directories, purpose-based names and preservation before cleanup.
 - [reflect](reflect/SKILL.md) — Review the current task for reusable lessons when requested, and update only the authorized workflow or skill scope.
 - [show-me-your-work](show-me-your-work/SKILL.md) — Keep a compact decision and evidence trail for substantial migrations or unattended work that the user will review later.
@@ -33,7 +33,7 @@ in `docs/agents/`. This index is generated from `catalog.json` and frontmatter b
 
 - [architect](architect/SKILL.md) — Design data shapes, interfaces, ownership and module boundaries for substantive features or refactors; use for code organization, vertical modules and shared-code extraction.
 - [arena](arena/SKILL.md) — Compare competing design or implementation sketches when a consequential choice cannot be resolved cheaply from existing evidence.
-- [how](how/SKILL.md) — Trace source behavior, data flow, ownership and module boundaries before explaining or changing an unfamiliar subsystem.
+- [how](how/SKILL.md) — Trace source behavior, data flow, ownership and module boundaries; reproduce and reduce reported defects before explaining or changing an unfamiliar subsystem.
 - [interrogate](interrogate/SKILL.md) — Challenge a specified design, patch or claim for concrete correctness, ownership and evidence gaps. Use for adversarial review, not every routine edit.
 - [language-best-practices](language-best-practices/SKILL.md) — Implement or review TypeScript, JavaScript, Python, Go, Rust, Java, Kotlin, C#, Swift, C, C++, SQL or shell code using its actual runtime, ownership and error contracts. Select only the affected local guide, including TypeScript schemas and lifecycle contracts.
 - [orbyn-security-remediation](orbyn-security-remediation/SKILL.md) — Investigate and resolve existing Orbyn security findings, record evidence and add preventive checks without starting a security scan.

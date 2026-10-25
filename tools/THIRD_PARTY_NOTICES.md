@@ -61,3 +61,12 @@ upstream skill collection or workflow text is installed. The exact source/revisi
 is recorded in [provenance](../provenance.json) as reviewed inspiration. This
 credit does not imply affiliation, endorsement or original authorship of an idea.
 Downloaded research material under `openSrc/` remains local and ignored.
+
+The contribution milestone also reviewed Jesse Vincent's `obra/superpowers`
+(MIT), Sentry's `getsentry/skills` (Apache-2.0), and GitHub's
+`awesome-copilot` (MIT). Its
+[portable source record](../skills/orbyn-workflow/references/contribution-sources.md)
+pins revisions and retains the reproduction brief's transitive source credit.
+The new methods and examples are independently authored; no text, scripts or
+upstream workflow collection from those reviews is redistributed. Existing
+pstack source notices and portable licenses remain unchanged.

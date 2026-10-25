@@ -55,6 +55,7 @@ explains the handoffs. [The catalog](skills/README.md) lists every skill.
 | Model TypeScript state             | `language-best-practices`                  | Shared schemas and explicit valid variants               |
 | Review a risky patch               | `interrogate`                              | Concrete findings with scenarios and evidence            |
 | Build contribution/release CI      | `orbyn-ci-design`                          | Scoped execution and reviewable promotion                |
+| Contribute a fix or iterate a PR    | `orbyn-workflow` + `how`                    | Issue intake, reproducible evidence and bounded review/CI iteration |
 | Draft a post or carousel           | `social-content` + `social-preview`        | Evidence-backed copy and local visuals                   |
 | Review external code/skill updates | `orbyn-upstream-review`                    | Pinned comparison, ignored references and scoped updates |
 

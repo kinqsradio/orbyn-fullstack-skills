@@ -280,3 +280,31 @@ from the REA entrypoint/source record. A socket-disabled regression exercises
 managed-file copy, three-host dry-run/install/reinstall, local REA support links,
 portable licenses, manifest identity and preservation of consumer guidance/settings.
 The regression failed on the original PR candidate before this correction.
+
+## Contribution workflow milestone — 25 October 2026
+
+This public-only milestone keeps all **54 owners** and extends `orbyn-workflow`,
+`how` and `tdd` rather than installing a competing upstream collection.
+
+- [Intake](../skills/orbyn-workflow/playbooks/contribution-intake.md) resolves
+  target instructions, issue overlap, feasibility and authority.
+- [Reproduction](../skills/how/references/reproduction.md) owns reduction, safe
+  repeatability, actual runner selection and baseline/candidate evidence.
+- [PR iteration](../skills/orbyn-workflow/playbooks/pr-iteration.md) owns complete
+  feedback context, current-head gates, bounded retries and effect boundaries.
+- [Synthetic examples](../skills/orbyn-workflow/references/contribution-examples.md)
+  demonstrate local/offline and disputed-review outcomes; the
+  [source record](../skills/orbyn-workflow/references/contribution-sources.md)
+  preserves original lineage and reviewed inspiration.
+
+The suite grows from 98 to **111 definitions** by appending 13 development cases;
+existing cases/holdouts remain unchanged. Managed-copy fixtures remove root docs,
+tools and provenance, disable networking, install core/all discovery for three
+host paths, preserve target guidance and reject missing or disconnected support.
+Evaluator fixtures reject incomplete evidence and forbidden external actions.
+These are deterministic packaging/evaluation contracts, not 111 observed agent
+trials, hosted PR qualification or a Codex/Claude comparison.
+
+Normal library CI discovers the checks without new credentials or model calls.
+This change does not advance any REA engine/source pin or promote the public
+revision into Orbyn. Consumer synchronization remains explicitly deferred.

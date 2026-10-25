@@ -147,3 +147,21 @@ suite migrates its two TypeScript selection identities to the language owner;
 this is a new suite checksum, not a regrade of the old observations. New routing
 and production-practice cases are development cases. Run fresh paired trials
 before claiming a measured behavioral improvement from this candidate.
+
+## Contribution workflow checks
+
+The contribution milestone adds 13 development assessment cases covering stale
+issue availability, overlap, target ownership, reproduction-only scope, runner
+discovery, intermittent evidence, stale-head CI, pagination, feedback disagreement,
+human gates, retry budgets, optional checks and separate external effects. Earlier
+cases and holdouts retain their objects; the expanded suite has a new checksum.
+
+`tests/test_contribution_workflow.py` exercises the actual managed copy and core/all
+host installation with networking unavailable and no library root docs or tools.
+It checks required support reachability, missing-asset rejection and preservation
+of target policy/company guidance. Synthetic evaluator fixtures check that prepared
+cases remain unverified, incomplete rubric evidence stays unverified and a recorded
+forbidden message fails despite positive rubric assertions. These are packaging
+and evaluator checks, not a live PR, framework test, agent score or host comparison.
+Use fresh matched trials under the protocol above before claiming improved agent
+behavior. Normal library CI already runs this test module through discovery.
