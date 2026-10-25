@@ -91,7 +91,7 @@ can approve a public PR, request a local draft or decline. Existing exact-scope
 authority carries through. Silence and local improvement permission do not
 authorize publication. Keep company-only lessons local and continue the main task.
 
-Treat the shared library as an upstream dependency of consuming projects. Keep private product policy and source outside public contributions. A useful skill change alters a decision or supplies a reusable artifact, not just vocabulary. Check expected and adjacent routing cases, then reconcile the catalog and consumer pin through the documented contribution path.
+Treat the shared library as an upstream dependency of consuming projects. Keep private product policy and source outside public contributions. A useful skill change alters a decision or supplies a reusable artifact, not just vocabulary. Check expected and adjacent routing cases, then reconcile the catalog and library release through the documented contribution path.
 
 For external skill freshness and source comparisons, use
 [upstream review](../orbyn-upstream-review/SKILL.md). Keep downloaded research in
@@ -139,15 +139,15 @@ does not justify deleting attribution or asserting exclusive origin. Describe
 original additions and retained lineage separately. A full audit is not complete
 qualification when optional adapters or live behavior remain unverified.
 
-Before a shared edit, inspect relevant open PR heads/bases and the consumer lock.
-Reuse the owned shared candidate for related corrections and serialize shared
-writes with the consumer owner. Follow the [release handoff](../orbyn-upstream-review/references/release-handoff.md):
-finish authorized dependency merges, pin the actual merged public SHA and verify
-both repos' final state. An unmerged candidate is not current public `main`.
+Before a shared edit, inspect library main, relevant open PR heads/bases and owned
+local diffs. Reuse one canonical authoring candidate and coordinate shared writes.
+Follow the [release handoff](../orbyn-upstream-review/references/release-handoff.md).
+An unmerged candidate is not released main. Targets use the same outer source;
+there is no copied installation or consumer pin promotion.
 
 When consolidating an owner, migrate incoming links, presets, examples, active
 cases and host discovery together. Preserve old measured suites/revisions as
-historical evidence. A declared catalog retirement may map an old installer
+historical evidence. A declared catalog retirement maps an old reading-group
 selection to the maintained owner; remove only known owned discovery links,
 preflight both hosts and retain foreign/company content. Preserve incorporated
 source/license records when moving a derived reference into an original skill.

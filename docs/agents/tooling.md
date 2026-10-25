@@ -1,17 +1,15 @@
 # Library tools and optional upstream runtimes
 
-The canonical library lives in `skills/`. Codex and Claude Code discovery folders
-link to it. The installer manages selected shared/local skill links and refuses
-conflicts. Explicit migration names and a company namespace enable backed-up
-relocation of existing host skills; existing project docs and settings stay owned
-by the consumer. It never applies model presets, registers MCP or installs a runtime.
+The canonical library lives in `skills/`, with library-owned host discovery.
+Targets are independent nested repositories; no skills are installed or synced
+into them. Preserve target guidance in place and verify actual host capabilities.
 
 | Tool | Purpose |
 | --- | --- |
-| `scripts/install.py` | Link selected skills into a consuming project |
-| `scripts/sync-agent-skills.py` | Generate catalog index and library host links |
-| `scripts/check-library.py` | Metadata, links, provenance and manifest validation |
-| `scripts/sync-public-skills.py` | Explicit hash-pinned consumer import/export |
+| `skills/orbyn-setup/scripts/workspace.py` | Prepare/check nested Git boundaries without target writes |
+| `scripts/sync-agent-skills.py` | Generate library index and library host links |
+| `scripts/check-library.py` | Metadata, links, provenance, workspace and inventory validation |
+| `scripts/library_manifest.py` | Library-only skill asset integrity hashes |
 | `skills/social-preview/scripts/render_preview.py` | Local HTML/text social preview |
 
 [Third-party notices](../../tools/THIRD_PARTY_NOTICES.md) and

@@ -5,7 +5,7 @@ Do not create a separate log for routine work already explained by Git, PR and C
 When continuation or a consequential decision needs a record, reuse the existing
 project-owned document, or a single-writer TSV when useful. Record changes to
 ownership, compatibility, verification or delivery; omit routine tool chatter.
-Keep payloads and credentials out of records, and raw traces outside public sync.
+Keep payloads and credentials out of records, and raw traces outside public library content.
 
 A useful checkpoint names candidate revision, decision, reason, artifact/receipt and actual outcome. Distinguish prepared, attempted, failed, observed and externally delivered. When a conclusion changes, add a superseding record instead of deleting the failed attempt.
 

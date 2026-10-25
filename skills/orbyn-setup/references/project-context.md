@@ -1,54 +1,25 @@
-# Project-owned context
+# Discover project context in place
 
-For the optional library-root `repo/` layout, follow the
-[workspace contract](repository-workspaces.md). Each target and linked worktree
-resolves its own root and instructions; the outer library's context map is not
-the target project's configuration.
+Resolve the target Git root under the [nested workspace contract](repository-workspaces.md).
+Read its instructions, manifests, contribution guide and relevant architecture,
+design, brand, verification and operations guides. Follow existing owner pointers;
+load only what the current task needs. Shared examples never mandate Orbyn's stack.
 
-Resolve the **consuming repository root** from the task and its instructions, not
-from the skill's symlink target. Read `.agents/orbyn-context.json` there when it
-exists. The pointer file helps locate existing guides; it does not replace root
-instructions or grant permission to execute commands, publish or change models.
-
-```json
-{
-  "schema_version": 1,
-  "project_name": "Example product",
-  "documents": {
-    "instructions": "AGENTS.md",
-    "stack": "docs/architecture.md",
-    "design": "docs/design.md",
-    "brand": "docs/voice.md"
-  },
-  "owners": {
-    "domain": "src/domain",
-    "web": "src/ui"
-  }
-}
-```
-
-These example paths must be replaced with existing paths. Missing roles stay
-absent; never create an application layer just to fill this map. `documents`
-points to files; `owners` points to files or directories. Paths are relative to
-the consuming project and must resolve inside it. Never store credentials here.
-
-The helper can initialize pointers to a small set of existing guides without
-reading their contents, and check the map without executing anything:
+If the target already owns `.agents/orbyn-context.json`, its existing document and
+owner pointers can be checked read-only:
 
 ```sh
-python3 /path/to/library/skills/orbyn-setup/scripts/project_context.py init --project /path/to/project
-python3 /path/to/library/skills/orbyn-setup/scripts/project_context.py check --project /path/to/project
+python3 skills/orbyn-setup/scripts/project_context.py check --project repo/widget
 ```
 
-Initialization preserves an existing valid map. Inspect the result and add actual
-owners after tracing source. Read only the documents relevant to the task. When
-no map exists, use ordinary repository discovery; setup is not a prerequisite.
+The optional schema has `schema_version: 1`, a nonblank `project_name`, and
+`documents` / `owners` maps of existing project-relative paths. Documents point to
+files and owners to files/directories; paths cannot escape the target. Commands
+and credentials are rejected. The map grants no authority. Setup no longer
+creates a map, installs discovery links or changes any target configuration.
+When absent, discover the actual source and guides normally; no placeholder file
+or manual form is required.
 
-Project design owns palette, typography tokens, navigation and motion choices.
-Project brand guidance owns audience, approved voice examples, vocabulary and
-evidence-backed claims. The portable skills own the method. Keep preferences in
-their existing guides and link them here instead of duplicating their content.
-
-This file belongs to the consumer. The shared skill sync allowlist excludes it,
-so a public update preserves project customization and a skill export cannot
-publish it. Installing skills does not create the map or change host models.
+Keep project preferences with the target's existing owner. The library owns the
+method and public synthetic examples; it never absorbs target context into its
+catalog or public content merely because the agent can read it.

@@ -30,14 +30,14 @@ or move existing worktrees merely to enforce this convention.
 
 ## Sibling location and names
 
-The nested library-root `repo/` option keeps contribution clones and
-worktrees together; follow the [nested repository contract](../orbyn-setup/references/repository-workspaces.md).
-It is the recommended/default choice for new contribution workspaces after the
-setup agent resolves the user's layout choice, not a reason to move existing work.
+Targets use the library-root ignored `repo/` workspace exclusively; follow the
+[nested repository contract](../orbyn-setup/references/repository-workspaces.md).
 For `orbyn-fullstack-skills/repo/widget`, use sibling `repo/widget-wt/<purpose>/`.
-Target instructions and skills apply to its work; the outer library owns its
-ignore/export boundary. Do not put targets inside canonical `skills/`, infer
-target cleanliness from library status, or relocate existing work for this layout.
+Preserve target instructions/skills and inspect its Git state separately. Existing
+external checkouts remain preservation inputs until a coordinated authorized move;
+never move active work merely to satisfy the layout. The library's own maintenance
+worktrees can use its established external sibling root, keeping library and target
+ownership distinct.
 
 For a primary clone `<parent>/<repo>`, the default root is its sibling
 `<parent>/<repo-slug>-wt/`. Use a stable lowercase hyphenated repo slug; reuse an
@@ -45,7 +45,7 @@ existing established sibling root rather than creating a case-only alternative.
 Each worktree has one direct child directory named for its purpose:
 
 ```text
-Documents/GitHub/
+orbyn-fullstack-skills/repo/
   orbyn/                         primary clone
   orbyn-wt/
     task-rescheduling/           feat/task-rescheduling
@@ -177,9 +177,9 @@ new project chat or authorize messaging another owner.
 For a **new** branch with a verified base, an example operation is:
 
 ```sh
-git -C /work/orbyn worktree add -b feat/task-rescheduling /work/orbyn-wt/task-rescheduling origin/main
-git -C /work/orbyn-wt/task-rescheduling status --short --branch
-git -C /work/orbyn-wt/task-rescheduling rev-parse --show-toplevel HEAD
+git -C /work/orbyn-fullstack-skills/repo/orbyn worktree add -b feat/task-rescheduling /work/orbyn-fullstack-skills/repo/orbyn-wt/task-rescheduling origin/main
+git -C /work/orbyn-fullstack-skills/repo/orbyn-wt/task-rescheduling status --short --branch
+git -C /work/orbyn-fullstack-skills/repo/orbyn-wt/task-rescheduling rev-parse --show-toplevel HEAD
 ```
 
 These paths/ref are examples, not values to copy into another project. Reuse an

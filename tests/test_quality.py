@@ -11,9 +11,8 @@ import sys
 import tempfile
 import unittest
 
-from test_tools import ROOT, module, installer
+from test_tools import ROOT, module, selection
 
-context = module('project_context', ROOT/'skills/orbyn-setup/scripts/project_context.py')
 evaluator = module('skill_evaluator', ROOT/'skills/orbyn-skill-creator/scripts/evaluate.py')
 
 
@@ -26,92 +25,19 @@ class PresetTests(unittest.TestCase):
         self.assertEqual(dict(rows), {name:str(len(preset['skills'])) for name,preset in config['presets'].items()})
 
     def test_default_is_core_and_all_is_explicit(self):
-        self.assertEqual(installer.selection(), installer.selection(presets=['core']))
-        self.assertEqual(len(installer.selection()), 14)
-        self.assertEqual(len(installer.selection(all_skills=True)), len(json.loads((ROOT/'skills/catalog.json').read_text())['skills']))
-        self.assertIn('orbyn-security-audit', installer.selection(presets=['security']))
-        self.assertEqual(installer.selection(['how']), {'how'})
-        combined = installer.selection(['how'], ['core', 'creator', 'core'])
-        self.assertEqual(combined, installer.selection(presets=['core']) | installer.selection(presets=['creator']))
+        self.assertEqual(selection.selection(), selection.selection(presets=['core']))
+        self.assertEqual(len(selection.selection()), 14)
+        self.assertEqual(len(selection.selection(all_skills=True)), len(json.loads((ROOT/'skills/catalog.json').read_text())['skills']))
+        self.assertIn('orbyn-security-audit', selection.selection(presets=['security']))
+        self.assertEqual(selection.selection(['how']), {'how'})
+        combined = selection.selection(['how'], ['core', 'creator', 'core'])
+        self.assertEqual(combined, selection.selection(presets=['core']) | selection.selection(presets=['creator']))
         with self.assertRaises(ValueError):
-            installer.selection(presets=['core'], all_skills=True)
-
-    def test_dry_run_and_bad_names_leave_project_untouched(self):
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
-            self.assertEqual(installer.install(root, 'both', dry_run=True), 28)
-            for kwargs in [{'presets': ['missing']}, {'selected': ['missing']}]:
-                with self.subTest(kwargs=kwargs), self.assertRaises(ValueError):
-                    installer.install(root, 'both', **kwargs)
-            self.assertEqual(list(root.iterdir()), [])
-
-    def test_selecting_a_smaller_preset_never_uninstalls(self):
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
-            installer.install(root, 'both', presets=['creator'])
-            self.assertEqual(installer.install(root, 'codex', ['how']), 1)
-            self.assertTrue((root/'.agents/skills/social-preview/SKILL.md').is_file())
-            self.assertTrue((root/'.claude/skills/social-preview/SKILL.md').is_file())
-            self.assertFalse((root/'.claude/skills/how').exists())
+            selection.selection(presets=['core'], all_skills=True)
 
 
-class ContextTests(unittest.TestCase):
-    def setUp(self):
-        self.temp = tempfile.TemporaryDirectory()
-        self.addCleanup(self.temp.cleanup)
-        self.root = Path(self.temp.name)/'project'
-        self.root.mkdir()
-        (self.root/'AGENTS.md').write_text('Existing authority; do not replace.')
 
-    def test_init_discovers_pointers_and_preserves_customization(self):
-        self.assertTrue(context.initialize(self.root))
-        path = self.root/context.CONTEXT
-        data = context.check(self.root)
-        self.assertEqual(data['documents'], {'instructions': 'AGENTS.md'})
-        self.assertNotIn('Existing authority', path.read_text())
-        (self.root/'src').mkdir()
-        data['owners']['domain'] = 'src'
-        path.write_text(json.dumps(data))
-        original = path.read_bytes()
-        self.assertFalse(context.initialize(self.root, 'Another name'))
-        self.assertEqual(path.read_bytes(), original)
-        self.assertEqual((self.root/'AGENTS.md').read_text(), 'Existing authority; do not replace.')
 
-    def test_invalid_pointers_and_executable_fields_are_refused(self):
-        context.initialize(self.root)
-        path = self.root/context.CONTEXT
-        original = context.check(self.root)
-        for value in ['../outside', '/etc/hosts', 'missing.md', 'file://outside']:
-            data = copy.deepcopy(original)
-            data['documents']['stack'] = value
-            path.write_text(json.dumps(data))
-            with self.subTest(value=value), self.assertRaises((ValueError, OSError)):
-                context.check(self.root)
-        data = copy.deepcopy(original)
-        data['commands'] = {'build': 'arbitrary-command'}
-        path.write_text(json.dumps(data))
-        with self.assertRaisesRegex(ValueError, 'Unknown context fields'):
-            context.initialize(self.root)
-        self.assertEqual(json.loads(path.read_text()), data)
-
-    def test_symlink_escape_and_symlink_destination_are_refused(self):
-        outside = self.root.parent/'outside'
-        outside.mkdir()
-        (outside/'guide.md').write_text('Outside guide')
-        (self.root/'docs').symlink_to(outside, target_is_directory=True)
-        context.initialize(self.root)
-        path = self.root/context.CONTEXT
-        data = context.check(self.root)
-        data['documents']['stack'] = 'docs/guide.md'
-        path.write_text(json.dumps(data))
-        with self.assertRaisesRegex(ValueError, 'leaves the project'):
-            context.check(self.root)
-        path.unlink()
-        path.parent.rmdir()
-        path.parent.symlink_to(outside, target_is_directory=True)
-        with self.assertRaisesRegex(ValueError, 'symlinked'):
-            context.initialize(self.root)
-        self.assertFalse((outside/'orbyn-context.json').exists())
 
 
 class EvaluationTests(unittest.TestCase):

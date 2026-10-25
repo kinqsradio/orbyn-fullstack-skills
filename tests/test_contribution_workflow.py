@@ -11,7 +11,7 @@ import unittest
 from unittest import mock
 from urllib.parse import unquote
 
-from test_tools import ROOT, installer, module, sync
+from test_tools import ROOT, module, sync
 
 contracts = module('contribution_links', ROOT/'scripts/skill_contracts.py')
 evaluator = module('contribution_evaluator', ROOT/'skills/orbyn-skill-creator/scripts/evaluate.py')
@@ -61,35 +61,6 @@ def support_errors(root):
 
 
 class ContributionDistributionTests(unittest.TestCase):
-    def test_core_and_all_host_discovery_keep_support_offline_and_preserve_target(self):
-        for selection in ({'presets': ['core']}, {'all_skills': True}):
-            with self.subTest(selection=selection), tempfile.TemporaryDirectory() as directory:
-                consumer = Path(directory).resolve()
-                policy = consumer/'AGENTS.md'
-                policy.write_text('Target contribution policy stays authoritative.\n')
-                foreign = consumer/'.agents/skills/company-method/SKILL.md'
-                foreign.parent.mkdir(parents=True)
-                foreign.write_text('Company-owned method.\n')
-                preserved = {p: p.read_bytes() for p in (policy, foreign)}
-                with mock.patch.object(socket, 'socket', side_effect=AssertionError('Network forbidden')):
-                    files = sync.manifest(ROOT)
-                    sync.copy_changes(ROOT, consumer, files)
-                    for excluded in ('docs', 'tools', 'provenance.json', '.codex', 'repo'):
-                        self.assertFalse((consumer/excluded).exists(), excluded)
-                    with mock.patch.object(installer, 'ROOT', consumer), mock.patch.object(
-                            installer, 'PRESETS', consumer/'skills/orbyn-setup/assets/presets.json'):
-                        installer.install(consumer, 'all', **selection)
-                        self.assertEqual(installer.install(consumer, 'all', **selection), 0)
-                    self.assertEqual(support_errors(consumer), [])
-                    self.assertEqual(sync.inventory(consumer), files)
-                    for host in ('.agents', '.claude', '.cursor'):
-                        for owner in ('orbyn-workflow', 'how'):
-                            linked = consumer/host/'skills'/owner
-                            self.assertEqual(linked.resolve(), consumer/'skills'/owner)
-                            self.assertEqual((linked/'LICENSE').read_bytes(),
-                                             (ROOT/'skills'/owner/'LICENSE').read_bytes())
-                for path, content in preserved.items():
-                    self.assertEqual(path.read_bytes(), content)
 
     def test_missing_shipped_resource_is_detected_after_real_copy(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -43,8 +43,8 @@ provider, change a model or start a separate inference process. Verify required
 settings before dispatch; if they cannot be preserved, report the limitation and
 continue permitted direct work. Library skills can be used without model presets.
 For maintenance of the full Orbyn library, its root instructions and
-`docs/agents/models.json` own those choices; these files are deliberately not
-exported as consumer policy. The library's optional model sync helper is usable
+`docs/agents/models.json` own those choices; these files belong to the outer workspace and never
+replace target project policy. The library's optional model sync helper is usable
 only in a full checkout containing that registry and generated host assets.
 
 As a fallback topology, use one owner and at most two children on independent

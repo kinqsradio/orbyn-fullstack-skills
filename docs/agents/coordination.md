@@ -42,8 +42,8 @@ The owning task reuses its branch through corrections. Delegate branches are
 bounded local implementation details, not a reason to create company-remote
 branches or another hosted fork. One owner serializes shared Git ref/remote writes.
 
-In an optional library-root `repo/` workspace, the target clone still owns its
+In the library-root ignored `repo/` workspace, the target clone still owns its
 instructions, skills and common Git metadata. Follow the [workspace contract](../../skills/orbyn-setup/references/repository-workspaces.md)
 for target-root selection, local-only setup and publication boundaries. Shared
-library promotion and each downstream consumer update require their own scope;
-a public-only task does not automatically contact a consumer owner or repin it.
+library delivery and independent target changes require their own scope;
+a public-only task does not automatically contact a target owner or change its files.

@@ -60,10 +60,10 @@ The previous library/product release has already merged. A useful brief says:
 > Work on the public library candidate only. First inspect its current main,
 > owned diff and the relevant skill contracts. Compare the requested behavior
 > with existing owners and implement the scoped improvement. Preserve notices
-> and frozen evaluation evidence. Leave the product's approved pin unchanged;
+> and frozen evaluation evidence. Leave the target's source and configuration unchanged;
 > do not reopen the completed release or message its builder as a routine step.
 > Return the public diff, actual checks and unresolved review questions.
 
 That brief neither undoes the earlier merge nor treats the new public change as
-permission for another product import. Its completion evidence is the reviewed
-public candidate, not an assertion that a held consumer is “fully synced.”
+permission for target changes. Its completion evidence is the reviewed
+public candidate, not a claim that unrelated target work was changed.

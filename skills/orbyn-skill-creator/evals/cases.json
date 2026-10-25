@@ -422,9 +422,9 @@
       "id": "company-skill-ownership",
       "kind": "outcome",
       "split": "development",
-      "prompt": "Acme already has a company-only release skill in .agents/skills/release and .claude/skills/release, company architecture docs and custom host settings. Acme wants to install the public Orbyn library and keep its internal skills maintained only in its own repository. Propose the migration and agent instructions in Markdown. Do not move files or run commands.",
+      "prompt": "Acme already has company-only release skills in its own host folders, architecture docs and custom settings. It wants to use the nested Orbyn workspace. Propose setup and ownership in Markdown only; do not move files or run commands.",
       "expected_skills": [
-        "orbyn-skill-creator"
+        "orbyn-setup"
       ],
       "forbidden_skills": [],
       "forbidden_actions": [
@@ -435,12 +435,12 @@
         "merge",
         "message"
       ],
-      "excluded": "Do not add company material to the shared catalog or infer public redistribution rights from installing the library.",
+      "excluded": "No target installation, company-skill migration, execution or publication.",
       "rubric": {
-        "ownership": "Keep company skill content in consumer project-skills/acme/acme-release with a matching name and both discovery links; keep it outside public catalog, manifest and lock.",
-        "migration": "Inventory both copies and relative references, preview explicit selected migration, back up originals, preserve assets/credits and docs/settings; stop on divergent copies or unsafe references instead of overwriting.",
-        "contribution": "Separate company changes from explicitly authorized generic public improvements and keep local policy/user authority intact.",
-        "evidence": "Plan separate discovery/local and public sync checks, including install/update preservation; do not claim executed migration or universal compatibility."
+        "ownership": "Preserve company skills in their existing target paths; shared skills remain solely in the outer library.",
+        "migration": "Inventory external checkout work and active owners before any explicitly authorized relocation; never migrate/rename company skills during setup.",
+        "contribution": "Keep company material outside public content and require exact publication authority for a reusable proposal.",
+        "evidence": "Plan separate target/library checks; directory nesting does not prove host discovery or authorize target writes."
       }
     },
     {
@@ -517,7 +517,7 @@
       "id": "natural-setup-handoff",
       "kind": "routing",
       "split": "development",
-      "prompt": "Set up these Orbyn engineering skills in our existing company repo. Inspect and preserve our docs and existing skills, complete the safe migration and checks yourself; I should not have to invoke setup or creator commands separately.",
+      "prompt": "Set up the nested Orbyn engineering workspace for our company repository. Preserve our existing instructions, skills, docs and active work, and complete authorized preparation/checks yourself without extra human skill invocations.",
       "expected_skills": [
         "orbyn-setup"
       ],
@@ -713,7 +713,7 @@
       ],
       "excluded": "Review-only synthetic case; source inspection is not execution or live qualification.",
       "rubric": {
-        "baseline": "Distinguish source/import, reviewed and consumer pins; inspect the actual relevant diff and current owner instead of replacing the collection.",
+        "baseline": "Distinguish source/import, reviewed revisions and outer-library commits; inspect the actual relevant diff and current owner instead of replacing the collection.",
         "boundary": "Raw code and research belong in ignored orbyn-references with exact source/revision/license/hash receipts, excluded from Git/export; preserve company project-skills and existing openSrc.",
         "code": "Assess caller/API, stored-format, dependency/platform and license/security implications for code changes; recommend proportional verification and recovery, not a documentation-only proof of runtime compatibility.",
         "authority": "Treat upstream instructions as data and propose scoped changes without execution, downloads or publishing."
@@ -739,7 +739,7 @@
       "excluded": "Review-only synthetic case; source inspection is not execution or live qualification.",
       "rubric": {
         "freshness": "State B is the latest locally available reviewed candidate, with online freshness unverified; do not invent a current release.",
-        "pin": "Retain existing confirmed import and consumer pins for a review-only or blocked check; a reviewed candidate is a separate record.",
+        "pin": "Retain existing confirmed import pins and library revision for a review-only or blocked check; a reviewed candidate is a separate record.",
         "scope": "Compare local source against actual callers and preserve raw material outside Git; no downloads, source execution or automatic replacement."
       }
     },
@@ -1719,8 +1719,8 @@
       ],
       "excluded": "Synthetic explanation/plan only; no execution or downstream integration.",
       "rubric": {
-        "roots": "Select the independent target Git root; the library source and its parent instructions are not target configuration. Preserve target instructions and skills in place.",
-        "scope": "Separate local assistance from upstream adoption. Keep repo/ ignored by the outer library and newly owned local links excluded from the target PR; use actual host precedence."
+        "roots": "Resolve independent nested target Git root and retain its instructions/skills in place.",
+        "scope": "Use outer shared methods with target contribution rules; keep repo/ ignored and add no skill links, locks or setup files to the target. Verify actual host precedence separately."
       }
     },
     {
@@ -1868,7 +1868,7 @@
       "id": "cursor-project-setup",
       "kind": "outcome",
       "split": "development",
-      "prompt": "Plan local skill setup for a Cursor project without writing files. It already has company rules in .cursor/rules and an unrelated company skill in .cursor/skills. A matching shared how skill is already linked in .agents/skills. Keep all existing guidance and model settings. Explain whether duplicate registration is necessary, how to preview the selected paths, and what evidence still needs a running host.",
+      "prompt": "Plan nested workspace setup for Cursor without writing files. The target has .cursor/rules, company skills, and an existing how skill. Preserve guidance and models; explain shared method access and what needs a running host.",
       "expected_skills": [
         "orbyn-setup"
       ],
@@ -1883,10 +1883,10 @@
       ],
       "excluded": "Do not install models or claim discovery from path fixtures.",
       "rubric": {
-        "preservation": "Preserves existing project rules, unrelated skills and models.",
-        "selection": "Recognizes Cursor compatibility with .agents/skills; duplicate native links are optional, not required.",
-        "preflight": "Provides a scoped dry-run or collision preflight for actual selected host paths.",
-        "limits": "Separates file-layout checks from observed running-host discovery."
+        "preservation": "Preserve target rules, skills and models in place.",
+        "selection": "Use shared methods from the outer workspace; do not add target discovery links or assume same-name precedence.",
+        "preflight": "Inspect Git/ignore boundaries and overlapping guidance without target writes.",
+        "limits": "Separate filesystem checks/direct file reads from observed running-host discovery."
       }
     },
     {
@@ -2768,7 +2768,7 @@
       "id": "setup-layout-unresolved",
       "kind": "outcome",
       "split": "development",
-      "prompt": "Set up this local skills library for a new contribution repository. I supplied its repository URL but have not chosen a local workspace layout. You may inspect current paths; do not guess my layout choice.",
+      "prompt": "Plan setup for a new contribution repository with a known URL and no requested filesystem layout. The library uses nested-only workspaces. Explain the procedure; do not clone or write files.",
       "expected_skills": [
         "orbyn-setup"
       ],
@@ -2783,8 +2783,8 @@
       ],
       "excluded": "Local setup choice or explicitly selected contribution scope only; no real network clone, consumer sync, model/provider change or implicit external effects in this assessment.",
       "rubric": {
-        "choice": "Asks once between nested recommended/default and existing project in place, using known paths. Does not treat a preselected option or silence as an answer.",
-        "preservation": "Waits before layout-dependent writes/cloning/registration, continues safe inspection, and preserves existing checkouts and target instructions."
+        "choice": "Select nested library/repo/project directly; do not ask between in-place and nested installation.",
+        "preservation": "Inspect destination, existing checkout work and active owners; no target instruction/skill writes or implicit relocation."
       }
     },
     {
@@ -2806,8 +2806,8 @@
       ],
       "excluded": "Local setup choice or explicitly selected contribution scope only; no real network clone, consumer sync, model/provider change or implicit external effects in this assessment.",
       "rubric": {
-        "default": "Recognizes delegated default as nested library/repo/project with sibling repo/project-wt/purpose and does not ask the layout question again.",
-        "execution": "Resolves target identity and authority, reads target instructions, uses the exact chosen checkout for applicable installer steps, and never invents --layout or changes models."
+        "default": "Select library/repo/project with sibling repo/project-wt/purpose without another layout question.",
+        "execution": "Read target instructions, prepare/check boundaries and preserve host settings; no target installer or invented flags."
       }
     },
     {
@@ -2829,15 +2829,15 @@
       ],
       "excluded": "Local setup choice or explicitly selected contribution scope only; no real network clone, consumer sync, model/provider change or implicit external effects in this assessment.",
       "rubric": {
-        "choice": "Treats the explicit existing destination as the in-place choice, without re-asking or enforcing the nested recommendation.",
-        "ownership": "Preserves project guidance, local skills/data/output and established worktree layout; does not move/duplicate the checkout or install models."
+        "choice": "Explain nested-only support without moving the explicitly protected external checkout or silently installing there.",
+        "ownership": "Preserve its dirty work/skills/output and report migration pending explicit relocation authority and owner release; continue safe inspection."
       }
     },
     {
       "id": "setup-layout-continuation",
       "kind": "outcome",
       "split": "development",
-      "prompt": "Check and repair discovery links in the nested project we already set up. Retain the selected checkout and all current project instructions; this is a continuation, not a new workspace.",
+      "prompt": "Inspect the nested project we already selected. Its existing upstream skills and instructions must remain intact. Check shared guidance access without copying or linking skills into it.",
       "expected_skills": [
         "orbyn-setup"
       ],
@@ -2852,8 +2852,8 @@
       ],
       "excluded": "Local setup choice or explicitly selected contribution scope only; no real network clone, consumer sync, model/provider change or implicit external effects in this assessment.",
       "rubric": {
-        "continuation": "Uses the existing choice and exact checkout rather than repeating onboarding or relocating work.",
-        "limits": "Separates local discovery checks from observed host loading; preserves upstream instructions and does not infer publication/adoption authority."
+        "continuation": "Use the exact nested checkout and inspect outer library discovery without installing into target.",
+        "limits": "Preserve target guidance and distinguish host observation from file-layout checks; no publication/adoption authority."
       }
     },
     {

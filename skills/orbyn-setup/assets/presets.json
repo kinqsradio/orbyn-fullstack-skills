@@ -79,7 +79,7 @@
       ]
     },
     "security": {
-      "description": "Explicit portable source audit, existing findings and CI trust boundaries; never starts a scan on install",
+      "description": "Explicit portable source audit, existing findings and CI trust boundaries; never starts a scan during setup",
       "skills": [
         "orbyn-security-audit",
         "orbyn-security-remediation",

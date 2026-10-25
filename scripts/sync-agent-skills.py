@@ -27,15 +27,12 @@ for entry in entries:
             errors.append(f"Unknown related skill: {entry['name']} -> {dependency}")
     if entry['category'] not in catalog['categories']:
         errors.append(f"Unknown category: {entry['category']}")
-# Shared catalog and consumer-owned skills have separate sources and one host namespace.
-project_tools = runpy.run_path(str(ROOT / 'skills/orbyn-setup/scripts/project_skills.py'))
-local = {}
+# Generate discovery for this library only; target guidance remains untouched.
+project_tools = runpy.run_path(str(ROOT / 'scripts/discovery_links.py'))
 pending = []
 retired_links = {}
 try:
-    local = project_tools['inventory'](ROOT, actual)
     sources = {name: ROOT / 'skills' / name for name in actual}
-    sources.update(local)
     retired = project_tools['retirements'](catalog)
     retired_links = project_tools['plan_retired_links'](ROOT, ROOT, retired, sources, ['.agents', '.claude'])
     if retired_links and not args.write:
@@ -60,10 +57,10 @@ Start with [orbyn-workflow](orbyn-workflow/SKILL.md) and the
 [orbyn-plan](orbyn-plan/SKILL.md) for planning and
 [orbyn-setup](orbyn-setup/SKILL.md) for host configuration.
 
-Shared folders are linked into Codex and Claude Code. Consumer-owned skills live
-separately under `project-skills/<company-or-repo>/<namespaced-skill>/`; follow the
-[ownership guide](orbyn-setup/references/project-skills.md). They are discovered
-by both hosts but excluded from this shared catalog and public sync.
+Library folders are linked into Codex and Claude Code at this workspace root.
+Targets live in ignored `repo/` and retain their own instructions and skills.
+Read their guidance in place under the [ownership guide](orbyn-setup/references/project-skills.md).
+No shared skills are installed or synchronized into target repositories.
 Load only the relevant
 skill body and references. Consumer instructions own roles, stack boundaries and
 model/session policy; use the portable defaults only where guidance is missing.
@@ -97,9 +94,9 @@ if args.write:
     project_tools['write_links'](pending)
     project_tools['remove_retired_links'](retired_links)
     index.write_text(text)
-    print(f'Updated shared index and discovery links: {len(actual)} shared, {len(local)} project skills.')
+    print(f'Updated shared index and discovery links: {len(actual)} library skills.')
 else:
     if not index.exists() or index.read_text() != text:
         print('Skill index is stale; run sync-agent-skills.py --write', file=sys.stderr)
         sys.exit(1)
-    print(f'OK: shared catalog/index and both hosts match {len(actual)} shared + {len(local)} project skills.')
+    print(f'OK: shared catalog/index and both hosts match {len(actual)} library skills.')

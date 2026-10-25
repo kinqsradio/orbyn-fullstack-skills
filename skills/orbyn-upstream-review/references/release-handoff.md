@@ -1,46 +1,24 @@
 # One shared candidate and a complete release handoff
 
-Before editing shared skills, inspect the public `main`, relevant open PR heads
-and bases, consumer lock and owned local diffs. Name the canonical authoring
-candidate and one writer for shared skill files. Reuse that owned candidate for
-related corrections; do not create another parallel copy or PR for each follow-up.
-Company-only material stays in the consumer namespace. A clean checkout does not
-mean it contains pending work from another branch.
+Before shared edits, inspect library main, relevant open PR heads/bases and owned
+local diffs. Select one canonical authoring candidate and serialize shared writes.
+Independent target repositories remain under the ignored nested workspace with
+existing instructions and skills preserved. No consumer copy, lock, installation
+or sync promotion is supported.
 
-If work genuinely needs a stack, record dependency order and exact revisions.
-The child starts from its actual parent candidate, and its PR targets that
-parent until the parent is merged. Do not review the child as an isolated diff
-against old `main`, describe an unmerged candidate as released, or resolve drift
-by overwriting either checkout. Compare changes against the lock's baseline;
-preserve and reconcile both owners' edits when the same managed file changed.
+When a stack is needed, record dependency order and exact revisions. Continue from
+the actual parent candidate and reconcile against the merged parent before review.
+Do not overwrite another owner's local edits or call an open PR released main.
 
-Public-library maintenance and consumer promotion have separate scope. A public
-commit, PR or merge does not authorize importing it into any consumer, updating
-that consumer's pin, messaging its owner or merging its integration. Record an
-explicit hold and leave the consumer at its last approved release. Stage its
-actual merged revision only when that consumer update is authorized. The release
-steps below apply only to the repositories included in the user's instruction;
-otherwise report the library result and held consumer status without advancing it.
+For authorized delivery, review the final diff/checks, merge dependencies in order,
+verify the actual merged full SHA and terminal main CI, then coordinate updating
+the outer library checkout. Preserve dirty work, target checkouts, private settings,
+outputs, active sessions and previews. Library updates do not authorize target
+code changes, external messages, publication, deployment or a REA engine upgrade.
+No target integration PR follows automatically.
 
-For an authorized release, the owning agent completes this handoff:
-
-1. Verify the public candidate and checks, merge prerequisites in dependency
-   order, then retarget/reconcile the next PR against the actual merged parent.
-   Recheck the resulting diff and current head; a squash merge changes commit
-   identity. Never force-rebase someone else's branch to hide the discrepancy.
-2. Verify the intended public change is on `main` and its CI terminal result.
-   Use the actual merged full SHA and manifest for the consumer update, even
-   when an earlier review pin used an unmerged candidate.
-3. Have the consumer owner reconcile its local managed edits, import the exact
-   revision, regenerate discovery and check source/hash/context integrity. Keep
-   unrelated application work, local output and company configuration preserved.
-4. Complete the authorized consumer PR/merge and checks at its actual final
-   revision. Reconcile any downstream CI or product-document PR without losing
-   its owned delta. Report each repo's `main`, lock and remaining open work.
-
-Merge authority remains a user/project decision. When it is absent, leave a
-concrete checked candidate and state that `main` is behind the open PR; do not
-claim synchronization or silently switch new users to an unreleased branch.
-For offline work, report cached refs and unverified remote freshness. Installing
-links from a local working tree exposes that tree's current files; it does not
-freeze a release or make its contents equal to public `main`.
+Report library revision/dirty state and each target's independent work state where
+relevant. Evidence records identify both revisions; cached offline refs and actual
+host discovery limits stay explicit. Keep a concrete checked candidate for review
+when merge authority is absent. Retire obsolete copied installations only under
+separate authorized migration with ownership/preservation checks.

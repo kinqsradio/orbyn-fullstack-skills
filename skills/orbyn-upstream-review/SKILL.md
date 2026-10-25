@@ -27,7 +27,7 @@ Identify the canonical upstream repository, relevant subtree, installed/adapted
 owner and baseline. Inspect manifests, provenance, snapshot records, lockfiles
 and source bytes; do not equate an adaptation's original source revision with
 every later reviewed change. Record separately the source/import pin, latest
-reviewed revision, deployed/installed version and consumer's public-library pin.
+reviewed revision, deployed/installed version and outer workspace library revision.
 They answer different questions.
 
 When online access is available within scope, resolve a full candidate commit
@@ -134,11 +134,11 @@ verifying that source; record a review-only revision separately. Blocked checks
 retain their prior confirmed revision. Structural checks do not prove live model,
 runtime, formal-property or product behavior.
 
-For public-library delivery, merge only when authorized. After the public change
-merges, update only explicitly authorized consumers to its actual merged commit
-and file hashes; leave held consumers pinned to their approved release. A feature
-branch SHA is not the eventual squash SHA. Keep consumer/company context and raw
-research out of export. Recheck CI at the requested final revision.
+For public-library delivery, merge only when authorized and verify actual merged
+main and its terminal checks. Coordinate updating the one outer workspace while
+preserving active target work and local artifacts. There is no target installation
+or consumer pin update. A feature branch is not the eventual squash SHA. Keep
+company context and raw research outside public content.
 
 Return the baseline/candidate identities, local reference location and exclusion
 evidence, material changes and dispositions, applied files or proposed next steps,

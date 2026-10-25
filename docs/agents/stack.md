@@ -30,7 +30,7 @@ rewrite project architecture merely to fit the library.
 
 An optional [project context map](../../skills/orbyn-setup/references/project-context.md)
 points to these owners and existing guides from the consuming checkout. It is
-consumer-owned and excluded from skill synchronization. Read only relevant guides;
+target-owned and excluded from public library content. Read only relevant guides;
 never treat a library clone's stack or design as the consumer's settings.
 
 ## Language-aware implementation and explicit stack selection
