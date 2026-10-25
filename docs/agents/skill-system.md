@@ -60,6 +60,15 @@ boundaries; they do not duplicate the architect or launch extra workflow stages.
 
 ## Keep the system coherent
 
+Upstream contribution requests enter the workflow's
+[intake](../../skills/orbyn-workflow/playbooks/contribution-intake.md), use
+`how`'s [reproduction contract](../../skills/how/references/reproduction.md) for
+defects, and continue through
+[bounded PR iteration](../../skills/orbyn-workflow/playbooks/pr-iteration.md)
+when review/CI work is requested. Target instructions and existing skills stay
+authoritative. These are internal handoffs, not extra invocations for the human.
+The new support documents ship in the managed skills-only distribution.
+
 Social writing and visuals share a brief, not a recursive workflow: `social-content`
 owns the message and evidence; `social-preview` owns composition and rendering.
 `unslop` supplies prose refinement. In-app language and product layout stay with

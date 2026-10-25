@@ -1,6 +1,6 @@
 ---
 name: orbyn-workflow
-description: "Route substantial Orbyn engineering work through evidence-led investigation, design, implementation and verification. Use for Orbyn workflow requests and multi-step changes."
+description: "Route engineering work through investigation, design, implementation and verification, including open-source contribution intake and bounded PR feedback/CI iteration. Follow the consuming project's instructions."
 ---
 
 # Orbyn engineering workflow
@@ -61,6 +61,8 @@ permits. Do not load the whole library or repeat a checklist in every reply.
 | User requests a pause                | [Pause safely](playbooks/pause-safely.md)           |
 | Large migration or staged delivery   | [Multi-phase plan](playbooks/multi-phase-plan.md)   |
 | User requests PR delivery            | [Opening a PR](playbooks/opening-a-pr.md)           |
+| Investigate or contribute upstream   | [Contribution intake](playbooks/contribution-intake.md) |
+| Address PR feedback or check CI      | [Bounded PR iteration](playbooks/pr-iteration.md) |
 
 Use [orbyn-plan](../orbyn-plan/SKILL.md) for explicit plans or a complex change;
 use [orbyn-research](../orbyn-research/SKILL.md) for unresolved external facts and

@@ -1,6 +1,6 @@
 ---
 name: how
-description: "Trace source behavior, data flow, ownership and module boundaries before explaining or changing an unfamiliar subsystem."
+description: "Trace source behavior, data flow, ownership and module boundaries; reproduce and reduce reported defects before explaining or changing an unfamiliar subsystem."
 ---
 
 # How
@@ -35,6 +35,9 @@ user's exact symptom. Pin material inputs, source and timing where practical;
 vary one consequential factor and retain failed attempts. Separate observations
 from hypotheses. If runtime access is unavailable, continue bounded source
 tracing and name the missing check without claiming a reproduction.
+Use the [reproduction and reduction method](references/reproduction.md) to pin
+the environment, confirm real runner selection and choose a behavioral oracle.
+Keep reproduction-only scope distinct from an authorized repair.
 
 ## Operational method
 
