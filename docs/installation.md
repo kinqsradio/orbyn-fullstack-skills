@@ -22,7 +22,7 @@ the human does not need extra skill invocations.
    as a setup side effect. Target policy specializes compatible shared methods.
 5. Run `python3 skills/orbyn-setup/scripts/workspace.py check --target repo/<project>`.
    Inspect target and library status separately. If isolation is needed, use
-   `repo/<project>-wt/<purpose>/` and check the actual selected worktree again.
+   `repo/<project-slug>-wt/<purpose>/` and check the actual selected worktree again.
 6. Verify relevant host discovery when supported, or read required files directly
    and label discovery unobserved. Report exact paths/revisions, checks, preserved
    work and missing capabilities. A host may require a fresh outer-root session;

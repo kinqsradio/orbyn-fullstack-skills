@@ -37,7 +37,7 @@ contribution. Public submission does not itself authorize merge or consumer prom
 
 Use the outer library checkout for engineering policy and task routing. Target
 contributions, including Orbyn, use independent `repo/<project>` clones and sibling
-`repo/<project>-wt/<purpose>` worktrees. Contributors use the same maintained
+`repo/<project-slug>-wt/<purpose>` worktrees. Contributors use the same maintained
 shared methods while respecting the target's own instructions, skills and checks.
 No target installation or pin-sync step is part of onboarding. Library maintenance
 happens in this root or its owned library worktree, outside target commits.

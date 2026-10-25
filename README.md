@@ -88,7 +88,7 @@ orbyn-fullstack-skills/
   AGENTS.md, skills/             shared engineering guidance
   repo/                         ignored by the public library
     Orbyn/                      target source and project guides
-    Orbyn-wt/
+    orbyn-wt/
       save-retry/               target worktree
     another-project/            retains its own AGENTS.md and skills
 ```
@@ -110,7 +110,7 @@ filesystem checks. Nesting does not override target rules or host permissions.
 Python 3.11+ and Git support the local checks. A local model can use the same
 files offline; setup does not install a provider, subscription or runtime. Optional
 reading groups select relevant methods without copying files. For isolated work,
-use sibling `repo/<project>-wt/<purpose>/` under the
+use sibling `repo/<project-slug>-wt/<purpose>/` under the
 [worktree policy](skills/orbyn-worktree/SKILL.md).
 
 Downloaded upstream research stays in ignored `orbyn-references/` or `openSrc/`.
@@ -260,7 +260,7 @@ publication under the [fork policy](skills/orbyn-worktree/SKILL.md).
 
 ## Contribution workspaces
 
-Use only ignored `repo/<project>/` and sibling `repo/<project>-wt/<purpose>/`
+Use only ignored `repo/<project>/` and sibling `repo/<project-slug>-wt/<purpose>/`
 paths for targets. The agent completes setup without an installation-layout
 question. Preserve existing external paths until a coordinated migration is
 safe and authorized. Nested targets keep independent Git histories and their own

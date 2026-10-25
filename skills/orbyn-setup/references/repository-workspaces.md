@@ -54,7 +54,7 @@ research downloads, outputs or company instructions into the public library.
 A folder is not access control: follow the target's visibility and redistribution
 rules before cloning or publication.
 
-Use sibling `repo/<project>-wt/<purpose>/` worktrees with neutral purpose branches.
+Use sibling `repo/<project-slug>-wt/<purpose>/` worktrees with neutral purpose branches.
 Keep branches local until delivery is authorized; reuse approved contribution
 storage under [worktree policy](../../orbyn-worktree/SKILL.md). Assign independent
 ports, databases, processes and artifact directories as needed. Target CI builds

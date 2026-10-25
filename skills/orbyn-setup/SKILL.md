@@ -69,7 +69,7 @@ and report unavailable capabilities; use permitted direct work rather than silen
 substituting models or creating recursive sessions.
 
 For isolation, use [orbyn-worktree](../orbyn-worktree/SKILL.md) and sibling
-`repo/<project>-wt/<purpose>/`. New work starts from the verified default branch;
+`repo/<project-slug>-wt/<purpose>/`. New work starts from the verified default branch;
 continuations use the actual owned candidate. Assign ports, databases and output
 separately; Git isolation does not isolate runtime resources.
 
