@@ -28,7 +28,7 @@ class RepositoryWorkspaceTests(unittest.TestCase):
         self.commit(self.root)
 
     def git(self, root, *args):
-        return subprocess.check_output(['git','-C',str(root),*args], text=True,
+        return subprocess.check_output(['git','-c','gc.auto=0','-c','maintenance.auto=false','-C',str(root),*args], text=True,
                                        stderr=subprocess.PIPE).strip()
 
     def commit(self, root):
