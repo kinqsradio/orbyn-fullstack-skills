@@ -31,6 +31,13 @@ not execute its helpers. Offline `check` alone is a local drift check.
 
 ## Work in the consumer, contribute upstream
 
+For a lesson noticed during ordinary work, use the
+[contribution feedback policy](../skills/orbyn-skill-creator/references/contribution-feedback.md):
+prepare a general local proposal and obtain scoped public-submission authority
+before export/publication. A company-only adaptation stays local. Preserve
+existing exact-scope permission and the consumer's actual sync restrictions;
+declining an upstream proposal does not justify rewriting its lock or hiding drift.
+
 1. Make the skill change in the consumer. Keep private policy/feature details
    outside shared skill files; use synthetic public examples.
 2. Update a clean public clone and create a contribution branch there. The clone
@@ -51,7 +58,8 @@ whether a sentence contains private information.
 
 4. Regenerate the index/host links and manifest, run the contribution checks,
    commit, push your branch and open the public PR using the template.
-5. After merge, check out the merged upstream revision. If the consumer already
+5. When consumer promotion is separately authorized after merge, check out the
+   merged upstream revision. If the consumer already
    matches it, `pin` records that revision. Otherwise reconcile local edits first
    and use `pull` from the clean upstream checkout:
 

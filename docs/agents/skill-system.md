@@ -15,6 +15,7 @@ routes complex work to the standard tier and bounded work to the light tier in
 | ----------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------- |
 | Clear bounded implementation        | `orbyn-workflow`                           | Small clear edit → direct change; substantial work → delegate → lead review and authorized evidence |
 | Prompt refinement or requested plan | `orbyn-plan`                               | Outcome + stack + findings → ordered executable plan                                                |
+| Demonstrated reusable skill gap | `reflect` → `orbyn-skill-creator` | Concrete general proposal → optional scoped user consent → checked contribution; company-only lessons stay local |
 | Unknown current behavior            | `how`                                      | Owning files → mechanism and evidence                                                               |
 | Historical reason                   | `why`                                      | Relevant Git/source history → constraints, with uncertainty                                         |
 | External/version uncertainty        | `orbyn-research`                           | Specific question → cited finding for the planner/designer                                          |

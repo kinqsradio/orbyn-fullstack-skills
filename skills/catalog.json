@@ -229,7 +229,8 @@
         "orbyn-upstream-review",
         "language-best-practices",
         "orbyn-stack-selection",
-        "tdd"
+        "tdd",
+        "reflect"
       ]
     },
     {

@@ -37,6 +37,15 @@ backup location and limitations. Do not send the human a chain of skill names or
 commands to execute. Preserve ambiguous foreign material and continue independent
 work; never infer permission for model/provider changes or public export.
 
+## Offer reusable improvements with consent
+
+When current work demonstrates a meaningful shared-skill gap, follow the
+[contribution feedback policy](skills/orbyn-skill-creator/references/contribution-feedback.md).
+Prepare a concrete general proposal and ask once whether the user wants a public
+PR, local draft or no contribution. Honor existing exact-scope authority; silence
+does not authorize publication. Preserve the main task, company-only material and
+local work. No telemetry, persistent memory or automatic self-publication is implied.
+
 Keep one canonical skill folder in `skills/`, catalog relationships in
 `skills/catalog.json`, and generated discovery links for both hosts. Read
 [skill maintenance](skills/orbyn-skill-creator/SKILL.md) for changes. Do not

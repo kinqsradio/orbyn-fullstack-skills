@@ -172,6 +172,17 @@ shared content can be edited while working in a private consumer, exported throu
 an explicit skill-only allowlist, reviewed here, and pinned back into the consumer.
 No private history, application source or project configuration is exported.
 
+When current work reveals a demonstrated reusable gap, the agent can prepare a
+concrete proposal and ask once whether you want a **public PR**, **a local patch
+to review first**, or **keep it local**. No special reflection invocation or
+manual PR drafting is needed. The
+[feedback policy](skills/orbyn-skill-creator/references/contribution-feedback.md)
+keeps your main task moving, respects declines and existing specific permission,
+and keeps company-only material local. Public improvements use synthetic examples
+and preserve applicable credits. This is optional contribution, not telemetry
+or automatic cross-user learning; silence does not upload anything, and a public
+merge does not automatically repin your project.
+
 ## Examples and evaluations
 
 Start with the worked examples for [architecture](skills/architect/examples/proposal-approval.md),

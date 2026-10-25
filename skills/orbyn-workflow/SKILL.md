@@ -157,6 +157,12 @@ Do not create sessions recursively or turn design comparison into a model panel.
 
 ## Review, verify and deliver
 
+If the current task demonstrates a meaningful general skill gap, follow the
+[optional contribution feedback](../orbyn-skill-creator/references/contribution-feedback.md):
+prepare a concrete proposal, then offer it once without blocking the user's task.
+Keep company-only material local. No automatic publication, self-edit, telemetry
+or cross-user learning follows; exact existing contribution authority still applies.
+
 For substantial work, the lead must inspect the actual returned artifacts and
 diff against the intended contract, including affected callers, authority,
 failure/recovery and unrelated changes. A delegate's summary is evidence to
