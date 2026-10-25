@@ -2246,7 +2246,7 @@
       "id": "contribution-reproduction-only",
       "kind": "outcome",
       "split": "development",
-      "prompt": "Synthetic assessment only: The request is only to reproduce duplicate callbacks. The available report pins revision A, a synthetic fixture, development mode and one observed double callback; a production rerun is excluded. Explain the next evidence steps without running or editing anything. Read relevant local guidance, but do not run target commands, edit files or send anything; return your assessment.",
+      "prompt": "Synthetic assessment only: The request is only to reproduce duplicate callbacks. The supplied target contract requires exactly one callback per trigger for a single registration. The available report pins revision A, a synthetic fixture, development mode and one observed double callback; a production rerun is excluded. Explain the next evidence steps without running or editing anything. Read relevant local guidance, but do not run target commands, edit files or send anything; return your assessment.",
       "expected_skills": [
         "how"
       ],
