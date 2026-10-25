@@ -22,6 +22,26 @@ Confirm PR creation is part of the requested delivery. Inspect the exact owned d
 
 Use the parent [workflow](../SKILL.md) and repository scope.
 
+## Commit and push gate
+
+Verification, staging, commit, push and PR/CI actions are dependent steps. Stop
+dependent actions when a prerequisite fails. Use checked return codes or `&&`
+for a shell sequence; separators such as `;` can push the old HEAD after a failed
+commit and return the later command's success. A final zero exit code does not
+establish that the earlier commit succeeded.
+
+Before pushing, verify the successful owned commit, its tree/diff and actual
+HEAD against the validated source/tests. Preserve unrelated index/worktree data;
+never use broad staging or commit unrelated files to obtain a clean status.
+After pushing, verify the remote ref matches that intended commit before opening
+the PR or accepting CI evidence. A pushed baseline is not a delivered fix.
+
+A transient hook or transport failure needs an identified cause and bounded
+permitted retry. Do not skip hooks, change the Git index/metadata location,
+disable controls or use an alternate execution path to bypass a host denial.
+Preserve the local patch and report the exact blocked dependency when the
+required operation remains unavailable.
+
 For an upstream contribution, start with [intake](contribution-intake.md) to check
 the target instructions, issue overlap and reproduction. Once a PR exists, use
 [bounded iteration](pr-iteration.md) for feedback, current-head checks and honest

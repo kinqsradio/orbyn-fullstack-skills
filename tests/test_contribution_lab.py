@@ -2,12 +2,14 @@
 import hashlib
 import json
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 
-from test_tools import ROOT, module
+from test_tools import ROOT, module, sync
 
 lab = module('contribution_lab', ROOT/'skills/orbyn-skill-creator/scripts/contribution_lab.py')
 
@@ -58,6 +60,17 @@ bus.subscribe('news', 'a', first)
 dispose_second = bus.subscribe('news', 'b', lambda value: seen.append('second'))
 bus.emit('news', 1)
 assert seen == ['first', 'second'], 'emit owns its starting snapshot'
+# Review-phase composition
+bus = EventBus(); seen = []
+def replacing_first(value):
+    seen.append(('first', value))
+    if value == 1:
+        bus.subscribe('news', 'b', lambda v: seen.append(('new', v)))
+        dispose_old_b()
+bus.subscribe('news', 'a', replacing_first)
+dispose_old_b = bus.subscribe('news', 'b', lambda v: seen.append(('old', v)))
+bus.emit('news', 1); bus.emit('news', 2)
+assert seen == [('first', 1), ('old', 1), ('first', 2), ('new', 2)], 'nested replacement must preserve snapshot and new ownership'
 '''
 
 
@@ -145,6 +158,56 @@ class ContributionLabTests(unittest.TestCase):
             self.assertEqual(hashlib.sha256((self.checkout/relative).read_bytes()).hexdigest(), digest)
         with self.assertRaisesRegex(ValueError, 'single-use'):
             lab.inject_reviews(self.root)
+
+    def test_managed_distribution_can_create_lab_without_library_root_docs(self):
+        package = self.root.parent/'package'
+        sync.copy_changes(ROOT, package, sync.manifest(ROOT))
+        self.assertFalse((package/'docs').exists())
+        self.assertFalse((package/'tools').exists())
+        packaged = module('packaged_contribution_lab',
+                          package/'skills/orbyn-skill-creator/scripts/contribution_lab.py')
+        created = packaged.create(self.root.parent/'packaged-trial')
+        target = Path(created['checkout'])
+        self.assertTrue((target/'tools/forge.py').is_file())
+        self.assertTrue((target/'.claude/skills/widget-contracts/SKILL.md').is_file())
+
+    def test_incomplete_or_symlinked_assets_fail_before_destination_writes(self):
+        assets = self.root.parent/'assets'
+        shutil.copytree(lab.ASSETS, assets)
+        missing = assets/'src/event_bus.py'
+        content = missing.read_bytes()
+        missing.unlink()
+        target = self.root.parent/'refused-trial'
+        with mock.patch.object(lab, 'ASSETS', assets):
+            with self.assertRaisesRegex(ValueError, 'Incomplete'):
+                lab.create(target)
+            self.assertFalse(target.exists())
+            outside = self.root.parent/'outside.py'
+            outside.write_bytes(content)
+            missing.symlink_to(outside)
+            with self.assertRaisesRegex(ValueError, 'symlinks'):
+                lab.create(target)
+            self.assertFalse(target.exists())
+
+    def test_primary_layout_and_transient_commit_failure_use_real_git(self):
+        created = lab.create(self.root.parent/'primary-trial', layout='primary',
+                             transient_commit_failure=True)
+        checkout = Path(created['checkout'])
+        self.assertTrue((checkout/'.git').is_dir())
+        self.assertEqual(lab.git(checkout, 'branch', '--show-current'), 'fix/duplicate-delivery')
+        (checkout/'src/event_bus.py').write_text(GOOD)
+        lab.git(checkout, 'add', 'src/event_bus.py')
+        first = subprocess.run(['git', '-C', str(checkout), 'commit', '-m', 'Owned fix'],
+                               capture_output=True, text=True)
+        self.assertNotEqual(first.returncode, 0)
+        self.assertIn('no commit was written', first.stderr)
+        self.assertEqual(lab.git(checkout, 'rev-parse', 'HEAD'), created['base'])
+        self.assertEqual(lab.git(checkout, 'ls-remote', 'origin', 'refs/heads/fix/duplicate-delivery'), '')
+        lab.git(checkout, 'commit', '-q', '-m', 'Owned fix')
+        lab.git(checkout, 'push', '-q', 'origin', 'HEAD')
+        head = lab.git(checkout, 'rev-parse', 'HEAD')
+        self.assertTrue(lab.git(checkout, 'ls-remote', 'origin', 'refs/heads/fix/duplicate-delivery').startswith(head))
+        self.assertNotEqual(head, created['base'])
 
 
 if __name__ == '__main__':
