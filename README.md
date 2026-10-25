@@ -190,6 +190,13 @@ failures are retained in the report and full captures stay in ignored local outp
 These are single-run development results with unblinded lead grading, not
 independent qualification.
 
+The [25 October contribution assessments](docs/evaluations/2026-10-25-contribution.md)
+record 12 passing outcomes and one underspecified, unverified case in each
+condition. Expected-owner body reads were 9/13 at baseline and 13/13 with the
+new workflow. A separate clarified-case pair passed 1/1 in both conditions.
+These observations support connected routing, not an outcome-quality gain or
+end-to-end contribution qualification.
+
 For substantive continuation, the optional [handoff contract](skills/orbyn-workflow/references/handoffs.md)
 records scope, candidate, ownership, observed checks and next action. Its offline
 checker rejects stale revisions and inconsistent completion claims; receiving
