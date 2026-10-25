@@ -6,10 +6,10 @@ Start with [orbyn-workflow](orbyn-workflow/SKILL.md) and the
 [orbyn-plan](orbyn-plan/SKILL.md) for planning and
 [orbyn-setup](orbyn-setup/SKILL.md) for host configuration.
 
-Shared folders are linked into Codex and Claude Code. Consumer-owned skills live
-separately under `project-skills/<company-or-repo>/<namespaced-skill>/`; follow the
-[ownership guide](orbyn-setup/references/project-skills.md). They are discovered
-by both hosts but excluded from this shared catalog and public sync.
+Library folders are linked into Codex and Claude Code at this workspace root.
+Targets live in ignored `repo/` and retain their own instructions and skills.
+Read their guidance in place under the [ownership guide](orbyn-setup/references/project-skills.md).
+No shared skills are installed or synchronized into target repositories.
 Load only the relevant
 skill body and references. Consumer instructions own roles, stack boundaries and
 model/session policy; use the portable defaults only where guidance is missing.
@@ -22,7 +22,7 @@ This index is generated in the full library from `catalog.json` and frontmatter 
 - [figure-it-out](figure-it-out/SKILL.md) — Plan and execute an authorized large migration or cross-cutting task with measurable completion criteria and a concise evidence trail.
 - [orbyn-plan](orbyn-plan/SKILL.md) — Refine an engineering request or scope and sequence a change, migration or investigation. Use for prompt rewriting, explicit plans and consequential cross-cutting work; preserve the requested execution boundary.
 - [orbyn-research](orbyn-research/SKILL.md) — Resolve a specific architectural, dependency, platform or design uncertainty using local evidence and authoritative external sources before choosing an implementation.
-- [orbyn-setup](orbyn-setup/SKILL.md) — Set up Orbyn skills in an existing project for Codex, Claude Code or Cursor; preserve target guidance and migrate explicitly owned company skills. Model/role configuration requires separate scope and host support.
+- [orbyn-setup](orbyn-setup/SKILL.md) — Prepare the nested Orbyn Engineering workspace, inspect target instructions and skills in place, and verify isolation without installing shared skills into target repositories.
 - [orbyn-skill-creator](orbyn-skill-creator/SKILL.md) — Create, refine, merge or retire Orbyn repository skills while keeping task routing, technology boundaries, host discovery and documentation consistent.
 - [orbyn-upstream-review](orbyn-upstream-review/SKILL.md) — Review freshness and changes in external skills, source code or research references; keep downloads in ignored orbyn-references, compare pinned revisions and selectively adapt existing owners.
 - [orbyn-workflow](orbyn-workflow/SKILL.md) — Route engineering work through investigation, design, implementation and verification, including open-source contribution intake and bounded PR feedback/CI iteration. Follow the consuming project's instructions.

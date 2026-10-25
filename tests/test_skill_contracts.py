@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from unittest import mock
 
-from test_tools import ROOT, module, installer
+from test_tools import ROOT, module
 
 contracts = module('skill_contracts', ROOT/'scripts/skill_contracts.py')
 
@@ -40,33 +40,7 @@ class SkillContractTests(unittest.TestCase):
         self.assertTrue(any('fragment' in e for e in errors))
         self.assertTrue(any('escaping' in e for e in errors))
 
-    def test_installed_all_skills_exposes_only_canonical_entrypoints_for_both_hosts(self):
-        names = {entry['name'] for entry in json.loads((ROOT/'skills/catalog.json').read_text())['skills']}
-        installer.install(self.root, 'both', all_skills=True)
-        for host in ['.agents', '.claude']:
-            discovered = []
-            # Host links point to canonical folders; recursively inspect each target.
-            for link in (self.root/host/'skills').iterdir():
-                discovered.extend(p for p in link.resolve().rglob('SKILL.md'))
-            self.assertEqual(len(discovered), len(names))
-            self.assertEqual({p.parent.name for p in discovered}, names)
-            self.assertNotIn('marketingskills-social', {p.parent.name for p in discovered})
-            self.assertNotIn('anthropic-canvas-design', {p.parent.name for p in discovered})
 
-    def test_installer_refuses_nested_source_before_writing_project(self):
-        (self.root/'skills/catalog.json').write_text((ROOT/'skills/catalog.json').read_text())
-        base = self.root/'skills/how'
-        base.mkdir()
-        (base/'SKILL.md').write_text('Canonical entrypoint')
-        nested = base/'references/SKILL.md'
-        nested.parent.mkdir()
-        nested.write_text('Unexpected active source')
-        project = self.root/'consumer'
-        project.mkdir()
-        with mock.patch.object(installer, 'ROOT', self.root):
-            with self.assertRaisesRegex(ValueError, 'Nested active entrypoints'):
-                installer.install(project, 'both', ['how'])
-        self.assertEqual(list(project.iterdir()), [])
 
     def test_source_checker_rejects_discoverable_filename_even_with_valid_hash(self):
         import shutil
@@ -94,7 +68,7 @@ class SkillContractTests(unittest.TestCase):
         audit.write_text(row+row)
         self.assertTrue(contracts.check_audit(self.root, {'example'}))
 
-    def test_release_handoff_survives_vendoring_without_public_root_docs(self):
+    def test_release_handoff_has_local_reference_closure(self):
         import re
         import shutil
         consumer = self.root/'consumer'

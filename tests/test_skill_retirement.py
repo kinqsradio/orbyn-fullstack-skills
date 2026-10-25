@@ -10,9 +10,9 @@ import tempfile
 import unittest
 from unittest import mock
 
-from test_tools import ROOT, installer, module
+from test_tools import ROOT, selection, module
 
-local = module('retirement_tools', ROOT/'skills/orbyn-setup/scripts/project_skills.py')
+local = module('retirement_tools', ROOT/'scripts/discovery_links.py')
 OLD = 'typescript-best-practices'
 NEW = 'language-best-practices'
 
@@ -31,79 +31,19 @@ class SkillRetirementTests(unittest.TestCase):
             link.symlink_to(os.path.relpath(ROOT/'skills'/OLD,link.parent))
 
     def test_old_explicit_selection_maps_to_one_owner(self):
-        self.assertEqual(installer.selection([OLD]),{NEW})
-        self.assertNotIn(OLD,installer.selection(all_skills=True))
+        self.assertEqual(selection.selection([OLD]),{NEW})
+        self.assertNotIn(OLD,selection.selection(all_skills=True))
 
-    def test_all_principle_selections_upgrade_both_hosts_to_unique_owners(self):
-        catalog = json.loads((ROOT/'skills/catalog.json').read_text())
-        retired = {old: owner for old, owner in catalog['retired_skills'].items()
-                   if old.startswith('principle-')}
-        for host in ['.agents', '.claude']:
-            base = self.root/host/'skills'
-            base.mkdir(parents=True)
-            for old in retired:
-                (base/old).symlink_to(os.path.relpath(ROOT/'skills'/old, base))
-        self.assertEqual(installer.selection(list(retired)), set(retired.values()))
-        installer.install(self.root, 'both', list(retired), dry_run=True)
-        self.assertTrue((self.root/'.agents/skills'/next(iter(retired))).is_symlink())
-        installer.install(self.root, 'both', list(retired))
-        for host in ['.agents', '.claude']:
-            base = self.root/host/'skills'
-            self.assertEqual({p.name for p in base.iterdir()}, set(retired.values()))
-            for owner in retired.values():
-                self.assertTrue((base/owner/'SKILL.md').is_file())
-        self.assertEqual(installer.install(self.root, 'both', list(retired)), 0)
-        self.assertEqual((self.root/'AGENTS.md').read_text(), 'Existing company policy')
 
-    def test_dry_run_then_both_host_upgrade_is_idempotent_and_keeps_policy(self):
-        self.old_links()
-        installer.install(self.root,'both',[OLD],dry_run=True)
-        self.assertTrue((self.root/'.agents/skills'/OLD).is_symlink())
-        self.assertFalse((self.root/'.agents/skills'/NEW).exists())
-        self.assertEqual(installer.install(self.root,'both',[OLD]),2)
-        for host in ['.agents','.claude']:
-            self.assertFalse((self.root/host/'skills'/OLD).is_symlink())
-            self.assertTrue((self.root/host/'skills'/NEW/'references/typescript.md').is_file())
-        self.assertEqual(installer.install(self.root,'both',[OLD]),0)
-        self.assertEqual((self.root/'AGENTS.md').read_text(),'Existing company policy')
 
-    def test_foreign_old_directory_and_symlink_are_preserved(self):
-        foreign=self.root/'company-source'
-        foreign.mkdir()
-        marker=foreign/'SKILL.md';marker.write_text('Company-owned TypeScript rules')
-        first=self.root/'.agents/skills'/OLD;first.parent.mkdir(parents=True)
-        first.symlink_to(foreign)
-        second=self.root/'.claude/skills'/OLD;second.mkdir(parents=True)
-        (second/'SKILL.md').write_text('Foreign installed guidance')
-        installer.install(self.root,'both',[NEW])
-        self.assertEqual(marker.read_text(),'Company-owned TypeScript rules')
-        self.assertTrue(first.is_symlink())
-        self.assertEqual((second/'SKILL.md').read_text(),'Foreign installed guidance')
 
-    def test_conflicting_replacement_preflights_before_any_retirement(self):
-        self.old_links()
-        conflict=self.root/'.claude/skills'/NEW
-        conflict.mkdir();(conflict/'SKILL.md').write_text('Foreign replacement')
-        with self.assertRaisesRegex(ValueError,'Conflicting'):
-            installer.install(self.root,'both',[NEW])
-        for host in ['.agents','.claude']:
-            self.assertTrue((self.root/host/'skills'/OLD).is_symlink())
-        self.assertFalse((self.root/'.agents/skills'/NEW).exists())
-        self.assertEqual((conflict/'SKILL.md').read_text(),'Foreign replacement')
 
-    def test_unrelated_or_single_host_selection_respects_scope(self):
-        self.old_links()
-        installer.install(self.root,'both',['how'])
-        for host in ['.agents','.claude']:self.assertTrue((self.root/host/'skills'/OLD).is_symlink())
-        installer.install(self.root,'codex',[NEW])
-        self.assertFalse((self.root/'.agents/skills'/OLD).is_symlink())
-        self.assertTrue((self.root/'.claude/skills'/OLD).is_symlink())
 
-    def test_vendored_generator_retires_known_links_and_refuses_foreign_entries(self):
+    def test_library_generator_retires_known_links_and_refuses_foreign_entries(self):
         (self.root/'scripts').mkdir()
         shutil.copy2(ROOT/'scripts/sync-agent-skills.py',self.root/'scripts/sync-agent-skills.py')
-        setup=self.root/'skills/orbyn-setup/scripts';setup.mkdir(parents=True)
-        shutil.copy2(ROOT/'skills/orbyn-setup/scripts/project_skills.py',setup/'project_skills.py')
+        setup=self.root/'skills/orbyn-setup';setup.mkdir(parents=True)
+        shutil.copy2(ROOT/'scripts/discovery_links.py',self.root/'scripts/discovery_links.py')
         for name in ['orbyn-setup',NEW]:
             base=self.root/'skills'/name;base.mkdir(exist_ok=True)
             (base/'SKILL.md').write_text(f'---\nname: {name}\ndescription: Synthetic current owner\n---\n')
@@ -143,8 +83,8 @@ class SkillRetirementTests(unittest.TestCase):
     def test_generator_keeps_retired_links_when_replacement_creation_fails(self):
         scripts = self.root/'scripts'; scripts.mkdir()
         shutil.copy2(ROOT/'scripts/sync-agent-skills.py', scripts/'sync-agent-skills.py')
-        helper = self.root/'skills/orbyn-setup/scripts'; helper.mkdir(parents=True)
-        shutil.copy2(ROOT/'skills/orbyn-setup/scripts/project_skills.py', helper/'project_skills.py')
+        helper = self.root/'skills/orbyn-setup'; helper.mkdir(parents=True)
+        shutil.copy2(ROOT/'scripts/discovery_links.py', scripts/'discovery_links.py')
         for name in ['orbyn-setup', NEW]:
             base = self.root/'skills'/name; base.mkdir(exist_ok=True)
             (base/'SKILL.md').write_text(f'---\nname: {name}\ndescription: Synthetic owner\n---\n')

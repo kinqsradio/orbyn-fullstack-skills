@@ -62,84 +62,68 @@ explains the handoffs. [The catalog](skills/README.md) lists every skill.
 Twenty engineering principles are now conditional methods under their execution
 owners, with essential rules in those owners' entrypoints. They retain their
 examples and licenses without adding discovery choices. The default core preset
-remains 14 skills; see the [consolidation record](docs/work/skill-consolidation.md). Five REA-related skills are optional specialists for artifact
+is a 14-skill reading group; see the [consolidation record](docs/work/skill-consolidation.md). Five REA-related skills are optional specialists for artifact
 investigation and REA maintenance, with local methods, recovery/evidence guidance
 and [worked examples](skills/reverse-engineer-anything/references/worked-examples.md).
 They do not install reverse-engineering tools or upgrade the pinned engine.
 
-## Clone, then ask your agent to set it up
+## Clone the engineering workspace, then ask your agent
 
 ```sh
 git clone https://github.com/kinqsradio/orbyn-fullstack-skills.git
 ```
 
-Open the library or your project in Codex, Claude Code or another tool-using agent
-and provide the local library path plus the target repository URL or project path.
-For example:
+Open **orbyn-fullstack-skills** as the agent workspace in Codex, Claude Code,
+Cursor or your local tool-using agent. Tell it:
 
-> Set up Orbyn Engineering skills from `/path/to/orbyn-fullstack-skills` for
-> `<target repository>`. Ask which workspace layout I want, with nested as the
-> recommended default, unless I already chose a layout or existing checkout.
-> Read the target's instructions first. Inspect
-> existing skills and docs, preserve company work and settings, choose the relevant
-> skills, migrate clear company-owned skills into a local namespace with a backup,
-> configure discovery and project pointers, and run the setup checks yourself.
-> Keep company content outside public sync. Ask only for a consequential decision
-> you cannot resolve from the project.
+> Set up the nested workspace for `<target repository URL>`. Read our engineering
+> policy and the target's own instructions and skills. Preserve existing work,
+> clone or safely reconcile the target under `repo/`, check the workspace, and
+> complete the setup yourself. Do not install or migrate shared skills into it.
 
-Choose the layout once; the agent completes setup after your answer:
+**Nested is the only supported layout.** Targets have independent Git histories:
 
-| Option | Project and worktree locations | Best fit |
-| --- | --- | --- |
-| **Nested — recommended/default** | `orbyn-fullstack-skills/repo/<project>/` and `repo/<project>-wt/<purpose>/` | New contribution workspaces alongside the library |
-| **Existing project in place** | Your current project path and established sibling worktree root | Active projects or a checkout you want to keep elsewhere |
+```text
+orbyn-fullstack-skills/
+  AGENTS.md, skills/             shared engineering guidance
+  repo/                         ignored by the public library
+    Orbyn/                      target source and project guides
+    Orbyn-wt/
+      save-retry/               target worktree
+    another-project/            retains its own AGENTS.md and skills
+```
 
-Say “use the default” to choose nested. An explicit request such as “set this up
-in my existing `/path/to/my-project`” selects in-place setup without another
-question. The agent waits when the choice is unresolved; a highlighted default
-does not count as your answer. Existing projects and output are preserved rather
-than moved. Layout is separate from the skill preset and host/model settings.
+The agent uses [orbyn-setup](skills/orbyn-setup/SKILL.md), prepares the workspace,
+reads the target's instructions in place and checks both Git roots. You do not
+need to invoke each skill, choose installer flags, namespace company skills or
+maintain consumer pins. There is no target installation or sync process. Existing
+external checkouts require a coordinated migration that preserves active paths,
+private configuration, ignored output and worktrees. Setup never moves them just
+to satisfy the layout. See the [setup guide](docs/installation.md).
 
-The agent reads the clone’s `AGENTS.md` and setup skill, chooses its helpers and
-completes the authorized steps. You do not need to invoke individual skills,
-select flags, create catalogs or move folders by hand. The default core includes
-setup and skill ownership routing. The clone also works with a local model and
-available filesystem/shell tools; no hosted subscription or API key is required
-for static setup checks. Python 3.11+ and Git are tooling prerequisites.
+The outer workspace owns shared skills and host discovery. Target repositories
+own their source, contribution policy, existing instructions and skills. A target's
+Git boundary or host settings may limit automatic discovery: agents must read the
+required local guidance explicitly and distinguish actual host observation from
+filesystem checks. Nesting does not override target rules or host permissions.
 
-Project installation supports Codex, Claude Code and Cursor discovery paths while
-preserving existing target instructions and settings. Host-path checks establish
-file layout; runtime compatibility is reported separately. No model, user-wide
-configuration or provider is installed automatically.
+Python 3.11+ and Git support the local checks. A local model can use the same
+files offline; setup does not install a provider, subscription or runtime. Optional
+reading groups select relevant methods without copying files. For isolated work,
+use sibling `repo/<project>-wt/<purpose>/` under the
+[worktree policy](skills/orbyn-worktree/SKILL.md).
 
-For isolated work, agents use a sibling `<repo>-wt/<purpose>/` checkout under the
-[worktree policy](skills/orbyn-worktree/SKILL.md), preserving active existing work.
-
-Downloaded upstream code and research stay in ignored `orbyn-references/`.
-Agents [review freshness and selectively adapt improvements](skills/orbyn-upstream-review/SKILL.md)
-without committing raw research, replacing company skills or editing plugin caches.
-
-The agent preserves existing docs, instructions, models, connectors and secrets.
-It inventories conflicting skill copies before migration and keeps a recoverable
-backup. It can complete clear owned changes autonomously; unresolved ownership
-or missing permissions remain explicit. Keep the clone at a stable path or ask
-for a reviewed pinned vendor copy for a portable team installation.
+Downloaded upstream research stays in ignored `orbyn-references/` or `openSrc/`.
+Neither target repositories nor raw research enters the library's Git index or
+public content. Agents [review freshness and selectively improve existing owners](skills/orbyn-upstream-review/SKILL.md).
 
 Then describe ordinary work:
 
 ```text
-Trace this save action from the screen to its database effect.
-Implement an authenticated task move API using our existing patterns.
-Plan this stored-format transition; do not run it in production.
+In repo/widget, reproduce this failure using its own contribution rules.
+Implement the fix in repo/widget-wt/save-retry and obtain the required evidence.
 Write a LinkedIn introduction from these feature notes and preview the carousel.
 ```
-
-The workflow selects relevant methods and local company skills. CLI options,
-presets and explicit helper commands are available to the agent and CI in the
-[installation guide](docs/installation.md); they are not extra required human
-invocations. Host discovery can vary and may need a fresh session. Agents can
-read the local `SKILL.md` directly when discovery is unavailable; installing
-instructions does not prove a host loaded them or grant external-action authority.
 
 ## Bring your own stack
 
@@ -148,31 +132,31 @@ those are examples, not prerequisites. The workflow resolves **your** schema,
 transport, persistence, component and operational owners from current source.
 Use the optional [project context map](skills/orbyn-setup/references/project-context.md)
 to point to your existing stack, design, brand and verification guides. The map
-belongs to your project and stays outside skill synchronization. See
+belongs to your project and stays outside the public library. See
 [stack ownership](docs/agents/stack.md). Framework-specific examples do not
 authorize adding that framework to your project.
 
 The optional host model presets describe Orbyn's reference setup, not a required
-model purchase. The installer does not apply them. Use the host/model guidance
+model purchase. Workspace setup does not apply them. Use the host/model guidance
 only when requested and supported by your environment.
 
 ## Use it, adapt it, contribute back
 
 You can use, modify and redistribute the MIT-licensed material with the required
-notices. Company conventions belong in your consuming repository’s
-[project-skills namespace](skills/orbyn-setup/references/project-skills.md),
-separate from the shared library and public sync. The installer supports explicit
-backed-up migration of selected existing host skills and preserves company docs.
-The [offline contract](skills/orbyn-setup/references/offline.md) keeps instructions
+notices. Company conventions and existing skills stay in their target repository's
+[established paths](skills/orbyn-setup/references/project-skills.md), separate
+from the shared library. Read and adapt both guidance sets without moving or
+replacing upstream instructions. The [offline contract](skills/orbyn-setup/references/offline.md) keeps instructions
 and licensed source references available locally. To contribute, fork this repository, create a branch,
 make a focused change, run validation and open a pull request here. New skills
 need a concrete routing gap and a useful input/output contract.
 
 [CONTRIBUTING.md](CONTRIBUTING.md) covers skill changes, provenance and checks.
-[Synchronization](docs/synchronization.md) explains the upstream/consumer model:
-shared content can be edited while working in a private consumer, exported through
-an explicit skill-only allowlist, reviewed here, and pinned back into the consumer.
-No private history, application source or project configuration is exported.
+[Workspace ownership](docs/synchronization.md) explains the single-source model:
+shared methods change in this library, while target code and project policy change
+in their independent nested repository. A public library merge requires no target
+pin update. Report the library revision used for evidence and coordinate updates
+without discarding another session's local work.
 
 When current work reveals a demonstrated reusable gap, the agent can prepare a
 concrete proposal and ask once whether you want a **public PR**, **a local patch
@@ -183,7 +167,7 @@ keeps your main task moving, respects declines and existing specific permission,
 and keeps company-only material local. Public improvements use synthetic examples
 and preserve applicable credits. This is optional contribution, not telemetry
 or automatic cross-user learning; silence does not upload anything, and a public
-merge does not automatically repin your project.
+merge does not authorize changing your target repository.
 
 ## Examples and evaluations
 
@@ -199,8 +183,8 @@ verification and continuation without a second project tracker.
 Routine work relies on its diff, PR and CI. When a long task or handoff needs a
 checkpoint, the agent maintains the minimum useful project-owned record without
 another human invocation. The template includes helpers and synthetic examples;
-actual task logs and raw traces stay outside public skill sync in the consumer's
-approved local output or CI artifacts. Installation creates no logging directory.
+actual task logs and raw traces stay outside public library content in the consumer's
+approved local output or CI artifacts. Workspace setup creates no target logging directory.
 
 The [evaluation toolkit](skills/orbyn-skill-creator/references/evaluations.md)
 contains versioned routing and outcome cases with review rubrics. Prepare
@@ -276,20 +260,19 @@ publication under the [fork policy](skills/orbyn-worktree/SKILL.md).
 
 ## Contribution workspaces
 
-For new contribution workspaces, the recommended/default nested layout uses
-ignored `repo/<project>/` and `repo/<project>-wt/<purpose>/` paths. The agent asks
-once when the layout is unresolved; an existing project can stay in place.
-Nested targets remain independent Git repositories and never enter this library's
-commits or exports. Agents follow each target's own instructions and
-skills, using our methods where compatible. See [nested workspaces](skills/orbyn-setup/references/repository-workspaces.md).
-Public library changes and downstream product adoption remain separate decisions;
-updating this library does not automatically repin a consuming project.
+Use only ignored `repo/<project>/` and sibling `repo/<project>-wt/<purpose>/`
+paths for targets. The agent completes setup without an installation-layout
+question. Preserve existing external paths until a coordinated migration is
+safe and authorized. Nested targets keep independent Git histories and their own
+instructions/skills, outside library commits. Read both sets of guidance under
+the [workspace contract](skills/orbyn-setup/references/repository-workspaces.md).
+The library has one shared skill source; no target installation or repinning follows.
 
 ## Production best practices
 
 The existing owners also cover maintainable modules, polyglot contracts, bounded
 APIs and pagination, retry-safe effects, privacy-aware diagnostics, useful test
 boundaries, async UI recovery and consumer-owned verification recipes. TypeScript
-lives beside the other language guides under language-best-practices; its old
-installer name upgrades to that owner without creating another active skill.
+lives beside the other language guides under language-best-practices; its retired
+reading-group alias resolves to that owner without creating another active skill.
 The agent selects the relevant methods from the task and preserves project policy.

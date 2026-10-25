@@ -19,7 +19,7 @@ def load(name, path):
 
 
 router = load('language_router', GUIDE / 'scripts/language_guides.py')
-installer = load('language_installer', ROOT / 'scripts/install.py')
+
 
 
 class LanguageRoutingTests(unittest.TestCase):
@@ -73,20 +73,6 @@ class LanguageRoutingTests(unittest.TestCase):
         self.assertEqual(result['guides'], [])
         self.assertEqual(len(result['unmatched']), 4)
 
-    def test_additive_install_routes_from_both_hosts(self):
-        with tempfile.TemporaryDirectory() as folder:
-            consumer = Path(folder)
-            policy = consumer / 'AGENTS.md'
-            policy.write_text('Existing company ownership stays here.')
-            installer.install(consumer, 'both', presets=['core'])
-            for host in ('.agents', '.claude'):
-                link = consumer / host / 'skills/language-best-practices'
-                run = subprocess.run([sys.executable, str(link / 'scripts/language_guides.py'), 'service/main.py'],
-                                     check=True, capture_output=True, text=True)
-                reference = json.loads(run.stdout)['guides'][0]['reference']
-                self.assertTrue((link / reference).is_file())
-                self.assertTrue((consumer / host / 'skills/orbyn-stack-selection/SKILL.md').is_file())
-            self.assertEqual(policy.read_text(), 'Existing company ownership stays here.')
 
     def test_duplicate_paths_have_one_owner_entry(self):
         result = router.route(['src/main.rs', 'src/main.rs'])

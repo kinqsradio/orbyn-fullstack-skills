@@ -1,3 +1,9 @@
+> Current setup policy (25 October 2026): nested-only workspaces supersede the
+> installer, company-skill migration and consumer-pin model in the dated audit
+> narrative below. Shared skills stay in the outer library; target guidance stays
+> in place. Installer-specific fixtures were retired and replaced with nested
+> root/ownership/preservation fixtures. Historical trial results remain historical.
+
 # Skill-system audit — current candidate and historical evidence
 
 

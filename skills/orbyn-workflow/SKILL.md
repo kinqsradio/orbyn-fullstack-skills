@@ -8,22 +8,14 @@ description: "Route engineering work through investigation, design, implementati
 Follow the consuming project's instructions and requested scope; use the
 [portable defaults](references/project-policy.md) only where guidance is missing.
 
-Read the consuming checkout's optional `.agents/orbyn-context.json` using the
-[context contract](../orbyn-setup/references/project-context.md). Follow relevant
-pointers to existing guides; root instructions and user scope retain precedence.
-Read relevant consumer-owned skills from `project-skills/` when the task needs
-company/repository conventions. Follow the [ownership boundary](../orbyn-setup/references/project-skills.md)
-when creating, adapting or relocating them; keep them outside public skill sync.
-For work that needs a durable handoff, use the optional
-[task record](references/task-record.md) without duplicating an existing tracker.
-
-For setup without a selected layout, use the setup skill's
-[one-time layout choice](../orbyn-setup/references/repository-workspaces.md):
-nested is recommended/default for new workspaces; preserve existing explicit paths.
-For a target inside the library's ignored `repo/` workspace, resolve that
-repository and follow its [workspace contract](../orbyn-setup/references/repository-workspaces.md).
-Read existing upstream instructions and skills in place; an ordinary contribution
-does not authorize migrating their guidance or publishing local setup additions.
+Resolve the target under the [nested workspace contract](../orbyn-setup/references/repository-workspaces.md).
+Read its own instructions and relevant project skills in place. Existing optional
+[context pointers](../orbyn-setup/references/project-context.md) are read-only hints;
+ordinary source discovery works without a map. Shared methods stay in the outer
+library; no installation, company-skill migration or consumer pin sync is supported.
+For a durable handoff, use the optional [task record](references/task-record.md)
+without duplicating an existing tracker. Setup selects [orbyn-setup](../orbyn-setup/SKILL.md)
+automatically and preserves active external paths until migration is authorized.
 
 Use [local resources first](../orbyn-setup/references/offline.md). External citations
 identify origins; fetch only when current information is required and network
@@ -84,7 +76,7 @@ and trusted automation to [orbyn-ci-design](../orbyn-ci-design/SKILL.md).
 For external code/skill freshness, downloaded research or selective upstream
 updates, use [orbyn-upstream-review](../orbyn-upstream-review/SKILL.md). Keep raw
 references in ignored `orbyn-references/`; adapt the existing owner and preserve
-source/consumer pins separately. Available-source review does not require binary
+source revisions and library releases separately. Available-source review does not require binary
 reverse engineering or automatic installation of new upstream workflows.
 
 For an explicitly requested portable/offline source audit, use

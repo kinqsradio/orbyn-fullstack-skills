@@ -34,7 +34,7 @@ separate authority, not a public issue containing the finding.
 ## Make a concrete, optional offer
 
 Before asking, prepare a concise proposal in the current conversation or approved
-local output, without modifying the consumer's managed skills/pin just to solicit
+local output, without modifying the target's files just to solicit
 consent. Include enough proposed text or a small diff for the user to review:
 
 - Observed problem and the actual evidence, with its limits.
@@ -78,7 +78,7 @@ scope; wait for separate publication authority. For an approved public PR:
 2. Author only the approved general change in a clean contribution checkout,
    using [worktree/privacy policy](../../orbyn-worktree/SKILL.md). Prefer local or
    permitted private preparation. Verify public visibility before publishing;
-   never turn a private consumer clone/history into the public contribution.
+   never turn a private target clone/history into the public contribution.
 3. Follow the creator's authoring/check method: preserve notices, migrate related
    references, add failure-sensitive evaluation coverage and update discovery and
    managed hashes. Inspect the exact allowlisted diff for publication. A hash
@@ -89,8 +89,8 @@ scope; wait for separate publication authority. For an approved public PR:
    and report the blocker. Do not install providers or borrow another account.
 5. Report local/committed/pushed/PR/merged state accurately. Public-PR permission
    does not authorize maintainer merge, deployment, external messages elsewhere
-   or consumer repinning. After acceptance, consumer promotion remains separately
-   scoped; never announce a proposed change as a released improvement.
+   or target changes. After acceptance, updating the outer workspace preserves
+   active work; never announce a proposed change as a released improvement.
 
 ## Worked boundaries
 
@@ -100,7 +100,7 @@ an exact missing-report guard plus a fictional regression; exclude the employer'
 job names, logs and configuration. Publish only if that scoped proposal is approved.
 
 **Company customization:** a private release requires an internal approver and
-named customer exception. Keep it under the consumer's project-skill namespace.
+named customer exception. Keep it under the target's existing skill location.
 Do not offer the confidential policy for public contribution merely because it
 improved this task.
 
@@ -110,4 +110,4 @@ the draft and original work; none of these states is an open public PR.
 
 **Already authorized:** “contribute this generic parser fix publicly to the skills
 repository” covers that reviewed fix. Complete its checks and submission without
-another routine permission question; it still does not approve merging or repinning.
+another routine permission question; it still does not approve merging or target changes.

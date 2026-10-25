@@ -4,10 +4,11 @@ Everyone can use the public library and propose improvements without access to
 the Orbyn product repository. Anh Dang (`@kinqsradio`) is the creator and maintainer;
 outside contributions use the same review and validation path.
 
-Company-specific skills stay in the consuming repository under
-`project-skills/<company-or-repo>/<namespaced-skill>/`; follow the
-[ownership guide](skills/orbyn-setup/references/project-skills.md). Contributing
-a reusable method does not authorize publishing company procedures or assets.
+Company-specific skills stay in their target repository's established paths;
+follow the [ownership guide](skills/orbyn-setup/references/project-skills.md).
+Contributing a reusable method does not authorize publishing company material.
+Use the [nested workspace setup](docs/installation.md) for target contributions;
+the library itself remains the outer engineering workspace.
 Required instructions must work from disk under the
 [offline contract](skills/orbyn-setup/references/offline.md).
 
@@ -31,6 +32,17 @@ or relicense someone else's work on the user's behalf.
 This flow does not add telemetry, persistent memory, mandatory lesson logs or
 automatic uploads. It uses the same checks and maintainer review as any other
 contribution. Public submission does not itself authorize merge or consumer promotion.
+
+## Shared contributor workspace
+
+Use the outer library checkout for engineering policy and task routing. Target
+contributions, including Orbyn, use independent `repo/<project>` clones and sibling
+`repo/<project>-wt/<purpose>` worktrees. Contributors use the same maintained
+shared methods while respecting the target's own instructions, skills and checks.
+No target installation or pin-sync step is part of onboarding. Library maintenance
+happens in this root or its owned library worktree, outside target commits.
+A host that cannot discover both roots must read the relevant files explicitly
+and report the limitation; do not copy shared policy into the target to mask it.
 
 ## Make a contribution
 
@@ -60,7 +72,7 @@ contribution. Public submission does not itself authorize merge or consumer prom
 
 ```sh
 python3 scripts/sync-agent-skills.py --write
-python3 scripts/sync-public-skills.py manifest --write
+python3 scripts/library_manifest.py --write
 python3 scripts/check-library.py
 python3 -m unittest discover -s tests -v
 git diff --check
@@ -72,19 +84,14 @@ with the diff. Do not edit hashes to conceal a mismatched source or missing file
 needs a portable `LICENSE` and provenance entry. Keep substantial optional guidance
 under linked references; do not pad every task with mandatory stages or panels.
 
-## If you made the change in a consuming project
+## Working on a nested target
 
-Follow [synchronization](docs/synchronization.md). Export is a local, explicit
-allowlisted operation into a clean upstream contribution branch. Review the
-result before pushing a public PR. The tool never copies the private repository's
-Git history, root instructions, app source or environment files. A hash manifest
-is not a secret detector: authors still review the actual content before public
-publication.
-
-After the public change merges, update the consumer to that exact revision and
-its file hashes only when consumer promotion is separately authorized. Consumer
-CI catches un-reconciled changes; it does not grant a
-public write token or automatically publish private material.
+Keep target code, project instructions and local evidence in that independent
+repository. Make reusable method improvements in a separate library branch/diff;
+there is no copied-skill export or consumer pin promotion. Review actual content
+for secrets and redistribution rights before public submission. See
+[workspace ownership](docs/synchronization.md). Updating the library must preserve
+other sessions' target work and active artifact paths.
 
 ## Scope and review
 

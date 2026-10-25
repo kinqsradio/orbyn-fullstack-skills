@@ -7,35 +7,24 @@ target checkout and [project context](docs/agents/stack.md) before applying exam
 
 ## Nested contribution repositories
 
-The optional ignored `repo/` workspace holds independent target clones and
+Use only the ignored nested `repo/` workspace for independent target clones and
 sibling worktrees. Follow the [workspace contract](skills/orbyn-setup/references/repository-workspaces.md).
-For new setup without a chosen destination/layout, ask once: nested
-(recommended/default) or an existing project in place. Honor explicit paths and
-delegated default choices; wait for an unresolved answer before dependent writes.
-Preserve existing checkouts rather than moving them to enforce a default.
-Resolve the target's own Git root and read its applicable instructions and skills
-before editing. Library maintenance defaults do not replace target contribution
-rules, stack, tests or agents. Higher-priority host/user instructions still apply;
-do not assume a nested `.git` automatically stops ancestor instruction loading.
-
-Preserve upstream-owned instructions and skills in their established locations.
-Use portable methods where compatible; do not relocate their guidance merely to
-fit our namespace. A target contribution does not itself authorize installing
-skills or changing this library. Keep target source, history, credentials and
-local setup additions outside the public library's index, catalog and exports.
+Open the outer library as the agent workspace and identify the target Git root
+before editing. Read both the relevant shared methods and the target's own
+instructions, contribution rules and skills. Preserve upstream guidance in place;
+shared methods never replace target policy, user scope or host permissions.
+Nesting alone does not prove effective host discovery; read required local files
+explicitly and report what was actually observed.
 
 ## Agent-led initial setup
 
-When the human asks to set up this library in an existing project, read
-[orbyn-setup](skills/orbyn-setup/SKILL.md) and complete the setup yourself. Resolve
-the consuming root from the chosen layout and request; ask for a path when it is
-missing or ambiguous. Read that project's instructions before any writes.
-Inventory skills/docs/config, classify ownership, choose a suitable preset, run
-the helper dry-run, perform authorized backed-up migration/registration, create
-or preserve valid context pointers and run the checks. Return the actual result,
-backup location and limitations. Do not send the human a chain of skill names or
-commands to execute. Preserve ambiguous foreign material and continue independent
-work; never infer permission for model/provider changes or public export.
+For a setup request, use [orbyn-setup](skills/orbyn-setup/SKILL.md). Complete the
+workspace preparation and checks yourself; do not ask the human to choose an
+installation layout or invoke individual helpers. No shared skills are installed,
+copied, linked or synchronized into target repositories. Company skills and
+existing docs/settings stay with their owner. Existing external checkouts require
+coordinated, recoverable migration; do not move active paths or lose local output.
+Never infer authority for model/provider changes, publication or production effects.
 
 ## Offer reusable improvements with consent
 
@@ -50,8 +39,8 @@ Keep one canonical skill folder in `skills/`, catalog relationships in
 `skills/catalog.json`, and generated discovery links for both hosts. Read
 [skill maintenance](skills/orbyn-skill-creator/SKILL.md) for changes. Do not
 load every skill or install runtime providers merely because a skill mentions them.
-Consumer-owned skills belong in that consumer’s `project-skills/` namespace, outside
-the public catalog and sync; follow the [ownership guide](skills/orbyn-setup/references/project-skills.md).
+Target-owned skills remain in their existing target paths, outside
+the public catalog; follow the [ownership guide](skills/orbyn-setup/references/project-skills.md).
 Use [local resources first](skills/orbyn-setup/references/offline.md); external
 citations are attribution/update pointers, and current online facts remain
 unverified when network access is unavailable.
@@ -72,7 +61,7 @@ continue permitted direct work. No recursive agent chains or unrequested chats.
 
 Preserve unrelated changes, user data and configuration. Make public contributions
 from an explicit allowlist; never copy a consumer's history, environment files,
-private instructions or reports. [Synchronization](docs/synchronization.md) defines
+private instructions or reports. [Workspace ownership](docs/synchronization.md) defines
 the boundary. Do not publish, merge, message others or deploy solely because a
 skill describes that step. Existing user authorization still applies.
 

@@ -45,7 +45,7 @@ def main():
         if (skill.parent/'LICENSE').exists():
             require(record.get('copyright', '') in (skill.parent/'LICENSE').read_text(), f'{name}: source copyright missing')
     snapshots = runpy.run_path(str(ROOT/'skills/orbyn-skill-creator/scripts/check_sources.py'))['check'](ROOT)
-    distributed = runpy.run_path(str(ROOT/'scripts/sync-public-skills.py'))['inventory'](ROOT)
+    distributed = runpy.run_path(str(ROOT/'scripts/library_manifest.py'))['inventory'](ROOT)
     errors.extend(check_portable_links(ROOT, distributed, snapshots))
     docs = list(ROOT.glob('*.md')) + list((ROOT/'docs').rglob('*.md')) + list((ROOT/'skills').rglob('*.md')) + list((ROOT/'tools').rglob('*.md'))
     for path in docs:
@@ -57,13 +57,13 @@ def main():
     for script in ['sync-agent-skills.py','sync-agent-models.py']:
         result = subprocess.run([sys.executable, str(ROOT/'scripts'/script), '--check'], capture_output=True, text=True)
         require(result.returncode == 0, result.stderr.strip() or f'{script} failed')
-    result = subprocess.run([sys.executable, str(ROOT/'scripts/sync-public-skills.py'), 'manifest', '--root', str(ROOT)], capture_output=True, text=True)
+    result = subprocess.run([sys.executable, str(ROOT/'scripts/library_manifest.py'), '--root', str(ROOT)], capture_output=True, text=True)
     require(result.returncode == 0, result.stderr.strip() or 'Manifest failed')
-    spec = importlib.util.spec_from_file_location('installer', ROOT/'scripts/install.py')
-    installer = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(installer)
+    spec = importlib.util.spec_from_file_location('reading_groups', ROOT/'scripts/skill_selection.py')
+    groups = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(groups)
     try:
-        installer.selection()  # Validate every preset against the catalog.
+        groups.selection()  # Validate every preset against the catalog.
     except (ValueError, KeyError, TypeError) as error:
         errors.append(f'Invalid presets: {error}')
     result = subprocess.run([sys.executable, str(ROOT/'skills/orbyn-skill-creator/scripts/evaluate.py'), 'validate'], capture_output=True, text=True)

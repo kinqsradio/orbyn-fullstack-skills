@@ -1,189 +1,79 @@
-# Installation and project context
+# Set up the nested engineering workspace
 
-The primary flow is [clone, then ask the agent to set up the target project](../README.md).
-The commands below are the agent/CI execution reference, not required human steps.
-Keep a clone of the complete library at a stable path. Python 3.11+ is needed
-for its helpers. From the library clone:
+Open the complete library checkout as the agent workspace and ask the agent to
+set up the target by URL or existing path. Nested is the only supported setup.
+There is no target installer, copied skill bundle, consumer lock, pin promotion
+or skill synchronization pipeline. The agent completes local steps automatically;
+the human does not need extra skill invocations.
 
-```sh
-python3 scripts/install.py --project /path/to/project --host both
-python3 scripts/install.py --list-presets
-python3 scripts/install.py --project /path/to/project --preset core --preset creator --dry-run
-python3 scripts/install.py --project /path/to/project --preset core --preset creator
-python3 scripts/install.py --project /path/to/project --host codex --skill how --skill architect
-python3 scripts/install.py --project /path/to/project --host cursor --preset core --dry-run
-python3 scripts/install.py --project /path/to/project --host all --preset core
-python3 scripts/install.py --project /path/to/project --all
-```
+## Agent procedure
 
-The installer preflights every destination before writing. Existing canonical
-links are idempotent; a file or link owned by something else is refused. It does
-not replace root instructions, model settings or connectors. The full clone
-keeps cross-skill references, guides, resources and notices available even when
-only some skills are registered for automatic discovery.
+1. Read root policy and [orbyn-setup](../skills/orbyn-setup/SKILL.md). Resolve the
+   requested target and inspect existing local work, worktrees and active owners.
+2. Run `python3 skills/orbyn-setup/scripts/workspace.py prepare` from the library.
+   It validates Git/ignore boundaries and creates only the ignored `repo/` folder.
+3. Clone an authorized new target to `repo/<project>` or coordinate a recoverable
+   migration of an existing external checkout. Never overwrite a destination,
+   move an active owner's path, or lose dirty/ignored work. Existing paths stay
+   preserved until the [retirement procedure](../skills/orbyn-setup/references/repository-workspaces.md#retiring-old-installations)
+   is complete. Offline setup needs locally available source; no implicit download.
+4. Read the target's root/nested instructions, contribution rules, own skills and
+   project manifests. Do not change its instructions or discovery/configuration
+   as a setup side effect. Target policy specializes compatible shared methods.
+5. Run `python3 skills/orbyn-setup/scripts/workspace.py check --target repo/<project>`.
+   Inspect target and library status separately. If isolation is needed, use
+   `repo/<project>-wt/<purpose>/` and check the actual selected worktree again.
+6. Verify relevant host discovery when supported, or read required files directly
+   and label discovery unobserved. Report exact paths/revisions, checks, preserved
+   work and missing capabilities. A host may require a fresh outer-root session;
+   changing user-wide settings or creating another chat needs applicable scope.
 
-`codex` uses `.agents/skills`, `claude` uses `.claude/skills`, and `cursor` uses
-`.cursor/skills`. `both` keeps the original Codex/Claude meaning; `all` explicitly
-selects all three. Cursor also supports `.agents/skills`, so an existing Codex
-installation can already supply those skills; avoid duplicate registration when
-unnecessary. Inspect same-name skills across the host's compatible locations and
-resolve collisions before setup. The installer only reconciles selected paths,
-not undocumented host precedence. See [Cursor's discovery documentation](https://cursor.com/docs/skills).
-Host path fixtures are not runtime/model parity evidence. Helpers remain
-project-scoped; this update does not write to the user's home or configure models.
+The helper never executes target code, clones/moves repositories, writes target
+files, installs models/providers, or establishes live model/host behavior. The
+agent owns authorized Git operations and project setup separately. Existing target
+AGENTS.md, CLAUDE.md, Cursor rules and skills remain upstream-owned; Orbyn's own
+explicit duplicate-installation retirement is not a generic deletion policy.
 
-If ordinary link creation fails partway through a batch, the helper removes only
-links it created that still have the same identity and target. It preserves
-pre-existing selections and another writer's replacements; empty host directories
-may remain. Re-run the idempotent installer after inspecting the error. Retirement
-is a separate final phase; process termination, power loss or rollback failure
-still requires inspection. Serialize setup writers; this is not a cross-process
-filesystem transaction.
+## Reading groups
 
-The consuming project's rules take precedence. Read its [actual stack](agents/stack.md)
-and commands rather than copying the example architecture. `orbyn-*` identifies
-the maintained engineering approach, not a requirement to use the Orbyn product.
-Ask for a specific skill or open `SKILL.md` directly if host discovery is unavailable.
+These groups help select relevant methods from the full canonical source. All
+34 skills remain available at the outer workspace; groups do not install files
+or modify host configuration. The default core has 14 methods.
 
-For a vendored consumer, copy the managed `skills/` tree from a reviewed library
-revision, generate its local host links, and create `skills/upstream-lock.json`
-with the pin command in [synchronization](synchronization.md). The consuming
-project keeps its own policy/guides. Preserve license and provenance notices when
-redistributing adapted material; installing a selection is not a license exemption.
+| Group | Purpose | Skills |
+| --- | --- | --- |
+| `core` | Everyday investigation, design, implementation and review | 14 |
+| `web` | Web UI, content and project-aware JavaScript/TypeScript guidance | 4 |
+| `data` | API effects, stored-data compatibility and CI | 6 |
+| `mobile` | Client contracts, native-aware UI and product language | 4 |
+| `creator` | Social writing, previews and prose refinement | 3 |
+| `maintainer` | Skill authoring, project setup and contribution automation | 5 |
+| `rea` | Optional artifact investigation and REA maintenance | 5 |
+| `security` | Explicit portable source audit, existing findings and CI trust boundaries; never starts a scan on install | 4 |
+| `languages` | Language-aware implementation with 13 local guides, including TypeScript | 2 |
+| `architecture` | Evidence-led stack selection and interface design, without automatic implementation | 5 |
 
-Do not commit a local symlink to a machine-specific clone as a portable shared
-installation. Use a pinned copy, a documented checkout location or regenerate the
-links for each developer. This library's own discovery links are relative and portable.
+## Offline and updates
 
-## Presets and existing installations
+Keep the full clone with local methods, examples, helpers and notices. Python
+3.11+ and Git are required for library checks, while product tools depend on the
+target. Read [offline limits](../skills/orbyn-setup/references/offline.md).
 
-The default is `core` (14 skills), including language-aware implementation,
-stack-selection, setup and ownership routing. Existing links stay installed:
-this is additive selection, not an uninstall or reset. Use `--all` for the full
-54-skill catalog. An explicit `--skill` or `--preset` replaces the default selection
-for that invocation; combine `--preset core` when useful. `--all` cannot be combined
-with either selector. Dry runs preflight conflicts without creating directories
-or links.
+Update this one library checkout to a reviewed commit after preserving its dirty
+work and coordinating active users. Target repositories need no skill pin updates.
+For repeatable trials, record the actual library and target revisions, dirty state,
+host settings and fixture protocol. Never call pending PR content released main.
 
-| Preset         | Purpose                                                                                                   | Skills |
-| -------------- | --------------------------------------------------------------------------------------------------------- | ------ |
-| `core`         | Everyday investigation, design, implementation and review                                                 | 14     |
-| `web`          | Web UI, content and project-aware JavaScript/TypeScript guidance                                          | 4      |
-| `data`         | API effects, stored-data compatibility and CI                                                             | 6      |
-| `mobile`       | Client contracts, native-aware UI and product language                                                    | 4      |
-| `creator`      | Social writing, previews and prose refinement                                                             | 3      |
-| `maintainer`   | Skill authoring, project setup and contribution automation                                                | 5      |
-| `rea`          | Optional artifact investigation and REA maintenance                                                       | 5      |
-| `security`     | Explicit portable source audit, existing findings and CI trust boundaries; never starts a scan on install | 4      |
-| `languages`    | Language-aware implementation with 13 local guides, including TypeScript                                  | 2      |
-| `architecture` | Evidence-led stack selection and interface design, without automatic implementation                       | 5      |
-
-The [preset catalog](../skills/orbyn-setup/assets/presets.json) owns membership.
-Selections overlap and are deduplicated. Presets do not install a framework,
-provider or model configuration. This library's development checkout and Orbyn's
-vendor integration retain all discovery links so maintainers can validate the
-whole catalog; a fresh external installation uses the smaller default. To remove
-a selection, explicitly review and remove its owned discovery links. The installer
-does not infer removal intent from a smaller preset.
-
-The retired `typescript-best-practices` selection upgrades to
-`language-best-practices`. Its complete TypeScript guidance and notice remain
-local under that owner. Only known old discovery links into the same library
-source are retired, after replacement links are created successfully. Foreign
-skills stay intact; a dry-run reports the plan without changing either host.
-See the [retirement contract](../skills/orbyn-setup/references/project-skills.md#retired-shared-entrypoints).
-
-## Choose the workspace layout
-
-The setup agent asks once between **nested (recommended/default for a new
-workspace)** and **an existing project in place**, unless the user's explicit
-destination/layout already answers it. “Use the default” selects nested;
-silence or a preselected UI option does not. Wait before dependent writes and
-continue safe inspection. Reinstalls/continuations retain the selected location.
-
-Nested keeps independent targets in ignored `<library>/repo/<project>/` and
-sibling `<library>/repo/<project>-wt/<purpose>/` paths. In-place setup keeps the
-existing project path and worktree root. Follow the
-[workspace contract](../skills/orbyn-setup/references/repository-workspaces.md):
-select the target root explicitly, preserve its own instructions and skills,
-and distinguish local assistance from upstream adoption of our tooling. Existing
-projects do not need to move. Research-only source stays in `orbyn-references/`.
-Never add target repositories or gitlinks to the public library.
-
-This is an agent-led decision before calling the installer. `--project` remains
-the exact target checkout; there is no automatic move/clone, interactive CLI
-prompt or `--layout` flag. Skill presets and hosts are separate selections. A
-pinned vendored copy for team adoption is a distribution choice usable with either
-layout; developer-local links must not become a machine-specific upstream change.
-
-## Customize the consuming project
-
-From the library checkout, create an optional map of existing project guides:
+For internal library maintenance, run:
 
 ```sh
-python3 skills/orbyn-setup/scripts/project_context.py init --project /path/to/project
-python3 skills/orbyn-setup/scripts/project_context.py check --project /path/to/project
+python3 scripts/sync-agent-skills.py --write
+python3 scripts/library_manifest.py --write
+python3 scripts/check-library.py
+python3 -m unittest discover -s tests -v
+git diff --check
 ```
 
-The setup agent inspects `.agents/orbyn-context.json` in that project and fills
-only owner paths grounded in existing source/guides; it asks only about a
-consequential unresolved ownership decision. The human need not fill a second form.
-Existing valid maps are preserved. It stores relative pointers, not guide contents,
-commands, credentials or a personal voice profile. Root instructions and user
-scope retain precedence. The [context guide](../skills/orbyn-setup/references/project-context.md)
-describes the contract; this file is excluded from public skill synchronization.
-
-## Existing company projects and local skills
-
-Keep existing docs, instructions, model settings and unrelated skills in place.
-Use the [ownership/migration guide](../skills/orbyn-setup/references/project-skills.md)
-to classify existing skills before relocating anything. Company skills live at
-`project-skills/<company-or-repo>/<namespaced-skill>/`; both hosts discover them,
-while public skill sync excludes them. A fresh install never guesses ownership
-or silently removes conflicting content.
-
-```sh
-python3 scripts/install.py --project /path/to/company-repo --project-skills --dry-run
-python3 scripts/install.py --project /path/to/company-repo --project-skills
-```
-
-For explicitly identified company skills currently stored in host folders:
-
-```sh
-python3 scripts/install.py --project /path/to/company-repo --namespace acme --migrate-skill release --dry-run
-python3 scripts/install.py --project /path/to/company-repo --namespace acme --migrate-skill release
-```
-
-Repeat `--migrate-skill` for selected skills. Migration reconciles both hosts,
-or all three with `--host all`. A selected copy in `.cursor/skills` requires
-`--host all`, so it cannot silently retain a competing old name. Migration
-requires matching copies when both exist, names the canonical copy `acme-release`,
-and preserves assets/licenses. It stages a recoverable backup with a receipt in a
-private sibling directory before replacing old entries. Filesystem errors trigger
-rollback of owned changes and retain the backup. Power loss or a failed recovery
-still requires inspection of that receipt and originals. Review incoming skill-name
-references and project instructions after migration; the helper does not rewrite
-a company's docs. Re-run ordinary installation with `--project-skills` to check
-idempotency; a completed migration has no old entry to migrate again.
-
-Conflicts, unsafe links or external relative references requiring rebasing stop
-before project writes. Sources inside managed `skills/` require pin/ownership
-reconciliation first. External skill source directories are copied when explicitly
-selected; their originals stay untouched. Unsupported layouts need an agent-led migration with reviewed
-path reconciliation; no tool can infer a company's ownership or redistribution rights.
-
-For [offline use](../skills/orbyn-setup/references/offline.md), retain the complete
-local clone/vendor tree. Installation, discovery and validation do not fetch sources,
-models or runtimes. A machine-specific discovery link needs the documented clone
-location or local regeneration on each developer's machine.
-
-
-## Retired principle selections
-
-The 20 former `principle-*` selections map to their maintained execution owners
-through `catalog.json` retirement metadata. Installation and discovery sync replace
-only known owned links and preflight replacement conflicts before retirement.
-Foreign directories/symlinks remain untouched. Old direct host slash-command or
-skill invocations are not guaranteed aliases; use the owner shown in the
-[retirement map](work/skill-consolidation.md). Preserve consumer pins until their
-promotion is explicitly authorized. Default core stays at 14; `--all` exposes 34.
+These generators maintain only library-owned discovery and integrity metadata.
+Old `scripts/install.py` and `scripts/sync-public-skills.py` commands were removed;
+use the nested procedure rather than recreating an installation in the target.

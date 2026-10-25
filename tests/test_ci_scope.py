@@ -9,7 +9,7 @@ from test_tools import ROOT, module
 
 scope = module('ci_scope', ROOT/'skills/orbyn-ci-design/scripts/ci_scope.py')
 POLICY = dict(schema_version=1, docs_files=['README.md', 'LICENSE'], docs_prefixes=['docs/'],
-              skills_files=['AGENTS.md', 'scripts/install.py'],
+              skills_files=['AGENTS.md', 'scripts/library_manifest.py'],
               skills_prefixes=['skills/', 'project-skills/', 'docs/agents/'],
               deployment_files=['package-lock.json'], deployment_prefixes=['backend/', 'packages/'],
               application_jobs=['api', 'web'])
@@ -26,7 +26,7 @@ class ScopeTests(unittest.TestCase):
         self.assertFalse(data['deploy'])
 
     def test_skills_and_helpers_select_the_focused_lane(self):
-        data = self.decision(['README.md', 'skills/example/script.py', 'scripts/install.py'])
+        data = self.decision(['README.md', 'skills/example/script.py', 'scripts/library_manifest.py'])
         self.assertEqual(data['scope'], 'skills')
         self.assertFalse(data['run_app'])
         self.assertFalse(data['deploy'])
