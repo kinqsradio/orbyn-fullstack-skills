@@ -101,6 +101,13 @@ upstream collection or advance an import pin after a review-only change.
 
 ## Evaluate a change
 
+For an explicitly selected remembered lesson, use the
+[memory-to-skill handoff](references/memory-learning.md): freeze source revisions,
+write the general correction and synthetic counterexample, and prepare only the
+reviewed owner patch. Keep private records outside Git. Manual/local and optional
+fork-branch delivery reuse the same checks and authorization; neither implies
+automatic learning, acceptance or an upstream PR.
+
 Use the [evaluation guide](references/evaluations.md) and its versioned suite for
 positive, adjacent, no-skill and outcome cases. Update a case when its contract
 changes; do not change frozen criteria after observing a held-out result.

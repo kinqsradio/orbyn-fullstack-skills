@@ -457,3 +457,34 @@ functional contracts, scope and artifact lifecycle. See the
 [source/disposition record](../skills/orbyn-ui-design/references/hallmark-source.md).
 Three development cases cover task-specific design, behavior-preserving polish
 and audit-only boundaries. Structural validation is not rendered qualification.
+
+## Optional structured engineering memory — 25 October 2026
+
+The existing `reflect` owner now handles explicit local memory CRUD and retrieval,
+with categories, multiple domains, scoped namespaced tags, expected revisions and
+honest forgetting. Setup/workflow/creator route opt-in and selected lesson patches
+without another skill entrypoint or automatic capture. See the
+[memory contract](../skills/reflect/references/memory.md) and
+[implementation checkpoint](work/learning-memory-design.md#implementation-checkpoint--25-october-2026).
+The independently authored helper retains the reflect owner's earlier attribution.
+
+All 34 owners remain. Six development definitions bring the current suite to 186;
+these are not live trial results. The 140-test Python suite includes 31 memory tests
+using real disposable SQLite/Git/CLI processes, including concurrency, deletion,
+restore and classification failures. Desktop browser walkthrough of the synthetic
+read-only export is lead evidence, not independent review or full accessibility
+qualification. No personal memory, provider settings, fork push or commit occurred.
+
+## Memory live qualification follow-up — 25 October 2026
+
+[Memory qualification](evaluations/2026-10-25-memory.md) records four initial,
+four corrected and three focused live model-operated tasks, plus 16 separate
+controller races. It preserves the initial expiry/patch-header failures, UUID
+usability observation, malformed-receipt regression and failed harness attempts.
+Three independent native review rounds completed under a user-approved tier
+exception; all five findings were resolved and the final source has no blocking
+findings. Focused trials verify transformed-import rejection, existing-alias
+merges and terminal forgetting with reserved revision headroom. The final suite
+passes 151 tests, including 42 memory tests. Earlier calls/races remain attributed
+to their actual snapshots; lead checks are distinguished from the independent
+review. All 34 skill owners remain; no real-memory capture or task commit occurred.
