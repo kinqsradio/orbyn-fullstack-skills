@@ -38,7 +38,7 @@ class RepositoryWorkspaceTests(unittest.TestCase):
     def target(self):
         root = self.root/'repo/widget';root.mkdir(parents=True)
         self.git(root, 'init', '-b', 'main')
-        files = {'AGENTS.md':'Target instructions', 'CLAUDE.md':'Target Claude rules',
+        files = {'AGENT.md':'Target-specific guide pointers', 'AGENTS.md':'Target instructions', 'CLAUDE.md':'Target Claude rules',
                  'codex.md':'Target agent defaults', '.cursorrules':'Target Cursor policy',
                  '.cursor/rules/style.mdc':'Target nested rule',
                  '.claude/settings.json':'{"target":"retained"}',
@@ -59,6 +59,7 @@ class RepositoryWorkspaceTests(unittest.TestCase):
         self.assertFalse(result['target_files_changed'])
         self.assertEqual(report['host_discovery'],'not_observed')
         self.assertIn('AGENTS.md',report['target_instructions'])
+        self.assertIn('AGENT.md',report['target_instructions'])
         for path,data in original.items():self.assertEqual((target/path).read_bytes(),data)
         self.assertEqual(exclude.read_bytes(),initial)
         self.assertEqual(self.git(target,'status','--porcelain'),before)

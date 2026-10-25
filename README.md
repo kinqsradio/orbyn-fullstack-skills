@@ -85,13 +85,27 @@ Cursor or your local tool-using agent. Tell it:
 
 ```text
 orbyn-fullstack-skills/
-  AGENTS.md, skills/             shared engineering guidance
-  repo/                         ignored by the public library
-    Orbyn/                      target source and project guides
-    orbyn-wt/
-      save-retry/               target worktree
-    another-project/            retains its own AGENTS.md and skills
+├── AGENTS.md
+├── skills/
+└── repo/
+    ├── Orbyn/
+    ├── orbyn-wt/
+    │   └── save-retry/
+    ├── another-project/
+    └── another-project-wt/
+        └── fix-pagination/
 ```
+
+| Target repository | Its task worktree |
+| --- | --- |
+| `repo/Orbyn/` | `repo/orbyn-wt/save-retry/` |
+| `repo/another-project/` | `repo/another-project-wt/fix-pagination/` |
+
+Each target has its own sibling `<repo-slug>-wt/` container when worktrees are
+needed. The task folder is created with Git and shares its primary repository's
+history. Separate targets keep separate histories. Small work can use an already
+suitable checkout; setup does not require an empty worktree or a new branch for
+every task. Everything under `repo/` stays outside the library's Git index.
 
 The agent uses [orbyn-setup](skills/orbyn-setup/SKILL.md), prepares the workspace,
 reads the target's instructions in place and checks both Git roots. You do not
@@ -106,6 +120,16 @@ own their source, contribution policy, existing instructions and skills. A targe
 Git boundary or host settings may limit automatic discovery: agents must read the
 required local guidance explicitly and distinguish actual host observation from
 filesystem checks. Nesting does not override target rules or host permissions.
+
+**A target can own agent instructions now or add them later.** Orbyn may have its
+own `AGENT.md`, `AGENTS.md`, `CLAUDE.md` or local skills for application-specific
+commands, module owners and verification rules. Agents read that guidance alongside
+the outer library's methods. Retiring Orbyn's duplicated installation does not
+reserve or ban those filenames. Keep shared methods in this library and project
+facts in the target; do not copy the shared policy back into it. Follow the
+[instruction contract](skills/orbyn-setup/references/repository-workspaces.md#project-owned-instructions-now-and-later)
+when the two sets differ. A future Orbyn instruction file is permitted; this change
+does not create one automatically.
 
 Python 3.11+ and Git support the local checks. A local model can use the same
 files offline; setup does not install a provider, subscription or runtime. Optional

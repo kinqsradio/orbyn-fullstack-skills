@@ -34,7 +34,10 @@ missing source rather than downloading implicitly.
 
 Run `python3 skills/orbyn-setup/scripts/workspace.py check --target repo/<project>`.
 Read the target's root and applicable nested instructions, contribution guide,
-existing skills and actual manifests. Keep upstream files and host discovery paths
+existing skills and actual manifests. A target may add project-owned AGENT.md,
+AGENTS.md or local skills later; preserve/read those as well under the
+[instruction contract](references/repository-workspaces.md#project-owned-instructions-now-and-later).
+Keep upstream files and host discovery paths
 unchanged. Follow [project ownership](references/project-skills.md) and
 [project context](references/project-context.md); no map or namespace is required.
 The check reports overlapping names so the agent can distinguish target-specific
