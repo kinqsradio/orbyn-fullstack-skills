@@ -197,7 +197,8 @@
     "export": "Stream ci_evidence.py failures output without collecting rows in memory. Verify all 500000 rows have status=failed and comparison=new_failure, count lines and hash raw stdout; preserve the SQLite source for reconstruction. No top-N filtering.",
     "junit": "Generate a testsuite with 100000 uniquely named testcases, every 100th with an AssertionError failure and message bad 42. Include matching tests/failures/errors/skipped counters. Convert with junit_evidence.py and verify 99000 passes/1000 failures plus source/normalized hashes. These are generated report records, not executed testcases.",
     "calibration": "python3 -m unittest discover -s tests -v; includes 1000-slot completeness, report/candidate integrity, retry history, coverage, release faults, JUnit rejection and managed skills-only packaging. No credentials/models.",
-    "retention": "Complete raw reports, fixtures/Git state, partial and successful databases, commands, logs and receipts remain ignored local output/bulk-ci-20261025. Public summary/protocol are not downloadable raw evidence."
+    "retention": "Complete raw reports, fixtures/Git state, partial and successful databases, commands, logs and receipts remain ignored local output/bulk-ci-20261025. Public summary/protocol are not downloadable raw evidence.",
+    "source_recovery": "This repository squash-merges and deletes feature branches. In an isolated clone, git fetch origin refs/pull/16/head retains the reviewed head ancestry, including implementation_revision. Use git show/archive of the pinned full revision; do not reset an active checkout."
   },
   "limits": [
     "Offline synthetic exercise and generated capacity data; no live-agent routing/outcome qualification.",
@@ -205,5 +206,6 @@
     "No hosted provider authentication, pagination API, VM fleet, production deployment, concurrent-writer or arbitrary maximum-input qualification.",
     "Single host and single observation per final scale point; no portable throughput guarantee.",
     "Orbyn synchronization and REA engine/source upgrade deferred."
-  ]
+  ],
+  "review_pull_request": "https://github.com/kinqsradio/orbyn-fullstack-skills/pull/16"
 }
