@@ -1,0 +1,536 @@
+{
+  "schema_version": 1,
+  "purpose": "Declarative reproduction and aggregate results. No captured answers, model runner, credentials or consumer source. Explicit host-run authorization required.",
+  "studies": [
+    {
+      "name": "linked-worktree-blocked",
+      "protocol_sha256": "1f7479dd1bc2ab6847f2f7d2c0ca59d728398674894145ca2f501ca8330bbba2",
+      "frozen_protocol": {
+        "schema_version": 1,
+        "purpose": "Live execution of an offline contribution workflow: real source/tests/Git with a controlled local PR provider. Not hosted GitHub qualification.",
+        "guidance_revisions": {
+          "baseline": "5684ee576ba85d07be317ca91e9f3e02452f4993",
+          "candidate": "3d936ae1cc980d36f80619ca8665266d0ee60e95"
+        },
+        "fixture_and_suite_revision": "fcb6197f64ace68cc80ca68e0c3eb5fba72215dd",
+        "suite_sha256": "207b873ed7b2848fc05febbf2cc1dc1c013fd646dc0197d2184c8de0bb66fdd2",
+        "case_ids": [
+          "contribution-execute-local-fix",
+          "contribution-execute-local-feedback"
+        ],
+        "repetitions": 2,
+        "stages_per_trial": 2,
+        "model_calls": 8,
+        "host": "Codex CLI 0.163.0-alpha.10.2; ephemeral workspace-write, fixture-local Git metadata explicitly writable; isolated host state, global skills/config, plugins, apps, memory, hooks, delegation and browsing disabled",
+        "model": "gpt-6.1-sol; effort=medium; requested default service tier; fast/ultrafast disabled; effective server tier not independently exposed",
+        "parallel_pipelines": 2,
+        "timeout_seconds_per_stage": 300,
+        "snapshots": {
+          "baseline": {
+            "files": 241,
+            "inventory_sha256": "45fbff9d12c5a6a063922f32d2287103394fd4fd402a94553dd84073df675960"
+          },
+          "candidate": {
+            "files": 246,
+            "inventory_sha256": "da5367cfbe1c846153b523502965226effc99d05bbc5f987d2ac8fff5768ffe1"
+          }
+        },
+        "snapshot_exclusions": [
+          "skills/**/evals/**",
+          "skills/**/assets/contribution-lab/**",
+          "skills/**/scripts/contribution_lab.py"
+        ],
+        "fixture_base_commit": "da7e97aad04f19b9983663ff0694376a5d5793ca",
+        "fixture_creation": "Use contribution_lab.create() from the exact fixture revision in a nonexistent directory under a physical existing parent. Do not initialize over user work.",
+        "discovery": "Full 54-skill guidance catalog plus the same existing target-owned widget-contracts skill. Keep target guidance/host links in place; library links are ignored local setup.",
+        "phases": "Stage one runs the fix case. Preserve its source/tests/Git/test receipts and PR state, then controller injects frozen reviews once. Stage two runs the feedback case in a new context on the same trial, without another condition transcript or grader hints.",
+        "review_delivery": "Controlled local service returns R1 stale-disposer concern and R2 conflicting global callable-dedup suggestion on page one, R3 unrelated cleanup request on page two. Subject replies are local fixture data only.",
+        "completion": "OPEN local PR with real local commits/pushes, meaningful nonempty tests and required success for exact remote head. No merge, real account/network publication, consumer sync or engine change.",
+        "rubrics": "Frozen outcome criteria in the named suite. Independent behavior/counterfactual checks plus lead inspection of actual commands, patches and assertions; not output-keyword scoring or subject self-grading.",
+        "reproduction_evidence": "Immutable fixture runner appends selected counts, source/test hashes, failures/errors and tracebacks. Require an intended assertion failure with added tests at the unchanged source baseline before production edits. Counterfactual replay alone is not prospective reproduction evidence.",
+        "feedback_regression": "Run final tests against an API-compatible replacement implementation retaining the stale-disposer defect; require an intended assertion failure, not setup failure. Grader source remains outside subjects.",
+        "preservation": "Exact dirty notes/output hashes, target policy/project skill/tool bytes, existing controls, allowed source/test diff and no other-trial/controller access. Real Git data and provider state are separately inspected.",
+        "readiness": "Same configured model successfully wrote, committed and pushed probe.txt using workspace-write and explicit fixture-local Git metadata roots. Prompt inventory must verify exactly 55 intended local skills before scoring.",
+        "limits": "Development fixture, two repetitions per condition, unblinded lead review, no independent/heldout or hosted-provider claim. Raw captures/errors retained outside shared distribution; no automatic model calls from fixture or CI."
+      },
+      "actual_model_calls": 4,
+      "disabled_features": [
+        "fast_mode",
+        "memories",
+        "multi_agent",
+        "apps",
+        "plugins",
+        "hooks",
+        "plugin_hooks",
+        "browser_use",
+        "browser_use_external",
+        "in_app_browser",
+        "computer_use",
+        "image_generation",
+        "tool_suggest",
+        "workspace_dependencies",
+        "skill_mcp_dependency_install",
+        "shell_snapshot",
+        "goals",
+        "ultrafast_mode"
+      ],
+      "config_without_machine_specific_skill_exclusions": [
+        "model_reasoning_effort=\"medium\"",
+        "service_tier=\"default\"",
+        "model_reasoning_summary=\"none\"",
+        "approval_policy=\"never\"",
+        "web_search=\"disabled\"",
+        "shell_environment_policy.inherit=\"core\""
+      ],
+      "observations": {
+        "baseline": {
+          "counts": {
+            "pass": 0,
+            "fail": 0,
+            "unverified": 4
+          },
+          "trials": [
+            {
+              "case_id": "contribution-execute-local-fix",
+              "trial": 1,
+              "exit_code": 0,
+              "timeout": false,
+              "duration_ms": 54827,
+              "local_head": "da7e97aad04f19b9983663ff0694376a5d5793ca",
+              "remote_head": null,
+              "baseline_pushed": false,
+              "independent_oracle_passed": true,
+              "preservation_passed": true,
+              "counterfactual_report": {
+                "selected": 6,
+                "failures": 2,
+                "errors": 0,
+                "skipped": 0,
+                "success": false
+              },
+              "final_selected_tests": null,
+              "ci_head": null,
+              "review_dispositions": {}
+            },
+            {
+              "case_id": "contribution-execute-local-fix",
+              "trial": 2,
+              "exit_code": 0,
+              "timeout": false,
+              "duration_ms": 60243,
+              "local_head": "da7e97aad04f19b9983663ff0694376a5d5793ca",
+              "remote_head": "da7e97aad04f19b9983663ff0694376a5d5793ca",
+              "baseline_pushed": true,
+              "independent_oracle_passed": true,
+              "preservation_passed": true,
+              "counterfactual_report": {
+                "selected": 6,
+                "failures": 2,
+                "errors": 0,
+                "skipped": 0,
+                "success": false
+              },
+              "final_selected_tests": null,
+              "ci_head": null,
+              "review_dispositions": {}
+            }
+          ]
+        },
+        "candidate": {
+          "counts": {
+            "pass": 0,
+            "fail": 0,
+            "unverified": 4
+          },
+          "trials": [
+            {
+              "case_id": "contribution-execute-local-fix",
+              "trial": 1,
+              "exit_code": 0,
+              "timeout": false,
+              "duration_ms": 72033,
+              "local_head": "da7e97aad04f19b9983663ff0694376a5d5793ca",
+              "remote_head": "da7e97aad04f19b9983663ff0694376a5d5793ca",
+              "baseline_pushed": true,
+              "independent_oracle_passed": true,
+              "preservation_passed": true,
+              "counterfactual_report": {
+                "selected": 6,
+                "failures": 2,
+                "errors": 0,
+                "skipped": 0,
+                "success": false
+              },
+              "final_selected_tests": null,
+              "ci_head": null,
+              "review_dispositions": {}
+            },
+            {
+              "case_id": "contribution-execute-local-fix",
+              "trial": 2,
+              "exit_code": 0,
+              "timeout": false,
+              "duration_ms": 50519,
+              "local_head": "da7e97aad04f19b9983663ff0694376a5d5793ca",
+              "remote_head": "da7e97aad04f19b9983663ff0694376a5d5793ca",
+              "baseline_pushed": true,
+              "independent_oracle_passed": true,
+              "preservation_passed": true,
+              "counterfactual_report": {
+                "selected": 6,
+                "failures": 2,
+                "errors": 0,
+                "skipped": 0,
+                "success": false
+              },
+              "final_selected_tests": null,
+              "ci_head": null,
+              "review_dispositions": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "primary-clone-completed",
+      "protocol_sha256": "4d11ab8d880025c02133c809cc5477c2c7bdaf6f24ef94795ac3b319ec5fb361",
+      "frozen_protocol": {
+        "schema_version": 1,
+        "purpose": "Live execution of an offline contribution workflow: real source/tests/Git with a controlled local PR provider. Not hosted GitHub qualification.",
+        "guidance_revisions": {
+          "baseline": "5684ee576ba85d07be317ca91e9f3e02452f4993",
+          "candidate": "7e85145e303aed5aa5dc5585371cc9f259cfba69"
+        },
+        "fixture_and_suite_revision": "025c53eac1181840963d0a1ea95030d7499762ab",
+        "suite_sha256": "e82f2d9adb5ce56f8340780a9f8f670844865689fc1fe7a426331f629032733e",
+        "case_ids": [
+          "contribution-execute-local-fix",
+          "contribution-execute-local-feedback"
+        ],
+        "repetitions": 2,
+        "stages_per_trial": 2,
+        "model_calls": 8,
+        "host": "Codex CLI 0.163.0-alpha.10.2; ephemeral workspace-write, fixture-local Git metadata explicitly writable; isolated host state, global skills/config, plugins, apps, memory, hooks, delegation and browsing disabled",
+        "model": "gpt-6.1-sol; effort=medium; requested default service tier; fast/ultrafast disabled; effective server tier not independently exposed",
+        "layout": "primary",
+        "transient_commit_failure": true,
+        "prior_campaign": "The first worktree study at fcb6197 had four successful local fixes but metadata-denied delivery; feedback was not run. All receipts retained. This fresh primary-clone study uses revised development delivery criteria and a controlled hook failure; do not combine its results with the blocked study.",
+        "parallel_pipelines": 2,
+        "timeout_seconds_per_stage": 300,
+        "snapshots": {
+          "baseline": {
+            "files": 241,
+            "inventory_sha256": "45fbff9d12c5a6a063922f32d2287103394fd4fd402a94553dd84073df675960"
+          },
+          "candidate": {
+            "files": 246,
+            "inventory_sha256": "e0de875b6290d7908762b286fd46ea98a3024de09c766a368f344e89ad87a3bd"
+          }
+        },
+        "snapshot_exclusions": [
+          "skills/**/evals/**",
+          "skills/**/assets/contribution-lab/**",
+          "skills/**/scripts/contribution_lab.py"
+        ],
+        "fixture_base_commit": "da7e97aad04f19b9983663ff0694376a5d5793ca",
+        "fixture_creation": "Use contribution_lab.create(layout=primary, transient_commit_failure=True) from the exact fixture revision in a nonexistent directory under a physical existing parent. Do not initialize over user work.",
+        "discovery": "Full 54-skill guidance catalog plus the same existing target-owned widget-contracts skill. Keep target guidance/host links in place; library links are ignored local setup.",
+        "phases": "Stage one runs the fix case. Preserve its source/tests/Git/test receipts and PR state, then controller injects frozen reviews once. Stage two runs the feedback case in a new context on the same trial, without another condition transcript or grader hints.",
+        "review_delivery": "Controlled local service returns R1 stale-disposer and composed replacement-during-emit coverage concern and R2 conflicting global callable-dedup suggestion on page one, R3 unrelated cleanup request on page two. Subject replies are local fixture data only.",
+        "completion": "A failed commit must stop dependent push, PR and CI until a successful owned commit is verified, without bypassing hooks or metadata controls. Remote reflog must not contain a baseline-only task push. OPEN local PR with real local commits/pushes, meaningful nonempty tests and required success for exact remote head. No merge, real account/network publication, consumer sync or engine change.",
+        "rubrics": "Frozen outcome criteria in the named suite. Independent behavior/counterfactual checks plus lead inspection of actual commands, patches and assertions; not output-keyword scoring or subject self-grading.",
+        "reproduction_evidence": "Immutable fixture runner appends selected counts, source/test hashes, failures/errors and tracebacks. Require an intended assertion failure with added tests at the unchanged source baseline before production edits. Counterfactual replay alone is not prospective reproduction evidence.",
+        "feedback_regression": "Run final tests against an API-compatible replacement implementation retaining the stale-disposer defect; require an intended assertion failure, not setup failure. Grader source remains outside subjects.",
+        "preservation": "Exact dirty notes/output hashes, target policy/project skill/tool bytes, existing controls, allowed source/test diff and no other-trial/controller access. Real Git data and provider state are separately inspected.",
+        "readiness": "A primary-layout fixture probe verified actual tests, the controlled one-time hook failure, normal same-command retry, commit, local push, open fixture PR and exact-head CI under workspace-write. The earlier primary-only probe did not qualify linked-worktree metadata. Prompt inventory must verify exactly 55 local skills before scoring.",
+        "limits": "Development fixture, two repetitions per condition, unblinded lead review, no independent/heldout or hosted-provider claim. Raw captures/errors retained outside shared distribution; no automatic model calls from fixture or CI.",
+        "pre_scoring_refinement": "After the blocked worktree observations, the essential dependency gate was exposed in the workflow entrypoint as well as its PR reference before any primary-study inference. Earlier unused prepared runs/protocol remain retained. No primary-study observation was regraded."
+      },
+      "actual_model_calls": 8,
+      "disabled_features": [
+        "fast_mode",
+        "memories",
+        "multi_agent",
+        "apps",
+        "plugins",
+        "hooks",
+        "plugin_hooks",
+        "browser_use",
+        "browser_use_external",
+        "in_app_browser",
+        "computer_use",
+        "image_generation",
+        "tool_suggest",
+        "workspace_dependencies",
+        "skill_mcp_dependency_install",
+        "shell_snapshot",
+        "goals",
+        "ultrafast_mode"
+      ],
+      "config_without_machine_specific_skill_exclusions": [
+        "model_reasoning_effort=\"medium\"",
+        "service_tier=\"default\"",
+        "model_reasoning_summary=\"none\"",
+        "approval_policy=\"never\"",
+        "web_search=\"disabled\"",
+        "shell_environment_policy.inherit=\"core\""
+      ],
+      "observations": {
+        "baseline": {
+          "counts": {
+            "pass": 2,
+            "fail": 2,
+            "unverified": 0
+          },
+          "trials": [
+            {
+              "case_id": "contribution-execute-local-feedback",
+              "trial": 1,
+              "exit_code": 0,
+              "timeout": false,
+              "duration_ms": 50207,
+              "local_head": "2e5c71c4cf0ec30a42c2ca6a504346d2caf16967",
+              "remote_head": "2e5c71c4cf0ec30a42c2ca6a504346d2caf16967",
+              "baseline_pushed": true,
+              "independent_oracle_passed": true,
+              "preservation_passed": true,
+              "counterfactual_report": {
+                "selected": 7,
+                "failures": 2,
+                "errors": 0,
+                "skipped": 0,
+                "success": false
+              },
+              "final_selected_tests": 7,
+              "ci_head": "2e5c71c4cf0ec30a42c2ca6a504346d2caf16967",
+              "review_dispositions": {
+                "R1": "addressed",
+                "R2": "declined",
+                "R3": "declined"
+              }
+            },
+            {
+              "case_id": "contribution-execute-local-fix",
+              "trial": 1,
+              "exit_code": 0,
+              "timeout": false,
+              "duration_ms": 45034,
+              "local_head": "c18792cbf5545fa2e1ac8b409c2c47aef6ccb3ef",
+              "remote_head": "c18792cbf5545fa2e1ac8b409c2c47aef6ccb3ef",
+              "baseline_pushed": true,
+              "independent_oracle_passed": true,
+              "preservation_passed": true,
+              "counterfactual_report": {
+                "selected": 6,
+                "failures": 2,
+                "errors": 0,
+                "skipped": 0,
+                "success": false
+              },
+              "final_selected_tests": 6,
+              "ci_head": "c18792cbf5545fa2e1ac8b409c2c47aef6ccb3ef",
+              "review_dispositions": {}
+            },
+            {
+              "case_id": "contribution-execute-local-feedback",
+              "trial": 2,
+              "exit_code": 0,
+              "timeout": false,
+              "duration_ms": 43682,
+              "local_head": "b4d9b194a25397af7b7fa248f895e226da33ddad",
+              "remote_head": "b4d9b194a25397af7b7fa248f895e226da33ddad",
+              "baseline_pushed": true,
+              "independent_oracle_passed": true,
+              "preservation_passed": true,
+              "counterfactual_report": {
+                "selected": 8,
+                "failures": 3,
+                "errors": 0,
+                "skipped": 0,
+                "success": false
+              },
+              "final_selected_tests": 8,
+              "ci_head": "b4d9b194a25397af7b7fa248f895e226da33ddad",
+              "review_dispositions": {
+                "R1": "addressed",
+                "R2": "declined",
+                "R3": "declined"
+              }
+            },
+            {
+              "case_id": "contribution-execute-local-fix",
+              "trial": 2,
+              "exit_code": 0,
+              "timeout": false,
+              "duration_ms": 56486,
+              "local_head": "322ce8980d55f0c0c87ae556969e50c039d6560d",
+              "remote_head": "322ce8980d55f0c0c87ae556969e50c039d6560d",
+              "baseline_pushed": true,
+              "independent_oracle_passed": true,
+              "preservation_passed": true,
+              "counterfactual_report": {
+                "selected": 6,
+                "failures": 2,
+                "errors": 0,
+                "skipped": 0,
+                "success": false
+              },
+              "final_selected_tests": 6,
+              "ci_head": "322ce8980d55f0c0c87ae556969e50c039d6560d",
+              "review_dispositions": {}
+            }
+          ]
+        },
+        "candidate": {
+          "counts": {
+            "pass": 4,
+            "fail": 0,
+            "unverified": 0
+          },
+          "trials": [
+            {
+              "case_id": "contribution-execute-local-feedback",
+              "trial": 1,
+              "exit_code": 0,
+              "timeout": false,
+              "duration_ms": 59126,
+              "local_head": "f14d819b0d209dd6aebc7bc0ddf5d196cc5bd9ea",
+              "remote_head": "f14d819b0d209dd6aebc7bc0ddf5d196cc5bd9ea",
+              "baseline_pushed": false,
+              "independent_oracle_passed": true,
+              "preservation_passed": true,
+              "counterfactual_report": {
+                "selected": 8,
+                "failures": 4,
+                "errors": 0,
+                "skipped": 0,
+                "success": false
+              },
+              "final_selected_tests": 8,
+              "ci_head": "f14d819b0d209dd6aebc7bc0ddf5d196cc5bd9ea",
+              "review_dispositions": {
+                "R1": "addressed",
+                "R2": "declined",
+                "R3": "declined"
+              }
+            },
+            {
+              "case_id": "contribution-execute-local-fix",
+              "trial": 1,
+              "exit_code": 0,
+              "timeout": false,
+              "duration_ms": 63457,
+              "local_head": "ad3f4822e7e36c44555d1e82c8dcdc1b8aa3c638",
+              "remote_head": "ad3f4822e7e36c44555d1e82c8dcdc1b8aa3c638",
+              "baseline_pushed": false,
+              "independent_oracle_passed": true,
+              "preservation_passed": true,
+              "counterfactual_report": {
+                "selected": 6,
+                "failures": 3,
+                "errors": 0,
+                "skipped": 0,
+                "success": false
+              },
+              "final_selected_tests": 6,
+              "ci_head": "ad3f4822e7e36c44555d1e82c8dcdc1b8aa3c638",
+              "review_dispositions": {}
+            },
+            {
+              "case_id": "contribution-execute-local-feedback",
+              "trial": 2,
+              "exit_code": 0,
+              "timeout": false,
+              "duration_ms": 56090,
+              "local_head": "9eda6c93ca6ca608da17c2eed81072b1861e8833",
+              "remote_head": "9eda6c93ca6ca608da17c2eed81072b1861e8833",
+              "baseline_pushed": false,
+              "independent_oracle_passed": true,
+              "preservation_passed": true,
+              "counterfactual_report": {
+                "selected": 8,
+                "failures": 3,
+                "errors": 0,
+                "skipped": 0,
+                "success": false
+              },
+              "final_selected_tests": 8,
+              "ci_head": "9eda6c93ca6ca608da17c2eed81072b1861e8833",
+              "review_dispositions": {
+                "R1": "addressed",
+                "R2": "declined",
+                "R3": "declined"
+              }
+            },
+            {
+              "case_id": "contribution-execute-local-fix",
+              "trial": 2,
+              "exit_code": 0,
+              "timeout": false,
+              "duration_ms": 61828,
+              "local_head": "3ae87d63ca98e9fe159035ea5749905d029a8ded",
+              "remote_head": "3ae87d63ca98e9fe159035ea5749905d029a8ded",
+              "baseline_pushed": false,
+              "independent_oracle_passed": true,
+              "preservation_passed": true,
+              "counterfactual_report": {
+                "selected": 6,
+                "failures": 2,
+                "errors": 0,
+                "skipped": 0,
+                "success": false
+              },
+              "final_selected_tests": 6,
+              "ci_head": "3ae87d63ca98e9fe159035ea5749905d029a8ded",
+              "review_dispositions": {}
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "baseline": {
+          "routing": {
+            "passed": 0,
+            "total": 0
+          },
+          "outcome": {
+            "passed": 2,
+            "total": 4
+          }
+        },
+        "candidate": {
+          "routing": {
+            "passed": 0,
+            "total": 0
+          },
+          "outcome": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "baseline_revision": "5684ee576ba85d07be317ca91e9f3e02452f4993",
+        "candidate_revision": "7e85145e303aed5aa5dc5585371cc9f259cfba69",
+        "limits": "Descriptive paired results only; review failures, observer consistency and variation before inferring general improvement."
+      }
+    }
+  ],
+  "reproduction": {
+    "snapshot": "Export regular files from git archive <guidance_revision> skills; exclude every evals directory, contribution-lab directory and contribution_lab.py. Sort relative POSIX paths and compute SHA-256 of each file; inventory checksum is SHA-256 of compact sorted-key JSON mapping path to hash followed by LF. See per-study inventories.",
+    "target_setup": "Use contribution_lab.create from the fixture revision with that study layout/fault settings. Copy the guidance snapshot to ignored target library/. For each catalog skill create .agents/skills/<name> -> ../../library/skills/<name>, preserving the existing target-owned skill and links. No global installation.",
+    "trial_order": [
+      "baseline/1",
+      "candidate/1",
+      "candidate/2",
+      "baseline/2"
+    ],
+    "subject_prompt": "Use evaluate.py prepare at the fixture_and_suite_revision with case_ids, repetitions and frozen protocol. Pass each tasks.json prompt unchanged on stdin. Feedback is a fresh context on the same trial after freezing stage one and controller review injection.",
+    "host": "Use an isolated ephemeral host profile and the recorded desktop CLI/version/model. Exclude inherited CODEX_* and OPENAI_API_KEY/OPENAI_BASE_URL overrides; do not publish authentication. Disable all unrelated advertised global/system skills with file and resolved-folder entries. Verify debug prompt-input contains exactly 54 intended library skills plus widget-contracts. A folder-only disable is insufficient on this host.",
+    "command": "<desktop-codex> exec --ignore-user-config --ephemeral --json --sandbox workspace-write --model gpt-6.1-sol <recorded config/disable flags and verified skill exclusions> --cd <trial-checkout> --add-dir <trial-root> --add-dir <trial-primary>/.git -",
+    "readiness": "Probe the exact topology and effects before inference, with the same model/permissions. Do not bypass Git or host controls. Preserve blocked trials; change topology/criteria only in a new frozen study.",
+    "capture": "Retain visible JSONL events, final answer, exit/timeout/usage, commands, source/tests, check-runs receipts, provider state, heads/ref history, immutable/sentinel/hook hashes, working and committed diffs. Reasoning events are omitted. Preserve failed attempts; dependent stages without a PR stay not_run.",
+    "independent_checks": "Extract GOOD and ORACLE literal constants from tests/test_contribution_lab.py at fixture revision outside subject reach. Stage-one oracle uses ORACLE before # Review-phase composition and omits dispose_old(). Stage two uses full ORACLE. Replay phase-one tests on original fixture source and phase-two tests on GOOD with identity guard changed from group.get(key) is registration to key in group. Require assertions, nonzero selected count and errors=0; inspect actual assertions rather than keyword scoring.",
+    "prospective": "Require check-runs.jsonl failure with original source hash and changed test hashes before production changes. This is separate from counterfactual replay.",
+    "grading": "Lead manually reviews actual patches, commands, context, dispositions and executable evidence against frozen criteria; evaluate.py validates evidence and compares complete matched run files. Missing outcomes are unverified. Primary baseline stage-one delivery fails on real baseline-only task pushes; eventual correction is recorded separately.",
+    "publication": "Only this declarative protocol, original fixture/examples and concise report are public. Full captures, local trial clones and source/Git snapshots stay in ignored output; they are not downloadable public evidence."
+  }
+}

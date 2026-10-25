@@ -99,6 +99,10 @@ changes; do not change frozen criteria after observing a held-out result.
 Prepared or incomplete trials remain unverified. Helper fixtures test the tooling;
 only captured, reviewed host trials provide evidence of skill behavior. Record
 baseline and candidate results separately before claiming an improvement.
+For an explicitly requested reproduce/fix/PR-feedback execution trial, use the
+[disposable contribution lab](references/contribution-execution.md). Its real
+source/tests/Git and local PR fixture supply stronger evidence than scenario
+answers; they do not qualify a hosted provider or authorize ordinary model calls.
 
 ## Audit completeness without inflating the catalog
 

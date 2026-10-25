@@ -80,6 +80,9 @@ feedback or a base update may invalidate an earlier readiness assessment. Handle
 routine conflicts in owned work within scope, but preserve others' changes and
 stop dependent edits when conflict ownership is ambiguous. Never force-push a
 shared branch or rewrite others' commits as an incidental fix.
+Apply the [commit and push gate](opening-a-pr.md#commit-and-push-gate): a failed
+stage/commit stops dependent push, PR and CI actions until its prerequisite is
+successfully verified. Keep failure receipts even if a later command succeeds.
 
 Before merge, verify current head/base, required gates and the user's merge
 authority; use the provider's expected-head guard when supported. Report local,

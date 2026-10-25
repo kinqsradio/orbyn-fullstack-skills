@@ -148,6 +148,15 @@ checkout/Git data remain; preserve valuable unpushed work before cleanup.
 
 ## Create and verify the selected checkout
 
+For unattended execution, verify required host capabilities on a disposable
+checkout with the actual topology before expensive work. A primary-clone commit
+probe does not establish write access to a linked worktree's separate Git index
+or common metadata. Test only effects already authorized by the task.
+If the host denies metadata writes, preserve the patch and report delivery as
+blocked; do not rewrite `.git`, supply an alternate index or bypass the sandbox.
+A separately authorized new workspace must have its own readiness evidence;
+never move or reset existing owned work to manufacture a passing probe.
+
 Resolve the requested base revision before writes. Continue an existing task/PR
 from its actual branch or reviewed commit. For new work, use the project's
 verified default branch/ref; do not assume that an unrelated current feature
