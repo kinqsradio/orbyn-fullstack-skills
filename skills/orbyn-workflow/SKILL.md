@@ -16,7 +16,10 @@ when creating, adapting or relocating them; keep them outside public skill sync.
 For work that needs a durable handoff, use the optional
 [task record](references/task-record.md) without duplicating an existing tracker.
 
-For a target inside the library's optional `repo/` workspace, resolve that
+For setup without a selected layout, use the setup skill's
+[one-time layout choice](../orbyn-setup/references/repository-workspaces.md):
+nested is recommended/default for new workspaces; preserve existing explicit paths.
+For a target inside the library's ignored `repo/` workspace, resolve that
 repository and follow its [workspace contract](../orbyn-setup/references/repository-workspaces.md).
 Read existing upstream instructions and skills in place; an ordinary contribution
 does not authorize migrating their guidance or publishing local setup additions.
@@ -153,6 +156,12 @@ authorizes bounded native children, not extra user-owned sessions or messages.
 Do not create sessions recursively or turn design comparison into a model panel.
 
 ## Review, verify and deliver
+
+If the current task demonstrates a meaningful general skill gap, follow the
+[optional contribution feedback](../orbyn-skill-creator/references/contribution-feedback.md):
+prepare a concrete proposal, then offer it once without blocking the user's task.
+Keep company-only material local. No automatic publication, self-edit, telemetry
+or cross-user learning follows; exact existing contribution authority still applies.
 
 For substantial work, the lead must inspect the actual returned artifacts and
 diff against the intended contract, including affected callers, authority,

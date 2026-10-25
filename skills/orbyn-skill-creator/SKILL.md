@@ -82,6 +82,13 @@ remaining behavior gaps, changed files and local/committed delivery state.
 
 ## Maintain the public contract
 
+When current work demonstrates a meaningful reusable gap, use the
+[contribution feedback policy](references/contribution-feedback.md). Prepare a
+concrete, sanitized proposal and offer it once at a natural checkpoint. The user
+can approve a public PR, request a local draft or decline. Existing exact-scope
+authority carries through. Silence and local improvement permission do not
+authorize publication. Keep company-only lessons local and continue the main task.
+
 Treat the shared library as an upstream dependency of consuming projects. Keep private product policy and source outside public contributions. A useful skill change alters a decision or supplies a reusable artifact, not just vocabulary. Check expected and adjacent routing cases, then reconcile the catalog and consumer pin through the documented contribution path.
 
 For external skill freshness and source comparisons, use

@@ -24,6 +24,7 @@ live agent routing and rendered output. Mark checks that were not performed.
 - [ ] I can contribute this material under MIT and preserved applicable notices.
 - [ ] New/adapted material has an accurate provenance entry and source revision.
 - [ ] I reviewed the diff for private content, credentials and consumer-only files.
+- [ ] Any agent-prepared public submission is within the user's explicit scope; no private consent transcript is included as proof.
 - [ ] Catalog, generated links/index and distribution manifest are current.
 
 Related issue, if any:

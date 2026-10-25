@@ -93,15 +93,28 @@ source are retired, after replacement links are created successfully. Foreign
 skills stay intact; a dry-run reports the plan without changing either host.
 See the [retirement contract](../skills/orbyn-setup/references/project-skills.md#retired-shared-entrypoints).
 
-## Optional nested contribution workspace
+## Choose the workspace layout
 
-The library can live beside independent targets in ignored `repo/<project>/`
-and sibling `repo/<project>-wt/<purpose>/` paths. Follow the
+The setup agent asks once between **nested (recommended/default for a new
+workspace)** and **an existing project in place**, unless the user's explicit
+destination/layout already answers it. “Use the default” selects nested;
+silence or a preselected UI option does not. Wait before dependent writes and
+continue safe inspection. Reinstalls/continuations retain the selected location.
+
+Nested keeps independent targets in ignored `<library>/repo/<project>/` and
+sibling `<library>/repo/<project>-wt/<purpose>/` paths. In-place setup keeps the
+existing project path and worktree root. Follow the
 [workspace contract](../skills/orbyn-setup/references/repository-workspaces.md):
 select the target root explicitly, preserve its own instructions and skills,
 and distinguish local assistance from upstream adoption of our tooling. Existing
 projects do not need to move. Research-only source stays in `orbyn-references/`.
 Never add target repositories or gitlinks to the public library.
+
+This is an agent-led decision before calling the installer. `--project` remains
+the exact target checkout; there is no automatic move/clone, interactive CLI
+prompt or `--layout` flag. Skill presets and hosts are separate selections. A
+pinned vendored copy for team adoption is a distribution choice usable with either
+layout; developer-local links must not become a machine-specific upstream change.
 
 ## Customize the consuming project
 

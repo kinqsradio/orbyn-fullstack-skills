@@ -11,6 +11,27 @@ a reusable method does not authorize publishing company procedures or assets.
 Required instructions must work from disk under the
 [offline contract](skills/orbyn-setup/references/offline.md).
 
+## Agent-suggested contributions
+
+An agent can identify a meaningful reusable gap from current authorized work and
+offer a concrete general proposal under the
+[feedback policy](skills/orbyn-skill-creator/references/contribution-feedback.md).
+It asks once whether the user wants a public PR, a local draft first, or no
+contribution. The main task continues either way. User permission already covering
+that exact public submission carries through without another routine question.
+
+Before public submission, review the proposed content/diff and destination. Keep
+company procedures, private source/data, credentials, chat transcripts and local
+history out; use synthetic public examples and preserve credits/licenses. Local
+fix/draft permission and silence do not authorize a public fork, push, issue or PR.
+No private consent transcript is required as public proof. Authors remain
+responsible for the right to contribute under MIT; an agent cannot accept a CLA
+or relicense someone else's work on the user's behalf.
+
+This flow does not add telemetry, persistent memory, mandatory lesson logs or
+automatic uploads. It uses the same checks and maintainer review as any other
+contribution. Public submission does not itself authorize merge or consumer promotion.
+
 ## Make a contribution
 
 1. Start locally or in permitted private contribution storage under the
@@ -61,7 +82,8 @@ is not a secret detector: authors still review the actual content before public
 publication.
 
 After the public change merges, update the consumer to that exact revision and
-its file hashes. Consumer CI catches un-reconciled changes; it does not grant a
+its file hashes only when consumer promotion is separately authorized. Consumer
+CI catches un-reconciled changes; it does not grant a
 public write token or automatically publish private material.
 
 ## Scope and review

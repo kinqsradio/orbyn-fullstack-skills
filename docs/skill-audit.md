@@ -369,3 +369,37 @@ holdouts. All **54 owners** and upstream notices remain. Helper/capacity evidenc
 is distinct from hosted collection, authentic provider evidence, live model
 behavior and deployment qualification. Consumer data and full raw results stay
 outside public sync. Orbyn synchronization and the REA engine upgrade remain held.
+
+## Setup layout choice — 25 October 2026
+
+Setup now asks once between nested (recommended/default for a new contribution
+workspace) and an existing project in place when the user has not chosen a
+destination/layout. Explicit existing paths and delegated defaults answer that
+choice; silence does not. Continuations retain the chosen location. Existing
+checkouts/output are never relocated merely to enforce the recommendation.
+
+The setup owner and local workspace contract own the decision. README, installation,
+root policy, workflow and worktree routing explain it consistently. Layout stays
+separate from skill presets and distribution; the installer still takes an exact
+`--project` path and has no interactive layout flag. All 54 owners and source
+notices remain. Five development cases bring the catalog to **127**, preserving
+the prior 122 objects/holdouts. They are assessment definitions, not observed live
+setup conversations. Orbyn synchronization and REA remain deferred.
+
+## Optional contribution feedback — 25 October 2026
+
+Workflow can notice a demonstrated shared-skill gap during authorized current
+work, then hand reflection and a concrete general proposal to the existing
+creator owner. The user chooses public PR, local draft or no contribution; the
+main task is not blocked. Existing exact-scope authority carries through, while
+silence/draft permission does not authorize publication. Company-only lessons
+stay local; no telemetry, persistent memory, new mandatory logs or automatic
+self-publication is added.
+
+The portable feedback method includes worked ownership/consent boundaries.
+README, contribution guidance/template, synchronization and root routing link it;
+public submission and consumer promotion remain separate. Seven development case
+definitions bring the suite from 127 to **134**, preserving all earlier objects
+and holdouts, including the five pending layout cases. These definitions are not
+observed live conversations. All **54 owners** and notices remain; Orbyn sync
+and REA are still held. Both related updates use the same reviewed PR candidate.
