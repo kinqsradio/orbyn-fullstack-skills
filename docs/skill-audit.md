@@ -369,3 +369,19 @@ holdouts. All **54 owners** and upstream notices remain. Helper/capacity evidenc
 is distinct from hosted collection, authentic provider evidence, live model
 behavior and deployment qualification. Consumer data and full raw results stay
 outside public sync. Orbyn synchronization and the REA engine upgrade remain held.
+
+## Setup layout choice — 25 October 2026
+
+Setup now asks once between nested (recommended/default for a new contribution
+workspace) and an existing project in place when the user has not chosen a
+destination/layout. Explicit existing paths and delegated defaults answer that
+choice; silence does not. Continuations retain the chosen location. Existing
+checkouts/output are never relocated merely to enforce the recommendation.
+
+The setup owner and local workspace contract own the decision. README, installation,
+root policy, workflow and worktree routing explain it consistently. Layout stays
+separate from skill presets and distribution; the installer still takes an exact
+`--project` path and has no interactive layout flag. All 54 owners and source
+notices remain. Five development cases bring the catalog to **127**, preserving
+the prior 122 objects/holdouts. They are assessment definitions, not observed live
+setup conversations. Orbyn synchronization and REA remain deferred.

@@ -9,6 +9,10 @@ target checkout and [project context](docs/agents/stack.md) before applying exam
 
 The optional ignored `repo/` workspace holds independent target clones and
 sibling worktrees. Follow the [workspace contract](skills/orbyn-setup/references/repository-workspaces.md).
+For new setup without a chosen destination/layout, ask once: nested
+(recommended/default) or an existing project in place. Honor explicit paths and
+delegated default choices; wait for an unresolved answer before dependent writes.
+Preserve existing checkouts rather than moving them to enforce a default.
 Resolve the target's own Git root and read its applicable instructions and skills
 before editing. Library maintenance defaults do not replace target contribution
 rules, stack, tests or agents. Higher-priority host/user instructions still apply;
@@ -24,7 +28,7 @@ local setup additions outside the public library's index, catalog and exports.
 
 When the human asks to set up this library in an existing project, read
 [orbyn-setup](skills/orbyn-setup/SKILL.md) and complete the setup yourself. Resolve
-the consuming root from the request/workspace; ask for a path only when it is
+the consuming root from the chosen layout and request; ask for a path when it is
 missing or ambiguous. Read that project's instructions before any writes.
 Inventory skills/docs/config, classify ownership, choose a suitable preset, run
 the helper dry-run, perform authorized backed-up migration/registration, create

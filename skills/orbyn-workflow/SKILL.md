@@ -16,7 +16,10 @@ when creating, adapting or relocating them; keep them outside public skill sync.
 For work that needs a durable handoff, use the optional
 [task record](references/task-record.md) without duplicating an existing tracker.
 
-For a target inside the library's optional `repo/` workspace, resolve that
+For setup without a selected layout, use the setup skill's
+[one-time layout choice](../orbyn-setup/references/repository-workspaces.md):
+nested is recommended/default for new workspaces; preserve existing explicit paths.
+For a target inside the library's ignored `repo/` workspace, resolve that
 repository and follow its [workspace contract](../orbyn-setup/references/repository-workspaces.md).
 Read existing upstream instructions and skills in place; an ordinary contribution
 does not authorize migrating their guidance or publishing local setup additions.

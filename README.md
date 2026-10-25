@@ -71,16 +71,32 @@ They do not install reverse-engineering tools or upgrade the pinned engine.
 git clone https://github.com/kinqsradio/orbyn-fullstack-skills.git
 ```
 
-Open your existing project in Codex, Claude Code or another tool-using agent and
-provide the local clone path. For example:
+Open the library or your project in Codex, Claude Code or another tool-using agent
+and provide the local library path plus the target repository URL or project path.
+For example:
 
-> Set up Orbyn Engineering skills from `/path/to/orbyn-fullstack-skills` in my
-> existing project at `/path/to/my-project`. Read its instructions first. Inspect
+> Set up Orbyn Engineering skills from `/path/to/orbyn-fullstack-skills` for
+> `<target repository>`. Ask which workspace layout I want, with nested as the
+> recommended default, unless I already chose a layout or existing checkout.
+> Read the target's instructions first. Inspect
 > existing skills and docs, preserve company work and settings, choose the relevant
 > skills, migrate clear company-owned skills into a local namespace with a backup,
 > configure discovery and project pointers, and run the setup checks yourself.
 > Keep company content outside public sync. Ask only for a consequential decision
 > you cannot resolve from the project.
+
+Choose the layout once; the agent completes setup after your answer:
+
+| Option | Project and worktree locations | Best fit |
+| --- | --- | --- |
+| **Nested — recommended/default** | `orbyn-fullstack-skills/repo/<project>/` and `repo/<project>-wt/<purpose>/` | New contribution workspaces alongside the library |
+| **Existing project in place** | Your current project path and established sibling worktree root | Active projects or a checkout you want to keep elsewhere |
+
+Say “use the default” to choose nested. An explicit request such as “set this up
+in my existing `/path/to/my-project`” selects in-place setup without another
+question. The agent waits when the choice is unresolved; a highlighted default
+does not count as your answer. Existing projects and output are preserved rather
+than moved. Layout is separate from the skill preset and host/model settings.
 
 The agent reads the clone’s `AGENTS.md` and setup skill, chooses its helpers and
 completes the authorized steps. You do not need to invoke individual skills,
@@ -247,9 +263,11 @@ publication under the [fork policy](skills/orbyn-worktree/SKILL.md).
 
 ## Contribution workspaces
 
-For contribution work, the optional ignored `repo/<project>/` and
-`repo/<project>-wt/<purpose>/` layout keeps target repositories together without
-adding them to this library. Agents follow each target's own instructions and
+For new contribution workspaces, the recommended/default nested layout uses
+ignored `repo/<project>/` and `repo/<project>-wt/<purpose>/` paths. The agent asks
+once when the layout is unresolved; an existing project can stay in place.
+Nested targets remain independent Git repositories and never enter this library's
+commits or exports. Agents follow each target's own instructions and
 skills, using our methods where compatible. See [nested workspaces](skills/orbyn-setup/references/repository-workspaces.md).
 Public library changes and downstream product adoption remain separate decisions;
 updating this library does not automatically repin a consuming project.

@@ -2763,6 +2763,122 @@
         "merge"
       ],
       "excluded": "Do not turn a basic dictionary explanation into CI evidence collection or release verification."
+    },
+    {
+      "id": "setup-layout-unresolved",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Set up this local skills library for a new contribution repository. I supplied its repository URL but have not chosen a local workspace layout. You may inspect current paths; do not guess my layout choice.",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [
+        "reverse-engineer-anything"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "message",
+        "deploy",
+        "merge"
+      ],
+      "excluded": "Local setup choice or explicitly selected contribution scope only; no real network clone, consumer sync, model/provider change or implicit external effects in this assessment.",
+      "rubric": {
+        "choice": "Asks once between nested recommended/default and existing project in place, using known paths. Does not treat a preselected option or silence as an answer.",
+        "preservation": "Waits before layout-dependent writes/cloning/registration, continues safe inspection, and preserves existing checkouts and target instructions."
+      }
+    },
+    {
+      "id": "setup-layout-default",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Set up skills for this new contribution repository using your default workspace layout. The local library is already cloned and destination is available. Preserve unrelated work and use the configured local tools.",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [
+        "reverse-engineer-anything"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "message",
+        "deploy",
+        "merge"
+      ],
+      "excluded": "Local setup choice or explicitly selected contribution scope only; no real network clone, consumer sync, model/provider change or implicit external effects in this assessment.",
+      "rubric": {
+        "default": "Recognizes delegated default as nested library/repo/project with sibling repo/project-wt/purpose and does not ask the layout question again.",
+        "execution": "Resolves target identity and authority, reads target instructions, uses the exact chosen checkout for applicable installer steps, and never invents --layout or changes models."
+      }
+    },
+    {
+      "id": "setup-layout-existing",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Set up the library in my existing checkout at /work/acme-app, keeping it exactly where it is. It has local skills and dirty output. The library is at /work/orbyn-fullstack-skills.",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [
+        "reverse-engineer-anything"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "message",
+        "deploy",
+        "merge"
+      ],
+      "excluded": "Local setup choice or explicitly selected contribution scope only; no real network clone, consumer sync, model/provider change or implicit external effects in this assessment.",
+      "rubric": {
+        "choice": "Treats the explicit existing destination as the in-place choice, without re-asking or enforcing the nested recommendation.",
+        "ownership": "Preserves project guidance, local skills/data/output and established worktree layout; does not move/duplicate the checkout or install models."
+      }
+    },
+    {
+      "id": "setup-layout-continuation",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Check and repair discovery links in the nested project we already set up. Retain the selected checkout and all current project instructions; this is a continuation, not a new workspace.",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [
+        "reverse-engineer-anything"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "message",
+        "deploy",
+        "merge"
+      ],
+      "excluded": "Local setup choice or explicitly selected contribution scope only; no real network clone, consumer sync, model/provider change or implicit external effects in this assessment.",
+      "rubric": {
+        "continuation": "Uses the existing choice and exact checkout rather than repeating onboarding or relocating work.",
+        "limits": "Separates local discovery checks from observed host loading; preserves upstream instructions and does not infer publication/adoption authority."
+      }
+    },
+    {
+      "id": "setup-layout-not-onboarding",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Fix the reported pagination bug in this already selected contribution checkout. The existing project instructions and skills are available; I did not ask to set up or move anything.",
+      "expected_skills": [
+        "orbyn-workflow",
+        "how"
+      ],
+      "forbidden_skills": [
+        "reverse-engineer-anything"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "message",
+        "deploy",
+        "merge"
+      ],
+      "excluded": "Local setup choice or explicitly selected contribution scope only; no real network clone, consumer sync, model/provider change or implicit external effects in this assessment.",
+      "rubric": {
+        "scope": "Continues the authorized code investigation in the selected target without asking an unrelated workspace-layout question.",
+        "boundaries": "Does not install/migrate skills, clone/move another repository or infer publishing authority from this code task."
+      }
     }
   ]
 }
