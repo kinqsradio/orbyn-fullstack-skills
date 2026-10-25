@@ -205,6 +205,13 @@ the corrected candidate also stopped dependent pushes after a failed commit in
 and an earlier host-blocked worktree experiment is reported separately. These
 small development trials do not qualify hosted GitHub behavior.
 
+The [bulk CI and release exercise](docs/evaluations/2026-10-25-bulk-ci.md) adds
+offline indexed failure analysis and artifact-bound stage verification. It ran
+54,000 actual fixture testcases across 18 slots and separately measured up to
+one million generated records, including 500,000 candidate failures. The complete
+failure export is independent of the compact top-group summary. These local
+capacity/evidence checks do not establish live-agent or production qualification.
+
 For substantive continuation, the optional [handoff contract](skills/orbyn-workflow/references/handoffs.md)
 records scope, candidate, ownership, observed checks and next action. Its offline
 checker rejects stale revisions and inconsistent completion claims; receiving

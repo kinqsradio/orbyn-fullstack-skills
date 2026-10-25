@@ -346,3 +346,26 @@ credits are preserved. The resulting **113 definitions** are not 113 executed
 trials. Calibration/packaging checks and controlled local PR behavior are distinct
 from live-model and hosted-provider qualification. No model credentials or calls
 enter CI. Orbyn synchronization and the REA engine upgrade remain deferred.
+
+## Bulk CI failure analysis and release verification — 25 October 2026
+
+The [measured exercise](evaluations/2026-10-25-bulk-ci.md) extends existing owners:
+CI owns complete report/matrix collection, disk-backed failure indexing and release
+evidence; `how` owns cause confirmation; `tdd` owns meaningful regressions; workflow
+owns their handoff; creator owns disposable pipeline and capacity exercises.
+No competing skill or mandatory human invocation is added.
+
+The local pipeline ran 54,000 actual fixture cases across 18 slots. The broken
+candidate retained all 10,800 failures/errors and was blocked; the corrected
+candidate passed 18,000 checks and local release-evidence verification. Separate
+generated-record runs measured up to one million rows and 500,000 candidate
+failures. An observed quadratic baseline-view scan was corrected with an indexed
+current snapshot, preserving full attempt history. Compact summaries do not
+truncate the database/export. A 1,000-slot completeness fixture is also covered.
+
+The 13 new helper tests bring the suite to 142 Python tests. Nine development case
+definitions bring the case catalog to **122**, preserving prior 113 objects and
+holdouts. All **54 owners** and upstream notices remain. Helper/capacity evidence
+is distinct from hosted collection, authentic provider evidence, live model
+behavior and deployment qualification. Consumer data and full raw results stay
+outside public sync. Orbyn synchronization and the REA engine upgrade remain held.
