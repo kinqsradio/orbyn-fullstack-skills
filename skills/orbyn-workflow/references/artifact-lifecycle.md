@@ -12,6 +12,7 @@ no extra folders. Create a task directory only when an artifact is needed.
 | Interactive prototype | Ignored `output/<task>/preview/`, with local assets and a short opening/reset note | Human review ends, or the selected interaction is transferred and the artifact is intentionally retired |
 | Screenshots, test captures, profiles and trial receipts | Ignored `output/<task>/evidence/` or approved CI artifacts; retain candidate/state identity | Required review/reproduction and project retention are satisfied |
 | Decision or sanitized result summary | Existing design/task document; tracked only when appropriate | Owning decision's useful lifetime |
+| Accepted behavioral model, property/config and maintenance instructions | Target's existing tracked verification/test/design owner | Covered behavior remains supported; update correspondence after code changes |
 | Disposable database, queue, volume, environment or cache | Unique task-owned namespace/path outside production | Checks finish and required failure evidence/data are preserved |
 | Downloaded research | Ignored `orbyn-references/` under upstream-review policy | Its research/retention purpose ends |
 
@@ -57,6 +58,13 @@ For containers, identify the exact task project and distinguish stopping service
 from deleting volumes. Never use a global prune, broad kill, forced clean or
 volume deletion as routine cleanup. Inspect remaining resources after teardown;
 report retained/removed/running state and why, not “cleaned” without evidence.
+
+For a stateful prototype, preserve the preview, editable chart, model/config,
+scenario notes and evidence identities as one review package when moving them.
+Reopen retained links after relocation; copying HTML alone may omit local assets
+or a required server. Record expired/deleted raw evidence as unavailable rather
+than implying an old summary still has replayable receipts. Retain approved
+durable models/tests under their tracked owner separately from disposable exports.
 
 Example: a reviewed patch is merged, but its ignored prototype is the only copy
 and a teammate uses the same database. Preserve/reopen the prototype outside the

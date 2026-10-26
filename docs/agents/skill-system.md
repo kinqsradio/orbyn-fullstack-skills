@@ -131,10 +131,21 @@ These examples are routing expectations, not claims of executed model trials.
 
 ## Consumer-owned skills and offline resources
 
+Stateful prototypes connect `orbyn-ui-design` previews to `architect` state/rule
+models and `tdd` property checks or verification drift. Use the
+[statechart method](../../skills/architect/references/statecharts.md) and
+[behavior preview](../../skills/orbyn-ui-design/references/behavior-preview.md).
+Rendering, exercised interaction, model results and real-code correspondence are
+separate evidence. Select rigor from the risk; simple visual work needs no checker.
+Durable project verification instructions follow the target's existing owner and
+stay outside the shared 34-skill catalog.
+
 Before skill authoring or setup, classify shared library versus company/repo
 ownership with the [local skill guide](../../skills/orbyn-setup/references/project-skills.md).
-Company-specific skills live in the consuming checkout’s `project-skills/`
-namespace with both host links and stay outside the shared catalog/export.
+Company-specific skills stay in the consuming checkout's established paths under
+its own discovery rules, outside the shared catalog/export. Setup does not move,
+namespace, register or synchronize them; separately authorized authoring follows
+that project's conventions.
 Read relevant local skills with the portable method; preserve user/project policy.
 Use the [offline contract](../../skills/orbyn-setup/references/offline.md) for
 local-first instructions, licensed snapshots and honest freshness limits.

@@ -112,7 +112,8 @@ as a security audit or import a generated build/cache tree as application code.
 
 Do not edit an installed plugin cache: an update may replace it. Identify the
 canonical repository or consumer-owned adaptation first. Keep company-only
-changes under `project-skills/`; shared improvements follow the allowlisted
+changes in the target's established owner paths under its own discovery rules;
+setup imposes no directory convention. Shared improvements follow the allowlisted
 public contribution path. Preserve licenses and honest provenance. Independently
 written ideas do not justify removing notices from copied or derived material.
 

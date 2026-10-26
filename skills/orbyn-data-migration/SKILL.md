@@ -53,6 +53,13 @@ lane. Keep the owning product guide current rather than creating a second backlo
 
 ## Worked example
 
+For a costly concurrent cutover, use [property verification](../tdd/references/formal-verification.md)
+to model writer admission, durable fencing, in-flight writes, retries and phase
+transitions at their actual atomic boundaries. A useful rule is that an old-epoch
+writer cannot commit after the cutover fence. Replay a counterexample against
+the real storage boundary and assert unchanged effects on rejection. A bounded
+model pass cannot establish that old deployed processes have stopped.
+
 [Cutting over session writers](examples/session-cutover.md) shows why a backfill
 is insufficient while a legacy writer remains active, with staged recovery.
 

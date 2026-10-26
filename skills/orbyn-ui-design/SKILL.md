@@ -118,6 +118,10 @@ self-contained HTML artifact as appropriate, open it with supported host tools
 when possible, and provide the verified link plus states to try. Follow the
 [prototype method](references/prototypes.md) for deterministic demo controls,
 simulation labels, rendering evidence and transfer into the real frontend/backend.
+For stateful flows, use [behavior preview](references/behavior-preview.md) to
+connect relevant scenarios, state/rule IDs and actual checks. Hand lifecycle
+statecharts to `architect` and critical property checks or drift to `tdd`; retain
+visual, model and implementation evidence separately. Small visual work stays small.
 Use the [artifact lifecycle](../orbyn-workflow/references/artifact-lifecycle.md)
 for storage, server lifetime and cleanup. A source file or screenshot alone does
 not establish that the human can exercise the interaction.

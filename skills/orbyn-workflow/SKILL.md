@@ -56,6 +56,7 @@ permits. Do not load the whole library or repeat a checklist in every reply.
 | Add behavior                         | [Feature](playbooks/feature.md)                     |
 | Change structure                     | [Refactoring](playbooks/refactoring.md)             |
 | Resolve an empirical design question | [Prototype](playbooks/prototype.md)                 |
+| Explain/check lifecycle rules or verification drift | [Statecharts](../architect/references/statecharts.md), then [property verification](../tdd/references/formal-verification.md) |
 | Match a reference UI                 | [Visual parity](playbooks/visual-parity.md)         |
 | Author reusable instructions         | [Skill authoring](playbooks/authoring-a-skill.md)   |
 | Compare prompt/skill behavior        | [Evaluation](playbooks/eval.md)                     |

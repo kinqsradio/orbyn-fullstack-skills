@@ -19,16 +19,22 @@ they are not mandatory manual homework for the user.
 ## Choose the owner before authoring
 
 Classify the request using the [company/repository skill boundary](../orbyn-setup/references/project-skills.md).
-Consumer conventions and local adaptations belong in that consuming checkout's
-`project-skills/<company-or-repo>/<namespaced-skill>/`, with discovery links for
-both hosts. Inspect existing local skills, preserve credits/assets and repair
-references when migrating them within authorized scope. Keep these skills out of
+Consumer conventions and local adaptations stay in that consuming checkout's
+established paths under its own ownership and discovery rules. Inspect existing
+local skills and preserve credits/assets. Setup does not move, namespace, register
+or synchronize target guidance. Creating a local skill is separate authorized
+project work; do not invent a shared registration or migration helper. Keep it out of
 the shared catalog, public manifest and upstream lock. A library improvement must
 be explicitly in public contribution scope; never infer permission from generic
 wording or copy company material into the shared skill tree.
 
 The shared authoring steps below apply to library-owned skills. For local skills,
-use the ownership guide's registration/check path and the consumer's policy.
+follow the consumer's authoring/discovery checks and the ownership guide.
+
+For a durable project check of a critical behavioral property, use the
+[project verification method](references/project-verification.md). Keep its
+models, coverage record and rerun instructions with the target owner, outside
+the shared catalog. A generic prototype request does not require a new skill.
 
 ## Define a useful contract
 

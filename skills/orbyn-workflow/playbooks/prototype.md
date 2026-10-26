@@ -25,3 +25,12 @@ resources and their retention/cleanup condition under
 [artifact lifecycle](../references/artifact-lifecycle.md). An empirical backend
 prototype needs its measured decision and reproducible inputs; a requested human
 UI preview also needs an artifact the person can open and exercise.
+
+Choose visual exploration, interactive behavior or critical-property checking
+according to the decision and risk. For lifecycle/statechart work, use
+[architect's model method](../../architect/references/statecharts.md); for a
+bounded model check, real-code negative control or verification drift, use
+[property verification](../../tdd/references/formal-verification.md). Keep design,
+simulation, rendered inspection, model results and real implementation evidence
+distinct. Connect relevant rules to preview scenarios and source rather than
+maintaining separate contradictory lifecycles. A simple sketch needs no checker.
