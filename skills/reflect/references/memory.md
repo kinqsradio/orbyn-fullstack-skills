@@ -42,6 +42,29 @@ The local trust boundary is the OS user, not the scope labels. No live database
 on a network share or automatic cross-device sync is supported. Keep the complete
 root, especially the deletion ledger, when preserving this system.
 
+## Select retrieval scope before querying
+
+Bind the explicit request to the selected target/worktree before `find`, `list`
+or `show`. Choose its authorized existing project store, or an explicitly selected
+personal/reusable store, before retrieving records; do not inspect every store and
+remove unrelated results afterward. Apply known module/platform/version/branch
+context with `--applicability context.json` for ordinary `find`/`list` recall.
+`show ID` is explicit inspection: it can return inactive or nonmatching records,
+has no `--applicability` flag, and requires a manual applicability/current-source
+assessment before consequential use. See
+[action scope](../../orbyn-setup/references/action-scope.md) for the distinct
+instruction-lookup and implementation-search boundaries.
+
+Worktrees sharing a Git common directory share the registered logical project
+store, not identical source or applicability. A lesson about another branch needs
+current source confirmation in this checkout, even if its receipt is fresh. On a
+target/worktree switch, reselect the binding and applicability before another
+query. Revalidate `find`/`list` recall receipts before consequential use; this
+verifies store freshness, not source correctness or model-request delivery.
+`show` returns a record without that receipt envelope: re-read/check its current
+revision and status and assess applicability before use. Ordinary source
+investigation does not authorize a memory query, initialization or capture.
+
 ## Structured records and classification
 
 `remember --input draft.json --op UNIQUE_ID` accepts the editable fields in the
@@ -118,7 +141,7 @@ stable ordering, evidence/freshness and a generation/revision receipt. Defaults:
 five results, 4,000 total body characters. Truncation is labelled. There is no
 embedding provider, opaque relevance score or cross-project search union.
 
-Before consequential use, call `revalidate --input receipt.json` with the result's
+Before consequential use of `find`/`list` recall, call `revalidate --input receipt.json` with the result's
 `receipt` object. A concurrent edit/delete invalidates it. This verifies store
 freshness, not the referenced source. Check actual current code and policy too.
 `check-sources ID --revision N --op ID` compares project-relative `source` evidence

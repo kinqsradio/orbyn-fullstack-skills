@@ -65,6 +65,16 @@ boundaries; they do not duplicate the architect or launch extra workflow stages.
 
 ## Keep the system coherent
 
+Workspace selection and instruction/code lookup share the setup owner's
+[action scope method](../../skills/orbyn-setup/references/action-scope.md).
+`how` narrows and deliberately widens implementation search within that selected
+checkout; `reflect` selects authorized memory scope and applicability before
+retrieval. Worktree selection triggers relevant re-resolution, not another skill
+installation or full-catalog reload. File reads, observed request inclusion and
+execution enforcement remain distinct evidence levels. The
+[research proposal](../work/action-level-instruction-coverage-research.md) leaves
+runtime coverage machinery and model experiments unimplemented.
+
 Upstream contribution requests enter the workflow's
 [intake](../../skills/orbyn-workflow/playbooks/contribution-intake.md), use
 `how`'s [reproduction contract](../../skills/how/references/reproduction.md) for

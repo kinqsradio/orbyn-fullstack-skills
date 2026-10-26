@@ -4580,6 +4580,184 @@
         "minimal": "Only the requested README heading changes; all settings/examples/code and other files are preserved.",
         "proportional": "Uses a small diff/text check and concise truthful handoff, without a speculative fallback matrix, formal tooling, runtime changes or claims of broad engineering qualification."
       }
+    },
+    {
+      "id": "action-scope-selected-worktree",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Explain your inspection plan for a refund defect in library/repo/shop-wt/fix-refund/payments. The outer library is the session cwd; repo/shop and repo/another-project contain identically named functions. The selected worktree has dirty source. Do not execute commands or edit anything.",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write",
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic explanation and planning only. No commands, real private memory, product/library edits, runtime harness, model calls, installs, account changes, commits, publication, delegation or messages. New development criteria, not executed behavior evidence.",
+      "rubric": {
+        "identity": "Proposes inspecting the actual target Git root, exact selected worktree/branch/revision and dirty state using the request and Git metadata; does not assert unobserved branch/revision facts when commands are forbidden. Does not substitute the outer library, primary clone or another project, fabricate metadata or demand another target choice despite the explicit path.",
+        "retrieval": "Chooses selected-checkout/module roots before code search and reads applicable outer/target/nested guidance in place. Matching symbols or shared remote/history do not make sibling source current.",
+        "minimality": "Uses existing context and ordinary filesystem/Git inspection; preserves dirty work and proposes no target skill installation, new mandatory registry/index/daemon/hooks or separate routine log."
+      }
+    },
+    {
+      "id": "action-scope-instructions-versus-code-filter",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Plan a read-only trace of repo/shop-wt/fix-refund/payments/retry.py using Python-only code searches. The selected root has AGENTS.md, payments has an ignored AGENTS.md, and applicable hidden host rules must be read. Another nested target has a different payments policy. Do not run commands.",
+      "expected_skills": [
+        "how"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write",
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic explanation and planning only. No commands, real private memory, product/library edits, runtime harness, model calls, installs, account changes, commits, publication, delegation or messages. New development criteria, not executed behavior evidence.",
+      "rubric": {
+        "instruction_lookup": "Separates governing instruction lookup from Python/content-search filters; includes relevant outer, root, ancestor/nested and required hidden/ignored rules, without scanning unrelated targets or treating every linked reference as mandatory.",
+        "code_search": "Uses explicit selected-checkout code roots and relevant filters, not outer-workspace search followed by discarding sibling hits. Accounts for actual host precedence instead of assuming Git boundaries stop ancestor loading.",
+        "scope": "Preserves rules in place and identifies real conflicts before dependent actions; adds no copied skills, global settings or per-target framework."
+      }
+    },
+    {
+      "id": "action-scope-relevant-refresh",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "An edit has already been proposed for payments/retry.py. Known instruction hashes still match, but a new payments/AGENTS.md appeared after generation. Another instruction is then removed, and compaction drops required context. Explain what to do with this edit and later queued actions, including an unrelated docs-only commit. No execution.",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write",
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic explanation and planning only. No commands, real private memory, product/library edits, runtime harness, model calls, installs, account changes, commits, publication, delegation or messages. New development criteria, not executed behavior evidence.",
+      "rubric": {
+        "invalidation": "Re-resolves affected instruction locations and required references, including new/deleted overrides and uncommitted edits; matching hashes of known files do not prove applicability is unchanged.",
+        "proposal": "Reloads missing current guidance and produces affected proposals again before execution; a later read does not retroactively cover the old proposal or prove delivery to children. Rechecks later queued actions when an earlier action changes their instructions.",
+        "proportionality": "Limits refresh to relevant scope; unrelated changes do not mandate a full catalog/instruction reload. Explains the unsupported concurrent check-to-execution race rather than promising interception or adding a watcher."
+      }
+    },
+    {
+      "id": "action-scope-evidence-levels",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Our workspace helper listed instruction filenames and a tool returned their contents. There is no originating-model-request trace and no execution interceptor. Can we report that every instruction was included and enforced? Explain the evidence levels without running or implementing a harness.",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write",
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic explanation and planning only. No commands, real private memory, product/library edits, runtime harness, model calls, installs, account changes, commits, publication, delegation or messages. New development criteria, not executed behavior evidence.",
+      "rubric": {
+        "levels": "Distinguishes located file metadata, tool-returned contents, observed originating-request contents/role, observed behavior and admission/enforcement at a stated boundary.",
+        "honesty": "Leaves request inclusion and execution coverage unknown without observations; hashes, later reads, hook declarations and a passed workspace check are insufficient. Even request inclusion does not prove understanding or obedience.",
+        "limits": "Keeps enforcement/experiments as unimplemented research, including unsupported unknown-effect commands and concurrent races; does not invent a coverage certificate, new registry or automatic framework."
+      }
+    },
+    {
+      "id": "action-scope-memory-before-query",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Explicitly find project A refund lessons for its selected fix-refund worktree, in an existing manual memory root. A sibling project B has a confidential matching tag; A shares a logical store across worktrees, but one lesson is for another branch. Give the retrieval and verification plan, and distinguish ordinary find/list recall from show ID of an inactive record, without querying real stores.",
+      "expected_skills": [
+        "reflect"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write",
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic explanation and planning only. No commands, real private memory, product/library edits, runtime harness, model calls, installs, account changes, commits, publication, delegation or messages. New development criteria, not executed behavior evidence.",
+      "rubric": {
+        "prequery": "Selects the authorized existing project A binding from the actual target/common-directory identity and applies known module/platform/version/branch applicability before bounded retrieval. Does not query all stores and filter afterward, initialize again, or inspect B.",
+        "applicability": "Retains shared logical project-store semantics while checking branch-dependent advice against selected current source; fresh store revisions do not prove source truth. Revalidates find/list recall receipts before consequential use.",
+        "ownership": "Keeps private memory outside Git and existing host-native memory unchanged; no automatic capture, extra stores, remote sync or cross-project union. A personal/reusable query requires its separately selected scope.",
+        "inspection": "Explains that show is explicit inspection and may expose inactive/nonmatching records; it has no --applicability flag or automatic recall filtering. Selects the store first, then re-reads/checks the record revision/status and manually assesses applicability/current source before actionable use. A show record is not a find/list receipt and cannot be passed directly to revalidate."
+      }
+    },
+    {
+      "id": "action-scope-bounded-widening",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A payments-only search in the selected shop worktree has no caller match. A generated registration in that same checkout may point into shared/. A similarly named sibling worktree and a symlink escaping to another project look relevant. Explain the next read-only investigation steps; do not run commands.",
+      "expected_skills": [
+        "how"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write",
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic explanation and planning only. No commands, real private memory, product/library edits, runtime harness, model calls, installs, account changes, commits, publication, delegation or messages. New development criteria, not executed behavior evidence.",
+      "rubric": {
+        "widening": "Treats no match as bounded to searched roots/filters/revision, then deliberately widens within the authorized selected checkout to generator, registration, caller/configuration and dependency owners as needed.",
+        "boundaries": "Keeps sibling-worktree findings out of current evidence and checks symlink/nested Git ownership before following it; does not silently widen to another target or rely on lexical prefixes.",
+        "instructions": "Reads applicable guidance when entering shared/ while preserving governing ancestor instructions. Avoids both a global scan and unnecessary permission questions for justified widening already inside scope."
+      }
+    },
+    {
+      "id": "action-scope-simple-trace-adjacent",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Explain this synthetic handler for items=[{\"unit_cents\":125},{\"unit_cents\":200,\"quantity\":2}] in an already selected checkout with current applicable instructions available. Supplied source, handler.py:1-2:\n\ndef handler(items):\n    return sum(item[\"unit_cents\"] * item.get(\"quantity\", 1) for item in items)\n\nThis is a small read-only source question. Memory is off and I have not requested remembering or finding lessons. Do not run commands or edit files.",
+      "expected_skills": [
+        "how"
+      ],
+      "forbidden_skills": [
+        "reflect",
+        "orbyn-setup"
+      ],
+      "forbidden_actions": [
+        "write",
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic explanation and planning only. No commands, real private memory, product/library edits, runtime harness, model calls, installs, account changes, commits, publication, delegation or messages. New development criteria, not executed behavior evidence.",
+      "rubric": {
+        "direct": "Explains the supplied handler.py:1-2 expression: missing quantity defaults to 1 and the given input yields 525 cents. Grounds that answer in the provided source, without invented callers or a claimed runtime test; keeps the explanation direct rather than starting full setup, a framework or repository-wide inventory.",
+        "no_capture": "Does not initialize/query/capture memory, search unrelated histories or stores, copy skills into targets, create a manifest/registry or claim runtime instruction enforcement."
+      }
     }
   ]
 }

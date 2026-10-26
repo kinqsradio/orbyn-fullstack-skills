@@ -27,6 +27,16 @@ These are authored procedures with static and helper evidence, not demonstrated
 Microsoft/Google/Xero-scale agent performance. New evaluation cases are prepared
 development criteria; frozen historical suites and holdouts remain unchanged.
 
+The action-scope refinement keeps the same owners: setup resolves the exact
+target/worktree and applicable instructions, `how` scopes implementation search,
+and `reflect` selects memory before retrieval. The
+[local method](../skills/orbyn-setup/references/action-scope.md) covers relevant
+refresh and separates returned file content, request inclusion and execution
+enforcement. New development criteria cover these contracts; they are not live
+trials or a runtime resolver. The separate
+[research proposal](work/action-level-instruction-coverage-research.md) retains
+its unimplemented harness, experiments and novelty hypotheses.
+
 ## Historical audit — 24 October 2026
 
 The initial audit covered **55 canonical skills** in the candidate stacked after PRs

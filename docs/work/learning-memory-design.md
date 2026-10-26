@@ -4,6 +4,12 @@ Status: original design with local implementation checkpoint below, 25 October
 2026. The optional runtime and routing are implemented in the uncommitted candidate;
 this document does not enable real memory capture or host configuration. Library baseline: `0bb824e0a84281e72abda6f86545dc792101de5d`.
 
+For current scope selection, use the [owning memory contract](../../skills/reflect/references/memory.md#select-retrieval-scope-before-querying):
+select the authorized project store and checkout applicability before retrieval.
+The [action-level instruction coverage proposal](action-level-instruction-coverage-research.md)
+researches stronger request/execution evidence separately; it does not add another
+memory store, enable capture or implement an enforcement harness.
+
 ## Decision
 
 Extend this library with an optional local memory service implemented first as an

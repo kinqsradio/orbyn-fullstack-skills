@@ -12,9 +12,13 @@ Anchor the question in an entry point and follow its real callers, state and
 effects. Record inputs, validation, authority, transitions, persistence, output,
 errors and cleanup where relevant. Inspect types and configuration alongside code.
 
-Start with a focused search, then read the smallest files needed to complete the
-path. Separate source-derived behavior from runtime observations. A filename or
-comment alone does not establish execution. Missing links stay explicit.
+Select the exact target/worktree and search roots before a focused search; use
+[action scope](../orbyn-setup/references/action-scope.md). Locate governing root,
+ancestor and nested instructions separately from code filename filters. Widen
+deliberately for a missing dependency; no match is not proof of global absence.
+Read the smallest files needed to complete the path. Separate source-derived
+behavior from runtime observations. A filename or comment alone does not establish
+execution. Missing links stay explicit.
 
 For substantial investigation, the owning lead delegates bounded source questions
 to named native Orbyn Investigators under the [workflow](../orbyn-workflow/SKILL.md).

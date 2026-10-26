@@ -190,6 +190,11 @@ the working directory for every subsequent edit/check; reread relevant nested
 instructions there. Preserve project environment files; do not automatically copy
 secrets or run setup hooks from source. Worktrees share Git objects and may still
 share databases, ports, fixtures or external services: assign those separately.
+Use [action scope](../orbyn-setup/references/action-scope.md) after selecting or
+switching checkout: re-resolve applicable instructions and search roots there.
+Shared Git history or project memory does not establish identical rules, source
+or branch-specific applicability; do not reuse another checkout's search results
+as current evidence.
 
 ## Preserve before cleanup
 

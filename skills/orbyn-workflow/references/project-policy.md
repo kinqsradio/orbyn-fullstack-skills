@@ -17,6 +17,10 @@ includes proportional local verification unless excluded by the user or project.
 Production effects, publication and messaging retain their actual authorization
 boundary; no skill grants them implicitly. Report local, committed, pushed,
 merged and deployed states separately. A source inspection is not runtime proof.
+Select the exact target/worktree and code or explicitly authorized memory scope
+before retrieval. [Action scope](../../orbyn-setup/references/action-scope.md)
+owns separate instruction lookup, relevant refresh and evidence levels. A returned
+file is not proof of originating-request inclusion or execution enforcement.
 
 ## Stack and ownership
 

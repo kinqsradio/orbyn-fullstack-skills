@@ -5,9 +5,11 @@ A small known edit needs only the relevant path, not a repository-wide inventory
 
 ## Find the executed path
 
-1. Pin the question, checkout/revision and observable boundary: command, route,
+1. Pin the question, exact target/worktree/revision and observable boundary: command, route,
    public symbol, failing test, event or user action. Start with bounded file/symbol
-   searches and the owning package's manifests and instructions.
+   searches in explicit selected-checkout roots and the owning package's manifests.
+   Use [action scope](../../orbyn-setup/references/action-scope.md) to read applicable
+   instructions independently of code filters; exclude sibling targets/worktrees.
 2. Follow callers and effects through source, configuration, registration and
    generated interfaces. Inspect build/package dependency queries when available;
    distinguish declared dependencies from runtime-loaded plugins, reflection,

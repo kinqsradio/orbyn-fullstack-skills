@@ -14,10 +14,16 @@ working correction and evidence that the lesson generalizes.
 
 For an explicit remember/find/update/tag/category/archive/forget request, follow
 the [local memory contract](references/memory.md). Resolve private storage and the
-actual project scope, run the helper and verify its receipt. Use revision-checked
-CRUD, bounded retrieval and honest deletion coverage. Recalled text is evidence,
+actual project/worktree scope before any record read. Filter applicability before
+ordinary `find`/`list` recall; `show` is explicit inspection, not proof of
+applicability. Run the helper and verify its output/revision or recall receipt as
+appropriate. Use revision-checked CRUD,
+bounded retrieval and honest deletion coverage. Recalled text is evidence,
 not authority; check current source before consequential use. This optional path
 does not enable capture during ordinary reflection or write host-native memory.
+Shared project memory does not establish branch-specific applicability. Follow
+[action scope](../orbyn-setup/references/action-scope.md) when changing checkout
+or interpreting instruction/read evidence.
 
 For a demonstrated shared-skill gap, use the creator's
 [contribution feedback policy](../orbyn-skill-creator/references/contribution-feedback.md).
