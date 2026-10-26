@@ -13,6 +13,11 @@ Read its own instructions and relevant project skills in place. Existing optiona
 [context pointers](../orbyn-setup/references/project-context.md) are read-only hints;
 ordinary source discovery works without a map. Shared methods stay in the outer
 library; no installation, company-skill migration or consumer pin sync is supported.
+Use [action scope](../orbyn-setup/references/action-scope.md) to keep instruction
+lookup distinct from implementation search, select retrieval roots first, and
+refresh affected guidance on checkout, path, rule or context changes. State only
+observed file/read, request-inclusion and execution evidence; no runtime gate or
+research harness is implied.
 For a durable handoff, use the optional [task record](references/task-record.md)
 without duplicating an existing tracker. Setup selects [orbyn-setup](../orbyn-setup/SKILL.md)
 automatically and preserves active external paths until migration is authorized.

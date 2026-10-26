@@ -34,6 +34,18 @@ agent owns authorized Git operations and project setup separately. Existing targ
 AGENTS.md, CLAUDE.md, Cursor rules and skills remain upstream-owned; Orbyn's own
 explicit duplicate-installation retirement is not a generic deletion policy.
 
+During work, use the [action scope method](../skills/orbyn-setup/references/action-scope.md)
+to select the exact target/worktree before retrieving code or explicitly authorized
+memory. Look up applicable instructions separately from code filters, and refresh
+the affected guidance when paths, rules or available context change. Task-local
+conversation context is sufficient; no additional registry, daemon, index,
+mandatory hook or per-target installation is required.
+
+The [action-level coverage research proposal](work/action-level-instruction-coverage-research.md)
+separately proposes request-linkage and execution-coverage experiments. The current
+procedural guidance does not implement its harness or prove that file reads reached
+an originating model request or were enforced during execution.
+
 ## Reading groups
 
 These groups help select relevant methods from the full canonical source. All

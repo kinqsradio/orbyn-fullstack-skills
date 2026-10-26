@@ -23,6 +23,12 @@ a library dependency inside every target repository.
 
 ## Instructions and ownership
 
+Select the exact target/worktree and retrieval roots before searching. Follow
+[action scope](action-scope.md) for separate instruction/code lookup, relevant
+refresh and the difference between file reads, request inclusion and enforcement.
+The method uses ordinary filesystem/Git inspection; no registry, daemon, index,
+mandatory hooks or per-target configuration is added.
+
 Before changing a target, resolve its actual Git root and worktree/common Git
 metadata. Read its AGENT.md, AGENTS.md, CLAUDE.md, codex.md, .cursorrules, applicable nested
 instructions, contribution rules and existing skills. Preserve all upstream-owned

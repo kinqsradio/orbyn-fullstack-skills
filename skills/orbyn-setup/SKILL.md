@@ -32,6 +32,12 @@ missing source rather than downloading implicitly.
 
 ## Discover both sets of guidance
 
+Use [action scope](references/action-scope.md) to select the exact target/worktree
+and code-search roots before retrieval. Instruction lookup includes applicable
+outer, root and nested rules even when code filters exclude Markdown or hidden
+files. Refresh relevant locations when paths, rules or available context change.
+No new manifest, registry or runtime hook is required.
+
 Run `python3 skills/orbyn-setup/scripts/workspace.py check --target repo/<project>`.
 Read the target's root and applicable nested instructions, contribution guide,
 existing skills and actual manifests. A target may add project-owned AGENT.md,
@@ -87,3 +93,5 @@ Report library/target paths, full revisions and dirty state, applicable target
 instructions/skills, checks, preserved legacy paths and actual host discovery.
 Never call a filesystem check a live host trial. Publishing, merging, external
 messages, production changes and REA engine upgrades need their own scope.
+Distinguish located files, returned contents, observed originating-request
+inclusion and actual execution enforcement; unavailable levels stay unknown.

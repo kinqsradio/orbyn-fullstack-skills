@@ -29,10 +29,27 @@ clients. The skills keep ownership and failure behavior visible across that path
 They distinguish a source finding from a runtime observation, a web preview from
 native evidence, and a pushed commit from a deployment.
 
-![Connected engineering workflow: understand the feature, connect API/data and UI/UX changes, check behavior and previews, then revise or review and report delivery.](docs/assets/diagrams/connected-workflow.svg)
+```mermaid
+flowchart TB
+  accTitle: Connected engineering workflow
+  accDescr: A feature connects API and data changes with UI and UX work. Tests and preview inspection support either revision or review and delivery reporting.
+  context["Understand the feature<br/>Source · project rules · contract"]
+  backend["API + data<br/>Retries · migration recovery"]
+  frontend["UI + UX<br/>Openable prototype"]
+  evidence["Test behavior + inspect preview"]
+  gate{"Evidence supports<br/>the change?"}
+  review["Review + report delivery"]
+  context --> backend
+  context --> frontend
+  backend --> evidence
+  frontend --> evidence
+  evidence --> gate
+  gate -->|yes| review
+  gate -->|revise| context
+```
 
-[Mermaid source](docs/assets/diagrams/connected-workflow.mmd). Use the relevant
-methods and proportionate checks; small changes do not need every stage.
+Use the relevant methods and proportionate checks; small changes do not need every
+stage.
 
 This is an opinionated engineering workflow, not a claim that prompts guarantee
 correct software. [The engineering contract](skills/orbyn-workflow/references/fullstack-contract.md)
@@ -83,10 +100,25 @@ Cursor or your local tool-using agent. Tell it:
 
 **Nested is the only supported layout.** Targets have independent Git histories:
 
-![Nested workspace: shared skills and AGENTS.md live in the outer library; the ignored repo folder contains independent projects with their own Git history, source, instructions and local skills.](docs/assets/diagrams/nested-workspace.svg)
+```mermaid
+flowchart TB
+  accTitle: Nested workspace ownership
+  accDescr: The outer shared library contains an ignored repo folder with independent projects. Each project owns its Git history, source, rules and local skills. Shared methods are read alongside project instructions.
+  subgraph outer["Outer library workspace"]
+    direction TB
+    shared["skills/ + AGENTS.md<br/>Shared methods"]
+    subgraph targets["repo/ · ignored"]
+      direction TB
+      a["project-a/<br/>Own Git history<br/>Source · rules · local skills"]
+      b["project-b/<br/>Own Git history<br/>Source · rules · local skills"]
+    end
+    shared -. read alongside .-> a
+    shared -. read alongside .-> b
+  end
+```
 
-[Mermaid source](docs/assets/diagrams/nested-workspace.mmd). One maintained library
-avoids copied shared skills in every target. Agents read both scopes; project rules
+One maintained library avoids copied shared skills in every target. Agents read
+both scopes; project rules
 and host permissions still govern their applicable boundaries.
 
 ```text
@@ -199,10 +231,28 @@ and preserve applicable credits. This is optional contribution, not telemetry
 or automatic cross-user learning; silence does not upload anything, and a public
 merge does not authorize changing your target repository.
 
-![Reviewed learning loop: an observed gap can become an opt-in local lesson or a synthetic proposal; evaluation and an authorized, accepted PR precede a shared improvement.](docs/assets/diagrams/reviewed-learning.svg)
+```mermaid
+flowchart TB
+  accTitle: Optional local memory and reviewed improvements
+  accDescr: An engineering gap can lead to an opt-in local lesson or directly to a synthetic contribution proposal. Evaluation, publication authorization, human review and acceptance precede a shared update.
+  gap["Observed engineering gap"]
+  memory["Opt-in local lesson<br/>Tags · categories · evidence"]
+  choice{"Keep a lesson<br/>or propose a fix?"}
+  local["Keep local<br/>Find · correct · forget"]
+  proposal["Propose + evaluate<br/>Synthetic regression"]
+  pr["Authorized PR<br/>Human review"]
+  shared["Update shared methods"]
+  gap --> choice
+  choice -->|local lesson| memory
+  memory --> local
+  choice -->|propose sharing| proposal
+  proposal --> pr
+  pr -->|accepted| shared
+  shared -. future work .-> gap
+```
 
-[Mermaid source](docs/assets/diagrams/reviewed-learning.mmd). Local memory is optional;
-a contribution can start directly from a demonstrated gap. Use synthetic examples
+Local memory is optional; a contribution can start directly from a demonstrated
+gap. Use synthetic examples
 and relevant checks, with paired trials when assessing changed agent behavior.
 Human review precedes a shared update; neither capture nor merging is automatic.
 

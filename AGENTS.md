@@ -17,6 +17,11 @@ Targets, including Orbyn, may add project-owned AGENT.md/AGENTS.md or skills lat
 retiring a duplicated installation does not ban these names or move local guidance.
 Nesting alone does not prove effective host discovery; read required local files
 explicitly and report what was actually observed.
+Use the [action scope method](skills/orbyn-setup/references/action-scope.md): select
+the actual target/worktree before code or authorized memory retrieval, keep
+instruction lookup separate from code filters, and refresh affected guidance when
+paths or rules change. File reads do not prove model-request inclusion or runtime
+enforcement. This adds no per-target installation or mandatory runtime framework.
 
 ## Agent-led initial setup
 
