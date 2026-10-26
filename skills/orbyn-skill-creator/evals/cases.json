@@ -4832,6 +4832,105 @@
         "coverage": "Explains default git grep tracked-only versus default rg untracked-inclusive and hidden/ignored exclusions; adjusts explicitly scoped fallback coverage and treats regex/binary semantics separately, without claiming universal absence.",
         "instructions": "Directly probes applicable named hidden/ignored instruction paths independently from code filters; preserves selected checkout scope with deliberate justified widening, no global scan or new approval ritual."
       }
+    },
+    {
+      "id": "ci-feature-worktree-designated-gates",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Plan verification for a task-editor client fix in a feature worktree. Its API and shared schema are unchanged. Existing scoped interaction, client type/lint checks and a protected PR aggregate are available. A delegate proposes running every frontend/backend/native suite on every edit and creating a new hosted CI workflow. Explain the appropriate plan only.",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write",
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic planning only. No commands, product/library edits, workflow/protection changes, installs, model calls, publication, deployment or messages. Development criteria, not executed agent behavior.",
+      "rubric": {
+        "selection": "Designates the focused behavioral regression and affected client checks with exact checkout/candidate, reasons, exclusions and widening triggers in the existing brief; no mandatory new manifest or workflow.",
+        "stages": "Separates local iteration from PR/integration and release, preserves protected required statuses, and does not infer CD or backend/native qualification.",
+        "efficiency": "Rejects per-edit/per-delegate whole-app sweeps without impact justification and reuses still-applicable exact-candidate evidence without calling unrun checks passing."
+      }
+    },
+    {
+      "id": "ci-feature-gates-shared-contract-widening",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A client-only worktree originally designated three focused gates. The patch now changes a shared save schema/generator and concurrent-write behavior, with string-registered consumers absent from the static graph. May it retain only its original gates? Give a plan; no execution.",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write",
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic planning only. No commands, product/library edits, workflow/protection changes, installs, model calls, publication, deployment or messages. Development criteria, not executed agent behavior.",
+      "rubric": {
+        "refresh": "Reassesses the complete current diff and reverse dependencies, including generated clients, API/concurrency and relevant integration checks. A worktree name or frozen initial gate list is no exemption.",
+        "uncertainty": "Uses an established conservative broader/full fallback when dynamic consumers cannot be bounded and reports omitted or unknown edges; never shrinks checks to conceal failures.",
+        "evidence": "Binds results to current candidate/inputs and treats prior client-only greens as insufficient for the new contract."
+      }
+    },
+    {
+      "id": "ci-feature-gates-required-status-blocker",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A docs-only feature branch passed its relevant link check. Repository protection still requires an all-app CI status; that status has not run. The user wants scoped gates in future. Explain delivery now and a reviewable policy improvement; do not run commands or edit protection.",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write",
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic planning only. No commands, product/library edits, workflow/protection changes, installs, model calls, publication, deployment or messages. Development criteria, not executed agent behavior.",
+      "rubric": {
+        "current": "Does not bypass required checks, fabricate success, use skip-CI markers or claim local checks satisfy the missing status. Names the present delivery blocker.",
+        "future": "Proposes an authorized reviewed scoped aggregate with sound selection and an always-running final gate that rejects selection errors and failed/cancelled/unexpectedly skipped selected jobs; does not claim protection is already changed.",
+        "scope": "No automatic deployment or new CI service; respects existing infrastructure and separates policy proposal from applied behavior."
+      }
+    },
+    {
+      "id": "ci-feature-gates-local-docs-adjacent",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Fix a cosmetic README typo locally. No commands, links, code or contracts change. The task is local-only and explicitly excludes publication. Describe proportionate completion; no execution.",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write",
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic planning only. No commands, product/library edits, workflow/protection changes, installs, model calls, publication, deployment or messages. Development criteria, not executed agent behavior.",
+      "rubric": {
+        "minimal": "Uses a small diff/text review with relevant formatting only if needed; no whole-app tests, hosted CI, CD or required new verification map.",
+        "boundaries": "Does not turn optional CI design or worktree creation into mandatory stages, invent an application quality claim or publish anything."
+      }
     }
   ]
 }

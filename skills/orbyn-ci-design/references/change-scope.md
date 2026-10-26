@@ -19,6 +19,59 @@ or a comment whose tool consumes it is not automatically cosmetic. Inspect actua
 callers and project conventions. Retain failed results; do not add a path filter
 just to conceal an observed failure or call skipped tests passing.
 
+## Designate gates for the feature worktree
+
+Creating a branch/worktree or implementing a feature does not itself require a
+new hosted workflow, CI service, pipeline framework or automatic deployment. Use
+existing commands and local checks when sufficient. Change CI infrastructure only
+when the task requires it and that change is within scope; do not add automation
+for every task. Reuse existing affected-target selection before building another
+classifier or mandatory manifest.
+
+Before expensive checks or delegation, designate the worktree's gates in the
+existing task brief, PR or verification guide. For a small task, a few lines are
+enough; no new tracker or configuration file is mandatory. Record:
+
+- Exact checkout/base/candidate and affected contracts, packages and consumers.
+- Named commands/jobs for the current stage, prerequisites and the reason each
+  check is selected. A gate must test a meaningful outcome, not merely exit green.
+- Explicit exclusions and coverage limits, plus conditions that broaden the set.
+- Actual results for the tested revision; required, selected, intentionally
+  unselected, blocked and not-run are distinct states.
+
+| Stage | Designated checks |
+| --- | --- |
+| Feature worktree / iteration | Focused regression or contract tests, relevant package lint/type/build and affected consumer checks. Do not default to a whole-repository suite on every edit. |
+| PR / integration | Refresh the selection from the complete current diff and dependency evidence, and satisfy the repository's required statuses. Include cross-package/integration coverage where boundaries change. |
+| Release / promotion | Apply the existing release policy to the actual artifact/environment only when release is in scope. Broader release qualification need not run on every feature iteration; green feature CI grants no deployment authority. |
+
+The plan is revisable evidence selection, not a permanent exemption. Reassess when
+the diff, shared schema/API, generator, dependency/lockfile, build configuration or
+consumer graph changes, or when failures expose wider effects. Start with the
+smallest discriminating check; use the established broader/full fallback when
+impact cannot be bounded reliably or current project policy requires it. Worktree
+isolation and a feature label are not evidence of isolated runtime impact.
+
+Respect required repository checks until an authorized policy change is reviewed
+and applied; do not bypass protection, rename a status or mark an unexecuted suite
+passing. A scoped required aggregate can be a good design when the repository
+supports it, but its selector and selected jobs must fail closed. Never reduce
+the selection merely to hide a failure. Narrow selection does not authorize
+ignoring changed consumers, security boundaries or previously observed failures.
+
+After checks pass, repeat only for changed inputs, new failures, evidence expiry
+or project requirements. Do not rerun an identical full suite once per delegate
+or worktree just because a new session starts. Reuse evidence only when candidate,
+relevant inputs, environment and policy still match; a sibling worktree's green
+summary or stale baseline is not current evidence.
+
+Example: a task-editor client fix with an unchanged API may designate its failing
+interaction regression and affected client type/lint checks, excluding unrelated
+backend suites. If the patch changes a shared save schema or concurrent-write
+contract, add generator, API and affected client integration checks; widen further
+if dynamic consumers cannot be enumerated. A local README typo needs only relevant
+document checks. These examples select evidence, not universal commands or waivers.
+
 ## Encode a conservative fast path
 
 Use the project's existing [affected-target graph](affected-targets.md) when it

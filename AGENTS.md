@@ -84,8 +84,11 @@ private instructions or reports. [Workspace ownership](docs/synchronization.md) 
 the boundary. Do not publish, merge, message others or deploy solely because a
 skill describes that step. Existing user authorization still applies.
 
-Choose checks for the changed contract and respect explicit exclusions. Library
-CI and helper checks are normal contribution evidence; they do not qualify a
+Choose checks for the changed contract and respect explicit exclusions. Designate
+[feature-worktree gates](skills/orbyn-ci-design/references/change-scope.md#designate-gates-for-the-feature-worktree)
+from affected contracts and consumers; do not default to entire-app suites or new
+CI/CD automation for every task. Refresh scope when evidence changes and retain
+required repository checks. Library CI and helper checks are normal contribution evidence; they do not qualify a
 consumer application or live agent behavior. Never launch a Codex Security scan
 without a specific user request. [Security](SECURITY.md) defines private reporting.
 

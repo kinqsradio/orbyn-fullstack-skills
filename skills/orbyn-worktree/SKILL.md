@@ -196,6 +196,14 @@ Shared Git history or project memory does not establish identical rules, source
 or branch-specific applicability; do not reuse another checkout's search results
 as current evidence.
 
+## Designate task verification
+
+Before expensive runs, use the CI owner's [feature-worktree gates](../orbyn-ci-design/references/change-scope.md#designate-gates-for-the-feature-worktree).
+Name focused checks for the affected contracts and consumers, exclusions and
+conditions for widening in the existing task brief. A new worktree does not imply
+an entire-app suite, new hosted CI or deployment. Required repository statuses
+still apply at delivery; isolated files do not establish isolated runtime effects.
+
 ## Preserve before cleanup
 
 Clean up only an owned, inactive worktree within the authorized delivery/cleanup

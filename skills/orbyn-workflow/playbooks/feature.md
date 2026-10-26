@@ -6,7 +6,10 @@ reviews and verifies the result under the parent [workflow](../SKILL.md).
 1. State the user outcome, inputs, data ownership and failure states. Trace
    existing behavior with `how` and use `architect` for consequential contracts.
 2. Write the throughput checkpoint before dispatch. Resolve blocking facts and
-   choose disjoint owned paths or one owner for coupled code.
+   choose disjoint owned paths or one owner for coupled code. Designate the
+   [worktree’s gates](../../orbyn-ci-design/references/change-scope.md#designate-gates-for-the-feature-worktree):
+   named affected checks, exclusions and widening triggers; refresh them as the
+   diff changes. Do not assign a whole-repository suite to every delegate.
 3. Delegate implementation with the chosen data shape, file scope, authorized
    checks and completion condition. Preserve permission and recovery behavior.
 4. Inspect the diff and affected callers. If the design remains contested, use
