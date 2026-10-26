@@ -25,6 +25,12 @@ same-address alternatives, unresolved relationships, coverage and evidence IDs.
 If source, artifacts or runtime are unavailable offline, produce a bounded
 measurement plan and mark measurements unrun; do not invent before/after numbers.
 
+A comparison with the [local-tool path](../reverse-engineer-anything/references/local-tools.md)
+must answer the same artifact question with comparable coverage. Include tool
+startup, source selection, evidence retention and recovery, not just one raw
+command versus a complete engine workflow. A small upstream benchmark on another
+engine/model/version is a hypothesis for this task, not this installation's result.
+
 ## Find the owning cost
 
 Trace the public CLI/MCP path through admission, producer work, decoding, lookup,

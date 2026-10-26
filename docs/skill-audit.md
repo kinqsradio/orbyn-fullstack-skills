@@ -488,3 +488,13 @@ merges and terminal forgetting with reserved revision headroom. The final suite
 passes 151 tests, including 42 memory tests. Earlier calls/races remain attributed
 to their actual snapshots; lead checks are distinguished from the independent
 review. All 34 skill owners remain; no real-memory capture or task commit occurred.
+
+## Local-tool and engine cooperation
+
+The existing investigation owner now selects available local readers before an
+optional engine handoff, preserving artifact identity, scope and evidence type.
+The four REA maintenance owners reference that contract without creating another
+skill or installing an engine. [The local method](../skills/reverse-engineer-anything/references/local-tools.md)
+contains self-contained recipes and boundaries; local receipt fields never
+impersonate server-issued Evidence. Native/provider coverage still depends on
+actual tools and inputs.

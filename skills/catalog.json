@@ -294,7 +294,11 @@
       "category": "Artifact investigation and REA maintenance",
       "related": [
         "how",
-        "orbyn-upstream-review"
+        "orbyn-upstream-review",
+        "rea-analysis-optimization",
+        "rea-tool-design",
+        "rea-ci-tests-audit",
+        "rea-changelog-update"
       ]
     },
     {

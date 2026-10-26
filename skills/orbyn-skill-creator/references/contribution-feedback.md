@@ -104,6 +104,13 @@ named customer exception. Keep it under the target's existing skill location.
 Do not offer the confidential policy for public contribution merely because it
 improved this task.
 
+**Missing context:** a migration method assumes one writer, but the consumer has
+a concurrent backfill. Preserve its applicable project policy, identify the
+shared assumption and reproduce the failure with a synthetic two-writer case.
+Propose writer fencing in the migration owner and check a single-writer adjacent
+case. Keep company identifiers and operational history local. This supports a
+scoped correction; it does not make one project's migration procedure universal.
+
 **Draft, decline or offline:** “show a patch first” authorizes a local draft;
 “keep local” ends the offer. No answer is not consent. A network failure preserves
 the draft and original work; none of these states is an open public PR.

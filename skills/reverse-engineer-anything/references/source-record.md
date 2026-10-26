@@ -45,3 +45,8 @@ artifact analysis still needs suitable tools and target bytes; optimization and
 CI work need source/check access; release attribution needs real REA history.
 Missing inputs remain explicit limitations rather than reasons to fabricate facts
 or acquire software/network access without scope.
+
+The local-tool selection and handoff method is maintained Orbyn guidance, not a
+bundled engine or an imported skill entrypoint. It adds no runtime dependency,
+does not replace the historical notices above and does not advance either source
+pin. Local command examples require the named tools to be available and compatible.

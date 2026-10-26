@@ -26,6 +26,12 @@ per intended configuration; intentional platform repeats are separate coverage.
 A missing explicit test or required report must not become a green zero-test lane.
 Optional provider lanes may skip with their prerequisites and missing evidence named.
 
+For a [local/engine investigation handoff](../reverse-engineer-anything/references/local-tools.md),
+check local inspection without an engine, missing-decoder fallback, preservation
+of hidden package entries, source/target digest agreement and rejection of forged
+engine records. A fixture provider tests the handoff contract; it is not a live
+REA engine run. A missing optional engine must not skip available local checks.
+
 ## Establish a finding
 
 For each suspicious pass/failure, name the expected observable behavior, producer,

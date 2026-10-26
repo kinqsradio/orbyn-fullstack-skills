@@ -56,7 +56,8 @@ examples and licenses without adding discovery choices. The default core preset
 is a 14-skill reading group; see the [consolidation record](docs/work/skill-consolidation.md). Five REA-related skills are optional specialists for artifact
 investigation and REA maintenance, with local methods, recovery/evidence guidance
 and [worked examples](skills/reverse-engineer-anything/references/worked-examples.md).
-They do not install reverse-engineering tools or upgrade the pinned engine.
+The investigation owner supports local tools first and a compatible REA handoff
+when needed. They do not install reverse-engineering tools or upgrade the pinned engine.
 
 ## Clone the engineering workspace, then ask your agent
 
