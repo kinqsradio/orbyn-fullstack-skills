@@ -1,6 +1,6 @@
 ---
 name: rea-tool-design
-description: "Design REA tools or CLI/MCP contracts when modifying the vendored REA project; not ordinary Orbyn API work."
+description: "Design REA tools or CLI/MCP contracts when modifying the REA project; not ordinary Orbyn API work."
 ---
 
 # Design a REA tool contract
@@ -29,6 +29,10 @@ needs an actual requirement existing primitives cannot satisfy.
 
 Define strict inputs, target/admission identity, meaningful options, output fields,
 coverage and errors. Keep observed, derived and inferred relationships distinct.
+When local CLI observations feed a deeper operation, accept them only as the
+contract's supported context. Bind target digest/architecture and selection at
+admission, and produce real engine evidence; arbitrary local text is not an
+engine-issued dossier. Keep local and engine facts distinguishable in exports.
 Unknown coverage is not an empty complete result; complete static direct edges do
 not establish all runtime edges. Keep the requested answer and provenance usable
 inline, with supported summaries/paging for large facts and access to full evidence.

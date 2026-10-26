@@ -15,6 +15,8 @@ checkout, use supplied verified history and keep its limits explicit. The
 
 Identify the published baseline tag/commit, exact editorial target SHA, proposed
 version and release component from the actual REA repository or supplied metadata.
+Keep a shared-skill/local-tool recipe update separate from an engine release:
+it does not advance an REA runtime pin or establish a new provider capability.
 When Release Please owns the release, inspect the base branch's manifest and
 configuration; do not infer the baseline from an unrelated consumer's version.
 REA tags use `rea-agents-VERSION`; verify the actual tag rather than inventing one.

@@ -37,6 +37,14 @@ PR, local draft or no contribution. Honor existing exact-scope authority; silenc
 does not authorize publication. Preserve the main task, company-only material and
 local work. No telemetry, persistent memory or automatic self-publication is implied.
 
+Treat shared guidance as incomplete: a maintainer or agent may lack the consumer's
+stack, operational history or failure context. Ground corrections in observed
+evidence, name the existing owner and include a synthetic example or regression.
+Do not promote one project's practice into a universal rule. Invite contributions
+through the normal review path, preserving source/license attribution and the
+distinction between adaptations and reviewed inspiration. Learning means explicit
+local lessons and evaluated proposals, not automatic capture or self-merging.
+
 Explicit engineering-memory requests use [reflect's local memory flow](skills/reflect/references/memory.md).
 Keep records outside Git, resolve the target scope and verify revision/deletion
 receipts. Ordinary setup and reflection do not enable capture or host-memory writes.

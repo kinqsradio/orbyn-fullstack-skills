@@ -2,6 +2,10 @@
 
 Use available local schemas/help to determine exact operations and fields. Names
 below identify REA capabilities when present, not a requirement to install them.
+Use [local tools](local-tools.md) for the first bounded observation when the host
+already has a suitable reader. Continue into a REA mode only for a missing fact,
+retained-evidence need or authorized runtime observation. Preserve the same target
+digest, selection and unknowns across that handoff.
 
 | Question / target | First useful observation | Deeper work and boundary |
 | --- | --- | --- |

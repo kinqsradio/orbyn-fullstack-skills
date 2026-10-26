@@ -65,8 +65,8 @@ This index is generated in the full library from `catalog.json` and frontmatter 
 - [rea-analysis-optimization](rea-analysis-optimization/SKILL.md) — Optimize a measured REA analysis bottleneck while preserving evidence and resource ownership; scoped to REA.
 - [rea-changelog-update](rea-changelog-update/SKILL.md) — Prepare REA release notes from pinned upstream history when requested; does not publish or infer REA history from Orbyn Git.
 - [rea-ci-tests-audit](rea-ci-tests-audit/SKILL.md) — Audit REA test and CI quality when specifically requested; does not run REA qualification for unrelated Orbyn changes.
-- [rea-tool-design](rea-tool-design/SKILL.md) — Design REA tools or CLI/MCP contracts when modifying the vendored REA project; not ordinary Orbyn API work.
-- [reverse-engineer-anything](reverse-engineer-anything/SKILL.md) — Analyze shipped binaries, packages, Electron/JavaScript apps or authorized runtime behavior with REA and preserve evidence provenance. Ordinary source questions use how.
+- [rea-tool-design](rea-tool-design/SKILL.md) — Design REA tools or CLI/MCP contracts when modifying the REA project; not ordinary Orbyn API work.
+- [reverse-engineer-anything](reverse-engineer-anything/SKILL.md) — Investigate shipped binaries, packages and captured application artifacts with available local tools or a REA engine; preserve evidence and hand off deeper analysis. Ordinary source questions use how.
 
 ## Scope and attribution
 

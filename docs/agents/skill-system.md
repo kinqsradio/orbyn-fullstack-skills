@@ -37,7 +37,7 @@ routes complex work to the standard tier and bounded work to the light tier in
 | Implementation tests / TDD                 | `tdd`                                      | Failure contract + allowed environment → focused regression and fix                                 |
 | Existing security findings          | `orbyn-security-remediation`               | Saved findings + current source → scoped fixes and authorized evidence; no new scan                 |
 | Concrete adversarial review         | `interrogate`                              | Candidate + intended behavior → actionable findings                                                 |
-| Artifact/runtime investigation      | `reverse-engineer-anything`                | Target + authority + actual tools → traceable evidence                                              |
+| Artifact/runtime investigation      | `reverse-engineer-anything`                | Target + authority + local tools or available REA engine → traceable evidence                                              |
 | Skill creation/refinement           | `orbyn-skill-creator`                      | Routing gap → integrated skill, links and docs                                                      |
 | Host configuration                  | `orbyn-setup`                              | Supported host + user preferences → scoped configuration                                            |
 | Lessons/preferences                 | `reflect` / `automate-me`                  | Current-task evidence + authorization → owning instruction change                                   |
@@ -50,7 +50,8 @@ They refine the task; they are not separate obligatory
 phases or approval gates. REA maintenance skills apply only when that tooling is
 the requested target. Their local methods and examples work without fetching
 upstream instructions; [REA evidence/recovery](../../skills/reverse-engineer-anything/references/evidence-and-recovery.md)
-owns shared evidence and failure interpretation. Runtime, source/history inputs
+owns shared evidence and failure interpretation. The [local-tool path](../../skills/reverse-engineer-anything/references/local-tools.md)
+feeds identified observations into compatible deeper analysis without fabricating engine records. Runtime, source/history inputs
 and provider availability remain separate requirements.
 
 ## Orbyn Engineering identity

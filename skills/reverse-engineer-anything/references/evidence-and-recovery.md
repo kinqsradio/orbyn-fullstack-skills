@@ -7,6 +7,12 @@ from reading this file.
 
 ## Preserve identity and coverage
 
+For [local-tool observations](local-tools.md), retain the original command output,
+exit, tool/input identity and examined scope. These may inform an engine request
+but are not automatically engine Evidence. Do not invent `evidence_id` values or
+feed a CLI receipt into an input that requires an engine-issued dossier.
+The engine must read the identified target and return its supported record.
+
 Preserve complete returned Evidence records and their identities, including
 `evidence_id`, subject/provider identity, `normalized_result`, limitations and
 coverage fields. Do not manufacture IDs, remove explicit nulls or repair a digest
