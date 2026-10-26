@@ -37,6 +37,9 @@ and code-search roots before retrieval. Instruction lookup includes applicable
 outer, root and nested rules even when code filters exclude Markdown or hidden
 files. Refresh relevant locations when paths, rules or available context change.
 No new manifest, registry or runtime hook is required.
+Check [ripgrep readiness and fallback](references/offline.md#ripgrep-readiness-and-fallback)
+in the actual agent environment before relying on `rg`; missing tools do not
+authorize installs or prevent bounded inspection with an available alternative.
 
 Run `python3 skills/orbyn-setup/scripts/workspace.py check --target repo/<project>`.
 Read the target's root and applicable nested instructions, contribution guide,
