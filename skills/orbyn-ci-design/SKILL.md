@@ -18,7 +18,11 @@ separation. Do not invoke a paid model or live provider merely to validate skill
 frontmatter. Report live skill selection and model behavior separately.
 
 For small changes and selective execution, follow
-[proportional verification](references/change-scope.md). Cosmetic local work can
+[proportional verification](references/change-scope.md). Designate the feature
+worktree’s named checks, exclusions and widening triggers before expensive runs;
+use [stage-specific gates](references/change-scope.md#designate-gates-for-the-feature-worktree),
+not a whole-repository suite on every iteration. A worktree/task does not by itself
+require new CI automation or CD. Cosmetic local work can
 finish with relevant local checks and no hosted CI/CD. Published changes retain
 their required merge status; use a known docs/skills fast path, broader checks for
 uncertain/runtime changes and a final gate that cannot hide classifier or selected
