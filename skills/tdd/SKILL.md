@@ -52,3 +52,9 @@ property and real code, demonstrate a failing control, and distinguish model
 results from implementation evidence. Ordinary small UI edits need no formal model.
 
 For requested test design, use [test strategy](references/test-strategy.md) to select the real boundary, fixtures, failure controls and execution scope. A plan can be the requested output; this skill does not turn every test request into mandatory production edits.
+
+For model-powered application quality, pair deterministic permission/state tests
+with [task evaluations](../orbyn-ai-application/references/evaluations.md).
+A correct schema or one expected answer is not a reliability estimate; preserve
+held-out cases, repeated-trial failures and critical slices. This does not require
+live model calls for ordinary deterministic changes.

@@ -54,6 +54,15 @@ from stylistic preferences. For existing UI changes, use the
 forms, permissions and recovery behavior. Audit-only requests produce findings
 without product edits. A small polish does not authorize a broad redesign.
 
+For validation with people, use [user evidence](../orbyn-research/references/user-evidence.md)
+to choose nonleading representative tasks and accessible participation. Separate
+observed usability from demand/adoption or causal benefit; [product discovery](../orbyn-plan/references/product-discovery.md)
+owns that outcome decision. For model-powered behavior, use
+[AI application engineering](../orbyn-ai-application/SKILL.md) for grounding,
+quality and tool contracts; UI keeps capability expectations, source/uncertainty,
+correction, dismissal and manual continuation visible. Feedback is not training
+consent and does not enable automatic capture.
+
 ## Design and implement
 
 1. State the person's main task, starting state, and observable success. Map the

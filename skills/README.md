@@ -21,7 +21,7 @@ This index is generated in the full library from `catalog.json` and frontmatter 
 - [automate-me](automate-me/SKILL.md) — Capture explicitly requested working preferences in a reusable local skill, using the current conversation or user-selected examples.
 - [figure-it-out](figure-it-out/SKILL.md) — Plan and execute an authorized large migration or cross-cutting task with measurable completion criteria and a concise evidence trail.
 - [orbyn-plan](orbyn-plan/SKILL.md) — Refine an engineering request or scope and sequence a change, migration or investigation. Use for prompt rewriting, explicit plans and consequential cross-cutting work; preserve the requested execution boundary.
-- [orbyn-research](orbyn-research/SKILL.md) — Resolve a specific architectural, dependency, platform or design uncertainty using local evidence and authoritative external sources before choosing an implementation.
+- [orbyn-research](orbyn-research/SKILL.md) — Resolve a specific product-evidence, architectural, dependency, platform or design uncertainty using local evidence and authoritative external sources before choosing an implementation.
 - [orbyn-setup](orbyn-setup/SKILL.md) — Prepare the nested Orbyn Engineering workspace, inspect target instructions and skills in place, and verify isolation without installing shared skills into target repositories.
 - [orbyn-skill-creator](orbyn-skill-creator/SKILL.md) — Create, refine, merge or retire Orbyn repository skills while keeping task routing, technology boundaries, host discovery and documentation consistent.
 - [orbyn-upstream-review](orbyn-upstream-review/SKILL.md) — Review freshness and changes in external skills, source code or research references; keep downloads in ignored orbyn-references, compare pinned revisions and selectively adapt existing owners.
@@ -45,6 +45,7 @@ This index is generated in the full library from `catalog.json` and frontmatter 
 
 ## Fullstack contracts and delivery
 
+- [orbyn-ai-application](orbyn-ai-application/SKILL.md) — Design, implement or evaluate model-powered application behavior: grounded answers, retrieval, structured generation, tool workflows and quality/cost operation. Not model training, generic AI-assisted coding or host/provider setup.
 - [orbyn-backend-design](orbyn-backend-design/SKILL.md) — Design and implement API/service behavior across validation, authorization, persistence, concurrency and client errors using the consuming project's stack. Use architect first for unsettled ownership; use orbyn-data-migration for stored-format changes.
 - [orbyn-ci-design](orbyn-ci-design/SKILL.md) — Design or repair CI, select affected checks, analyze bulk failures, verify release evidence and plan rollout or incident recovery. Keep artifact readiness and deployed health distinct; no implicit deployment authority.
 - [orbyn-data-migration](orbyn-data-migration/SKILL.md) — Plan and implement stored-data, schema and writer migrations with compatibility, cutover, retry and recovery evidence. Use for durable format changes; not a routine in-memory type refactor or permission to run production migrations.

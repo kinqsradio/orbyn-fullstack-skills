@@ -102,3 +102,8 @@ For cross-team direction, platform investment or a technical roadmap, use
 [technical strategy](references/technical-strategy.md) to connect decision owners,
 trade-offs, adoption/support and outcome measures. Do not mistake shipped code
 for organizational adoption or create a governance layer for a bounded task.
+
+For uncertain product opportunities or post-delivery outcome decisions, use
+[product discovery](references/product-discovery.md): evidence versus assumptions,
+manual/no-build alternatives, smallest useful experiment and outcome measures.
+This is conditional; a known bounded fix needs no discovery program.

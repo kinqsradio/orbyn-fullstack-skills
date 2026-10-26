@@ -58,6 +58,8 @@ permits. Do not load the whole library or repeat a checklist in every reply.
 | Improve measured performance         | [Performance](playbooks/perf-issue.md)              |
 | Diagnose live behavior               | [Runtime forensics](playbooks/runtime-forensics.md) |
 | Analyze a captured profile           | [Trace forensics](playbooks/trace-forensics.md)     |
+| Assess a product opportunity or outcome | [Product discovery](../orbyn-plan/references/product-discovery.md), then [user evidence](../orbyn-research/references/user-evidence.md) |
+| Build or evaluate model-powered product behavior | [AI application engineering](../orbyn-ai-application/SKILL.md) |
 | Add behavior                         | [Feature](playbooks/feature.md)                     |
 | Change structure                     | [Refactoring](playbooks/refactoring.md)             |
 | Resolve an empirical design question | [Prototype](playbooks/prototype.md)                 |

@@ -7,7 +7,19 @@
 # Skill-system audit — current candidate and historical evidence
 
 
-## Current consolidation candidate — 25 October 2026
+## Product and AI application candidate — 26 October 2026
+
+This local candidate has **35 active skills**. Product discovery and outcome
+learning strengthen the existing planning, research and UI owners. The distinct
+AI application owner coordinates context, retrieval, tool effects, task evaluations
+and operating limits, reusing backend/TDD/CI mechanics. It does not train models,
+install providers or qualify an application merely through authored guidance.
+The [research contract](work/product-ai-engineering-research.md) records primary
+sources, ownership and acceptance limits. Added development cases are criteria,
+not live-agent or production evidence. The historical consolidation below retains
+its original count, revisions and results; default core remains 14.
+
+## Historical consolidation candidate — 25 October 2026
 
 This candidate has **34 active skills**, down from the 54 at baseline
 `4510c750f96af62a094e1193a473d6aad315e7ee`. The 20 principles are maintained
@@ -138,6 +150,7 @@ to their owner instead of duplicating a complete workflow.
 | [how](../skills/how/SKILL.md)                                                                                               | Expanded local method             | Behavior question and source entrypoint → Cited entry-to-effect trace                                                  | Dynamic gaps and source versus runtime evidence                           |
 | [interrogate](../skills/interrogate/SKILL.md)                                                                               | Expanded local method             | Frozen candidate and intended behavior → Concrete validated findings and dismissed hypotheses                          | Guarded false positives and missing execution evidence                    |
 | [language-best-practices](../skills/language-best-practices/SKILL.md)                                                       | Retained substantive local method | Actual files, manifests and target versions → Relevant local language contracts and caller changes                     | Ambiguous headers, runtime ownership and unsafe path inputs               |
+| [orbyn-ai-application](../skills/orbyn-ai-application/SKILL.md) | Original coordinating owner | Model-powered task → Baseline, context/retrieval, authorized tool effects, eval and operating contract | Source support, current access, unknown outcomes, critical-slice failures; no implied live qualification |
 | [orbyn-backend-design](../skills/orbyn-backend-design/SKILL.md)                                                             | Retained substantive local method | Caller input, identity and effect owner → Authorized effect and recoverable shared client result                       | Denied scope, stale version and unknown remote outcome                    |
 | [orbyn-ci-design](../skills/orbyn-ci-design/SKILL.md)                                                                       | Retained substantive local method | Patch, base/head and project verification policy → Conservative lane decision and required result gate                 | Unknown impact, untrusted fork input and stale deployment receipt         |
 | [orbyn-content-design](../skills/orbyn-content-design/SKILL.md)                                                             | Retained substantive local method | Product task, vocabulary and visible content → Concise labels/status/help with consequences retained                   | Long values, secrets and user-authored content                            |

@@ -74,3 +74,8 @@ identity or recovery contract. Concurrent writers need application-level ownersh
 or fencing; a Git worktree cannot isolate them. Use the
 [boundary method](references/principles/boundary-discipline.md) and
 [idempotency method](references/principles/make-operations-idempotent.md) for examples.
+
+When a model proposes tool arguments or generated data, use
+[AI application engineering](../orbyn-ai-application/SKILL.md) for its context,
+quality and bounded-loop contract. This backend owner still enforces current
+authorization, semantic validation and durable effect identity outside the model.
