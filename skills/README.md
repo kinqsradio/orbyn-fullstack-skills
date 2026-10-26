@@ -32,14 +32,14 @@ This index is generated in the full library from `catalog.json` and frontmatter 
 
 ## Engineering practice
 
-- [architect](architect/SKILL.md) — Design data shapes, interfaces, ownership and module boundaries for substantive features or refactors; use for code organization, vertical modules and shared-code extraction.
+- [architect](architect/SKILL.md) — Design data shapes, interfaces, ownership, statecharts and module boundaries for substantive features or refactors; use for lifecycle rules, code organization, vertical modules and shared-code extraction.
 - [arena](arena/SKILL.md) — Compare competing design or implementation sketches when a consequential choice cannot be resolved cheaply from existing evidence.
 - [how](how/SKILL.md) — Trace source behavior, data flow and dependency impact across code, build and runtime boundaries; reproduce and reduce defects before explaining or changing an unfamiliar subsystem.
 - [interrogate](interrogate/SKILL.md) — Challenge a specified design, patch or claim for concrete correctness, ownership and evidence gaps. Use for adversarial review, not every routine edit.
 - [language-best-practices](language-best-practices/SKILL.md) — Implement or review TypeScript, JavaScript, Python, Go, Rust, Java, Kotlin, C#, Swift, C, C++, SQL or shell code using its actual runtime, ownership and error contracts. Select only the affected local guide, including TypeScript schemas and lifecycle contracts.
 - [orbyn-security-remediation](orbyn-security-remediation/SKILL.md) — Investigate and resolve existing Orbyn security findings, record evidence and add preventive checks without starting a security scan.
 - [orbyn-stack-selection](orbyn-stack-selection/SKILL.md) — Choose or reassess a language, framework, database, runtime, hosting or build-versus-buy option from project constraints and current primary evidence. Produce a decision with operating and migration costs; ordinary implementation keeps the established stack.
-- [tdd](tdd/SKILL.md) — Design focused contract tests or a failing-before regression for authorized implementation, bug repair or requested testing/TDD; select practical boundaries, fixtures and evidence within the requested execution scope.
+- [tdd](tdd/SKILL.md) — Design focused contract tests, failing-before regressions or verification of critical properties; use for requested TDD, model checking and verification drift, with practical boundaries and explicit evidence limits.
 - [unslop](unslop/SKILL.md) — Edit agent prose and documentation for clear factual communication while preserving the requested voice and evidence.
 - [why](why/SKILL.md) — Investigate design rationale, regressions and trade-offs using Git history and relevant authorized records; distinguish documented intent from inference.
 

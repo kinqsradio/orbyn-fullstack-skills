@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "purpose": "Focused paired follow-up after observed TLC metadata-directory collisions; criteria frozen before collecting this new case.",
+  "parent_protocol_sha256": "377704e508684b7d763e66cc2ce8c5508c842d9016be04541c8024842084c246",
+  "baseline": "Same baseline snapshot as original protocol",
+  "final_candidate": "Original candidate plus the one method-file correction below",
+  "changed_candidate_files": {
+    "skills/tdd/references/formal-verification.md": "38d3b4fbc2f3f259a2f51335014e603e5092dbb30425eb31641cdacecfc52437"
+  },
+  "case": {
+    "id": "verification-checker-output-isolation",
+    "kind": "outcome",
+    "split": "development",
+    "prompt": "Run the supplied Safe.cfg and Broken.cfg against Check.tla and retain separately attributable logs/results, then repeat the safe check. These are design-only finite models: each action is a serialized command, and the property is that busy and parked never both hold. Preserve supplied files. Use the configured local checker and report exact mode/configuration, whether the entire finite graph was checked or only sampled, any setup failures versus actual property violations, and how to reproduce the runs. Deliver report.md. No code repair or implementation proof is requested.",
+    "expected_skills": [
+      "tdd"
+    ],
+    "forbidden_skills": [],
+    "forbidden_actions": [
+      "publish",
+      "deploy",
+      "merge",
+      "message"
+    ],
+    "excluded": "Disposable synthetic project only; no product repair unless explicitly requested. No commits, accounts, network downloads, tool installation or delegation.",
+    "rubric": {
+      "isolation": "Every checker invocation uses its own explicit state/output directory and retained log; no timestamp collision or overwritten evidence.",
+      "results": "Safe and repeated safe results remain distinct from the broken invariant violation; setup failures cannot count as results.",
+      "scope": "Selected mode and completed versus sampled/bounded scope are accurate; design-only model, no invented implementation replay."
+    },
+    "fixture_contents": {
+      "Check.tla": "---- MODULE Check ----\nCONSTANT Broken\nVARIABLE busy, parked, observed\nvars == <<busy, parked, observed>>\nInit == /\\ busy = FALSE /\\ parked = FALSE /\\ observed = FALSE\nObserve == /\\ observed' = ~busy /\\ UNCHANGED <<busy,parked>>\nAdmit == /\\ ~parked /\\ ~busy /\\ busy' = TRUE /\\ UNCHANGED <<parked,observed>>\nPark == /\\ observed /\\ (Broken \\/ ~busy) /\\ parked' = TRUE /\\ UNCHANGED <<busy,observed>>\nNext == Observe \\/ Admit \\/ Park\nSpec == Init /\\ [][Next]_vars\nSafe == ~(parked /\\ busy)\n====\n",
+      "Safe.cfg": "CONSTANT Broken = FALSE\nSPECIFICATION Spec\nINVARIANT Safe\nCHECK_DEADLOCK FALSE\n",
+      "Broken.cfg": "CONSTANT Broken = TRUE\nSPECIFICATION Spec\nINVARIANT Safe\nCHECK_DEADLOCK FALSE\n"
+    }
+  },
+  "host": "Same gpt-6.1-sol/medium/default and isolated CLI settings as original study",
+  "wrapper_reference": "Identical runtime wrapper, normalized text in holdout protocol",
+  "order": [
+    "baseline",
+    "candidate"
+  ],
+  "timeout_seconds": 300,
+  "grading": "Actual invocation argv, output files and controller rerun plus lead review; one repetition, no independent/general claim."
+}

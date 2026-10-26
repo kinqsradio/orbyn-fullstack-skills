@@ -11,6 +11,14 @@ When the open question is visual direction, use the
 representative slice before extending it. A polished mockup still needs an
 explicit path into the real component and backend contract.
 
+Choose rigor from the decision: visual exploration for layout/content, interactive
+behavior for task completion/recovery, and critical-property verification only
+when the risk warrants it or it is requested. Use
+[behavior preview](behavior-preview.md) to connect state/rule IDs, deterministic
+scenarios, source and checks. Use [statecharts](../../architect/references/statecharts.md)
+when a lifecycle or concurrent actors need an explanation. A simple visual change
+does not require a formal model.
+
 ## Choose the smallest useful surface
 
 | Context | Deliverable |
@@ -62,6 +70,13 @@ show source instead of rendered HTML; inspect the result before calling it a vis
 preview. If no renderer is available, say “artifact created; rendering unverified”
 and give the artifact and exact existing launch entrypoint. Do not manufacture a
 screenshot or claim a user has reviewed the result.
+
+For a stateful review, provide a compact package: actual preview, editable chart
+and rendered chart when useful, scenario/expected-result table, simulation labels,
+source/model identity and unresolved decisions. State rendering, exercised
+interaction, bounded model result and real-code integration separately. Keep the
+package together through workspace moves; a local URL is only a live entrypoint,
+not the preserved artifact. Do not require extra records for a small visual edit.
 
 ## Inspect and promote deliberately
 

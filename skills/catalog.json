@@ -21,7 +21,9 @@
         "orbyn-data-migration",
         "orbyn-stack-selection",
         "language-best-practices",
-        "orbyn-ci-design"
+        "orbyn-ci-design",
+        "tdd",
+        "orbyn-ui-design"
       ]
     },
     {
@@ -175,7 +177,8 @@
         "orbyn-setup",
         "reflect",
         "orbyn-ci-design",
-        "orbyn-upstream-review"
+        "orbyn-upstream-review",
+        "tdd"
       ]
     },
     {
@@ -198,7 +201,9 @@
         "orbyn-content-design",
         "orbyn-research",
         "social-preview",
-        "orbyn-workflow"
+        "orbyn-workflow",
+        "architect",
+        "tdd"
       ]
     },
     {
@@ -324,7 +329,9 @@
       "related": [
         "orbyn-workflow",
         "how",
-        "orbyn-ci-design"
+        "orbyn-ci-design",
+        "architect",
+        "orbyn-skill-creator"
       ]
     },
     {

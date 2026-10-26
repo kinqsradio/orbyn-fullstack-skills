@@ -1,6 +1,6 @@
 ---
 name: tdd
-description: "Design focused contract tests or a failing-before regression for authorized implementation, bug repair or requested testing/TDD; select practical boundaries, fixtures and evidence within the requested execution scope."
+description: "Design focused contract tests, failing-before regressions or verification of critical properties; use for requested TDD, model checking and verification drift, with practical boundaries and explicit evidence limits."
 ---
 
 # Tdd
@@ -44,5 +44,11 @@ sequence, concrete failure case, expected result and stopping condition. It is
 Orbyn-authored guidance; historical source notices remain in provenance.
 
 ## Choose a useful strategy
+
+For a critical invariant, event-order race, explicit formal verification request
+or stale verification model, use [property verification](references/formal-verification.md)
+and its [drift review](references/verification-drift.md). Choose tools from the
+property and real code, demonstrate a failing control, and distinguish model
+results from implementation evidence. Ordinary small UI edits need no formal model.
 
 For requested test design, use [test strategy](references/test-strategy.md) to select the real boundary, fixtures, failure controls and execution scope. A plan can be the requested output; this skill does not turn every test request into mandatory production edits.

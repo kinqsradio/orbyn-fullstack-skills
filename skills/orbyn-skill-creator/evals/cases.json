@@ -4242,6 +4242,184 @@
       "rubric": {
         "boundary": "Complete the UI task without enabling persistent capture, scanning past chats or creating a memory store."
       }
+    },
+    {
+      "id": "prototype-visual-proportional",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Create a small portable HTML prototype for a project settings screen: project name, visibility and Save. The decision is visual hierarchy at a 360px pane. Use synthetic data, no backend or persistence. Deliver preview.html and report.md with what the human should try and what remains unverified. Keep work proportional to this visual decision.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Disposable synthetic project only; no product repair unless explicitly requested. No commits, accounts, network downloads, tool installation or delegation.",
+      "rubric": {
+        "preview": "Actual readable responsive HTML with labelled controls and honest simulation.",
+        "proportional": "No unnecessary model checker, formal model or project skill; concise review and lifecycle handoff."
+      }
+    },
+    {
+      "id": "prototype-save-uncertain",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Build preview.html for a human to exercise task-title saving against the provided service.mjs. Start with a synthetic draft. Include deterministic demo controls for normal save, response lost after commit, delayed response and reset; include retry/reconcile as useful. Preserve the draft and prevent duplicate effects or stale UI after reset. Keep product actions distinct from demo controls. Deliver report.md with states/rules/scenarios, what was actually exercised, what is simulated and how to open/restart the preview. You may start the fixture server and use available local browser automation. Do not modify service.mjs.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Disposable synthetic project only; no product repair unless explicitly requested. No commits, accounts, network downloads, tool installation or delegation.",
+      "rubric": {
+        "flow": "Lost-response path retains draft, reconciles/retries same operation, and the actual fixture has one effect.",
+        "reset": "A delayed response cannot change the reset draft/status; controls actually work.",
+        "handoff": "Runnable preview, readable scenario mapping, opening/lifetime instructions and evidence limits."
+      }
+    },
+    {
+      "id": "statechart-host-interleaving",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review host.py without changing it. The rule is: parked and busy must never both hold. Each public method is one atomic serialized command; commands from request/reaper actors can arrive in any order. Create a bounded TLA+ model Host.tla and Host.cfg, check the rule, draw flow.mmd plus SVG when available, and replay any violation through the actual Python entry points. Deliver report.md with numbered trace, code correspondence, bounds and separate rendering/model/replay evidence. Do not fix product code.",
+      "expected_skills": [
+        "architect",
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Disposable synthetic project only; no product repair unless explicitly requested. No commits, accounts, network downloads, tool installation or delegation.",
+      "rubric": {
+        "violation": "Model exposes observe-idle, admit, park violation and actual host.py reproduces it.",
+        "correspondence": "Actions/guards map to actual methods; atomicity follows supplied contract; property not weakened.",
+        "human": "Editable readable chart and numbered trace, actual results and model scope."
+      }
+    },
+    {
+      "id": "verification-drift-new-writer",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "The existing Host.tla/Host.cfg passes. Audit whether it still describes current code. verification.json records the last correspondence; history/host.py is the old source. Current host.py has the same main path, but inspect all current writers including admin.py. Update verification only, run it, replay any violation through actual code and report in report.md whether the old green check was stale, what changed, and whether it is drift, a bug or blocked. Do not edit host.py, admin.py or history/; do not weaken Protected or claim production proof.",
+      "expected_skills": [
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Disposable synthetic project only; no product repair unless explicitly requested. No commits, accounts, network downloads, tool installation or delegation.",
+      "rubric": {
+        "drift": "Runs original model and follows guarded state into admin.py rather than checking only unchanged host.py.",
+        "finding": "Adds actual admin transition, detects protected violation and replays real admin entry point without product edits.",
+        "maintenance": "Reports old pass versus updated result, exact coverage/identity, limits and honest correspondence status."
+      }
+    },
+    {
+      "id": "verification-migration-fence",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Verify writer.py for this rule: a ticket captured at epoch 1 cannot commit after cutover to epoch 2. The epoch check and append in commit are one atomic storage command in this fixture; begin, cutover and commit are separate commands. Use a bounded TLA+ model Check.tla/Check.cfg and actual Python entry points. Demonstrate that removing the real commit guard in a disposable broken copy produces a detectable violation, restore and rerun the safe check. Keep writer.py unchanged. Deliver report.md and a readable flow.mmd with property, source mapping, commands, results, assumptions and limits. Do not claim this proves a PostgreSQL deployment.",
+      "expected_skills": [
+        "tdd",
+        "orbyn-data-migration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Disposable synthetic project only; no product repair unless explicitly requested. No commits, accounts, network downloads, tool installation or delegation.",
+      "rubric": {
+        "fence": "Safe model and actual rejection preserve effects, including stale ticket after cutover.",
+        "control": "Broken actual implementation guard is exercised; model reflects that variant and detects the violation.",
+        "limits": "Original restored, outputs retained, model scope and real storage/deployment limits explicit."
+      }
+    },
+    {
+      "id": "verification-forget-resurrection",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Verify memory.py for the rule that a forgotten body cannot reappear through a stale update or restore. Each method is an atomic store command; client snapshot/update/restore calls may interleave with forgetting. Build and check a bounded model Check.tla/Check.cfg, replay update/forget and restore/forget orderings using actual code, and exercise a disposable broken implementation that removes the relevant restore guard. Leave memory.py unchanged. Deliver report.md and flow.mmd with model/code correspondence, negative control, exact results and omissions. No real-user memory, disk forensics or production guarantees.",
+      "expected_skills": [
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Disposable synthetic project only; no product repair unless explicitly requested. No commits, accounts, network downloads, tool installation or delegation.",
+      "rubric": {
+        "forget": "Both delayed update and backup restore are rejected after forgetting without resurrecting body.",
+        "control": "Actual broken restore copy resurrects and corresponding model/check catches that path.",
+        "scope": "Preserves original, states atomic fixture scope and distinguishes logical deletion from unmanaged copies."
+      }
+    },
+    {
+      "id": "verification-progress-reachability",
+      "kind": "outcome",
+      "split": "holdout",
+      "prompt": "A design says an admitted job starts queued, may start running and may finish. Its diagram has a path from queued to done. The environment may stop scheduling forever; no fairness or eventual-response assumption has been agreed. Assess the claim that this proves every admitted job eventually finishes. Create Check.tla/Check.cfg, run the appropriate check, and draw flow.mmd plus rendered SVG if available. Deliver report.md distinguishing reachability from liveness, any counterexample, assumptions, and model-only evidence. There is no implementation to replay or repair. Do not silently add fairness to obtain green.",
+      "expected_skills": [
+        "tdd",
+        "architect"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Disposable synthetic project only; no product repair unless explicitly requested. No commits, accounts, network downloads, tool installation or delegation.",
+      "rubric": {
+        "progress": "Checks eventual completion as a temporal property and identifies allowed non-progress under the supplied assumptions.",
+        "scope": "Does not confuse one path to done with universal liveness, does not silently assume fairness, and labels design/model-only evidence.",
+        "human": "Readable chart and counterexample explanation with real command/results and bounded scope."
+      }
+    },
+    {
+      "id": "verification-checker-output-isolation",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Run the supplied Safe.cfg and Broken.cfg against Check.tla and retain separately attributable logs/results, then repeat the safe check. These are design-only finite models: each action is a serialized command, and the property is that busy and parked never both hold. Preserve supplied files. Use the configured local checker and report exact mode/configuration, whether the entire finite graph was checked or only sampled, any setup failures versus actual property violations, and how to reproduce the runs. Deliver report.md. No code repair or implementation proof is requested.",
+      "expected_skills": [
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Disposable synthetic project only; no product repair unless explicitly requested. No commits, accounts, network downloads, tool installation or delegation.",
+      "rubric": {
+        "isolation": "Every checker invocation uses its own explicit state/output directory and retained log; no timestamp collision or overwritten evidence.",
+        "results": "Safe and repeated safe results remain distinct from the broken invariant violation; setup failures cannot count as results.",
+        "scope": "Selected mode and completed versus sampled/bounded scope are accurate; design-only model, no invented implementation replay."
+      }
     }
   ]
 }

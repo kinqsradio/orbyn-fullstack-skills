@@ -1,6 +1,6 @@
 ---
 name: architect
-description: "Design data shapes, interfaces, ownership and module boundaries for substantive features or refactors; use for code organization, vertical modules and shared-code extraction."
+description: "Design data shapes, interfaces, ownership, statecharts and module boundaries for substantive features or refactors; use for lifecycle rules, code organization, vertical modules and shared-code extraction."
 ---
 
 # Architect
@@ -31,6 +31,12 @@ production code unless they are being completed in the same delivery.
 Repeated escape hatches or duplicated state interpretation mean reconsider the
 owner/type design. Fix that source of complexity instead of adding wrappers.
 Record a durable rationale only when future maintainers need the decision.
+
+For statecharts, lifecycle races or behavior that a human needs to inspect, use
+[behavior models and statecharts](references/statecharts.md). Separate the agreed
+design from current-code behavior, expose forbidden states and connect important
+rules to source and preview scenarios. A chart alone does not verify a property.
+Use `tdd` for model checking and drift, and `orbyn-ui-design` for the human preview.
 
 ## Code organization and module boundaries
 

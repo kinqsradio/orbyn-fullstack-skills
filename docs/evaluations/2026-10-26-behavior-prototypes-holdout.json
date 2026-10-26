@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "purpose": "New transfer holdout on the already frozen methods; criteria fixed before this case runs, no guidance tuning. Authored and assessed by lead, not an independent blind holdout.",
+  "parent_protocol_sha256": "377704e508684b7d763e66cc2ce8c5508c842d9016be04541c8024842084c246",
+  "snapshot_reference": "Exact baseline/candidate file inventories in parent protocol; unchanged methods.",
+  "case": {
+    "id": "verification-progress-reachability",
+    "kind": "outcome",
+    "split": "holdout",
+    "prompt": "A design says an admitted job starts queued, may start running and may finish. Its diagram has a path from queued to done. The environment may stop scheduling forever; no fairness or eventual-response assumption has been agreed. Assess the claim that this proves every admitted job eventually finishes. Create Check.tla/Check.cfg, run the appropriate check, and draw flow.mmd plus rendered SVG if available. Deliver report.md distinguishing reachability from liveness, any counterexample, assumptions, and model-only evidence. There is no implementation to replay or repair. Do not silently add fairness to obtain green.",
+    "expected_skills": [
+      "tdd",
+      "architect"
+    ],
+    "forbidden_skills": [],
+    "forbidden_actions": [
+      "publish",
+      "deploy",
+      "merge",
+      "message"
+    ],
+    "excluded": "Disposable synthetic project only; no product repair unless explicitly requested. No commits, accounts, network downloads, tool installation or delegation.",
+    "rubric": {
+      "progress": "Checks eventual completion as a temporal property and identifies allowed non-progress under the supplied assumptions.",
+      "scope": "Does not confuse one path to done with universal liveness, does not silently assume fairness, and labels design/model-only evidence.",
+      "human": "Readable chart and counterexample explanation with real command/results and bounded scope."
+    },
+    "fixture_contents": {}
+  },
+  "wrapper": "# Disposable synthetic engineering trial\nRead relevant local skills and references when useful; library/ is the selected method snapshot, not target source. Use only this fixture and the explicitly provided tool paths. No sibling trials, outer source, evaluation/rubric files, credentials, accounts, external browsing, downloads, installs, delegation, commits, push, publish, deploy or messages. Do not edit library/. Do not modify supplied product files except where the task explicitly allows. Use fresh disposable files for broken controls and preserve originals. Work is local only. Report actual failed attempts and limits. Complete the bounded task; do not wait for a human. Keep final response concise and put detailed evidence in report.md.\nAvailable tools: python3.13, node, java. TLC jar: <TLC_JAR>. Optional trusted Pele entrypoint: <PELE_ENTRY>. Existing Playwright module: <PLAYWRIGHT_ENTRY>. Chrome executable: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome. No native browser tool is promised; if launch is blocked, retain preview and report rendering unverified. Use only loopback local servers and stop owned processes; give restart instructions. A model checker invocation is java -cp <TLC_JAR> tlc2.TLC -workers 1 -config NAME.cfg NAME.tla. Property violations normally return nonzero; keep the log and inspect it. Run checker outputs in this fixture, not the library snapshot. Budget is five minutes per trial.\n",
+  "execution": "Same host/options/capabilities, one run per condition, after the development batch, no concurrent batch overlap.",
+  "order": [
+    "candidate",
+    "baseline"
+  ],
+  "timeout_seconds": 300,
+  "grading": "Lead source/output inspection and real TLC rerun; keep failures and uncertainty."
+}

@@ -113,6 +113,18 @@
           "local_path": "skills/architect/references/principles/subtract-before-you-add.md",
           "license_file": "skills/architect/references/principles/LICENSE.txt",
           "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/99b609a72323b70204eab407c622f436e858e112/pstack/skills/statechart/SKILL.md",
+          "revision": "99b609a72323b70204eab407c622f436e858e112",
+          "local_path": "skills/architect/references/statecharts.md",
+          "license_file": "skills/architect/references/verification-LICENSE.txt",
+          "license_sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
+          "changes": "Selected behavioral modeling, falsification and drift methods integrated into existing owners; target conventions, proportional preview rigor and exact source identity preserved. No upstream scripts imported."
         }
       ]
     },
@@ -353,7 +365,21 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-skill-creator",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence. Added company/public ownership routing and offline source requirements. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added explicit evaluation subsets and development cases for stale continuation, Cursor setup and failed registration. Clarified concise public evaluation summaries and reproducible synthetic protocols; retain complete per-run captures outside tracked template content by default. Added live-evaluation input and discovery-isolation guidance: inspect actual prompt inventory, retain ambiguous observations as unverified, and freeze/report corrected development follow-ups separately. No upstream code or workflow text imported. Added independently authored disposable source/Git/PR fixtures and execution cases, calibration, fail-before source/test receipts, packaging preflight and controlled commit-failure support; no model calls in helpers or CI. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Added independently authored optional contribution feedback: current-task evidence, concrete general proposal, scoped user consent, company/public separation, no repeated solicitation or automatic publication, and separate consumer promotion. Existing source notices retained."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence. Added company/public ownership routing and offline source requirements. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added explicit evaluation subsets and development cases for stale continuation, Cursor setup and failed registration. Clarified concise public evaluation summaries and reproducible synthetic protocols; retain complete per-run captures outside tracked template content by default. Added live-evaluation input and discovery-isolation guidance: inspect actual prompt inventory, retain ambiguous observations as unverified, and freeze/report corrected development follow-ups separately. No upstream code or workflow text imported. Added independently authored disposable source/Git/PR fixtures and execution cases, calibration, fail-before source/test receipts, packaging preflight and controlled commit-failure support; no model calls in helpers or CI. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Added independently authored optional contribution feedback: current-task evidence, concrete general proposal, scoped user consent, company/public separation, no repeated solicitation or automatic publication, and separate consumer promotion. Existing source notices retained.",
+      "incorporated_material": [
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/99b609a72323b70204eab407c622f436e858e112/pstack/skills/create-formal-verification-skill/SKILL.md",
+          "revision": "99b609a72323b70204eab407c622f436e858e112",
+          "local_path": "skills/orbyn-skill-creator/references/project-verification.md",
+          "license_file": "skills/orbyn-skill-creator/references/verification-LICENSE.txt",
+          "license_sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
+          "changes": "Selected behavioral modeling, falsification and drift methods integrated into existing owners; target conventions, proportional preview rigor and exact source identity preserved. No upstream scripts imported."
+        }
+      ]
     },
     "orbyn-ui-design": {
       "relationship": "original",
@@ -609,6 +635,32 @@
           "revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
           "license": "MIT",
           "relationship": "reviewed-inspiration; independently authored local method; no upstream text or code imported"
+        }
+      ],
+      "incorporated_material": [
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/99b609a72323b70204eab407c622f436e858e112/pstack/skills/create-formal-verification-skill/SKILL.md",
+          "revision": "99b609a72323b70204eab407c622f436e858e112",
+          "local_path": "skills/tdd/references/formal-verification.md",
+          "license_file": "skills/tdd/references/verification-LICENSE.txt",
+          "license_sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
+          "changes": "Selected behavioral modeling, falsification and drift methods integrated into existing owners; target conventions, proportional preview rigor and exact source identity preserved. No upstream scripts imported."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/99b609a72323b70204eab407c622f436e858e112/pstack/skills/maintain-formal-verification-skill/SKILL.md",
+          "revision": "99b609a72323b70204eab407c622f436e858e112",
+          "local_path": "skills/tdd/references/verification-drift.md",
+          "license_file": "skills/tdd/references/verification-LICENSE.txt",
+          "license_sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
+          "changes": "Selected behavioral modeling, falsification and drift methods integrated into existing owners; target conventions, proportional preview rigor and exact source identity preserved. No upstream scripts imported."
         }
       ]
     },

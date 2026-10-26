@@ -61,6 +61,12 @@ Use [production service contracts](references/service-contracts.md) for bounded 
 
 ## Boundary and retry rules
 
+For critical retry, lease or worker lifecycle rules, connect current effect
+boundaries to [statecharts](../architect/references/statecharts.md) and
+[property verification](../tdd/references/formal-verification.md) when justified.
+For example, a lost save response needs reconciliation/idempotency at the real
+backend boundary; a simulated preview cannot prove absence of duplicate effects.
+
 Validate at actual trust/effect boundaries and express failures in the owning
 contract; do not scatter defensive checks over already valid internal values.
 Retries, crashes and duplicate delivery need an explicit idempotency key, effect
