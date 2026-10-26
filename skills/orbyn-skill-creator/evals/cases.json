@@ -4512,6 +4512,74 @@
         "rejections": "Actually executes mismatched-digest and forged/local-record negative controls; both reject for the intended reason, preserve prior records and cannot count as successful comparison.",
         "evidence": "Retains attributable commands/results and reports observed delta versus static inference, current-session lifetime, target/source preservation and the absence of a real provider qualification."
       }
+    },
+    {
+      "id": "value-propagation-fallback",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Repair the missing warnOnChange propagation in resolver.py according to contract.md. Preserve the documented fallback contract. Add focused regression coverage, demonstrate the relevant baseline failure before the fix, rerun the tests, and write report.md describing behavior changes and limits. Edit only resolver.py, tests/test_*.py and requested evidence; no commit.",
+      "expected_skills": [
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic configuration resolver only; no other target, library edits, installation, accounts, network, delegation, commits or unrelated refactoring.",
+      "rubric": {
+        "behavior": "Real resolver preserves explicit true and false, defined specific attributes suppress the entire populated fallback, unset/null/empty/unmatched inputs retain documented fallback behavior; no default-merging rewrite.",
+        "regression": "Actual production-path tests fail on the original for missing propagation before repair and pass after. A changed-field-only assertion checks the complete result; combined fields do not mask fallback. A broken false-dropping variant is detected by the same delivered tests.",
+        "scope": "Explains expected fallback consequences versus a defect using the supplied contract; preserves unrelated files and reports actual test selection and evidence limits."
+      }
+    },
+    {
+      "id": "review-fallback-consequence",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review the supplied base.py, candidate.py and broken.py against contract.md. feedback.md claims the propagation fix must be reverted because it changes defaults. Assess the claim, inspect coverage, compare actual behavior where useful and deliver report.md. Identify any concrete defect separately from intended consequences, compatibility risks and evidence gaps. Review only: do not change supplied code, tests or the contract.",
+      "expected_skills": [
+        "interrogate"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic source review only. Local disposable probes and report allowed; no code repair, installs, accounts, network, delegation, commits or library changes.",
+      "rubric": {
+        "classification": "Explains why retaining a lone false/true flag suppresses fallback under the supplied presence-based contract; confirms the coverage gap without misclassifying the correct candidate as a proven bug or recommending silent fallback merging.",
+        "defect": "Separately identifies the broken truthiness-based variant losing explicit false and gives a minimal reproducing input with expected/actual results and source location.",
+        "evidence": "Inspects all three versions and the masking combined-field test; supports findings through actual execution or clearly labelled source inference, with no product edits or invented runtime proof."
+      }
+    },
+    {
+      "id": "config-review-adjacent-nontrigger",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In README.md, correct the visible heading from \u201cConfguration examples\u201d to \u201cConfiguration examples\u201d. This is a cosmetic typo only. Do not change settings, examples or code. Keep the change and verification proportional and briefly report what changed. No commit.",
+      "expected_skills": [],
+      "forbidden_skills": [
+        "tdd",
+        "interrogate"
+      ],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "README heading only in a synthetic repository. No configuration behavior investigation, matrix, formal model, installs, accounts, network, delegation, commits or unrelated changes.",
+      "rubric": {
+        "minimal": "Only the requested README heading changes; all settings/examples/code and other files are preserved.",
+        "proportional": "Uses a small diff/text check and concise truthful handoff, without a speculative fallback matrix, formal tooling, runtime changes or claims of broad engineering qualification."
+      }
     }
   ]
 }
