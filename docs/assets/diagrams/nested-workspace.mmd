@@ -1,0 +1,30 @@
+---
+config:
+  flowchart:
+    wrappingWidth: 360
+    nodeSpacing: 35
+    rankSpacing: 30
+    curve: basis
+---
+flowchart TB
+  subgraph outer["OUTER WORKSPACE · orbyn-fullstack-skills/"]
+    direction TB
+    shared["skills/ + AGENTS.md<br/>Shared engineering methods"]:::input
+    subgraph targets["repo/ · ignored by the library"]
+      direction TB
+      a["project-a/<br/>Own Git history<br/>Source · rules · local skills"]:::blue
+      b["project-b/<br/>Own Git history<br/>Source · rules · local skills"]:::green
+    end
+    shared -. read alongside .-> a
+    shared -. read alongside .-> b
+  end
+  style outer fill:#ffffff,stroke:#aa9cbd,stroke-width:2px,rx:24,ry:24
+  style targets fill:#f8fcf9,stroke:#b9d8c4,stroke-width:2px,rx:20,ry:20
+
+  linkStyle default stroke:#879094,stroke-width:3px;
+  classDef input fill:#e8defa,stroke:#8457a4,color:#52356c,stroke-width:2px,rx:16,ry:16;
+  classDef blue fill:#e0efff,stroke:#4a7cab,color:#254d76,stroke-width:2px,rx:16,ry:16;
+  classDef green fill:#def6ed,stroke:#5c9585,color:#2c6658,stroke-width:2px,rx:16,ry:16;
+  classDef yellow fill:#fff2c9,stroke:#c49145,color:#765523,stroke-width:2px,rx:12,ry:12;
+  classDef grey fill:#f2f3f5,stroke:#7a8187,color:#3d4249,stroke-width:2px,rx:16,ry:16;
+  classDef white fill:#ffffff,stroke:#a6b2ad,color:#3d4249,stroke-width:2px,rx:14,ry:14;
