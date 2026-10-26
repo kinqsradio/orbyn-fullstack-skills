@@ -80,6 +80,9 @@ consent and does not enable automatic capture.
 ## Review and delivery
 
 Follow the consuming project's visual-review policy and the changed surface.
+Choose [evidence surface](references/prototypes.md#choose-the-evidence-surface-before-building)
+before building a harness or capturing UI; identify the loaded candidate/window
+and adapters, honoring actual-app intent or reporting its blocker.
 Use proportional evidence, avoiding a blanket sweep for unrelated changes. Use
 tests/API evidence for functional behavior and reuse valid prior UI evidence.
 For a material layout/interaction risk or reproduced

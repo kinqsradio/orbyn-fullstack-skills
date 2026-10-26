@@ -18,6 +18,10 @@ If no permitted delivery path exists, preserve the local patch and report the
 blocker; never publish private company code into a public fork or silently push
 to the company remote instead.
 
+Use [delivery feasibility](contribution-intake.md#check-delivery-feasibility-when-submission-is-the-endpoint)
+for a requested submitted endpoint before expensive work; unknown capacity remains
+unknown, and a rejected submission needs evidence-led diagnostics, not probe PRs.
+
 Confirm PR creation is part of the requested delivery. Inspect the exact owned diff, checks and target branch. Exclude unrelated files and secrets. Write a concise body with actual evidence and limits, create the requested PR and attach it when the host supports attachments. Merge or publish only within authorization. No automatic babysitting job or separate session.
 
 Use the parent [workflow](../SKILL.md) and repository scope.

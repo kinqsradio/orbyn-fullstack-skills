@@ -2,7 +2,12 @@
 
 Read the current handoff, request and actual git/process state. Recover the next unfinished step and preserve file ownership. Reuse valid evidence. Do not restart the project, clone old plans uncritically or create a new chat to resume the current task.
 
-Use the parent [workflow](../SKILL.md) and repository scope.
+Use the parent [workflow](../SKILL.md) and repository scope. For a moved checkout,
+stale session cwd or changed/failed runtime, apply setup's conditional
+[continuation readiness](../../orbyn-setup/SKILL.md#resume-after-a-workspace-or-runtime-change).
+Verify the next command's supported installed runner and distinguish actual
+checkout from saved host binding; explicit workdir success is not a rebind.
+Current matching readiness/check evidence remains reusable.
 
 Use the [task record](../references/task-record.md) when existing notes do not
 identify the candidate, checked behavior and next step. Reconcile the record with

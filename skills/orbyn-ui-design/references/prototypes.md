@@ -19,11 +19,33 @@ scenarios, source and checks. Use [statecharts](../../architect/references/state
 when a lifecycle or concurrent actors need an explanation. A simple visual change
 does not require a formal model.
 
+## Choose the evidence surface before building
+
+Use the request and known target to identify what the human needs to inspect:
+a component fixture, behavior in a native container, or the actual application/
+extension with its relevant real adapters. “On the app” or “in the extension”
+selects that actual surface; do not silently substitute a standalone fixture or
+ask the human to choose again when the intent is already clear. If required access,
+runner or adapters are unavailable, state the blocker before investing in the
+wrong harness. Continue only the useful authorized slice, explicitly labelled.
+
+Before UI actions/capture, identify the actual loaded candidate, window/route,
+container and relevant adapter/data path using available source/build/runtime
+evidence. A native window containing mock controls proves container rendering,
+not integration with the application's extension APIs, storage or backend. A
+fixture may test real components and still miss host lifecycle/adapter behavior.
+Use synthetic data through the intended adapters when appropriate; actual-app
+intent does not authorize production data, account access or deployment. Reuse
+prior evidence when candidate, surface, adapters and changed contract still match;
+do not launch another app just to produce a fresh screenshot.
+
 ## Choose the smallest useful surface
 
 | Context | Deliverable |
 | --- | --- |
-| Existing application and reusable components | Its existing dev route, component story or isolated screen using the actual framework and design system |
+| Component appearance or isolated state | Existing story/fixture using actual components; simulated adapters remain labelled |
+| Native container behavior | Existing native preview/emulator/device route; identify host and mocked versus real adapters |
+| Actual application/extension flow | The intended app/window/build with the relevant real adapter path; a fixture in a native shell is insufficient |
 | Early web interaction with no app harness | Self-contained HTML/CSS/JS with local assets and synthetic data; no framework installation is required |
 | Native-specific interaction | Existing native preview/emulator/device path; a web approximation may explore layout but must be labelled and cannot prove native input/navigation |
 | Explanatory diagram or comparison | Host-supported inline visual or standalone artifact; do not call it the implemented product |
