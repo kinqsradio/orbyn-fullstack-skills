@@ -9,17 +9,7 @@ from domain model to user-visible behavior.
 [![Validate skills](https://github.com/kinqsradio/orbyn-fullstack-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/kinqsradio/orbyn-fullstack-skills/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Created and maintained by [Anh Dang](https://github.com/kinqsradio) under the
-**Orbyn Engineering** brand. The library turns engineering practice into connected,
-project-aware workflows for agents. The application lives in a separate repository.
-
-Anh is a University of Melbourne student and the creator of Orbyn. Follow the
-engineering work, share an example or contribute an improvement:
-
-- [LinkedIn — Anh Dang](https://www.linkedin.com/in/tran-duc-anh-dang-392b7a231/)
-- [GitHub — @kinqsradio](https://github.com/kinqsradio)
-- Personal contact: [anhdang.contact@gmail.com](mailto:anhdang.contact@gmail.com)
-- Orbyn contact: [anhdang@orbyn.dev](mailto:anhdang@orbyn.dev)
+Maintained by [Anh Dang](https://github.com/kinqsradio) for **Orbyn Engineering**.
 
 This MIT-licensed fullstack library works in projects beyond Orbyn. Consuming
 teams retain their own instructions, stack and company skills; no Orbyn account
