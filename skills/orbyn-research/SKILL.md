@@ -1,6 +1,6 @@
 ---
 name: orbyn-research
-description: "Resolve a specific architectural, dependency, platform or design uncertainty using local evidence and authoritative external sources before choosing an implementation."
+description: "Resolve a specific product-evidence, architectural, dependency, platform or design uncertainty using local evidence and authoritative external sources before choosing an implementation."
 ---
 
 # Research for an Orbyn decision
@@ -46,3 +46,9 @@ For technology recommendations, feed current primary evidence and uncertainty to
 question, consult the relevant [local guide](../language-best-practices/SKILL.md)
 first, then verify only the unresolved target-version behavior. Neither a source
 survey nor popularity alone settles project fit or authorizes implementation.
+
+For user needs, demand or usability evidence, use [user research](references/user-evidence.md).
+Reuse available authorized evidence, distinguish observation from inference and
+research plans from completed studies. Do not invent users/results or initiate
+recruitment, recording or telemetry. Product investment decisions belong to
+[planning](../orbyn-plan/references/product-discovery.md).

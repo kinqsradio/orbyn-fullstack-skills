@@ -2,10 +2,11 @@
 
 **A growing library of connected skills for full-stack engineering with Codex, Claude Code and Cursor.**
 
-The catalog currently contains **34 skills** and evolves as real engineering gaps
+The catalog currently contains **35 skills** and evolves as real engineering gaps
 and contributions identify what is missing.
 
-Architecture, API design, data migrations, language-aware implementation, web and mobile UX,
+Product discovery, AI applications, architecture, API design, data migrations,
+language-aware implementation, web and mobile UX,
 debugging, review, CI and delivery—organized around a feature's complete path
 from domain model to user-visible behavior.
 
@@ -61,6 +62,8 @@ explains the handoffs. [The catalog](skills/README.md) lists every skill.
 | ---------------------------------- | ------------------------------------------ | -------------------------------------------------------- |
 | Understand unfamiliar behavior     | `how` / `why`                              | Source trace or documented rationale                     |
 | Remember, classify, correct or forget engineering context | `reflect` | Explicit local memory CRUD with scoped tags/categories and evidence |
+| Assess a product opportunity or measure its outcome | `orbyn-plan` + `orbyn-research` | Evidence, alternatives and a bounded learning decision |
+| Build or evaluate an AI application | `orbyn-ai-application` | Grounding, authorized effects, task-quality evidence and operating limits |
 | Deliver a cross-stack feature      | `orbyn-workflow`                           | Owned changes and proportional evidence                  |
 | Decide the data/interface model    | `architect`                                | Caller-facing contract and lifecycle                     |
 | Implement an API effect            | `orbyn-backend-design`                     | Validation, authority, transaction and client errors     |

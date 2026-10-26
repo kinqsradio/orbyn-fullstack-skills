@@ -78,3 +78,8 @@ with the existing build graph, generator/runtime edges and conservative fallback
 For an authorized rollout plan or incident recovery, use
 [health-driven rollout](references/rollout-recovery.md). Artifact readiness,
 deployed health and recovery completion are separate evidence claims.
+
+When AI behavior changes, use [application evaluations](../orbyn-ai-application/references/evaluations.md)
+to select affected task-quality evidence alongside deterministic contract gates.
+Do not turn every PR into a paid model sweep or treat static skill-case validation
+as application quality. Existing live-call, data and deployment authority applies.
