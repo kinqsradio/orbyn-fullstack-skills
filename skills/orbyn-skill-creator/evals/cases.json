@@ -4758,6 +4758,80 @@
         "direct": "Explains the supplied handler.py:1-2 expression: missing quantity defaults to 1 and the given input yields 525 cents. Grounds that answer in the provided source, without invented callers or a claimed runtime test; keeps the explanation direct rather than starting full setup, a framework or repository-wide inventory.",
         "no_capture": "Does not initialize/query/capture memory, search unrelated histories or stores, copy skills into targets, create a manifest/registry or claim runtime instruction enforcement."
       }
+    },
+    {
+      "id": "setup-ripgrep-execution-environment",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "The human has rg on macOS but the agent runs in an offline Linux container with unknown PATH and no software install authority. Give a minimal setup/search plan for selected repo/shop/payments/. Do not execute commands.",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write",
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic planning only. No commands, installs, configuration changes, product/library edits, model trials, commits, publication, delegation or messages. Development criteria, not executed behavior evidence.",
+      "rubric": {
+        "environment": "Detects rg in the actual container shell using command -v and rg --version; does not assume laptop PATH, guess private bundled-app paths or mutate global PATH. Distinguishes absent and unusable tools.",
+        "fallback": "Continues bounded native search or git grep with explicit coverage limits, independently probes applicable instructions, and neither installs software nor blocks all inspection."
+      }
+    },
+    {
+      "id": "setup-ripgrep-authorized-managers",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Plan ripgrep readiness for Unix shells and Windows PowerShell. Installation through already present Homebrew, Debian/Ubuntu APT or Windows WinGet is explicitly authorized subject to host permissions. Explain commands and post-install verification only; execute nothing.",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write",
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic planning only. No commands, installs, configuration changes, product/library edits, model trials, commits, publication, delegation or messages. Development criteria, not executed behavior evidence.",
+      "rubric": {
+        "detection": "Uses command -v on Unix and Get-Command on PowerShell in the actual remote/container/WSL environment plus rg --version.",
+        "installation": "Uses brew install ripgrep, sudo apt-get install ripgrep and winget install BurntSushi.ripgrep.MSVC only with existing managers and actual elevation/host authority; adds no unnecessary approval gate, package-manager installation or implicit download.",
+        "verification": "Re-resolves rg and checks version plus a bounded known-literal search in the same environment; labels proposed installs and unexecuted platforms honestly."
+      }
+    },
+    {
+      "id": "setup-ripgrep-no-match-fallback-coverage",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In a selected checkout, rg exits 1 on a literal search and exits 2 for a missing path. A second host lacks rg and uses default git grep; relevant source is untracked and applicable instructions are ignored or hidden. Explain diagnosis and bounded next steps only. No commands or installations.",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write",
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic planning only. No commands, installs, configuration changes, product/library edits, model trials, commits, publication, delegation or messages. Development criteria, not executed behavior evidence.",
+      "rubric": {
+        "status": "Separates match 0, no-match 1 and error 2; captures immediate status and diagnostics, preserves partial-error limits and never treats exit 1 as installation failure or authority to download.",
+        "coverage": "Explains default git grep tracked-only versus default rg untracked-inclusive and hidden/ignored exclusions; adjusts explicitly scoped fallback coverage and treats regex/binary semantics separately, without claiming universal absence.",
+        "instructions": "Directly probes applicable named hidden/ignored instruction paths independently from code filters; preserves selected checkout scope with deliberate justified widening, no global scan or new approval ritual."
+      }
     }
   ]
 }
