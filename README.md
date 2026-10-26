@@ -1,6 +1,9 @@
 # Orbyn Fullstack Engineering Skills
 
-**34 connected agent skills for full-stack engineering with Codex, Claude Code and Cursor.**
+**A growing library of connected skills for full-stack engineering with Codex, Claude Code and Cursor.**
+
+The catalog currently contains **34 skills** and evolves as real engineering gaps
+and contributions identify what is missing.
 
 Architecture, API design, data migrations, language-aware implementation, web and mobile UX,
 debugging, review, CI and delivery—organized around a feature's complete path
@@ -25,6 +28,11 @@ A feature can involve a shared schema, API, transaction, background job and two
 clients. The skills keep ownership and failure behavior visible across that path.
 They distinguish a source finding from a runtime observation, a web preview from
 native evidence, and a pushed commit from a deployment.
+
+![Connected engineering workflow: understand the feature, connect API/data and UI/UX changes, check behavior and previews, then revise or review and report delivery.](docs/assets/diagrams/connected-workflow.svg)
+
+[Mermaid source](docs/assets/diagrams/connected-workflow.mmd). Use the relevant
+methods and proportionate checks; small changes do not need every stage.
 
 This is an opinionated engineering workflow, not a claim that prompts guarantee
 correct software. [The engineering contract](skills/orbyn-workflow/references/fullstack-contract.md)
@@ -74,6 +82,12 @@ Cursor or your local tool-using agent. Tell it:
 > complete the setup yourself. Do not install or migrate shared skills into it.
 
 **Nested is the only supported layout.** Targets have independent Git histories:
+
+![Nested workspace: shared skills and AGENTS.md live in the outer library; the ignored repo folder contains independent projects with their own Git history, source, instructions and local skills.](docs/assets/diagrams/nested-workspace.svg)
+
+[Mermaid source](docs/assets/diagrams/nested-workspace.mmd). One maintained library
+avoids copied shared skills in every target. Agents read both scopes; project rules
+and host permissions still govern their applicable boundaries.
 
 ```text
 orbyn-fullstack-skills/
@@ -184,6 +198,13 @@ and keeps company-only material local. Public improvements use synthetic example
 and preserve applicable credits. This is optional contribution, not telemetry
 or automatic cross-user learning; silence does not upload anything, and a public
 merge does not authorize changing your target repository.
+
+![Reviewed learning loop: an observed gap can become an opt-in local lesson or a synthetic proposal; evaluation and an authorized, accepted PR precede a shared improvement.](docs/assets/diagrams/reviewed-learning.svg)
+
+[Mermaid source](docs/assets/diagrams/reviewed-learning.mmd). Local memory is optional;
+a contribution can start directly from a demonstrated gap. Use synthetic examples
+and relevant checks, with paired trials when assessing changed agent behavior.
+Human review precedes a shared update; neither capture nor merging is automatic.
 
 ## Examples and evaluations
 
