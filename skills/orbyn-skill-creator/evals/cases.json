@@ -5838,6 +5838,109 @@
         "proportional": "Continues the known owning formatter repair/focused regression plan rather than imposing a repeated-failure premise audit or architecture survey.",
         "scope": "Respects plan-only scope and reports the supplied baseline evidence without claiming a candidate run, editing product files or installing tools."
       }
+    },
+    {
+      "id": "review-inline-supported-root-cause",
+      "kind": "outcome",
+      "split": "development",
+      "forbidden_skills": [
+        "interrogate"
+      ],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic supplied source facts only; local Markdown review/comment plan. No execution, file edits, external review posting, approval, requesting changes, thread resolution, commits or delegation.",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "prompt": "Ordinary bounded source review, candidate B: queue.py added right-side line22 clears pending and line23 returns on a no-op while speculative state is still uncommitted; the analogous new line52 does the same in a second path. Source callers show submit reuses speculative state when pending is false; a render may yield before either return. The contract requires pending remain true until commit so a later submit cannot reuse unfinished state. The current diff and these exact anchors are supplied and verified for B. A missing interrupted-run regression and a teammate preference to rename local variable q are also noted. Codex local inline feedback is available; no external posting is authorized. Return a local finding and summary, distinguishing source reasoning from executed reproduction and required correction from preferences.",
+      "rubric": {
+        "actionable": "Gives the interrupted/no-op trigger, unsafe speculative reuse, pending-lifetime contract and correction direction without judging the author or requiring an unrelated redesign.",
+        "anchor": "One root-cause finding uses a tight current B anchor at queue.py right-side line22 with line52 as a related location; avoids duplicate comments. Uses the available local inline surface or clearly scoped local annotation, not a claimed GitHub post.",
+        "classification": "Labels trace source-derived/unexecuted; missing test is a coverage gap or requested regression for the supported defect, not an independent proven behavior failure; rename is optional, not blocking.",
+        "authority": "Preserves review-only source and external effects boundaries and states actual review/test coverage."
+      }
+    },
+    {
+      "id": "review-current-guard-false-positive",
+      "kind": "outcome",
+      "split": "development",
+      "forbidden_skills": [
+        "interrogate"
+      ],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic supplied source facts only; local Markdown review/comment plan. No execution, file edits, external review posting, approval, requesting changes, thread resolution, commits or delegation.",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "prompt": "Ordinary review, synthetic queue candidate B. An old A-head thread alleged that queue.py line22 cleared pending before a no-op return and unsafe reuse followed. In current B the same line number is an unrelated metric; the no-op path at lines30-33 now keeps pending true until commit, and the supplied caller guard rejects speculative reuse while pending is true. Those current source facts satisfy the alleged contract. No failing behavior is demonstrated; an interrupted-run test is missing, and a reviewer prefers a different variable name. The host lacks a native inline review surface. Assess the old finding in a local Markdown summary only. Do not edit, post, resolve the old thread, request changes or invent new defects.",
+      "rubric": {
+        "current": "Reassesses the old allegation against B, recognizes the current guard addresses it and never relocates it to unrelated metric line22.",
+        "no_findings": "Allows no supported defect findings; missing test remains an evidence gap and style a preference, without claiming all behavior proven.",
+        "surface": "Uses a local summary with host limitation, does not impose Codex markup or invent a valid PR anchor or external post.",
+        "authority": "Distinguishes local assessment from thread resolution or review approval; no source edits or externally posted verdict."
+      }
+    },
+    {
+      "id": "source-comments-preserve-rationale",
+      "kind": "outcome",
+      "split": "development",
+      "forbidden_skills": [
+        "interrogate"
+      ],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic supplied source facts only; local Markdown review/comment plan. No execution, file edits, external review posting, approval, requesting changes, thread resolution, commits or delegation.",
+      "expected_skills": [
+        "unslop"
+      ],
+      "prompt": "Prepare a local comment-edit plan only for synthetic queue.py. (A) Before pending=true, a comment says it keeps later submissions from reusing speculative state after an interrupted run; that invariant still holds. (B) Above count=count+1 is Add one to count. (C) A comment says writes are synchronous, but the current source now awaits durable writes, so that claim is stale. (D) The header is a required copyright/license notice, and a generated section says edit the schema source instead. A deletion tool proposes removing all comments. Explain what to retain, simplify or correct, and where durable review rationale belongs. Do not edit source or claim test execution.",
+      "rubric": {
+        "rationale": "Retains the non-obvious interrupted-run/pending invariant and consequence close to the relevant code; removes or simplifies obvious count narration without a blanket rule.",
+        "stale": "Corrects the synchronous claim to match current awaited behavior rather than preserving stale prose or inventing unobserved guarantees.",
+        "notices": "Preserves required legal and generated-source warnings under project conventions.",
+        "scope": "Keeps changes as a plan, durable rationale in clear code or an authorized source comment, and distinguishes prose from enforcement/regression evidence."
+      }
+    },
+    {
+      "id": "source-comments-obvious-code-control",
+      "kind": "outcome",
+      "split": "development",
+      "forbidden_skills": [
+        "interrogate"
+      ],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic supplied source facts only; local Markdown review/comment plan. No execution, file edits, external review posting, approval, requesting changes, thread resolution, commits or delegation.",
+      "expected_skills": [
+        "unslop"
+      ],
+      "prompt": "A small helper has clear names and straightforward assignments whose meaning is fully visible. No hidden invariant, compatibility exception or ownership/order constraint is known. The maintainer asks whether the new comment policy requires adding a comment above every statement or pasting the entire changing CI/experiment log into source. Give a concise local recommendation only; no edits, commands or publication.",
+      "rubric": {
+        "proportional": "Requires no new comments or quota for obvious mechanics; favors the existing clear code rather than manufacturing a rationale.",
+        "history": "Keeps changing CI status and long experiment history in existing evidence/docs rather than source narration; useful future non-obvious rationale would still be kept near its code.",
+        "evidence": "Does not claim comments establish safety, tests passed or live review quality improved."
+      }
     }
   ]
 }
