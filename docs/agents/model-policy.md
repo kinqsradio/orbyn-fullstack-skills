@@ -8,11 +8,12 @@ capability, latency, price or reasoning budget.
 
 <!-- agent-models:start -->
 
-| Agent / selection             | OpenAI model / effort                 | Claude model / effort           |
-| ----------------------------- | ------------------------------------- | ------------------------------- |
-| `orbyn-agent`                 | `gpt-6.1-sol` / medium                | `opus` / medium                 |
-| `orbyn-light`                 | `gpt-6-luna` / high                   | `sonnet` / medium               |
-| Explicit human selection only | `gpt-6-astra` / human-selected effort | `fable` / human-selected effort |
+| Agent / selection              | OpenAI model / effort                 | Claude model / effort           |
+| ------------------------------ | ------------------------------------- | ------------------------------- |
+| `orbyn-agent`                  | `gpt-6.1-sol` / medium                | `opus` / medium                 |
+| `orbyn-light`                  | `gpt-6-luna` / high                   | `sonnet` / medium               |
+| `orbyn-middle` (explicit only) | `gpt-6.1-terra` / medium              | Not configured                  |
+| Explicit human selection only  | `gpt-6-astra` / human-selected effort | `fable` / human-selected effort |
 
 <!-- agent-models:end -->
 
@@ -20,16 +21,19 @@ Only the human selects a provider model from the registry's human-only tier.
 Never select that tier automatically, including through
 parent-model inheritance or a fallback. A human-selected strongest-model parent
 does not implicitly authorize strongest-model children. Keep routine children on
-one of the two explicit agent definitions unless the human requests otherwise.
+the standard or light definitions unless the human explicitly selects the optional
+middle tier or requests otherwise.
 Do not silently replace a model the human selected.
 
 ## Update models in one place
 
 [models.json](models.json) is the canonical, human-editable model and effort
 registry for **both OpenAI/Codex and Claude Code**, including human-only models
-and standard-speed settings. Edit the appropriate provider entries there when
+and standard-speed settings. The optional `orbyn-middle` entry is Codex-only;
+its `selection: explicit` is required, it cannot be a parent default, and no Claude
+equivalent is generated. Edit the appropriate provider entries there when
 models change. The sync command preserves unrelated configuration and updates
-both hosts' parent settings, named-agent model/effort, descriptions and the table
+the supported hosts' parent settings, named-agent model/effort, descriptions and the table
 above. It does not invoke a model or reload a running chat.
 
 ```sh
@@ -59,6 +63,17 @@ complex implementation, ambiguous diagnosis and consequential reviews. Use
 routine authorized verification and focused evidence collection. Roles do not
 have a single mandatory model: select by scope, ambiguity and consequences.
 See [roles](roles.md) for role responsibilities and examples.
+
+`orbyn-middle` pins `gpt-6.1-terra` / medium as an optional Codex middle tier for
+an explicitly selected assignment or authorized comparison. Luna High and Sol
+Medium remain the routing defaults; never select Terra through automatic fallback,
+escalation or parent inheritance. Confirm the explicit human model/tier choice in
+the brief, keep the assigned scope, and report an unavailable model or unsupported
+standard processing rather than substituting or starting a trial. Registration
+makes an option discoverable; explicit selection is a policy instruction, not a
+claimed runtime permission gate or measured capability ranking. It changes no
+Claude routing. For a prepared comparison, use the
+[optional model pilot](../../skills/orbyn-skill-creator/references/evaluations.md#optional-model-tier-pilot).
 
 The owner may route a task from `orbyn-light` to `orbyn-agent` when the bounded
 brief proves insufficient; record the concrete reason and pass existing findings.

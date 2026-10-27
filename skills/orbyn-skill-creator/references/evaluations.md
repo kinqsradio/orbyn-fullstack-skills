@@ -234,3 +234,66 @@ quality. Capture failed/incomplete attempts and stop behavior as well as success
 Do not modify holdouts after seeing outcomes or infer reliability from one run.
 This protocol and its cases are unexecuted preparation, not a live comparison or
 permission for external calls/installations.
+
+## Optional model tier pilot
+
+The optional library audit artifact at
+`docs/evaluations/2026-10-27-optional-model-pilot.json`
+(not part of a skills-only export) pins three self-contained case definitions,
+source revision, shared entrypoint
+packet and wrapper hashes, arms, repeats/order and budgets. It remains `not_run`
+and not collection-ready until the exact supported host and effective settings
+are verified and frozen. This is an artifact/reasoning comparison only, not a
+coding, PR defect-detection or UI trial. Coding routing would need a later
+independently replayed code task before any promotion.
+
+Preparation only: compare `gpt-6-luna` / high, explicitly selected
+`gpt-6.1-terra` / medium and `gpt-6.1-sol` / medium on the same supported Codex
+host at standard processing. This is not a quality/cost ranking or authority to
+invoke models. No pilot has been run. Model registration does not establish
+account access, supported effort, effective processing or loaded-host discovery.
+At collection, verify the intended host/version and each exact model/effort/tier
+through supported host capabilities and current official documentation. If any
+setting is unavailable, mark that arm blocked/unverified; do not silently replace
+a model, upgrade/install tools, enable accelerated processing or start a paid call.
+
+Use three existing synthetic development outcome tasks: `approval-contract`,
+`retry-effect` and `narrow-feature-slice`. Pin the unchanged case suite SHA256
+`2683c34e494b3854b768c15b7522a3ca507316645cc170aac6d417821e8eb65e`
+and those exact case definitions. If the suite later changes, deliberately freeze
+a new shared suite before collection; never tune old holdouts. Before any trial,
+freeze the same committed skill revision, wrapper bytes, task/source fixture
+hashes, permitted tools/effects, timeout/token budgets and acceptance criteria in
+one `protocol.json` using the existing collection method. These tasks require
+source-packet answers, not a real account or production service; keep external
+effects disabled. Keep expected routes and rubrics hidden from the task context. The tool-free
+pilot measures artifact outcomes; supplied entrypoints are not evidence of
+automatic skill discovery or complete reference coverage.
+
+Prepare separate run folders with `prepare --case approval-contract --case
+retry-effect --case narrow-feature-slice --trials 3 --protocol protocol.json`,
+supplying the pinned `--revision`, identical `--host`, exact arm-specific `--model`
+(including effort and standard processing), `--condition candidate` and a new
+`--output` for each arm. Use fresh contexts and the same pinned entrypoint context with no tools;
+rotate arm order across matched repeats. All records initially remain `not_run`.
+Three repeats per task/arm are a small pilot, not a reliability benchmark.
+
+An independent reviewer grades actual artifacts and visible tool evidence against
+the same acceptance criteria: correct contract, authority/failure handling,
+material omissions and authorized scope. Use the existing `grade` for each run.
+The existing `compare` requires identical model provenance and is unsuitable for
+this cross-model pilot: do not spoof model identity or relax its gate. Instead
+prepare a manually reviewed descriptive table of per-task/arm acceptances,
+failures, incomplete/blocked attempts, observed latency and usage. Retain every
+attempt, including failed/time-out runs and any separately authorized retries.
+
+Report total observed model cost divided by accepted results and total elapsed
+work time divided by accepted results, including all failed/retry attempts in
+the respective numerators. Record model token/cache usage and the dated applicable
+pricing/account basis only when actually available; subscription usage is not
+proof of marginal dollar cost. Include reviewer time separately, or apply an
+explicit consistent inclusion rule across arms. Missing cost/time stays unknown,
+not zero. With no accepted results, per-accepted-result ratios are undefined.
+Report the small sample and task differences; no broad speed/quality guarantee or
+automatic routing/default change follows. Any later policy change needs its own
+review and authority. Keep raw captures under ignored output as usual.

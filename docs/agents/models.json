@@ -21,6 +21,11 @@
       "purpose": "Bounded lookup, small edits, documentation and authorized checks",
       "codex": { "model": "gpt-6-luna", "effort": "high" },
       "claude": { "model": "sonnet", "effort": "medium" }
+    },
+    "orbyn-middle": {
+      "purpose": "Optional middle tier for explicitly selected bounded engineering assignments",
+      "selection": "explicit",
+      "codex": { "model": "gpt-6.1-terra", "effort": "medium" }
     }
   },
   "human_only": {
