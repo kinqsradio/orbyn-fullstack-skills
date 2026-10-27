@@ -26,6 +26,16 @@ Confirm PR creation is part of the requested delivery. Inspect the exact owned d
 
 Use the parent [workflow](../SKILL.md) and repository scope.
 
+## State the benefit before publication
+
+Use the [contribution value decision](contribution-intake.md#establish-value-separately-from-correctness)
+to explain what this exact diff improves, why existing behavior/coverage is
+insufficient, and the relevant verification. A self-filed issue, passing suite or
+successful mutant rejection alone does not establish the need for a PR. Keep the
+body proportionate; no new mandatory proposal document is required. Revisit a
+changed premise or excessive fixture burden before publishing. A sound finding
+that needs no patch can be the completed result.
+
 ## Commit and push gate
 
 Verification, staging, commit, push and PR/CI actions are dependent steps. Stop

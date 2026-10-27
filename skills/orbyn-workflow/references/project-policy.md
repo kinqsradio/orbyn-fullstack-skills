@@ -58,6 +58,18 @@ condition. Writers share state: separate fixtures/services or serialize mutation
 The lead inspects returned artifacts and integrates them. User-owned chats and
 messages require the user's authorization. Do not manufacture parallel work.
 
+Include the selected target/worktree and search roots, applicable instruction
+paths and essential scoped constraints in that brief. Supply required guidance
+or direct the child to read it explicitly; do not assume parent context, skills,
+PATH, shell tools or permissions are inherited. Report observed availability,
+including native search tools, and let the child verify its actual environment.
+Use the [offline search contract](../../orbyn-setup/references/offline.md#ripgrep-readiness-and-fallback):
+prefer usable `rg` for ordinary shell repository search; native search remains
+valid even when shell `rg` is available. Use a bounded fallback when the selected
+tool is unavailable, and treat exit 1 as no-match rather than an installation trigger. Keep searches inside
+the selected target and distinguish tool availability, retrieved instructions and
+observed behavior; a successful parent run proves none of those for a child.
+
 ## Verification and review
 
 Choose checks for the changed contract using the project's existing commands.

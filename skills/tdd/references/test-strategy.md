@@ -21,6 +21,22 @@ owned resources, or retries retain one logical operation identity. A helper-call
 count or error-string snapshot can pass while the real contract still fails.
 Keep ordinary legitimate controls so an overbroad rejection cannot look correct.
 
+## Justify the added coverage
+
+Before expanding a test suite, name the useful missing contract or requested
+coverage and compare the existing tests at the appropriate owner. Correctness of
+a new assertion and usefulness of adding it are separate questions. A mutation
+check can establish sensitivity to a particular defect; it does not establish
+maintainer demand, a real missing boundary or the value of a new harness.
+
+Choose the smallest maintainable fixture for that gap. Reassess setup, platform
+requirements and ongoing upkeep if the fixture becomes larger than the behavior
+it protects. A supported reproduced bug, an uncovered relevant invariant or a
+maintainer-requested regression can justify coverage without a new approval ritual.
+If the premise is already covered or intentional, report that evidence; a no-change
+result is valid. Contribution value and delivery boundaries remain with
+[contribution intake](../../orbyn-workflow/playbooks/contribution-intake.md#establish-value-separately-from-correctness).
+
 ## Choose data and failures deliberately
 
 Use representative boundary values, malformed input and one relevant interrupted

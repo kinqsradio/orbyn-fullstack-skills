@@ -61,6 +61,11 @@ target identity on results from an explicitly authorized multi-target inquiry.
 Use [impact mapping](../../how/references/impact-map.md) for the relevant edges;
 do not turn focused discovery into a complete repository inventory.
 
+For search delegated to another context, use the
+[existing handoff contract](../../orbyn-workflow/references/project-policy.md#delegation-and-host-configuration).
+Pass the selected checkout, roots, applicable guidance and observed tool availability;
+a working parent shell does not prove the child has ripgrep or the same context.
+
 ## Select memory before retrieval
 
 Only an explicit authorized memory request uses

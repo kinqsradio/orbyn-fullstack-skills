@@ -102,6 +102,12 @@ For worktree isolation, naming and cleanup, follow
 [orbyn-worktree](skills/orbyn-worktree/SKILL.md). Use the primary clone’s sibling
 `<repo>-wt/<purpose>/` root by default; preserve existing owned work and output.
 
+For shell repository searches, prefer usable `rg` / `rg --files` in the selected
+target. Host-native search is valid; deliberate tracked-only `git grep` or filtering
+a small command output with `grep` is not a violation. Use the
+[search fallback contract](skills/orbyn-setup/references/offline.md#ripgrep-readiness-and-fallback)
+when tools differ, and pass search scope and required guidance explicitly to delegates.
+
 For implementation, route actual files/manifests through
 [language guidance](skills/language-best-practices/SKILL.md), loading only the
 applicable reference. For a requested technology choice, use
