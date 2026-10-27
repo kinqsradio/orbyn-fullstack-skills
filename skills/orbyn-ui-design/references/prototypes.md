@@ -19,6 +19,27 @@ scenarios, source and checks. Use [statecharts](../../architect/references/state
 when a lifecycle or concurrent actors need an explanation. A simple visual change
 does not require a formal model.
 
+## Make the first view useful
+
+Start with a readable primary task, its current state and one clear next action.
+Choose the amount of context for the decision: a task flow benefits from a small
+number of meaningful stages; a comparison may need aligned rows. Do not expose a
+whole catalog, dependency graph or reviewer matrix as the default product view
+when the person needs to complete one task. Keep deeper context reachable through
+named details, a focused view or a separate reference. Essential consequences,
+permissions and recovery controls stay visible beside the action.
+
+Carry the chosen type, spacing and color roles across the preview using the
+target's existing design direction. A liked example can inform a scoped new
+direction, but does not establish a universal palette, card layout or stage count.
+Separate product controls from optional scenario controls. Check the opening view
+at its actual size: fitting every node or avoiding overflow is insufficient if
+the person must zoom to read ordinary content or cannot identify the next action.
+
+The [focus-session example](../examples/focus-session.md) provides a portable
+interactive slice, recovery scenario and implementation handoff. Its synthetic
+style and in-memory effects are explicitly limited to the example.
+
 ## Choose the evidence surface before building
 
 Use the request and known target to identify what the human needs to inspect:

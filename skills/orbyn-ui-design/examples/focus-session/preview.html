@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orbyn · Focus session prototype</title>
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f5f7fb;
+  --surface:#fff;
+  --ink:#19263a;
+  --muted:#647187;
+  --line:#dfe5ef;
+  --accent:#2459cc;
+  --tint:#eaf0ff;
+  --radius:15px;
+  --space:24px;
+  font:16px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
+}
+*{
+  box-sizing:border-box
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink)
+}
+button,input,select,textarea{
+  font:inherit
+}
+button,a,input,select,textarea{
+  touch-action:manipulation
+}
+button,a{
+  -webkit-tap-highlight-color:transparent
+}
+button{
+  cursor:pointer
+}
+button:disabled{
+  cursor:wait;
+  opacity:.65
+}
+a{
+  color:var(--accent)
+}
+:focus-visible{
+  outline:3px solid #507fe6;
+  outline-offset:4px
+}
+button:focus-visible{
+  outline-offset:3px
+}
+.shell{
+  display:grid;
+  grid-template-columns:195px minmax(0,1fr);
+  min-height:100vh
+}
+.sidebar{
+  background:var(--surface);
+  border-right:1px solid var(--line);
+  padding:30px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:32px
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:21px;
+  font-weight:730;
+  letter-spacing:-.04em
+}
+.brand-mark{
+  width:30px;
+  height:30px;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  background:var(--accent);
+  font-size:19px
+}
+.workspace{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:8px
+}
+nav{
+  display:grid;
+  gap:8px
+}
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  padding:11px 13px;
+  border-radius:9px;
+  font-size:14px;
+  font-weight:550
+}
+nav a:first-child{
+  background:var(--tint);
+  color:var(--accent)
+}
+.side-note{
+  font-size:12px;
+  line-height:1.65;
+  color:var(--muted);
+  margin-top:auto
+}
+.main{
+  width:100%;
+  max-width:1240px;
+  margin:0 auto;
+  padding:32px 44px 26px
+}
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:34px
+}
+.preview-label{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:7px 11px;
+  font-size:12px;
+  white-space:nowrap
+}
+.intro{
+  margin-bottom:28px
+}
+.eyebrow{
+  color:var(--accent);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase
+}
+h1{
+  font-size:34px;
+  letter-spacing:-.045em;
+  line-height:1.2;
+  margin:10px 0 12px
+}
+.intro p{
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.6;
+  max-width:600px
+}
+.layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(300px,1fr);
+  gap:26px;
+  align-items:start
+}
+.panel{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius)
+}
+.panel-head{
+  padding:22px 24px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px
+}
+h2{
+  font-size:18px;
+  margin:0;
+  letter-spacing:-.02em
+}
+.count{
+  font-size:12px;
+  color:var(--muted)
+}
+fieldset{
+  margin:0;
+  border:0;
+  padding:0;
+  min-width:0
+}
+legend{
+  padding:0
+}
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0
+}
+.task{
+  padding:18px 24px;
+  border-top:1px solid #edf0f5;
+  display:grid;
+  grid-template-columns:19px minmax(0,1fr);
+  gap:13px;
+  cursor:pointer;
+  line-height:1.4
+}
+.task:has(input:checked){
+  background:#f6f9ff;
+  box-shadow:inset 3px 0 var(--accent)
+}
+.task input{
+  margin:3px 0 0;
+  width:17px;
+  height:17px;
+  accent-color:var(--accent)
+}
+.task-title{
+  display:block;
+  font-size:15px;
+  font-weight:580;
+  overflow-wrap:anywhere
+}
+.task-meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:9px
+}
+.tag{
+  background:#eef2f8;
+  padding:3px 7px;
+  border-radius:5px;
+  color:#5c6b82
+}
+.task:first-of-type .tag{
+  color:#285cbd;
+  background:#e8efff
+}
+.focus-note{
+  margin:18px 0 0;
+  display:flex;
+  align-items:start;
+  gap:9px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+  padding:0 4px
+}
+.focus-note b{
+  font-weight:650;
+  color:#41516c
+}
+.session{
+  padding:24px
+}
+.session .kicker{
+  font-size:12px;
+  color:var(--muted);
+  margin:12px 0 4px
+}
+.selected-title{
+  font-weight:600;
+  line-height:1.5;
+  margin:0 0 22px;
+  font-size:16px;
+  overflow-wrap:anywhere
+}
+.field{
+  margin:0 0 18px
+}
+.field label{
+  display:block;
+  font-size:13px;
+  font-weight:600;
+  margin:0 0 8px
+}
+.field select,.field input,.field textarea{
+  width:100%;
+  border:1px solid #ced7e5;
+  border-radius:8px;
+  background:#fff;
+  color:var(--ink);
+  padding:10px 11px;
+  min-height:44px;
+  font-size:14px
+}
+.field textarea{
+  resize:vertical;
+  min-height:78px;
+  line-height:1.5
+}
+details summary{
+  cursor:pointer;
+  color:#566783;
+  font-size:13px;
+  padding:3px 0 10px
+}
+details[open] summary{
+  margin-bottom:5px
+}
+.primary{
+  border:0;
+  border-radius:9px;
+  background:var(--accent);
+  color:#fff;
+  min-height:46px;
+  padding:12px 18px;
+  font-weight:620;
+  font-size:14px;
+  width:100%
+}
+.primary:hover:not(:disabled){
+  background:#1848b4
+}
+.effect-note{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.5;
+  margin:12px 0 0
+}
+.feedback{
+  font-size:13px;
+  line-height:1.5;
+  border-radius:8px;
+  padding:11px 12px;
+  margin:16px 0 0;
+  background:#e9f6ef;
+  color:#216845
+}
+.feedback.error{
+  background:#fff1ee;
+  color:#9a3626
+}
+.feedback[hidden]{
+  display:none
+}
+.planned{
+  margin-top:26px;
+  padding:22px 24px
+}
+.planned h2{
+  margin-bottom:13px
+}
+.planned-empty{
+  font-size:14px;
+  color:var(--muted);
+  margin:0;
+  line-height:1.6
+}
+.block{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  border-top:1px solid #edf0f5;
+  padding:14px 0
+}
+.block:first-child{
+  border:0
+}
+.block strong{
+  font-size:14px;
+  display:block;
+  font-weight:600;
+  line-height:1.4;
+  overflow-wrap:anywhere
+}
+.block small{
+  font-size:12px;
+  color:var(--muted);
+  display:block;
+  margin-top:5px
+}
+.remove{
+  align-self:center;
+  font-size:12px;
+  background:none;
+  border:0;
+  color:#62718a;
+  padding:10px;
+  border-radius:6px
+}
+.empty{
+  padding:10px 24px 26px
+}
+.empty p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.6
+}
+.secondary{
+  background:#fff;
+  border:1px solid #cdd7e6;
+  border-radius:8px;
+  padding:10px 15px;
+  color:#36557b;
+  font-size:13px;
+  min-height:42px
+}
+.demo{
+  margin-top:28px;
+  border-top:1px solid var(--line);
+  padding-top:18px
+}
+.demo summary{
+  font-size:13px
+}
+.demo p{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.6;
+  margin:4px 0 14px
+}
+.demo-row{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:end
+}
+.demo-row label{
+  display:block;
+  font-size:12px;
+  color:#526075;
+  margin-bottom:6px
+}
+.demo select{
+  min-height:40px;
+  border:1px solid #cdd7e6;
+  border-radius:7px;
+  padding:8px;
+  background:white;
+  max-width:100%
+}
+.continue{
+  display:none
+}
+.footer{
+  margin-top:18px;
+  font-size:12px;
+  color:#7c889a;
+  line-height:1.6
+}
+[hidden]{
+  display:none!important
+}
+@media(max-width:1100px){
+  .main{
+    padding:28px 26px
+  }
+  .layout{
+    gap:20px;
+    grid-template-columns:minmax(0,1fr) minmax(285px,.95fr)
+  }
+  .sidebar{
+    padding:27px 15px
+  }
+  .shell{
+    grid-template-columns:160px minmax(0,1fr)
+  }
+}
+@media(max-width:800px){
+  .shell{
+    display:block
+  }
+  .sidebar{
+    padding:16px 20px;
+    border:0;
+    border-bottom:1px solid var(--line);
+    gap:0;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center
+  }
+  .workspace,nav,.side-note{
+    display:none
+  }
+  .brand{
+    font-size:19px
+  }
+  .main{
+    padding:24px 20px
+  }
+  .topbar{
+    margin-bottom:24px;
+    font-size:12px
+  }
+  .topbar>span:first-child{
+    display:none
+  }
+  .preview-label{
+    font-size:11px
+  }
+  .intro{
+    margin-bottom:22px
+  }
+  h1{
+    font-size:29px
+  }
+  .intro p{
+    font-size:15px
+  }
+  .layout{
+    grid-template-columns:minmax(0,1fr)
+  }
+  .task{
+    padding:17px 20px
+  }
+  .panel-head{
+    padding:20px
+  }
+  .session{
+    padding:22px
+  }
+  .continue{
+    display:inline-block;
+    font-size:13px;
+    margin-top:16px
+  }
+  .planned{
+    margin-top:20px
+  }
+  .field input,.field select,.field textarea{
+    font-size:16px
+  }
+  .feedback{
+    scroll-margin:20px
+  }
+}
+@media(prefers-reduced-motion:no-preference){
+  .primary,.secondary{
+    transition:background-color .15s ease
+  }
+}
+</style>
+<body>
+<div class="shell">
+<aside class="sidebar">
+<div>
+<div class="brand">
+<span class="brand-mark" aria-hidden="true">o</span>orbyn</div>
+<div class="workspace">Demo workspace</div>
+</div>
+<nav aria-label="On this page">
+<a href="#plan">Plan a session</a>
+<a href="#tasklist">Choose a task</a>
+<a href="#sessions">Planned sessions</a>
+</nav>
+<div class="side-note">One task.<br>A little room to focus.</div>
+</aside>
+<main class="main" id="plan">
+<div class="topbar">
+<span>Workspace / Plan</span>
+<span class="preview-label">Interactive prototype · synthetic data</span>
+</div>
+<header class="intro">
+<div class="eyebrow">Your next session</div>
+<h1>Make time for one thing.</h1>
+<p>Choose a task, set aside a focus block, and keep the next step clear.</p>
+</header>
+<div class="layout">
+<div>
+<section class="panel" id="tasklist" aria-labelledby="tasks-heading">
+<div class="panel-head">
+<h2 id="tasks-heading">Ready to work on</h2>
+<span class="count" id="task-count">
+</span>
+</div>
+<fieldset id="tasks">
+<legend class="sr-only">Select a task for your session</legend>
+</fieldset>
+<div class="empty" id="empty" hidden>
+<h2>Nothing waiting here.</h2>
+<p>Add the sample tasks to try planning a focus session.</p>
+<button class="secondary" id="load-samples" type="button">Add sample tasks</button>
+</div>
+</section>
+<p class="focus-note">
+<span aria-hidden="true">↗</span>
+<span>
+<b>Keep it manageable.</b> One focused block is enough to move a task forward.</span>
+</p>
+<a class="continue" href="#session-form">Continue to session details ↓</a>
+</div>
+<section class="panel session" aria-labelledby="session-heading">
+<h2 id="session-heading">Plan a focus block</h2>
+<div class="kicker">Selected task</div>
+<p class="selected-title" id="selected-title">
+</p>
+<form id="session-form">
+<fieldset id="session-fields">
+<legend class="sr-only">Session details</legend>
+<div class="field">
+<label for="duration">Duration</label>
+<select id="duration" name="duration">
+<option value="25">25 minutes</option>
+<option value="45" selected>45 minutes</option>
+<option value="60">60 minutes</option>
+</select>
+</div>
+<div class="field">
+<label for="start">Start</label>
+<input id="start" type="datetime-local" name="start" value="2026-10-28T09:00" required>
+</div>
+<details>
+<summary>Add a session note</summary>
+<div class="field">
+<label class="sr-only" for="note">Session note</label>
+<textarea id="note" name="note" placeholder="What would be a useful first step?" maxlength="500">
+</textarea>
+</div>
+</details>
+</fieldset>
+<button class="primary" id="submit" type="submit">Add focus block</button>
+<p class="effect-note">Demo only. This adds a block to this preview; it does not change your calendar.</p>
+<p class="feedback" id="feedback" role="status" aria-live="polite" hidden>
+</p>
+</form>
+</section>
+</div>
+<section class="panel planned" id="sessions" aria-labelledby="planned-heading">
+<h2 id="planned-heading">Planned in this preview</h2>
+<p class="planned-empty" id="planned-empty">Your first focus block will appear here.</p>
+<div id="blocks">
+</div>
+</section>
+<details class="demo" id="demo-controls">
+<summary>Preview controls</summary>
+<p>Try a failure or a slower response. Changing the scenario or resetting clears this synthetic workspace. Reloading also starts fresh.</p>
+<div class="demo-row">
+<div>
+<label for="scenario">Scenario</label>
+<select id="scenario">
+<option value="normal">Normal save</option>
+<option value="failure">First save fails, then retry works</option>
+<option value="slow">Slow save</option>
+<option value="empty">No tasks yet</option>
+</select>
+</div>
+<button class="secondary" id="reset" type="button">Reset preview</button>
+</div>
+</details>
+<p class="footer">A standalone web prototype exploring hierarchy, task selection and recovery. No backend, account, analytics or persistent storage.</p>
+</main>
+</div>
+<script>
+const samples=[{id:'onboarding',title:'Improve contribution onboarding',project:'Engineering',length:'45 min',tag:'Next up'},{id:'recovery',title:'Review the offline recovery flow',project:'Product',length:'25 min',tag:'Review'},{id:'preview',title:'Write a clearer preview handoff for contributors using a narrow window',project:'Design',length:'60 min',tag:'Writing'}];
+
+const byId=id=>document.getElementById(id);
+let generation=0,selected=samples[0].id,mode='normal',failures=0,blocks=[],counter=0;
+
+
+function tell(text,error=false){const el=byId('feedback');
+el.textContent=text;
+el.classList.toggle('error',error);
+el.setAttribute('role',error?'alert':'status');
+el.hidden=!text;
+}
+
+function setBusy(busy){byId('tasks').disabled=busy;
+byId('session-fields').disabled=busy;
+byId('submit').disabled=busy||!selected;
+byId('submit').textContent=busy?'Adding focus block…':'Add focus block';
+byId('session-form').setAttribute('aria-busy',String(busy));
+}
+
+function renderTasks(empty=false){byId('tasks').replaceChildren();
+byId('empty').hidden=!empty;
+byId('task-count').textContent=empty?'0 tasks':`${samples.length} tasks`;
+if(empty)selected=null;
+for(const task of empty?[]:samples){const label=document.createElement('label');
+label.className='task';
+const radio=document.createElement('input');
+radio.type='radio';
+radio.name='task';
+radio.value=task.id;
+radio.checked=task.id===selected;
+radio.addEventListener('change',()=>{selected=task.id;
+byId('selected-title').textContent=task.title;
+tell('');
+});
+const copy=document.createElement('span');
+const title=document.createElement('span');
+title.className='task-title';
+title.textContent=task.title;
+const meta=document.createElement('span');
+meta.className='task-meta';
+const tag=document.createElement('span');
+tag.className='tag';
+tag.textContent=task.tag;
+meta.append(tag,document.createTextNode(`${task.project} · ${task.length}`));
+copy.append(title,meta);
+label.append(radio,copy);
+byId('tasks').append(label);
+}byId('selected-title').textContent=empty?'Choose a task to get started.':samples.find(x=>x.id===selected).title;
+setBusy(false);
+}
+
+function renderBlocks(){byId('blocks').replaceChildren();
+byId('planned-empty').hidden=blocks.length>0;
+for(const block of blocks){const row=document.createElement('div');
+row.className='block';
+const copy=document.createElement('div');
+const title=document.createElement('strong');
+title.textContent=block.title;
+const meta=document.createElement('small');
+meta.textContent=`${block.duration} min · ${block.start.replace('T',' at ')}`;
+copy.append(title,meta);
+if(block.note){const note=document.createElement('small');
+note.textContent=block.note;
+copy.append(note);
+}const remove=document.createElement('button');
+remove.type='button';
+remove.className='remove';
+remove.textContent='Remove';
+remove.setAttribute('aria-label',`Remove session for ${block.title}`);
+remove.addEventListener('click',()=>{blocks=blocks.filter(x=>x.id!==block.id);
+renderBlocks();
+tell('Focus block removed from this preview.');
+byId('submit').focus();
+});
+row.append(copy,remove);
+byId('blocks').append(row);
+}}
+
+function reset(){generation++;
+selected=samples[0].id;
+blocks=[];
+failures=mode==='failure'?1:0;
+byId('session-form').reset();
+tell('');
+renderTasks(mode==='empty');
+renderBlocks();
+}
+byId('session-form').addEventListener('submit',async event=>{event.preventDefault();
+if(byId('submit').disabled||!selected)return;
+const own=++generation;
+const payload={id:++counter,title:samples.find(x=>x.id===selected).title,duration:byId('duration').value,start:byId('start').value,note:byId('note').value};
+const shouldFail=failures>0;
+if(shouldFail)failures--;
+setBusy(true);
+tell('');
+await new Promise(resolve=>setTimeout(resolve,mode==='slow'?1600:450));
+// Reset owns a new generation; late completions must not restore its old view.
+if(own!==generation)return;
+setBusy(false);
+if(shouldFail){tell('Couldn’t add the focus block. Your details are still here. Try again.',true);
+byId('submit').textContent='Retry adding focus block';
+byId('submit').focus();
+return;
+}blocks.push(payload);
+renderBlocks();
+tell('Focus block added to this preview.');
+});
+
+byId('scenario').addEventListener('change',event=>{mode=event.target.value;
+reset();
+});
+byId('reset').addEventListener('click',reset);
+byId('load-samples').addEventListener('click',()=>{mode='normal';
+byId('scenario').value='normal';
+reset();
+byId('tasks').querySelector('input').focus();
+});
+reset();
+
+</script></body></html>

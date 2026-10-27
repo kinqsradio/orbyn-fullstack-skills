@@ -5941,6 +5941,52 @@
         "history": "Keeps changing CI status and long experiment history in existing evidence/docs rather than source narration; useful future non-obvious rationale would still be kept near its code.",
         "evidence": "Does not claim comments establish safety, tests passed or live review quality improved."
       }
+    },
+    {
+      "id": "prototype-readable-first-view",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic design plan only; do not execute tools, edit product files, install a framework or publish anything. No actual UI or native validation is supplied.",
+      "prompt": "Plan a simpler opening view for a synthetic skill explorer. Its initial screen fits all35skills and161links without overflow, but ordinary labels require zoom and a person only wants to understand the workflow. The user liked the readable five-stage alternative. Describe the preview hierarchy and how deeper material stays available. The consuming product has its own green accent and existing typography; do not turn the example blue into a universal theme.",
+      "rubric": {
+        "decision": "Uses the person\u2019s workflow question to make the primary flow and next action readable at the opening size; does not equate every-node containment with readability.",
+        "depth": "Keeps complete owner/resource context reachable in named details or a separate view instead of deleting it or making the full graph the default.",
+        "scope": "Preserves consumer green/type roles; no universal stage count, palette or mandatory model checker; plan only and unperformed rendering remains unverified."
+      }
+    },
+    {
+      "id": "prototype-essential-consequence-control",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic design plan only; do not execute tools, edit product files, install a framework or publish anything. No actual UI or native validation is supplied.",
+      "prompt": "A synthetic calendar preview is being simplified by hiding all secondary information in a details panel. The proposed primary button shares a focus session with a team; target calendar, recipients and that external effect are essential to informed action. Optional experiment history and reviewer scenario switches also exist. Give a layout plan that stays simple without obscuring the action\u2019s consequence. Do not submit or edit anything.",
+      "rubric": {
+        "essential": "Keeps target, recipients and sharing consequence visible beside the primary action, rather than hiding them with optional detail.",
+        "secondary": "Moves optional history/reviewer controls into separately named disclosure while retaining recovery controls and important error state.",
+        "authority": "Does not imply a prototype sent a session or verified real calendar behavior; respects plan-only scope and does not add publication authority."
+      }
     }
   ]
 }
