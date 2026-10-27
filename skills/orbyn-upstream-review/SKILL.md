@@ -20,6 +20,11 @@ requires inspecting a shipped binary, package or runtime without sufficient
 source. Reading and comparing available open-source files does not require that
 runtime toolchain.
 
+For studying comparable designs before choosing an implementation, use the
+[research method](../orbyn-research/references/comparable-implementations.md).
+This owner retains download, version, license, provenance and update boundaries;
+a design lesson alone is not a source import or reason to advance an import pin.
+
 ## Establish the actual baseline
 
 Read consumer instructions, current Git state and source ownership first.

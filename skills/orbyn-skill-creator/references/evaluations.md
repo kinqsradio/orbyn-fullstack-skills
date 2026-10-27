@@ -213,3 +213,24 @@ recorded-run evaluator. Repeated matched trials are needed for reliability claim
 A source walkthrough or prepared protocol is not a run. No real account mutation,
 provider call, consumer-app sweep or background service is implied; leave
 unexecuted host behavior explicitly unverified.
+
+## Optional comparative-research comparison
+
+For an authorized behavioral trial, freeze three conditions: current guidance,
+current guidance plus an explicit blanket GitHub-first research instruction, and
+the conditional comparative-implementation candidate. Keep the same synthetic
+tasks, source packets, permitted tool responses, host/model/version/effort, budget
+and effects in fresh contexts; record the exact added blanket instruction. Include
+all three `comparative-research-*` development cases: consequential uncertainty,
+sufficient offline local precedent and a mismatched/licensing-sensitive source.
+Supply exact local/spec/source revisions, implementation/caller/failure-test
+excerpts and source rights so inaccessible live repositories do not confound the
+comparison. Keep unavailable evidence unavailable in every condition.
+
+Use the existing recorded-run evaluator and an independent reviewer. Score
+correctness, missed assumptions, justified dependency/disposition and scope, plus
+observed time/tool cost; citation counts or query counts alone do not establish
+quality. Capture failed/incomplete attempts and stop behavior as well as success.
+Do not modify holdouts after seeing outcomes or infer reliability from one run.
+This protocol and its cases are unexecuted preparation, not a live comparison or
+permission for external calls/installations.

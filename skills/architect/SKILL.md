@@ -16,6 +16,11 @@ Trace the current design with [how](../how/SKILL.md). Write the caller's usage
 first, then the necessary types, owner, interfaces and lifecycle. Include authority,
 concurrency, failure, recovery and compatibility when the task affects them.
 
+When [comparative research](../orbyn-research/references/comparable-implementations.md)
+informs the design, translate its assumptions and local mismatches into concrete
+owners, interfaces, lifecycle/failure rules and regression checks. A similar
+upstream diagram or implementation does not establish this project's contract.
+
 Compare plausible alternatives where the choice is consequential. A small sketch
 is sufficient when an established pattern fits. Use [arena](../arena/SKILL.md)
 only when competing candidates would settle a real uncertainty; do not launch a

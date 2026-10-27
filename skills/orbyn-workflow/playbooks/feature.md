@@ -5,6 +5,10 @@ reviews and verifies the result under the parent [workflow](../SKILL.md).
 
 1. State the user outcome, inputs, data ownership and failure states. Trace
    existing behavior with `how` and use `architect` for consequential contracts.
+   For consequential unresolved protocol/lifecycle/platform/performance assumptions,
+   use [comparative research](../../orbyn-research/references/comparable-implementations.md)
+   before fixing the contract. Reuse sufficient local precedent; routine known work
+   does not require browsing.
 2. Write the throughput checkpoint before dispatch. Resolve blocking facts and
    choose disjoint owned paths or one owner for coupled code. Designate the
    [worktree’s gates](../../orbyn-ci-design/references/change-scope.md#designate-gates-for-the-feature-worktree):
