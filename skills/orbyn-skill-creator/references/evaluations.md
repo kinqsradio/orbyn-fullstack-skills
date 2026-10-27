@@ -191,3 +191,25 @@ forbidden message fails despite positive rubric assertions. These are packaging
 and evaluator checks, not a live PR, framework test, agent score or host comparison.
 Use fresh matched trials under the protocol above before claiming improved agent
 behavior. Normal library CI already runs this test module through discovery.
+
+## Paired handoff/readiness comparisons
+
+For an authorized behavioral comparison of surface selection, delivery feasibility,
+continuation readiness or PR waiting, freeze baseline/candidate skill revisions,
+case definitions and identical host/model/effort/tool protocol. Use synthetic
+inputs: requested surface plus known window/build/adapter facts; a local Git and
+runner inventory plus saved-binding observation; delivery responses with a
+transient, unknown or deterministic cause; and an event stream with pending/log
+progress, terminal handles and new-head results. Keep response order and permitted
+effects fixed so fixture changes cannot masquerade as guidance improvements.
+
+Include successful and adjacent controls, such as component-only capture,
+local-only fixes and valid reusable readiness/UI evidence. Score the chosen
+surface/next action, evidence limits, preserved work and completion of the requested
+wait, not verbosity or a guessed fixed number of polls. Capture material updates
+and handle use; respect host-required communication and user steering. Preserve
+failed/incomplete attempts and grade excerpts independently using the existing
+recorded-run evaluator. Repeated matched trials are needed for reliability claims.
+A source walkthrough or prepared protocol is not a run. No real account mutation,
+provider call, consumer-app sweep or background service is implied; leave
+unexecuted host behavior explicitly unverified.

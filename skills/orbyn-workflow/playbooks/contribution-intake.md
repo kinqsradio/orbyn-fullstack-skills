@@ -21,6 +21,27 @@ is needed; reuse suitable owned work and preserve unrelated edits. Check actual
 fork visibility and destination before publishing. Never promise a private
 native fork of a public parent when the provider cannot support one.
 
+## Check delivery feasibility when submission is the endpoint
+
+Before expensive implementation for a requested submitted PR/merge, inspect
+available read-only account/repository permissions, fork/contribution restrictions,
+and known submission-capacity limits through supported tools or existing error
+receipts. Distinguish authentication, repository visibility, role and provider
+capacity; access to source or a successful push does not prove PR creation will
+be accepted. Some limits cannot be discovered in advance: record unknowns, not a
+guarantee. Local-only work needs no online/account preflight, and an unavailable
+check need not stop useful authorized local investigation.
+
+Do not create a probe PR or close any existing PR merely to free capacity
+without explicit authority. Do not switch accounts to evade a restriction or
+bypass controls. A rejection warrants bounded
+diagnostics based on its exact operation, account/target, status/message and new
+evidence. A 403 or 404 alone does not establish one cause. Retry only a supported
+transient hypothesis or a relevant changed condition; do not loop on a known
+capacity/policy denial. Preserve the patch/evidence and distinguish local-ready
+from submitted. An external blocker does not invalidate a sound reproduction or
+justify a competing fix, invented submission or unrelated issue switch.
+
 ## Decide whether this contribution is useful
 
 1. Read the actual issue and acceptance criteria. Check its current state,

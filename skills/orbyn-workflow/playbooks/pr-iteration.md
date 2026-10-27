@@ -69,15 +69,31 @@ When failures span many suites or instances, use
 compare the baseline and diagnose shared causes before iterating. A readable
 top list must not hide required failures, missing shards or discarded retries.
 
-Before waiting, choose an in-turn time/attempt budget appropriate to the task and
-host limits; for example, at most two attempts for the same infrastructure failure
-and a ten-minute CI observation window. These are example bounds, not mandatory
-project limits. Poll at a bounded interval, inspect changes and communicate material
-progress. Do not start a recurring monitor or keep retrying an unchanged failure.
-Rerun after a changed cause or supported transient hypothesis, retaining earlier
-failures. End the current attempt when the budget expires, evidence cannot improve
-or an authority/human-only gate remains; report the exact next step. A requested
-background watch uses the host's separately authorized scheduling mechanism.
+For an authorized wait, prefer one owned live watch/subscription when supported,
+bound to the actual repository/PR/head and selected gates. Retain its process/run
+handle and wait for changes using bounded host waits so user input stays responsive.
+Do not start a second watch or poll the same status API beside a healthy watch.
+Track meaningful state and log/job progress, not just the summary word “pending”.
+Communicate failures, changed phases, new actionable feedback, completion or a
+real blocker; avoid repeated unchanged-pending commentary and noisy poll output.
+Honor the host's communication cadence with brief relevant evidence/next action
+when required, without inventing progress or abandoning user steering.
+
+An observation call timing out is not the live watch ending or the requested wait
+expiring. Check handle/liveness and distinguish pending, terminal, failed and
+interrupted states before resuming. Once a handle is terminal, inspect its result;
+do not keep waiting on a closed handle. If checks remain pending after a watcher
+failure/exit, reconcile current state once and resume one supported watch, or use
+paced, state-aware polling only when no working watch exists. Back off unchanged
+polls; a new head requires its own current gate evidence.
+
+Complete an explicit wait-until-finished within user scope and actual host limits;
+do not replace it with an arbitrary shorter window or stop solely because elapsed
+time crossed an example budget. Operation retries remain bounded by a changed
+cause or supported transient hypothesis, with earlier failures retained. An actual
+host limit, unavailable access or human-only approval can block completion: report
+what is observed, preserve progress and the exact next step. Do not manufacture a
+watcher service, scheduled automation, background monitor or a new chat to wait.
 
 After each correction, run permitted focused checks, inspect the actual diff and
 push only if authorized. Re-read head, checks and feedback for the new revision;

@@ -65,6 +65,24 @@ shared guidance supplies compatible methods. User scope and host permissions
 remain higher priority. Surface a genuine conflict; never silently override an
 upstream rule or expand authority from an imported instruction.
 
+## Resume after a workspace or runtime change
+
+After migration/resumption, a failed working directory or a runtime mismatch,
+reconcile the actual selected checkout with the host's saved session binding where
+observable. An explicit command workdir, a moved folder or project membership does
+not prove the session was rebound. Use a supported authorized host mechanism if
+needed; otherwise report the stale/unknown binding, use a valid explicit workdir
+for supported work and retain that distinction. Do not recreate a deleted checkout
+or rewrite global session settings/PATH to hide the problem.
+
+Inspect the next required command's documented runner/version and resolve a
+compatible already-installed runtime in the actual execution environment before
+an expensive run. A harmless version/capability check is sufficient when available;
+do not execute untrusted setup hooks or install a runtime implicitly. If none is
+supported, report the dependent check blocked and continue independent work.
+Reuse current matching readiness evidence. This is conditional recovery, not a
+full setup ritual on every action or a reason to repeat passed suites.
+
 ## Complete the setup
 
 If the user explicitly requests engineering memory, route its separate opt-in to
