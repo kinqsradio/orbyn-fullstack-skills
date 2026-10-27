@@ -42,6 +42,34 @@ what counts as protected work and when admission becomes protected. A reaper's
 earlier idle observation may be stale by the time parking commits. Model those
 as separate actions unless the code serializes them at one real boundary.
 
+### Worked example: an overview hides protected work
+
+This synthetic design example is not an executed check. A concrete state is
+`(parked, jobs, observedIdle)`. The rule `NoProtectedPark` forbids
+`parked && jobs > 0`. Each action below is one serialized command;
+observing and parking are separate commands.
+
+| Qualified action ID | Guard and effect | Source correspondence to establish |
+| --- | --- | --- |
+| `Reaper.ObserveIdle` | If jobs = 0, set observedIdle | Actual idle observation and its storage boundary |
+| `Worker.Admit` | If not parked and jobs = 0, set jobs = 1 | Admission boundary where work becomes protected |
+| `Reaper.Park` | If observedIdle, set parked | Parking commit and whether it rechecks current jobs |
+
+The numbered failure path is: (1) `(false, 0, false)`; (2) observe idle,
+`(false, 0, true)`; (3) admit, `(false, 1, true)`; (4) park,
+`(true, 1, true)`. The final state violates the rule in this design. An overview
+that labels both pre-park states “Idle” hides the newly protected job. It must
+retain the job distinction in a state label, annotation or detailed transition
+table; it cannot present “Idle → Parked” as evidence of safety.
+
+For any generated overview, record the concrete-to-display mapping and omitted
+states/edges. Preserve full IDs such as `Worker.Admit` and `Admin.Admit` in traces
+and source mappings even if both display as “Admit”; never join events by the
+short label alone. A misleading projection should be rejected or replaced with
+the detailed trace. A graph budget may omit a chart without preventing a model
+verdict; unavailable projection and checked property are separate fields. See the
+[per-property receipt example](../../tdd/references/formal-verification.md#worked-example-report-each-property-separately).
+
 ## Produce a chart people can read
 
 Keep editable Mermaid source and an inspected SVG or PNG, with a text transition
