@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "status": "not_run",
+  "collection_ready": false,
+  "purpose": "Small model reasoning/artifact pilot, not coding, UI, PR review or implementation performance. No routing/default promotion from this result.",
+  "source_revision": "6df6ea6dcef300fba736aadc44ea2a3e951ea4cf",
+  "suite": {
+    "path": "skills/orbyn-skill-creator/evals/cases.json",
+    "sha256": "2683c34e494b3854b768c15b7522a3ca507316645cc170aac6d417821e8eb65e",
+    "case_ids": [
+      "approval-contract",
+      "retry-effect",
+      "narrow-feature-slice"
+    ],
+    "definition_hash_encoding": "UTF-8 compact JSON, sorted keys, ensure_ascii=false",
+    "definition_sha256": {
+      "approval-contract": "425c69a22c7e6c55d923297fa555a736635b3877efb13231287631c4ad823d86",
+      "retry-effect": "62e46aae10225ab851452360444dc89f5a64f07a1c8ac6a3e83e841b0bf37538",
+      "narrow-feature-slice": "a382ad0b66536d92d4d9e06ee7cf7cee958388d9940e6c39aa87b7b03f5b5998"
+    }
+  },
+  "wrapper": {
+    "text": "Use only the supplied synthetic task facts and the pinned entrypoint packet. Return the requested Markdown artifact as your answer. Do not browse, call tools, execute code, edit files, access accounts, implement, publish, deploy, merge or message anyone. State assumptions and unexecuted checks explicitly. Entrypoint links are context only in this tool-free pilot; do not invent their contents.\n\n{skill_packet}\n\nTask:\n{task_prompt}",
+    "sha256": "6978df889b80b19c2eb4d6bcf69fa7fd9fad1ec9bbbe43ef7833b3868527a977",
+    "render": "Replace {skill_packet} with the pinned entrypoint packet and {task_prompt} with that case prompt only. Never include rubric/expected_skills.",
+    "skill_packet": {
+      "source_paths_sha256": {
+        "skills/architect/SKILL.md": "c950b6561293bc7ae9836fb16e2e23b1bf21448b315345128b55316e2c6b0354",
+        "skills/orbyn-backend-design/SKILL.md": "9eb96fbe7848ea03162f60167e48d24ea641996fb38b4bfd831805babbfb5ea4",
+        "skills/orbyn-plan/SKILL.md": "0118fb8fc345c562fce7bbe4b122a20ce7073547fe6f4aa2e71376eac28a7fab"
+      },
+      "order": [
+        "skills/architect/SKILL.md",
+        "skills/orbyn-backend-design/SKILL.md",
+        "skills/orbyn-plan/SKILL.md"
+      ],
+      "join": "File: PATH followed by newline and exact file text; join entries with two newlines",
+      "sha256": "62e8c279fc1685d70f0da8f3e928863838aafd923b4b9e2017ca95cab727d95b",
+      "limits": "Only these three entrypoints supplied identically to every arm; no full reference closure or skill-routing qualification."
+    }
+  },
+  "arms": [
+    {
+      "id": "luna-high",
+      "model": "gpt-6-luna",
+      "effort": "high"
+    },
+    {
+      "id": "terra-medium",
+      "model": "gpt-6.1-terra",
+      "effort": "medium",
+      "selection": "explicit human authorization required"
+    },
+    {
+      "id": "sol-medium",
+      "model": "gpt-6.1-sol",
+      "effort": "medium"
+    }
+  ],
+  "host": {
+    "product": "Codex supported native host",
+    "version": null,
+    "effective_settings_verified": false,
+    "processing": "standard",
+    "service_tier": "default",
+    "fast_mode": false,
+    "ultrafast_mode": false,
+    "tools": [],
+    "readiness": "Before collection record exact host/build, model/effort availability and effective standard processing for every arm in a frozen execution protocol. Unsupported host/settings or missing authority blocks collection; no substitutes, installs, CLI inference delegation or live calls in this preparation."
+  },
+  "budget": {
+    "repeats_per_task_per_arm": 3,
+    "max_seconds_per_attempt": 180,
+    "max_output_tokens_per_attempt": 4000,
+    "total_attempts": 27,
+    "retries": "No automatic retries. Any separately authorized retry retains original attempt and costs. If the host cannot enforce the same limits, block collection or review and freeze a common protocol amendment before any run."
+  },
+  "order": [
+    [
+      "luna-high",
+      "terra-medium",
+      "sol-medium"
+    ],
+    [
+      "terra-medium",
+      "sol-medium",
+      "luna-high"
+    ],
+    [
+      "sol-medium",
+      "luna-high",
+      "terra-medium"
+    ]
+  ],
+  "effects": {
+    "allowed": "Answer text only; observer may save transcripts/artifacts to ignored output within trial authority.",
+    "forbidden": [
+      "model calls during preparation",
+      "network/tools during trials",
+      "code execution",
+      "product/file/account mutation",
+      "publication",
+      "deployment",
+      "merge",
+      "messages",
+      "global configuration changes"
+    ]
+  },
+  "grading": {
+    "reviewer": "independent, identity recorded at collection",
+    "criteria": "Existing frozen per-case outcome rubrics plus wrapper scope; grade individual run.json records using existing evaluator. Keep artifact correctness separate from routing evidence.",
+    "cross_model_comparison": "Manual descriptive table only; evaluate.compare requires the same model and must not be bypassed or given fabricated provenance.",
+    "metrics": [
+      "accepted/completed/failed/incomplete/blocked by task and arm",
+      "observed elapsed time and token/cache usage, missing as null",
+      "total actual cost of all attempts including failures/retries divided by accepted count",
+      "total elapsed work time for all attempts including failures/retries divided by accepted count",
+      "reviewer time separately or consistently included, with stated rule"
+    ],
+    "cost_basis": "Record dated actual pricing/account basis; subscription usage alone is not dollar cost. With zero accepted results, ratios undefined.",
+    "retention": "Retain all failures/timeouts/missing attempts; no rerun replacement.",
+    "limits": "27 planned attempts only; no result observed. Three reasoning tasks do not justify replacing coding defaults; later independently replayed code tasks would be needed for bounded implementation routing."
+  }
+}

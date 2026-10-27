@@ -10,6 +10,8 @@ other or load the whole catalog. [Roles](roles.md) define responsibility;
 [stack](stack.md) defines the technology boundary. [Model policy](model-policy.md)
 routes complex work to the standard tier and bounded work to the light tier in
 [models.json](models.json), and reserves its human-only tier for explicit selection.
+An optional Codex-only middle tier requires explicit human selection for the
+assignment; it does not change the light/standard defaults or Claude routing.
 
 | Task or unknown                     | Primary skill                              | Useful input / handoff                                                                              |
 | ----------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------- |

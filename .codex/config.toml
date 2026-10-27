@@ -18,3 +18,7 @@ config_file = "agents/orbyn-agent.toml"
 [agents.orbyn-light]
 description = "Bounded lookup, small edits, documentation and authorized checks"
 config_file = "agents/orbyn-light.toml"
+
+[agents.orbyn-middle]
+description = "Optional middle tier for explicitly selected bounded engineering assignments"
+config_file = "agents/orbyn-middle.toml"

@@ -73,7 +73,12 @@ def main():
     data = json.loads(SOURCE.read_text())
     require(type(data['schema_version']) is int and data['schema_version'] == 1, 'Unsupported model registry version')
     agents, speed = data['agents'], data['processing']
-    require(set(agents) == {'orbyn-agent', 'orbyn-light'}, 'Expected standard and light agents')
+    require(set(agents) == {'orbyn-agent', 'orbyn-light', 'orbyn-middle'}, 'Expected standard, light and optional middle agents')
+    optional = agents['orbyn-middle']
+    require(set(optional) == {'purpose', 'selection', 'codex'} and optional['selection'] == 'explicit',
+            'Middle agent must be explicitly selected and Codex-only')
+    for name in ['orbyn-agent', 'orbyn-light']:
+        require({'codex', 'claude'} <= agents[name].keys(), f'Both providers required: {name}')
     expected_speed = {
         'codex_service_tier': 'default', 'codex_fast_mode': False,
         'codex_ultrafast_mode': False, 'claude_fast_mode': False,
@@ -81,15 +86,19 @@ def main():
     }
     require(speed == expected_speed and all(type(speed.get(key)) is type(value) for key, value in expected_speed.items()), 'Only standard processing is authorized')
     for host in ['codex', 'claude']:
-        require(data['defaults'][host] in agents, f'Unknown default: {host}')
+        require(data['defaults'][host] in {'orbyn-agent', 'orbyn-light'}, f'Optional or unknown default: {host}')
         for name, agent in agents.items():
+            if host not in agent:
+                continue
             setting = agent[host]
             require(isinstance(setting['model'], str) and bool(setting['model'].strip()) and setting['effort'] in ['low', 'medium', 'high'], f'Invalid model/effort: {name}/{host}')
             require(not any(x in setting['model'].lower() for x in ['astra', 'fable', 'fast', 'priority']), f'Manual-only or accelerated automatic model: {name}/{host}')
             require(setting['model'] != data['human_only'][host]['model'], f'Human-only model in automatic tier: {name}')
     owned = [ROOT / '.codex/config.toml', ROOT / '.claude/settings.json', ROOT / 'docs/agents/model-policy.md']
-    for name in agents:
-        owned.extend([ROOT / f'.codex/agents/{name}.toml', ROOT / f'.claude/agents/{name}.md'])
+    for name, agent in agents.items():
+        owned.append(ROOT / f'.codex/agents/{name}.toml')
+        if 'claude' in agent:
+            owned.append(ROOT / f'.claude/agents/{name}.md')
     originals = {path: path.read_text() for path in owned}
     outputs = {}
     path = ROOT / '.codex/config.toml'
@@ -103,7 +112,7 @@ def main():
         text = set_toml(text, f'agents.{name}', 'description', agent['purpose'])
         text = set_toml(text, f'agents.{name}', 'config_file', f'agents/{name}.toml')
     tomllib.loads(text)
-    outputs[path] = text
+    outputs[path] = text.rstrip() + '\n'
     for name, agent in agents.items():
         path = ROOT / f'.codex/agents/{name}.toml'
         text = originals[path]
@@ -111,6 +120,8 @@ def main():
             text = set_toml(text, '', key, value)
         tomllib.loads(text)
         outputs[path] = text
+        if 'claude' not in agent:
+            continue
         path = ROOT / f'.claude/agents/{name}.md'
         text = originals[path]
         require(text.startswith('---\n'), f'Missing frontmatter: {path}')
@@ -131,8 +142,10 @@ def main():
     text = originals[path]
     rows = [['Agent / selection', 'OpenAI model / effort', 'Claude model / effort']]
     for name, agent in agents.items():
-        a, b = agent['codex'], agent['claude']
-        rows.append([f'`{name}`', f"`{a['model']}` / {a['effort']}", f"`{b['model']}` / {b['effort']}"])
+        a, b = agent['codex'], agent.get('claude')
+        label = f'`{name}`' + (' (explicit only)' if agent.get('selection') == 'explicit' else '')
+        rows.append([label, f"`{a['model']}` / {a['effort']}",
+                     f"`{b['model']}` / {b['effort']}" if b else 'Not configured'])
     rows.append(['Explicit human selection only', f"`{data['human_only']['codex']['model']}` / human-selected effort", f"`{data['human_only']['claude']['model']}` / human-selected effort"])
     widths = [max(3, *(len(row[column]) for row in rows)) for column in range(3)]
     def table_row(row):
