@@ -5745,6 +5745,99 @@
         "rights": "Distinguishes learning a design/independent implementation, dependency adoption and permitted code adaptation; missing license does not authorize copying, and provenance/notices and ignored raw-source boundaries remain with upstream-review.",
         "decision": "Uses available evidence without mandatory lookup, repo quota or install; related forks/wrappers do not count as independent corroboration. Distinguishes learning a design from independently implementing a verified contract when no usable reference fits; can stop with the latter or defer an unsupported choice. States unknowns and proposes a bounded authorized risky-seam check only if needed without claiming it ran."
       }
+    },
+    {
+      "id": "verification-projection-qualified-actions",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "architect",
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic supplied facts only; assessment in Markdown. No checker execution, installation, network, product edits, commits or delegation.",
+      "prompt": "Assess this synthetic design only. A state is (parked, jobs, observedIdle), initially (false,0,false). Reaper.ObserveIdle sets observedIdle when jobs=0; Worker.Admit sets jobs=1 when not parked and jobs=0; Reaper.Park sets parked when observedIdle. Each action is one serialized command; observation and parking are separate commands. NoProtectedPark forbids parked && jobs>0. An overview merges both (false,0,true) and (false,1,true) into Idle, and shortens Worker.Admit and Admin.Admit to Admit without retaining their qualified IDs. Explain whether this overview supports the safety claim and supply a numbered path, corrected projection/source mapping requirements and evidence limits. No implementation or execution is available.",
+      "rubric": {
+        "trace": "Preserves observe, admit, park as distinct commands and shows the protected parked state without claiming an executed result.",
+        "projection": "Explains lost protected-work distinction; requires retained concrete mapping and omissions or fallback detailed trace, not a safety claim from the merged chart.",
+        "identity": "Retains Worker.Admit and Admin.Admit as distinct qualified identities despite shortened display labels; source correspondence and replay remain unverified/unavailable."
+      }
+    },
+    {
+      "id": "verification-property-receipt-omissions",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "architect",
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic supplied facts only; assessment in Markdown. No checker execution, installation, network, product edits, commits or delegation.",
+      "prompt": "Assess supplied synthetic checker evidence without running tools. The finite exhaustive run completed with process exit 0 and reports Safe holds for jobs=0..1, one worker and one reaper. EventuallyFinished is absent because the selected mode does not check temporal properties; deadlock checking was disabled. Chart generation was omitted because its graph budget was exceeded. No source mapping, code replay or negative control was provided. A teammate summarizes this as all properties and production implementation verified. Return a corrected per-property and evidence receipt, required missing checks and limits. Do not infer unseen counts, tool versions, commands or fairness.",
+      "rubric": {
+        "properties": "Reports only Safe as holding within the stated finite model bounds; EventuallyFinished and deadlock are separately not checked, with their reasons.",
+        "surfaces": "Separates omitted chart from property verdict and source correspondence/replay/negative control; does not treat chart absence as invariant failure or exit zero as all-property success.",
+        "limits": "Retains supplied finite scope, requests exact model/config/tool/command evidence and missing checks without inventing evidence or claiming production proof."
+      }
+    },
+    {
+      "id": "reproduction-repeated-fix-premise",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "how"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic supplied facts only; return a scoped investigation plan, no execution, edits, installation, network, commits or delegation.",
+      "prompt": "A saved title reverts after restart. UI refresh, cache invalidation and forced rerender fixes all fail the same restart regression; each assumed the durable stored title was correct. A captured database writer event contains the old title; source also has a startup reader. Propose the next investigation step without implementing a fix. Explain how to distinguish stale presentation from a persisted stale write and preserve prior failed attempts.",
+      "rubric": {
+        "premise": "States the shared assumption that storage is correct and challenges it before another UI/cache patch.",
+        "observation": "Chooses one discriminating observation through durable writer/readback/startup-reader evidence at the actual owner, without claiming unseen executions or accepting cache clearing as repair.",
+        "scope": "Retains failed attempts and evidence limits; follows source and user scope without a fixed retry threshold or broad mandatory audit."
+      }
+    },
+    {
+      "id": "reproduction-known-first-fix-control",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "how"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic supplied facts only; return a scoped investigation plan, no execution, edits, installation, network, commits or delegation.",
+      "prompt": "The first investigation of a title typo has already established the cause: one formatter drops its final character. A focused test fails on that exact contract, and direct source mapping agrees. No prior attempted fix failed. The requested output is a scoped next-step plan only. Should the engineer first survey every architecture premise? Explain the proportional repair and verification handoff without execution.",
+      "rubric": {
+        "proportional": "Continues the known owning formatter repair/focused regression plan rather than imposing a repeated-failure premise audit or architecture survey.",
+        "scope": "Respects plan-only scope and reports the supplied baseline evidence without claiming a candidate run, editing product files or installing tools."
+      }
     }
   ]
 }

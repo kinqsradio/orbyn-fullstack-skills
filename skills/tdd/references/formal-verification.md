@@ -22,6 +22,17 @@ tools yield a precise blocked check and a retained model/command, not a pass.
 Keep approved task-local tool versions, dependency locks/checksums and commands
 reproducible; a renderer's dependencies and a checker's runtime are separate.
 
+If the target chooses a separately reviewed pstack statechart compiler, pin its
+source and qualify the actual runtime before use. At the reviewed revision in the
+[source record](verification-source.md#review-of-compiler-era-guidance-27-october-2026),
+direct invocation of `scripts/statechart.ts` accepts `--config`, `--view` and a
+fresh `--out`, with explicit `JAVA` and `TLA2TOOLS` paths. Confirm Node supports
+that TypeScript entrypoint; bypass setup wrappers that bootstrap dependencies.
+Treat view modules as executable trusted code. Missing compiler or prerequisites
+does not require an installation: use an existing suitable verifier, or report
+the check blocked. Local compiler qualification does not make it a library
+dependency or establish support for other runtimes/platforms.
+
 ## Establish a falsifiable check
 
 1. State the property and user harm in plain words. Separate safety (a bad state
@@ -59,6 +70,38 @@ reproducible; a renderer's dependencies and a checker's runtime are separate.
 Never silently fix product code during a verification-only task. Report a current
 violation with its harm, trace and source evidence. Separately authorized repair
 uses the normal failing-before regression and implementation workflow.
+
+### Worked example: report each property separately
+
+The following is an illustrative receipt for the
+[protected-host design](../../architect/references/statecharts.md#worked-example-an-overview-hides-protected-work),
+not a report of executed checks. Replace each illustrative result with retained
+tool evidence when running a real task. Record model/configuration digests,
+source identity, checker version/command, termination and run directory once;
+then report every requested property, including ones the selected mode omitted.
+
+| Property ID | Illustrative model result | Scope or reason |
+| --- | --- | --- |
+| `NoProtectedPark` | Broken | Finite design with one worker/reaper and jobs in 0..1; observe → admit → park reaches protected parked work |
+| `EventuallyFinished` | Not checked | Selected mode cannot check temporal properties; no liveness verdict follows from an invariant result or a path to completion |
+| `DeadlockFree` | Not checked | Deadlock checking was disabled; absence of a reported deadlock is not a pass |
+
+Record separately: **projection** omitted because the configured graph budget
+was exceeded; **source correspondence** unverified because this is a design with
+no implementation; **real-code replay** unavailable for the same reason;
+**negative control** not run. None changes the broken model verdict or establishes
+an implementation defect. A real implementation task must instead map the full
+qualified action IDs to source and retain a replay or explain its blocker.
+
+For a completed exhaustive run, “holds within stated bounds” requires evidence
+that the requested property was actually checked over the configured finite
+graph. A timeout, tool/parse error, unfinished exploration or unsupported mode
+leaves the relevant result blocked or not checked, with the actual reason and
+partial evidence retained. Record explored states/transitions when supplied,
+configured domains and any cutoff separately; a count alone is not coverage.
+Report projection validation failures and missing charts independently of checker
+results. A compiler's chart or rerun thresholds are version-specific tool limits,
+not universal safe model sizes or permission to reduce the requested scope.
 
 ## Deliver and maintain
 

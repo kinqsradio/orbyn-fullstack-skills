@@ -36,6 +36,15 @@ prove a core framework test or native renderer behaves the same way.
    the observed instance. A timeout may identify an environment failure rather
    than the reported product defect; diagnose the distinction.
 
+If repeated fixes fail the same check, identify the assumption they share before
+trying another fix that depends on it. Choose one safe observation that would
+distinguish that assumption from a competing cause, and follow the result. For
+example, repeated refresh/cache fixes assume a reverted value is only stale UI;
+inspect the durable writer and restart reader to distinguish a persisted stale
+write. Retain the failed attempts and the new observation. This conditional pivot
+does not require a fixed retry count or a separate premise audit for a first fix
+whose cause and regression are already established.
+
 ## Choose the oracle before the fix
 
 State the observable assertion and owning boundary. For an authorized regression,
