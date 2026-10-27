@@ -35,6 +35,11 @@ Raw clones belong in ignored reference storage under
 [upstream review](../orbyn-upstream-review/SKILL.md); do not execute downloaded
 installers/hooks merely to read their source.
 
+When [implementation comparisons](../orbyn-research/references/comparable-implementations.md)
+inform a build-versus-buy or dependency choice, state why adoption, permitted code
+adaptation, independent implementation or reuse of the local pattern fits the
+constraints. Reading a repository does not authorize installing its dependency.
+
 Disqualify options that violate hard requirements before scoring preferences.
 Compare the complete path: client/runtime, API, persistence, identity, background
 work, deployment, observability and maintenance. Mark absent layers inapplicable;

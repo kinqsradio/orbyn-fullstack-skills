@@ -50,6 +50,11 @@ Use the [reproduction and reduction method](references/reproduction.md) to pin
 the environment, confirm real runner selection and choose a behavioral oracle.
 Keep reproduction-only scope distinct from an authorized repair.
 
+If local tracing leaves a consequential design or platform assumption unresolved,
+hand the specific unknown and source anchors to
+[comparative research](../orbyn-research/references/comparable-implementations.md).
+Do not replace understanding this implementation with a GitHub-first survey.
+
 For many CI failures, use [pipeline diagnosis](references/pipeline-diagnosis.md)
 after the CI owner validates the complete report matrix. Preserve separate source,
 test, dependency and environment hypotheses; a symptom cluster is not a confirmed
