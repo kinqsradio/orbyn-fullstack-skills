@@ -61,6 +61,15 @@ shell; `$LASTEXITCODE` in PowerShell) and inspect diagnostics; errors may accomp
 partial results. Do not mask errors with `|| true`, interpret no match as a broken
 installation, or install software because exit 1 occurred.
 
+For shell repository content and filename searches, reach first for usable `rg`
+and `rg --files` inside the selected roots. A native host search tool is also a
+valid route: OpenCode documents its built-in `grep` and `glob` as ripgrep-backed
+([tool internals](https://opencode.ai/docs/tools/#internals), reviewed 27 October 2026).
+A tool named `grep` is not necessarily the shell executable. This is reference
+information, not a claim that this checkout's host was exercised. Deliberate
+tracked-only `git grep` semantics or `grep` filtering a small command output are
+reasonable choices; do not force a shell replacement of a working native tool.
+
 If ripgrep is unavailable, use host-native search with explicit roots/files or,
 inside the selected Git checkout, `git grep -n -F -e 'literal' -- path/to/module/`.
 Default `git grep` searches tracked files; `--untracked` can add untracked files

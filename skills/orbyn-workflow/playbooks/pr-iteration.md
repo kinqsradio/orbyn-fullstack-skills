@@ -56,6 +56,19 @@ contract, with actual verification. Do not invent a reply or mark a thread resol
 without authority. Publishing a code fix does not automatically authorize a chat,
 email, review dismissal or reply on the user's behalf.
 
+## Reassess the contribution premise
+
+When review disputes the need for the patch, check the stated project benefit
+against the current source, existing tests and maintainer feedback separately
+from whether the implementation passes. Preserve legitimate reproduced bugs and
+requested coverage; do not turn one value objection into a universal approval gate.
+Use the [intake value decision](contribution-intake.md#establish-value-separately-from-correctness)
+if the behavior is intentional, already correct or covered, or fixture upkeep
+outweighs the missing boundary. Explain the evidence and recommend stopping when
+appropriate. Closing a PR, publishing a reply, changing functionality or opening a
+replacement PR still needs its own applicable authority; value rejection alone
+supplies none.
+
 ## Establish the CI gate
 
 Use the target's required checks/rules and

@@ -71,6 +71,34 @@ and label their age. Current issue availability, assignment and competing work
 remain unknown. Continue useful local investigation; do not report a live search
 that never happened or require online access for the local method itself.
 
+## Establish value separately from correctness
+
+Name the concrete benefit to the project and the evidence supporting it: a
+reproduced supported bug, a maintainer-requested test/documentation gap, a useful
+missing boundary or an evidenced maintenance problem. A self-authored issue records
+a proposal; it is not independent user demand or maintainer acceptance. Green
+checks establish only their covered behavior, not that the contribution is needed.
+Do not require independent demand or advance maintainer approval for every genuine
+bug fix, useful test or documentation correction; follow the project's actual rules.
+
+Compare existing behavior and coverage before adding machinery. If the behavior is
+intentional or already correct, or the proposed fixture duplicates a practical
+existing boundary at disproportionate maintenance cost, report that result and
+stop without a PR when appropriate. A mutation-sensitive test shows it detects
+that mutation; it does not by itself establish missing coverage or project value.
+Reassess value if reproduction changes the premise or a small patch grows into a
+large fixture. Keep the useful investigation even when no patch is justified.
+
+For example, an agent proposes a new harness for an exception path already covered
+by a supported integration test. Demonstrating that the harness rejects a mutant
+is insufficient: identify an uncovered contract and proportionate fixture, or
+recommend no PR. Conversely, a reproduced crash on supported input can justify a
+small correction without inventing a universal maintainer-approval gate.
+
+A rejected value premise does not authorize new functionality, an unrelated issue
+or resubmission of the same work under a different title. Return the finding and
+stay within the user's selected scope.
+
 ## Hand off one bounded contribution
 
 Use an existing issue/PR or concise response for these facts; no mandatory new log:
