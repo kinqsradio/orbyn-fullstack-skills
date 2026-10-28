@@ -68,3 +68,6 @@ platform requirements when necessary. Website Open Graph changes belong to the
 owning website task, and product flow/layout changes to
 [orbyn-ui-design](../orbyn-ui-design/SKILL.md). Do not create a site, publish,
 schedule or modify account settings as a side effect of preview generation.
+
+For requested subtitled video or engineering catch-up output, use the conditional
+[video method](references/video.md); verify the actual encoded file and frame holds.

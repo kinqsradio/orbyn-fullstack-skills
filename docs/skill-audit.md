@@ -521,3 +521,21 @@ skill or installing an engine. [The local method](../skills/reverse-engineer-any
 contains self-contained recipes and boundaries; local receipt fields never
 impersonate server-issued Evidence. Native/provider coverage still depends on
 actual tools and inputs.
+
+## Portable method gap closure — 28 October 2026
+
+The approved [plan](work/skill-gap-closure-plan.md) and
+[211-observation register](work/skill-gap-closure-register.json) retain source
+anchors and explicit dispositions for 115 reviewed upstream entrypoints. Existing
+owners now cover autonomous delivery/recovery, application verification, CLI/UI
+contracts, sustained measurement, explanation/learning and conditional speech,
+video and trusted intake methods. No new top-level owner or provider runtime is
+added. All 263 prior evaluation cases remain identical; 20 development definitions
+bring the suite to 283. They are not live performance results.
+
+[Candidate verification](work/skill-gap-closure-verification.md) separates actual
+synthetic CLI/Git/PTY/browser/HTTP/video observations from source coverage and
+open host/service requirements. Exact named-model Codex readiness failed before
+scored execution, Claude was unauthenticated and OpenCode had only local-state
+version readiness. Full behavioral/integration closure remains unqualified; no
+baseline/candidate improvement claim follows from the passing library checks.

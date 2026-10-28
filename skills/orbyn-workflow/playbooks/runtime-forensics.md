@@ -20,3 +20,10 @@ supported cause, candidate and signal, competing explanation, correction scope
 and smallest missing observation. Remove only owned instrumentation and report
 unresolved resource cleanup. Runtime evidence from one build does not qualify a
 different candidate or production deployment.
+
+For terminal startup, prompts or owned sessions, use the
+[CLI/PTY method](../../architect/references/cli-contract.md). A controlled local
+probe should discriminate competing mechanisms: for example correlate generation
+and accepted operation state to distinguish stale subscription from dropped write,
+with one matched legitimate control. Keep task-owned instrumentation bounded and
+remove it afterward. Diagnosis scope grants no shared/production hotpatch authority.

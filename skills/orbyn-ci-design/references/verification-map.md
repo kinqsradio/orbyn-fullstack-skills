@@ -39,3 +39,15 @@ per-feature fanout is implied.
 Return the changed recipe/owner, selected checks and actual evidence. Use the
 [TDD strategy](../../tdd/references/test-strategy.md) for choosing test boundaries;
 this map manages evidence and maintenance rather than owning every test.
+
+## Reconcile discoverability and journey identity
+
+Record each material user entrypoint separately, with seed/reset, usable readiness,
+stable handles, action/result and persisted readback where relevant. A toolbar pass
+does not qualify a shortcut. Use the [non-formal adapter contract](../../orbyn-skill-creator/references/project-verification.md#non-formal-application-and-command-adapters).
+During a requested map audit, compare the index to actual recipe files for missing,
+duplicate, dead and unmapped entries; inspect recent user-visible source changes
+for absent surfaces rather than searching only known entries. A bounded change
+still selects its affected recipes, not every feature. Re-drive a corrected recipe;
+a source-only fix cannot advance last-confirmed runtime evidence. Distinguish a
+failed selector, missing map entry and evidenced platform/entitlement blocker.

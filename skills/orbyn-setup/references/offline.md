@@ -130,3 +130,15 @@ verification, block an ordinary draft on an optional citation, or attempt anothe
 network transport to bypass host restrictions. Snapshot updates are explicit,
 licensed, reviewed changes; normal workspace preparation and validation do not
 download new sources.
+
+## Optional integration claims
+
+A host product, SDK, Canvas renderer or external provider is a separate executable
+capability, not another name for shared prose. Resolve installed version, tools,
+effective permissions, authentication and actual resource/runtime isolation before
+using it. A worktree is not a cloud VM; a structured handoff is not a running service.
+Use connected provider-owned methods for Docs/Drive/Sheets/Slides, store operations,
+network setup or payments; do not duplicate guessed schemas, collect credentials
+or replace private service data with web search. Available discovery alone is not
+a qualified integration. Unsupported components stay explicitly blocked/unrun,
+with their consumer owner and next observation; no install/default fallback follows.

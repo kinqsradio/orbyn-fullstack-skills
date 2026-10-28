@@ -38,3 +38,13 @@ or failure scenario; a preferred vocabulary or file count is not a finding.
 Use the [local operating method](references/operating-method.md) for the execution
 sequence, concrete failure case, expected result and stopping condition. It is
 Orbyn-authored guidance; historical source notices remain in provenance.
+
+## Record falsification receipts
+
+For each consequential challenged claim, retain the pinned candidate, input/trigger,
+expected and observed result, actual command or source trace, disposition and next
+check. Re-run supported executable findings at the same candidate when permitted;
+a fabricated final state or a test that always fails is not adversarial evidence.
+Source-proven unsafe paths remain actionable with their evidence labeled even when
+execution is blocked. Compare baseline and head/reachability before attributing a
+preexisting defect to the patch; newly exposed or copied unsafe behavior still matters.

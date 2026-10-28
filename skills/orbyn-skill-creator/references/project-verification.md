@@ -32,3 +32,36 @@ If it cannot run or cannot detect the break, label it draft/blocked and correct
 the check within scope. Do not claim qualification from writing instructions.
 
 This selected adaptation is recorded in [the source record](verification-source.md).
+
+## Non-formal application and command adapters
+
+A repeatable user-journey check need not be a formal model or a new skill. Keep
+its launch, read-only doctor, drive, capture and cleanup commands in the consumer's
+existing verification owner. Resolve real supported commands/accessible handles;
+placeholders and guessed screen coordinates leave the recipe draft.
+
+Launch in owned disposable storage and wait for usable journey readiness, including
+required migrations, seeds and authentication. A health endpoint alone may answer
+before those prerequisites finish. Doctor checks exact build/candidate, instance
+ownership, URL, storage and account without modifying them; a matching port is not
+identity. Declare whether an owned server persists between recipes or each CLI/PTY
+starts with fresh state. Never reuse an unrelated user's instance or spawn a server
+for an ordinary library test.
+
+Drive one actual entrypoint to its observable result. Capture the initiating action,
+resulting UI/output and relevant persisted/external effects; reopen or read back
+committed data through a second appropriate view when persistence is promised.
+Fixture setup can establish preconditions; injecting the promised final state
+cannot prove the action. Dry-run labels are not safety evidence: observe actual
+file, network and ref effects, including reads/fetches/browser startup, under the
+allowed effect scope. Keep every alternate shortcut/CLI route separately evidenced.
+
+Declare seed/reset conditions before each independent recipe. On a surprising
+result rerun doctor; a healthy server can still have a wedged UI. Reset/relaunch
+only the owned fixture if needed, preserving the failure. After repairing a selector
+or harness, re-drive the real journey before advancing qualification. Cleanup stops
+owned processes, preserves proof and verifies retained artifacts can be reopened.
+A fresh-context attempt of the documented commands is required for a cold-usable
+claim; report docs-as-written separately from inferred recovery. Missing credentials
+or entitlements are environment blockers until evidence establishes a documentation
+error. Record attempted path, actual unmet prerequisite and next discriminating check.

@@ -19,3 +19,11 @@ Return the bounded diagnosis, supporting spans/summary, capture limitations and
 next observation that could change the conclusion. Hand a measured improvement
 to the [performance playbook](perf-issue.md). A captured profile is not a benchmark
 comparison or permission to collect unrelated live telemetry.
+
+For large captures, use the existing format-aware parser/query engine to produce
+bounded phase/call-tree/retainer summaries with event IDs and source/symbol identity.
+SQLite is an optional query surface, not a mandatory conversion. Preserve original
+bytes and sampling/drop limits. A heap diagnosis follows a retained object through
+its actual root path, then compares matched repeated-operation captures after a
+correction; one large allocation or missing sample cannot establish unique cause.
+Keep derived query and symbol provenance so another owner can reproduce the slice.

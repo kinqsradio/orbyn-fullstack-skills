@@ -143,3 +143,30 @@ committed, pushed, CI-green and merged states separately. Cleanup follows
 [worktree preservation](../../orbyn-worktree/SKILL.md) only after the owned work is
 delivered and remaining files/output are accounted for. See the
 [worked examples](../references/contribution-examples.md).
+
+## Dependent stacks and current context
+
+Resolve the actual repository/fork identity and PR base graph; do not infer a
+stack from names or publication order. Only an authorized contiguous verified
+prefix may land. A green upper PR cannot carry an unverified middle/base into
+trunk. Independent work may be separated only after checking its new context.
+After a parent squash/merge, reconcile child content and actual ancestry, retarget
+only within authority and repeat affected checks against the new base/callers.
+Record head/base, relevant dependency versions, environment and tested surface;
+patch-id equality alone cannot carry a verdict across a changed context.
+
+Read back terminal merged state, landing base and commit. Merged into a feature
+branch is not trunk delivery; queued/auto-enabled is pending. A no-merge handoff
+freezes named heads and bases; a watcher wake supplies observation, not new write
+scope. See [autonomous delivery](autonomous-run.md) for ready work and recovery.
+
+Compare defects at baseline and head: unrelated preexisting failures stay separate,
+while copied defects or newly reachable unsafe behavior can be caused by this PR.
+Do not dismiss new exposure merely because the helper already existed. Review
+historical dismissal patterns only as bounded consumer-owned hints with evidence,
+confidence and do-not-dismiss conditions; recheck the current trigger, especially
+security, data and race effects. No bot-name blanket skip or automatic resolution.
+
+A PR status request needs one current snapshot; feedback review, drive-to-ready
+and authorized landing have distinct endpoints. None automatically starts a
+monitor or inherits comment/merge permission from PR creation.

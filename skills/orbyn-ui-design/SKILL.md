@@ -137,3 +137,6 @@ visual, model and implementation evidence separately. Small visual work stays sm
 Use the [artifact lifecycle](../orbyn-workflow/references/artifact-lifecycle.md)
 for storage, server lifetime and cleanup. A source file or screenshot alone does
 not establish that the human can exercise the interaction.
+
+For positive page identity, fresh structure after navigation, or supplied Figma
+node/assets-to-primitives mapping, use [design intake](references/design-intake.md).

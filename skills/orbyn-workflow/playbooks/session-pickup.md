@@ -15,3 +15,5 @@ current files before reusing it; avoid a second tracker for the same work.
 For a substantive continuation, its [versioned form](../references/handoffs.md)
 can be checked against the current revision and retained dirty snapshot. Resolve
 changed ownership, user steering and failed/unrun checks before continuing.
+
+For an autonomous program, reconcile every active unit, already-landed PR, dirty patch, remote head and owned process before selecting the next unfinished item under [autonomous delivery](autonomous-run.md). A prior summary cannot overwrite newer source or reopen a frozen no-merge handoff.

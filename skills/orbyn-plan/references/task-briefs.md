@@ -67,3 +67,8 @@ The previous library/product release has already merged. A useful brief says:
 That brief neither undoes the earlier merge nor treats the new public change as
 permission for target changes. Its completion evidence is the reviewed
 public candidate, not a claim that unrelated target work was changed.
+
+Refine evidence and professional method within the same scope: prefer the relevant
+primary material, discriminating control and external correctness oracle over a
+clearer paraphrase of second-hand claims. A narrow source review can ask for the
+raw trace and competing explanation without turning into a system rewrite.

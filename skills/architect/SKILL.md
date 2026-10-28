@@ -130,3 +130,6 @@ controls. A link to migration guidance alone is not the deliverable.
 For a new service or materially changed operating envelope, use
 [service readiness](references/service-readiness.md); small internal changes
 retain their existing operating contract.
+
+For requested command-interface design or terminal behavior, use the conditional
+[CLI contract](references/cli-contract.md), then the target's parser/runtime owners.

@@ -47,3 +47,5 @@ evidence is truthful, files still exist, user authority remains current, or a
 host/model performed a check. The receiving owner must verify those facts. The
 JSON contract works offline and across hosts without agent-to-agent transport,
 hooks, a database or provider-specific orchestration.
+
+For queues, transfer current constraints and actual upstream artifacts, record every child disposition, and recheck late results/numeric claims under [autonomous delivery](../playbooks/autonomous-run.md). A scheduled dependency does not transfer bytes or prove the receiving context has them.

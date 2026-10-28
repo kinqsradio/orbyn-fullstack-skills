@@ -69,3 +69,20 @@ stay under the target's retention policy. Hand the supported hypothesis and orac
 to [bug fixing](../../orbyn-workflow/playbooks/bug-fix.md), or stop at the requested
 reproduction. The [worked examples](../../orbyn-workflow/references/contribution-examples.md)
 show source-only, runner-selection and intermittent cases.
+
+## Verify an existing fix
+
+When a relevant fix or active owner exists, verify the actual artifacts instead
+of authoring a competing patch. Pin baseline and patched builds, match environment,
+fixture and user entrypoint, reset owned state between attempts, and record expected
+versus observed symptom and intended result independently for each build. A symptom
+that disappears without the expected effect is not sufficient repair evidence.
+A nonreproducing baseline or unlaunchable patched artifact is inconclusive; a
+confirmed baseline failure and patched valid outcome support the exercised fix.
+Report confirmed, insufficient or inconclusive with the missing observation.
+
+Safe fixture setup may establish preconditions; directly injecting the final DOM,
+storage value or symptom does not establish same-surface reproduction. Repeat/reset
+when frequency matters rather than imposing a universal twice rule. A behavior-
+preserving translated delay/environment is permissible when labeled; browser
+substitution cannot establish OS/hardware/account-specific permission behavior.

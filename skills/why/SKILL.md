@@ -35,3 +35,21 @@ When a worker uses a lease instead of a process-local lock, inspect the introduc
 Use the [local operating method](references/operating-method.md) for the execution
 sequence, concrete failure case, expected result and stopping condition. It is
 Orbyn-authored guidance; historical source notices remain in provenance.
+
+## Recover the introducing decision
+
+When last-touch blame misses origin, use scoped rename-following history and
+symbol/string introduction search (`git log --follow` for a selected file and
+pickaxe `-S`/`-G` for the relevant symbol), then inspect the introducing diff.
+A later move/sync commit is not necessarily the decision or defect origin. Read
+material discussion, parent/duplicate chains and finalized outcome before treating
+an issue title or preview as rationale; a final reversal can supersede its proposal.
+Bound investigation by the unresolved question rather than scanning all history.
+
+For authorized operational records, distinguish a bounded empty query from missing
+authentication, expired retention or unavailable history. Discover actual tool/schema,
+select a relevant time/release/environment window and poll the same asynchronous
+query identity instead of resubmitting costly scans. Preserve denominator, sampling,
+refresh and instrumentation/schema changes before interpreting volume as adoption
+or causality. Representative primary events support relevance; generated diagnoses
+remain hypotheses. No connector installation, capture or cross-account search follows.

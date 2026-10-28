@@ -46,3 +46,5 @@ guides for JS promises, Kotlin coroutines, Swift actors or other actual runtimes
 
 Reviewed 24 October 2026 against [AbortController's supported cancellation contract](https://developer.mozilla.org/en-US/docs/Web/API/AbortController).
 The stale-result method and examples are independently authored and framework-neutral.
+
+For turn-bound voice playback, transcript finalization and barge-in, use the provider-neutral [speech method](../../orbyn-ai-application/references/speech.md); actual capture permissions and native/audio surface require their own observation.

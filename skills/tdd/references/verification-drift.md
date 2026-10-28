@@ -38,3 +38,9 @@ Another change might leave the model stale without breaking the property; report
 updated only after checking correspondence and failure sensitivity.
 
 Maintained method adapted from the sources in [the source record](verification-source.md).
+
+When a real-code replay reveals a defect, identify its introducing change when
+practical, separately from the latest touched or correspondence-sync commit.
+Follow scoped history through moves; report uncertain origin as unknown rather
+than blaming the newest refactor. This history step does not advance blocked
+correspondence or replace the current failing replay.

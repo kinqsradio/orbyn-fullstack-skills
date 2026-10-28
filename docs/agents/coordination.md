@@ -47,3 +47,5 @@ instructions, skills and common Git metadata. Follow the [workspace contract](..
 for target-root selection, local-only setup and publication boundaries. Shared
 library delivery and independent target changes require their own scope;
 a public-only task does not automatically contact a target owner or change its files.
+
+For dependency-ready queues, worker liveness/replacement, complete child accounting and late-result fencing, use the existing [autonomous delivery contract](../../skills/orbyn-workflow/playbooks/autonomous-run.md). An invalid shared artifact pauses affected consumers while independent work continues.

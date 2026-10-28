@@ -82,3 +82,10 @@ Reviewed 24 October 2026 using [Python unittest](https://docs.python.org/3/libra
 [pytest cleanup guidance](https://docs.pytest.org/en/stable/how-to/fixtures.html#safe-teardowns)
 and [Go fuzzing](https://go.dev/doc/tutorial/fuzz) as concrete framework examples.
 This method does not require any of those tools in another stack.
+
+A useful contract test should survive a behavior-preserving internal decomposition
+while detecting a relevant broken behavior. Check both thought experiments; helper
+call choreography can be sensitive yet brittle. A public discriminator/contract
+change can legitimately require updated expectations. For terminal interaction,
+select relevant prompt, resize and signal cases from the
+[CLI contract](../../architect/references/cli-contract.md).

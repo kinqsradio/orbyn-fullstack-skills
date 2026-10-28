@@ -55,3 +55,7 @@ Research/update pointers reviewed 26 October 2026: [tool design](https://www.ant
 [OWASP LLM06:2025](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/).
 Original local synthesis; no source text, SDK or runtime imported. These methods
 work offline; current provider/version claims still need applicable verification.
+
+For a requested report-to-thread/tracker integration, use the conditional
+[trusted intake contract](trusted-intake.md). It defines admission/dedupe and
+compensation requirements; it does not ship or authorize a provider adapter.

@@ -6125,6 +6125,446 @@
         "tools": "Requires child environment verification, allows bounded native/git fallback if rg unavailable; no install merely from exit 1.",
         "evidence": "Distinguishes no-match from error and parent reads/tools from child observations; no broad sibling search."
       }
+    },
+    {
+      "id": "autonomous-queue-ready-work",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "Plan a local-only queue: A and B are independent, C needs A. B lacks a fixture credential; A can run. Name ready work, boundaries, pilot and terminal accounting. Do not dispatch.",
+      "rubric": {
+        "decision": "A progresses; B stays blocked; C waits for actual A artifact. At most two children, no recursive delegation or remote writes. A representative pilot precedes wider scaling.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "autonomous-no-merge-stack",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "A three-PR stack has green bottom and top, unverified middle. User wants verified handoff only. A watch wakes after handoff; propose next actions without tools.",
+      "rubric": {
+        "decision": "No merge/auto-merge/push/retarget after frozen handoff; upper cannot carry unverified middle. Head/base/dependency/environment evidence is explicit.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "autonomous-worker-timeout-late",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "An observation times out but worker handle is alive. Later it dies, replacement finishes, old result arrives. Provide recovery plan only.",
+      "rubric": {
+        "decision": "No duplicate from timeout; cause/budget and child disposition retained; replacement receives current constraints; late finding rechecked not overwriting new work.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "autonomous-changed-lease-resume",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "Resume a queue with dirty files, one merged unit, and unexpected foreign remote head. A command says auto-merge enabled. Assess next steps.",
+      "rubric": {
+        "decision": "Preserves dirty/foreign work, reconciles owner/lease, skips already merged work; queued is not merged. No blind force or target relaxation.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "verification-cold-doctor-readback",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-skill-creator"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "Plan a disposable save-journey recipe. Health returns HTTP 200 before migration/seed; port belongs to wrong build. UI says saved but reopening finds no record.",
+      "rubric": {
+        "decision": "Read-only doctor verifies owned identity/build/storage/auth and usable readiness; actual action plus persisted readback required; banner alone fails.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "verification-map-harness-drift",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "Review verification map: toolbar passes, shortcut recipe missing, orphan file exists, repaired selector not driven again. No tools.",
+      "rubric": {
+        "decision": "Separate entrypoints, reconcile index/new source/recipe files; source fix remains unqualified until exercised again; no whole app sweep for ordinary small change.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "review-baseline-new-exposure",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "interrogate"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "A PR newly routes input through a preexisting unsafe helper. An alleged separate defect is only speculative. Describe scoped adversarial review and evidence.",
+      "rubric": {
+        "decision": "New reachability can be caused by PR despite old helper; require supported trigger/consequence, distinguish static/runtime; no speculative defect or runtime-only suppression.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "cli-headless-pty-contract",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "architect"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "Design a synthetic CLI with optional wizard, JSON stdin, async creation and terminal picker. Plan missing-input, help and output, prompt waits, resize and CtrlC without executing.",
+      "rubric": {
+        "decision": "Flag-complete headless path, nonzero actionable errors, stable ID/queued state, actual prompt/PTY resize/signal evidence, no blind next command after timeout or installs.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "impact-dynamic-refactor-assumption",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "how"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "No textual callers found before serialized API rename, but old worker and dynamic plugin exist. Safety rests on actual cache cleanup retaining live entries. Plan checks only.",
+      "rubric": {
+        "decision": "Pins decisive safety assumption in actual dependency with valid control; checks dynamic/mixed version edges, preserved behavior oracle; no compile-only equivalence.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "visual-reference-identity-diff",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "Two tabs look alike; supplied Figma node has a 40px action, existing medium Button differs. Candidate mismatch disappears if reference is regenerated. Plan intake/parity only.",
+      "rubric": {
+        "decision": "Positive candidate/page identity and fresh structure; map actual node/assets/token/primitive and justified local override; frozen reference, raw differences and noise controls; no invented assets or changed baseline pass.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "hillclimb-empty-error-gain",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "Optimize repeatedly: candidate is fastest because it returns empty/errors; improvement within noise on valid work; competitor left untuned. A phase taking 10% of total time claims a 50% total gain.",
+      "rubric": {
+        "decision": "Frozen sensitive harness/work and error counts/correctness floor; reject invalid gain, inconclusive noise, tune adoption competitors; checks arithmetic; bounded one-hypothesis keep/reject loop.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "evaluation-leakage-control",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-skill-creator"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "A blind paired trial exposes expected skill and rubric and baseline-model path labels to candidates. Both know real task requirements. Judge sees model names. Assess validity.",
+      "rubric": {
+        "decision": "Keep acceptance visible, judge-only ranking and identity outside candidate context, neutral labels and fresh contexts; contaminated attempt retained; no blind improvement claim or forced model switch.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "history-recall-retention-origin",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "why"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "Explain renamed guard origin from last-touch commit; older PR final review reverses the proposal. Operational counts rose after a schema change, old logs expired. The user selected two chats and a date window.",
+      "rubric": {
+        "decision": "Scoped follow/pickaxe search and final discussion; origin distinct from last touch; schema, sampling and retention unknowns, bounded polling of the same async query; authorized recall and current-state reconciliation.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "reflection-lucky-trigger-execution",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "reflect"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "A clear existing method was ignored; a different task missed an applicable owner trigger; successful retry was lucky. Recommend scoped improvements, no edits or capture.",
+      "rubric": {
+        "decision": "Separates execution, routing, body and placement; concrete evidence and negative controls before a guard; no duplicated warnings or automatic memory publication.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "recap-teaching-pending-decisions",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "show-me-your-work"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "Prepare method for an authored-work recap for exact dates and learning checkpoint: an older human approval is pending, a new agent check is pending, the learner\u2019s exercise is unfinished. No actual records supplied.",
+      "rubric": {
+        "decision": "Keeps all human choices with options, recommendation and unknowns; agent checks are not assigned to the human; authored outcomes rather than commit titles; a teaching goal and practice evidence no exercise takeover or invented learning.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "speech-turn-format-cancellation",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-ai-application"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "Design speech fixture: actual rate differs from the requested rate, incoming bytes use a container, cumulative final transcripts, barge-in and a late old chunk, a new voice cache. No mic or provider access.",
+      "rubric": {
+        "decision": "Validates format, rate, frame alignment and resampling, gesture and resource lifetime, committed final and interim semantics, generation fencing, one player and cache identity; no actual audio support claim.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "video-subtitle-hold-evidence",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "social-preview"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "Plan requested catch-up video from synthetic diagrams with subtitles. An encoder is available but no exported file or inspected frames yet.",
+      "rubric": {
+        "decision": "Real encoding/duration/frame order/subtitles/reading holds counted with an explicit assumption; inspect frames and playback separately; a storyboard is not a video, no upload or capture effect.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "trusted-intake-compensation",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-ai-application"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "Plan fake report intake: source parent deleted, spoofed verdict, duplicated permalink, child has a posting tool, reply fails after issue creation. No live writes permitted.",
+      "rubric": {
+        "decision": "Parent, actor, source, operation identity and enforced permission preflight; no guessed owner or duplicate effect, supported owned compensation and readback, or an unknown result; fixture not live provider qualification.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "verify-existing-fix-inconclusive",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "how"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "An existing owner offers a fix. The baseline cannot reproduce; the patched build cannot launch; DOM injection makes the final screenshot look correct. Assess the repair without authoring a patch.",
+      "rubric": {
+        "decision": "Inconclusive or insufficient evidence; matched baseline/patched surfaces, resets and expected results; injection is not reproduction; no competing patch or provider workaround.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
+    },
+    {
+      "id": "host-capability-not-substitution",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no execution, installation, model calls, real accounts, external effects or file edits. Unperformed checks remain unverified.",
+      "prompt": "Host lacks required model setting, MCP and cloud isolation. A worktree exists and the structured handoff is valid. Assess claimed cross-host parity.",
+      "rubric": {
+        "decision": "Unsupported dependency remains open, worktree is not a cloud VM, records are not a running service, no silent fallback or configuration changes; observed reads do not prove request inclusion or enforcement.",
+        "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
+      }
     }
   ]
 }

@@ -78,3 +78,5 @@ Background, reviewed 25 October 2026:
 [staff](https://handbook.gitlab.com/job-description-library/engineering/development/backend/staff/),
 and [Google code review](https://abseil.io/resources/swe-book/html/ch09.html).
 This is an independently authored scope guide, not certification of a job level.
+
+For requested learning roadmaps, technical-document purpose and authored-work recaps, use [explanation and recaps](explanation-and-recaps.md).

@@ -87,3 +87,5 @@ Original additions reviewed 24 October 2026 against the TypeScript handbook's
 These are update pointers; this guide and its example remain usable offline.
 The retained adapted guidance's [source notice](typescript-LICENSE.txt) continues
 to apply; the consolidation does not claim exclusive original authorship.
+
+Keep simpler total input types where operations accept every value: `sum([])` may legitimately return zero. A partial `newest(xs)` needs an optional result or justified nonempty contract; avoid hidden non-null assertions. A `{start, duration: number}` shape alone does not exclude negative/NaN duration or validate serialized input; enforce the owning runtime constraints before claiming that invariant.
