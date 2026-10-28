@@ -57,3 +57,21 @@ For a failed sync, identify whether the cause was stale baseline, shared write o
 Use the [local operating method](references/operating-method.md) for the execution
 sequence, concrete failure case, expected result and stopping condition. It is
 Orbyn-authored guidance; historical source notices remain in provenance.
+
+## Classify the lesson before editing
+
+Separate an inapplicable owner, missed trigger/routing, buried method, missing body
+and execution failure to follow a clear method. Fix placement/trigger only when
+observed task/catalog evidence supports it; do not duplicate an existing guard.
+Consider lucky success and consequential unexercised paths with concrete evidence,
+not imagined defects. For repeated-error audits, cluster actual selected corrections,
+reverts and reviews by cause before generalizing. Challenge a proposed structural
+guard with a representative historical/synthetic bad shape and legitimate adjacent
+control; prose is judgment-only unless an actual enforcement boundary is named.
+
+An explicit multi-chat recall request selects topic, time and workspace/history
+scope before retrieval; do not mine unrelated sessions or silently replace the
+requested history with recent memory. Reconcile recalled branch/issue/PR claims
+against actual source, reversions and failed attempts under
+[session pickup](../orbyn-workflow/playbooks/session-pickup.md). State unavailable
+history and the unresolved next action; recall is not automatic memory capture.

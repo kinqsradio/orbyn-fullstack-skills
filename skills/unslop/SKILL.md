@@ -59,3 +59,5 @@ This independently authored guidance imports no upstream text or tooling.
 Use the [local operating method](references/operating-method.md) for the execution
 sequence, concrete failure case, expected result and stopping condition. It is
 Orbyn-authored guidance; historical source notices remain in provenance.
+
+For a tutorial, how-to, reference or explanation, apply the conditional [document purpose method](../orbyn-workflow/references/explanation-and-recaps.md#technical-documents) before polishing sentences.

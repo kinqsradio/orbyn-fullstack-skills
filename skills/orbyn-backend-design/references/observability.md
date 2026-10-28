@@ -49,3 +49,5 @@ account access retain their own applicable authorization.
 
 Reviewed 24 October 2026 against [OpenTelemetry sensitive-data guidance](https://opentelemetry.io/docs/security/handling-sensitive-data/).
 This procedure works with existing local logging; adopting OpenTelemetry is optional.
+
+For requested speech diagnosis, select bounded phase/byte/timing/underrun signals under [speech diagnostics](../../orbyn-ai-application/references/speech.md#diagnostics-and-qualification), preserving this owner’s redaction and exporter-failure boundaries.

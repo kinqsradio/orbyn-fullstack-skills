@@ -32,3 +32,10 @@ principle refines that task; it does not create another mandatory phase.
 Adapted from Lauren Tan's pstack [encode lessons in structure](https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-encode-lessons-in-structure/SKILL.md),
 revision `74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12`.
 Orbyn adaptations and worked examples retain the [original MIT notice](LICENSE.txt).
+
+For a repeated-error audit, collect the selected corrections/reverts/reviews and
+cluster common causes before changing a guard. Demonstrate that the guard rejects
+a representative historical/synthetic bad shape and permits the legitimate adjacent
+shape. Where a durable rule already exists, link its real enforcement command or
+label it judgment-only; remove obsolete duplicate warnings only when the replacement
+actually makes them unnecessary. No organization-wide registry is required.

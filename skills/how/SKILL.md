@@ -77,3 +77,5 @@ For unfamiliar or cross-package work, use the [impact map](references/impact-map
 include build/generator/configuration and runtime registration edges, existing
 review/operational owners and deployed consumers only where relevant. Stop when
 the decision is supported; a local caller search does not prove deployment coverage.
+
+For requested teaching, deliberate practice or a learning retrospective, use [explanation and practice](../orbyn-workflow/references/explanation-and-recaps.md#understanding-and-practice) alongside the relevant source trace.

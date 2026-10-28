@@ -23,3 +23,9 @@ principle refines that task; it does not create another mandatory phase.
 Adapted from Lauren Tan's pstack [fix root causes](https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/principle-fix-root-causes/SKILL.md),
 revision `74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12`.
 Orbyn adaptations and worked examples retain the [original MIT notice](LICENSE.txt).
+
+Distinguish legitimate boundary states from impossible producer states. Cancellation
+may belong in a handler's normal recovery contract; corrupt ownership may need a
+producer repair rather than silent discard. If the decisive fact was expensive to
+rediscover, propose a cheap task-relevant diagnostic at that owner, with privacy
+and resource bounds. Diagnosis does not enable telemetry or production edits.

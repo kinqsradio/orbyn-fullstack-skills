@@ -49,3 +49,5 @@ Research/update pointers reviewed 26 October 2026: [NIST AI 600-1, July 2024](ht
 [Google PAIR feedback/control](https://pair.withgoogle.com/chapter/feedback-controls/).
 Original local synthesis; no source text, SDK or runtime imported. These methods
 work offline; current provider/version claims still need applicable verification.
+
+For requested voice/dictation/read-aloud behavior use the [speech lifecycle](speech.md). For a run adapter, distinguish startup auth failure (not run), partial execution error (reconcile retained effects), and stream end from the supported terminal result; dispose/cancel only through actual supported APIs.

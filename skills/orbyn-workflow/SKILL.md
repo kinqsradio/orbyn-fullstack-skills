@@ -67,7 +67,7 @@ permits. Do not load the whole library or repeat a checklist in every reply.
 | Match a reference UI                 | [Visual parity](playbooks/visual-parity.md)         |
 | Author reusable instructions         | [Skill authoring](playbooks/authoring-a-skill.md)   |
 | Compare prompt/skill behavior        | [Evaluation](playbooks/eval.md)                     |
-| Long authorized work                 | [Autonomous run](playbooks/autonomous-run.md)       |
+| Autonomous task, PR queue, no-merge handoff, dependent stack or standing program | [Autonomous run](playbooks/autonomous-run.md)       |
 | Resume existing work                 | [Session pickup](playbooks/session-pickup.md)       |
 | User requests a pause                | [Pause safely](playbooks/pause-safely.md)           |
 | Large migration or staged delivery   | [Multi-phase plan](playbooks/multi-phase-plan.md)   |

@@ -8,7 +8,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/architect/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an original synthetic approval-contract example. Added independently authored vertical code organization guidance and a synthetic task-editor example; TkDodo is cited as reviewed inspiration, with no article material imported. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added original conditional comparative-implementation research guidance, owner handoffs or synthetic development evaluation coverage; no third-party material imported and historical lineage retained.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an original synthetic approval-contract example. Added independently authored vertical code organization guidance and a synthetic task-editor example; TkDodo is cited as reviewed inspiration, with no article material imported. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added original conditional comparative-implementation research guidance, owner handoffs or synthetic development evaluation coverage; no third-party material imported and historical lineage retained. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
@@ -133,6 +133,14 @@
           "license_sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
           "changes": "Selected behavioral modeling, falsification and drift methods integrated into existing owners; target conventions, proportional preview rigor and exact source identity preserved. No upstream scripts imported."
         }
+      ],
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
       ]
     },
     "arena": {
@@ -142,7 +150,15 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/arena/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
+      ]
     },
     "automate-me": {
       "relationship": "adapted",
@@ -151,7 +167,15 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/automate-me/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
+      ]
     },
     "figure-it-out": {
       "relationship": "adapted",
@@ -169,7 +193,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/how/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored contribution intake, reproduction/discovery and bounded PR-iteration handoffs, with synthetic examples and packaging/evaluation checks. Historical source licenses and credits retained; no upstream workflow text or code imported. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Added independently authored selected-checkout search and instruction-lookup handoff; preserve bounded widening and source-evidence limits. Existing lineage and notices retained. Added original conditional comparative-implementation research guidance, owner handoffs or synthetic development evaluation coverage; no third-party material imported and historical lineage retained.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored contribution intake, reproduction/discovery and bounded PR-iteration handoffs, with synthetic examples and packaging/evaluation checks. Historical source licenses and credits retained; no upstream workflow text or code imported. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Added independently authored selected-checkout search and instruction-lookup handoff; preserve bounded widening and source-evidence limits. Existing lineage and notices retained. Added original conditional comparative-implementation research guidance, owner handoffs or synthetic development evaluation coverage; no third-party material imported and historical lineage retained. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
@@ -224,6 +248,14 @@
           "license_file": "skills/how/references/principles/LICENSE.txt",
           "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
         }
+      ],
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
       ]
     },
     "interrogate": {
@@ -233,13 +265,21 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/interrogate/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
           "source": "https://github.com/mattpocock/skills/tree/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering",
           "revision": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
           "relationship": "reviewed-inspiration; no upstream workflow text imported"
+        }
+      ],
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
         }
       ]
     },
@@ -249,7 +289,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-backend-design",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original retry/reconciliation example. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported.",
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original retry/reconciliation example. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
       "incorporated_material": [
         {
           "relationship": "adapted",
@@ -275,6 +315,14 @@
           "license_file": "skills/orbyn-backend-design/references/principles/LICENSE.txt",
           "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
         }
+      ],
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
       ]
     },
     "orbyn-ci-design": {
@@ -283,7 +331,15 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-ci-design",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added original proportional-verification policy and portable conservative Git change classifier, required-result gate and exact-revision deployment-decision validation; no line-count heuristic or automatic deployment authority. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Added independently authored designated feature-worktree verification guidance or synthetic development cases: affected checks, stage boundaries, exclusions, widening triggers, required-status preservation and no per-task CI/CD automation. Existing lineage and notices retained; no upstream text or code imported. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added original proportional-verification policy and portable conservative Git change classifier, required-result gate and exact-revision deployment-decision validation; no line-count heuristic or automatic deployment authority. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Added independently authored designated feature-worktree verification guidance or synthetic development cases: affected checks, stage boundaries, exclusions, widening triggers, required-status preservation and no per-task CI/CD automation. Existing lineage and notices retained; no upstream text or code imported. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
+      ]
     },
     "orbyn-content-design": {
       "relationship": "original",
@@ -307,7 +363,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-plan",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Connected substantive task handoffs to the local versioned continuation contract while keeping simple prompt rewrites direct. Reuse the owning project document for durable handoffs and avoid creating a separate log solely because planning occurred. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported.",
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Connected substantive task handoffs to the local versioned continuation contract while keeping simple prompt rewrites direct. Reuse the owning project document for durable handoffs and avoid creating a separate log solely because planning occurred. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
@@ -345,6 +401,14 @@
           "local_path": "skills/orbyn-plan/references/principles/sequence-verifiable-units.md",
           "license_file": "skills/orbyn-plan/references/principles/LICENSE.txt",
           "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        }
+      ],
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
         }
       ]
     },
@@ -393,7 +457,15 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/setup-pstack/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original additive presets and consumer-owned context tooling. Added consumer-owned skill namespaces, explicit backed-up host-skill migration and offline setup guidance. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Added explicit Cursor project discovery, all-host migration preflight and ownership-aware rollback for ordinary link-registration errors; existing host selections remain compatible. Recorded preserved concurrent replacements explicitly in registration failure reports after a bounded development review. Made exception-versus-crash recovery limits explicit in the setup result contract after a retained failed development criterion. Clarified independently authored one-time workspace layout selection: ask when unresolved, recommend nested for new contribution workspaces, honor explicit existing paths/delegated default and preserve active work. Installer destination API and source lineage remain unchanged. Added independently authored action-scope guidance: exact checkout selection, distinct instruction/code lookup, bounded retrieval, relevant refresh and honest read/request/execution evidence; no runtime framework or target installation. Existing lineage and notices retained. Added independently authored ripgrep readiness, authorized existing-manager installation and scoped fallback guidance, with environment, coverage and exit-status limits; official command references are update pointers, no source text or code imported. Added independently authored conditional retrospective guidance or synthetic development coverage for evidence-surface selection, submitted-endpoint feasibility, continuation/runtime readiness and state-aware PR waits. Existing owner boundaries and source/license lineage retained; no source text, runtime or provider imported. Added independently authored contribution-value or scoped search/delegation guidance under the existing owner, with synthetic development cases. OpenCode tool documentation is reviewed reference information only; no upstream text, runtime, model configuration or provider imported. Historical source notices and revisions retained."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added original additive presets and consumer-owned context tooling. Added consumer-owned skill namespaces, explicit backed-up host-skill migration and offline setup guidance. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Added explicit Cursor project discovery, all-host migration preflight and ownership-aware rollback for ordinary link-registration errors; existing host selections remain compatible. Recorded preserved concurrent replacements explicitly in registration failure reports after a bounded development review. Made exception-versus-crash recovery limits explicit in the setup result contract after a retained failed development criterion. Clarified independently authored one-time workspace layout selection: ask when unresolved, recommend nested for new contribution workspaces, honor explicit existing paths/delegated default and preserve active work. Installer destination API and source lineage remain unchanged. Added independently authored action-scope guidance: exact checkout selection, distinct instruction/code lookup, bounded retrieval, relevant refresh and honest read/request/execution evidence; no runtime framework or target installation. Existing lineage and notices retained. Added independently authored ripgrep readiness, authorized existing-manager installation and scoped fallback guidance, with environment, coverage and exit-status limits; official command references are update pointers, no source text or code imported. Added independently authored conditional retrospective guidance or synthetic development coverage for evidence-surface selection, submitted-endpoint feasibility, continuation/runtime readiness and state-aware PR waits. Existing owner boundaries and source/license lineage retained; no source text, runtime or provider imported. Added independently authored contribution-value or scoped search/delegation guidance under the existing owner, with synthetic development cases. OpenCode tool documentation is reviewed reference information only; no upstream text, runtime, model configuration or provider imported. Historical source notices and revisions retained. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
+      ]
     },
     "orbyn-skill-creator": {
       "relationship": "original",
@@ -401,7 +473,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-skill-creator",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence. Added company/public ownership routing and offline source requirements. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added explicit evaluation subsets and development cases for stale continuation, Cursor setup and failed registration. Clarified concise public evaluation summaries and reproducible synthetic protocols; retain complete per-run captures outside tracked template content by default. Added live-evaluation input and discovery-isolation guidance: inspect actual prompt inventory, retain ambiguous observations as unverified, and freeze/report corrected development follow-ups separately. No upstream code or workflow text imported. Added independently authored disposable source/Git/PR fixtures and execution cases, calibration, fail-before source/test receipts, packaging preflight and controlled commit-failure support; no model calls in helpers or CI. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Added independently authored optional contribution feedback: current-task evidence, concrete general proposal, scoped user consent, company/public separation, no repeated solicitation or automatic publication, and separate consumer promotion. Existing source notices retained. Added seven independently authored development evaluation cases for action scope, instruction refresh, retrieval boundaries and evidence limits; no model trials or research harness implemented. Added three original synthetic development cases for ripgrep environment readiness, authorized cross-platform installation planning and fallback/no-match coverage; prior cases and holdouts retained, no model trials implied. Added independently authored designated feature-worktree verification guidance or synthetic development cases: affected checks, stage boundaries, exclusions, widening triggers, required-status preservation and no per-task CI/CD automation. Existing lineage and notices retained; no upstream text or code imported. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored conditional retrospective guidance or synthetic development coverage for evidence-surface selection, submitted-endpoint feasibility, continuation/runtime readiness and state-aware PR waits. Existing owner boundaries and source/license lineage retained; no source text, runtime or provider imported. Added original conditional comparative-implementation research guidance, owner handoffs or synthetic development evaluation coverage; no third-party material imported and historical lineage retained. Added an original preparation-only Luna High/Terra Medium/Sol Medium pilot using existing development cases and per-run grading; no model calls, new case definitions or imported material.",
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence. Added company/public ownership routing and offline source requirements. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added explicit evaluation subsets and development cases for stale continuation, Cursor setup and failed registration. Clarified concise public evaluation summaries and reproducible synthetic protocols; retain complete per-run captures outside tracked template content by default. Added live-evaluation input and discovery-isolation guidance: inspect actual prompt inventory, retain ambiguous observations as unverified, and freeze/report corrected development follow-ups separately. No upstream code or workflow text imported. Added independently authored disposable source/Git/PR fixtures and execution cases, calibration, fail-before source/test receipts, packaging preflight and controlled commit-failure support; no model calls in helpers or CI. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Added independently authored optional contribution feedback: current-task evidence, concrete general proposal, scoped user consent, company/public separation, no repeated solicitation or automatic publication, and separate consumer promotion. Existing source notices retained. Added seven independently authored development evaluation cases for action scope, instruction refresh, retrieval boundaries and evidence limits; no model trials or research harness implemented. Added three original synthetic development cases for ripgrep environment readiness, authorized cross-platform installation planning and fallback/no-match coverage; prior cases and holdouts retained, no model trials implied. Added independently authored designated feature-worktree verification guidance or synthetic development cases: affected checks, stage boundaries, exclusions, widening triggers, required-status preservation and no per-task CI/CD automation. Existing lineage and notices retained; no upstream text or code imported. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored conditional retrospective guidance or synthetic development coverage for evidence-surface selection, submitted-endpoint feasibility, continuation/runtime readiness and state-aware PR waits. Existing owner boundaries and source/license lineage retained; no source text, runtime or provider imported. Added original conditional comparative-implementation research guidance, owner handoffs or synthetic development evaluation coverage; no third-party material imported and historical lineage retained. Added an original preparation-only Luna High/Terra Medium/Sol Medium pilot using existing development cases and per-run grading; no model calls, new case definitions or imported material. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
       "incorporated_material": [
         {
           "relationship": "adapted",
@@ -415,6 +487,14 @@
           "license_sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
           "changes": "Selected behavioral modeling, falsification and drift methods integrated into existing owners; target conventions, proportional preview rigor and exact source identity preserved. No upstream scripts imported."
         }
+      ],
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
       ]
     },
     "orbyn-ui-design": {
@@ -423,7 +503,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-ui-design",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Moved product conventions to consumer-owned profiles and added an original failed-save example. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added selective Hallmark visual-direction and redesign adaptations with exact source revision and complete MIT notice; no upstream runtime, themes, assets or active entrypoint imported. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored conditional retrospective guidance or synthetic development coverage for evidence-surface selection, submitted-endpoint feasibility, continuation/runtime readiness and state-aware PR waits. Existing owner boundaries and source/license lineage retained; no source text, runtime or provider imported. Added independently authored readable-first-preview guidance, a synthetic offline focus-session example and development cases for progressive context without hiding action consequences. No external source text/assets or runtime dependency imported; historical notices retained.",
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Moved product conventions to consumer-owned profiles and added an original failed-save example. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added selective Hallmark visual-direction and redesign adaptations with exact source revision and complete MIT notice; no upstream runtime, themes, assets or active entrypoint imported. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored conditional retrospective guidance or synthetic development coverage for evidence-surface selection, submitted-endpoint feasibility, continuation/runtime readiness and state-aware PR waits. Existing owner boundaries and source/license lineage retained; no source text, runtime or provider imported. Added independently authored readable-first-preview guidance, a synthetic offline focus-session example and development cases for progressive context without hiding action consequences. No external source text/assets or runtime dependency imported; historical notices retained. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
       "incorporated_material": [
         {
           "relationship": "adapted",
@@ -461,6 +541,14 @@
           "license_file": "skills/orbyn-ui-design/references/hallmark-LICENSE.txt",
           "license_sha256": "06088a8b94598626f27612dea42300154bf7be967c85d9d3eee4490cb056af7d"
         }
+      ],
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
       ]
     },
     "orbyn-workflow": {
@@ -470,7 +558,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/poteto-mode/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an optional task record and context/evaluation handoffs. Added consumer-owned skill and offline-reference handoffs. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added independently written performance-harness guidance after reviewing upstream benchmark-checklist at e73df471; original import and license retained. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Expanded runtime/trace forensics, prototype and visual comparison playbooks with original operational guidance. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Added an independently authored versioned offline continuation contract, worked record and consistency checker; no external protocol text or code imported. Clarified template defaults: no separate routine-task log, minimum useful consumer-owned checkpoints, optional structured validation and local raw-evidence retention. Added independently authored contribution intake, reproduction/discovery and bounded PR-iteration handoffs, with synthetic examples and packaging/evaluation checks. Historical source licenses and credits retained; no upstream workflow text or code imported. Added an evidence-led dependent commit/push gate after disposable execution exposed pushes of an unchanged baseline following failed commits; no upstream workflow text imported. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Clarified independently authored one-time workspace layout selection: ask when unresolved, recommend nested for new contribution workspaces, honor explicit existing paths/delegated default and preserve active work. Installer destination API and source lineage remain unchanged. Added independently authored optional contribution feedback: current-task evidence, concrete general proposal, scoped user consent, company/public separation, no repeated solicitation or automatic publication, and separate consumer promotion. Existing source notices retained. Connected independently authored action-scope guidance to existing task and evidence boundaries without implementing request injection or runtime enforcement. Existing lineage and notices retained. Added independently authored designated feature-worktree verification guidance or synthetic development cases: affected checks, stage boundaries, exclusions, widening triggers, required-status preservation and no per-task CI/CD automation. Existing lineage and notices retained; no upstream text or code imported. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored conditional retrospective guidance or synthetic development coverage for evidence-surface selection, submitted-endpoint feasibility, continuation/runtime readiness and state-aware PR waits. Existing owner boundaries and source/license lineage retained; no source text, runtime or provider imported. Added original conditional comparative-implementation research guidance, owner handoffs or synthetic development evaluation coverage; no third-party material imported and historical lineage retained. Added independently authored current-candidate review feedback or source-comment rationale guidance with synthetic positive, adjacent and false-finding controls; historical lineage and notices preserved. Added independently authored contribution-value or scoped search/delegation guidance under the existing owner, with synthetic development cases. OpenCode tool documentation is reviewed reference information only; no upstream text, runtime, model configuration or provider imported. Historical source notices and revisions retained.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an optional task record and context/evaluation handoffs. Added consumer-owned skill and offline-reference handoffs. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added independently written performance-harness guidance after reviewing upstream benchmark-checklist at e73df471; original import and license retained. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Expanded runtime/trace forensics, prototype and visual comparison playbooks with original operational guidance. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Added an independently authored versioned offline continuation contract, worked record and consistency checker; no external protocol text or code imported. Clarified template defaults: no separate routine-task log, minimum useful consumer-owned checkpoints, optional structured validation and local raw-evidence retention. Added independently authored contribution intake, reproduction/discovery and bounded PR-iteration handoffs, with synthetic examples and packaging/evaluation checks. Historical source licenses and credits retained; no upstream workflow text or code imported. Added an evidence-led dependent commit/push gate after disposable execution exposed pushes of an unchanged baseline following failed commits; no upstream workflow text imported. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Clarified independently authored one-time workspace layout selection: ask when unresolved, recommend nested for new contribution workspaces, honor explicit existing paths/delegated default and preserve active work. Installer destination API and source lineage remain unchanged. Added independently authored optional contribution feedback: current-task evidence, concrete general proposal, scoped user consent, company/public separation, no repeated solicitation or automatic publication, and separate consumer promotion. Existing source notices retained. Connected independently authored action-scope guidance to existing task and evidence boundaries without implementing request injection or runtime enforcement. Existing lineage and notices retained. Added independently authored designated feature-worktree verification guidance or synthetic development cases: affected checks, stage boundaries, exclusions, widening triggers, required-status preservation and no per-task CI/CD automation. Existing lineage and notices retained; no upstream text or code imported. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored conditional retrospective guidance or synthetic development coverage for evidence-surface selection, submitted-endpoint feasibility, continuation/runtime readiness and state-aware PR waits. Existing owner boundaries and source/license lineage retained; no source text, runtime or provider imported. Added original conditional comparative-implementation research guidance, owner handoffs or synthetic development evaluation coverage; no third-party material imported and historical lineage retained. Added independently authored current-candidate review feedback or source-comment rationale guidance with synthetic positive, adjacent and false-finding controls; historical lineage and notices preserved. Added independently authored contribution-value or scoped search/delegation guidance under the existing owner, with synthetic development cases. OpenCode tool documentation is reviewed reference information only; no upstream text, runtime, model configuration or provider imported. Historical source notices and revisions retained. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
@@ -560,6 +648,14 @@
           "license_file": "skills/orbyn-workflow/references/principles/LICENSE.txt",
           "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
         }
+      ],
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
       ]
     },
     "rea-analysis-optimization": {
@@ -605,12 +701,20 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/reflect/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified canonical writable ownership, replaceable plugin-cache boundaries and local-edit versus public contribution authority after reviewing upstream commit 7054003c3723e82d099fb7620e3bc8d7d63eebc6; independently written local guidance. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored optional contribution feedback: current-task evidence, concrete general proposal, scoped user consent, company/public separation, no repeated solicitation or automatic publication, and separate consumer promotion. Existing source notices retained. Added original opt-in local memory helper, structured classification, revision-checked CRUD, scoped retrieval, deletion/recovery and private preview/lesson handoff. Existing adapted guidance and source notices remain. Clarified independently authored pre-query store/applicability selection and selected-checkout verification without changing memory implementation, opt-in or ownership. Existing lineage and notices retained.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Clarified canonical writable ownership, replaceable plugin-cache boundaries and local-edit versus public contribution authority after reviewing upstream commit 7054003c3723e82d099fb7620e3bc8d7d63eebc6; independently written local guidance. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored optional contribution feedback: current-task evidence, concrete general proposal, scoped user consent, company/public separation, no repeated solicitation or automatic publication, and separate consumer promotion. Existing source notices retained. Added original opt-in local memory helper, structured classification, revision-checked CRUD, scoped retrieval, deletion/recovery and private preview/lesson handoff. Existing adapted guidance and source notices remain. Clarified independently authored pre-query store/applicability selection and selected-checkout verification without changing memory implementation, opt-in or ownership. Existing lineage and notices retained. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
       "reviewed_inspiration": [
         {
           "source": "https://github.com/cursor/plugins/commit/7054003c3723e82d099fb7620e3bc8d7d63eebc6",
           "revision": "7054003c3723e82d099fb7620e3bc8d7d63eebc6",
           "relationship": "reviewed-inspiration; original import and license retained"
+        }
+      ],
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
         }
       ]
     },
@@ -638,7 +742,15 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/show-me-your-work/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Connected substantive owner transfers and context-loss recovery to the original local versioned continuation contract; historical notices remain unchanged. Made logging conditional on continuation or consequential review, with agent-maintained project-owned checkpoints rather than required human invocations or per-task logs."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Connected substantive owner transfers and context-loss recovery to the original local versioned continuation contract; historical notices remain unchanged. Made logging conditional on continuation or consequential review, with agent-maintained project-owned checkpoints rather than required human invocations or per-task logs. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
+      ]
     },
     "social-content": {
       "relationship": "original",
@@ -654,7 +766,15 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/social-preview",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an unmodified Apache-2.0 canvas-design text snapshot with its license; source is optional reference material, not an active workflow import."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an unmodified Apache-2.0 canvas-design text snapshot with its license; source is optional reference material, not an active workflow import. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
+      ]
     },
     "tdd": {
       "relationship": "adapted",
@@ -663,7 +783,7 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/tdd/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added independently authored contribution intake, reproduction/discovery and bounded PR-iteration handoffs, with synthetic examples and packaging/evaluation checks. Historical source licenses and credits retained; no upstream workflow text or code imported. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored contribution-value or scoped search/delegation guidance under the existing owner, with synthetic development cases. OpenCode tool documentation is reviewed reference information only; no upstream text, runtime, model configuration or provider imported. Historical source notices and revisions retained.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added independently authored contribution intake, reproduction/discovery and bounded PR-iteration handoffs, with synthetic examples and packaging/evaluation checks. Historical source licenses and credits retained; no upstream workflow text or code imported. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored contribution-value or scoped search/delegation guidance under the existing owner, with synthetic development cases. OpenCode tool documentation is reviewed reference information only; no upstream text, runtime, model configuration or provider imported. Historical source notices and revisions retained. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
       "reviewed_inspiration": [
         {
           "credit": "Matt Pocock",
@@ -711,6 +831,14 @@
           "license_sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
           "changes": "Selected behavioral modeling, falsification and drift methods integrated into existing owners; target conventions, proportional preview rigor and exact source identity preserved. No upstream scripts imported."
         }
+      ],
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
       ]
     },
     "unslop": {
@@ -720,13 +848,21 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/unslop/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored current-candidate review feedback or source-comment rationale guidance with synthetic positive, adjacent and false-finding controls; historical lineage and notices preserved.",
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored current-candidate review feedback or source-comment rationale guidance with synthetic positive, adjacent and false-finding controls; historical lineage and notices preserved. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
       "reviewed_inspiration": [
         {
           "credit": "Google Engineering Practices contributors",
           "source": "https://github.com/google/eng-practices/blob/3bb3ec25b3b0199f4940b1aa75f0ac5c5753301c/review/reviewer/looking-for.md",
           "revision": "3bb3ec25b3b0199f4940b1aa75f0ac5c5753301c",
           "relationship": "reviewed-inspiration; independently authored review feedback or source rationale guidance and synthetic development cases; no upstream text or code imported"
+        }
+      ],
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
         }
       ]
     },
@@ -737,7 +873,15 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/why/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
+      ]
     },
     "orbyn-security-audit": {
       "relationship": "adapted",
@@ -770,7 +914,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/language-best-practices",
-      "changes": "Independently authored project-aware guidance and synthetic worked examples, informed by dated primary references linked locally; no external skill text or documentation snapshots imported. Consolidated the historically adapted TypeScript reference and its original Orbyn contract example into this owner, preserving the original MIT notice and source record; retired the separate discovery entrypoint. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Review corrections clarify compiler/runtime and module contracts, distinguish original additions from retained adaptation, and pin the complete incorporated notice.",
+      "changes": "Independently authored project-aware guidance and synthetic worked examples, informed by dated primary references linked locally; no external skill text or documentation snapshots imported. Consolidated the historically adapted TypeScript reference and its original Orbyn contract example into this owner, preserving the original MIT notice and source record; retired the separate discovery entrypoint. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Review corrections clarify compiler/runtime and module contracts, distinguish original additions from retained adaptation, and pin the complete incorporated notice. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
       "incorporated_material": [
         {
           "relationship": "adapted",
@@ -796,6 +940,14 @@
           "license_file": "skills/language-best-practices/references/principles/LICENSE.txt",
           "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
         }
+      ],
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
       ]
     },
     "orbyn-stack-selection": {
@@ -812,7 +964,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-ai-application",
-      "changes": "Independently authored provider-neutral AI application operating methods and synthetic document-assistant example. Primary research pointers in local references and research contract are reviewed inspiration; no upstream text, skill, runtime or SDK imported. No live provider/model qualification implied.",
+      "changes": "Independently authored provider-neutral AI application operating methods and synthetic document-assistant example. Primary research pointers in local references and research contract are reviewed inspiration; no upstream text, skill, runtime or SDK imported. No live provider/model qualification implied. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
       "reviewed_inspiration": [
         {
           "credit": "Google PAIR user needs",
@@ -868,6 +1020,14 @@
           "credit": "Google PAIR feedback/control",
           "source": "https://pair.withgoogle.com/chapter/feedback-controls/",
           "relationship": "reviewed-inspiration; independently authored local synthesis, no source text imported"
+        }
+      ],
+      "reviewed_sources": [
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+          "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
         }
       ]
     }

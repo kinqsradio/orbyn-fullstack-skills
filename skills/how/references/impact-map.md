@@ -53,3 +53,13 @@ messages. Trace its registered consumer and released image; verify mixed-version
 behavior or retain compatibility until deployment evidence permits retirement.
 Stop with the evidenced path, affected boundary and required next check. If runtime
 access is absent, report a source-derived map, not complete deployed coverage.
+
+## Falsify the decisive safety assumptions
+
+Name the one or two assumptions that clear consequential risk, then inspect or
+exercise the actual pinned implementation/dependency at that boundary. For example,
+a cache cleanup claimed to remove only dead entries needs the real deletion path
+and live-entry control, not a rewritten mock. Distinguish checked-and-cleared risks
+from still-unproven assumptions in the result. No textual caller match cannot clear
+dynamic consumers, generated registration or older deployed writers. Preserve
+compatibility when the relevant mixed-version observation is unavailable.

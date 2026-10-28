@@ -52,3 +52,5 @@ For a schema rollout, record the candidate, the writer-cutover decision, the obs
 Use the [local operating method](references/operating-method.md) for the execution
 sequence, concrete failure case, expected result and stopping condition. It is
 Orbyn-authored guidance; historical source notices remain in provenance.
+
+For a catch-up, include every still-pending human decision in scope with weighed options, recommendation and material unknowns under [explanation and recaps](../orbyn-workflow/references/explanation-and-recaps.md). Sequential runs sharing one single-writer log identify their continuation boundary and verify inherited claims; do not count another run’s actions as your own.

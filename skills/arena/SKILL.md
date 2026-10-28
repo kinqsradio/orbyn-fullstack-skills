@@ -37,3 +37,10 @@ For a live-update decision, give both sketches the same reconnect, ordering and 
 Use the [local operating method](references/operating-method.md) for the execution
 sequence, concrete failure case, expected result and stopping condition. It is
 Orbyn-authored guidance; historical source notices remain in provenance.
+
+When comparing scored candidates, keep task acceptance visible but judge-only
+ranking details, model identities and condition metadata outside candidate scope.
+Use neutral labels and audit leakage under the
+[evaluation method](../orbyn-skill-creator/references/evaluations.md#candidate-context-and-judge-leakage).
+Unavailable independent/model-family review remains a limit, not permission to
+change defaults or run a hidden panel.

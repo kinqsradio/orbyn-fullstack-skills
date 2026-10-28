@@ -241,16 +241,18 @@ The optional library audit artifact at
 `docs/evaluations/2026-10-27-optional-model-pilot.json`
 (not part of a skills-only export) pins three self-contained case definitions,
 source revision, shared entrypoint
-packet and wrapper hashes, arms, repeats/order and budgets. It remains `not_run`
-and not collection-ready until the exact supported host and effective settings
-are verified and frozen. This is an artifact/reasoning comparison only, not a
+packet and wrapper hashes, arms, repeats/order and budgets. Its prepared
+`not_run` status is historical specification metadata, not a live execution ledger.
+Preparation alone supplies no execution evidence; dated frozen execution records
+determine actual run state. Collection requires the exact supported host and
+effective settings to be verified and frozen. This is an artifact/reasoning comparison only, not a
 coding, PR defect-detection or UI trial. Coding routing would need a later
 independently replayed code task before any promotion.
 
 Preparation only: compare `gpt-6-luna` / high, explicitly selected
 `gpt-6.1-terra` / medium and `gpt-6.1-sol` / medium on the same supported Codex
 host at standard processing. This is not a quality/cost ranking or authority to
-invoke models. No pilot has been run. Model registration does not establish
+invoke models. Model registration does not establish
 account access, supported effort, effective processing or loaded-host discovery.
 At collection, verify the intended host/version and each exact model/effort/tier
 through supported host capabilities and current official documentation. If any
@@ -297,3 +299,27 @@ not zero. With no accepted results, per-accepted-result ratios are undefined.
 Report the small sample and task differences; no broad speed/quality guarantee or
 automatic routing/default change follows. Any later policy change needs its own
 review and authority. Keep raw captures under ignored output as usual.
+
+## Candidate context and judge leakage
+
+Separate instructed compliance qualification from natural-task behavior. The
+candidate needs the real task acceptance requirements; evaluator-only ranking
+rubrics, expected routes, condition labels, judge identity and the other candidate
+remain outside its visible workspace/context. Use neutral task paths and output
+labels and fresh contexts; audit staged files, names and inherited discovery for
+leakage before inference. Explicitly announcing the tested method is appropriate
+for qualification, but cannot be called blind organic routing.
+
+Judge both conditions on the same frozen criteria with neutral labels where the
+host allows it. Record who judged and whether identity/rubric leakage was found;
+a checksum alone cannot prove isolation. A leaked answer key or model-condition
+label invalidates the blind-comparison claim, even when outputs look good. Preserve
+the contaminated attempt and run a separately frozen clean comparison only within
+authority. Required product behavior must not be hidden in the name of blinding.
+
+For cross-host qualification, inventory actual tools, child context, effects,
+resources, models/effort/processing, watch/resume and missing prerequisites at the
+frozen candidate. Keep supported task-local state isolation separate from global
+configuration. A dropped setting, unavailable connector or cloud-to-worktree
+substitution is not equivalent capability. Retain blocked host cells; one host's
+fixture pass cannot close another host's behavior.

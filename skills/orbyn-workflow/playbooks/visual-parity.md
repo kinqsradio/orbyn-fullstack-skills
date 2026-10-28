@@ -19,3 +19,11 @@ Return the reference/candidate identities, captures actually inspected, fixes an
 remaining platform limits. Source or DOM inspection is not pixel inspection;
 a browser result is not installed-native evidence. Follow permitted browser
 access and report blocked inspection without bypassing it through another path.
+
+For exact parity claims, freeze reference bytes, renderer/harness, data, theme,
+viewport and relevant font/environment inputs before candidate changes. Keep raw
+unmasked captures. Choose justified masks/tolerances before comparison and measure
+both a real mismatch and nondeterministic noise control; a rewritten reference or
+blanket animation/font mask cannot make the candidate pass. Inspect localized image
+differences as well as aggregate metrics. Baseline corrections are separate reviewed
+changes. For a Figma reference, use [design intake](../../orbyn-ui-design/references/design-intake.md).

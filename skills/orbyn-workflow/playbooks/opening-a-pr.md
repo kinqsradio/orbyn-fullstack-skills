@@ -60,3 +60,13 @@ For an upstream contribution, start with [intake](contribution-intake.md) to che
 the target instructions, issue overlap and reproduction. Once a PR exists, use
 [bounded iteration](pr-iteration.md) for feedback, current-head checks and honest
 delivery gates. PR creation alone does not authorize comments, merge or a monitor.
+
+## Make the review path explicit
+
+For a substantial diff, point reviewers first to the core behavior, then wiring,
+then generated/mechanical edits. Trace one tricky input through old and new code
+when that explains a consequential difference; label unexecuted traces accordingly.
+A small PR needs no new canvas or document. For an expressly authorized history-only
+rewrite, capture the pre-rewrite tree and compare the post-rewrite tree; unexpected
+content changes need review and checks. This does not authorize rewriting others'
+history, staging dirty unrelated files or force-pushing.

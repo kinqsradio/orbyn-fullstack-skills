@@ -40,3 +40,7 @@ examples are usable offline. The links identify semantics and update evidence;
 verify compatibility with the project's target before using newer APIs.
 
 [GNU Bash quoting](https://www.gnu.org/software/bash/manual/html_node/Quoting.html), [GNU Bash set builtin](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html).
+
+For CLI input/help/stdin/result design or real PTY prompt/resize/signal checks,
+use the [CLI contract](../../architect/references/cli-contract.md). Shell quoting
+alone does not qualify that interface.

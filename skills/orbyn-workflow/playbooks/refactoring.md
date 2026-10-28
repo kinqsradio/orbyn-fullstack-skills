@@ -22,3 +22,9 @@ For independently owned or released consumers, use the architect's
 batch with drift checks and retire compatibility only after adoption evidence.
 Use the [impact map](../../how/references/impact-map.md) when source search alone
 cannot establish generated, dynamic or deployed dependencies.
+
+For a consequential behavior-preserving move, pin a relevant characterization,
+replay or equivalence observation before changing structure; if unavailable, mark
+qualification blocked instead of treating compilation as equivalence. Preserve the
+same oracle through the move, including dynamic consumers and serialized/mixed-
+version contracts where relevant. An inert small move needs no redundant suite.
