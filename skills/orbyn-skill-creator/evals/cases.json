@@ -8417,6 +8417,54 @@
         "proportionality": "Does not require screenshots, UI launch or a native build for the nonvisual defect.",
         "boundary": "Draft only; no invented runtime runs, uploads or repair."
       }
+    },
+    {
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic draft-only writing task. No source/product edits, new execution, provider calls, uploads or publication. Preserve supplied evidence limits; no live writing-behavior trial implied.",
+      "id": "contribution-writing-small-fix",
+      "prompt": "Draft a bug issue and a small fix PR description only. Synthetic supplied evidence: parser version 2.4 at baseline A treats parseCount({count: 0}) as missing; expected result is zero. Candidate B changes truthiness to key-presence checking. The zero assertion fails on A and passes on B; the absent-input control passes on both. Only parser behavior was tested. The target issue template requires Version, Reproduction and Expected/Actual; its PR template requires Problem/Change and Validation. A 950-word local investigation also contains source-search history, a 20-row experiment matrix and process receipts, with no additional material defect. The issue is requested as a problem report, with no proposed-fix section requested or required. Keep recipient-facing drafts proportionate and self-contained; do not publish or invent more checks.",
+      "rubric": {
+        "focus": "Keeps issue title/body about the observed zero-versus-missing problem on A, expected behavior and reproduction, without presenting B success, the implementation diff or I-fixed-it narrative as the issue. PR title/body explain the correction and resulting behavior. Honors target fields without copying chronology/matrix/receipts, a universal cap or quota padding.",
+        "evidence": "Issue retains version/baseline, reproducible input and expected/actual result without confusing expected zero with an observed fixed result. PR accurately reports A/B zero assertion and absent-input control with parser-only limits; no invented broad coverage.",
+        "boundary": "Drafts only. Does not upload the investigation, create extra reports, or make private/local supporting material the sole route to reproduce the issue."
+      }
+    },
+    {
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic draft-only writing task. No source/product edits, new execution, provider calls, uploads or publication. Preserve supplied evidence limits; no live writing-behavior trial implied.",
+      "id": "contribution-writing-complex-migration",
+      "prompt": "Shorten this synthetic migration PR description for review; do not change code or publish. Required target headings: Problem/Behavior, Rollout/Recovery, Validation/Risks. Facts: key format changes while old and new writers coexist. Current-epoch fencing must reject stale writers before cutover; a legitimate new writer must still succeed. Backfill is resumable and readers remain compatible during rollout. Cutover waits for backfill completion and verified fencing. Roll-forward was selected because old writers cannot represent the new keys; rollback requires restoring the old write contract. Fixture checks cover stale rejection, current-writer success and backfill resume, but staging and production are untested. The draft repeats these points and includes a 30-row batch matrix and source-search chronology. Retain review-critical detail and decide what belongs in supporting evidence. Do not impose a small-fix word limit.",
+      "rubric": {
+        "critical_contract": "Preserves coexistence/reader compatibility, stale-writer fencing and valid-writer control, resumable backfill, cutover prerequisites and recovery constraint. Keeps roll-forward rationale rather than deleting the consequential tradeoff to shorten.",
+        "proportionality": "Honors required target headings, removes repetition and incidental chronology/matrix detail, and allows sufficient length for migration review without a universal cap or requiring a new report. Supporting material is optional and must be accessible/appropriate.",
+        "evidence": "Reports supplied fixture coverage and staging/production gaps accurately; does not claim live rollout, rollback safety, blanket green checks or publication."
+      }
     }
   ]
 }
