@@ -1,0 +1,329 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/wheresryan22/anatomy",
+  "revision": "1482e8469b0a9e0d8cc18ea2740a01423d29ae80",
+  "license": "MIT",
+  "license_files": [
+    "LICENSE",
+    "LICENSE-Orbyn.txt"
+  ],
+  "relationship": "maintained selected adaptation; original/adapted fingerprints separate in source-manifest.json",
+  "files": {
+    "LICENSE": {
+      "sha256": "87c078ab9d90a3044f359e6b563d4e6afea7aa060897cf4f21618687b3856796",
+      "source_path": "LICENSE"
+    },
+    "LICENSE-Orbyn.txt": {
+      "sha256": "b960a8c01d83aa48ed709780a5c9940f8e2861f2fdcdc8f931fbe3ece90a5e04",
+      "source_path": "LICENSE-Orbyn.txt"
+    },
+    "SOURCE.md": {
+      "sha256": "223c647657ccc49de9f06cd308d9337e5397052a720f89adb49cb6c63faa2b6d",
+      "source_path": "SOURCE.md"
+    },
+    "examples/turning-dial/turning-dial-verify-light.html": {
+      "sha256": "7516d25e04c8a2c7d3abc7bf19e78985cfca2a2f37e1de72740808a977346366",
+      "source_path": "examples/turning-dial/turning-dial-verify-light.html"
+    },
+    "kit/audit.mjs": {
+      "sha256": "74e605b5d549c1f31c8a1104db7560057105cf86809bf6ced00e4ac79194c8e2",
+      "source_path": "kit/audit.mjs"
+    },
+    "kit/gl.mjs": {
+      "sha256": "0c31669ef862d36f1948e16b2325cf55a18250eb94d900c42b06e2e8d611a6c0",
+      "source_path": "kit/gl.mjs"
+    },
+    "kit/iso-kit.mjs": {
+      "sha256": "6d3ecc725d30c3b0346da309cf61dfa5a65017c23620bbd4093009d4fb104018",
+      "source_path": "kit/iso-kit.mjs"
+    },
+    "kit/iso-kit.ts": {
+      "sha256": "e9fc988c61a11bfac1f097e62419915ea86b2130ab091f1b50c0e019c907e253",
+      "source_path": "kit/iso-kit.ts"
+    },
+    "kit/iso.css": {
+      "sha256": "ef19bac5a42ba9be42b56b2c1cf7fc7e21d332a8060765e9ca1d987b8ab23924",
+      "source_path": "kit/iso.css"
+    },
+    "kit/lathe.mjs": {
+      "sha256": "a4e7e974b1a37e603ad2b76363b6f9815cc101dfff0ad277a5d4e8f1dc56fccb",
+      "source_path": "kit/lathe.mjs"
+    },
+    "kit/pdf-button.mjs": {
+      "sha256": "884de49c75f11c78a102b4b413006f36b087e0e3bc9f33dc462dc44430d69342",
+      "source_path": "kit/pdf-button.mjs"
+    },
+    "kit/react/draw.tsx": {
+      "sha256": "d5389bd78aa3d5424a37b1ce6f635bd102eb86faf27d064b10957716278a631c",
+      "source_path": "kit/react/draw.tsx"
+    },
+    "kit/react/live.tsx": {
+      "sha256": "6d01fa12bca4ec14d1b7d7d5331d18a997dd3ee131d59dd57f83b932a1705f42",
+      "source_path": "kit/react/live.tsx"
+    },
+    "kit/tube.mjs": {
+      "sha256": "bcb3cc360f6d83e6a5753f4c464b4587ab7965028b05a5d58e285abce58667c9",
+      "source_path": "kit/tube.mjs"
+    },
+    "kit/turn-audit.mjs": {
+      "sha256": "e4385f1a8a388c4544b49c6677ff8ab7048f7fcfa8cd5fe653d96a4a0df62843",
+      "source_path": "kit/turn-audit.mjs"
+    },
+    "kit/turn-build.mjs": {
+      "sha256": "0c088efd9f22329d1b0c2190c95e5b5b43a2c46deae6ff047b3166ef643cfa83",
+      "source_path": "kit/turn-build.mjs"
+    },
+    "kit/turn.mjs": {
+      "sha256": "cb4b530b5e1750ba0e4fd2367d5f25e00195c0136672aa2ecd665c0622ffd1a2",
+      "source_path": "kit/turn.mjs"
+    },
+    "scripts/audit-affine-bounds.test.mjs": {
+      "sha256": "038e0a879363c4b0d2c7146a62065b09f2973210114928d5005e9082219654d2",
+      "source_path": "scripts/audit-affine-bounds.test.mjs"
+    },
+    "scripts/audit-cache.test.mjs": {
+      "sha256": "00b49601c068897e94bf8309d652bb55595e541283c510bba34957c457edd57e",
+      "source_path": "scripts/audit-cache.test.mjs"
+    },
+    "scripts/audit-clearance-envelope.test.mjs": {
+      "sha256": "ffa8321d25996ac165dd1fdb6473a903c1c6f03b86996b2fef6978203b8f2bd8",
+      "source_path": "scripts/audit-clearance-envelope.test.mjs"
+    },
+    "scripts/audit-empty-clipping.test.mjs": {
+      "sha256": "a28384ccbf303acc32f7788753459a7338c94bc74ee5efe70762daa75a62c8cb",
+      "source_path": "scripts/audit-empty-clipping.test.mjs"
+    },
+    "scripts/audit-order-convergence.test.mjs": {
+      "sha256": "9ad7b9a645d9e90a788e561484013b0fdefb1a8abd38fcb160f5d1a6464be278",
+      "source_path": "scripts/audit-order-convergence.test.mjs"
+    },
+    "scripts/audit-path-origin.test.mjs": {
+      "sha256": "1e5917a4a3bc337aa4497e5717de47b198db8fc9538d5f10d40a788f5f821d37",
+      "source_path": "scripts/audit-path-origin.test.mjs"
+    },
+    "scripts/audit-profile.test.mjs": {
+      "sha256": "80179ae38afa6e58ed254a597daeee27240e85f87d1bbd0421def4e347ec37c0",
+      "source_path": "scripts/audit-profile.test.mjs"
+    },
+    "scripts/audit-projection.test.mjs": {
+      "sha256": "0cd790e0dfc64633019db3233b87fec823c6148037d9335e1c2b16ea1c722db6",
+      "source_path": "scripts/audit-projection.test.mjs"
+    },
+    "scripts/audit-slide-clearance.test.mjs": {
+      "sha256": "007f68aa5262eae40aceef00eec91e4d5be0164bd5fb9377680996164ff9ac19",
+      "source_path": "scripts/audit-slide-clearance.test.mjs"
+    },
+    "scripts/audit-svg-attributes.test.mjs": {
+      "sha256": "2d2a949639f90d6328eeea401f6b7f3a3dc1fcc17f1d46cbe2de208afc3c6533",
+      "source_path": "scripts/audit-svg-attributes.test.mjs"
+    },
+    "scripts/audit-taper.test.mjs": {
+      "sha256": "ea4415ef743efc4ba1393457c571cdfc2b91bfd5ea931ae32829926c80aed487",
+      "source_path": "scripts/audit-taper.test.mjs"
+    },
+    "scripts/audit-tube-support.test.mjs": {
+      "sha256": "2bbc676aee00f03394a1c9a0594dfb3aeecec6a40698db1c71b68377fd3b762f",
+      "source_path": "scripts/audit-tube-support.test.mjs"
+    },
+    "scripts/capture-current-geometry.test.mjs": {
+      "sha256": "ad0c0555e693c8c9e2b14a3098b91acd04df6e7c45779615aaa86e81be452756",
+      "source_path": "scripts/capture-current-geometry.test.mjs"
+    },
+    "scripts/capture-selector.test.mjs": {
+      "sha256": "046ce21a686e99c1a5a760f529b999cdca5b7f504961784bc087395b0b586eff",
+      "source_path": "scripts/capture-selector.test.mjs"
+    },
+    "scripts/capture.mjs": {
+      "sha256": "9bcaf1f2b90e9dc441de85bcc011e57d7bad2052da80bf6eaa7aaa132683b005",
+      "source_path": "scripts/capture.mjs"
+    },
+    "scripts/capture.test.mjs": {
+      "sha256": "7d45da7f2862a45113fd677b511e3a3708161954615d5b7bf39e57f6e7b2bb6a",
+      "source_path": "scripts/capture.test.mjs"
+    },
+    "scripts/chrome-port.mjs": {
+      "sha256": "6e5a6529db9d67529be48c2f25aa7902233f3ffff89e43c5f36037d632b3d75d",
+      "source_path": "scripts/chrome-port.mjs"
+    },
+    "scripts/chrome-startup.test.mjs": {
+      "sha256": "bd3c0eb4b699ebfbfd4efa5920acf386f31876ed490aaee839886dd8ed4cf797",
+      "source_path": "scripts/chrome-startup.test.mjs"
+    },
+    "scripts/curve-density.test.mjs": {
+      "sha256": "5679ff6f139bfee47099cab2f475b041ddcb6813e812c67d13526679915831b6",
+      "source_path": "scripts/curve-density.test.mjs"
+    },
+    "scripts/drive-actions.test.mjs": {
+      "sha256": "bf3e2525ae4abbf07d27565418757139a8b305dcef4c287e11ae3da96f2107d3",
+      "source_path": "scripts/drive-actions.test.mjs"
+    },
+    "scripts/drive-async-until.test.mjs": {
+      "sha256": "86058cb8456c1c9c2822c7a3ece698e2dba40a1a01f2746668cfe2e2cb193435",
+      "source_path": "scripts/drive-async-until.test.mjs"
+    },
+    "scripts/drive-page-load.test.mjs": {
+      "sha256": "a19d8f9335b023100cce3704013ae8e73d06e9b447978ffef66ed1aa3b4e2733",
+      "source_path": "scripts/drive-page-load.test.mjs"
+    },
+    "scripts/drive-turn-controller.test.mjs": {
+      "sha256": "2b7deda0e9706208ae9c21cc2ada09d623eebee9e0dfc512503b8ddbeb4ddcac",
+      "source_path": "scripts/drive-turn-controller.test.mjs"
+    },
+    "scripts/drive.mjs": {
+      "sha256": "093a6540d9e700304caf83f1b533d9625e3008427895fa90ea7622dac8880590",
+      "source_path": "scripts/drive.mjs"
+    },
+    "scripts/drive.test.mjs": {
+      "sha256": "c4f354f8c79e766858d913321fcb84786355e814ca2e096992a088b2181529f0",
+      "source_path": "scripts/drive.test.mjs"
+    },
+    "scripts/enter-key.test.mjs": {
+      "sha256": "2592318f2b41735e4ff8ed2edcbc3abee46d81f9184b02dd99c121d8900d3838",
+      "source_path": "scripts/enter-key.test.mjs"
+    },
+    "scripts/fidelity-cut.test.mjs": {
+      "sha256": "ab6cf4423852a1c1d32c3cb87f7bfab9e796effd57883a717ff8836adb2ac6c6",
+      "source_path": "scripts/fidelity-cut.test.mjs"
+    },
+    "scripts/fidelity-tube-coverage.test.mjs": {
+      "sha256": "eef7300ea786d82268811cc4e4153c1de913bae17cec58bd4a28f64ea875c525",
+      "source_path": "scripts/fidelity-tube-coverage.test.mjs"
+    },
+    "scripts/fingerprint.mjs": {
+      "sha256": "1582728c6f70b340f8fdda28f287e6f8d45e291ab739ef9ff527a5374f7b1654",
+      "source_path": "scripts/fingerprint.mjs"
+    },
+    "scripts/inline-kit.mjs": {
+      "sha256": "5fce97bb0044dc88f6ebe0fbde90ccfd1b59ba189009743959097df1dc2399d0",
+      "source_path": "scripts/inline-kit.mjs"
+    },
+    "scripts/line-ends.mjs": {
+      "sha256": "da79cc624c5bda0cb8af8f864dbe53026e44ca2377dab3665076ad570d804f42",
+      "source_path": "scripts/line-ends.mjs"
+    },
+    "scripts/lines-arcs.test.mjs": {
+      "sha256": "ae915157d4bbdfe8e4af031c0e2e5f5f566c938ba7bb88884ae377489aff540e",
+      "source_path": "scripts/lines-arcs.test.mjs"
+    },
+    "scripts/lines-bezier.test.mjs": {
+      "sha256": "7a95169325fed35eecb0c7aefcb806a48bfd09eaba3df5461dc2e30c5d0695f4",
+      "source_path": "scripts/lines-bezier.test.mjs"
+    },
+    "scripts/lines-round.test.mjs": {
+      "sha256": "7a012c3eb010b7f8082ee49ce939d6f35f384d188d897e3fd3708682c5d3a657",
+      "source_path": "scripts/lines-round.test.mjs"
+    },
+    "scripts/lines-rounded-rect.test.mjs": {
+      "sha256": "88d0a27b047895a00f5654f59d93c775fb8312a5c28be3b47b5e673d80efe5b6",
+      "source_path": "scripts/lines-rounded-rect.test.mjs"
+    },
+    "scripts/lines.mjs": {
+      "sha256": "932d643118c55adb3b06d4e47d1443e4cda2ebe86bc1c9e5c7e7608e96cca914",
+      "source_path": "scripts/lines.mjs"
+    },
+    "scripts/lines.test.mjs": {
+      "sha256": "82931231d33d977bcc44c54b05bdb7b78c4ddebc422848ab59539018dd43583a",
+      "source_path": "scripts/lines.test.mjs"
+    },
+    "scripts/navigation.test.mjs": {
+      "sha256": "b9bd9d7360735e178b24e086e5c875e1703e3e0593e7ddff5f10fe0b4f0f7587",
+      "source_path": "scripts/navigation.test.mjs"
+    },
+    "scripts/orbit-sampling.test.mjs": {
+      "sha256": "ed6ce6b0dd32f6c7ab51a5a50ea2dd4b920858ff35d725bea22bee79e323b97a",
+      "source_path": "scripts/orbit-sampling.test.mjs"
+    },
+    "scripts/owned-browser.mjs": {
+      "sha256": "18a586aceb31d3ef69c1b4e2593c667fd45a339b03627e47f30f2a21077765dc",
+      "source_path": "scripts/owned-browser.mjs"
+    },
+    "scripts/print-sheet.mjs": {
+      "sha256": "d2874dd7353a55b1a4aec87bd642fdeb8230a2aadeb33a16ed9cb5bae96d091c",
+      "source_path": "scripts/print-sheet.mjs"
+    },
+    "scripts/print-sheet.test.mjs": {
+      "sha256": "901148d898201be2df6f57961117d492e47df0a0cbcc4594cce718cc62952558",
+      "source_path": "scripts/print-sheet.test.mjs"
+    },
+    "scripts/print.mjs": {
+      "sha256": "a198d79322da313d96ac5fe2a45029ad289d92250fcf47ee542c0d2391cc3960",
+      "source_path": "scripts/print.mjs"
+    },
+    "scripts/react-dots-opacity.test.mjs": {
+      "sha256": "66fc9af4b4dd4b6e0f7ab3f9c455e7216ff8f52bbf38c54a616ee6363dca60c8",
+      "source_path": "scripts/react-dots-opacity.test.mjs"
+    },
+    "scripts/react-readout-first-write.test.mjs": {
+      "sha256": "2cb4554cc9df6255e619d13d3a6f81d453a59e3f91dc962b0f5127ffab5d1a0e",
+      "source_path": "scripts/react-readout-first-write.test.mjs"
+    },
+    "scripts/react-readout-target.test.mjs": {
+      "sha256": "da86741167dad583bf9ca270303b1c2f453a9df49d4216b6b253bbe96afbc8c9",
+      "source_path": "scripts/react-readout-target.test.mjs"
+    },
+    "scripts/react-solid-seamless.test.mjs": {
+      "sha256": "852efd1f148994acfa78ab4c543cc6d57a35defdc2884502ea32f17e00ed7a68",
+      "source_path": "scripts/react-solid-seamless.test.mjs"
+    },
+    "scripts/react-visibility-target.test.mjs": {
+      "sha256": "7e225a0d56c92c94db73c13c8dd63afa231c94db308c7e7d491eb203c90d57cb",
+      "source_path": "scripts/react-visibility-target.test.mjs"
+    },
+    "scripts/turn-audit-samples.test.mjs": {
+      "sha256": "52eaa87e9cfea81c0b4b27ef35df9b1be7c28f823a9a12c1920b21272ff3f506",
+      "source_path": "scripts/turn-audit-samples.test.mjs"
+    },
+    "scripts/turn-bench.mjs": {
+      "sha256": "d86cd53e3702fa92e22b4052ee9bf47da10fd0a71401fe477bd8da2fe30b1631",
+      "source_path": "scripts/turn-bench.mjs"
+    },
+    "scripts/turn-check.mjs": {
+      "sha256": "50a6c59f1d454d2316433313bcc133cf6bd6284865d5f57b287ee29ccbb39eb2",
+      "source_path": "scripts/turn-check.mjs"
+    },
+    "scripts/turn-convex-check.test.mjs": {
+      "sha256": "044c35b5942d98c392753818297e3643777d55244508c3718f415c33ec90bd8d",
+      "source_path": "scripts/turn-convex-check.test.mjs"
+    },
+    "scripts/turn-fidelity.mjs": {
+      "sha256": "d033fa1fcff2672db9a823d5155b531d190875a42e2812091cb6079b14d4bf20",
+      "source_path": "scripts/turn-fidelity.mjs"
+    },
+    "scripts/turn-group-reference.test.mjs": {
+      "sha256": "bfac2f910c80c7fcfba9e4861391552000a0f25414ae86576a9ef9ef46291412",
+      "source_path": "scripts/turn-group-reference.test.mjs"
+    },
+    "scripts/turn-rounded-polygon.test.mjs": {
+      "sha256": "a6a7dec89a2864f68b559c64cb94731d697ef36221dc54ed100a539744f2ac04",
+      "source_path": "scripts/turn-rounded-polygon.test.mjs"
+    },
+    "scripts/turn-split-owner.test.mjs": {
+      "sha256": "829febf610ba09cdca651fbd86340f13932f241b4e3525a3d8566ac70d75a69d",
+      "source_path": "scripts/turn-split-owner.test.mjs"
+    },
+    "scripts/validate-actions.mjs": {
+      "sha256": "dd2d7b955f51c2fd3a214a88b0fb8d87f76362313072650ea30192313d891b13",
+      "source_path": "scripts/validate-actions.mjs"
+    },
+    "source-manifest.json": {
+      "sha256": "5a6ab702e0d3c7d4402cccc353b7bbdfa8a8f02f2b6608c89576aecf562b63d8",
+      "source_path": "source-manifest.json"
+    },
+    "tests/fixtures/react-dots-dark.png": {
+      "sha256": "f2e7655868e8564d81d274464c618cb330a603459a5fe63bf0bd22992e9c396d",
+      "source_path": "tests/fixtures/react-dots-dark.png"
+    },
+    "tests/fixtures/react-dots-light.png": {
+      "sha256": "df72b8d04fd82bf1a1f63b29ea1676ead0570f9b36d55057d8b886087d869543",
+      "source_path": "tests/fixtures/react-dots-light.png"
+    },
+    "tests/fixtures/react-solid-dark.png": {
+      "sha256": "529b58a497268540c2d74b590691f65605ba5d1882566d0462ff984e7a9248e1",
+      "source_path": "tests/fixtures/react-solid-dark.png"
+    },
+    "tests/fixtures/react-solid-light.png": {
+      "sha256": "5b344ec9017d06267531b8d01ad3b88062fb8003cd77ad90ecff37319c8dd085",
+      "source_path": "tests/fixtures/react-solid-light.png"
+    }
+  }
+}

@@ -364,6 +364,17 @@
       ]
     },
     {
+      "name": "technical-illustration",
+      "category": "Product design",
+      "related": [
+        "how",
+        "orbyn-ui-design",
+        "tdd",
+        "social-preview",
+        "orbyn-upstream-review"
+      ]
+    },
+    {
       "name": "unslop",
       "category": "Engineering practice",
       "related": [

@@ -7,9 +7,18 @@
 # Skill-system audit — current candidate and historical evidence
 
 
-## Product and AI application candidate — 26 October 2026
+## Current engineering-method and illustration candidate — 28 October 2026
 
-This local candidate has **35 active skills**. Product discovery and outcome
+The active candidate has **36 skills**, including one conditional technical
+illustration owner. Test reliability, localization and reusable runtime/authority
+methods extend existing owners. OpenCode operating/host integration is not
+adopted. The later implementation section records source/fixture/render limits;
+these counts do not imply qualified runtime support or agent efficacy. Earlier
+sections below retain their dated historical counts.
+
+## Historical product and AI application candidate — 26 October 2026
+
+At that historical freeze, the candidate had **35 active skills**. Product discovery and outcome
 learning strengthen the existing planning, research and UI owners. The distinct
 AI application owner coordinates context, retrieval, tool effects, task evaluations
 and operating limits, reusing backend/TDD/CI mechanics. It does not train models,
@@ -195,6 +204,7 @@ to their owner instead of duplicating a complete workflow.
 | [show-me-your-work](../skills/show-me-your-work/SKILL.md)                                                                   | Expanded local method             | Task candidate, decisions and check receipts → Compact single-writer evidence trail                                    | Missing terminal results, sensitive payloads and competing logs           |
 | [social-content](../skills/social-content/SKILL.md)                                                                         | Discovery fixed; retained method  | Supplied facts, author intent and platform → Copyable post and claim notes or visual handoff                           | Unsupported release claims, assumed personal voice and platform freshness |
 | [social-preview](../skills/social-preview/SKILL.md)                                                                         | Discovery fixed; retained method  | Approved copy, assets and requested output → Editable preview, inspected exports and alt text                          | Source versus rendered/export evidence and optional font/tool absence     |
+| [technical-illustration](../skills/technical-illustration/SKILL.md) | New conditional artifact owner | Model, projection, input and output scope → Coherent explanatory figure and selected inspected exports | Actual geometry/readout/input, React, print, GPU and beta3D evidence remain separate |
 | [tdd](../skills/tdd/SKILL.md)                                                                                               | Expanded local method             | Observable regression and authorized test boundary → Failing-before receipt, correction and legitimate control         | Fixture failure, unrealistic mocks and tests without baseline evidence    |
 | [unslop](../skills/unslop/SKILL.md)                                                                                         | Expanded local method             | Supported prose, audience and requested voice → Clear edited copy preserving evidence                                  | Invented specificity, lost caveats and incidental user-content rewrites   |
 | [why](../skills/why/SKILL.md)                                                                                               | Expanded local method             | Anchored design question and bounded history → Documented rationale separated from inference                           | Empty search scope and source mechanics mistaken for intent               |
@@ -539,3 +549,18 @@ open host/service requirements. Exact named-model Codex readiness failed before
 scored execution, Claude was unauthenticated and OpenCode had only local-state
 version readiness. Full behavioral/integration closure remains unqualified; no
 baseline/candidate improvement claim follows from the passing library checks.
+
+## Engineering-method and illustration integration — implementation candidate
+
+One conditional technical-illustration owner brings the candidate catalog to36;
+existing owners retain reusable test reliability, localization, runtime identity,
+cache, authority and lifecycle methods. OpenCode supplies engineering-method
+evidence only: no usage/host profile, installation or provider qualification is
+selected. The source register preserves all127observations with individually
+corrected applicability. Product-specific operating mechanics are not adopted,
+never counted as passing methods or runtime blockers. Anatomy support is a
+selected MIT maintained adaptation with separate original/adapted hashes and
+offline source/dependency/test/fixture accounting. New development cases and
+implementation evidence remain separate from actual agent behavior. Full live
+illustration/platform qualification is incomplete until its actual required
+checks and independent review pass; core SVG does not qualify advanced paths.

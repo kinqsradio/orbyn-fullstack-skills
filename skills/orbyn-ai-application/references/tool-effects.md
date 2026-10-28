@@ -59,3 +59,22 @@ work offline; current provider/version claims still need applicable verification
 For a requested report-to-thread/tracker integration, use the conditional
 [trusted intake contract](trusted-intake.md). It defines admission/dedupe and
 compensation requirements; it does not ship or authorize a provider adapter.
+
+## Mutable catalogs and decoder boundaries
+
+Tool registration/catalog visibility is not execution authority. A shallow
+registration snapshot does not freeze a mutable producer's nested payloads; copy
+or version the data at the owning boundary when immutable replay is the contract.
+Test mutation after publication against the actual consumer, not a frozen stand-in.
+Provider pass-through envelopes may intentionally preserve unknown extension
+fields; closed orchestration decisions and authorization variants still require
+explicit exhaustive validation. Do not make all decoders permissive to support one
+provider extension. Replays use selected redacted exchanges and fixed identities;
+no key or live provider is needed for a deterministic contract fixture.
+
+Effective authority may combine account, agent/session and saved policy. Check the
+actual resulting allowed effect and current resource identity, rather than assume
+that inherited context grants access. A query-level rule or a permission prompt
+does not prove internal path fencing, credential separation or OS sandboxing.
+Declare and test those boundaries separately within authorized disposable scope;
+retain a denial rather than widen policy to obtain a passing result.

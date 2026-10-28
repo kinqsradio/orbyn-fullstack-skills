@@ -102,3 +102,7 @@ supports short direct labels, visible field labels and relevant hints. Its
 supports disclosing help needed by some users while keeping generally necessary
 information visible. The word targets, fixture names and signed-in copy choices
 above are Orbyn conventions, not standards imposed by those sources.
+
+For whole-phrase localization, plural/interpolation/fallback, mixed-direction
+technical text and live native labels, use the UI owner’s
+[localization and RTL contract](../orbyn-ui-design/references/localization-rtl.md).

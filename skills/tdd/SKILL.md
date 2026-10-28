@@ -58,3 +58,7 @@ with [task evaluations](../orbyn-ai-application/references/evaluations.md).
 A correct schema or one expected answer is not a reliability estimate; preserve
 held-out cases, repeated-trial failures and critical slices. This does not require
 live model calls for ordinary deterministic changes.
+
+When clocks, async cleanup, readiness, module identity or runner legs can hide the
+assertion, use [test reliability](references/test-reliability.md). Preserve actual
+production/fixture boundaries and first-attempt evidence.

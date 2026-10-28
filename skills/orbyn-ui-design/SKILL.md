@@ -140,3 +140,7 @@ not establish that the human can exercise the interaction.
 
 For positive page identity, fresh structure after navigation, or supplied Figma
 node/assets-to-primitives mapping, use [design intake](references/design-intake.md).
+
+For bidirectional, translated or live-locale interfaces, use
+[localization and RTL](references/localization-rtl.md), preserving actual language,
+direction, focus/input and native-surface evidence separately.

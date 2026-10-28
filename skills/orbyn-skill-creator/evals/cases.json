@@ -6565,6 +6565,853 @@
         "decision": "Unsupported dependency remains open, worktree is not a cloud VM, records are not a running service, no silent fallback or configuration changes; observed reads do not prove request inclusion or enforcement.",
         "boundary": "Preserves requested scope and distinguishes written guidance, fixture evidence, host behavior and live integration."
       }
+    },
+    {
+      "id": "reference-method-oc01",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Sibling instruction or read-only source evidence is treated as execution enforcement. State the correction and the evidence required for this selected contract. Scope: Resolve actual target/affected instruction scope and distinguish bytes/read/request/effect evidence.",
+      "rubric": {
+        "decision": "Resolve actual target/affected instruction scope and distinguish bytes/read/request/effect evidence.",
+        "negative_control": "Sibling instruction or read-only source evidence is treated as execution enforcement.",
+        "evidence_surface": "Source/owner review and synthetic scope/evidence counterexample; no source-host injection test.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-oc02",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "architect"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Catalog or stale symlink-target snapshot is mistaken for immutable current implementation. State the correction and the evidence required for this selected contract. Scope: Registry replacement, selected identity and cache refresh use explicit collision and generation ownership.",
+      "rubric": {
+        "decision": "Registry replacement, selected identity and cache refresh use explicit collision and generation ownership.",
+        "negative_control": "Catalog or stale symlink-target snapshot is mistaken for immutable current implementation.",
+        "evidence_surface": "Generic controlled registry/cache identity fixture and source review.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-oc03",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Assumed context inheritance or a late old result grants current effect authority. State the correction and the evidence required for this selected contract. Scope: Existing explicit scoped brief and current owner account for context/constraints and all attempts.",
+      "rubric": {
+        "decision": "Existing explicit scoped brief and current owner account for context/constraints and all attempts.",
+        "negative_control": "Assumed context inheritance or a late old result grants current effect authority.",
+        "evidence_surface": "Existing policy/ownership fixtures; no OpenCode child/model/provider trial.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-oc04",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: No-match/truncated prefix or query resource is called whole-tree absence/path confinement. State the correction and the evidence required for this selected contract. Scope: Selected search roots/hidden/ignore/result bounds define the actual coverage claim.",
+      "rubric": {
+        "decision": "Selected search roots/hidden/ignore/result bounds define the actual coverage claim.",
+        "negative_control": "No-match/truncated prefix or query resource is called whole-tree absence/path confinement.",
+        "evidence_surface": "Generic controlled file/search fixture and source review; no source-native backend probe.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-oc05",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Observation timeout duplicates a live owner; stale result replaces current output. State the correction and the evidence required for this selected contract. Scope: Timeout, interruption, completion and recovery reconcile current ownership before effects.",
+      "rubric": {
+        "decision": "Timeout, interruption, completion and recovery reconcile current ownership before effects.",
+        "negative_control": "Observation timeout duplicates a live owner; stale result replaces current output.",
+        "evidence_surface": "Existing bounded lifecycle/late-result fixtures; no OpenCode session qualification.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-oc06",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-ai-application"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: UI permission prompt, fresh worker or query restriction is called credential/OS isolation. State the correction and the evidence required for this selected contract. Scope: Effective allowed effects, policy and OS isolation are distinct and retained across operation identity.",
+      "rubric": {
+        "decision": "Effective allowed effects, policy and OS isolation are distinct and retained across operation identity.",
+        "negative_control": "UI permission prompt, fresh worker or query restriction is called credential/OS isolation.",
+        "evidence_surface": "Generic denied/stale effect contract fixture and source review.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-oc07",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: UI restart or reference advertisement is mistaken for server replacement/readiness. State the correction and the evidence required for this selected contract. Scope: Diagnostics identify actual client/server/process/build/run and immutable reference bytes.",
+      "rubric": {
+        "decision": "Diagnostics identify actual client/server/process/build/run and immutable reference bytes.",
+        "negative_control": "UI restart or reference advertisement is mistaken for server replacement/readiness.",
+        "evidence_surface": "Owned generic process/reference identity fixture and source review; no product usage support.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-tr01",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Wrong virtual clock, process-relative timestamp comparison, advance-before-registration or process spawn defeats timing assertions. State the correction and the evidence required for this selected contract. Scope: Actual tool-launched executable and clock domain are recorded; waiters register before advancement; timing/deadline owners propagate to async work.",
+      "rubric": {
+        "decision": "Actual tool-launched executable and clock domain are recorded; waiters register before advancement; timing/deadline owners propagate to async work.",
+        "negative_control": "Wrong virtual clock, process-relative timestamp comparison, advance-before-registration or process spawn defeats timing assertions.",
+        "evidence_surface": "Separate-process and async fixtures with deliberately mismatched clocks; actual command traces.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-tr02",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Timed-out body mutates deleted fixture, inherited mock/global state or mutable builder pollutes next attempt. State the correction and the evidence required for this selected contract. Scope: Per-attempt state, mocks and module registry are isolated; cancel/join finishes before fixture removal.",
+      "rubric": {
+        "decision": "Per-attempt state, mocks and module registry are isolated; cancel/join finishes before fixture removal.",
+        "negative_control": "Timed-out body mutates deleted fixture, inherited mock/global state or mutable builder pollutes next attempt.",
+        "evidence_surface": "Real controlled cleanup, leak and late-write checks.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-tr03",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Quiet frames/visibility alone, unknown mocked route, synthetic input labelled native or service-worker mock labelled deployed behavior. State the correction and the evidence required for this selected contract. Scope: Semantic readiness, connection/event delivery, final focus/mount and native keyboard/pointer states precede the action.",
+      "rubric": {
+        "decision": "Semantic readiness, connection/event delivery, final focus/mount and native keyboard/pointer states precede the action.",
+        "negative_control": "Quiet frames/visibility alone, unknown mocked route, synthetic input labelled native or service-worker mock labelled deployed behavior.",
+        "evidence_surface": "Actual relevant terminal/browser/native surface with race and rejected-action controls.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-tr04",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Copied story passes while production module fails; cold reload resets seed; separate ports share contaminated cache. State the correction and the evidence required for this selected contract. Scope: Production module identity and cold optimizer/cache ownership match the checked source and actual fixture.",
+      "rubric": {
+        "decision": "Production module identity and cold optimizer/cache ownership match the checked source and actual fixture.",
+        "negative_control": "Copied story passes while production module fails; cold reload resets seed; separate ports share contaminated cache.",
+        "evidence_surface": "Cold/warm source-bound browser/build fixture; explicit shared outputs.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-tr05",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: CI green without target case, stale task registration/cache input, missing shard or retry-only evidence qualifies the claim. State the correction and the evidence required for this selected contract. Scope: Affected test file/project/task/shard is executed; skipped leg and first failed/retry artifacts remain visible.",
+      "rubric": {
+        "decision": "Affected test file/project/task/shard is executed; skipped leg and first failed/retry artifacts remain visible.",
+        "negative_control": "CI green without target case, stale task registration/cache input, missing shard or retry-only evidence qualifies the claim.",
+        "evidence_surface": "Selected runner discovery and receipts with planted omitted case/job.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-tr06",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Fast empty/error/hardcoded known vector or noisy wall-time threshold passes as valid optimization. State the correction and the evidence required for this selected contract. Scope: Correct completed-work counts and bounded varied-input oracle accompany cost measurements.",
+      "rubric": {
+        "decision": "Correct completed-work counts and bounded varied-input oracle accompany cost measurements.",
+        "negative_control": "Fast empty/error/hardcoded known vector or noisy wall-time threshold passes as valid optimization.",
+        "evidence_surface": "Matched workload/harness, diverse correctness controls and retained attempts.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-rtl01",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Mixed Arabic/Hebrew code/path, RTL English, wrong mirrored icon or negative-scroll endpoint breaks interaction. State the correction and the evidence required for this selected contract. Scope: Direction independent of language preserves DOM/focus order, logical layout, physical hit zones, meaningful icon direction and RTL scroll endpoints.",
+      "rubric": {
+        "decision": "Direction independent of language preserves DOM/focus order, logical layout, physical hit zones, meaningful icon direction and RTL scroll endpoints.",
+        "negative_control": "Mixed Arabic/Hebrew code/path, RTL English, wrong mirrored icon or negative-scroll endpoint breaks interaction.",
+        "evidence_surface": "Actual renderer/keyboard/pointer cases; declared platform and language-review limits.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-rtl02",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Concatenated phrase, damaged MDX/code placeholder, missing fallback or stale locale/native label. State the correction and the evidence required for this selected contract. Scope: Whole phrases, plural/interpolation/fallback APIs and authored placeholders survive live locale change and native asynchronous labels.",
+      "rubric": {
+        "decision": "Whole phrases, plural/interpolation/fallback APIs and authored placeholders survive live locale change and native asynchronous labels.",
+        "negative_control": "Concatenated phrase, damaged MDX/code placeholder, missing fallback or stale locale/native label.",
+        "evidence_surface": "Locale fixture and actual consuming renderer/native surface; terminology review.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-ui01",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: A smaller Suspense boundary is called prevention of suspension; custom token fallback/portal/transition loses meaning or focus. State the correction and the evidence required for this selected contract. Scope: Loading/refetch identity, focus/scroll continuity, semantic themes/font roles and reduced-motion content remain coherent.",
+      "rubric": {
+        "decision": "Loading/refetch identity, focus/scroll continuity, semantic themes/font roles and reduced-motion content remain coherent.",
+        "negative_control": "A smaller Suspense boundary is called prevention of suspension; custom token fallback/portal/transition loses meaning or focus.",
+        "evidence_surface": "Real renderer state transitions and inspected theme/font evidence.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-rt01",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-upstream-review"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Refresh/reset silently substitutes a different revision or a fingerprint is claimed to cover unmeasured inputs. State the correction and the evidence required for this selected contract. Scope: Reference revision and exact bytes remain identified across managed-cache attach/read; source/prose conflicts retain evidence.",
+      "rubric": {
+        "decision": "Reference revision and exact bytes remain identified across managed-cache attach/read; source/prose conflicts retain evidence.",
+        "negative_control": "Refresh/reset silently substitutes a different revision or a fingerprint is claimed to cover unmeasured inputs.",
+        "evidence_surface": "Read-only pinned source/byte receipts and planted cache drift.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-rt02",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Partial heap artifact, wrong run, debugger-induced theme/motion/focus change or RSS increase is misdiagnosed as retained JS heap. State the correction and the evidence required for this selected contract. Scope: Client/server/run/role diagnostics separate heap retention, RSS/native allocation and observer effects while preserving user media/focus settings.",
+      "rubric": {
+        "decision": "Client/server/run/role diagnostics separate heap retention, RSS/native allocation and observer effects while preserving user media/focus settings.",
+        "negative_control": "Partial heap artifact, wrong run, debugger-induced theme/motion/focus change or RSS increase is misdiagnosed as retained JS heap.",
+        "evidence_surface": "Owned process/capture fixture and actual renderer attachment where claimed.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-rt03",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-ai-application"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Stale definition grants effects or unknown orchestration verdict is accepted because provider payloads are extensible. State the correction and the evidence required for this selected contract. Scope: Tool definition/executor snapshot is separated from mutable producer state; open provider fields pass through while closed authorization decisions remain validated.",
+      "rubric": {
+        "decision": "Tool definition/executor snapshot is separated from mutable producer state; open provider fields pass through while closed authorization decisions remain validated.",
+        "negative_control": "Stale definition grants effects or unknown orchestration verdict is accepted because provider payloads are extensible.",
+        "evidence_surface": "Redacted synthetic exchange replay, schema and current-generation effect controls.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-rt04",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "architect"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Process-local marker is called distributed fencing; old snapshot or early reply overwrites current accepted state. State the correction and the evidence required for this selected contract. Scope: Durable admission, execution, unknown outcome and restart recovery are separate; event/reply/snapshot/storage-load authority is explicit.",
+      "rubric": {
+        "decision": "Durable admission, execution, unknown outcome and restart recovery are separate; event/reply/snapshot/storage-load authority is explicit.",
+        "negative_control": "Process-local marker is called distributed fencing; old snapshot or early reply overwrites current accepted state.",
+        "evidence_surface": "Controlled lifecycle/persistence protocol fixture; no real service/cluster claim from a local model.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-rt05",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Shorter-lived cached object survives replacement, child exit is mistaken for EOF or stale PID/reply affects the next owner. State the correction and the evidence required for this selected contract. Scope: Route A-B-A/plugin replacement reacquires the correct service; PTY has one I/O owner, byte bounds, durable identity and joined terminal state.",
+      "rubric": {
+        "decision": "Route A-B-A/plugin replacement reacquires the correct service; PTY has one I/O owner, byte bounds, durable identity and joined terminal state.",
+        "negative_control": "Shorter-lived cached object survives replacement, child exit is mistaken for EOF or stale PID/reply affects the next owner.",
+        "evidence_surface": "Real owned process/PTY plus async generation controls.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-rt06",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Invented attribution, deletion of a graduated framework, major excluded upgrade or source-specific convention becomes universal. State the correction and the evidence required for this selected contract. Scope: Changelog uses exact range and user impact; useful permanent experiment infrastructure and target maintenance constraints are preserved.",
+      "rubric": {
+        "decision": "Changelog uses exact range and user impact; useful permanent experiment infrastructure and target maintenance constraints are preserved.",
+        "negative_control": "Invented attribution, deletion of a graduated framework, major excluded upgrade or source-specific convention becomes universal.",
+        "evidence_surface": "Scoped source/history and synthetic editorial/maintenance cases.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-an01",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Wrong gauge/phase, fabricated physical claim, meaningless parts or a chart request routed into physical illustration. State the correction and the evidence required for this selected contract. Scope: A concept model/sample drives parts, movement, phase, numeric readout, accessible caption and exported values together.",
+      "rubric": {
+        "decision": "A concept model/sample drives parts, movement, phase, numeric readout, accessible caption and exported values together.",
+        "negative_control": "Wrong gauge/phase, fabricated physical claim, meaningless parts or a chart request routed into physical illustration.",
+        "evidence_surface": "Pure model cases plus actual inspected figure/readout and adjacent non-trigger tasks.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-an02",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Missing clipped shape, unrecorded drawing, false mount, dangling endpoint, reversal collision or exhausted curve budget passes. State the correction and the evidence required for this selected contract. Scope: Actual emitted paths, transforms, clipping, depth, contacts, variable radii and line attachments agree through intermediate states.",
+      "rubric": {
+        "decision": "Actual emitted paths, transforms, clipping, depth, contacts, variable radii and line attachments agree through intermediate states.",
+        "negative_control": "Missing clipped shape, unrecorded drawing, false mount, dangling endpoint, reversal collision or exhausted curve budget passes.",
+        "evidence_surface": "Independent geometry/line oracle, real SVG/browser ground truth, planted broken variants.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-an03",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Ownership confused with attachment, double toggle/reset, pre-armed action or mid-tour jump. State the correction and the evidence required for this selected contract. Scope: Actual schedules/tails/prefixes/reversals and valid arming are exercised; tour takeover begins at visible state.",
+      "rubric": {
+        "decision": "Actual schedules/tails/prefixes/reversals and valid arming are exercised; tour takeover begins at visible state.",
+        "negative_control": "Ownership confused with attachment, double toggle/reset, pre-armed action or mid-tour jump.",
+        "evidence_surface": "Native pointer/keyboard interaction and sampled schedule/state controls.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-an04",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Missing selector, empty/nonfinite action, swallowed console/rejection/timeout, synthetic click labelled native or stale crop. State the correction and the evidence required for this selected contract. Scope: Selected figure/input/crop is current; whole action list validates before effects; async assertion/until failures propagate.",
+      "rubric": {
+        "decision": "Selected figure/input/crop is current; whole action list validates before effects; async assertion/until failures propagate.",
+        "negative_control": "Missing selector, empty/nonfinite action, swallowed console/rejection/timeout, synthetic click labelled native or stale crop.",
+        "evidence_surface": "Real permitted Chrome/CDP and retained screenshots/action/error output; failure-sensitive exit checks.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-an05",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Frame-rate screen-reader stream, lost explanation without GPU or replaced-ref/listener leak. State the correction and the evidence required for this selected contract. Scope: Offscreen/settled loops stop and resume without jump; reduced motion retains input/content; announcements track choices/phases.",
+      "rubric": {
+        "decision": "Offscreen/settled loops stop and resume without jump; reduced motion retains input/content; announcements track choices/phases.",
+        "negative_control": "Frame-rate screen-reader stream, lost explanation without GPU or replaced-ref/listener leak.",
+        "evidence_surface": "Actual browser accessibility/input and lifecycle checks; inspected fallback.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-an06",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Hydration mismatch, wrong nearest readout, second figure updating first or stale replaced component. State the correction and the evidence required for this selected contract. Scope: React server rest pose, hydration, first readout, streamed page, StrictMode and multiple figures preserve independent state.",
+      "rubric": {
+        "decision": "React server rest pose, hydration, first readout, streamed page, StrictMode and multiple figures preserve independent state.",
+        "negative_control": "Hydration mismatch, wrong nearest readout, second figure updating first or stale replaced component.",
+        "evidence_surface": "Consumer-owned React/ReactDOM/TS build plus actual SSR/browser hydration and lifecycle.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-an07",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Missing selector, remapped-ID collision, clipped page/font substitution or raster output presented as all-vector. State the correction and the evidence required for this selected contract. Scope: Same-model poses export faithful vector/raster layers with unique IDs, selected focus, fonts and every configured page/format inspected.",
+      "rubric": {
+        "decision": "Same-model poses export faithful vector/raster layers with unique IDs, selected focus, fonts and every configured page/format inspected.",
+        "negative_control": "Missing selector, remapped-ID collision, clipped page/font substitution or raster output presented as all-vector.",
+        "evidence_surface": "Actual PDF generation and rendered inspection of every page, not only page one.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-an08",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Wrong opening mask, pre-boundary energy, empty/cleared framebuffer, wrong alpha or compile failure loses content. State the correction and the evidence required for this selected contract. Scope: Model/camera/layers/masks and event phases agree; paper/ramp/theme compositing and reduced-motion/no-context fallback preserve meaning; GPU readback occurs in the same draw task.",
+      "rubric": {
+        "decision": "Model/camera/layers/masks and event phases agree; paper/ramp/theme compositing and reduced-motion/no-context fallback preserve meaning; GPU readback occurs in the same draw task.",
+        "negative_control": "Wrong opening mask, pre-boundary energy, empty/cleared framebuffer, wrong alpha or compile failure loses content.",
+        "evidence_surface": "Actual hardware/software renderer, numeric image controls, light/dark/nested themes and measured work budget.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-an09",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Missing decomposition/group, hinge/free-clip mismatch, jump hidden by coordinate rounding or quick sampling labelled continuous proof. State the correction and the evidence required for this selected contract. Scope: Documented beta3D state envelope, convex/group/parent identity and actual temporal paths pass configured full finite audits; continuity and cost are measured.",
+      "rubric": {
+        "decision": "Documented beta3D state envelope, convex/group/parent identity and actual temporal paths pass configured full finite audits; continuity and cost are measured.",
+        "negative_control": "Missing decomposition/group, hinge/free-clip mismatch, jump hidden by coordinate rounding or quick sampling labelled continuous proof.",
+        "evidence_surface": "Actual turn build/check/fidelity/benchmark, planted broken models and explicit sampled bounds; beta label retained.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-an10",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Missing relative import, untracked runtime download, mismatched kit, shared-skill copy, destructive replacement or fingerprint overclaim. State the correction and the evidence required for this selected contract. Scope: Selected source closure, MIT notices, source fingerprints, target artifact packaging and offline reproduction are exact and recoverable.",
+      "rubric": {
+        "decision": "Selected source closure, MIT notices, source fingerprints, target artifact packaging and offline reproduction are exact and recoverable.",
+        "negative_control": "Missing relative import, untracked runtime download, mismatched kit, shared-skill copy, destructive replacement or fingerprint overclaim.",
+        "evidence_surface": "Pinned source manifest, transitive import/read/spawn/fixture inventory and clean offline rebuild/diff controls.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "reference-method-pol01",
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "orbyn-upstream-review"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic reasoning only; no source execution, installation, model calls, real accounts, external effects or file edits. Development criterion, not live qualification.",
+      "prompt": "Review this bounded engineering/artifact claim: Automatic history harvest/publisher/auth rewrite, target skill installation or upstream style/model/default override is adopted for parity. State the correction and the evidence required for this selected contract. Scope: Equivalent methods and explicit exclusions retain target ownership, no recursive delegation, scoped memory and separate publication authority.",
+      "rubric": {
+        "decision": "Equivalent methods and explicit exclusions retain target ownership, no recursive delegation, scoped memory and separate publication authority.",
+        "negative_control": "Automatic history harvest/publisher/auth rewrite, target skill installation or upstream style/model/default override is adopted for parity.",
+        "evidence_surface": "Source/policy review and each original row positive/negative example; no external writes required.",
+        "boundary": "Retain target ownership, nesting and actual authority; source/controller/native/renderer evidence remains distinct. OpenCode source is engineering-method evidence only, not product usage integration."
+      }
+    },
+    {
+      "id": "technical-figure-route",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Create an interactive explanatory switch whose one model drives geometry, travel readout and accessible input, with a selected inspected print export.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Selection definition only; no live trial or external effect."
+    },
+    {
+      "id": "technical-figure-adjacent-poster",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Make a simple LinkedIn lifecycle poster from approved copy; no geometric model or interactive mechanism is needed.",
+      "expected_skills": [
+        "social-preview"
+      ],
+      "forbidden_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Selection definition only; no live trial or external effect."
+    },
+    {
+      "id": "technical-figure-adjacent-diagram",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Explain these three request states with a compact Mermaid flow diagram.",
+      "expected_skills": [
+        "how"
+      ],
+      "forbidden_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Selection definition only; no live trial or external effect."
     }
   ]
 }
