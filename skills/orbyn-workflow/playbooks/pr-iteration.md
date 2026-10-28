@@ -7,6 +7,11 @@ approval for each routine correction already covered by that scope.
 
 ## Read the current candidate
 
+Use [publication guidance](../references/contribution-publication.md) when updating
+public evidence or handing off a changed delivery state; review unavailability
+does not close a review gate.
+
+
 Resolve host, repository, PR number, base, fork/branch and full head SHA. Read the
 owned diff and target instructions. Preserve dirty files and reuse the task branch
 under [worktree ownership](../../orbyn-worktree/SKILL.md). A PR number alone is

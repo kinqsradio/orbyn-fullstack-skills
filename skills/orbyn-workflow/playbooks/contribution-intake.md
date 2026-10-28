@@ -23,6 +23,11 @@ native fork of a public parent when the provider cannot support one.
 
 ## Check delivery feasibility when submission is the endpoint
 
+For issue/report publication or updates, select the artifact and baseline/candidate
+evidence using [publication guidance](../references/contribution-publication.md).
+The requested endpoint governs the payload as well as the allowed external effect.
+
+
 Before expensive implementation for a requested submitted PR/merge, inspect
 available read-only account/repository permissions, fork/contribution restrictions,
 and known submission-capacity limits through supported tools or existing error
