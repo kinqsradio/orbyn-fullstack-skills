@@ -25,6 +25,10 @@ unknown, and a rejected submission needs evidence-led diagnostics, not probe PRs
 Confirm PR creation is part of the requested delivery. Inspect the exact owned diff, checks and target branch. Exclude unrelated files and secrets. Write a concise body with actual evidence and limits, create the requested PR and attach it when the host supports attachments. Merge or publish only within authorization. No automatic babysitting job or separate session.
 
 Use the parent [workflow](../SKILL.md) and repository scope.
+Use [publication evidence](../references/contribution-publication.md) for issue/PR
+content, tested revisions, readback and reconciliation of an existing delivery
+receipt. Keep the bug report and fix PR useful for their respective purposes.
+
 
 ## State the benefit before publication
 

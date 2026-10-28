@@ -43,6 +43,12 @@ choose JSON only if a recipient or helper needs to validate it.
 
 ## Verification record
 
+At a delivery transition, reconcile this existing record using
+[publication guidance](contribution-publication.md#reconcile-the-existing-delivery-record).
+Preserve historical results and replace stale current-state instructions; do not
+create a second log simply because a PR was opened.
+
+
 - Candidate checkout and revision (or exact dirty diff):
 - Input/fixture and allowed scope:
 - Observation and supporting command/artifact:

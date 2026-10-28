@@ -66,3 +66,36 @@ If required checks later succeed for `C`, the agent rechecks the head, base and
 feedback. A draft or missing maintainer approval remains a separate gate. Only an
 authorized merge with current satisfied rules reaches “merged”; a completed local
 fix or empty check list never substitutes for that state.
+
+## Issue, preview, PR and pickup
+
+In synthetic `widget-core`, revision `A` drops an inherited timeout when a named
+rule sets only a label. The user requests an issue description and screenshot.
+The agent has `baseline-failure.png` from `A` and `candidate-success.png` from local
+patch `B`. It follows [publication guidance](contribution-publication.md): the
+issue shows the failing baseline with its configuration and scope. It keeps the
+candidate capture for the requested local preview or a later authorized fix PR.
+It does not upload either image when the user has requested preview only.
+
+A different user explicitly requests a suggested fix in the issue. The agent can
+include `B` as an unmerged candidate, separately from `A`'s observed failure and
+without claiming acceptance. A universal ban on fixes in issues would be wrong.
+
+The baseline is a source build of version 2.4.0 at `A`. A version bot requests
+2.3.1. The agent verifies the source/build identity and presents version 2.4.0
+first, with revision and build limits. It does not claim to know why the bot
+misclassified the report or pretend an installed release was tested.
+
+When PR delivery is authorized, the agent publishes the owned diff and matching
+before/after results. Tests ran on `B`; the PR is subsequently rebased to `C`.
+If inspection finds a changed timeout consumer, it reruns the affected check
+before reporting current-head validation. If the rebase only changes unrelated
+documentation and policy permits reuse, it explains that basis and explicitly
+states tests ran on `B`, not `C`.
+
+The existing receipt still says "uncommitted, no PR". The agent verifies local
+commit and remote head `C`, reads back the submitted PR, and updates that receipt:
+submitted at `C`; tests on `B`; relevant checks pending; automated review unavailable
+due to quota. It preserves the baseline results as history. A new session picks
+up those remaining gates instead of reopening the PR or treating quota as review
+approval. Without remote access, it records the last observation as such.
