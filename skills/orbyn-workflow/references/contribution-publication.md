@@ -33,8 +33,10 @@ merely to decorate a report.
 For consequential screenshots, tests and runtime observations, retain the source
 revision or exact dirty patch, baseline/candidate identity, material environment,
 fixture and observed boundary. A concise caption and existing receipt can supply
-this; no mandatory metadata form is needed. A filename or a successful screenshot
-capture does not establish which build ran. Use the reproduction owner's
+this; no mandatory metadata form is needed. Do not infer matched inputs merely
+from a before/after pair or suggestive filenames. If fixture/build linkage is
+missing, state that limit instead of claiming an equivalent comparison. A filename
+or a successful screenshot capture does not establish which build ran. Use the reproduction owner's
 [method](../../how/references/reproduction.md) for the actual checks.
 
 Present the product version in the target's expected version field, followed by
