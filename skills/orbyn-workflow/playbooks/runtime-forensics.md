@@ -27,3 +27,9 @@ probe should discriminate competing mechanisms: for example correlate generation
 and accepted operation state to distinguish stale subscription from dropped write,
 with one matched legitimate control. Keep task-owned instrumentation bounded and
 remove it afterward. Diagnosis scope grants no shared/production hotpatch authority.
+
+Record the actual client, server and worker process/build identities separately.
+Restarting a view or terminal may leave its server alive; prove ownership and
+lifecycle before replacing a process. A source/reference advertisement is not a
+ready running endpoint. Preserve the user's active services and settings; use an
+owned fixture when a destructive lifecycle probe would exceed the task scope.

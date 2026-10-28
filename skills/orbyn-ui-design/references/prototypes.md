@@ -142,3 +142,7 @@ Primary background, reviewed 25 October 2026:
 [MDN local testing](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Tools_and_setup/set_up_a_local_testing_server),
 and [W3C preliminary accessibility checks](https://www.w3.org/WAI/test-evaluate/preliminary/).
 This independently written method imports no framework, assets or visual identity.
+
+Use [technical illustration](../../technical-illustration/SKILL.md) when the output
+is a model-driven explanatory mechanism with coherent geometry/readouts and
+inspected SVG/React/print or conditional GPU paths. Ordinary app previews stay here.

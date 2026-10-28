@@ -89,3 +89,6 @@ call choreography can be sensitive yet brittle. A public discriminator/contract
 change can legitimately require updated expectations. For terminal interaction,
 select relevant prompt, resize and signal cases from the
 [CLI contract](../../architect/references/cli-contract.md).
+
+Use [test reliability](test-reliability.md) for clock propagation, cancellation
+before teardown, semantic readiness, cold caches and actual selected runner legs.

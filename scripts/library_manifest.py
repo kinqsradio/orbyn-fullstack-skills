@@ -10,6 +10,25 @@ REPOSITORY = 'https://github.com/kinqsradio/orbyn-fullstack-skills'
 MANIFEST = 'distribution/manifest.json'
 NAME = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+)*')
 EXTENSIONS = {'.md', '.json', '.py', '.sh', '.cjs', '.mjs', '.html', '.txt', '.yaml', '.yml'}
+PINNED_SUPPORT_EXTENSIONS = {'.ts', '.tsx', '.css', '.png'}
+
+
+
+def pinned_support_asset(path, root):
+    """Extra types must be declared in a canonical owner offline snapshot."""
+    if path.suffix not in PINNED_SUPPORT_EXTENSIONS:
+        return False
+    parts = path.relative_to(root).parts
+    if (len(parts) < 6 or parts[0] != 'skills'
+            or not NAME.fullmatch(parts[1]) or parts[2:4] != ('references', 'upstream')
+            or not NAME.fullmatch(parts[4])):
+        return False
+    catalog = load(root/'skills/catalog.json')
+    if parts[1] not in {item['name'] for item in catalog['skills']}:
+        return False
+    snapshot = root.joinpath(*parts[:5])/'snapshot.json'
+    return (snapshot.is_file()
+            and '/'.join(parts[5:]) in load(snapshot).get('files', {}))
 
 
 def load(path):
@@ -68,7 +87,7 @@ def inventory(root):
             safe_path(root, relative)
             if path.is_dir():
                 continue
-            if path.name != 'LICENSE' and path.suffix not in EXTENSIONS:
+            if path.name != 'LICENSE' and path.suffix not in EXTENSIONS and not pinned_support_asset(path, root):
                 raise ValueError(f'Unexpected skill asset type: {relative}')
             if path.stat().st_size > 1024 * 1024:
                 raise ValueError(f'Skill asset exceeds 1 MiB: {relative}')

@@ -158,3 +158,13 @@ For shared skill releases, use the [single-candidate release handoff](references
 Inspect existing PR dependencies before making another branch; keep one authoring
 owner and reconcile consumer edits against their recorded baseline. A green
 candidate check does not make an outdated public `main` or consumer lock current.
+
+## Shared reference-cache identity
+
+A managed reference advertisement, attached cache and actual readable source are
+separate facts. Freeze the resolved commit and selected file hashes before
+comparison; a shared cache refresh/reset can change bytes between attachment and
+a later read. Recheck identity before applying a returned finding. Preserve both
+observations on drift; do not silently replace the reference or count a catalog
+listing as readiness. Existing target restrictions and source-owned conventions
+remain evidence about that project, not universal library policy.

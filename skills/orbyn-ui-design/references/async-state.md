@@ -48,3 +48,22 @@ Reviewed 24 October 2026 against [AbortController's supported cancellation contr
 The stale-result method and examples are independently authored and framework-neutral.
 
 For turn-bound voice playback, transcript finalization and barge-in, use the provider-neutral [speech method](../../orbyn-ai-application/references/speech.md); actual capture permissions and native/audio surface require their own observation.
+
+## Generation and transport lifetimes
+
+Plugin generation, route identity and mounted screen identity are distinct leases.
+A reload during await must fence callbacks even when a route name repeats. Do not
+let a late persistence load replace newer in-memory state; compare generation and
+operation identity at application time. A command reply does not imply all events
+are delivered, and a snapshot is not an event barrier.
+
+For a PTY surface, identify the owned terminal session independently from its PID.
+Process exit can precede transport EOF; preserve pending output until the actual
+stream ends. Enforce bounded buffers in bytes with explicit overflow/backpressure
+and multibyte-boundary handling, not only character counts. Reconnect/resize/input
+require current session ownership; PID reuse is not continuity. Windows paths,
+keyboard protocol and EOF need their own actual-surface checks.
+
+For reactive locale/theme/loading transitions, use
+[localization and RTL](localization-rtl.md). A smaller Suspense boundary reduces
+the affected region; it does not prevent suspension or prove focus continuity.

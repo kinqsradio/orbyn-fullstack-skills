@@ -2,7 +2,7 @@
 
 **A growing library of connected skills for full-stack engineering with Codex, Claude Code and Cursor.**
 
-The catalog currently contains **35 skills** and evolves as real engineering gaps
+The catalog currently contains **36 skills** and evolves as real engineering gaps
 and contributions identify what is missing.
 
 Product discovery, AI applications, architecture, API design, data migrations,

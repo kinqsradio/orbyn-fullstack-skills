@@ -79,3 +79,7 @@ review/operational owners and deployed consumers only where relevant. Stop when
 the decision is supported; a local caller search does not prove deployment coverage.
 
 For requested teaching, deliberate practice or a learning retrospective, use [explanation and practice](../orbyn-workflow/references/explanation-and-recaps.md#understanding-and-practice) alongside the relevant source trace.
+
+For an authored interactive explanatory figure with model-driven geometry, motion,
+readout and export, use [technical illustration](../technical-illustration/SKILL.md).
+Ordinary explanations and simple diagrams remain here.

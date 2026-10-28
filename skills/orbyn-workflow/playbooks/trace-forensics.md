@@ -27,3 +27,15 @@ bytes and sampling/drop limits. A heap diagnosis follows a retained object throu
 its actual root path, then compares matched repeated-operation captures after a
 correction; one large allocation or missing sample cannot establish unique cause.
 Keep derived query and symbol provenance so another owner can reproduce the slice.
+
+## Process and observer identity
+
+Record client/server build, process role, run ID and actual capture completion.
+Triangulate rendered behavior, API projections and ordered durable history when
+they disagree; a fresh snapshot need not contain every earlier event. A partial
+heap file cannot support a completed heap analysis. RSS growth can reflect native
+allocation, mapped pages or allocator behavior rather than retained JS objects;
+follow actual retaining paths and matched workloads before attributing a leak.
+Account for debugger/sampling overhead. Preserve and read back the user's color,
+motion and focus preferences around a permitted attachment; an observer-induced
+media/focus change is a confound, not evidence of the product's ordinary state.

@@ -86,3 +86,6 @@ storage value or symptom does not establish same-surface reproduction. Repeat/re
 when frequency matters rather than imposing a universal twice rule. A behavior-
 preserving translated delay/environment is permissible when labeled; browser
 substitution cannot establish OS/hardware/account-specific permission behavior.
+
+If timing, cache/module identity or selected runner legs could hide the failure,
+apply [test reliability](../../tdd/references/test-reliability.md) before retrying.

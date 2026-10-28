@@ -142,3 +142,9 @@ network setup or payments; do not duplicate guessed schemas, collect credentials
 or replace private service data with web search. Available discovery alone is not
 a qualified integration. Unsupported components stay explicitly blocked/unrun,
 with their consumer owner and next observation; no install/default fallback follows.
+
+For a bounded search, record selected roots, hidden/ignore/untracked behavior and
+output limits. A no-match result applies only to the actually searched scope; a
+truncated or timed-out prefix leaves the rest unknown. Partition the selected
+scope when complete coverage matters. A query filter narrows retrieval but is
+not an OS/credential confinement boundary.

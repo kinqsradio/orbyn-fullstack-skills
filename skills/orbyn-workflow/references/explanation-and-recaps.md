@@ -42,3 +42,13 @@ queue. Give the decision, weighed options, recommendation and material evidence,
 unknowns and risks in the response; a bare link is insufficient. Do not invent a
 choice merely to fill a template. A requested video uses
 [video production](../../social-preview/references/video.md), not a storyboard claim.
+
+## Change history and retained infrastructure
+
+Ground release attribution in the actual diff and introducing history, preserving
+source notices and contribution ownership. A recent touch is not necessarily the
+introducing change. An empty permanent experiment or migration framework can be a
+retained extension boundary after feature graduation; inspect owning callers and
+future contract before calling it dead code. Dependency-report tasks stay report
+only and preserve explicitly excluded major changes; an explanation is not update
+or publication authority.
