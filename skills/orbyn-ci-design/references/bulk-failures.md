@@ -118,3 +118,5 @@ Independently authored guidance, reviewed 25 October 2026 against
 [Python SQLite](https://docs.python.org/3.11/library/sqlite3.html) and
 [pytest's flaky-test explanation](https://docs.pytest.org/en/stable/explanation/flaky.html).
 These links are update pointers; all required operating instructions are local.
+
+For multi-cause work, use [cause-to-work-item reconciliation](../../how/references/pipeline-diagnosis.md#cause-to-work-item-reconciliation): stable scoped identity, current remote readback, partial-write recovery and foreign claims. Routed remains unresolved; no automatic tracker writes or repeated routine approval stages.

@@ -7412,6 +7412,804 @@
         "message"
       ],
       "excluded": "Selection definition only; no live trial or external effect."
+    },
+    {
+      "id": "mobile-ui-m01",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Expo UI request detects actual SDK, package manager and native ownership; loads only relevant references. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Expo UI request detects actual SDK, package manager and native ownership; loads only relevant references",
+        "negative_control": "Plain web/bare RN/Swift task does not get Expo scaffolding; EAS-only native release does not get an Expo runtime install",
+        "evidence_surface": "static routing; SDK55 screen source/type/export",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m02",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Existing manually edited native tree survives upgrade planning; generated configuration has explicit owner and recovery. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Existing manually edited native tree survives upgrade planning; generated configuration has explicit owner and recovery",
+        "negative_control": "Automatic clean prebuild or deletion of native edits is a failure; disposable generated fixture tests regeneration separately",
+        "evidence_surface": "disposable generated iOS prebuild; manual tree rule source only",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m03",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Native controls and large list remain usable with text scaling, safe areas, RTL, keyboard and platform theme. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Native controls and large list remain usable with text scaling, safe areas, RTL, keyboard and platform theme",
+        "negative_control": "Grouped row container passed off as virtualized large list fails; browser-only image cannot establish iOS/Android behavior",
+        "evidence_surface": "real RNscreen web controls/large rows; native text-scale/AT/RTL cells separate",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m04",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Router deep link/auth redirect/tab/sheet/back flow preserves intended history and selected identity. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Router deep link/auth redirect/tab/sheet/back flow preserves intended history and selected identity",
+        "negative_control": "Warm/cold deep link, cancellation and stale route owner controls; generic route-name prose is insufficient",
+        "evidence_surface": "actual Router index/detail/invalid-route web; broader native history matrix open",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m05",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Gesture continues under busy RN JS on the supported UI runtime; pointer identity, release velocity and snap choice remain correct; one commit. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Gesture continues under busy RN JS on the supported UI runtime; pointer identity, release velocity and snap choice remain correct; one commit",
+        "negative_control": "Takeover/multitouch/cancel/unmount/stale callback/reduced-motion controls; haptics disabled/unavailable keeps complete visible feedback; effects happen at threshold/end, not each frame",
+        "evidence_surface": "guidance; real UI-worklet busyRN gesture unrun",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m06",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Offline request/cache scope and foreground recovery preserve account/tenant identity and stale-result guard. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Offline request/cache scope and foreground recovery preserve account/tenant identity and stale-result guard",
+        "negative_control": "Sign-out/account switch, late response, reconnect and duplicate mutation controls; simulated network is not deployed API proof",
+        "evidence_surface": "shared actualscreen controller late-response/error/dispose controls; real web retry",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m07",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: DOM/native bridge serializes supported data and preserves measured layout/input/asset behavior. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "architect"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "DOM/native bridge serializes supported data and preserves measured layout/input/asset behavior",
+        "negative_control": "Unsupported function/object transfer, unsafe origin/message and unsupported native APIs; device versus web receipts distinct",
+        "evidence_surface": "source method; actual DOM/native bridge unrun",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m08",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Native module/view owns subscription, cancellation, thread/actor and teardown; config registration is real. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "architect"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Native module/view owns subscription, cancellation, thread/actor and teardown; config registration is real",
+        "negative_control": "Unmount/callback race, duplicate listener, missing native binary symbol, permission denial; actual native compile and event checks required",
+        "evidence_surface": "source method; actual custom module/view native roundtrip unrun",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m09",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Brownfield host passes initial props, gets exactly one correlated result, cancels through RN/native/back/swipe and reopens with fresh input. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "architect"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Brownfield host passes initial props, gets exactly one correlated result, cancels through RN/native/back/swipe and reopens with fresh input",
+        "negative_control": "No stale listener/result; isolated/integrated artifact compatibility; matching Release host/artifact runs with Metro stopped; debug server success is insufficient",
+        "evidence_surface": "source method; actual brownfield Releasehost unrun",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m10",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Web-to-native plan reaches runnable shell then replaces high-value screens without losing auth/data/navigation. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "architect"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Web-to-native plan reaches runnable shell then replaces high-value screens without losing auth/data/navigation",
+        "negative_control": "False friends for CSS/DOM/storage/native input; compilation-only migration claim fails; representative iOS and Android cells named",
+        "evidence_surface": "source method; actual migratedconsumer unrun",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m11",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: SDK/media/compiler/architecture migration uses compatible versions, respects patch rationale and validates actual affected builds. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "SDK/media/compiler/architecture migration uses compatible versions, respects patch rationale and validates actual affected builds",
+        "negative_control": "Unsupported API on pinned old SDK or incidental language/compiler mode change fails; unrun platforms remain open",
+        "evidence_surface": "SDK55 basic fixture build; migrationfamilies unrun",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m12",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Store/App Clip guide identifies binary IDs, entitlement/association, versions and distribution stage. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Store/App Clip guide identifies binary IDs, entitlement/association, versions and distribution stage",
+        "negative_control": "Build/upload/submit/approved are distinct; App Clip AASA/parent association and native-module contract checked; no unauthorized upload",
+        "evidence_surface": "source method; AppClip/signing/store operations unrun",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m13",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: OTA plan matches platform/runtime/channel/branch/environment and real binary; checks activation lifecycle. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "OTA plan matches platform/runtime/channel/branch/environment and real binary; checks activation lifecycle",
+        "negative_control": "Native dependency addition with old binary is rejected; downloaded-not-activated, incompatible runtime and preview-vs-production controls",
+        "evidence_surface": "synthetic actualmapping/runtime/nativechange controls; realOTAactivation unrun",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m14",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Health report uses correct update group, cohort, window and denominator; downloads are distinguished from launches and people. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Health report uses correct update group, cohort, window and denominator; downloads are distinguished from launches and people",
+        "negative_control": "Delayed/self-reported failures, top-N OTA undercount and cross-platform duplicate people remain explicit; no samples/partial/mismatched cohorts are not zero crashes; no universal threshold",
+        "evidence_surface": "synthetic finitefailedlaunch/unknown/mismatchedcohort controls; EASread unrun",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m15",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Workflow/hosting/API example validates installed syntax, artifact/environment identity and real request authority. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Workflow/hosting/API example validates installed syntax, artifact/environment identity and real request authority",
+        "negative_control": "Untrusted PR secret access, EXPO_PUBLIC secret assumption, wrong alias and stale artifact controls; no actual deploy required for source claim",
+        "evidence_surface": "source method; installed EASserver/schema/deployedAPI unrun",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m16",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Simulator workflow uses dev binary for live iteration or source/fingerprint-matched static artifact; owns exact session/device/app/logs and preview lifetime. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Simulator workflow uses dev binary for live iteration or source/fingerprint-matched static artifact; owns exact session/device/app/logs and preview lifetime",
+        "negative_control": "Foreign session preserved; preview URL differs from simulator deep link; token dotenv ignored; owned cleanup/expiry only; unavailable access is blocked, not green; cloud effects stay scoped",
+        "evidence_surface": "owned local iOS build/session attempted; remote sessions/cloud unrun",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-u01",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Menu/sheet follows trigger origin after edge collision; current presentation/velocity survives rapid reversal and pointer-ID/multitouch ownership. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Menu/sheet follows trigger origin after edge collision; current presentation/velocity survives rapid reversal and pointer-ID/multitouch ownership",
+        "negative_control": "Teleport/stale-exit/focusable-hidden/duplicate-commit controls; correct focus and snap; reduced-motion can retain immediate final state",
+        "evidence_surface": "actualweb rapidreversal/focus/reducedmotion/cancel; velocity/anchorcollision open",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-u02",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Performance correction compares same workload/completed interaction with relevant trace; layout, hit testing and text readability remain correct. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Performance correction compares same workload/completed interaction with relevant trace; layout, hit testing and text readability remain correct",
+        "negative_control": "Screenshot-only/GPU-by-property claims fail; transform cannot silently change semantics; will-change requires measured need and bounded lifetime",
+        "evidence_surface": "actualcompleted busyweb interaction+trace; no beforeafter gain or GPUclaim",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-u03",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Mobile web supports hybrid input, cancellable activation, zoom/selection, keyboard/safe area/viewport and nested scroll. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Mobile web supports hybrid input, cancellable activation, zoom/selection, keyboard/safe area/viewport and nested scroll",
+        "negative_control": "Pointerdown destructive commit, global touch-action/zoom suppression and unreachable action fail; emulator versus device scope recorded",
+        "evidence_surface": "actualweb keyboard/cancel/overflow; mobilebrowser keyboard/zoom/nestedscroll open",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-u04",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Same component/data boundary accepts seeded schema-valid extreme Unicode/RTL/text/count/money/date/media/collection/error fixtures. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Same component/data boundary accepts seeded schema-valid extreme Unicode/RTL/text/count/money/date/media/collection/error fixtures",
+        "negative_control": "Copied toy UI, western-only initials, title-only full-value access, production data/debug leakage and invented schema limits fail",
+        "evidence_surface": "actualsameRN multilingualrows and web fullvalue/wrap fixture; broadfield matrix open",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-u05",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Swift examples preserve nested-reference semantics, actor suspension invariant, continuation exactly-once and view task lifetime on declared toolchain. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Swift examples preserve nested-reference semantics, actor suspension invariant, continuation exactly-once and view task lifetime on declared toolchain",
+        "negative_control": "Race/cancel/default-dispatch controls; unverified newer Swift syntax cannot be called compiler-qualified",
+        "evidence_surface": "Swift6.3.3strictconcurrency compile/run six semanticcontrols; SwiftUI/native event open",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-u06",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Equal-scale alternatives differ on named design axis; selection/replay is keyboard/touch/focus safe and cleanup correct. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Equal-scale alternatives differ on named design axis; selection/replay is keyboard/touch/focus safe and cleanup correct",
+        "negative_control": "Focused text input shortcuts ignored; rapid remount cancellation works; no forced three variants, fixed glass picker or default package swap",
+        "evidence_surface": "source method; variantpicker/replay nativeinteraction unrun",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-w01",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Same cause maps many tests; identical symptom may have different causes, with source evidence and counterexample. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "how"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Same cause maps many tests; identical symptom may have different causes, with source evidence and counterexample",
+        "negative_control": "Keyword cluster or model confidence alone cannot establish cause; original attempts and missing inventory preserved",
+        "evidence_surface": "source workedmanytomany cause example; no liveCIcauseclaim",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-w02",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Authorized work-item replay reconciles stable key and actual remote ID before retry after lost response. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "how"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Authorized work-item replay reconciles stable key and actual remote ID before retry after lost response",
+        "negative_control": "Duplicate label, ambiguous completion, stale title, pagination gap and cross-repository collision controls; connector stub is not live tracker proof",
+        "evidence_surface": "synthetic lostresponse/pagination/crossrepo/duplicate/readbackcontrols",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-w03",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Current claim/head/PR state wins over stale local marker; foreign owner blocks takeover; routed remains unresolved. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Current claim/head/PR state wins over stale local marker; foreign owner blocks takeover; routed remains unresolved",
+        "negative_control": "Conflicting assignment, late child, merged PR, missing read access and late write controls; no claim of atomic exclusion without actual API mechanism",
+        "evidence_surface": "synthetic currentreadback/foreign/stalecandidate/terminal/paginationcontrols; atomiclock notclaimed",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-w04",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Research-only request ends with findings; authorized implementation continues routine work; no-merge endpoint holds. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Research-only request ends with findings; authorized implementation continues routine work; no-merge endpoint holds",
+        "negative_control": "No automatic Jira/Confluence writes, councils, provider changes or per-stage approval ceremony; scope tested through visible actions",
+        "evidence_surface": "development outcomecriteria; liveagentscopetrial unrun",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-m17",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Experimental module macro migration checks paired macro/core support and preserves JS names/events/defaults/requiredness/static placement, queue and error meaning. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "architect"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Experimental module macro migration checks paired macro/core support and preserves JS names/events/defaults/requiredness/static placement, queue and error meaning",
+        "negative_control": "Retain unsupported DSL; reject duplicate registration/hooks, missing core or changed pre-first-await execution; actual running-app module lookup and TS/native roundtrip required",
+        "evidence_surface": "source method; paired macro/core native migration unrun",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-u07",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Supported reduced-transparency/increased-contrast preferences keep useful feedback and readable solid/high-contrast surfaces. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Supported reduced-transparency/increased-contrast preferences keep useful feedback and readable solid/high-contrast surfaces",
+        "negative_control": "Unsupported preference is recorded, not invented; decorative material cannot hide controls/readouts; rendered/native evidence on claimed surface",
+        "evidence_surface": "source method + readable solidwebfallback; nativepreferences open",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-u08",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Notification stable-ID update/unmount/retry preserves one current operation and intended multiple notification surfaces. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Notification stable-ID update/unmount/retry preserves one current operation and intended multiple notification surfaces",
+        "negative_control": "Stale completion cannot replace current result or duplicate feedback; durable outcome remains elsewhere; exact Sonner API only if installed/version-checked",
+        "evidence_surface": "synthetic operationfeedback token/retry/multiplesurface; Sonner integration unrun",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-e01",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Mobile evaluation reaches requested screen and binds capture to source/binary, fixture, runtime and device. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Mobile evaluation reaches requested screen and binds capture to source/binary, fixture, runtime and device",
+        "negative_control": "Root screen instead of requested flow, blank/error/dialog, old binary or incompatible Expo Go invalidates claim; missing required platform stays incomplete",
+        "evidence_surface": "synthetic nonemptycaptureidentity+requestedwrongblankerrorcontrols; actualwebrequestedflow",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-e02",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this bounded implementation/evidence task: Reused result matches exact skill/harness/scenario/model/tool/SDK/environment and trusted provenance. Explain the local correction and evidence needed. Preserve the requested scope.",
+      "expected_skills": [
+        "orbyn-skill-creator"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Instructed development definition, not a live model result or authority for service effects.",
+      "rubric": {
+        "decision": "Reused result matches exact skill/harness/scenario/model/tool/SDK/environment and trusted provenance",
+        "negative_control": "Reject stale/tampered/foreign/PR-promoted baseline; natural routing cannot inherit candidate skills; no shared-cache implementation mandated",
+        "evidence_surface": "synthetic trusted/nonemptyfullidentity/effortprocessingcontrols; pairedagentpilot prospective",
+        "boundary": "Retain target ownership, nesting, model defaults and permissions; source, synthetic, web, native, service and agent results remain distinct."
+      }
+    },
+    {
+      "id": "mobile-ui-adjacent-plain-web",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Adjust a browser CSS form without choosing a new stack.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Adjacent route definition; no scaffolding, provider or model change or live effect."
+    },
+    {
+      "id": "mobile-ui-adjacent-bare-swift",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Fix this Swift actor stale-save race in a native-only app.",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Adjacent route definition; no scaffolding, provider or model change or live effect."
+    },
+    {
+      "id": "mobile-ui-adjacent-eas-only",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Plan EAS delivery for an existing native iOS app; do not install Expo runtime.",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Adjacent route definition; no scaffolding, provider or model change or live effect."
+    },
+    {
+      "id": "mobile-ui-adjacent-research-only",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Research possible CI causes and report findings; no writes or issue creation.",
+      "expected_skills": [
+        "how"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Adjacent route definition; no scaffolding, provider or model change or live effect."
+    },
+    {
+      "id": "mobile-ui-adjacent-no-motion",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Explain a quiet frequent button that needs no new animation.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Adjacent route definition; no scaffolding, provider or model change or live effect."
     }
   ]
 }

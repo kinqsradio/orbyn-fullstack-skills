@@ -82,3 +82,5 @@ current constraints to one replacement and account for the old worker. A late ol
 patch cannot overwrite the replacement. C receives A's verified artifact, not a
 stale task summary. At a no-merge endpoint both PRs remain unmerged despite a wake.
 This example is guidance, not evidence that a host executed the lifecycle.
+
+For multi-cause work, use [cause-to-work-item reconciliation](../../how/references/pipeline-diagnosis.md#cause-to-work-item-reconciliation): stable scoped identity, current remote readback, partial-write recovery and foreign claims. Routed remains unresolved; no automatic tracker writes or repeated routine approval stages.

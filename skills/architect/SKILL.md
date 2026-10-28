@@ -154,3 +154,7 @@ prove the selected body or its nested data is current. Invalidate at the owning
 boundary, preserving failures/unavailable sources instead of silently reusing stale
 bytes as current. This is a generic registry contract, not a source-product setup
 procedure or requirement for a new registry.
+
+## Native boundaries
+
+For Expo modules/views/config plugins, DOM/native bridges, brownfield and incremental web migration, use [mobile boundaries](references/mobile-boundaries.md). Preserve target-native ownership; no automatic scaffolding or macro migration.

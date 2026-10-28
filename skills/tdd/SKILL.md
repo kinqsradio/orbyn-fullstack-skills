@@ -62,3 +62,7 @@ live model calls for ordinary deterministic changes.
 When clocks, async cleanup, readiness, module identity or runner legs can hide the
 assertion, use [test reliability](references/test-reliability.md). Preserve actual
 production/fixture boundaries and first-attempt evidence.
+
+## Mobile qualification
+
+Use [mobile verification](references/mobile-verification.md) for actual Expo/RN requested-screen, binary/device and native evidence. Deterministic fixtures and screenshots do not close missing platforms or paid-service cells.

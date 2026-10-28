@@ -49,3 +49,5 @@ alone save 50% of the same total. Do not invent hardware bandwidth. A zero-work
 or error-fast path is not a gain. On plateau, use evidence to rank a different
 mechanism or stop at the declared budget with an inconclusive/blocked result;
 no arbitrary minimum iteration count, relaxed target or unlimited hillclimb.
+
+For ordinary UI or RN motion, read the [motion performance method](../../orbyn-ui-design/references/animation-performance.md). Compare the same completed interaction under the same workload, preserving input/layout and runtime identity; screenshots alone cannot establish speed.

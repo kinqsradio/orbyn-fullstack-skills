@@ -374,3 +374,5 @@ boundaries, async UI recovery and consumer-owned verification recipes. TypeScrip
 lives beside the other language guides under language-best-practices; its retired
 reading-group alias resolves to that owner without creating another active skill.
 The agent selects the relevant methods from the task and preserves project policy.
+
+For Expo/RN and EAS tasks, the [mobile engineering index](skills/orbyn-workflow/references/mobile-engineering.md) selects existing runtime, UI, architecture, API, verification and release owners. Ordinary [motion](skills/orbyn-ui-design/references/motion.md), [mobile web](skills/orbyn-ui-design/references/mobile-web.md) and [adverse fixtures](skills/orbyn-ui-design/references/stress-fixtures.md) remain conditional; no plugin installation or consumer migration is required.

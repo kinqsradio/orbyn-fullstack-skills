@@ -231,3 +231,7 @@ and explanation to the task without lowering correctness or creating role-specif
 skill catalogs. Cross-team strategy belongs to the planning owner.
 For prototypes, evidence or local servers, use [artifact lifecycle](references/artifact-lifecycle.md)
 to choose storage, retain the human handoff and clean only owned disposable resources.
+
+## Mobile engineering
+
+For demonstrated Expo/React Native work or EAS delivery, use the conditional [mobile routing index](references/mobile-engineering.md). Generic mobile stack choices keep stack-selection; bare native and mobile web retain their own owners.

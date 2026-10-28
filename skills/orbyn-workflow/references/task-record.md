@@ -66,3 +66,5 @@ For retained previews or running resources, add only the useful path/URL, curren
 state, process/session ownership and cleanup/restart condition from
 [artifact lifecycle](artifact-lifecycle.md). Preserve an existing record instead
 of requiring another resource manifest for every task.
+
+For multi-cause work, use [cause-to-work-item reconciliation](../../how/references/pipeline-diagnosis.md#cause-to-work-item-reconciliation): stable scoped identity, current remote readback, partial-write recovery and foreign claims. Routed remains unresolved; no automatic tracker writes or repeated routine approval stages.

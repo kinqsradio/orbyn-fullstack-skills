@@ -37,3 +37,41 @@ examples are usable offline. The links identify semantics and update evidence;
 verify compatibility with the project's target before using newer APIs.
 
 [Swift concurrency](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/), [Swift ARC](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/automaticreferencecounting/).
+
+## Semantic depth and asynchronous adapters
+
+A struct copy copies stored values; a stored class reference still aliases its
+instance. Copying `[Box]` or a struct containing Box is not a deep immutable snapshot.
+Choose immutable value payloads or an explicit copy when isolation needs it. Resolve
+`some` (one hidden concrete type) versus `any` (existential) at the actual API;
+protocol requirements participate in witness dispatch, extension-only methods do
+not gain dynamic dispatch merely because a concrete type shadows the name.
+Keep noncopyable/transfer features gated to the declared compiler/language mode.
+
+An actor can interleave after suspension. Capture generation/identity, await the
+external work, then revalidate the invariant before mutation. An isolated method
+is not an atomic transaction across await. Keep task groups bounded and drain/
+propagate cancellation/errors; detached tasks need explicit completion/lifetime.
+SwiftUI `.task(id:)` tracks view identity but adapters must still consume cancellation
+and fence late callbacks. Do not attach long-lived work to a transient view without
+an owner, and never infer that cancelling a task rolls back a remote write.
+
+For callback bridges, a checked continuation must resume exactly once. Coordinate
+callback, failure and cancellation through one synchronized state; cancellation
+can arrive before continuation attachment. Store the winning result, detach under
+the lock, resume after releasing it, and ignore later completions. `@unchecked
+Sendable` requires an audited synchronization proof, not warning suppression.
+Cancellation handlers cannot blindly call a nonisolated, unsynchronized UI owner.
+Keep actor/thread requirements, pre-first-await execution and errors across native
+module calls explicit. Use weak captures only for actual cycles; a weak owner
+silently disappearing can also lose a necessary completion.
+
+The original synthetic `tests/fixtures/mobile-ui-workflow/swift-contracts.swift`
+compiles on the toolchain recorded in the verification report and exercises nested
+reference aliasing, requirement/extension dispatch, actor generation and callback/
+cancellation races. It does not qualify SwiftUI view lifecycle, a native module or
+all possible thread interleavings. Use the target's supported Swift Testing/XCTest
+and strict concurrency configuration; preserve its language mode during migration.
+Measure allocation/ARC work before replacing safe abstractions with unsafe memory.
+Privacy-aware logs should omit raw user data and stable secrets; actor safety is
+not a license to capture telemetry.

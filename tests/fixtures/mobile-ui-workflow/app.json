@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "Orbyn Workflow Fixture",
+    "slug": "orbyn-workflow-fixture",
+    "scheme": "orbyn-workflow",
+    "version": "1.0.0",
+    "ios": {
+      "bundleIdentifier": "dev.orbyn.workflowfixture",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "dev.orbyn.workflowfixture"
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}

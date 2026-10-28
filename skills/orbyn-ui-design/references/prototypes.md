@@ -146,3 +146,15 @@ This independently written method imports no framework, assets or visual identit
 Use [technical illustration](../../technical-illustration/SKILL.md) when the output
 is a model-driven explanatory mechanism with coherent geometry/readouts and
 inspected SVG/React/print or conditional GPU paths. Ordinary app previews stay here.
+
+## Comparable alternatives and replay
+
+When alternatives answer a real question, name the axis (density, navigation,
+feedback or content priority), keep the same scale, real task/data and starting
+state, and make selection and replay keyboard/touch/focus safe. Do not force three
+variants, a fixed glass picker, a package swap or a permanent debug route. Ignore
+single-key shortcuts while editing text or using modifiers/composition; label the
+selected option, preserve focus, respect RTL and cancel the previous replay/remount
+before starting another. Old callbacks cannot mutate the next variant. Keep the
+selected source/candidate identity with captures. Preserve previews through review;
+selection alone is not permission to delete work or commit an alternative.
