@@ -197,3 +197,5 @@ phone use explicit Source and Preview views. Do not embed the main editor inside
 a code block or make a full PDF page the default typing preview. Assess readable
 content, hierarchy, and space to work in the rendered product; functional controls
 and containment alone do not establish a successful design.
+
+For changed motion, touch/viewport and adverse data, choose the conditional [motion](motion.md), [mobile-web](mobile-web.md) and [stress-fixture](stress-fixtures.md) methods. Preserve actual tokens and platform capabilities; no blanket timing, haptic, material or library defaults.

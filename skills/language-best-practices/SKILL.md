@@ -74,3 +74,7 @@ the language permits. Parse external/persisted data at runtime; types and casts
 prove neither authorization nor freshness. Avoid ceremony that burdens callers.
 The [type-system method](references/principles/type-system-discipline.md) supplies
 a worked check; implementation details stay in the relevant language reference.
+
+## Expo runtime
+
+When Expo is actually present or explicitly selected, inspect [SDK/runtime and native ownership](references/mobile/expo-runtime.md), then the affected language guide. EAS-only native delivery does not select an Expo runtime migration.

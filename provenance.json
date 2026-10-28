@@ -132,6 +132,17 @@
           "license_file": "skills/architect/references/verification-LICENSE.txt",
           "license_sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
           "changes": "Selected behavioral modeling, falsification and drift methods integrated into existing owners; target conventions, proportional preview rigor and exact source identity preserved. No upstream scripts imported."
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/architect/references/mobile-boundaries.md",
+          "license_file": "skills/architect/references/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         }
       ],
       "reviewed_sources": [
@@ -328,6 +339,17 @@
           "local_path": "skills/orbyn-backend-design/references/principles/make-operations-idempotent.md",
           "license_file": "skills/orbyn-backend-design/references/principles/LICENSE.txt",
           "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/orbyn-backend-design/references/expo-api-routes.md",
+          "license_file": "skills/orbyn-backend-design/references/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         }
       ],
       "reviewed_sources": [
@@ -352,6 +374,52 @@
           "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
+      ],
+      "incorporated_material": [
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ci-design/references/mobile/workflows-and-hosting.md",
+          "license_file": "skills/orbyn-ci-design/references/mobile/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ci-design/references/mobile/build-and-upgrade.md",
+          "license_file": "skills/orbyn-ci-design/references/mobile/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ci-design/references/mobile/distribution.md",
+          "license_file": "skills/orbyn-ci-design/references/mobile/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ci-design/references/mobile/updates-and-health.md",
+          "license_file": "skills/orbyn-ci-design/references/mobile/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         }
       ]
     },
@@ -570,6 +638,182 @@
           "local_path": "skills/orbyn-ui-design/references/redesign-contract.md",
           "license_file": "skills/orbyn-ui-design/references/hallmark-LICENSE.txt",
           "license_sha256": "06088a8b94598626f27612dea42300154bf7be967c85d9d3eee4490cb056af7d"
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/stress-fixtures.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/motion.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/animation-performance.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/mobile-web.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/mobile/motion.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/mobile/navigation.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/mobile/native-ui.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/mobile/data-and-lifecycle.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
+          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "copyright": "Copyright (c) 2026 Emil Kowalski",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/stress-fixtures.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/emil-LICENSE.txt",
+          "license_sha256": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
+          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "copyright": "Copyright (c) 2026 Emil Kowalski",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/motion.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/emil-LICENSE.txt",
+          "license_sha256": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
+          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "copyright": "Copyright (c) 2026 Emil Kowalski",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/animation-performance.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/emil-LICENSE.txt",
+          "license_sha256": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
+          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "copyright": "Copyright (c) 2026 Emil Kowalski",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/mobile-web.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/emil-LICENSE.txt",
+          "license_sha256": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
+          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "copyright": "Copyright (c) 2026 Emil Kowalski",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/mobile/motion.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/emil-LICENSE.txt",
+          "license_sha256": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
+          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "copyright": "Copyright (c) 2026 Emil Kowalski",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/mobile/navigation.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/emil-LICENSE.txt",
+          "license_sha256": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
+          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "copyright": "Copyright (c) 2026 Emil Kowalski",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/mobile/native-ui.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/emil-LICENSE.txt",
+          "license_sha256": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
+          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "copyright": "Copyright (c) 2026 Emil Kowalski",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/mobile/data-and-lifecycle.md",
+          "license_file": "skills/orbyn-ui-design/references/mobile/emil-LICENSE.txt",
+          "license_sha256": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         }
       ],
       "reviewed_sources": [
@@ -684,6 +928,17 @@
           "local_path": "skills/orbyn-workflow/references/principles/separate-before-serializing-shared-state.md",
           "license_file": "skills/orbyn-workflow/references/principles/LICENSE.txt",
           "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/orbyn-workflow/references/mobile-engineering.md",
+          "license_file": "skills/orbyn-workflow/references/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         }
       ],
       "reviewed_sources": [
@@ -874,6 +1129,28 @@
           "license_file": "skills/tdd/references/verification-LICENSE.txt",
           "license_sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
           "changes": "Selected behavioral modeling, falsification and drift methods integrated into existing owners; target conventions, proportional preview rigor and exact source identity preserved. No upstream scripts imported."
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/tdd/references/mobile-verification.md",
+          "license_file": "skills/tdd/references/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
+          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "copyright": "Copyright (c) 2026 Emil Kowalski",
+          "license": "MIT",
+          "local_path": "skills/tdd/references/mobile-verification.md",
+          "license_file": "skills/tdd/references/emil-LICENSE.txt",
+          "license_sha256": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         }
       ],
       "reviewed_sources": [
@@ -999,6 +1276,50 @@
           "local_path": "skills/language-best-practices/references/principles/type-system-discipline.md",
           "license_file": "skills/language-best-practices/references/principles/LICENSE.txt",
           "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/language-best-practices/references/swift.md",
+          "license_file": "skills/language-best-practices/references/mobile/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
+          "license": "MIT",
+          "local_path": "skills/language-best-practices/references/mobile/expo-runtime.md",
+          "license_file": "skills/language-best-practices/references/mobile/expo-LICENSE.txt",
+          "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
+          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "copyright": "Copyright (c) 2026 Emil Kowalski",
+          "license": "MIT",
+          "local_path": "skills/language-best-practices/references/swift.md",
+          "license_file": "skills/language-best-practices/references/mobile/emil-LICENSE.txt",
+          "license_sha256": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
+          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "copyright": "Copyright (c) 2026 Emil Kowalski",
+          "license": "MIT",
+          "local_path": "skills/language-best-practices/references/mobile/expo-runtime.md",
+          "license_file": "skills/language-best-practices/references/mobile/emil-LICENSE.txt",
+          "license_sha256": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b",
+          "relationship": "selected-method-adaptation",
+          "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         }
       ],
       "reviewed_sources": [

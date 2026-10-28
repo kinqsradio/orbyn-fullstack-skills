@@ -144,3 +144,7 @@ node/assets-to-primitives mapping, use [design intake](references/design-intake.
 For bidirectional, translated or live-locale interfaces, use
 [localization and RTL](references/localization-rtl.md), preserving actual language,
 direction, focus/input and native-surface evidence separately.
+
+## Motion and mobile surfaces
+
+For ordinary transitions/gestures use [motion](references/motion.md) and measured [motion performance](references/animation-performance.md). For browser touch/keyboard/viewport use [mobile web](references/mobile-web.md), and real schema/data extremes use [stress fixtures](references/stress-fixtures.md). Demonstrated Expo/RN screens select [native UI](references/mobile/native-ui.md), [navigation](references/mobile/navigation.md), [data/lifecycle](references/mobile/data-and-lifecycle.md) or [UI-runtime motion](references/mobile/motion.md) only as relevant.

@@ -67,3 +67,16 @@ keyboard protocol and EOF need their own actual-surface checks.
 For reactive locale/theme/loading transitions, use
 [localization and RTL](localization-rtl.md). A smaller Suspense boundary reduces
 the affected region; it does not prevent suspension or prove focus continuity.
+
+## Notification identity
+
+Notifications observe an operation; they do not own the durable result. Keep stable
+operation ID plus current attempt/generation and intended surface. Retry may update
+the same notification; a late old success/error cannot overwrite the new attempt,
+dismiss another surface, or duplicate the outcome. Remove subscriptions on unmount
+without discarding a still-owned operation. Keep completed/error status available
+in the task view after the toast disappears. Multiple notification surfaces are
+legitimate when intentionally targeted. For an installed Sonner version inspect
+its actual `toast` ID/update/promise/dismiss and toaster-target APIs; do not install
+it or assert root-only mounting universally. No toast conveys authorization or
+replaces field-level errors, recovery and accessible live feedback.

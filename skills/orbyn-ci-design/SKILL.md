@@ -83,3 +83,7 @@ When AI behavior changes, use [application evaluations](../orbyn-ai-application/
 to select affected task-quality evidence alongside deterministic contract gates.
 Do not turn every PR into a paid model sweep or treat static skill-case validation
 as application quality. Existing live-call, data and deployment authority applies.
+
+## Mobile build and delivery
+
+For demonstrated Expo/EAS or native-only EAS delivery, select [build/upgrade](references/mobile/build-and-upgrade.md), [distribution/App Clip](references/mobile/distribution.md), [OTA and health](references/mobile/updates-and-health.md), or [workflows/hosting](references/mobile/workflows-and-hosting.md). Keep native artifact, activation, store/service and health evidence distinct.

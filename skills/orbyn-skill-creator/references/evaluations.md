@@ -323,3 +323,34 @@ frozen candidate. Keep supported task-local state isolation separate from global
 configuration. A dropped setting, unavailable connector or cloud-to-worktree
 substitution is not equivalent capability. Retain blocked host cells; one host's
 fixture pass cannot close another host's behavior.
+
+## Mobile applicability and trusted result reuse
+
+Bind a capture to source/lock, skill/harness/scenario hashes, fixture/seed, requested
+screen/state, platform/SDK/RN/native binary/build and named device/OS. Navigate to
+that screen before capture; home/blank/error/dialog, stale binary or incompatible
+Expo Go cannot pass. Keep required platform cells even when infrastructure is
+missing; numeric visual scores do not establish accessibility or native behavior.
+
+Optional reuse requires complete matching skill, harness, scenario/prompt, model,
+effort/processing, tool/permission protocol, SDK, fixture and environment identity,
+plus trusted producer and checked artifact manifest/hash. Missing fields, tampering,
+foreign provenance and untrusted PR promotion invalidate reuse. A main-produced
+trusted baseline and a PR restore-only consumer have different authority. No shared
+cache service is mandated. Baseline discovery must not inherit candidate skills,
+global plugins or answer keys; record actual isolation and metadata observed.
+
+The mobile/UI pilot protocol is a prospective paired8task×3trial×2condition design
+(48 executions) in the synthetic fixture, not 48 completed runs. Probe the actual
+supported host/settings and context isolation first. Retain blocker and failed
+attempts if exact model/effort/processing cannot be observed or no clean paired
+execution is available; do not substitute a CLI/provider/model to manufacture
+results. Deterministic helper/browser/native evidence is reported separately.
+
+If the provider returns a shared quota/capacity error such as HTTP429, stop
+launching queued trials after confirming that common cause. Preserve in-flight
+attempts and classify remaining cells as not run or infrastructure-blocked; do not
+score absent answers as skill failures or silently retry under another model/tier.
+A bounded retry needs a justified recovery window and the same frozen protocol;
+otherwise deliver the partial comparison with planned, attempted, completed and
+blocked counts. Host readiness passing once does not reserve capacity for a panel.

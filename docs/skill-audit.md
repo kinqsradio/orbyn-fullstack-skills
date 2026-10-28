@@ -564,3 +564,7 @@ offline source/dependency/test/fixture accounting. New development cases and
 implementation evidence remain separate from actual agent behavior. Full live
 illustration/platform qualification is incomplete until its actual required
 checks and independent review pass; core SVG does not qualify advanced paths.
+
+## Mobile and UI method extension
+
+The existing 36 owners now route conditional Expo/RN/EAS, motion/mobile-web/stress, Swift and cause-reconciliation methods. [Coverage](work/mobile-ui-workflow-coverage.json) records each selected source family and 31 acceptance groups; [verification](work/mobile-ui-workflow-verification.md) separates static, fixture, browser, native, service and agent evidence. This extension does not change nesting, runtime providers, model defaults, memory or the REA engine.

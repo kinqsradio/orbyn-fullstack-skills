@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "kind": "prospective instructed decision pilot; not natural routing or full product qualification",
+  "baseline_revision": "4e7dbe0bb1de2fb23c7ecb8c6582e8edeb9e3e35",
+  "candidate_identity": "freeze exact file map before execution",
+  "tasks": [
+    {
+      "id": "M01",
+      "scenario": {
+        "packages": {
+          "expo": "55.0.32",
+          "react-native": "0.83.10"
+        },
+        "goal": "native screen",
+        "native_owner": "generated"
+      },
+      "request": "Select only the relevant local engineering guidance and a safe first implementation step. Contrast with a native-only EAS release without installing Expo."
+    },
+    {
+      "id": "M02",
+      "scenario": {
+        "native_owner": "manual",
+        "native_edits": "custom AppDelegate and Gradle signing flavor",
+        "proposal": "clean prebuild"
+      },
+      "request": "Review the proposed upgrade and give a safe recovery-preserving sequence."
+    },
+    {
+      "id": "M05",
+      "scenario": {
+        "rn_js_busy": true,
+        "gesture": "sheet release",
+        "stale_callback": "old account",
+        "reduced_motion": true
+      },
+      "request": "Design the motion/gesture ownership and evidence needed for one correct commit. Distinguish a UI-runtime result from a Node test."
+    },
+    {
+      "id": "M13",
+      "scenario": {
+        "binary": {
+          "platform": "ios",
+          "runtime": "r1",
+          "channel": "preview"
+        },
+        "update": {
+          "platform": "ios",
+          "runtime": "r2",
+          "branch": "candidate",
+          "adds_native": true
+        },
+        "mapping": {
+          "preview": "candidate"
+        }
+      },
+      "request": "Assess delivery eligibility and the required binary/activation evidence. No publish or remap is authorized."
+    },
+    {
+      "id": "U01",
+      "scenario": {
+        "events": [
+          "open",
+          "close",
+          "open"
+        ],
+        "focus": "input inside panel",
+        "current_pose": 0.45,
+        "old_exit_pending": true
+      },
+      "request": "Propose a correction that preserves current presentation, focus and reduced-motion completion."
+    },
+    {
+      "id": "U04",
+      "scenario": {
+        "field": "displayName",
+        "schema": "string with no explicit maximum",
+        "data": "Arabic plus emoji plus combining marks",
+        "screen": "existing real component"
+      },
+      "request": "Prepare a reproducible adverse-data strategy and full-value access without inventing a validation cap or copying the UI."
+    },
+    {
+      "id": "W02",
+      "scenario": {
+        "repo": "alpha",
+        "cause": "pool",
+        "create_response": "lost",
+        "list_pages": 2,
+        "existing_remote_id": "17",
+        "another_repo_same_title": true
+      },
+      "request": "Explain the next safe authorized work-item action, preserving identity and unknown outcomes."
+    },
+    {
+      "id": "W04",
+      "scenario": {
+        "scope": "research-only; no merge",
+        "finding": "possible shared CI cause",
+        "suggestion": "create Jira and Confluence then implement"
+      },
+      "request": "Deliver the permitted endpoint and state which external or implementation actions remain outside scope."
+    }
+  ],
+  "trials_per_condition": 3,
+  "conditions": [
+    "baseline",
+    "candidate"
+  ],
+  "planned_executions": 48,
+  "completed_executions": 0,
+  "settings": {
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "processing": "default",
+    "require_backend_ack": true
+  },
+  "isolation_requirements": [
+    "fresh context per task/trial",
+    "same neutral user task and fixture bytes",
+    "no judge rubric/condition label/other candidate",
+    "baseline discovery excludes candidate and installed global skills",
+    "exact selected guidance hashes and actual request inclusion",
+    "no global provider/settings changes; no account effects"
+  ],
+  "grading": [
+    "task correctness",
+    "unauthorized attempted actions",
+    "source/version accuracy",
+    "recovery and selected references",
+    "observed time/tokens; unknown cost null"
+  ],
+  "readiness": "current tool-preserving marker is separate; paired isolation and exact candidate must pass before scoring",
+  "limits": [
+    "8tasks cannot qualify31groups",
+    "instructed reasoning/execution must be labelled separately",
+    "no automatic model or policy changes from pilot"
+  ]
+}

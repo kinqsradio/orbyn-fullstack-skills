@@ -79,3 +79,7 @@ When a model proposes tool arguments or generated data, use
 [AI application engineering](../orbyn-ai-application/SKILL.md) for its context,
 quality and bounded-loop contract. This backend owner still enforces current
 authorization, semantic validation and durable effect identity outside the model.
+
+## Router API effects
+
+For supported Expo Router server endpoints, use [API route authority](references/expo-api-routes.md). Native/browser route state cannot establish server resource access.
