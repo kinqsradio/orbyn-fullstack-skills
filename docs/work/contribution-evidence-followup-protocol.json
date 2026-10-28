@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "scope": "Instructed synthetic artifact decisions; no real publication, source execution, natural skill routing, screenshot visual inspection or engineering performance qualification.",
+  "baseline_revision": "6071f248fb4fb4ff0dfd7fc76a1971891e141e7a",
+  "candidate_revision": "32e81a8a06eb32287f6548a1618c3623ed56e128",
+  "suite_sha256": "9273766bddc7b56c4a599a105e235a9eaf6583ef75e9152e3b0fc03fcb5e7606",
+  "case_ids": [
+    "contribution-evidence-issue-baseline",
+    "contribution-evidence-preview-only",
+    "contribution-evidence-no-screenshot"
+  ],
+  "case_objects_sha256": "49d49989bcd373d68469ec4c2cde64471a195d65f41793449c982f2146d3689f",
+  "guidance_paths": [
+    "skills/orbyn-workflow/playbooks/contribution-intake.md",
+    "skills/orbyn-workflow/playbooks/opening-a-pr.md",
+    "skills/orbyn-workflow/references/task-record.md",
+    "skills/orbyn-workflow/references/contribution-examples.md",
+    "skills/orbyn-workflow/references/contribution-publication.md"
+  ],
+  "guidance_sha256": {
+    "baseline": "8ab2cb413626872825507865cf701f7298179cc6fce718b5c82c302f5a7aa058",
+    "candidate": "34f5ac9706ea88c39b2ed19ab2386800312849f8a95c2fdbad02a20bb167fe83"
+  },
+  "task_wrapper": "Use the supplied engineering guidance for the following synthetic contribution task. Produce only the requested draft or decision in your final answer. Do not call tools, change files, publish, message others or claim actions were executed. Treat fixture observations as supplied facts, not observations you performed. The guidance is deliberately injected; this is not a discovery/routing test.\n\nGUIDANCE\n{guidance}\n\nTASK\n{task}\n",
+  "trials_per_case_per_condition": 1,
+  "order": "Case order from frozen suite; alternate baseline/candidate then candidate/baseline across cases. Sequential executions.",
+  "host": "codex-cli 0.163.0-alpha.10.2 (installed desktop bundled CLI)",
+  "model": "gpt-6.1-sol; configured reasoning medium; service tier default; effective effort not independently echoed",
+  "capabilities": "read-only, no tools permitted by task; web, apps, plugins, memories, hooks, shell, browser, code mode and multi-agent features disabled per-run; skill discovery disabled with explicit SKILL.md overrides. Prompt inventory retained. Readiness self-report lists orchestration functions despite flags; evaluate observed tool calls, do not claim tool unavailability.",
+  "timeout_seconds": 90,
+  "retry": "No automatic retry; retain failed/timeout attempt and mark unverified; any follow-up is a separate recorded attempt.",
+  "grading": "Owning agent reviews exact captured final answers against three frozen criteria per case. Not independent or blind. Record exact evidence excerpts; no keyword-only automatic scoring.",
+  "retention": "Raw prompts, visible events, answers, invocation options, inventory, readiness and scored run files retained in ignored output/contribution-evidence. No hidden reasoning retained.",
+  "purpose": "Separate targeted follow-up after an unsupported same-input claim; initial nine-case comparison remains frozen, not regraded or combined."
+}
