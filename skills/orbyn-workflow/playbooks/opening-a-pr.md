@@ -22,12 +22,14 @@ Use [delivery feasibility](contribution-intake.md#check-delivery-feasibility-whe
 for a requested submitted endpoint before expensive work; unknown capacity remains
 unknown, and a rejected submission needs evidence-led diagnostics, not probe PRs.
 
-Confirm PR creation is part of the requested delivery. Inspect the exact owned diff, checks and target branch. Exclude unrelated files and secrets. Write a concise body with actual evidence and limits, create the requested PR and attach it when the host supports attachments. Merge or publish only within authorization. No automatic babysitting job or separate session.
+Confirm PR creation is part of the requested delivery. Inspect the exact owned diff, checks and target branch. Exclude unrelated files and secrets. Write a [proportionate body](../references/contribution-publication.md#scale-the-body-to-the-review-decision) with actual evidence, material tradeoffs and limits, create the requested PR and attach it when the host supports attachments. Merge or publish only within authorization. No automatic babysitting job or separate session.
 
 Use the parent [workflow](../SKILL.md) and repository scope.
 Use [publication evidence](../references/contribution-publication.md) for issue/PR
 content, tested revisions, readback and reconciliation of an existing delivery
-receipt. Keep the bug report and fix PR useful for their respective purposes.
+receipt. A bug issue describes the affected behavior and reproduction; the fix PR
+describes the correction and validation. Keep candidate success out of the issue
+by default unless a proposed-fix discussion is requested or required by the target.
 
 
 ## State the benefit before publication
