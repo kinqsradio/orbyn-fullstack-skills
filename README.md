@@ -284,6 +284,12 @@ uses bundled pinned compiler source with explicit local prerequisites. The
 stale-completion bug, fixed bounded check, real-method replay and generated
 HTML/SVG preview. No automatic tool installation or production-proof claim.
 
+For optional colour direction, the [semantic-colour guide](skills/orbyn-ui-design/references/colour-palettes.md)
+and [offline gallery](skills/orbyn-ui-design/examples/colour-gallery/guide.md)
+separate reference hex labels, derived light/dark roles and per-context contrast
+checks. Existing project brands win; no automatic theme adoption or accessibility
+certification is implied.
+
 Routine work relies on its diff, PR and CI. When a long task or handoff needs a
 checkpoint, the agent maintains the minimum useful project-owned record without
 another human invocation. The template includes helpers and synthetic examples;

@@ -52,6 +52,11 @@ Ask whether substituting another product's name would leave every design decisio
 unchanged. If so, strengthen the content and hierarchy rather than adding ornament.
 Novelty is useful only when it improves comprehension, identity or task completion.
 
+For a supplied colour reference or an unbranded palette decision, use the
+[semantic-colour method](colour-palettes.md) to separate confirmed labels from
+role proposals, unknowns and actual contrast evidence. Keep existing target tokens
+unless their change is in scope; a swatch collection is not a complete UI theme.
+
 ## Turn the direction into a coherent system
 
 Reuse the project's tokens and components. If none exist, define a small set of

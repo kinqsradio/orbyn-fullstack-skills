@@ -55,6 +55,16 @@ class LibraryInventoryTests(unittest.TestCase):
         self.assertIn('skills/architect/package.json', assets)
         self.assertIn('skills/architect/references/upstream/pstack-statechart/compiler/statechart.ts', assets)
 
+    def test_colour_reference_gallery_assets_are_managed_without_screenshots(self):
+        assets=sync.inventory(ROOT)
+        for relative in ['assets/reference-palettes.json','references/colour-palettes.md',
+                         'scripts/colour_contrast.py','scripts/build_colour_gallery.py',
+                         'examples/colour-gallery/gallery.html','examples/colour-gallery/gallery.mjs',
+                         'examples/colour-gallery/guide.md']:
+            self.assertIn('skills/orbyn-ui-design/'+relative,assets)
+        self.assertFalse(any(p.suffix.lower() in {'.jpg','.jpeg','.png'}
+                             for p in (ROOT/'skills/orbyn-ui-design/examples/colour-gallery').rglob('*')))
+
     def test_asset_paths_cannot_escape_or_read_targets(self):
         for relative in ('../secret','/secret','repo/widget/skills/how/SKILL.md',
                          'project-skills/acme/acme-release/SKILL.md','skills/how/../../secret'):

@@ -15,6 +15,11 @@ mockups, use [social-preview](../social-preview/SKILL.md), with
 [social-content](../social-content/SKILL.md) for the post. This skill owns changes
 to the product UI itself; a promotional mockup is not an implemented screen.
 
+For colour-direction references, semantic light/dark roles or contrast review,
+use [reference palettes and semantic colour](references/colour-palettes.md).
+Keep an existing project brand first; optional references are not automatic theme
+adoption. Its gallery separates raw labels, derived roles and contextual checks.
+
 ## Read before designing
 
 - Read `AGENTS.md` and the agreed task scope; preserve scope and stage order.
