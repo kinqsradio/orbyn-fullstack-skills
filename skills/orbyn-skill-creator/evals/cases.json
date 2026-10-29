@@ -8599,6 +8599,138 @@
         "status": "Reports each property broken/unchecked/bounded pass separately; exit1 is not complete validation.",
         "projection": "Separates chart omission and representative/constraint interpretation from model verdict and source/replay evidence."
       }
+    },
+    {
+      "id": "semantic-colour-brand-preservation",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Improve the contrast of one button in an established company app. Seven optional reference palettes are available, but no redesign is requested. Explain the local next step.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic instructed development definition; no target redesign, live accessibility certification or native qualification.",
+      "rubric": {
+        "scope": "Preserves target brand/shared tokens and changes only the affected contract; does not impose reference colours or a palette allocation rule.",
+        "evidence": "Checks actual button text/state/focus contexts and distinguishes local fix from full accessibility qualification."
+      }
+    },
+    {
+      "id": "semantic-colour-unknown-swatch",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A supplied reference shows five readable hex labels and one unlabeled blue card. Build a catalogue entry without exact source pixels or a legible label.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic instructed development definition; no target redesign, live accessibility certification or native qualification.",
+      "rubric": {
+        "identity": "Retains the position as unknown/null and preserves the confirmed labels/visible credit.",
+        "boundary": "Does not infer an exact missing value from neighbouring colours or silently substitute sampled pixels."
+      }
+    },
+    {
+      "id": "semantic-colour-threshold-rounding",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A solid foreground/background ratio is 4.499922 and displays as 4.50:1. Body text is 16px. State what has been established and the result.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic instructed development definition; no target redesign, live accessibility certification or native qualification.",
+      "rubric": {
+        "threshold": "Normal-text numeric target is below 4.5 using the unrounded ratio; the rounded display cannot make it pass.",
+        "scope": "Does not invoke the large-text threshold for 16px or claim full WCAG compliance from this pair."
+      }
+    },
+    {
+      "id": "semantic-colour-gradient-alpha",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A designer checks one endpoint of a gradient and ignores a translucent text overlay before calling the entire screen accessible. Explain the correction.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic instructed development definition; no target redesign, live accessibility certification or native qualification.",
+      "rubric": {
+        "composition": "Requires actual relevant composition/background scope; endpoints or an unknown opaque ancestor cannot qualify a gradient interior.",
+        "evidence": "Records uncertainty and inspects rendered regions/states; does not extrapolate one favourable sample to full compliance."
+      }
+    },
+    {
+      "id": "semantic-colour-semantic-origin",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Use a pale reference palette for a light/dark prototype. Most original swatches have poor normal-text contrast. Explain role mapping and provenance.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic instructed development definition; no target redesign, live accessibility certification or native qualification.",
+      "rubric": {
+        "roles": "Preserves original swatches; chooses verified role pairs or explicitly adds declared neutral/status tokens with rationale.",
+        "states": "Checks text, action, focus and meaningful nontext contexts separately and provides status information beyond colour."
+      }
+    },
+    {
+      "id": "semantic-colour-surface-handoff",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "An HTML colour gallery passes solid-pair calculations in one viewport. The consuming product also has desktop/mobile native views and high-contrast settings. Explain what can be claimed and next handoff.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic instructed development definition; no target redesign, live accessibility certification or native qualification.",
+      "rubric": {
+        "limits": "Reports only exercised browser/pair scope; no automatic native parity or complete accessibility claim.",
+        "handoff": "Carries approved semantic roles to existing platform owners and preserves user/system colour choices, with relevant computed-style/focus/state checks."
+      }
     }
   ]
 }

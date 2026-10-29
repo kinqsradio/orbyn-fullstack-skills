@@ -23,6 +23,11 @@ defaults for this one. These rules describe interaction and evidence boundaries.
 - Reuse shared field and button tokens. Check platform text-input behavior at
   the actual font size; do not change every body label to solve an input issue.
 
+For colour roles and contrast, use [semantic colour](colour-palettes.md).
+Check actual text, control and focus contexts separately; gradients/transparency
+need known composition and thresholds use unrounded ratios. Do not rely on colour
+alone for status or treat a decorative border as a required control boundary.
+
 ## Layout, panels, and overlays
 
 - Check density as well as fit. At the agreed narrow task width, navigation

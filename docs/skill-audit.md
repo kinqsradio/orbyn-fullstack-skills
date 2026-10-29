@@ -7,6 +7,16 @@
 # Skill-system audit — current candidate and historical evidence
 
 
+## Optional reference palettes and semantic colour — 30 October 2026
+
+The existing UI owner adds a [conditional colour method](../skills/orbyn-ui-design/references/colour-palettes.md)
+and [original offline gallery](../skills/orbyn-ui-design/examples/colour-gallery/guide.md).
+Reference labels, one unknown swatch, editorial role proposals and added token
+origins stay distinct. Per-pair math, browser states and native/overall
+accessibility qualification remain separate; existing brands and 36 owners stay.
+The [qualification record](work/semantic-colour-verification.md) reports exact
+math, browser states, test results and unverified surfaces.
+
 ## Optional statechart compiler and bounded sample — 30 October 2026
 
 The existing architect/TDD owners now provide a [pinned offline compiler path](../skills/architect/references/statechart-compiler.md)

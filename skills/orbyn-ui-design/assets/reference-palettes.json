@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "source": {
+    "kind": "Visible hex labels transcribed from seven user-supplied screenshots",
+    "visible_credit": "@uiuxaadi",
+    "post_url": null,
+    "image_reuse_license": null,
+    "boundary": "Original screenshot artwork/layout is not bundled. Hex facts are transcribed; names, role proposals, guidance and gallery are independently authored. No palette mood, authorship collaboration or accessibility certification is inferred."
+  },
+  "names_are_editorial": true,
+  "unknown_swatch": {
+    "palette": "blue-ice",
+    "position": 3,
+    "reason": "No legible hex label; retain null. No pixel sampling or guessed value."
+  },
+  "added_colours": {
+    "#FFFFFF": "Orbyn-added neutral surface/action label, not a screenshot swatch",
+    "#111827": "Orbyn-added dark neutral for the pale rose collection",
+    "#1F2937": "Orbyn-added dark surface for the pale rose collection",
+    "#166534": "Orbyn-added light-theme success text; always paired with a visible status label",
+    "#9F1239": "Orbyn-added light-theme error text; always paired with an explicit error message",
+    "#86EFAC": "Orbyn-added dark-theme success text; always paired with a visible status label",
+    "#FDA4AF": "Orbyn-added dark-theme error text; always paired with an explicit error message"
+  },
+  "role_scope": "Illustrative solid-sRGB light/dark proposals, not target brand tokens or automatic theme adoption. All original values remain unchanged.",
+  "palettes": [
+    {
+      "id": "slate-navy",
+      "editorial_name": "Slate / navy",
+      "reference_photo": 1,
+      "swatches": [
+        "#06141B",
+        "#11212D",
+        "#253745",
+        "#4A5C6A",
+        "#9BA8AB",
+        "#CCD0CF"
+      ],
+      "role_proposals": {
+        "light": {
+          "page": "#CCD0CF",
+          "surface": "#FFFFFF",
+          "text": "#06141B",
+          "muted": "#253745",
+          "accent": "#253745",
+          "onAccent": "#FFFFFF",
+          "hoverAccent": "#11212D",
+          "border": "#253745",
+          "focus": "#06141B",
+          "success": "#166534",
+          "error": "#9F1239"
+        },
+        "dark": {
+          "page": "#06141B",
+          "surface": "#11212D",
+          "text": "#CCD0CF",
+          "muted": "#9BA8AB",
+          "accent": "#9BA8AB",
+          "onAccent": "#06141B",
+          "hoverAccent": "#CCD0CF",
+          "border": "#9BA8AB",
+          "focus": "#CCD0CF",
+          "success": "#86EFAC",
+          "error": "#FDA4AF"
+        }
+      }
+    },
+    {
+      "id": "plum-peach",
+      "editorial_name": "Plum / peach",
+      "reference_photo": 2,
+      "swatches": [
+        "#190019",
+        "#2B124C",
+        "#522B5B",
+        "#854F6C",
+        "#DFB6B2",
+        "#FBE4D8"
+      ],
+      "role_proposals": {
+        "light": {
+          "page": "#FBE4D8",
+          "surface": "#FFFFFF",
+          "text": "#190019",
+          "muted": "#854F6C",
+          "accent": "#522B5B",
+          "onAccent": "#FFFFFF",
+          "hoverAccent": "#2B124C",
+          "border": "#854F6C",
+          "focus": "#190019",
+          "success": "#166534",
+          "error": "#9F1239"
+        },
+        "dark": {
+          "page": "#190019",
+          "surface": "#2B124C",
+          "text": "#FBE4D8",
+          "muted": "#DFB6B2",
+          "accent": "#DFB6B2",
+          "onAccent": "#190019",
+          "hoverAccent": "#FBE4D8",
+          "border": "#DFB6B2",
+          "focus": "#FBE4D8",
+          "success": "#86EFAC",
+          "error": "#FDA4AF"
+        }
+      }
+    },
+    {
+      "id": "blue-ice",
+      "editorial_name": "Blue / ice",
+      "reference_photo": 3,
+      "swatches": [
+        "#021024",
+        "#052659",
+        null,
+        "#5483B3",
+        "#7DA0CA",
+        "#C1E8FF"
+      ],
+      "role_proposals": {
+        "light": {
+          "page": "#C1E8FF",
+          "surface": "#FFFFFF",
+          "text": "#021024",
+          "muted": "#052659",
+          "accent": "#052659",
+          "onAccent": "#FFFFFF",
+          "hoverAccent": "#021024",
+          "border": "#052659",
+          "focus": "#021024",
+          "success": "#166534",
+          "error": "#9F1239"
+        },
+        "dark": {
+          "page": "#021024",
+          "surface": "#052659",
+          "text": "#C1E8FF",
+          "muted": "#7DA0CA",
+          "accent": "#7DA0CA",
+          "onAccent": "#021024",
+          "hoverAccent": "#C1E8FF",
+          "border": "#7DA0CA",
+          "focus": "#C1E8FF",
+          "success": "#86EFAC",
+          "error": "#FDA4AF"
+        }
+      }
+    },
+    {
+      "id": "rose-mist",
+      "editorial_name": "Rose / mist",
+      "reference_photo": 4,
+      "swatches": [
+        "#F7CBCA",
+        "#DDD3D3",
+        "#F1F7F7",
+        "#D5E5E5",
+        "#B0D7D8",
+        "#5D6B6B"
+      ],
+      "role_proposals": {
+        "light": {
+          "page": "#F1F7F7",
+          "surface": "#FFFFFF",
+          "text": "#5D6B6B",
+          "muted": "#5D6B6B",
+          "accent": "#5D6B6B",
+          "onAccent": "#FFFFFF",
+          "hoverAccent": "#5D6B6B",
+          "border": "#5D6B6B",
+          "focus": "#5D6B6B",
+          "success": "#166534",
+          "error": "#9F1239"
+        },
+        "dark": {
+          "page": "#111827",
+          "surface": "#1F2937",
+          "text": "#F1F7F7",
+          "muted": "#B0D7D8",
+          "accent": "#D5E5E5",
+          "onAccent": "#111827",
+          "hoverAccent": "#F1F7F7",
+          "border": "#B0D7D8",
+          "focus": "#F1F7F7",
+          "success": "#86EFAC",
+          "error": "#FDA4AF"
+        }
+      }
+    },
+    {
+      "id": "earth-sand",
+      "editorial_name": "Earth / sand",
+      "reference_photo": 5,
+      "swatches": [
+        "#1A120E",
+        "#3A2418",
+        "#6B4A2E",
+        "#A88462",
+        "#D5C4AE",
+        "#4A4A46"
+      ],
+      "role_proposals": {
+        "light": {
+          "page": "#D5C4AE",
+          "surface": "#FFFFFF",
+          "text": "#1A120E",
+          "muted": "#6B4A2E",
+          "accent": "#4A4A46",
+          "onAccent": "#FFFFFF",
+          "hoverAccent": "#3A2418",
+          "border": "#6B4A2E",
+          "focus": "#1A120E",
+          "success": "#166534",
+          "error": "#9F1239"
+        },
+        "dark": {
+          "page": "#1A120E",
+          "surface": "#3A2418",
+          "text": "#D5C4AE",
+          "muted": "#D5C4AE",
+          "accent": "#D5C4AE",
+          "onAccent": "#1A120E",
+          "hoverAccent": "#D5C4AE",
+          "border": "#D5C4AE",
+          "focus": "#D5C4AE",
+          "success": "#86EFAC",
+          "error": "#FDA4AF"
+        }
+      }
+    },
+    {
+      "id": "violet-lavender",
+      "editorial_name": "Violet / lavender",
+      "reference_photo": 6,
+      "swatches": [
+        "#0E0B1D",
+        "#2A1E4D",
+        "#5A3B8C",
+        "#8B7CC7",
+        "#C9C2E3",
+        "#3A3A52"
+      ],
+      "role_proposals": {
+        "light": {
+          "page": "#C9C2E3",
+          "surface": "#FFFFFF",
+          "text": "#0E0B1D",
+          "muted": "#5A3B8C",
+          "accent": "#3A3A52",
+          "onAccent": "#FFFFFF",
+          "hoverAccent": "#2A1E4D",
+          "border": "#5A3B8C",
+          "focus": "#0E0B1D",
+          "success": "#166534",
+          "error": "#9F1239"
+        },
+        "dark": {
+          "page": "#0E0B1D",
+          "surface": "#2A1E4D",
+          "text": "#C9C2E3",
+          "muted": "#C9C2E3",
+          "accent": "#C9C2E3",
+          "onAccent": "#0E0B1D",
+          "hoverAccent": "#C9C2E3",
+          "border": "#C9C2E3",
+          "focus": "#C9C2E3",
+          "success": "#86EFAC",
+          "error": "#FDA4AF"
+        }
+      }
+    },
+    {
+      "id": "forest-olive",
+      "editorial_name": "Forest / olive",
+      "reference_photo": 7,
+      "swatches": [
+        "#0F1F17",
+        "#1E3A2E",
+        "#3E5A3F",
+        "#6B7F67",
+        "#C7CBB8",
+        "#3D4337"
+      ],
+      "role_proposals": {
+        "light": {
+          "page": "#C7CBB8",
+          "surface": "#FFFFFF",
+          "text": "#0F1F17",
+          "muted": "#3E5A3F",
+          "accent": "#3D4337",
+          "onAccent": "#FFFFFF",
+          "hoverAccent": "#1E3A2E",
+          "border": "#3E5A3F",
+          "focus": "#0F1F17",
+          "success": "#166534",
+          "error": "#9F1239"
+        },
+        "dark": {
+          "page": "#0F1F17",
+          "surface": "#1E3A2E",
+          "text": "#C7CBB8",
+          "muted": "#C7CBB8",
+          "accent": "#C7CBB8",
+          "onAccent": "#111827",
+          "hoverAccent": "#C7CBB8",
+          "border": "#C7CBB8",
+          "focus": "#C7CBB8",
+          "success": "#86EFAC",
+          "error": "#FDA4AF"
+        }
+      }
+    }
+  ]
+}
