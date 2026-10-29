@@ -7,6 +7,15 @@
 # Skill-system audit — current candidate and historical evidence
 
 
+## Optional statechart compiler and bounded sample — 30 October 2026
+
+The existing architect/TDD owners now provide a [pinned offline compiler path](../skills/architect/references/statechart-compiler.md)
+and [runnable leased-job demonstrator](../skills/architect/examples/leased-job/guide.md),
+with no new canonical skill, global runtime setup or target copying. The
+[verification record](work/statechart-compiler-verification.md) separates model,
+projection, bounded source correspondence, replay, rendering and cold-use limits.
+Historical entries below retain their original dates and evidence scope.
+
 ## Current engineering-method and illustration candidate — 28 October 2026
 
 The active candidate has **36 skills**, including one conditional technical

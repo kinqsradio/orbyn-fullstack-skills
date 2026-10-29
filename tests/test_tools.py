@@ -48,6 +48,13 @@ class LibraryInventoryTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'Only library'):
                 sync.run(command,ROOT)
 
+    def test_runnable_formal_sample_is_in_the_managed_library(self):
+        assets = sync.inventory(ROOT)
+        for name in ['LeasedJob.tla', 'fixed.cfg', 'broken.cfg', 'job.mjs', 'replay.mjs', 'demo.py']:
+            self.assertIn('skills/architect/examples/leased-job/' + name, assets)
+        self.assertIn('skills/architect/package.json', assets)
+        self.assertIn('skills/architect/references/upstream/pstack-statechart/compiler/statechart.ts', assets)
+
     def test_asset_paths_cannot_escape_or_read_targets(self):
         for relative in ('../secret','/secret','repo/widget/skills/how/SKILL.md',
                          'project-skills/acme/acme-release/SKILL.md','skills/how/../../secret'):

@@ -70,6 +70,42 @@ the detailed trace. A graph budget may omit a chart without preventing a model
 verdict; unavailable projection and checked property are separate fields. See the
 [per-property receipt example](../../tdd/references/formal-verification.md#worked-example-report-each-property-separately).
 
+## Projection and omission guardrails
+
+A display label can contain several concrete states. Keep per-rule identity:
+`breaks` means a definite violation for the represented scope; `mayBreak` means
+only some represented states violate it. Do not merge different broken-rule sets
+and describe the result as uniformly safe or broken. Refine the label or retain
+the detailed trace/table when the reader needs that distinction.
+
+Hide edges only when start reachability and necessary outgoing transitions remain,
+the bug path stays visible, and every concrete instance of a displayed arrow is
+hidden or retained together. Disclose omissions. For example, hiding only one of
+two `Retry` transitions between the same display labels can silently narrow its
+guard. Refine the labels or retain both; the optional adapter conservatively
+rejects ambiguous partial visibility rather than guessing the intended label.
+
+Parallel regions are a proposal about possible combinations, not just layout.
+Preserve cross-region guards. A custom bracket condition can replace the
+compiler's automatically derived other-region condition; do not erase that
+condition by supplying decorative brackets. Correlated regions may require a
+reported parent-state fallback. A temporal lasso must remain a real infinite
+behavior: do not display an escape that is unavailable from its loop states.
+
+Interpret VIEW/SYMMETRY according to the actual checker/compiler version: drawn
+states can be representatives, and an arrow need not land on the concrete state
+that generated it. State/action constraints bound exploration; the reviewed TLC
+can check invariants on boundary successors without exploring them or checking
+them for deadlock. A count or graph endpoint therefore does not prove exhaustive
+unconstrained coverage. Preserve configuration, warnings, excluded successors
+and per-rule status. Intended terminal stuttering avoids a deadlock report but
+does not by itself prove eventual completion.
+
+For executable checks, use the [optional pinned compiler workflow](statechart-compiler.md).
+The [leased-job sample](../examples/leased-job/guide.md) supplies a complex bounded
+model, actual guard mutant/replay and a generated HTML/SVG preview. No compiler
+or renderer is required for an ordinary proportional design explanation.
+
 ## Produce a chart people can read
 
 Keep editable Mermaid source and an inspected SVG or PNG, with a text transition
