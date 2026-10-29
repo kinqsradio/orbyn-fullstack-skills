@@ -278,6 +278,12 @@ synthetic inputs, a useful result and a concrete failure to avoid. An optional
 [task record](skills/orbyn-workflow/references/task-record.md) connects decisions,
 verification and continuation without a second project tracker.
 
+For costly lifecycle/concurrency rules, the [optional checked statechart workflow](skills/architect/references/statechart-compiler.md)
+uses bundled pinned compiler source with explicit local prerequisites. The
+[runnable two-worker job](skills/architect/examples/leased-job/guide.md) shows a
+stale-completion bug, fixed bounded check, real-method replay and generated
+HTML/SVG preview. No automatic tool installation or production-proof claim.
+
 Routine work relies on its diff, PR and CI. When a long task or handoff needs a
 checkpoint, the agent maintains the minimum useful project-owned record without
 another human invocation. The template includes helpers and synthetic examples;

@@ -33,6 +33,15 @@ does not require an installation: use an existing suitable verifier, or report
 the check blocked. Local compiler qualification does not make it a library
 dependency or establish support for other runtimes/platforms.
 
+The library now offers an [optional pinned offline compiler adapter](../../architect/references/statechart-compiler.md)
+and [runnable leased-job example](../../architect/examples/leased-job/guide.md).
+Doctor/parse/check/projection/render/replay remain separate evidence. Mixed
+violation labels, hidden-edge visibility, parallel guards, lasso fidelity and
+VIEW/SYMMETRY/constraint interpretation follow the architect's
+[projection rules](../../architect/references/statecharts.md#projection-and-omission-guardrails).
+Report an intentional terminal and disabled/unchecked deadlock detection separately;
+a safety pass or terminal stutter cannot stand in for a checked temporal property.
+
 ## Establish a falsifiable check
 
 1. State the property and user harm in plain words. Separate safety (a bad state

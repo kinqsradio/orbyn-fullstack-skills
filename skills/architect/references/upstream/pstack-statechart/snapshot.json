@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/cursor/plugins",
+  "revision": "1ba91fc25c0977741dd0e267849e6234b037ed0a",
+  "license": "MIT",
+  "license_files": [
+    "LICENSE"
+  ],
+  "scope": "Unmodified runtime TypeScript compiler source only; excludes bootstrap shell, active skills, tests, Java/TLC and renderer. Explicit opt-in through Orbyn adapter, never automatic bootstrap. All original imports remain local.",
+  "files": {
+    "compiler/backends/cfg.ts": {
+      "source_path": "skills/statechart/scripts/backends/cfg.ts",
+      "sha256": "aea4d8766d214e7fa08f4881f1037319655e75eb56652e1b6d5d4f13a162e3e1"
+    },
+    "compiler/backends/mermaid.ts": {
+      "source_path": "skills/statechart/scripts/backends/mermaid.ts",
+      "sha256": "75704b2704a9399a39479ff704a580d5b9a1d0fede01fe771df28bf799b434b6"
+    },
+    "compiler/backends/plain-text.ts": {
+      "source_path": "skills/statechart/scripts/backends/plain-text.ts",
+      "sha256": "e2bedb855eb3806ec3fe7a7bfa49baa309fb4cf0da425b5fe1e0686268ce255a"
+    },
+    "compiler/backends/report.ts": {
+      "source_path": "skills/statechart/scripts/backends/report.ts",
+      "sha256": "730b4048578ab0468e1581f16fec60b246e321161effb68e481efb373f0f2501"
+    },
+    "compiler/frontends/config.ts": {
+      "source_path": "skills/statechart/scripts/frontends/config.ts",
+      "sha256": "5eeab1e755f20a2c83b408c6503fdc9c6b10c971d8dedad3f912bd15f9763daf"
+    },
+    "compiler/frontends/dot.ts": {
+      "source_path": "skills/statechart/scripts/frontends/dot.ts",
+      "sha256": "4eef9ec848557dcd01ca8dbbec75b71c0653c1b73583108bafbb6f559f6d677b"
+    },
+    "compiler/frontends/marks.ts": {
+      "source_path": "skills/statechart/scripts/frontends/marks.ts",
+      "sha256": "eb0120e61a4004a435c7b7c46916da9dc8b2fa8696ed0d3eb64dc953fed3ab11"
+    },
+    "compiler/frontends/messages.ts": {
+      "source_path": "skills/statechart/scripts/frontends/messages.ts",
+      "sha256": "36bfc6fb3ffa86897661efb2aa67bd95b55a4da9a3e952831f6e0668826b4b92"
+    },
+    "compiler/frontends/spec.ts": {
+      "source_path": "skills/statechart/scripts/frontends/spec.ts",
+      "sha256": "450cdfc8d0577a96818ca3697efebbbf70b530a4ba7e3eee03cf1ba8d3f1a0fd"
+    },
+    "compiler/frontends/trace.ts": {
+      "source_path": "skills/statechart/scripts/frontends/trace.ts",
+      "sha256": "7d083cf89b81c41556fc3fd5f07019886e0f6783c632475e7181ac4b81887367"
+    },
+    "compiler/frontends/value.ts": {
+      "source_path": "skills/statechart/scripts/frontends/value.ts",
+      "sha256": "7c54be394b7a10f60591858a0f08fb1e8dc0941df1f38ede07fbe7719ff56da0"
+    },
+    "compiler/frontends/verdict.ts": {
+      "source_path": "skills/statechart/scripts/frontends/verdict.ts",
+      "sha256": "0d0a9d6b6d6da5a7c48851b86d9d041f22982404dda6288795a1715138d7008b"
+    },
+    "compiler/frontends/view.ts": {
+      "source_path": "skills/statechart/scripts/frontends/view.ts",
+      "sha256": "2c0af8939321c5aaed4b6ecac8ce6a98d0e6774d8bd15d4b02fe4f406b8c9620"
+    },
+    "compiler/ir.ts": {
+      "source_path": "skills/statechart/scripts/ir.ts",
+      "sha256": "5602beca4e4ac08421cfa07e4da989f0e75439f1d136cc923226909e771dc7ff"
+    },
+    "compiler/passes/annotate.ts": {
+      "source_path": "skills/statechart/scripts/passes/annotate.ts",
+      "sha256": "dc8eeee09c3a9a0c060f32fb1d554e01bd80e5265751cdeb041ef3e19561b92a"
+    },
+    "compiler/passes/label.ts": {
+      "source_path": "skills/statechart/scripts/passes/label.ts",
+      "sha256": "b5ef402369c5e7846be1fd39165e95cbfe715fc36eb9331a0401b26523c539c9"
+    },
+    "compiler/passes/lift.ts": {
+      "source_path": "skills/statechart/scripts/passes/lift.ts",
+      "sha256": "8977dddc6c93bb2e3914d5b50760eb66876107ba51e2b8cf9e18611b4c40c89c"
+    },
+    "compiler/passes/loop-check.ts": {
+      "source_path": "skills/statechart/scripts/passes/loop-check.ts",
+      "sha256": "07d459385849aa35834040bf34e279c39baba68244ec9da17c57703a6ee8e2d4"
+    },
+    "compiler/passes/paths.ts": {
+      "source_path": "skills/statechart/scripts/passes/paths.ts",
+      "sha256": "9af1066b007ef86cb05c5e278eef09f090f1e46eb91d356e5146edbd4fee4ec7"
+    },
+    "compiler/passes/reach.ts": {
+      "source_path": "skills/statechart/scripts/passes/reach.ts",
+      "sha256": "b52b38f926814937b733221b40bd31075a69a2fb91ecbce2164752a8684bc5d6"
+    },
+    "compiler/passes/region-check.ts": {
+      "source_path": "skills/statechart/scripts/passes/region-check.ts",
+      "sha256": "8a6e0618740a14bb7048f6563b4324958177f4685d4d6d90364cc6245b1498b4"
+    },
+    "compiler/passes/regions.ts": {
+      "source_path": "skills/statechart/scripts/passes/regions.ts",
+      "sha256": "d740ebfdbb5ec7b4984412a635a596b43af7a77b8bcb49a1463c8afa75299f72"
+    },
+    "compiler/pipeline.ts": {
+      "source_path": "skills/statechart/scripts/pipeline.ts",
+      "sha256": "8aa8d9295ab6762f7f2ffae91a0aee98b1a1314747c875edba4598fdab8ed543"
+    },
+    "compiler/run.ts": {
+      "source_path": "skills/statechart/scripts/run.ts",
+      "sha256": "f330e0a3b0a9f8181c2e52252c4a47db3f0a64f79a7cca5490263e33a5f13c72"
+    },
+    "compiler/statechart.ts": {
+      "source_path": "skills/statechart/scripts/statechart.ts",
+      "sha256": "1c653f05d0cd0f3298455701f36e3d7d1f837f93e6e642f7c20afb5d613c2d12"
+    },
+    "compiler/worker.ts": {
+      "source_path": "skills/statechart/scripts/worker.ts",
+      "sha256": "1f18ed5ef806982e05e8a40fc217e88257700b28b63cb4acbd647872f85f782b"
+    },
+    "LICENSE": {
+      "source_path": "LICENSE",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    }
+  }
+}

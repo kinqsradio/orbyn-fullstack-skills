@@ -16,7 +16,7 @@ Selected adaptation: [formal-verification.md](formal-verification.md), [verifica
 Orbyn preserves code/model correspondence, falsification, bounded claims and
 verification maintenance. We add existing-owner routing, proportional prototype
 rigor, target-owned paths, dirty-source identity and explicit artifact lifecycle.
-We do not import upstream scripts, automatic dependency installation, model
+At this historical review we did not import upstream scripts, automatic dependency installation, model
 selection, host-specific paths or recursive delegation. Raw source stays in
 ignored `orbyn-references/`; this method works without that folder.
 
@@ -47,3 +47,26 @@ notices remain intact. No compiler source, runtime installation or default tool
 selection is incorporated; the methods remain usable offline without research
 snapshots. Compiler execution qualification is separate from written guidance
 and does not establish live agent or consumer implementation performance.
+
+## Optional compiler incorporation, 30 October 2026
+
+Pinned source: [cursor/plugins at 1ba91fc25c0977741dd0e267849e6234b037ed0a](https://github.com/cursor/plugins/tree/1ba91fc25c0977741dd0e267849e6234b037ed0a/pstack/skills/statechart),
+pstack 0.15.36. The three reviewed skill subtrees are unchanged from the prior
+519d36aa review; this does not refresh old environment qualification. Historical
+import/review pins above remain separate.
+
+Architect now deliberately redistributes the unmodified 26-file TypeScript
+runtime closure with the original MIT notice in its
+[offline snapshot](../../architect/references/upstream/pstack-statechart/snapshot.json).
+The [optional adapter](../../architect/references/statechart-compiler.md), local
+ESM boundary, conservative visibility guard and synthetic leased-job sample are
+Orbyn-authored. No upstream active SKILL.md, bootstrap script, Java/TLC binary,
+renderer or complete test corpus is bundled. Checksums/source paths identify
+every imported file; missing external tools remain explicit prerequisites.
+
+Current qualification and failed attempts are reported separately in the
+`docs/work/statechart-compiler-verification.md` maintainer record (optional
+library metadata, not an offline method dependency).
+Model, projection, bounded source correspondence and public-method replay are
+separate results; optional Linux/Windows/native-host and arbitrary-code claims
+are not implied.
