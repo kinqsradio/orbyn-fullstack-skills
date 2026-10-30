@@ -1,12 +1,13 @@
 ---
 name: technical-illustration
-description: "Create or repair deterministic code-driven motion scenes, motion films and model-driven technical illustrations with coherent geometry, motion, readouts, accessible interaction and inspected SVG, React, print or conditional WebGL/beta3D outputs."
+description: "Create or repair deterministic code-driven motion scenes, motion films, music-led artwork/lyric videos and model-driven technical illustrations with coherent geometry, motion, readouts, accessible interaction and inspected SVG, React, print or conditional WebGL/beta3D outputs."
 ---
 
 # Model-driven technical illustrations
 
-Use for an explanatory interactive figure or a code-driven timed prototype/local
-kinetic film whose model controls what is drawn, moved, read and exported. Ordinary app layout belongs to UI design, social posters
+Use for an explanatory interactive figure, code-driven timed prototype, motion
+film or music-led artwork/lyric video whose model controls what is drawn, moved,
+read and exported. Ordinary app layout belongs to UI design, social posters
 to social-preview, simple flow diagrams to existing explanation methods and
 scientific plots to the scientific plotting tool. Ordinary editing of existing
 video footage stays with the project media tools; this owner constructs motion
