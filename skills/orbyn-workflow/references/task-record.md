@@ -83,3 +83,9 @@ state, process/session ownership and cleanup/restart condition from
 of requiring another resource manifest for every task.
 
 For multi-cause work, use [cause-to-work-item reconciliation](../../how/references/pipeline-diagnosis.md#cause-to-work-item-reconciliation): stable scoped identity, current remote readback, partial-write recovery and foreign claims. Routed remains unresolved; no automatic tracker writes or repeated routine approval stages.
+
+For a durable prototype review, link the target-owned source/settings/review package,
+actual submitted/saved revision and proposed design-document diff under the
+[UI handoff](../../orbyn-ui-design/references/review-packages.md). Retain unresolved
+questions, actual acceptance and changed-surface regression evidence separately;
+no second feedback tracker or inferred approval from submission is required.

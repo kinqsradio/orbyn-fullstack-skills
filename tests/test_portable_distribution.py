@@ -29,6 +29,14 @@ class PortableDistributionTests(unittest.TestCase):
         self.assertEqual(contracts.check_portable_links(self.root, files, snapshots), [])
         self.assertEqual(sync.inventory(self.root), files)
 
+    def test_original_review_css_is_exported_and_hash_checked(self):
+        files = self.copy_distribution()
+        path = 'skills/orbyn-ui-design/examples/review-workspace/review.css'
+        self.assertIn(path, files)
+        self.assertEqual((self.root/path).read_bytes(), (ROOT/path).read_bytes())
+        (self.root/path).write_text('/* changed */')
+        self.assertNotEqual(sync.inventory(self.root), files)
+
     def test_existing_but_unexported_policy_does_not_hide_dependency(self):
         skill = self.root/'skills/example/SKILL.md'
         skill.parent.mkdir(parents=True)

@@ -9,7 +9,7 @@ import re
 REPOSITORY = 'https://github.com/kinqsradio/orbyn-fullstack-skills'
 MANIFEST = 'distribution/manifest.json'
 NAME = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+)*')
-EXTENSIONS = {'.md', '.json', '.py', '.sh', '.cjs', '.mjs', '.html', '.txt', '.yaml', '.yml', '.tla', '.cfg'}
+EXTENSIONS = {'.md', '.json', '.py', '.sh', '.cjs', '.mjs', '.html', '.css', '.txt', '.yaml', '.yml', '.tla', '.cfg'}
 PINNED_SUPPORT_EXTENSIONS = {'.ts', '.tsx', '.css', '.png'}
 
 

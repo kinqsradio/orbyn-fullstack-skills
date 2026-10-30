@@ -1,0 +1,143 @@
+{
+  "prototype": {
+    "id": "export-room",
+    "version": 1,
+    "candidate": "synthetic-v1",
+    "fingerprint": "081c5b448972d4217d5bd27b7236145a08aebb90f36a5c1606de09df3f331fdf"
+  },
+  "targets": [
+    {
+      "id": "shell/navigation",
+      "page": "shell",
+      "kind": "component",
+      "component": "navigation",
+      "instance": "main"
+    },
+    {
+      "id": "shell/work",
+      "page": "shell",
+      "kind": "control",
+      "component": "navigation",
+      "instance": "work"
+    },
+    {
+      "id": "shell/settings",
+      "page": "shell",
+      "kind": "control",
+      "component": "navigation",
+      "instance": "settings"
+    },
+    {
+      "id": "work/page",
+      "page": "work",
+      "kind": "page",
+      "component": "page",
+      "instance": "work"
+    },
+    {
+      "id": "work/queue",
+      "page": "work",
+      "kind": "component",
+      "component": "queue",
+      "instance": "main"
+    },
+    {
+      "id": "work/alpha",
+      "page": "work",
+      "kind": "component",
+      "component": "export-row",
+      "instance": "alpha"
+    },
+    {
+      "id": "work/alpha/open",
+      "page": "work",
+      "kind": "control",
+      "component": "open-export",
+      "instance": "alpha"
+    },
+    {
+      "id": "work/beta",
+      "page": "work",
+      "kind": "component",
+      "component": "export-row",
+      "instance": "beta"
+    },
+    {
+      "id": "work/beta/open",
+      "page": "work",
+      "kind": "control",
+      "component": "open-export",
+      "instance": "beta"
+    },
+    {
+      "id": "work/detail/alpha",
+      "page": "work",
+      "kind": "component",
+      "component": "detail",
+      "instance": "alpha"
+    },
+    {
+      "id": "work/detail/beta",
+      "page": "work",
+      "kind": "component",
+      "component": "detail",
+      "instance": "beta"
+    },
+    {
+      "id": "work/retry",
+      "page": "work",
+      "kind": "control",
+      "component": "retry",
+      "instance": "main"
+    },
+    {
+      "id": "settings/page",
+      "page": "settings",
+      "kind": "page",
+      "component": "page",
+      "instance": "settings"
+    },
+    {
+      "id": "settings/preferences",
+      "page": "settings",
+      "kind": "component",
+      "component": "preferences",
+      "instance": "main"
+    },
+    {
+      "id": "settings/theme",
+      "page": "settings",
+      "kind": "control",
+      "component": "theme",
+      "instance": "main"
+    },
+    {
+      "id": "settings/density",
+      "page": "settings",
+      "kind": "control",
+      "component": "density",
+      "instance": "main"
+    },
+    {
+      "id": "settings/notifications",
+      "page": "settings",
+      "kind": "control",
+      "component": "notifications",
+      "instance": "main"
+    },
+    {
+      "id": "settings/apply",
+      "page": "settings",
+      "kind": "control",
+      "component": "apply-preferences",
+      "instance": "main"
+    }
+  ],
+  "assets": {
+    "index.html": "1d1e5fa1a7f63918bd7489fd3c552c4b6ae76663adb4e919acbd570d39e7073d",
+    "review.css": "31fb9e9b0851671f86f5253d096473d348fb735d01dfde2c842d25b82e507bfc",
+    "review.mjs": "b866e08894f054d87ee9af6978c2a031b11cfb78024b555d5888442477befb94",
+    "model.mjs": "236ac92c12e4937ada5df9e76b998eaa94eac43f7bc6fae5c6bce00fa78bfc47",
+    "boot.mjs": "5d04f12e2f739669ef10b877fed69d60b89ae59d2fede1bc47822b1a74bfa4e6"
+  }
+}

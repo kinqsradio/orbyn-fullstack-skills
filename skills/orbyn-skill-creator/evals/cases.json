@@ -9590,6 +9590,138 @@
         "contract": "Declaration builtin can mask substitution failure; separates declaration, assignment with explicit status check, then export/readonly.",
         "control": "Uses actual shell syntax and does not assume local exists in POSIX sh; preserves legitimate literal export and quoted arguments without global set-e guarantees."
       }
+    },
+    {
+      "id": "ui-review-small-button-default",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review this changed export button in our existing component preview; I did not ask for a comments tool. Show it for human design review.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definitions, not a captured model trial or whole-application/native qualification.",
+      "rubric": {
+        "scope": "Offers or reuses live contextual feedback without a separate invocation; scopes to the affected button/component and existing harness, avoiding a mandatory whole-app sweep or new service.",
+        "control": "Respects audit-only requests and target instructions; the portable synthetic example is optional, not a mandatory product layout."
+      }
+    },
+    {
+      "id": "ui-review-durable-save-failure",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Our review preview says Saved after localStorage.setItem throws quota exceeded. We need settings and feedback durable in docs/design, including a browser with no write bridge.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definitions, not a captured model trial or whole-application/native qualification.",
+      "rubric": {
+        "storage": "Reports browser draft failure honestly; distinguishes submitted/export requested from actual repo save and readback. Uses fixed-path protected atomic CAS bridge or validates/writes/rereads exported JSON under actual target ownership.",
+        "control": "No claim localStorage or a download click saved the repo; retains recoverable feedback and provides static export/import fallback without a required provider."
+      }
+    },
+    {
+      "id": "ui-review-stale-import",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Import this review after CSS changed and a repeated Open control was removed; JSON has duplicate escaped keys and an infinite viewport value. Existing feedback must remain safe.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definitions, not a captured model trial or whole-application/native qualification.",
+      "rubric": {
+        "validation": "Rejects stale asset fingerprint/version/targets, duplicate/unknown keys, nonfinite or invalid types and bounds before replacing existing state; never silently retargets to a same-label instance.",
+        "control": "Preserves current feedback and records unresolved mapping only by explicit review; source and target context remain distinct from a manual candidate name."
+      }
+    },
+    {
+      "id": "ui-review-annotation-pending",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Annotate the second Open button by mouse and keyboard, then switch pages before posting text and try another target. Normal mode must still open the actual item.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definitions, not a captured model trial or whole-application/native qualification.",
+      "rubric": {
+        "interaction": "Annotation suppresses underlying activation with keyboard access; stable IDs distinguish instances. Retains text and original page/state/theme/viewport context, refuses silent retargeting and blocks finishing unposted feedback.",
+        "control": "Keeps ordinary controls usable and pins clear of labels/hit areas; does not treat programmatic DOM fill as full native keyboard/accessibility qualification."
+      }
+    },
+    {
+      "id": "ui-review-design-partial",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Finish review with two accepted comments, one rejected and one unresolved. Our authored design document is DESIGN.md. Update the design proposal and tests.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definitions, not a captured model trial or whole-application/native qualification.",
+      "rubric": {
+        "handoff": "Submission is not acceptance. Preserves original words and authored exact-case document, separates dispositions/reasons and retains unresolved questions in a reviewable partial proposal tied to actual source fingerprint.",
+        "tests": "Selects behavioral/focus/accessibility and material pixel regressions under actual owners; no automatic broad product rewrite or baseline acceptance and no duplicate design.md."
+      }
+    },
+    {
+      "id": "ui-review-concepts-render-evidence",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "For a consequential new workspace visual direction compare alternatives on the same task, then show the chosen design. An adjacent existing tiny button fix should stay proportional.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definitions, not a captured model trial or whole-application/native qualification.",
+      "rubric": {
+        "design": "Compares genuinely different composition/type/interaction directions rather than recolours, explains concept consequences, renders font-ready primary and relevant failure state, critiques/revises/rechecks.",
+        "evidence": "Retains product accessibility and authority; no universal three concepts or iPhone requirement, screenshots only useful visual evidence, no DOM claim of native product qualification."
+      }
     }
   ]
 }

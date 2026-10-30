@@ -9,7 +9,7 @@ no extra folders. Create a task directory only when an artifact is needed.
 | Artifact | Default when the project has no convention | Keep until |
 | --- | --- | --- |
 | Product source, reusable tests and accepted examples | Existing source/test owners; tracked when intended for delivery | Normal product lifecycle |
-| Interactive prototype | Ignored `output/<task>/preview/`, with local assets and a short opening/reset note | Human review ends, or the selected interaction is transferred and the artifact is intentionally retired |
+| Disposable interactive prototype | Ignored `output/<task>/preview/`, with local assets and a short opening/reset note | Human review ends, or the selected interaction is transferred and the artifact is intentionally retired |
 | Screenshots, test captures, profiles and trial receipts | Ignored `output/<task>/evidence/` or approved CI artifacts; retain candidate/state identity | Required review/reproduction and project retention are satisfied |
 | Decision or sanitized result summary | Existing design/task document; tracked only when appropriate | Owning decision's useful lifetime |
 | Accepted behavioral model, property/config and maintenance instructions | Target's existing tracked verification/test/design owner | Covered behavior remains supported; update correspondence after code changes |
@@ -22,6 +22,12 @@ Verify ignore/export behavior before writing sensitive or raw material. Do not
 force-add output, copy secrets into examples, install global dependencies or create
 one log per routine change. Files under a temporary OS directory may disappear;
 move a requested handoff to a durable project-approved location before promising it.
+
+An explicit durable-prototype/review request keeps approved source/assets/settings
+and review records in the consuming repository's existing design owner, using
+[review packages](../../orbyn-ui-design/references/review-packages.md). Browser
+storage/downloads alone are not that save. Keep raw/private captures ignored and
+respect export policy; durability does not grant publication or deletion authority.
 
 ## Retention and growth decisions
 

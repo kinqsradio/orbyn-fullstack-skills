@@ -679,3 +679,18 @@ checks and independent review pass; core SVG does not qualify advanced paths.
 ## Mobile and UI method extension
 
 The existing 36 owners now route conditional Expo/RN/EAS, motion/mobile-web/stress, Swift and cause-reconciliation methods. [Coverage](work/mobile-ui-workflow-coverage.json) records each selected source family and 31 acceptance groups; [verification](work/mobile-ui-workflow-verification.md) separates static, fixture, browser, native, service and agent evidence. This extension does not change nesting, runtime providers, model defaults, memory or the REA engine.
+
+
+## Durable interactive prototype reviews
+
+The existing UI owner now offers scoped live feedback for human review of changed
+pages, components, instances and controls. A portable original synthetic package
+provides two routes, settings, annotation/normal modes, strict versioned JSON,
+source fingerprints, draft recovery and a fixed-path loopback save/readback path.
+A separate local reconciliation helper prepares a partial design-doc proposal with
+accepted, rejected and unresolved feedback; it does not overwrite authored design
+notes or infer acceptance. Static export/import remains available. Setup, workflow
+and TDD link the same owner; no new skill, target installation, model/provider
+default or REA upgrade is introduced. Focused model/HTTP/browser checks and six
+development cases supplement the existing frozen suite. Browser fixture evidence
+does not establish native UX, full accessibility or live model performance.
