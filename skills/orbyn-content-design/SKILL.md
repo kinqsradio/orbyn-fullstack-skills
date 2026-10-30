@@ -66,6 +66,15 @@ with tests or clipping text.
   chat differs from Background and Overnight. Other products use their own
   concepts; do not impose those features or names.
 
+## Outcomes, attention and control labels
+
+For agent results, daily briefs, routine notifications or execution controls, use
+[factual outcomes and attention](references/outcomes-and-attention.md). Separate
+goal evidence from run termination; preserve partial/failed/waiting/interrupted
+and unknown outcomes, grouped review and distinct pause/stop/revoke/mute effects.
+The [synthetic routine review](examples/routine-review.md) makes the method concrete.
+This changes presentation guidance, not authority or the backend status owner.
+
 ## Present real content and long values
 
 - Do not rewrite or delete a person's document, task title, provider name or
