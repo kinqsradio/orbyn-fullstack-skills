@@ -33,7 +33,13 @@ Use the project wrapper and configured compiler/analyzers plus scoped authorized
 
 ## Maintainability and checks
 
-Keep public interfaces, exception meanings and deployment release compatibility explicit. Do not expose persistence/vendor exceptions as API results or treat a record containing a mutable collection as deeply immutable. Use the existing build wrapper and effect-owned fixtures; a developer JDK build alone does not qualify the deployment target.
+Preserve public interfaces, API error meaning and deployment release compatibility;
+do not expose persistence exceptions as domain results. `CompletableFuture.cancel(true)`
+does not interrupt its computation; cancellation of the underlying work needs its
+actual owner/API. For decimal contracts, choose textual or deliberate `valueOf`
+construction, scale and rounding; `new BigDecimal(double)` preserves the binary
+floating-point value, not an intended decimal literal. Exact binary conversion
+can be intentional; do not silently round every operation.
 
 ## Primary references
 
@@ -42,3 +48,5 @@ examples are usable offline. The links identify semantics and update evidence;
 verify compatibility with the project's target before using newer APIs.
 
 [JLS 25 resource statements](https://docs.oracle.com/javase/specs/jls/se25/html/jls-14.html#jls-14.20.3), [JDK 25 Thread contract](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Thread.html).
+
+Focused semantics reviewed 30 October 2026: [JDK 25 CompletableFuture cancellation](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/CompletableFuture.html#cancel(boolean)), [BigDecimal](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html).

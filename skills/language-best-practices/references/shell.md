@@ -31,7 +31,12 @@ Run syntax checks for the actual interpreter and authorized disposable failure/r
 
 ## Maintainability and checks
 
-Separate parsing, validation and external effects. Use the actual interpreter and utility contract, preserve argument boundaries, and inspect command status at each meaningful effect. Cleanup removes only paths/resources created by this operation; a failed retry must not erase another worker’s output or a user’s checkout.
+Separate declarations from status-bearing substitutions: in supporting shells,
+`local value=$(cmd)`, `export value=$(cmd)` or `readonly value=$(cmd)` can report the
+builtin's status instead of cmd's failure. Declare, assign with an explicit status
+check, then export/mark readonly as needed. A literal export is legitimate;
+local is not portable POSIX sh. Check the actual shell, and never let a failed
+retry erase another worker's output or checkout.
 
 ## Primary references
 
@@ -44,3 +49,5 @@ verify compatibility with the project's target before using newer APIs.
 For CLI input/help/stdin/result design or real PTY prompt/resize/signal checks,
 use the [CLI contract](../../architect/references/cli-contract.md). Shell quoting
 alone does not qualify that interface.
+
+Focused semantics reviewed 30 October 2026: [ShellCheck SC2155](https://www.shellcheck.net/wiki/SC2155).

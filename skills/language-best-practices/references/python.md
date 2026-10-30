@@ -32,7 +32,11 @@ Use the configured type checker and formatter, then authorized focused tests for
 
 ## Maintainability and checks
 
-Keep imports free of unrequested network/runtime setup. Make package boundaries and supported Python syntax explicit; avoid sys.path patches as a substitute for understanding packaging. Libraries can emit scoped logs while the application owns handlers and export policy. Use real parser/fixture boundaries and register cleanup during partial setup.
+Keep imports free of unrequested network/setup effects, preserve package/syntax
+boundaries instead of patching sys.path, and let the application own log handlers.
+Register cleanup during partial setup. Use explicit validation/error paths for
+external input: `assert` can disappear under `-O`. Assertions remain appropriate
+for tests/debug invariants; required checks and side effects must not depend on them.
 
 ## Primary references
 
@@ -43,3 +47,5 @@ verify compatibility with the project's target before using newer APIs.
 [Python 3.13 asyncio](https://docs.python.org/3.13/library/asyncio-task.html), [Python 3.13 dataclasses](https://docs.python.org/3.13/library/dataclasses.html).
 
 [Python logging ownership](https://docs.python.org/3/library/logging.html).
+
+Focused semantics reviewed 30 October 2026: [Python assert optimization](https://docs.python.org/3.13/reference/simple_stmts.html#the-assert-statement).

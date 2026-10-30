@@ -32,7 +32,12 @@ Use the configured dotnet build/analyzers and scoped authorized tests on support
 
 ## Maintainability and checks
 
-Match dependency-injection lifetime to the state and resources owned. A singleton must not capture request-scoped mutable work. Distinguish container-owned disposal from explicitly constructed resources, and preserve async completion before a scope ends. Validate behavior at the actual target framework rather than relying on nullable annotations alone.
+Match DI lifetime to owned state: a singleton must not capture request-scoped
+mutable work. Distinguish container-owned from explicitly constructed disposal.
+Consume a returned ValueTask once under its contract: await it, or convert once
+with AsTask and use that Task thereafter. Do not await/copy-consume the original
+again or convert repeatedly; a pooled source may be reused. An ordinary Task can
+support repeated/concurrent awaits. Check target APIs before choosing ValueTask.
 
 ## Primary references
 
@@ -43,3 +48,5 @@ verify compatibility with the project's target before using newer APIs.
 [C# disposal statements](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/using), [Disposal with unawaited work](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca2025), [.NET cancellation](https://learn.microsoft.com/en-us/dotnet/standard/parallel-programming/task-cancellation).
 
 [.NET dependency injection lifetimes and disposal](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection/guidelines).
+
+Focused semantics reviewed 30 October 2026: [Microsoft ValueTask consumption](https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask/).

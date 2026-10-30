@@ -48,6 +48,9 @@ Distinguish missing values from valid falsy values, serialization from internal
 objects, and optional fields from explicit nullable states. Resolve date, integer
 range and identifier encoding at transport boundaries. A branded identifier can
 prevent accidental parameter swaps internally; it cannot validate a raw string.
+A type predicate or assertion signature is also a promise to the checker: inspect
+and test its runtime body. An always-true predicate or no-op assertion can admit
+invalid values; an actual validating predicate remains useful, not forbidden.
 
 Cancellation must reach the actual effect. Decide who closes streams, timers and
 subscriptions on success, failure and abandonment. A resolved promise does not
@@ -69,3 +72,5 @@ For caches or other owners that retain callbacks after a view unmounts, use the
 [JavaScript retained-callback method](javascript.md#callbacks-retained-beyond-a-view).
 Typed query options do not establish disposal, reactive freshness or account scope;
 inspect actual runtime retention and transitive captures before extracting a factory.
+
+Assertion signatures reviewed 30 October 2026: [TypeScript assertion functions](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#assertion-functions).

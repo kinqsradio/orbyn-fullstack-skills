@@ -31,7 +31,12 @@ Use the configured compiler/format/analyzer and authorized sanitizer or concurre
 
 ## Maintainability and checks
 
-Keep ownership and exception guarantees visible in public interfaces. Avoid exposing implementation types solely to save a wrapper or using shared_ptr as a concurrency policy. Match supported standard/ABI and real caller needs; test observable behavior and lifetime boundaries rather than private class choreography.
+Keep ownership, exception guarantees and supported ABI visible in public APIs;
+test observable lifetime boundaries. `vector::reserve` changes capacity, not size:
+writing `v[0]` into an empty reserved vector is invalid. Construct elements with
+push/emplace/resize as appropriate, and recheck iterator/reference invalidation.
+Standard-library moved-from objects are generally valid but unspecified unless
+otherwise stated; do not assume empty or ignore an operation's preconditions.
 
 ## Primary references
 
@@ -40,3 +45,5 @@ examples are usable offline. The links identify semantics and update evidence;
 verify compatibility with the project's target before using newer APIs.
 
 [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines), [Clang address sanitizer](https://clang.llvm.org/docs/AddressSanitizer.html).
+
+Focused semantics reviewed 30 October 2026: [C++ vector capacity](https://eel.is/c++draft/vector.capacity), [moved-from library types](https://eel.is/c++draft/lib.types.movedfrom).

@@ -6,6 +6,25 @@
 
 # Skill-system audit — current candidate and historical evidence
 
+## Concise contracts across all language routes
+
+The existing [language owner](../skills/language-best-practices/SKILL.md) refines
+all 13 routes in place: optimized Python assertions; JS stream backpressure;
+TypeScript readonly aliases and actual predicate bodies; Go typed-nil errors and
+used synchronization; Rust initialization versus capacity/Arc payload safety;
+Java future cancellation and decimal construction; Kotlin Flow/StateFlow/update;
+C# ValueTask consumption; Swift text coordinates and isolation-version gates;
+C realloc failure/zero-size distinctions; C++ capacity and moved-from contracts;
+SQL transaction retries/NULL checks; shell substitution/declaration status.
+Primary sources are dated update pointers in the guides; required guidance works
+offline. All earlier fenced examples and retained callback guidance remain.
+
+Thirteen synthetic development definitions include legitimate adjacent controls,
+preserving all 403 prior cases/holdouts. Static case/library validation is not a
+live-agent gain, an all-toolchain test or a production compatibility claim.
+Existing TypeScript source/license lineage, router, nesting, defaults and 36 owners
+remain unchanged. No new handbook, skill, runtime or toolchain installation.
+
 ## Task and resource closeout
 
 The existing worktree owner adds one [closeout reference](../skills/orbyn-worktree/references/task-closeout.md)
