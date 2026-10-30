@@ -200,3 +200,9 @@ selected option, preserve focus, respect RTL and cancel the previous replay/remo
 before starting another. Old callbacks cannot mutate the next variant. Keep the
 selected source/candidate identity with captures. Preserve previews through review;
 selection alone is not permission to delete work or commit an alternative.
+
+
+For 3D parts or timed scenes, use the [spatial adapter](../examples/spatial-review/README.md)
+and [motion sequences](../../technical-illustration/references/motion-sequences.md).
+A durable review retains the actual model/source and reproducible paused context
+inside the consuming repository, not only a cache or screenshot.
