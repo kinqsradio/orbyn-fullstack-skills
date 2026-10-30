@@ -9722,6 +9722,142 @@
         "design": "Compares genuinely different composition/type/interaction directions rather than recolours, explains concept consequences, renders font-ready primary and relevant failure state, critiques/revises/rechecks.",
         "evidence": "Retains product accessibility and authority; no universal three concepts or iPhone requirement, screenshots only useful visual evidence, no DOM claim of native product qualification."
       }
+    },
+    {
+      "id": "spatial-review-durable-zero-comments",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Show the 3D model for review and remember camera, timeline and hidden layers even before I comment. I must return next week.",
+      "expected_skills": [
+        "orbyn-ui-design",
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definitions; actual fixture/browser evidence is separate from live agent, video/audio, GPU/native or complete accessibility qualification.",
+      "rubric": {
+        "durability": "Selects consumer repo design owner; saves full source/settings/review and design decisions, verifies actual write/readback and restart at fresh origin with zero comments; browser draft/output cache is insufficient.",
+        "scope": "Preserves existing exact-case design document, source/licenses and schema1; does not install skills into target or require a provider."
+      }
+    },
+    {
+      "id": "spatial-review-part-replay",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Comment on a flywheel at yaw60, time8.25, then hide rods and change camera. Restore the review after reopening.",
+      "expected_skills": [
+        "orbyn-ui-design",
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definitions; actual fixture/browser evidence is separate from live agent, video/audio, GPU/native or complete accessibility qualification.",
+      "rubric": {
+        "identity": "Stores actual model/source hash, exact part, camera/projection, scenario/scene/time/cycle/rate, layers and viewport; replay pauses and visibly highlights flywheel, not first cylinder.",
+        "stale": "Refuses changed geometry/assets/removed target or invalid context; preserves feedback and requires explicit mapping/new round, not silent reseal."
+      }
+    },
+    {
+      "id": "spatial-review-repeated-controls",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In comment mode click cylinder B3 and the story slider. The engine must not change selection or start playing. Keep keyboard review usable.",
+      "expected_skills": [
+        "orbyn-ui-design",
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definitions; actual fixture/browser evidence is separate from live agent, video/audio, GPU/native or complete accessibility qualification.",
+      "rubric": {
+        "interaction": "Stable repeated-control IDs and part/surface targets; intercepts native activation in annotation mode, captures original context, retains unposted text; normal interaction remains functional.",
+        "access": "Prominent visible review entry, accessible picker for occluded parts, readable feedback and reduced-motion/manual timeline; no blanket native/full accessibility claim."
+      }
+    },
+    {
+      "id": "motion-sequence-cut-replay",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Create an original local kinetic film and explanatory/data/onboarding motion examples. Seek backward and across cuts; I have no Scenario account.",
+      "expected_skills": [
+        "orbyn-ui-design",
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definitions; actual fixture/browser evidence is separate from live agent, video/audio, GPU/native or complete accessibility qualification.",
+      "rubric": {
+        "execution": "Uses existing owner and deterministic time-to-frame scenes with actual different content/composition, safe text/captions, explicit FPS/duration/beat spec and tested cut/repeated/backward seeking. No provider or unlicensed source import.",
+        "limits": "Does not equate a pulsing title/engine cycle with full film capability. Conditions audio/media/export requirements on actual delivery and reports unrun encode/playback; style-specific high-motion ratios are not universal quality gates."
+      }
+    },
+    {
+      "id": "spatial-review-migration-type-safety",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Import schema1 feedback into the new scene profile; another import has version:true, a stale model hash and an unknown part. Do not lose my current notes.",
+      "expected_skills": [
+        "orbyn-ui-design",
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definitions; actual fixture/browser evidence is separate from live agent, video/audio, GPU/native or complete accessibility qualification.",
+      "rubric": {
+        "validation": "Explicit schema/profile boundary, matching strict JS/server types, unknown/duplicate/bounded/nonfinite/source validation before replacement; boolean is not numeric version.",
+        "recovery": "Retains original current feedback, uses versioned export/import fallback and honest save errors, avoids copying browser draft state over a newer submitted repo record."
+      }
+    },
+    {
+      "id": "motion-builder-adjacent-video-trim",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Trim the first two seconds from this existing MP4 and replace its soundtrack. Do not generate procedural scenes or change the prototype.",
+      "expected_skills": [],
+      "forbidden_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Adjacent routing definition only; existing media/runtime tools and specific user authority govern editing, not the procedural motion builder. No actual media effect or host trial.",
+      "rubric": {
+        "boundary": "Uses the existing project media-editing path and does not select technical-illustration or build a kinetic scene merely because the file is a video."
+      }
     }
   ]
 }

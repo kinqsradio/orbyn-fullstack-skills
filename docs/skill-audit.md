@@ -694,3 +694,23 @@ and TDD link the same owner; no new skill, target installation, model/provider
 default or REA upgrade is introduced. Focused model/HTTP/browser checks and six
 development cases supplement the existing frozen suite. Browser fixture evidence
 does not establish native UX, full accessibility or live model performance.
+
+
+## Spatial and timed review adapter
+
+The existing UI/technical-illustration owners now link an original V12 worked
+adapter with visible comments on actual parts, repeated controls and scene surfaces.
+Schema 2 records source/model identity, camera, part, scene/time/cycle, playback
+settings, layers and viewport; schema 1 remains unchanged. A fresh consuming-repo
+package includes original source, geometry, retained Anatomy MIT closure/notices,
+review/settings and its design owner. The shared fixed-path loopback writer is
+reused through a trusted local validator/static allowlist, including parent-link
+refusal. Reopening starts paused and highlights the actual part.
+
+An original deterministic 12-second timeline covers interface, data, mechanism
+and four-shot kinetic typography examples with repeat/backward/cut controls.
+Scenario's unlicensed reviewed ZIP is inspiration only; no code/fonts/media are
+redistributed. Six new development cases supplement the unchanged 422-case
+baseline. Model/HTTP/browser fixture evidence does not establish full mechanical,
+video/audio, GPU/native, accessibility or live-agent performance. No nesting,
+provider/model default, target installation or REA engine change is introduced.

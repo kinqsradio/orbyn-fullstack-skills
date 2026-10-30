@@ -124,3 +124,23 @@ Primary behavior sources reviewed 30 October 2026: [MDN localStorage](https://de
 and [visual comparisons](https://playwright.dev/docs/test-snapshots).
 The local method/example is independently authored; these pointers are update
 and attribution evidence, not required downloads or a claim of full accessibility.
+
+
+## Spatial and timed surfaces
+
+For a moving model, retain stable part ID, actual geometry/model revision, source
+fingerprint, camera/projection, layers, scenario/scene/time, cycle/pose and playback
+settings alongside viewport and feedback. Reopening/restore starts paused and
+highlights the actual anchored part, including parts outside a repeated component
+family. A stale model or removed part requires explicit mapping; never substitute
+a similarly named part or inherit a screenshot coordinate. Persist settings even
+when there are zero comments. Annotation suppresses normal part/control activation;
+provide a keyboard picker for occluded/hidden parts and a visible review entry.
+
+The [original V12/motion package](../examples/spatial-review/README.md) supplies a
+schema-2 worked adapter reusing the same fixed-path save bridge. Schema 1 remains
+unchanged; imports are not silently reinterpreted across profiles. The example's
+repo save, restart/reopen and design-proposal checks are separate from full 3D,
+video/audio, native or accessibility qualification. The
+[motion method](../../technical-illustration/references/motion-sequences.md) covers
+conditional scenes, reading/caption timing and actual export evidence.

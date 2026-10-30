@@ -102,9 +102,18 @@ def validate(doc, manifest):
     return doc
 
 
-def make_server(package, port=0):
+def make_server(package, port=0, *, assets=None, validator=None):
+    # Trusted local adapters choose a bounded static allowlist and schema validator.
+    # HTTP requests never select filesystem write paths or executable validators.
+    assets = dict(ASSETS if assets is None else assets)
+    validator = validate if validator is None else validator
+    if not assets or len(assets) > 100 or "index.html" not in assets or "manifest.json" not in assets:
+        raise ValueError("Invalid static adapter allowlist")
+    for name, mime in assets.items():
+        if not isinstance(name, str) or not re.fullmatch(r"[A-Za-z0-9_-][A-Za-z0-9_.-]*(?:/[A-Za-z0-9_.-]+)*", name) or any(part.startswith(".") for part in name.split("/")) or not isinstance(mime, str):
+            raise ValueError("Unsafe static adapter path")
     root = Path(package).resolve(strict=True)
-    if any((root / name).is_symlink() or not (root / name).is_file() for name in ASSETS):
+    if any((root / name).is_symlink() or not (root / name).is_file() for name in assets):
         raise ValueError("Use a complete, nonsymlink review package")
     manifest = strict_json((root / "manifest.json").read_text())
     def verify_source():
@@ -114,11 +123,11 @@ def make_server(package, port=0):
         payload = {"prototype": {k: manifest["prototype"][k] for k in ("id", "version", "candidate")}, "targets": manifest["targets"], "assets": manifest["assets"]}
         if hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()).hexdigest() != manifest["prototype"]["fingerprint"]:
             raise ValueError("Invalid manifest fingerprint")
-        if set(manifest["assets"]) != set(ASSETS) - {"manifest.json"}:
+        if set(manifest["assets"]) != set(assets) - {"manifest.json"}:
             raise ValueError("Unexpected source assets")
         for name, expected in manifest["assets"].items():
             p = root / name
-            if p.is_symlink() or hashlib.sha256(p.read_bytes()).hexdigest() != expected:
+            if any(root.joinpath(*Path(name).parts[:i]).is_symlink() for i in range(1, len(Path(name).parts) + 1)) or hashlib.sha256(p.read_bytes()).hexdigest() != expected:
                 raise ValueError("Prototype source asset changed")
     verify_source()
     review_path = root / "review.json"
@@ -131,7 +140,7 @@ def make_server(package, port=0):
         current = strict_json(review_path.read_text())
         fields(current, ["revision", "review"])
         integer(current["revision"], 1, 1000000000)
-        validate(current["review"], manifest)
+        validator(current["review"], manifest)
         return current
     load()  # Fail startup on existing malformed data; never overwrite it.
     class Handler(BaseHTTPRequestHandler):
@@ -169,12 +178,12 @@ def make_server(package, port=0):
                     with lock:
                         return self.reply(200, {**load(), "token": token})
                 name = "index.html" if path == "/" else path.removeprefix("/")
-                if name not in ASSETS:
+                if name not in assets:
                     return self.reply(404, {"error": "Not served"})
                 p = root / name
                 if p.is_symlink():
                     raise ValueError("Asset link rejected")
-                return self.reply(200, p.read_bytes(), ASSETS[name])
+                return self.reply(200, p.read_bytes(), assets[name])
             except (ValueError, OSError):
                 return self.reply(409, {"error": "Package data unavailable/invalid; preserve and inspect it"})
         def do_POST(self):
@@ -190,7 +199,7 @@ def make_server(package, port=0):
                 expected = int(self.headers.get("X-Review-Revision", "-1"))
                 body = strict_json(self.rfile.read(length).decode("utf-8"))
                 fields(body, ["review"])
-                doc = validate(body["review"], manifest)
+                doc = validator(body["review"], manifest)
                 with lock:
                     current = load()
                     if current["review"] == doc:

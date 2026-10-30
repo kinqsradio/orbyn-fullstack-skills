@@ -1,14 +1,16 @@
 ---
 name: technical-illustration
-description: "Create or repair model-driven technical illustrations with coherent geometry, motion, readouts, accessible interaction and inspected SVG, React, print or conditional WebGL/beta3D outputs."
+description: "Create or repair deterministic code-driven motion scenes, local kinetic films and model-driven technical illustrations with coherent geometry, motion, readouts, accessible interaction and inspected SVG, React, print or conditional WebGL/beta3D outputs."
 ---
 
 # Model-driven technical illustrations
 
-Use for an explanatory interactive figure whose model controls what is drawn,
-moved, read and exported. Ordinary app layout belongs to UI design, social posters
+Use for an explanatory interactive figure or a code-driven timed prototype/local
+kinetic film whose model controls what is drawn, moved, read and exported. Ordinary app layout belongs to UI design, social posters
 to social-preview, simple flow diagrams to existing explanation methods and
-scientific plots to the scientific plotting tool. Choose a physical metaphor only
+scientific plots to the scientific plotting tool. Ordinary editing of existing
+video footage stays with the project media tools; this owner constructs motion
+from an explicit sampled model rather than acting as a general video editor. Choose a physical metaphor only
 when it clarifies the idea; disclose where the analogy stops.
 
 Resolve the target, its instructions, artifact/output owner and allowed effects.
@@ -26,7 +28,10 @@ No browser bypass, publisher, auth edit, history capture or model call is implie
    clipping, depth and attachments using [geometry and lines](references/geometry-and-lines.md).
 3. Define takeover, reversal, readiness, timing and cleanup using
    [motion and input](references/motion-and-input.md). Keep usable controls and
-   meaningful updates with reduced motion and without advanced rendering.
+   meaningful updates with reduced motion and without advanced rendering. For
+   timed UI, explainers/data, 3D choreography or kinetic films, use
+   [motion sequences](references/motion-sequences.md) for deterministic scenes,
+   interruption, text/media and actual delivery qualification.
 4. Select only the required delivery path: standalone SVG/HTML core;
    [React/accessibility](references/react-and-accessibility.md);
    [print](references/print.md); [WebGL](references/webgl.md); or documented
