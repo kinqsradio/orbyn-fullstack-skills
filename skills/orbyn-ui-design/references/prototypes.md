@@ -137,6 +137,10 @@ use a simpler inline state when a modal adds no useful decision. Reuse
 
 ## Human handoff and storage
 
+For an explicit durable prototype/review request, use [review packages](review-packages.md):
+keep source, local assets, settings and feedback with the target's existing design
+owner. The ordinary disposable default below does not override that request.
+
 Use the project's artifact convention; otherwise keep disposable files under
 ignored `output/<task>/preview/` and captures under `output/<task>/evidence/`.
 Follow [artifact lifecycle](../../orbyn-workflow/references/artifact-lifecycle.md)

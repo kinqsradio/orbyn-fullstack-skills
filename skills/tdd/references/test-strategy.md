@@ -97,3 +97,10 @@ For changed shared UI primitives, use the UI owner's [supported rendering contra
 A component test for disabled/loading name, dialog IDs or event suppression does
 not qualify actual polymorphic navigation, visible focus, screen-reader output or
 native behavior. Check the affected seam, not every unchanged consuming page.
+
+For submitted prototype feedback, use the UI owner's [review handoff](../../orbyn-ui-design/references/review-packages.md#agent-reconciliation-after-submission)
+to map each affected page/component/control risk to focused behavior, accessibility
+relationships and relevant pixel checks. Test rejected stale targets/lost feedback
+and legitimate current actions; do not update visual baselines merely to hide a
+difference. Browser pixels, accessibility-tree assertions, actual behavior and native
+qualification remain distinct. No new global runner or full-app sweep is required.

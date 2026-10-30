@@ -84,6 +84,17 @@ marketing page. Inspect it before multiplying the pattern across screens. Use th
 [prototype method](prototypes.md) for a usable HTML/app/native preview and its
 storage/lifetime; no mandatory hero review or separate agent is implied.
 
+For consequential concept comparisons, keep the same task/material and explain how
+each concept changes hierarchy, typography and interaction. Render the primary
+path and relevant failure state with fonts ready at the intended viewport; record
+critique → revision → targeted recheck. These are selective Orbyn review choices,
+not a fixed three-concept ritual, Apple-font prescription or universal card ban.
+Submitted feedback and durable design decisions use [review packages](review-packages.md).
+Reviewed inspiration: [Tobi's design-process article](https://x.com/tobiadonadon_/status/2106430529113301163),
+read in the source research on 30 October 2026. No underlying skill implementation,
+license or claimed results were verified; no article/skill text or assets imported.
+Existing Hallmark adaptation notices remain applicable.
+
 ## Separate defects from taste
 
 Review in this order and name the evidence for each finding:

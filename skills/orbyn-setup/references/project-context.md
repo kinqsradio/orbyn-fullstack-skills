@@ -23,3 +23,9 @@ or manual form is required.
 Keep project preferences with the target's existing owner. The library owns the
 method and public synthetic examples; it never absorbs target context into its
 catalog or public content merely because the agent can read it.
+
+For a requested durable UI review, discover the actual design document/package
+owner and exact filename case here; use `design.md` only when none exists.
+The UI owner's [review-package method](../../orbyn-ui-design/references/review-packages.md)
+keeps prototype/settings/feedback with that target. This adds no context schema,
+setup installation or mandatory map; private review data is not library content.

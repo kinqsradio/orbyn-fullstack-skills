@@ -135,6 +135,18 @@ when a local visual improvement could make the end-to-end task harder.
 
 ## Deliver a preview the human can use
 
+When presenting new or changed UI for human design review, offer or reuse the
+live feedback method in [review packages](references/review-packages.md), without
+requiring a separate invocation. Reuse an existing component preview for a small
+button change; respect audit-only requests and avoid rebuilding unchanged pages.
+For requested interactive comments, settings or durable records, deliver that path.
+Cover each affected page,
+component/instance and control; bind feedback to actual source/state and separate
+browser draft, submitted feedback, repo save and accepted design decisions. Keep
+requested durable source/settings/reviews with the consuming design owner, then
+reconcile its existing design document and focused regressions within scope.
+
+
 For a requested prototype or preview, produce the actual app route/story or a
 self-contained HTML artifact as appropriate, open it with supported host tools
 when possible, and provide the verified link plus states to try. Follow the
