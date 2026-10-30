@@ -62,7 +62,7 @@ The compact targets are Orbyn decisions, not dimensions mandated by these source
 
 These are Orbyn choices, not externally mandated sizes or universal AI rules:
 
-- Shared `TYPE_SCALE`/`typeScale` in `packages/core/src/presentation.ts`:
+- Shared `TYPE_SCALE`/`typeScale` in `packages/core/src/theme/presentation.ts`:
   11/13/15/18/24/36. Use roles rather than enlarging every section title.
 - Web `desktop/src/styles/global.css`: 15px base body, existing field tokens,
   16px narrow/coarse field text; preserve tokens without inflating surrounding copy.
@@ -80,3 +80,12 @@ oversized hero, or mandatory animation would conflict with Orbyn's own surfaces.
 Refresh the relevant primary source when changing a standards-dependent rule;
 reinspect local tokens when implementation has changed. Do not fetch research or
 configure external tools for every small UI edit when this reference suffices.
+
+## Workspace composition review
+
+The [workspace method](workspace-composition.md#reviewed-inspiration-and-limits)
+records the 30 October 2026 pinned Macro/Open Duet review and its source-versus-
+rendered limits. Persistent shell, surface patterns, panel defaults and attention
+grouping are adaptable design choices, not extra WCAG requirements. No source
+code/assets or product brand were imported. Actual consuming-project owners and
+preferences remain authoritative; a reference product does not establish usability.

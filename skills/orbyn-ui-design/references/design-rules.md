@@ -30,6 +30,12 @@ alone for status or treat a decorative border as a required control boundary.
 
 ## Layout, panels, and overlays
 
+For a substantial workspace change, [workspace composition](workspace-composition.md)
+owns shell/default decisions, collection/detail/editor/review patterns and bounded
+adjacent panes. Use its task-based receipt for before/after evidence and find,
+act, cancel/return, fail/recover outcomes; the matrix below selects relevant checks.
+
+
 - Check density as well as fit. At the agreed narrow task width, navigation
   and section chrome must leave useful room for the setting being changed. Fitting an oversized control is not sufficient acceptance.
 - Use compact single-line section headers and existing control heights. Reduce
@@ -97,6 +103,11 @@ alone for status or treat a decorative border as a required control boundary.
   Preserve drafts/selections on retries; avoid layout jumps and fake progress.
 
 ## AI interactions
+
+[Outcome and attention content](../../orbyn-content-design/references/outcomes-and-attention.md)
+owns factual goal/run distinctions, routine grouping and pause/stop/revoke/mute
+labels. Derive them from actual backend evidence rather than a new UI lifecycle.
+
 
 - Represent the implementation's actual states and work ownership. Conversation,
   durable jobs and background agents may have separate lifecycles; idle is not

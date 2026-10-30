@@ -80,3 +80,7 @@ legitimate when intentionally targeted. For an installed Sonner version inspect
 its actual `toast` ID/update/promise/dismiss and toaster-target APIs; do not install
 it or assert root-only mounting universally. No toast conveys authorization or
 replaces field-level errors, recovery and accessible live feedback.
+
+For goal/routine grouping, quiet no-change results and meaningful failure/decision
+escalation, use the content owner's [attention method](../../orbyn-content-design/references/outcomes-and-attention.md#group-routine-results-around-the-decision).
+It does not replace operation identity, delivery deduplication or durable review.

@@ -6,6 +6,20 @@
 
 # Skill-system audit — current candidate and historical evidence
 
+## Workspace composition and factual outcome guidance
+
+The existing [UI owner](../skills/orbyn-ui-design/references/workspace-composition.md)
+now connects shell/default choices, collection/detail/editor/review patterns and
+preserved pane identity to a compact changed-task acceptance receipt. The
+[content owner](../skills/orbyn-content-design/references/outcomes-and-attention.md)
+links goal evidence, partial/interrupted outcomes, routine attention and distinct
+control scopes. The AI tool-effect owner preserves upfront bounded authorization.
+Two synthetic examples and eight development case definitions support review;
+they are not executed agent trials or measured visual-quality gains. No new skill,
+provider, runtime or target installation was added. Existing notices remain;
+pinned reference products are credited as reviewed inspiration, without importing
+code/assets or consumer-private reports. Actual product/native/usability outcomes
+remain unqualified by this documentation change.
 
 ## Optional reference palettes and semantic colour — 30 October 2026
 

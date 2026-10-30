@@ -33,7 +33,7 @@ adoption. Its gallery separates raw labels, derived roles and contextual checks.
   distinguishes accessibility requirements, research guidance, and Orbyn choices.
 - Inspect the owning screen and shared controls before adding a local override.
   Resolve token/component owners from the consuming project's stack guide and
-  manifests. In Orbyn's application these are `packages/core/src/presentation.ts`,
+  manifests. In Orbyn's application these are `packages/core/src/theme/presentation.ts`,
   `desktop/src/styles/global.css`, and `mobile/src/theme/index.ts`; other projects
   use their own owners. Never create these paths to fit the skill.
 
@@ -67,6 +67,11 @@ owns that outcome decision. For model-powered behavior, use
 quality and tool contracts; UI keeps capability expectations, source/uncertainty,
 correction, dismissal and manual continuation visible. Feedback is not training
 consent and does not enable automatic capture.
+
+For substantial workspace composition, collections, editors or review surfaces,
+use [workspace composition](references/workspace-composition.md). Decide defaults,
+primary labels and competing panels before decoration; preserve saved preferences
+and use its compact task-based acceptance receipt in the existing change note.
 
 ## Design and implement
 

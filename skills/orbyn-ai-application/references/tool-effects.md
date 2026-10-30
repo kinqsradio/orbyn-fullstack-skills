@@ -26,6 +26,16 @@ useful denial evidence without exposing private text or executing source command
 
 ## Bound the loop and reconcile uncertain outcomes
 
+Establish the upfront goal, permitted effects/resources, result destination and
+bounds. Continue authorized investigation, drafting, verification and recovery
+without repeated stage approvals. Ask only for a required unresolved fact or a
+concrete effect outside the current grant; continue independent permitted work.
+Routine reversible commands need no new preview ceremony. A changed consequence
+still requires the appropriate authority at its actual boundary. UI/control labels
+follow the [content outcome method](../../orbyn-content-design/references/outcomes-and-attention.md);
+they do not themselves pause execution, revoke grants or confirm a stop.
+
+
 Set task-level tool/turn limits, wall-clock deadline, cost/output bounds and a
 terminal success/failure/escalation rule. Count retries and parallel branches
 against the task budget; do not reset the budget at every tool. A model may stop
