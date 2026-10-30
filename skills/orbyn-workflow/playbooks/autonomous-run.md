@@ -67,6 +67,23 @@ or report the actual blocker; never relax the target or retry indefinitely. Paus
 at the safe boundary on explicit stop, preserving dirty work/resources and next
 action under [pause](pause-safely.md). Resume from actual current state.
 
+## Close out each unit before expanding the queue
+
+Apply the [task closeout decision](../../orbyn-worktree/references/task-closeout.md)
+at the authorized endpoint before taking the next unit. Reuse owned task trees
+and reference caches; do not multiply clones/worktrees per child, retry or timeout.
+Account for held previews/evidence, later source and idle owned resources under
+actual cleanup authority. A no-merge handoff can be terminal for this task while
+its PR and resources remain open; record why and when that hold is reviewed.
+
+Use the user/project-agreed storage/resource budget from actual inventory. If
+expensive disposable copies would exceed it, stop creating them and continue
+useful authorized low-storage/read-only work or report the bounded blocker.
+Allocated directory sums are not reclaimable physical bytes. Do not invent a
+threshold, delete caches to make room, stop foreign resources or install a janitor.
+Retention triggers do not schedule work; future cleanup/monitoring needs its own
+applicable authority and supported host capability.
+
 ## Persistence is a host capability
 
 An active supported handle can continue while alive. An ended process cannot be

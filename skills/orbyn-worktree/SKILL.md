@@ -28,6 +28,31 @@ that another active session has released it. Preserve unrelated changes and
 outputs; do not stash, reset, switch another owner's checkout, copy dirty files
 or move existing worktrees merely to enforce this convention.
 
+## Reuse before cloning or replacing
+
+Continue the same task/PR in its owned branch and checkout through review and
+corrections. Inspect canonical repository/remotes, registered trees, host bindings
+and any existing reference cache before creating another. A new independent task
+uses the verified current default branch; a stack uses its exact reviewed dependency.
+Do not use a historical task branch just because it is current, or create a clone
+per agent/day/retry. Keep target nesting and the library's established sibling root.
+
+Reclone only for a new repository, proven missing/unrecoverable source store,
+necessary separate trust/credential boundary or demonstrated incompatible need.
+Try suitable supported readiness/repair first; a stale cwd, conflict or old build
+is not itself a reason to reclone. An intentional partial/no-checkout reference
+cache can lack an index or visible source and show deletion-like status. Resolve
+its intended materialization mode, pinned source and owner before interpreting
+that as lost work/corruption; a promisor setting alone proves neither intent nor
+safety. Do not reset, checkout over or reclone it on that symptom alone.
+When replacement is actually authorized,
+preserve local refs/commits, binary-capable staged/unstaged snapshots, untracked
+source and valuable ignored data/configuration in permitted storage. Verify any
+bundle prerequisites and replacement beside the old checkout before deliberately
+rebinding task/host paths and rereading instructions. Do not automatically copy
+credentials, move an active path or delete the old clone. Explicit workdir success
+does not prove the host binding changed. Use [continuation readiness](../orbyn-setup/SKILL.md#resume-after-a-workspace-or-runtime-change).
+
 ## Sibling location and names
 
 Targets use the library-root ignored `repo/` workspace exclusively; follow the
@@ -206,28 +231,16 @@ still apply at delivery; isolated files do not establish isolated runtime effect
 
 ## Preserve before cleanup
 
-Clean up only an owned, inactive worktree within the authorized delivery/cleanup
-scope. Check tracked and untracked changes, unpushed/unmerged commits, locks,
-ignored output, local configuration and active processes. `git status` alone does
-not reveal ignored artifacts. Inspect ignored paths without printing secrets;
-classify reproducible dependency caches separately from valuable output and
-configuration. Preserve needed data in an owned recoverable location first.
+At a meaningful handoff or terminal delivery result, apply the single
+[task closeout method](references/task-closeout.md): reconcile source, commit,
+push, PR and resource states, decide retention with a reason/review trigger,
+and assess exact-path retirement separately from permission to remove it.
+A squash merge or clean status alone is insufficient. Use supported managed
+archive/Git removal only after ownership, later commits, dependencies, ignored
+artifacts, live previews and recovery are resolved. A refusal has no automatic
+force fallback; local/remote ref deletion and tracking prune remain separate.
 
-For managed worktrees, use their supported archive flow and separately preserve
-needed ignored files. For ordinary Git worktrees, use `git worktree remove` on
-the verified exact path after preservation; never delete a checkout with a blanket
-filesystem removal, forced reset/clean or force removal. Do not delete branches
-or prune another owner's registrations as an incidental step. Move/repair/prune
-only a diagnosed owned registration within scope; removal of a directory alone
-does not reconcile Git metadata. If preservation or ownership is unresolved,
-leave the worktree intact, record the reason and continue independent work.
-
-Return the primary clone, sibling root, selected path, branch/base/HEAD, owner,
-preserved data and actual retained/removed/archived state. A merged PR does not
-prove its local checkout or outputs are safe to delete.
-
-For preview/evidence storage and task servers, ports, volumes and test environments,
-use [artifact lifecycle](../orbyn-workflow/references/artifact-lifecycle.md).
-Before removing a tree, check whether a human still needs its preview and move/reopen
-needed ignored artifacts in an approved retained location. Stop only identified
-owned processes; a clean Git status is not a resource inventory.
+For preview/evidence storage, server/volume ownership and retention classes, use
+[artifact lifecycle](../orbyn-workflow/references/artifact-lifecycle.md).
+Return the selected path/base/head, verified delivery state, retained resources,
+recovery pointers and actual closeout disposition. A dry run changes nothing.

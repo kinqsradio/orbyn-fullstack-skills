@@ -13,13 +13,46 @@ no extra folders. Create a task directory only when an artifact is needed.
 | Screenshots, test captures, profiles and trial receipts | Ignored `output/<task>/evidence/` or approved CI artifacts; retain candidate/state identity | Required review/reproduction and project retention are satisfied |
 | Decision or sanitized result summary | Existing design/task document; tracked only when appropriate | Owning decision's useful lifetime |
 | Accepted behavioral model, property/config and maintenance instructions | Target's existing tracked verification/test/design owner | Covered behavior remains supported; update correspondence after code changes |
-| Disposable database, queue, volume, environment or cache | Unique task-owned namespace/path outside production | Checks finish and required failure evidence/data are preserved |
+| Disposable database, queue, volume or environment | Unique task-owned namespace/path outside production | Data/recovery and teardown authority are explicitly resolved; volumes are not ordinary rebuild caches |
+| Regenerable task cache/build output | Existing package/build policy with owned namespace and reproducible inputs | Its task purpose ends and no active/shared consumer needs it |
+| Credentials and private local configuration | Existing permitted secret/configuration owner, outside public output | Owner policy and explicit scope; never treat as cache or copy automatically |
 | Downloaded research | Ignored `orbyn-references/` under upstream-review policy | Its research/retention purpose ends |
 
 Verify ignore/export behavior before writing sensitive or raw material. Do not
 force-add output, copy secrets into examples, install global dependencies or create
 one log per routine change. Files under a temporary OS directory may disappear;
 move a requested handoff to a durable project-approved location before promising it.
+
+## Retention and growth decisions
+
+At a meaningful task boundary, use the same [closeout record](../../orbyn-worktree/references/task-closeout.md),
+not another registry. For retained material identify purpose, owner, exact path or
+handle, size when useful, reconstruction/reopen method and reason/review event.
+Age or a successful rerun makes an item reviewable, not safe to delete. No fixed
+auto-delete TTL or scheduled janitor is a library default.
+
+- **Raw evidence:** keep candidate/input identity and diagnostically useful failed
+  attempts through required review/reproduction and project retention. Before
+  retiring redundant large captures, preserve the selected receipts and state
+  which raw files become unavailable. A summary cannot pretend deleted evidence
+  remains replayable; a passing rerun alone does not erase an earlier failure.
+- **Preview review hold:** keep the usable artifact/assets and supported entrypoint
+  until review/release. Then propose preserving the selected reopenable package
+  and retiring superseded versions/servers under actual authority. A review hold
+  needs a reason/trigger, not permanent hosting or automatic expiry.
+- **Regenerable cache:** record pinned inputs/lockfile, supported reconstruction
+  command and any unique diagnostics before proposing eviction. Reuse supported
+  package caches; shared mutable `node_modules`, build outputs or fixture state
+  need demonstrated resolver/cache isolation before cross-worktree reuse. A folder
+  named cache may contain valuable output; classification follows contents/owner.
+- **Credentials, configuration and volume data:** preserve their actual security,
+  access and recovery contract. They are not disposable dependencies. A local
+  source commit or fresh clone cannot recover their contents automatically.
+
+Choose retention and storage budget from the user's/project's workload and policy.
+When idle task resources are eligible for release, act only within cleanup scope
+and verify the real result. Holds with unknown ownership name the next resolution
+check. Do not touch existing artifacts during a read-only inventory or dry run.
 
 ## Record the resources actually started
 

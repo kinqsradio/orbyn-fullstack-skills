@@ -29,6 +29,15 @@ not a new checkpoint file. A migration handed to another owner needs the current
 candidate, last checked batch and next safe action in the existing task document;
 choose JSON only if a recipient or helper needs to validate it.
 
+## One task identity through closeout
+
+Keep the existing task/issue identity and add its PR alias when published; an
+issue is not required for routine work. Reconcile independent source, verified
+commit, pushed ref/head, PR and resource states using the [closeout method](../../orbyn-worktree/references/task-closeout.md#one-identity-independently-verified-states).
+Private resource/recovery pointers stay in the approved local record, not a public
+PR body. A meaningful terminal handoff also names what remains, why and its review
+trigger; no second tracker or change to the optional JSON schema is required.
+
 ## Change map
 
 | User trigger and result | Current owner/source | Contract to change | Affected callers |

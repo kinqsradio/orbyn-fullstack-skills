@@ -168,3 +168,13 @@ a later read. Recheck identity before applying a returned finding. Preserve both
 observations on drift; do not silently replace the reference or count a catalog
 listing as readiness. Existing target restrictions and source-owned conventions
 remain evidence about that project, not universal library policy.
+
+For repeated research on the same upstream, reuse a suitable ignored partial/
+no-checkout source cache where supported, with immutable selected pin/hash receipts
+per comparison. Inspect existing cache identity/owner and live readers first;
+do not reset another review's source or create a full clone per task/day/agent.
+This cache is distinct from a target working clone; do not convert or move an
+active target merely to save space. Preserve approved offline support and notices.
+Its terminal retention decision follows [artifact retention](../orbyn-workflow/references/artifact-lifecycle.md#retention-and-growth-decisions)
+and the [closeout gate](../orbyn-worktree/references/task-closeout.md); a download
+or new review does not authorize cache eviction or a janitor.

@@ -17,3 +17,9 @@ can be checked against the current revision and retained dirty snapshot. Resolve
 changed ownership, user steering and failed/unrun checks before continuing.
 
 For an autonomous program, reconcile every active unit, already-landed PR, dirty patch, remote head and owned process before selecting the next unfinished item under [autonomous delivery](autonomous-run.md). A prior summary cannot overwrite newer source or reopen a frozen no-merge handoff.
+
+Use the worktree owner's [reuse/replacement decision](../../orbyn-worktree/SKILL.md#reuse-before-cloning-or-replacing)
+before making another checkout. Verify the existing task/PR branch and correct
+base/dependency, including later local work; stale cwd is not a missing clone.
+Reconcile its [closeout hold](../../orbyn-worktree/references/task-closeout.md)
+in the same record instead of restarting completed or frozen work.
