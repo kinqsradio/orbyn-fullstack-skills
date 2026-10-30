@@ -35,7 +35,14 @@ Use the configured runtime and lint/type checks for the touched module. A passin
 
 ## Maintainability and checks
 
-Keep module exports deliberate and preserve ESM/CommonJS compatibility. Return stable error meanings at adapters, keep logging/configuration owned by the application, and test the actual promise/resource boundary. For UI results, pair supported cancellation with current-request identity so an older response cannot overwrite newer state.
+Keep module exports and ESM/CommonJS boundaries deliberate; preserve adapter
+errors and current-request identity; the application owns logging/configuration.
+For Node streams, honor backpressure instead of queueing unlimited writes.
+A false `write()` result means wait for drain, not resubmit the accepted chunk.
+Use the supported `pipeline` API, awaiting its promise
+or checking its callback; pass cancellation through supported signals and handle
+errors/cleanup. Inspect HTTP ownership before piping: error teardown can destroy
+the socket before a fallback response. Browser streams use their own API contract.
 
 ## Callbacks retained beyond a view
 
@@ -82,3 +89,5 @@ examples are usable offline. The links identify semantics and update evidence;
 verify compatibility with the project's target before using newer APIs.
 
 [MDN promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), [Node packages/module boundaries](https://nodejs.org/api/packages.html).
+
+Focused semantics reviewed 30 October 2026: [Node 22 stream backpressure/pipeline](https://nodejs.org/docs/latest-v22.x/api/stream.html).

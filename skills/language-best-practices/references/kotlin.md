@@ -34,7 +34,13 @@ Use the configured Gradle tasks and target-specific authorized tests. A JVM unit
 
 ## Maintainability and checks
 
-Separate domain results from framework/UI lifecycle state. Keep coroutine scope and cancellation ownership visible through adapters; do not hide cancellation in generic result mapping. Use the configured coroutine/test facilities rather than adding a new global scope or framework to simplify one test.
+Keep domain state separate from framework lifetime and use existing coroutine
+test facilities. A cold `flow {}` runs again per collection, potentially repeating
+effects; share/state only with an explicit scope and replay policy. StateFlow
+conflates by equality: mutating/reusing the same object may hide a change, and slow
+collectors may skip intermediate states. Prefer immutable replacement for state;
+it is not an every-event queue. `update` lambdas may rerun under contention, so
+keep external effects out of the transform. Inspect the installed coroutines API.
 
 ## Primary references
 
@@ -43,3 +49,5 @@ examples are usable offline. The links identify semantics and update evidence;
 verify compatibility with the project's target before using newer APIs.
 
 [Kotlin structured coroutines](https://kotlinlang.org/docs/coroutines-basics.html), [Kotlin coroutine errors](https://kotlinlang.org/docs/exception-handling.html).
+
+Focused semantics reviewed 30 October 2026: [Cold Flow](https://kotlinlang.org/docs/coroutines-flow.html#cold-flows), [StateFlow equality](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-state-flow/), [update retries](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/update.html).

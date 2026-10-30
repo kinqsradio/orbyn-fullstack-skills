@@ -9304,6 +9304,292 @@
         "refs": "Separates supported worktree archive/remove from local branch, hosted branch and tracking prune, with exact scope and no force fallback after refusal.",
         "budget": "Closes out each unit with retained reason/trigger, reuses owned handles/trees and avoids expensive new copies when over actual agreed budget; continues useful low-storage work without invented threshold, global prune or new scheduler."
       }
+    },
+    {
+      "id": "language-gap-python-assert-boundary",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In endpoint.py, assert amount > 0 is the only request validation, but production uses -O. Test code also uses assert for internal expectations. Review the boundary without globally banning assertions.",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic source-review development definition; no target code edits, 13-toolchain installation, live model trial or blanket runtime qualification. Adjacent legitimate controls must remain valid.",
+      "rubric": {
+        "contract": "Required input checks use explicit validation/error paths that survive optimization; no authority or side effects rely on assert.",
+        "control": "Keeps legitimate test/debug assertions; selects invalid and valid runtime inputs and reports actual Python target instead of claiming type hints validate data."
+      }
+    },
+    {
+      "id": "language-gap-javascript-stream-contract",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In export.mjs, a producer ignores false write returns, a sink error is unhandled, and cancellation stops only its UI spinner. Should we use Node pipeline everywhere, including a browser stream and an HTTP fallback response?",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic source-review development definition; no target code edits, 13-toolchain installation, live model trial or blanket runtime qualification. Adjacent legitimate controls must remain valid.",
+      "rubric": {
+        "contract": "Honors backpressure without resubmitting an accepted chunk; handles pipeline completion/error and actual supported cancellation/cleanup.",
+        "control": "Checks installed Node API versus browser contract and HTTP socket teardown before fallback; no blanket pipeline replacement, unbounded buffering or spinner-only cancellation claim."
+      }
+    },
+    {
+      "id": "language-gap-typescript-readonly-assertion",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In payload.ts, a Readonly record aliases mutable nested data, and a user-defined value-is-Valid predicate always returns true while an assertion body does nothing. Types compile. Can we treat it as a validated immutable snapshot?",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic source-review development definition; no target code edits, 13-toolchain installation, live model trial or blanket runtime qualification. Adjacent legitimate controls must remain valid.",
+      "rubric": {
+        "contract": "Distinguishes shallow/static readonly from runtime freezing or alias isolation; requires actual stable ownership and validation of unknown input.",
+        "control": "Inspects/tests predicate/assertion bodies against malformed and legitimate inputs; does not ban genuine validating predicates or assume signatures implement validation."
+      }
+    },
+    {
+      "id": "language-gap-go-interface-sync-contract",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In store.go, success returns a typed nil *LookupError as error, and a struct with an already-used sync.Mutex is copied by value. A separate fresh zero mutex and plain nil pointer are legitimate. Explain the distinctions.",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic source-review development definition; no target code edits, 13-toolchain installation, live model trial or blanket runtime qualification. Adjacent legitimate controls must remain valid.",
+      "rubric": {
+        "contract": "Identifies nonnil error interface dynamic type, returns nil interface for success and avoids copying used synchronization owners through structs/receivers.",
+        "control": "Preserves error identity and legitimate fresh zero-value synchronization/plain nil pointer; no universal pointer or goroutine framework rewrite."
+      }
+    },
+    {
+      "id": "language-gap-rust-capacity-arc-contract",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In buffer.rs, Vec::with_capacity(8) is immediately set_len(8) without initialization, and Arc is proposed as synchronization for mutable payload. Another unsafe FFI path actually initializes all reported elements. Review both.",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic source-review development definition; no target code edits, 13-toolchain installation, live model trial or blanket runtime qualification. Adjacent legitimate controls must remain valid.",
+      "rubric": {
+        "contract": "Capacity is not initialized length; requires set_len capacity/initialization proof or safe construction, without executing undefined behavior.",
+        "control": "Arc provides shared ownership under payload Send/Sync and synchronization requirements; a correctly initialized justified FFI path remains possible, not a universal unsafe/Arc ban."
+      }
+    },
+    {
+      "id": "language-gap-java-future-decimal-contract",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In PriceJob.java, CompletableFuture.cancel(true) is assumed to interrupt a running computation, and new BigDecimal(0.1) is assumed exact decimal money. One caller intentionally needs exact binary-double conversion. Review supported behavior.",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic source-review development definition; no target code edits, 13-toolchain installation, live model trial or blanket runtime qualification. Adjacent legitimate controls must remain valid.",
+      "rubric": {
+        "contract": "Separates CompletableFuture cancellation state from underlying work interruption/owner; no promise cancel(true) stops computation.",
+        "control": "Chooses text or deliberate valueOf, scale/rounding for decimal intent while allowing intentional exact binary conversion; preserves actual JDK release and no universal rounding policy."
+      }
+    },
+    {
+      "id": "language-gap-kotlin-flow-state-contract",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In Feed.kt, two collectors of flow {} each perform a write. StateFlow contains a list mutated in place, and update increments an external counter. A different consumer needs every event. Explain scopes and controls.",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic source-review development definition; no target code edits, 13-toolchain installation, live model trial or blanket runtime qualification. Adjacent legitimate controls must remain valid.",
+      "rubric": {
+        "contract": "Cold collection can repeat effects; StateFlow equality conflation and mutable reuse can hide updates or skip intermediate states; prefers appropriate immutable state and explicit sharing scope.",
+        "control": "update transform may rerun, so it cannot own exactly-once external effects; event delivery uses the actual required contract, not a blanket stateIn/SharedFlow installation."
+      }
+    },
+    {
+      "id": "language-gap-csharp-valuetask-contract",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In Reader.cs, the same ValueTask is awaited twice and converted with AsTask on two paths. Another API returns a normal Task shared by several consumers. What is a proportionate correction?",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic source-review development definition; no target code edits, 13-toolchain installation, live model trial or blanket runtime qualification. Adjacent legitimate controls must remain valid.",
+      "rubric": {
+        "contract": "Consumes ValueTask once or converts once and retains only the resulting Task; does not reuse original or assume pooled source supports multiple awaits.",
+        "control": "Allows normal Task repeated/concurrent awaits; preserves lifetime/cancellation and target framework, without converting every API to ValueTask or blocking unfinished work."
+      }
+    },
+    {
+      "id": "language-gap-swift-string-actor-contract",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In Editor.swift, a UTF16 offset is used as a grapheme index in an emoji string. Marking an actor-isolated CPU loop async is proposed to move it off MainActor; compiler isolation features differ between targets. Review without launching a device.",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic source-review development definition; no target code edits, 13-toolchain installation, live model trial or blanket runtime qualification. Adjacent legitimate controls must remain valid.",
+      "rubric": {
+        "contract": "Distinguishes String.Index/Character graphemes from UTF8 bytes and UTF16 units; converts and validates against the actual string/view/version.",
+        "control": "Async alone does not offload actor-isolated CPU work; checks target language/isolation/SE-0461 features without a universal nonisolated scheduling claim or native qualification."
+      }
+    },
+    {
+      "id": "language-gap-c-realloc-contract",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In grow.c, p = realloc(p, n) overwrites the only pointer and NULL is treated as freeing the old buffer. A zero-size request is assumed to behave identically under every C standard. Review failure, success and empty input.",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic source-review development definition; no target code edits, 13-toolchain installation, live model trial or blanket runtime qualification. Adjacent legitimate controls must remain valid.",
+      "rubric": {
+        "contract": "For valid nonzero resize failure retains original allocation via temporary; success uses returned pointer and invalidates prior aliases, with overflow and cleanup ownership.",
+        "control": "Handles zero separately under target standard/library rather than universal realloc-zero semantics or double free; C23 and earlier guidance are not conflated."
+      }
+    },
+    {
+      "id": "language-gap-cpp-vector-capacity-contract",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In rows.cpp, an empty vector reserves 20 then writes v[0]. Code also assumes any moved-from standard-library object is empty. Another vector has already constructed elements and valid indices. Explain the contract.",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic source-review development definition; no target code edits, 13-toolchain installation, live model trial or blanket runtime qualification. Adjacent legitimate controls must remain valid.",
+      "rubric": {
+        "contract": "Reserve does not construct elements/change size; uses push/emplace/resize as appropriate and accounts for reallocation invalidation.",
+        "control": "Allows legitimate indexing within existing size; moved-from library state is generally valid but unspecified unless stronger type contract, with operation preconditions retained."
+      }
+    },
+    {
+      "id": "language-gap-sql-retry-null-contract",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In save.sql on PostgreSQL 18, a serialization failure retries only the last UPDATE after earlier decisions, while CHECK(price > 0) is assumed to reject NULL. Some nullable prices are intentional and a unique violation is permanent. Plan safe corrections.",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic source-review development definition; no target code edits, 13-toolchain installation, live model trial or blanket runtime qualification. Adjacent legitimate controls must remain valid.",
+      "rubric": {
+        "contract": "Retries the full transaction and decisions under bounded classified policy; does not blindly retry permanent constraints or repeat external effects.",
+        "control": "Distinguishes CHECK true/unknown from NOT NULL, preserves intentional nullability and actual engine semantics; a SQLite fixture cannot qualify PostgreSQL retry behavior."
+      }
+    },
+    {
+      "id": "language-gap-shell-substitution-status",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In task.sh using Bash, local output=$(failing_command) is followed by success handling; export/readonly combine the same pattern. A literal export is legitimate, and another deployment uses POSIX sh. Explain a portable scoped correction.",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic source-review development definition; no target code edits, 13-toolchain installation, live model trial or blanket runtime qualification. Adjacent legitimate controls must remain valid.",
+      "rubric": {
+        "contract": "Declaration builtin can mask substitution failure; separates declaration, assignment with explicit status check, then export/readonly.",
+        "control": "Uses actual shell syntax and does not assume local exists in POSIX sh; preserves legitimate literal export and quoted arguments without global set-e guarantees."
+      }
     }
   ]
 }

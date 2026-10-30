@@ -30,7 +30,12 @@ Use the actual engine in a guarded disposable database when tests are authorized
 
 ## Maintainability and checks
 
-Keep schema/query ownership and tenant scope explicit. Choose indexes from actual access patterns, cardinality and representative plans; every added index also affects writes and maintenance. Preserve stable pagination ties, NULL semantics and transaction retry meaning. Inspect estimates separately from executed measurements in disposable authorized scope.
+Account for index write/maintenance cost. For PostgreSQL serialization failures,
+retry the whole transaction, including reads and decisions, under a bounded
+classified policy; replaying only its final statement reuses stale assumptions.
+Do not blindly retry permanent constraints or duplicate external effects; reconcile
+those separately. A PostgreSQL `CHECK (price > 0)` permits NULL: add NOT NULL when
+absence is forbidden. Nullable columns can be intentional; verify the actual engine.
 
 ## Primary references
 
@@ -39,3 +44,5 @@ examples are usable offline. The links identify semantics and update evidence;
 verify compatibility with the project's target before using newer APIs.
 
 [PostgreSQL 18 isolation](https://www.postgresql.org/docs/18/transaction-iso.html), [PostgreSQL 18 comparison/NULL](https://www.postgresql.org/docs/18/functions-comparisons.html), [PostgreSQL EXPLAIN](https://www.postgresql.org/docs/18/sql-explain.html).
+
+Focused semantics reviewed 30 October 2026: [PostgreSQL 18 full-transaction retry](https://www.postgresql.org/docs/18/mvcc-serialization-failure-handling.html), [CHECK/NOT NULL](https://www.postgresql.org/docs/18/ddl-constraints.html).

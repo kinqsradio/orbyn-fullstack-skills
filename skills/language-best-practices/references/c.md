@@ -31,7 +31,12 @@ Use the actual compiler warnings and authorized sanitizer/behavior checks for bo
 
 ## Maintainability and checks
 
-Document public ABI ownership and caller obligations, including partial initialization and cleanup. Keep capacity/length/error conventions consistent across consumers. Use representative invalid input and failure paths in authorized checks; warnings or one sanitizer run cannot establish all lifetime and concurrency invariants.
+Keep public ABI ownership, capacity/length/error conventions and partial cleanup
+consistent. For a nonzero resize, assign `realloc` to a temporary: failure leaves
+the original allocation valid, so overwriting its only pointer leaks it. On success
+use the returned pointer and invalidate old aliases. Handle zero size separately
+under the target standard/library; do not generalize old realloc-zero behavior
+to C23. Check overflow before computing the requested bytes.
 
 ## Primary references
 
@@ -39,4 +44,6 @@ Reviewed 24 October 2026. These independently written instructions and synthetic
 examples are usable offline. The links identify semantics and update evidence;
 verify compatibility with the project's target before using newer APIs.
 
-[CERT allocation rule](https://wiki.sei.cmu.edu/confluence/spaces/flyingpdf/pdfpageexport.action?pageId=87152128), [Clang undefined-behavior sanitizer](https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html).
+[CERT allocation rule](https://cmu-sei.github.io/secure-coding-standards/sei-cert-c-coding-standard/rules/memory-management-mem/mem35-c/), [Clang undefined-behavior sanitizer](https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html).
+
+Focused semantics reviewed 30 October 2026: [SEI zero-size allocation](https://cmu-sei.github.io/secure-coding-standards/sei-cert-c-coding-standard/recommendations/memory-management-mem/mem04-c/), [C23 draft N3096 7.24.3.7](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3096.pdf).

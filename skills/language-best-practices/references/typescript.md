@@ -48,6 +48,9 @@ contracts deliberate. Use a generic when it preserves a real relationship
 between inputs and outputs; avoid type-level frameworks or broad type assertions
 that hide an unresolved domain decision. Utility types do not automatically make
 an internal persistence object a safe public response.
+`readonly`/`Readonly<T>` constrain checked assignments, not runtime mutation or deep
+immutability. Nested objects and writable aliases can still change; choose an
+owned snapshot/validation boundary when stable values are required.
 
 Distinguish type-only dependencies from runtime imports using the project's
 supported syntax and emitter rules. Match package exports, ESM/CommonJS behavior
@@ -89,3 +92,5 @@ The retained adapted guidance's [source notice](typescript-LICENSE.txt) continue
 to apply; the consolidation does not claim exclusive original authorship.
 
 Keep simpler total input types where operations accept every value: `sum([])` may legitimately return zero. A partial `newest(xs)` needs an optional result or justified nonempty contract; avoid hidden non-null assertions. A `{start, duration: number}` shape alone does not exclude negative/NaN duration or validate serialized input; enforce the owning runtime constraints before claiming that invariant.
+
+Readonly semantics reviewed 30 October 2026: [TypeScript object types](https://www.typescriptlang.org/docs/handbook/2/objects.html#readonly-properties).

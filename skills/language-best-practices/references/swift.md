@@ -28,7 +28,14 @@ Use the supported toolchain build/checks and authorized target tests. A package 
 
 ## Maintainability and checks
 
-Keep actor/public API and SDK availability explicit. Revalidate state after suspension when another operation can change the invariant. Test a meaningful asynchronous interleaving or recovery boundary when authorized; do not silence isolation diagnostics with unchecked annotations or claim a package build qualifies device behavior.
+Keep String indices tied to the actual string/version and collection view.
+Character traversal follows extended grapheme clusters; UTF-8 byte and UTF-16
+code-unit offsets are different coordinates. Convert/validate at the interop
+boundary rather than treating an integer offset as a String.Index.
+
+`async` does not offload actor-isolated CPU work. Inspect isolation, language mode
+and supported executor features before moving work; nonisolated async defaults
+can differ by compiler/features (see SE-0461). Do not silence isolation checks.
 
 ## Primary references
 
@@ -75,3 +82,5 @@ and strict concurrency configuration; preserve its language mode during migratio
 Measure allocation/ARC work before replacing safe abstractions with unsafe memory.
 Privacy-aware logs should omit raw user data and stable secrets; actor safety is
 not a license to capture telemetry.
+
+Focused semantics reviewed 30 October 2026: [Swift String coordinates](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/stringsandcharacters/), [SE-0461 target gating](https://github.com/swiftlang/swift-evolution/blob/main/proposals/0461-async-function-isolation.md).

@@ -30,7 +30,12 @@ Use configured cargo check/test, formatting and Clippy within authorized scope. 
 
 ## Maintainability and checks
 
-Keep public types and dependency exposure deliberate; document errors, panic conditions and unsafe invariants where relevant. Debug output must not reveal secret fields. Choose ownership/borrowing and traits from real caller needs rather than adding Clone, Arc or generic layers mechanically. Keep useful regression seeds for parser or state invariants.
+Keep public types/dependency exposure, errors/panics and regression seeds
+intentional; avoid generic layers without real callers. Debug output must not reveal secrets. `Vec` capacity is not initialized
+length: prefer safe push/extend/resize. Unsafe `set_len(n)` requires n within
+capacity and newly exposed elements already initialized; allocation alone is not
+that proof. `Arc` shares ownership, not synchronization of mutable contents;
+use the payload's actual Send/Sync and mutation contract, not mechanical cloning.
 
 ## Primary references
 
@@ -39,3 +44,5 @@ examples are usable offline. The links identify semantics and update evidence;
 verify compatibility with the project's target before using newer APIs.
 
 [Rust ownership](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html), [Cargo rust-version](https://doc.rust-lang.org/cargo/reference/rust-version.html), [Rust unsafe](https://doc.rust-lang.org/book/ch20-01-unsafe-rust.html).
+
+Focused semantics reviewed 30 October 2026: [Vec set_len safety](https://doc.rust-lang.org/std/vec/struct.Vec.html#method.set_len), [Arc thread safety](https://doc.rust-lang.org/std/sync/struct.Arc.html#thread-safety).

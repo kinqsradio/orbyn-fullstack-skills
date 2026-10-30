@@ -33,7 +33,12 @@ Use configured package tests and go vet when authorized. The race detector obser
 
 ## Maintainability and checks
 
-Choose packages and exported APIs from actual responsibilities. Use internal packages for implementation details when that visibility contract fits. Keep consumer interfaces narrow around real variation; do not generate one interface per struct. Preserve wrapped error identity, worker lifetime and supported toolchain behavior in representative tests.
+Keep packages/exported APIs deliberate, using internal packages and narrow
+consumer interfaces where they fit, not one interface per struct. An `error` containing a typed nil pointer is
+not a nil interface; return an explicit nil on success. Preserve wrapped error
+identity. Do not copy used synchronization values such as Mutex, Once or WaitGroup,
+including through containing structs/value receivers; share the intended owner.
+A fresh zero-value mutex is valid, and a nil concrete pointer can still be nil.
 
 ## Primary references
 
@@ -42,3 +47,5 @@ examples are usable offline. The links identify semantics and update evidence;
 verify compatibility with the project's target before using newer APIs.
 
 [Go review comments](https://go.dev/wiki/CodeReviewComments), [Go race detector](https://go.dev/doc/articles/race_detector), [Go errors](https://go.dev/blog/go1.13-errors).
+
+Focused semantics reviewed 30 October 2026: [Go nil-error FAQ](https://go.dev/doc/faq#nil_error), [sync ownership](https://pkg.go.dev/sync).
