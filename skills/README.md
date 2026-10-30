@@ -55,7 +55,7 @@ This index is generated in the full library from `catalog.json` and frontmatter 
 
 - [orbyn-content-design](orbyn-content-design/SKILL.md) — Write and arrange concise Orbyn product content, labels, status, errors and help across web, desktop and mobile. Use for visible interface copy and content hierarchy; preserve user-authored documents and messages.
 - [orbyn-ui-design](orbyn-ui-design/SKILL.md) — Design, implement, or review Orbyn UI and UX across web, desktop, and mobile: task flows, concise copy, responsive layouts, overlays, and AI interactions. Use for visible product flows; not backend-only work.
-- [technical-illustration](technical-illustration/SKILL.md) — Create or repair deterministic code-driven motion scenes, local kinetic films and model-driven technical illustrations with coherent geometry, motion, readouts, accessible interaction and inspected SVG, React, print or conditional WebGL/beta3D outputs.
+- [technical-illustration](technical-illustration/SKILL.md) — Create or repair deterministic code-driven motion scenes, motion films and model-driven technical illustrations with coherent geometry, motion, readouts, accessible interaction and inspected SVG, React, print or conditional WebGL/beta3D outputs.
 
 ## Social content and visuals
 

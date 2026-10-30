@@ -1,6 +1,6 @@
 ---
 name: technical-illustration
-description: "Create or repair deterministic code-driven motion scenes, local kinetic films and model-driven technical illustrations with coherent geometry, motion, readouts, accessible interaction and inspected SVG, React, print or conditional WebGL/beta3D outputs."
+description: "Create or repair deterministic code-driven motion scenes, motion films and model-driven technical illustrations with coherent geometry, motion, readouts, accessible interaction and inspected SVG, React, print or conditional WebGL/beta3D outputs."
 ---
 
 # Model-driven technical illustrations
@@ -40,7 +40,10 @@ No browser bypass, publisher, auth edit, history capture or model call is implie
    the resulting images using [capture and drive](references/capture-and-drive.md).
    Fix the model/source before recapturing. A saved image or green banner is not
    proof of geometry, accessibility, complete input coverage or a real GPU path.
-6. Package the selected modules, artifact model/style/assets and reproducible checks
+6. For MP4 delivery, use the original [motion-film exporter](../orbyn-ui-design/examples/spatial-review/motion-films.md).
+   Author a validated scene/beat specification and run the existing-tool pipeline;
+   inspect actual probe/decode/playback receipts and unsupported parity cells.
+7. Package the selected modules, artifact model/style/assets and reproducible checks
    using [dependencies and update](references/dependencies-and-update.md). Preserve
    notices and original/adapted hashes. Deliver artifact, evidence and actual limits.
 

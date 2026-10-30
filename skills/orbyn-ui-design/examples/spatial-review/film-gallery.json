@@ -1,0 +1,228 @@
+{
+  "version": 1,
+  "title": "Fourteen original motion primitives",
+  "fps": 10,
+  "bpm": 120,
+  "duration": 28,
+  "shots": [
+    {
+      "id": "scene-0",
+      "from": 0,
+      "to": 2,
+      "composition": "title",
+      "title": "WORDS",
+      "caption": "Original words motion study.",
+      "primitive": "words",
+      "data": {
+        "words": [
+          "MAKE",
+          "MOTION",
+          "MEANINGFUL"
+        ]
+      }
+    },
+    {
+      "id": "scene-1",
+      "from": 2,
+      "to": 4,
+      "composition": "title",
+      "title": "CROSSOUT",
+      "caption": "Original crossout motion study.",
+      "primitive": "crossout",
+      "data": {
+        "text": "Noise without purpose",
+        "replacement": "A clearer idea"
+      }
+    },
+    {
+      "id": "scene-2",
+      "from": 4,
+      "to": 6,
+      "composition": "title",
+      "title": "CHART",
+      "caption": "Original chart motion study.",
+      "primitive": "chart",
+      "data": {
+        "labels": [
+          "North",
+          "South",
+          "East",
+          "West"
+        ],
+        "values": [
+          16,
+          28,
+          44,
+          64
+        ]
+      }
+    },
+    {
+      "id": "scene-3",
+      "from": 6,
+      "to": 8,
+      "composition": "title",
+      "title": "3D-TITLE",
+      "caption": "Original 3d-title motion study.",
+      "primitive": "3d-title",
+      "data": {
+        "text": "DEPTH",
+        "depth": 8
+      }
+    },
+    {
+      "id": "scene-4",
+      "from": 8,
+      "to": 10,
+      "composition": "title",
+      "title": "TYPING",
+      "caption": "Original typing motion study.",
+      "primitive": "typing",
+      "data": {
+        "text": "A concrete brief.\nA visible result.\nA reviewable decision."
+      }
+    },
+    {
+      "id": "scene-5",
+      "from": 10,
+      "to": 12,
+      "composition": "title",
+      "title": "STRETCH",
+      "caption": "Original stretch motion study.",
+      "primitive": "stretch",
+      "data": {
+        "text": "FLEXIBLE"
+      }
+    },
+    {
+      "id": "scene-6",
+      "from": 12,
+      "to": 14,
+      "composition": "title",
+      "title": "FLYTHROUGH",
+      "caption": "Original flythrough motion study.",
+      "primitive": "flythrough",
+      "data": {
+        "words": [
+          "IDEA",
+          "FRAME",
+          "RESULT"
+        ]
+      }
+    },
+    {
+      "id": "scene-7",
+      "from": 14,
+      "to": 16,
+      "composition": "title",
+      "title": "ANNOTATIONS",
+      "caption": "Original annotations motion study.",
+      "primitive": "annotations",
+      "data": {
+        "notes": [
+          {
+            "x": 0.2,
+            "y": 0.25,
+            "text": "Source"
+          },
+          {
+            "x": 0.75,
+            "y": 0.35,
+            "text": "Model"
+          },
+          {
+            "x": 0.55,
+            "y": 0.8,
+            "text": "Evidence"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-8",
+      "from": 16,
+      "to": 18,
+      "composition": "title",
+      "title": "COUNTER",
+      "caption": "Original counter motion study.",
+      "primitive": "counter",
+      "data": {
+        "from": 0,
+        "to": 100,
+        "decimals": 0,
+        "suffix": " frames"
+      }
+    },
+    {
+      "id": "scene-9",
+      "from": 18,
+      "to": 20,
+      "composition": "title",
+      "title": "PROGRESS",
+      "caption": "Original progress motion study.",
+      "primitive": "progress",
+      "data": {
+        "steps": [
+          "Plan",
+          "Build",
+          "Review"
+        ]
+      }
+    },
+    {
+      "id": "scene-10",
+      "from": 20,
+      "to": 22,
+      "composition": "title",
+      "title": "CHAIN",
+      "caption": "Original chain motion study.",
+      "primitive": "chain",
+      "data": {
+        "nodes": [
+          "Input",
+          "Model",
+          "Frame",
+          "Review"
+        ]
+      }
+    },
+    {
+      "id": "scene-11",
+      "from": 22,
+      "to": 24,
+      "composition": "title",
+      "title": "REWIND",
+      "caption": "Original rewind motion study.",
+      "primitive": "rewind",
+      "data": {
+        "source": "scene-0"
+      }
+    },
+    {
+      "id": "scene-12",
+      "from": 24,
+      "to": 26,
+      "composition": "title",
+      "title": "IMAGE",
+      "caption": "Original image motion study.",
+      "primitive": "image",
+      "data": {
+        "asset": "media/gallery.png",
+        "alt": "Original generated circle study"
+      }
+    },
+    {
+      "id": "scene-13",
+      "from": 26,
+      "to": 28,
+      "composition": "end-card",
+      "title": "LOGO",
+      "caption": "Original logo motion study.",
+      "primitive": "logo",
+      "data": {
+        "text": "MOTION",
+        "asset": "media/logo.png"
+      }
+    }
+  ]
+}

@@ -23,3 +23,5 @@ const authored = '# Existing DESIGN\n\nAuthored notes.\n'; const proposal = prop
 assert.ok(proposal.startsWith(authored)); assert.ok(proposal.includes(doc.prototype.fingerprint)); assert.ok(proposal.includes('unresolved')); assert.ok(!proposal.includes('<b>'));
 assert.equal(propose(proposal, doc, manifest), proposal); assert.throws(() => propose('<!-- spatial-review:end -->\n<!-- spatial-review:start -->', doc, manifest));
 console.log('Cross-language schema bad controls, deterministic seeks/cuts/reduced motion and preserved design proposal passed.');
+
+assert.equal(timeline(26.5, 'gallery').primitive.kind, 'logo'); assert.equal(timeline(22.5, 'gallery').primitive.kind, 'rewind');

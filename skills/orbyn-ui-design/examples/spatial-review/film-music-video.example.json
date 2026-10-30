@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "title": "Original music-led scenery study",
+  "fps": 30,
+  "bpm": 120,
+  "duration": 6,
+  "palette": {
+    "paper": "#fff9eb",
+    "ink": "#fff9eb",
+    "accent": "#b95937",
+    "deep": "#244b40"
+  },
+  "background": {
+    "asset": "media/gallery.png",
+    "alt": "Original generated circle scenery, not third-party anime art",
+    "fit": "cover",
+    "focal": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "pan": {
+      "from": {
+        "x": -0.05,
+        "y": 0
+      },
+      "to": {
+        "x": 0.05,
+        "y": 0
+      }
+    },
+    "zoom": {
+      "from": 1.2,
+      "to": 1.4
+    },
+    "dim": 0.45
+  },
+  "shots": [
+    {
+      "id": "opening",
+      "from": 0,
+      "to": 2,
+      "composition": "title",
+      "title": "MOTION WITH MUSIC",
+      "caption": "Original synthetic background and tone.",
+      "primitive": "words",
+      "data": {
+        "words": [
+          "MOTION",
+          "WITH",
+          "MEANING"
+        ]
+      }
+    },
+    {
+      "id": "text",
+      "from": 2,
+      "to": 4,
+      "composition": "split",
+      "title": "KEEP THE WORDS CLEAR",
+      "caption": "Authored text; no automatic lyric transcription.",
+      "primitive": "typing",
+      "data": {
+        "text": "A background can move.\nA character is not automatically animated."
+      }
+    },
+    {
+      "id": "closing",
+      "from": 4,
+      "to": 6,
+      "composition": "end-card",
+      "title": "REVIEW THE RESULT",
+      "caption": "Source, soundtrack and captions stay with the project.",
+      "primitive": "logo",
+      "data": {
+        "text": "FRAME"
+      }
+    }
+  ]
+}

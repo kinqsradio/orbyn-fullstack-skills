@@ -1,5 +1,7 @@
 import { TURN } from './renderer/kit/turn.mjs';
-import { timeline, DURATION } from './timeline.mjs';
+import GALLERY from './film-gallery.mjs';
+import { renderFilm } from './film.mjs';
+import { timeline, DURATION, durationFor } from './timeline.mjs';
 import { CYLINDERS, FIRING, R, L, sample, poses, mod } from './model.mjs';
 const $ = id => document.getElementById(id);
 let angle = 0, yaw = 0, selected = 'A1', running = false, raf = null, previous = null;
@@ -28,14 +30,11 @@ function update() {
   const story = timeline(storyTime, storyScenario, reduced.matches);
   $('story-title').textContent = story.title; $('story-caption').textContent = story.caption;
   $('story-scene').textContent = `${storyScenario} / ${story.scene} · ${storyTime.toFixed(2)}s`;
-  $('story-time').value = String(storyTime); $('story-scenario').value = storyScenario;
+  $('story-time').max = String(durationFor(storyScenario)); $('story-time').value = String(storyTime); $('story-scenario').value = storyScenario;
   $('story-values').textContent = 'Illustrative values; actual current labels follow the bars.';
   for (const [i, row] of [...$('story-bars').children].entries()) { row.querySelector('i').style.width = `${story.bars[i]}%`; row.querySelector('output').textContent = String(story.bars[i]); }
   $('story-step').textContent = String(Math.min(3, 1 + Math.floor(story.progress * 3)));
-  $('film-stage').hidden = storyScenario !== 'film'; $('film-stage').dataset.shot = story.composition;
-  $('film-title').textContent = story.title; $('film-caption').textContent = story.caption;
-  $('film-title').style.transform = `translateY(${story.typeOffset}px)`; $('film-title').style.opacity = String(story.opacity);
-  $('film-clock').textContent = `FRAME ${story.frameIndex} / 359 · BEAT ${story.beat.toFixed(2)} · SILENT 30 FPS STUDY`;
+  $('film-stage').hidden = !['film','gallery'].includes(storyScenario); renderFilm($('film-stage'), story, storyScenario === 'gallery' ? GALLERY : undefined);
   $('story-card').style.opacity = String(story.panelOpacity); $('story-title').style.transform = `scale(${storyScenario === 'film' ? story.typeScale : 1})`;
   $('story-card').hidden = storyScenario !== 'interface'; $('story-data').hidden = storyScenario !== 'data';
   const values = sample(angle);
@@ -59,7 +58,7 @@ function tick(now) {
   if (!running || document.hidden) return;
   if (previous !== null) {
     const dt = Math.min(now - previous, 100) / 1000 * Number($('speed').value);
-    if (storyRunning) { storyTime = Math.min(DURATION, storyTime + dt); const frame = timeline(storyTime, storyScenario, reduced.matches); angle = frame.angle; yaw = frame.yaw; if (storyTime === DURATION) { pause(); update(); return; } }
+    if (storyRunning) { storyTime = Math.min(durationFor(storyScenario), storyTime + dt); const frame = timeline(storyTime, storyScenario, reduced.matches); angle = frame.angle; yaw = frame.yaw; if (storyTime === durationFor(storyScenario)) { pause(); update(); return; } }
     else angle = mod(angle + dt * 180, 720);
   }
   previous = now; update(); raf = requestAnimationFrame(tick);
@@ -83,8 +82,8 @@ update();
 
 function seek(time) { pause(); storyTime = time; const frame = timeline(time, storyScenario, reduced.matches); angle = frame.angle; yaw = frame.yaw; update(); }
 $('story-time').oninput = () => seek(Number($('story-time').value));
-$('story-scenario').onchange = () => { storyScenario = $('story-scenario').value; seek(storyTime); };
-$('story-play').onclick = () => { if (running) { pause(); update(); return; } if (reduced.matches) { $('announce').textContent = 'Reduced motion: use manual scene seeking.'; return; } if (storyTime === DURATION) seek(0); storyRunning = true; running = true; previous = null; $('story-play').textContent = 'Pause story'; raf = requestAnimationFrame(tick); };
+$('story-scenario').onchange = () => { storyScenario = $('story-scenario').value; seek(Math.min(storyTime, durationFor(storyScenario))); };
+$('story-play').onclick = () => { if (running) { pause(); update(); return; } if (reduced.matches) { $('announce').textContent = 'Reduced motion: use manual scene seeking.'; return; } if (storyTime === durationFor(storyScenario)) seek(0); storyRunning = true; running = true; previous = null; $('story-play').textContent = 'Pause story'; raf = requestAnimationFrame(tick); };
 const api = {
   pause() { pause(); drag = null; dragged = false; },
   capture() { return { partId: activePart, camera: { yaw, elevation: 27, scale: 78 }, animation: { scenario: storyScenario, scene: timeline(storyTime, storyScenario).scene, time: storyTime, cycleAngle: angle, rate: Number($('speed').value) }, layers: { guides: $('guides').checked, rods: $('rods').checked }, viewport: { width: innerWidth, height: innerHeight } }; },

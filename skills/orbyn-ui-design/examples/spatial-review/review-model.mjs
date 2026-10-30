@@ -5,12 +5,13 @@ const fields = (v, names) => { if (!v || typeof v !== 'object' || Array.isArray(
 const finite = (v, low, high) => { if (typeof v !== 'number' || !Number.isFinite(v) || v < low || v > high) throw Error('Invalid finite bound'); };
 const text = (v, size, empty = false) => { if (typeof v !== 'string' || v.length > size || (!empty && !v.trim())) throw Error('Invalid text'); };
 export function validateContext(c, manifest) {
-  fields(c, ['modelRevision', 'partId', 'camera', 'animation', 'layers', 'viewport']);
+  fields(c, ['modelRevision', 'partId', 'camera', 'animation', 'layers', 'viewport', ...(Object.hasOwn(c ?? {}, 'filmRevision') ? ['filmRevision'] : [])]);
   if (typeof c.partId !== 'string' || typeof c.modelRevision !== 'string' || c.modelRevision !== manifest.assets['engine-data.json'] || !manifest.targets.some(t => t.id === 'part/' + c.partId)) throw Error('Stale model/part');
   fields(c.camera, ['yaw', 'elevation', 'scale']); finite(c.camera.yaw, -180, 180);
   if (c.camera.elevation !== 27 || c.camera.scale !== 78) throw Error('Unsupported camera projection');
   fields(c.animation, ['scenario', 'scene', 'time', 'cycleAngle', 'rate']);
   const { scenario, scene, time, cycleAngle, rate } = c.animation;
+  if (Object.hasOwn(c, 'filmRevision') && (!['film', 'gallery'].includes(scenario) || c.filmRevision !== manifest.assets[scenario === 'gallery' ? 'film-gallery.json' : 'film.mjs'])) throw Error('Stale film model');
   if (!SCENARIOS.includes(scenario) || timeline(time, scenario).scene !== scene || ![.25, .5, 1].includes(rate)) throw Error('Invalid timeline scene/rate');
   finite(cycleAngle, 0, 720);
   fields(c.layers, ['guides', 'rods']); if (Object.values(c.layers).some(v => typeof v !== 'boolean')) throw Error('Invalid layer settings');

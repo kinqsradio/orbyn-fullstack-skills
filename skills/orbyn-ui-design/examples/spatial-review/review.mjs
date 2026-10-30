@@ -18,7 +18,7 @@ export async function mountReview(api) {
     }
   }
   await verifySource(); await document.fonts.ready;
-  const capture = () => ({ modelRevision: manifest.assets['engine-data.json'], ...api.capture() });
+  const capture = () => { const context = { modelRevision: manifest.assets['engine-data.json'], ...api.capture() }; if (['film', 'gallery'].includes(context.animation.scenario)) context.filmRevision = manifest.assets[context.animation.scenario === 'gallery' ? 'film-gallery.json' : 'film.mjs']; return context; };
   let doc = fresh(manifest, capture()), annotation = false, revision = 0, token = null, saving = false, recovery = null, hadBrowserDraft = false;
   const storageKey = 'spatial-review-v2';
   const download = (raw, name) => { const url = URL.createObjectURL(new Blob([raw], { type: 'application/json' })); const a = document.createElement('a'); a.href = url; a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); };

@@ -714,3 +714,20 @@ redistributed. Six new development cases supplement the unchanged 422-case
 baseline. Model/HTTP/browser fixture evidence does not establish full mechanical,
 video/audio, GPU/native, accessibility or live-agent performance. No nesting,
 provider/model default, target installation or REA engine change is introduced.
+
+
+## Motion-film export completion
+
+The same technical-illustration owner now provides strict authored film specs,
+fourteen original timed primitives and one shared DOM renderer for preview/export.
+Prepared repo-owned packages retain source, original generated rasters or approved
+local PNG/JPEG/WebP inputs, media hashes and actual review state. MP4 delivery uses
+existing tools with cut-safe subframe averaging, output-instant semantic readouts,
+optional bloom/seeded grain, local audio and authored selectable captions. Probe,
+caption extraction/comparison, full decode, fast-start, poster, source/output
+readback and owned-process cancellation distinguish a completed export from a
+prepared file. Full films/gallery at 720p and a short 4K profile need separately
+recorded evidence; no universal style, provider, font-mesh/GPU or accessibility
+parity is claimed. The reviewed ZIP supplies inspiration only, not redistributed
+code or assets. Active wording uses motion films. One prior development prompt is
+renamed accordingly and two cases are added; frozen holdouts remain unchanged.

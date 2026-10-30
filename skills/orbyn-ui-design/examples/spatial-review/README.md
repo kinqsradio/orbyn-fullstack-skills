@@ -38,18 +38,24 @@ viewport as evidence without resizing the user's browser. Layer-hidden parts rem
 available in the picker; a restored hidden part is disclosed by its saved layers.
 
 Try the 12-second deterministic timeline backwards, repeatedly, and exactly at
-3/7/10-second cuts. Four illustrative modes cover mechanism explanation,
+3/7/10-second cuts. The default four illustrative modes cover mechanism explanation,
 interface/onboarding transition, data reveal and kinetic titles. The interface mode renders a staged local-draft panel; data mode renders synchronized
 comparison bars and labels; film mode renders an original four-shot typographic
 composition with title, split, poster and end-card scenes. These remain representative
 demonstrations, not complete onboarding/chart/video tools. `FILM` records 120 BPM,
 30 FPS and 360 frames; `filmFrame(index)` supplies reproducible frames 0–359.
 The clock and beat grid are specifications, not measured audio synchronization.
+The additional **Fourteen motion primitives** mode loads the original 28-second
+gallery, with the same annotation/save/replay contract and a retained film-spec
+revision. [Motion-film authoring/export](motion-films.md) explains its strict scene
+payloads, local raster inputs and actual MP4 qualification.
 Every sampled frame is independent of previous frames; UI and captions share time.
 Manual scrubbing takes over playback. Reduced motion prevents automatic story
 motion and retains manual inspection. Background/page exit pauses owned playback.
-No audio, media generation or video export is implemented; these remain separately
-qualified delivery paths, not hidden provider requirements or claimed finished films.
+The [motion-film exporter](motion-films.md) renders this same film model/layout to
+MP4 with optional local audio and authored captions. Media generation is not part
+of this path. Actual format/runtime checks remain separate from content quality,
+rights, audio alignment and accessibility review.
 
 **Save review to repo** validates and atomically writes the one fixed `review.json`
 then reads it back. Settings persist even with zero comments. Revisions prevent

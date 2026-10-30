@@ -9796,7 +9796,7 @@
       "id": "motion-sequence-cut-replay",
       "kind": "outcome",
       "split": "development",
-      "prompt": "Create an original local kinetic film and explanatory/data/onboarding motion examples. Seek backward and across cuts; I have no Scenario account.",
+      "prompt": "Create an original motion film and explanatory/data/onboarding motion examples. Seek backward and across cuts; I have no Scenario account.",
       "expected_skills": [
         "orbyn-ui-design",
         "technical-illustration"
@@ -9857,6 +9857,50 @@
       "excluded": "Adjacent routing definition only; existing media/runtime tools and specific user authority govern editing, not the procedural motion builder. No actual media effect or host trial.",
       "rubric": {
         "boundary": "Uses the existing project media-editing path and does not select technical-illustration or build a kinetic scene merely because the file is a video."
+      }
+    },
+    {
+      "id": "motion-film-mp4-output-contract",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Export my authored motion film to MP4 from the same preview source. Use local audio and captions with blur, and keep the result inside our repo.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Development definitions; actual export/browser evidence and content/rights/accessibility review remain separate from hosted model performance.",
+      "rubric": {
+        "execution": "Uses existing technical-illustration motion-film pipeline with shared model/renderer, source-bound repo-owned fresh output; cut-safe temporal samples, semantic readouts, bounded resources/cancellation and no overwrite.",
+        "evidence": "Checks actual H264/yuv420p FPS/duration/dimensions/frame count, AAC when selected, authored caption extraction/timing, decode/faststart/readback and playback. Distinguishes original implementations, 720p full film and short 4K profile evidence; no Scenario/account requirement or blanket parity claim."
+      }
+    },
+    {
+      "id": "motion-film-primitives-media-rewind",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Author words, crossout, chart, depth type, typing, stretch, flythrough, annotations, counters, progress, chain, rewind, image and logo scenes. Reject a forward rewind and a remote SVG logo.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Development definitions; actual export/browser evidence and content/rights/accessibility review remain separate from hosted model performance.",
+      "rubric": {
+        "coverage": "Uses functional deterministic primitive payloads, bounded strict shot data and the executable gallery; no static-card relabeling. Preserves old composition-only specs and samples prior nonrecursive clips end-exclusively.",
+        "inputs": "Uses approved local raster inputs with source hashes and actual decode readiness, safe DOM and fit checks. Rejects arbitrary URLs/markup/cyclic references, preserves source/license records and reports CSS depth versus GPU/font-mesh limitations."
       }
     }
   ]
