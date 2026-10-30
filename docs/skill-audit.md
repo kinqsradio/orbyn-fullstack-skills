@@ -6,6 +6,24 @@
 
 # Skill-system audit — current candidate and historical evidence
 
+## Invocation targets and component capture readiness
+
+The existing UI owner adds a focused [invocation-target example](../skills/orbyn-ui-design/references/ux-rules.md#bind-an-action-to-its-invocation-target)
+and [actual-component readiness example](../skills/orbyn-ui-design/references/prototypes.md#ready-the-intended-component-before-capture).
+Menu/toolbar/shortcut target semantics remain explicit across focus changes;
+correct object, final state and relevant assets precede a successful capture.
+Fixture-order/remount checks apply only to a named shared-lifetime risk. Existing
+async, retained-callback, control and TDD owners retain cleanup/authority semantics;
+no new action registry, explorer, runtime or general lifecycle policy is added.
+
+Three synthetic development definitions preserve all 394 prior cases/holdouts.
+Static validation does not establish live agent improvement, executed component
+readiness or actual-app/native outcomes. VS Code source at
+`02f3783a0e0d37c675e8a061f90339f12a182391` is credited as reviewed inspiration
+in provenance; no upstream text/code/assets or private research was imported.
+Memory probes, recycled-row/performance examples and token/import tooling remain
+conditional outside this refinement. The 36 owners, nesting and defaults stay.
+
 ## Engineering contract and evidence refinements
 
 Existing owners now add focused methods for obligation-to-check evidence and

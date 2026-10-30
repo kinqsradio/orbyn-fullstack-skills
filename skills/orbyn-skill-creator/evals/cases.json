@@ -9094,6 +9094,75 @@
         "dialog": "Checks current label/description references, optional description absence, supported dismissal/reopen and visible logical focus restoration; preserves actual visual focus rather than removing outlines.",
         "evidence": "Separates component wiring/assertions from real navigation, rendered focus, screen-reader/native qualification; reuses scoped owner/consumer checks without every-page matrix."
       }
+    },
+    {
+      "id": "ui-invocation-target-parity",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A context menu opens on task A while task B is active in another pane. Focus moves again while Archive awaits. Toolbar and shortcut paths also exist, and bulk selection is unsupported. Explain the action contract and focused checks.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition for a scoped plan; no product edits, runtime/provider installs, screenshot sweep or live model/native qualification.",
+      "rubric": {
+        "target": "Resolves menu target A at invocation; later focus/selection cannot retarget write or attach result to B. Associates confirmed outcome with A and fences mismatched visible updates.",
+        "entrypoints": "Checks supported toolbar/shortcut/menu behavior for the same resolved target while allowing legitimate focus-based shortcut semantics; unsupported bulk selection is explicit, not first-item-only.",
+        "authority": "Retains current model/service authorization and freshness, including denied/stale target; reuses existing shared-control/async methods rather than creating a registry or disposable framework."
+      }
+    },
+    {
+      "id": "ui-component-ready-capture",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "An actual-component fixture should capture document A populated with a selected section and local illustration. Document B text is visible, container height is stable after two frames, and the illustration request failed. Is it ready, and how should evidence proceed?",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition for a scoped plan; no product edits, runtime/provider installs, screenshot sweep or live model/native qualification.",
+      "rubric": {
+        "identity": "Rejects wrong object/selection or unmet populated state despite visible content/stable geometry; identifies actual component/source/build and scenario.",
+        "readiness": "Requires relevant asset/font and intended final-state predicate with bounded failure/last-state evidence; fixed sleep/frames alone are insufficient, missing asset cannot become a success capture.",
+        "surface": "Retains a clearly labelled diagnostic failure if useful, separates fixture from actual-app/native/integration/visual-quality claims and uses existing harness without installs."
+      }
+    },
+    {
+      "id": "ui-fixture-order-proportional",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Review an isolated component label fix using an existing fixture. A separate panel has a demonstrated shared-CSS registration bug after another fixture and remount. Must every UI edit now run all fixture orders and native screenshots?",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition for a scoped plan; no product edits, runtime/provider installs, screenshot sweep or live model/native qualification.",
+      "rubric": {
+        "scope": "Keeps label fix checks proportional and selects order/remount controls only for the named shared-lifetime panel risk; no universal matrix or explorer service.",
+        "lifecycle": "Uses existing readiness/cleanup to settle or fence replaced work, retain failures and allow legitimate current work; does not duplicate retained-cache policy or add a runtime.",
+        "evidence": "Distinguishes actual component state from actual-app/native/assistive-technology qualification; plans are not executed checks or live-agent improvement."
+      }
     }
   ]
 }
