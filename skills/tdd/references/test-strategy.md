@@ -92,3 +92,8 @@ select relevant prompt, resize and signal cases from the
 
 Use [test reliability](test-reliability.md) for clock propagation, cancellation
 before teardown, semantic readiness, cold caches and actual selected runner legs.
+
+For changed shared UI primitives, use the UI owner's [supported rendering contract](../../orbyn-ui-design/references/design-rules.md#shared-control-behavior-across-supported-renderings).
+A component test for disabled/loading name, dialog IDs or event suppression does
+not qualify actual polymorphic navigation, visible focus, screen-reader output or
+native behavior. Check the affected seam, not every unchanged consuming page.

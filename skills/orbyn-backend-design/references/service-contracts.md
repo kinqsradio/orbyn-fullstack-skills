@@ -62,3 +62,37 @@ Reviewed 24 October 2026 against [HTTP semantics](https://www.rfc-editor.org/rfc
 [OWASP REST guidance](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)
 and [PostgreSQL plan guidance](https://www.postgresql.org/docs/18/using-explain.html).
 The local procedure is original; use the actual target versions and existing policy.
+
+## API/tool and rollout integration
+
+For generated APIs or model-callable adapters, follow the existing AI owner's
+[complete tool/API example](../../orbyn-ai-application/references/tool-effects.md#carry-a-toolapi-change-to-its-intended-consumers).
+Keep domain authorization authoritative across HTTP/tool/client entrypoints and
+record required consumers versus justified absence. For changed rollout availability,
+use [flag lifecycle and entrypoint parity](../../orbyn-ci-design/references/rollout-recovery.md#feature-flags-across-entrypoints);
+a visible off/on state is neither an access grant nor a server-side check.
+
+## Runtime configuration precedence and parity
+
+For changed settings, inspect startup loading and name the effective source per
+runtime, override order, required/optional classification, permitted defaults and
+derived/generated or hand-maintained copies. Environment-variable presence does
+not prove a loader reads it. Keep one owner for each meaning; reuse the target's
+schema/generator/parity test rather than adding a universal configuration framework.
+
+Synthetic export service: its declared loader uses an approved override, then a
+runtime config document; development defaults apply only in development. A required
+signing setting must be present and valid before serving the affected operation.
+An optional page-size setting can use its documented bounded default. State how
+the browser receives public service URLs and how an older rollback binary reads
+the retained compatible setting. Never copy signing secrets into client config.
+
+Use sanitized fixtures to check missing/invalid required settings fail with an
+actionable redacted diagnostic, the declared override wins, development values
+cannot silently supply production settings, and required mirrors agree semantically
+(including units/URL meaning). Versioned runtimes may intentionally use different
+representations; test compatibility, not byte equality. Check rollback readers and
+retirement before removing old values. Not every missing optional setting should
+crash the service. No secret fetch, live configuration write or production startup
+is required for this synthetic contract; report actual runtime parity unverified
+when only loader/schema source was inspected.

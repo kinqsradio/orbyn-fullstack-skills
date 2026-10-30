@@ -64,3 +64,8 @@ writes. Released clients and stored formats may need a compatibility window.
 Return the invariant, owning schema, migrated callers, justified assertions and
 actual compiler/runtime evidence. This example has been structurally reviewed;
 it is not a receipt that every consuming project's compiler or runtime passed.
+
+For caches or other owners that retain callbacks after a view unmounts, use the
+[JavaScript retained-callback method](javascript.md#callbacks-retained-beyond-a-view).
+Typed query options do not establish disposal, reactive freshness or account scope;
+inspect actual runtime retention and transitive captures before extracting a factory.

@@ -6,6 +6,31 @@
 
 # Skill-system audit — current candidate and historical evidence
 
+## Engineering contract and evidence refinements
+
+Existing owners now add focused methods for obligation-to-check evidence and
+[generated consumer disposition](../skills/orbyn-ci-design/references/verification-map.md#generated-outputs-and-intended-consumers),
+[complete tool/API integration](../skills/orbyn-ai-application/references/tool-effects.md#carry-a-toolapi-change-to-its-intended-consumers),
+[cache-retained callbacks](../skills/language-best-practices/references/javascript.md#callbacks-retained-beyond-a-view),
+[flag entrypoint parity](../skills/orbyn-ci-design/references/rollout-recovery.md#feature-flags-across-entrypoints),
+[runtime configuration precedence](../skills/orbyn-backend-design/references/service-contracts.md#runtime-configuration-precedence-and-parity),
+[async trace propagation](../skills/orbyn-backend-design/references/observability.md#follow-the-asynchronous-hop),
+[build budgets and measurement scope](../skills/orbyn-workflow/playbooks/perf-issue.md#build-budgets-are-constraints-not-latency-results)
+and [shared control semantics](../skills/orbyn-ui-design/references/design-rules.md#shared-control-behavior-across-supported-renderings).
+These are independently written synthetic examples informed by a Macro source
+review at `fb7ca4b7c4c10519413e592da81d5e04a44ce977`; source attribution remains in
+`provenance.json`, with no upstream text/code/assets imported. Source policies,
+configured checks and observed runtime enforcement remain distinct.
+
+Eight development case definitions extend the previous suite without changing
+existing cases/holdouts. Definition validation is not a live paired-host pilot;
+no model-quality gain is established. This refinement preserves workspace/UI
+outcome guidance, nesting, defaults, existing target tooling and all 36 owners.
+Shared-host extraction, batch-isolation and virtualization refinements remain
+conditional and are not added here. Consumer runtime/build/telemetry/UI outcomes
+require their actual implementations and authorized evidence; no app/provider,
+new framework or universal lint policy is installed by these written methods.
+
 ## Workspace composition and factual outcome guidance
 
 The existing [UI owner](../skills/orbyn-ui-design/references/workspace-composition.md)

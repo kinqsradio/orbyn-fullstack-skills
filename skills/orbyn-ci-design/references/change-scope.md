@@ -72,6 +72,12 @@ contract, add generator, API and affected client integration checks; widen furth
 if dynamic consumers cannot be enumerated. A local README typo needs only relevant
 document checks. These examples select evidence, not universal commands or waivers.
 
+For consequential cross-boundary changes, connect selected requirements to their
+instruction/contract source, check or explicit judgment and exact-candidate result
+in the existing [verification map](verification-map.md#connect-a-selected-obligation-to-evidence).
+Keep instruction discovery separate from code filters; a selected command can
+cover multiple obligations without duplicate runs.
+
 ## Encode a conservative fast path
 
 Use the project's existing [affected-target graph](affected-targets.md) when it

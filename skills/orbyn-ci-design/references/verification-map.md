@@ -51,3 +51,46 @@ for absent surfaces rather than searching only known entries. A bounded change
 still selects its affected recipes, not every feature. Re-drive a corrected recipe;
 a source-only fix cannot advance last-confirmed runtime evidence. Distinguish a
 failed selector, missing map entry and evidenced platform/entitlement blocker.
+
+## Connect a selected obligation to evidence
+
+For a consequential change, a short table in the existing task/PR record can
+connect affected paths to requirements. Discover applicable instructions separately
+from code-only search filters, using [action scope](../../orbyn-setup/references/action-scope.md).
+Inspect ancestor/nested rules and affected contracts; a file's extension does not
+exclude its instructions. Refresh the lookup when a rule is renamed/deleted or the
+change moves into another scope. Do not create a new audit framework or mandatory
+report for a small edit.
+
+Synthetic example: a change to `service/export/schema.ts` affects generated clients
+and an agent tool. The following selects evidence; it is not a passed-check receipt.
+Substitute the target's actual paths, source clauses and commands.
+
+| Path/contract | Obligation and source | Enforcing check or judgment | Candidate result / limit |
+| --- | --- | --- | --- |
+| Export schema | Nested `service/export/AGENTS.md` requires schema regeneration | Existing generator drift command, then affected parser/adapter tests | Record ref, command, terminal result and output; an old generated file is insufficient |
+| Generated client and tool | Intended consumers in owning API contract | Registration, authorized domain call and required result consumer checks | Missing required adapter blocks completion; a justified internal-only absence remains explicit |
+| Export help text | Required explanation in the target's design guide | Human review of clarity against the actual consequence | Label judgment-only; unperformed review stays unverified |
+
+Deduplicate equivalent package commands only when candidate, inputs, environment
+and asserted obligations match; one result can cite multiple source requirements.
+A required check that has no mechanism remains an explicit gap, not an automatic
+pass. A missing base or unmapped path widens selection under [change scope](change-scope.md),
+not an uncommitted-only shortcut. A typo-only edit keeps proportional local checks.
+
+## Generated outputs and intended consumers
+
+When a generator/schema changes, trace its inputs, generator version/config and
+all affected outputs through the project's existing dependency evidence. Run the
+supported regeneration/check command in allowed scope and inspect the diff.
+Hand-editing generated output or excluding it from review cannot replace checking
+the owner and drift. If no check exists, report the reproducible generation/diff
+and its limits rather than inventing a universal SDK coverage tool.
+
+Enumerate intended consumers and disposition: required and checked, intentionally
+absent with contract reason, or unresolved. Do not require a public SDK, tool or
+renderer for every endpoint. Remove/update stale exclusions when API methods or
+consumers change. A literal-name search may miss dynamic registrations/wrappers or
+count inert text; follow the actual consumer seam before claiming reachability.
+Use the AI owner's [complete tool/API example](../../orbyn-ai-application/references/tool-effects.md#carry-a-toolapi-change-to-its-intended-consumers).
+For runtime configuration copies, select [precedence/parity checks](../../orbyn-backend-design/references/service-contracts.md#runtime-configuration-precedence-and-parity).
