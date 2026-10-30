@@ -21,6 +21,39 @@ and the distinction between external guidance and local choices are in
 - Reduce duplicate actions and unnecessary steps. Keep steps that protect an
   informed decision, a destructive action, or a meaningful review boundary.
 
+## Bind an action to its invocation target
+
+For a shared action exposed through toolbar, shortcut or context menu, resolve the
+object IDs, supported selection, originating pane and operation identity when it
+is invoked. Use that entrypoint's actual target semantics, not an assumed global
+active object. Reuse existing action/hooks and the [shared control contract](design-rules.md#shared-control-behavior-across-supported-renderings);
+no command registry or new action framework is required.
+
+Synthetic example: a context menu opens on task A while another pane has task B
+active. “Archive task” targets A. If focus moves to B while the request awaits,
+neither the write arguments nor the eventual result may silently retarget B.
+Keep the receipt associated with A; update A's owned state or retain its status
+when no longer visible. Apply a visible update only to the matching current
+object/request generation. Do not discard a confirmed effect merely because its
+original view unmounted, or put its success/error under a replacement object.
+
+Exercise equivalent supported toolbar, shortcut and context-menu paths using
+explicit targets. A shortcut may legitimately use the focused pane while a menu
+uses its clicked object; agreement means consistent action/authority for the same
+resolved target, not forcing all entrypoints to use the global selection. For
+unsupported multi-selection, disable with a discoverable reason or reject explicitly;
+never silently operate on only the first item. If selection changes after a menu
+opens, retain/revalidate its original target or invalidate the menu under the actual
+product contract, rather than silently taking a new selection at execution time.
+
+Check the inactive-target case, a focus/pane change during await, denied/stale target
+and a legitimate current action. UI preconditions and enabled controls are not
+permission: current model/service authority and freshness still govern the effect.
+[Async ownership](async-state.md) owns replacement/unmount fencing and cleanup;
+[tool/backend effects](../../orbyn-ai-application/references/tool-effects.md) owns
+authorization and unknown committed outcomes. These are proposed target checks,
+not evidence that a product's actions have already passed them.
+
 ## Copy and progressive disclosure
 
 - Show the label, current value/state, and relevant action. Add one short helper

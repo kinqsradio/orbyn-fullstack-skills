@@ -81,6 +81,44 @@ Do not publish, expose the server on all interfaces or access real accounts mere
 to make a preview available. If a browser/tool is blocked, retain the file and
 report the precise unverified interaction; do not bypass the restriction.
 
+## Ready the intended component before capture
+
+Use when an actual-component fixture is the selected evidence surface. Import the
+owning component through the consuming project's existing harness, with deterministic
+local inputs and labelled adapters. Establish the correct source/build and object,
+then await the final state needed by this capture. A copied lookalike, a mounted
+shell or a generic response somewhere in the view is insufficient. Reuse
+[TDD readiness and cleanup](../../tdd/references/test-reliability.md#wait-for-meaning-and-drive-the-right-input)
+instead of adding a component-explorer service or a new screenshot gate.
+
+Synthetic document-review fixture: the requested capture is document A's populated
+review, with its selected section and local illustration ready. The readiness
+predicate names A's stable identity, expected populated state, selected section
+and required asset/font readiness through the existing harness. A fixed sleep,
+two animation frames or stable container height alone proves none of those facts.
+Only relevant assets need checking; an intentionally missing-image/error fixture
+instead names that error as its expected state and must not pass as populated success.
+
+| Control | Required observation for this fixture |
+| --- | --- |
+| A, final review, relevant local assets available | Inspect/capture that state with source, object, scenario and viewport identity |
+| B's content appears or selection is wrong | Readiness fails/times out for A, even if geometry is stable and text is visible |
+| Required asset fails or final state never arrives | Fail/timed-out observation with last state and missing dependency; no success capture |
+| Shared CSS/registration lifetime is the named risk | Compare fixture alone, after the relevant other fixture and after remount; retain the identity of each attempt |
+
+Use the target's bounded deadline and failure diagnostics. Retain failed attempts;
+a diagnostic failure image may help explain a blocker, but label it as failure.
+Cancel/settle owned work or fence late callbacks before replacement/capture, using
+existing lifecycle methods. Do not delete a still-running attempt's files. Order
+and remount checks are conditional on a demonstrated shared-lifetime risk; ordinary
+isolated layout/copy work does not require a fixture-order sweep.
+
+A real-component fixture supports that component/state only. Actual-app integration,
+permissions, drafts/focus across routes and installed-native behavior require their
+own selected surface and evidence. Readiness is a prerequisite for inspection,
+not proof of visual quality, accessibility or measured performance. No live app,
+model call, new runtime or blanket screenshot matrix follows from this example.
+
 ## Make the interaction honest
 
 Build the relevant path through initial, loading, empty, populated, error, retry
