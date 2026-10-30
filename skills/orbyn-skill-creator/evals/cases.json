@@ -8907,6 +8907,193 @@
         "portability": "Preserves agreed project brand/preferences and evaluates task composition; reference aesthetics are design choices, not accessibility standards.",
         "reuse": "Requires upstream license/attribution review for any actual import and distinguishes source/image inspiration from deployed/user-tested evidence."
       }
+    },
+    {
+      "id": "engineering-obligation-map",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A schema change under service/export has a nested AGENTS rule. A code-only search missed it; the instruction is then renamed. Two affected paths require the same package command and another requirement has no enforcing check. The base is unavailable. Give a proportional verification decision.",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition for a proposed verification plan; no runtime/provider install, live model call, target edits or new framework. Static validation is not observed agent behavior.",
+      "rubric": {
+        "discovery": "Finds/refreshes ancestor and nested instructions separately from code filtering including renamed/deleted scope; missing base widens selection rather than using only uncommitted changes.",
+        "evidence": "Connects requirement/source to actual check or explicit judgment and candidate result; deduplicates only equivalent commands, does not call a missing/unexecuted check passed.",
+        "proportion": "Uses existing task/PR evidence rather than a new mandatory auditor framework; preserves required checks and proportional typo-only handling."
+      }
+    },
+    {
+      "id": "engineering-generated-tool-consumers",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Adding archiveItem changes a generated schema. HTTP compiles, but tool registration is absent, a required result handler is missing, and the SDK exclusion mentions a removed method. A separate internal endpoint deliberately has no public SDK. Plan verification without a model call.",
+      "expected_skills": [
+        "orbyn-ai-application",
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition for a proposed verification plan; no runtime/provider install, live model call, target edits or new framework. Static validation is not observed agent behavior.",
+      "rubric": {
+        "integration": "Traces owner/generator/registration/context/domain/required client and result consumer; missing required wiring and stale exclusion fail completeness while justified internal-only absence remains valid.",
+        "authority": "Tests legitimate and denied/stale calls through HTTP and tool adapters that exist; JSON shape is not permission; unknown committed result is reconciled before retry.",
+        "generation": "Checks supported regeneration/drift and actual consumer seam; handwritten generated output, a name regex or passing types alone do not prove reachability."
+      }
+    },
+    {
+      "id": "engineering-retained-cache-callback",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A query cache retains a selector and query callback after its component unmounts. They read a component accessor and old account client. Another observer is per-mount and unsubscribed. How should we improve and verify this?",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition for a proposed verification plan; no runtime/provider install, live model call, target edits or new framework. Static validation is not observed agent behavior.",
+      "rubric": {
+        "ownership": "Inspects actual library retention and transitive captures; uses suitable plain snapshots/stable client and proper reactivity, not a naming-only change or universal closure ban.",
+        "scope": "Partitions/invalidates account identity, fences stale results and preserves current service authorization; snapshot IDs and cache keys are not grants.",
+        "controls": "Proposes deterministic retained invocation after disposal and account switch plus legitimate per-mount disposal control; no unsupported heap improvement claim."
+      }
+    },
+    {
+      "id": "engineering-flag-entrypoint-parity",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A remotely flagged archive feature is unknown on a cold deep link, on for an old cache, and off after a kill switch. Its button, command and tool entrypoints disagree. Explain lifecycle and checks; do not touch a live flag.",
+      "expected_skills": [
+        "orbyn-ci-design",
+        "orbyn-backend-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition for a proposed verification plan; no runtime/provider install, live model call, target edits or new framework. Static validation is not observed agent behavior.",
+      "rubric": {
+        "states": "Distinguishes unresolved/off/on/error, actual override/cohort policy and explicit safe fallback; does not coerce unknown into a destructive off migration.",
+        "parity": "Checks affected route/deep link/command/tool plus stale cache and on-to-off behavior; off preserves baseline and in-flight/committed effects remain explicit.",
+        "authority": "Flags do not authorize denied resources; uses target tooling and removal/rollback ownership without enabling a remote service or changing live state."
+      }
+    },
+    {
+      "id": "engineering-config-precedence-parity",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A loader reads an override document before runtime config. An operator sets a container environment variable the loader ignores; a required production signing setting is missing. Optional page size may default, and a rollback binary reads an older representation. Propose checks with sanitized fixtures.",
+      "expected_skills": [
+        "orbyn-backend-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition for a proposed verification plan; no runtime/provider install, live model call, target edits or new framework. Static validation is not observed agent behavior.",
+      "rubric": {
+        "sources": "Resolves actual effective source/precedence per runtime instead of assuming an environment variable is consumed; distinguishes required security configuration from legitimate optional defaults.",
+        "parity": "Checks declared override, redacted missing/invalid failure, no development-to-production leakage and semantic mirror/rollback compatibility, not unconditional byte equality.",
+        "scope": "Keeps secrets out of browser/output and uses existing loaders/schema/checks; does not fetch secrets, start production or add a config framework."
+      }
+    },
+    {
+      "id": "engineering-async-trace-continuity",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "An HTTP request queues a worker; worker records have no correlation, retries look like new operations, and a model SDK plus manual wrapper may emit duplicate spans. Plan evidence without enabling telemetry.",
+      "expected_skills": [
+        "orbyn-backend-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition for a proposed verification plan; no runtime/provider install, live model call, target edits or new framework. Static validation is not observed agent behavior.",
+      "rubric": {
+        "propagation": "Names send injection, serialized message, receive extraction/validation and spawned owner; chooses parent or link semantics deliberately through the actual adapter.",
+        "controls": "Tests missing hop, distinct retry attempts, failure/cancellation and exporter failure without changing business result; similar timestamps do not prove continuity.",
+        "privacy": "Reuses existing facade, avoids duplicate instrumentation and sensitive public identifiers; synthetic propagation is separate from live collector/sampling qualification."
+      }
+    },
+    {
+      "id": "engineering-build-budget-measurement",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "An export viewer splits into lazy chunks. Its project has an inclusive static-entry-closure byte budget B and private diagnostic-map limit M. A local grouping benchmark excludes network/worker/DOM; the shell appears faster. What checks and claims are appropriate?",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition for a proposed verification plan; no runtime/provider install, live model call, target edits or new framework. Static validation is not observed agent behavior.",
+      "rubric": {
+        "budgets": "Uses project-owned units/scope and counted dependency closure; selects legal at-boundary and one-byte-over controls plus missing/oversized required map, without copied vendor limits or public map upload.",
+        "measurement": "Records baseline/candidate and harness/input/build/runtime identities, included/excluded phases, full correctness witness, samples/errors/raw outputs; smaller chunks or shell visibility do not establish completed-work speed.",
+        "limits": "Separates planned checks, microbenchmark versus end-to-end, emulation versus device and skipped profiles; no new bundler or benchmark framework required."
+      }
+    },
+    {
+      "id": "engineering-shared-control-semantics",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A shared confirmation control is tested only as a native button. Its supported custom trigger loses its name while loading, and an aria-disabled anchor still navigates. A dialog reopens with changed title IDs. Give focused checks.",
+      "expected_skills": [
+        "orbyn-ui-design",
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition for a proposed verification plan; no runtime/provider install, live model call, target edits or new framework. Static validation is not observed agent behavior.",
+      "rubric": {
+        "semantics": "Checks pointer/keyboard suppression and correct once-only enabled behavior across supported renderings, stable name/busy state; anchor disabled semantics require actual prevention and commands prefer buttons.",
+        "dialog": "Checks current label/description references, optional description absence, supported dismissal/reopen and visible logical focus restoration; preserves actual visual focus rather than removing outlines.",
+        "evidence": "Separates component wiring/assertions from real navigation, rendered focus, screen-reader/native qualification; reuses scoped owner/consumer checks without every-page matrix."
+      }
     }
   ]
 }

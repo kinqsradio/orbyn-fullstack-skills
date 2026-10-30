@@ -204,6 +204,39 @@ variants, including segmented controls and recovery actions. Let long labels
 wrap and preserve separate hit areas. Check density and readable content as well
 as color before calling an action group consistent.
 
+### Shared control behavior across supported renderings
+
+For a changed shared action/dialog primitive, verify its semantic contract once
+at that owner and check the affected consumer wiring. Styling or a default-button
+snapshot cannot qualify alternate supported renderings. Reuse existing tests;
+this is not a component-gallery mandate or tests for each copy tweak.
+
+Synthetic confirmation action “Archive export”: a native button and a supported
+custom dialog trigger retain a stable accessible name, loading/busy state and
+activation semantics. While disabled/loading, pointer and keyboard activation
+must not submit or navigate; `aria-disabled`/`aria-busy` alone does not enforce
+that. Enabled activation reaches the intended effect once; a spinner must not
+replace the name with an unlabeled graphic. Forward the trigger's supported
+attributes, events and focus/ref relationship rather than assuming its element.
+A polymorphic anchor is appropriate only for actual navigation; it has no native
+`disabled` behavior, so check both event prevention and actual navigation/keyboard
+behavior under the supported contract. Prefer a button for a command, and do not
+silently change a consumer's link into a command or vice versa.
+
+For the associated dialog, title/description ID relationships must resolve to the
+actual current elements, including generated/changed IDs and reopen. An absent
+optional description must not leave a dangling reference. Exercise relevant
+close/Escape/backdrop policy, sensible visible focus restoration and reopen after
+the original trigger disappears; do not disable every exit and trap the person.
+Native disabled buttons may leave tab order; use the intended next focus target.
+Preserve visible focus in the actual theme; inspect forced colors when making
+that claim rather than importing a reference product's outline suppression.
+
+Component assertions can establish name/ID/event wiring and activation suppression;
+rendered focus, real navigation, assistive-technology and installed-native behavior
+need their own relevant evidence. Follow [test boundaries](../../tdd/references/test-strategy.md)
+and the existing scoped visual batch; no full accessibility claim follows.
+
 ### Document workspaces
 
 Keep the document toolbar visible while source and result scroll independently.

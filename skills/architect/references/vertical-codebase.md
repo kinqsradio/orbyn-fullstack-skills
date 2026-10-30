@@ -70,6 +70,11 @@ runtime behavior, independent modules or better agent performance.
 
 See the [synthetic task-editor example](../examples/vertical-task-editor.md).
 
+When changing lazy/startup boundaries, use the workflow's [build budget and
+measurement example](../../orbyn-workflow/playbooks/perf-issue.md#build-budgets-are-constraints-not-latency-results).
+A folder move, chunk split or lazy-import declaration cannot establish reduced
+startup work or latency; check actual dependency reachability and completed work.
+
 ## Reviewed inspiration and attribution
 
 Dominik (TkDodo), [The Vertical Codebase](https://tkdodo.eu/blog/the-vertical-codebase),

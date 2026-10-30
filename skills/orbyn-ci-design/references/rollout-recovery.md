@@ -61,3 +61,30 @@ controls; do not settle on “human error.” Verify restored user/data outcomes
 resolve follow-up ownership rather than closing solely on green HTTP health.
 
 Primary background: [Google incident response](https://sre.google/workbook/incident-response/).
+
+## Feature flags across entrypoints
+
+Use when a rollout flag changes behavior. Resolve its actual owner, evaluation
+location, cohort/exposure semantics, override precedence, unknown/error policy,
+kill switch and removal owner. Keep existing flag tooling; a local deployment-only
+switch need not become a remote service. Flags choose availability, not permission.
+
+Represent unresolved, off, on and evaluation-error according to the contract.
+Do not coerce an unresolved cold read to off and start a destructive migration or
+persist a fallback choice. A target may deliberately serve a safe baseline while
+pending or on error; that is an explicit fallback, not proof the remote flag is off.
+Preserve current resource authorization even when stale state says on.
+
+Synthetic archive rollout: route/deep link, command and tool adapter must agree on
+availability and domain authority. Exercise a cold unresolved deep link, resolved
+off with the supported baseline, on with allowed/denied resources, evaluation error,
+and an on-to-off kill-switch change. Include retained caches/subscriptions where
+they could preserve stale availability. The kill switch fences new work under its
+actual contract; it does not undo committed effects or prove active jobs stopped.
+Name behavior for in-flight work, overrides and reconnect/restart. Test the real
+entrypoints affected; inspecting only the visible button is incomplete.
+
+Retire temporary flags after required readers, cohorts and rollback compatibility
+are accounted for. Never leave a second permanent implementation accidentally.
+Changing a live remote flag remains a separately authorized operational effect;
+ordinary local code changes do not acquire repeated stage-approval prompts.

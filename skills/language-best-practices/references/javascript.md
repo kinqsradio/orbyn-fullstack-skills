@@ -37,6 +37,44 @@ Use the configured runtime and lint/type checks for the touched module. A passin
 
 Keep module exports deliberate and preserve ESM/CommonJS compatibility. Return stable error meanings at adapters, keep logging/configuration owned by the application, and test the actual promise/resource boundary. For UI results, pair supported cancellation with current-request identity so an older response cannot overwrite newer state.
 
+## Callbacks retained beyond a view
+
+Inspect the installed cache/library's ownership and disposal semantics before
+changing query options, selectors, pagination or metadata callbacks. A cache may
+retain them after a component unmounts. Capturing a view accessor, DOM node or
+old account client can then outlive its authority or throw on later use. A closure
+does not necessarily retain every surrounding variable; naming it or moving it
+without changing captured dependencies proves nothing about lifetime or memory.
+
+Synthetic options for a cache that outlives the view:
+
+```js
+function cachedPageOptions(loadPage, { accountId, projectId }) {
+  // loadPage is an application-owned client, not a view-bound callback.
+  // IDs here are plain validated snapshots, not reactive accessors or grants.
+  return {
+    key: ["pages", accountId, projectId],
+    query: ({ signal }) => loadPage({ accountId, projectId, signal }),
+    select: (rows) => rows.map(({ id, title }) => ({ id, title })),
+  };
+}
+```
+
+Keep current authorization at the service and actual effect; a cache key is not
+permission. On account/project change, partition/invalidate results and replace
+options under the real cache policy, fence old responses and cancel supported
+work. Rebuild snapshots when their inputs change; a one-time snapshot must not
+silently disable required reactivity. Check transitive captures in `loadPage`,
+selectors and wrappers as well as the visible options literal.
+
+A discriminating fixture retains options, unmounts/disposes the view, then invokes
+the retained query/selector. The old view accessor must not run. Switch account
+and confirm separate identity/no application of the old result; test revocation at
+the actual service boundary. A per-mount observer callback is legitimate when its
+owner really disposes/unsubscribes it. No blanket inline-closure ban, module-level
+factory, query library or AST rule is required. These are lifecycle checks, not a
+measured heap reduction; memory claims require their own profiling evidence.
+
 ## Primary references
 
 Reviewed 24 October 2026. These independently written instructions and synthetic

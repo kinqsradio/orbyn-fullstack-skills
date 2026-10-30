@@ -88,3 +88,31 @@ that inherited context grants access. A query-level rule or a permission prompt
 does not prove internal path fencing, credential separation or OS sandboxing.
 Declare and test those boundaries separately within authorized disposable scope;
 retain a denial rather than widen policy to obtain a passing result.
+
+## Carry a tool/API change to its intended consumers
+
+Use when adding/changing a generated API or model-callable application tool.
+Trace schema/generator, domain effect, registration/context, adapters and intended
+result consumers. Reuse actual service/client owners, not another parallel tool
+framework. The [CI evidence map](../../orbyn-ci-design/references/verification-map.md#generated-outputs-and-intended-consumers)
+owns generation/drift and consumer disposition.
+
+Synthetic `archiveItem` integration:
+
+| Boundary | Required evidence when this consumer exists |
+| --- | --- |
+| Schema and generated surface | Owner defines validated input and archived/denied/stale results; supported regeneration/check has no unexplained drift |
+| HTTP and tool adapters | Both call the same authorized domain operation with current principal, resource, version and logical operation identity |
+| Tool discovery/context | Registered callable name, argument/result schema and permitted contextual scope reach the actual orchestration consumer |
+| Intended client/result | Shared client invokes the method; the product's required renderer/manual result path explains confirmed, denied and uncertain outcomes |
+| Deliberate absence | Internal-only endpoint may have no public SDK or visible renderer; record that contract instead of adding a fake consumer |
+
+Select a legitimate archive, denied cross-scope resource and stale version through
+both adapters where supported. A shape-valid tool call must still be denied by the
+domain owner. A missing registration or required result handler is incomplete even
+when types compile. A stale exclusion/nonexistent skipped method fails the coverage
+claim; a justified internal-only absence is legitimate. If the write commits but
+refresh/presentation fails, reconcile the existing receipt instead of archiving a
+second time. Adapter stubs establish their controlled contract, not provider
+acceptance or end-to-end production execution. No model call is needed to test
+this deterministic path.

@@ -51,3 +51,30 @@ Reviewed 24 October 2026 against [OpenTelemetry sensitive-data guidance](https:/
 This procedure works with existing local logging; adopting OpenTelemetry is optional.
 
 For requested speech diagnosis, select bounded phase/byte/timing/underrun signals under [speech diagnostics](../../orbyn-ai-application/references/speech.md#diagnostics-and-qualification), preserving this owner’s redaction and exporter-failure boundaries.
+
+## Follow the asynchronous hop
+
+For changed queued/spawned work, use the existing tracer/logger facade and identify
+who injects allowed correlation at send and extracts/validates it at receive.
+Treat incoming metadata as untrusted; propagate only the intended fields under the
+consumer's privacy and trust policy. Decide whether work is a child of one request
+or linked to several/long-lived operations; do not fabricate parentage just to
+produce a visually connected trace. A spawned task needs an explicit context and
+lifecycle owner, not an assumption that ambient state follows it.
+
+Synthetic HTTP → queue → worker: a sanitized operation ID links acceptance,
+enqueue, worker attempt and committed/delivered/failed result. Retries have distinct
+attempts under the same logical operation, not repeated success records. Keep
+failure/cancellation phases and bounded sampling/retention visible. Reuse the one
+instrumentation owner; automatic SDK spans plus manual spans must not double-count
+the same phase, particularly model requests.
+
+A local propagation fixture should observe injected metadata, the serialized
+message, extraction and emitted worker record through the actual adapter seam.
+Remove one propagation hop as a negative control: the correlation assertion must
+fail rather than accept two unrelated records with similar timestamps. Check retry
+identity, cancellation/failure and exporter failure without changing the business
+result. Synthetic records prove that boundary only; a real collector readback,
+sampling, cross-service continuity and exporter delivery stay unverified unless
+actually exercised. No collector/telemetry enablement or span on every helper is
+required. Do not place tenant IDs or content in public logs by default.
