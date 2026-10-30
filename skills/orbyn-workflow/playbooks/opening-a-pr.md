@@ -76,3 +76,8 @@ A small PR needs no new canvas or document. For an expressly authorized history-
 rewrite, capture the pre-rewrite tree and compare the post-rewrite tree; unexpected
 content changes need review and checks. This does not authorize rewriting others'
 history, staging dirty unrelated files or force-pushing.
+
+At the requested delivery endpoint, reconcile the task/issue's actual PR identity
+and independent source/resource states, then make the [closeout decision](../../orbyn-worktree/references/task-closeout.md).
+Verified commit/push and a published PR do not imply merged work or permission to
+remove its checkout, evidence or running preview. Keep private recovery notes local.

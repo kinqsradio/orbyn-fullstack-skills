@@ -144,9 +144,11 @@ successfully verified. Keep failure receipts even if a later command succeeds.
 
 Before merge, verify current head/base, required gates and the user's merge
 authority; use the provider's expected-head guard when supported. Report local,
-committed, pushed, CI-green and merged states separately. Cleanup follows
-[worktree preservation](../../orbyn-worktree/SKILL.md) only after the owned work is
-delivered and remaining files/output are accounted for. See the
+committed, pushed, CI-green and merged states separately. At merge, closed-unmerged
+or a terminal no-merge handoff, use the single [closeout method](../../orbyn-worktree/references/task-closeout.md).
+Closed-unmerged source remains unlanded; a squash landing needs content/head
+reconciliation, later local commits and dependent work before retirement. The
+record names a retained reason/review trigger without authorizing cleanup. See the
 [worked examples](../references/contribution-examples.md).
 
 ## Dependent stacks and current context

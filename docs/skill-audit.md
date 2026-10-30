@@ -6,6 +6,22 @@
 
 # Skill-system audit — current candidate and historical evidence
 
+## Task and resource closeout
+
+The existing worktree owner adds one [closeout reference](../skills/orbyn-worktree/references/task-closeout.md)
+for independent source/commit/push/PR/resource states, terminal retention decisions,
+squash/later-work/dependency reconciliation and exact-path preservation before
+supported retirement. Existing workflow pickup/publication/iteration/autonomous
+methods link that one gate. [Artifact retention](../skills/orbyn-workflow/references/artifact-lifecycle.md#retention-and-growth-decisions)
+keeps raw evidence, review previews, regenerable caches and credentials/volume data
+distinct; upstream review adds suitable immutable-pin source-cache reuse.
+
+Six synthetic development definitions preserve all 397 existing cases/holdouts.
+No new skill, cleanup/inventory executable, deletion schedule, runtime or nesting/
+model/host default is introduced. Definition and library validation do not qualify
+real cleanup or prove storage reclaimed; a dry run changes no existing resources.
+Private machine inventory remains ignored and no consumer artifacts are imported.
+
 ## Invocation targets and component capture readiness
 
 The existing UI owner adds a focused [invocation-target example](../skills/orbyn-ui-design/references/ux-rules.md#bind-an-action-to-its-invocation-target)
