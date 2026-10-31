@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assistant chat — product token teaching fixture</title>
+<style>
+:root{--page:#f4f5f7;--panel:#fff;--text:#18212d;--muted:#465365;--action:#243d59;--actionText:#fff;--focus:#075985;--border:#748092;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--text);font:1rem/1.5 system-ui,sans-serif}main{max-width:72rem;margin:auto;padding:clamp(1rem,3vw,3rem)}h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2}p{max-width:65ch}.note{color:var(--muted)}.layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(16rem,1fr);gap:1.5rem}.panel{background:var(--panel);border:1px solid var(--border);border-radius:1rem;padding:1.25rem;min-width:0}#transcript{height:23rem;overflow:auto;overflow-anchor:none;border:1px solid var(--border);border-radius:.5rem;padding:1rem}article{margin:0 0 1.5rem;overflow-wrap:anywhere}article strong{display:block}select{font:inherit;max-width:100%;padding:.5rem;color:var(--text);background:var(--panel);border:1px solid var(--border);border-radius:.5rem}textarea{display:block;resize:vertical;width:100%;font:inherit;min-height:6rem;color:var(--text);background:var(--panel);border:1px solid var(--border);border-radius:.5rem;padding:.75rem}button{font:inherit;cursor:pointer;min-height:2.75rem;padding:.5rem .8rem;border:1px solid var(--border);border-radius:.5rem;color:var(--text);background:var(--panel)}button.primary{background:var(--action);color:var(--actionText)}button:disabled{opacity:.65;cursor:default}:focus-visible{outline:3px solid var(--focus);outline-offset:3px}.actions{display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0}label{display:block;font-weight:600;margin:.75rem 0 .25rem}summary{cursor:pointer}#state{white-space:pre-wrap;overflow-wrap:anywhere} @media(max-width:48rem){.layout{grid-template-columns:1fr}#transcript{height:20rem}}
+</style>
+<main>
+<p class="note">Original offline teaching fixture · simulated runtime</p>
+<h1>A conversation that keeps your work</h1>
+<p>Try typing another draft while a send is pending. Acknowledge the older send and check that your new typing remains. No message leaves this page.</p>
+<div class="layout">
+<section class="panel" aria-label="Conversation preview">
+<label for="thread">Conversation</label><select id="thread"><option value="planning">Planning thread</option><option value="review">Review thread</option></select>
+<div id="transcript" tabindex="0" role="region" aria-label="Conversation messages"></div>
+<div class="actions"><button id="jump">Jump to latest</button><button id="append">Append simulated answer</button><button id="unknown">Append unsupported part</button></div>
+<form id="composer"><div class="actions"><button id="attach" type="button">Add simulated outline.txt</button></div><ul id="attachments" aria-label="Draft attachments"></ul><label for="draft">Message</label><textarea id="draft" maxlength="8000" placeholder="Write a message"></textarea><p class="note">Enter sends; Shift+Enter inserts a line. Composition input keeps its native behavior.</p><button class="primary" id="send" type="submit">Send preview</button></form>
+<p id="status" role="status" aria-live="polite">Ready. Simulated sends require a result below.</p>
+</section>
+<aside class="panel" aria-label="Teaching controls">
+<h2>Simulate the owner’s result</h2><p class="note">These buttons supply fixture outcomes, not server receipts.</p>
+<div class="actions"><button data-outcome="sent">Acknowledge</button><button data-outcome="failed">Known failure</button><button data-outcome="unknown">Unknown result</button></div>
+<div class="actions"><button id="previous">Resolve previous thread send</button></div><label><input id="readonly" type="checkbox"> Read-only conversation</label><p class="note">Edit, regeneration and branches are unavailable in this teaching runtime; no inert controls are shown.</p><pre id="state"></pre>
+<details><summary>Use your product’s colours</summary><p>Paste your existing or planned semantic role values. All eight roles require six-digit hex colours. Defaults are illustrative; this does not approve contrast or change any product.</p><label for="palette">Synthetic consuming product</label><select id="palette"></select><label for="tokens">Semantic colour mapping (JSON)</label><textarea id="tokens" rows="10" spellcheck="false"></textarea><button id="apply">Apply preview tokens</button><p id="token-status" role="status"></p></details>
+<p class="note">No SDK, provider, upload, durable history, tool effect, real authentication or markdown renderer. Unknown content is shown as text fallback. Keyboard, screen reader and actual-app behavior require separate review.</p>
+</aside></div>
+</main><script type="module" src="./preview.mjs"></script>
+</html>
