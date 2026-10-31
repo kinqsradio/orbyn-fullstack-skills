@@ -26,6 +26,8 @@ Read only the relevant method:
   permission filtering, source quality and answer support.
 - [Tool effects](references/tool-effects.md): proposals versus authorized effects,
   semantic validation, approval, unknown outcomes and bounded loops.
+- [Streaming interactions](references/streaming-interactions.md): typed progress,
+  state convergence, terminal witnesses, passive history and supported pending resume.
 - [Task evaluations](references/evaluations.md): representative slices, independent
   outcomes, repeated comparisons, calibrated grading and privacy.
 - [Operation and change](references/operations.md): version bundles, budgets,

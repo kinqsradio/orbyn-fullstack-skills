@@ -96,3 +96,5 @@ retirement before removing old values. Not every missing optional setting should
 crash the service. No secret fetch, live configuration write or production startup
 is required for this synthetic contract; report actual runtime parity unverified
 when only loader/schema source was inspected.
+
+For typed agent/UI streams or interactive history, use the AI owner’s [streaming interaction contract](../../orbyn-ai-application/references/streaming-interactions.md). Delivery replay and business-effect receipts are different contracts; retain current authorization, concurrency and reconciliation at this service boundary.

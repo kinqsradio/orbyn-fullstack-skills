@@ -1445,7 +1445,7 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-ai-application",
-      "changes": "Independently authored provider-neutral AI application operating methods and synthetic document-assistant example. Primary research pointers in local references and research contract are reviewed inspiration; no upstream text, skill, runtime or SDK imported. No live provider/model qualification implied. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately. Added independently authored conditional engineering guidance from reviewed pinned OpenCode methods; source-specific operating instructions are not adopted, and prior import/license lineage remains unchanged. Added original conditional workspace/task-acceptance or factual outcome/attention/authorization guidance and synthetic development examples; Macro and Open Duet are reviewed inspiration only, with no source/assets/runtime imported. Added independently authored conditional engineering contract/evidence guidance or synthetic development cases after a pinned Macro source review. No upstream policy text, application code, assets, runtime, provider or default configuration imported; prior provenance and notices retained.",
+      "changes": "Independently authored provider-neutral AI application operating methods and synthetic document-assistant example. Primary research pointers in local references and research contract are reviewed inspiration; no upstream text, skill, runtime or SDK imported. No live provider/model qualification implied. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately. Added independently authored conditional engineering guidance from reviewed pinned OpenCode methods; source-specific operating instructions are not adopted, and prior import/license lineage remains unchanged. Added original conditional workspace/task-acceptance or factual outcome/attention/authorization guidance and synthetic development examples; Macro and Open Duet are reviewed inspiration only, with no source/assets/runtime imported. Added independently authored conditional engineering contract/evidence guidance or synthetic development cases after a pinned Macro source review. No upstream policy text, application code, assets, runtime, provider or default configuration imported; prior provenance and notices retained. Added independently authored conditional streaming-interaction guidance and provider-free project-plan projection/decision fixture, connecting existing effect, UI, backend and TDD owners. No upstream code, workflow text, SDK or service imported; existing lineage/notices retained.",
       "reviewed_inspiration": [
         {
           "credit": "Google PAIR user needs",
@@ -1501,6 +1501,20 @@
           "credit": "Google PAIR feedback/control",
           "source": "https://pair.withgoogle.com/chapter/feedback-controls/",
           "relationship": "reviewed-inspiration; independently authored local synthesis, no source text imported"
+        },
+        {
+          "credit": "AG-UI contributors",
+          "source": "https://github.com/ag-ui-protocol/ag-ui/tree/b2f4a1c1ea637dd486f138d30bc1c208db04f253",
+          "revision": "b2f4a1c1ea637dd486f138d30bc1c208db04f253",
+          "license": "MIT",
+          "relationship": "reviewed-inspiration; independently authored state, terminal, convergence and replay guidance; no source or runtime imported"
+        },
+        {
+          "credit": "CopilotKit contributors",
+          "source": "https://github.com/CopilotKit/CopilotKit/tree/d168487e7a753a1527256c7e4c79344377f3d092",
+          "revision": "d168487e7a753a1527256c7e4c79344377f3d092",
+          "license": "MIT",
+          "relationship": "reviewed-inspiration; independently authored typed-component/history/pending-resume example; no SDK, service, source or workflow text imported"
         }
       ],
       "reviewed_sources": [

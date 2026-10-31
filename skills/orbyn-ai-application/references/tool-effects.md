@@ -116,3 +116,5 @@ refresh/presentation fails, reconcile the existing receipt instead of archiving 
 second time. Adapter stubs establish their controlled contract, not provider
 acceptance or end-to-end production execution. No model call is needed to test
 this deterministic path.
+
+For streamed proposals or interactive history, use [streaming interactions](streaming-interactions.md) to connect delivery and rendering to this effect boundary. Transport completion and historical rendering do not establish an authorized committed result.

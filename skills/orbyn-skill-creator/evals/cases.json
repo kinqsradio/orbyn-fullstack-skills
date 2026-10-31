@@ -10076,6 +10076,92 @@
         "identity": "Preserves exact incoming edge and occurrence IDs; rejects fake edges between path-member nodes and retains guards, report/text fallback and distinction between supplied replay and checker evidence.",
         "boundary": "Preserves consumer scope, nested workspace and current defaults; reports actual evidence and unqualified capabilities separately."
       }
+    },
+    {
+      "id": "ai-streaming-project-plan",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Build a model-powered project-plan preview with typed progress and proposed state. The user edits a complete plan before acceptance. Reconnect can replay completed history. Keep the existing transport and do not install an SDK or call a provider.",
+      "expected_skills": [
+        "orbyn-ai-application"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic development definition. No SDK/service/model call, target installation, provider/default change or production effect is authorized.",
+      "rubric": {
+        "stream": "Names producer/decoder/projection/component/decision/effect owners; separates partial arguments, reported run terminal, transport EOF and current authorized receipt. Validates complete proposal and passive history; uses current scope/version for pending resume.",
+        "evidence": "Distinguishes source/schema/helper fixtures from actual adapter/SDK/service qualification; reports executed and unperformed checks honestly."
+      }
+    },
+    {
+      "id": "ai-streaming-repair-draft",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A reconnecting agent UI receives a duplicate array delta, misses another delta, then gets a snapshot while the person has a newer draft. Explain and check the application contract without logging private state or changing provider defaults.",
+      "expected_skills": [
+        "orbyn-ai-application"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic development definition. No SDK/service/model call, target installation, provider/default change or production effect is authorized.",
+      "rubric": {
+        "convergence": "Defines the selected base/order/deduplication/repair contract; rejected/gapped projection is visibly unsynchronized, dirty work is preserved with a declared conflict policy, and a snapshot cannot silently reauthorize an effect. Does not promise protocol-level exactly-once or universal CRDT requirements.",
+        "evidence": "Distinguishes source/schema/helper fixtures from actual adapter/SDK/service qualification; reports executed and unperformed checks honestly."
+      }
+    },
+    {
+      "id": "ai-streaming-history-authority",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "An old tool renderer still appears in history after an account switch. Another client already answered the outstanding approval. Show how replay and supported pending resume should behave; no service connection or real write is authorized.",
+      "expected_skills": [
+        "orbyn-ai-application"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic development definition. No SDK/service/model call, target installation, provider/default change or production effect is authorized.",
+      "rubric": {
+        "authority": "Reconstructs read-only historical UI without effects, fences old scope/generation and handlers, checks current authority/run/resource/proposal version and another answer before activation, and supplies a non-executable unknown-component fallback.",
+        "evidence": "Distinguishes source/schema/helper fixtures from actual adapter/SDK/service qualification; reports executed and unperformed checks honestly."
+      }
+    },
+    {
+      "id": "ai-streaming-adjacent-fetch",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Fix a normal save form where response A arrives after response B. There is no model workflow, typed event stream or history feature. Keep the change small.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [
+        "orbyn-ai-application"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic development definition. No SDK/service/model call, target installation, provider/default change or production effect is authorized.",
+      "rubric": {
+        "adjacent": "Uses ordinary UI request/generation and draft recovery methods. Does not introduce AG-UI, CopilotKit, a stream protocol, a new service or model/provider setup for this adjacent task.",
+        "evidence": "Distinguishes source/schema/helper fixtures from actual adapter/SDK/service qualification; reports executed and unperformed checks honestly."
+      }
     }
   ]
 }
