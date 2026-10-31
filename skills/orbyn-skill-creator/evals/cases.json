@@ -9902,6 +9902,96 @@
         "coverage": "Uses functional deterministic primitive payloads, bounded strict shot data and the executable gallery; no static-card relabeling. Preserves old composition-only specs and samples prior nonrecursive clips end-exclusively.",
         "inputs": "Uses approved local raster inputs with source hashes and actual decode readiness, safe DOM and fit checks. Rejects arbitrary URLs/markup/cyclic references, preserves source/license records and reports CSS depth versus GPU/font-mesh limitations."
       }
+    },
+    {
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "architect",
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic development case; static contract validation does not qualify live model behavior.",
+      "id": "statechart-domain-art",
+      "prompt": "Illustrate a checked payment flow as a hand-drawn market scene. Preserve refund guards, repeated retry occurrences and the exact failed-rule trace; do not change the model.",
+      "rubric": {
+        "semantics": "Uses actual stable state/event/edge records and exact counterexample occurrences, not endpoint membership, to drive both drawing and text.",
+        "craft": "Chooses a domain metaphor without importing an unrelated shop model, keeps decoration off labels and provides plain chart/table and evidence identity.",
+        "evidence": "Separates model checking, code correspondence, replay and visual inspection."
+      }
+    },
+    {
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "architect",
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic development case; static contract validation does not qualify live model behavior.",
+      "id": "statechart-art-unbounded-domains",
+      "prompt": "Our examples show a workshop and boba shop. Now illustrate a spacecraft docking statechart with nested airlock states, concurrent navigation and life-support regions, a retry loop and a cross-region safety guard.",
+      "rubric": {
+        "generality": "Treats samples as demonstrations; adapts domain art and geometry to the requested topology rather than forcing a leased-job sequence or four fixed templates.",
+        "structure": "Preserves containment, actual concurrency conditions, branch/back-edge identity and full transition labels; retains a plain/text fallback.",
+        "scope": "Names actual renderer support versus custom drawing work; no universal verified-renderer claim."
+      }
+    },
+    {
+      "kind": "outcome",
+      "split": "development",
+      "expected_skills": [
+        "architect",
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Synthetic development case; static contract validation does not qualify live model behavior.",
+      "id": "statechart-art-no-visual-proof",
+      "prompt": "A beautiful trace plate says every path is safe because the last node is green, but its input is only a replay JSON. Review the claim.",
+      "rubric": {
+        "evidence": "Refuses safety or TLC claims inferred from appearance or unverified JSON; retains original checker/source receipts.",
+        "coverage": "Explains one execution is not a full graph; missing branches, unchecked properties and bounds stay visible."
+      }
+    },
+    {
+      "id": "statechart-art-adjacent-text-only",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Explain this supplied TLC counterexample in plain text and identify the failing rule. Do not draw a diagram or make artwork.",
+      "expected_skills": [
+        "architect"
+      ],
+      "forbidden_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Adjacent no-art routing definition only; no hosted model call or new checker run is implied.",
+      "rubric": {
+        "scope": "Uses the statechart/model evidence owner for the requested text explanation and respects the explicit exclusion of artwork; no mandatory themed plate or illustration workflow."
+      }
     }
   ]
 }

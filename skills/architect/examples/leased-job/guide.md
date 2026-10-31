@@ -117,3 +117,16 @@ implementation and replay hashes are retained in the demo receipt. After any
 boundary/guard change, update the map and rerun both variants and replays; an old
 passing model says nothing about a changed implementation. This sample is
 Orbyn-authored; the optional compiler preserves its separate pinned MIT notices.
+
+## Illustrated replay plate
+
+The same demo also draws an original dispatch-workshop plate from the replay's
+actual `initial` snapshot and every observed event. Cards, delivery slips and
+publication records share those values; the full raw states remain in the
+accessible table. Keep the original plain SVG/graphs and reports alongside it.
+The artwork describes the observed execution. It does not independently check
+a property, and a replay JSON's claimed status is not a verifier attestation.
+
+Follow [illustrated statecharts](../../references/illustrated-statecharts.md) for
+other domains, styles, flat/nested/parallel topologies and exact failure-edge
+identity. The workshop is a sample composition, not a limit on the method.

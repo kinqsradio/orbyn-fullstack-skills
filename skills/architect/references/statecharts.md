@@ -128,6 +128,10 @@ table with rendering unverified. Without a verifier, hand off an unchecked desig
 never label it checked because rendering succeeded. Inspect actual layout at the
 review width, including long labels and dark/light backgrounds where relevant.
 
+For requested domain artwork, use [illustrated statecharts](illustrated-statecharts.md)
+with the technical-illustration owner. Preserve the plain chart, exact trace
+occurrences and accessible table; artwork does not establish a model verdict.
+
 ## Check correspondence and hand off
 
 For an existing implementation, every relevant model action and guard must point

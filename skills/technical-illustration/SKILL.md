@@ -19,6 +19,11 @@ Shared methods stay in the outer library. Authorized drawing modules may be
 packaged into the actual artifact; never install shared instructions into targets.
 No browser bypass, publisher, auth edit, history capture or model call is implied.
 
+For requested illustrated statecharts, follow architect's
+[art contract](../architect/references/illustrated-statecharts.md). Draw from the
+actual chart or trace records; architect retains state, guard, projection and
+verification ownership. Keep exact numbered paths and the plain/text fallback.
+
 ## Build one coherent artifact
 
 1. State the explanation, audience, inputs, meaningful states and smallest useful

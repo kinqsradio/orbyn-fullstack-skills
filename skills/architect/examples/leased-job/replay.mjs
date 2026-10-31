@@ -49,6 +49,7 @@ export function replay(text) {
   const states = decodeTrace(text);
   const broken = new LeasedJob({ brokenCompletion: true });
   assert.deepEqual(observed(broken), states[0].values);
+  const initial = broken.snapshot();
   const events = [];
   for (let i = 1; i < states.length; i++) {
     const accepted = invoke(broken, states[i - 1].values, states[i].values, states[i].action);
@@ -79,7 +80,7 @@ export function replay(text) {
   assert.equal(cancelled.complete(1), false); assert.equal(cancelled.publish(), false);
   assert.equal(cancelled.result, null); assert.equal(cancelled.published.length, 0);
   return { status: 'assertions passed', traceSteps: states.length - 1, broken: broken.snapshot(),
-    fixedRejectedStep: rejection, fixed: fixed.snapshot(), cancelled: cancelled.snapshot(), events,
+    initial, fixedRejectedStep: rejection, fixed: fixed.snapshot(), cancelled: cancelled.snapshot(), events,
     limits: 'Serialized synthetic public methods; not distributed database/lock conformance.' };
 }
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
