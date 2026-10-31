@@ -1,3 +1,6 @@
+import {rate} from './motion/time.mjs';
+export const fpsValue = spec => { const r=rate(spec.fps); return r.numerator/r.denominator; };
+export const fpsText = spec => { const r=rate(spec.fps); return r.denominator===1 ? String(r.numerator) : `${r.numerator}/${r.denominator}`; };
 import { validatePrimitive, samplePrimitive, renderPrimitive } from './film-primitives.mjs';
 // Original motion-film model and DOM renderer shared by preview and MP4 capture.
 export const DEFAULT_FILM = Object.freeze({ version: 1, title: 'Movement with meaning', fps: 30, bpm: 120, duration: 12,
@@ -21,15 +24,15 @@ export function validateFilm(spec) {
     exact(b.focal,['x','y']); number(b.focal.x,0,1); number(b.focal.y,0,1); exact(b.pan,['from','to']); exact(b.zoom,['from','to']); number(b.dim,0,.8);
     for(const end of ['from','to']) { exact(b.pan[end],['x','y']); number(b.zoom[end],1,2); number(b.pan[end].x,-.25,.25); number(b.pan[end].y,-.25,.25); if(b.fit==='cover' && (Math.abs(b.pan[end].x)>(b.zoom[end]-1)/2 || Math.abs(b.pan[end].y)>(b.zoom[end]-1)/2)) throw Error('Background pan exposes uncovered frame'); }
   }
-  if (spec.version !== 1) throw Error('Unsupported film version'); text(spec.title, 100); number(spec.fps, 10, 60); number(spec.bpm, 20, 240); number(spec.duration, .1, 120);
-  if (!Number.isInteger(spec.fps) || !aligned(spec.duration * spec.fps) || spec.duration * spec.fps > 3600 || !Array.isArray(spec.shots) || spec.shots.length < 1 || spec.shots.length > 24) throw Error('Film frame/shot budget');
+  if (![1,2].includes(spec.version) || (spec.version===1 && !Number.isInteger(spec.fps)) || (spec.version===2 && typeof spec.fps!=='object')) throw Error('Unsupported film version/rate'); text(spec.title, 100); number(fpsValue(spec), 10, 60); number(spec.bpm, 20, 240); number(spec.duration, .1, 120);
+  if (!aligned(spec.duration * fpsValue(spec)) || spec.duration * fpsValue(spec) > 3600 || !Array.isArray(spec.shots) || spec.shots.length < 1 || spec.shots.length > 24) throw Error('Film frame/shot budget');
   let end = 0; const ids = new Set();
   for (const s of spec.shots) {
     exact(s, ['id', 'from', 'to', 'composition', 'title', 'caption', ...(Object.hasOwn(s, 'primitive') ? ['primitive', 'data'] : [])]);
     if (typeof s.id !== 'string' || !/^[a-z][a-z0-9-]{0,39}$/.test(s.id) || ids.has(s.id)) throw Error('Duplicate/invalid shot ID'); ids.add(s.id);
     if (!['title', 'split', 'poster', 'end-card'].includes(s.composition)) throw Error('Unsupported composition');
     number(s.from, 0, spec.duration); number(s.to, 0, spec.duration);
-    if (s.from !== end || s.to <= s.from || !aligned(s.from * spec.fps) || !aligned(s.to * spec.fps)) throw Error('Shots must cover contiguous frame-aligned intervals');
+    if (s.from !== end || s.to <= s.from || !aligned(s.from * fpsValue(spec)) || !aligned(s.to * fpsValue(spec))) throw Error('Shots must cover contiguous frame-aligned intervals');
     text(s.title, 100); text(s.caption, 240); if (Object.hasOwn(s, 'primitive')) validatePrimitive(s, spec); end = s.to;
   }
   if (end !== spec.duration) throw Error('Incomplete film coverage'); return spec;
@@ -39,12 +42,12 @@ export function sampleFilm(spec, time, reduced = false) {
   validateFilm(spec); number(time, 0, spec.duration);
   const shot = spec.shots.find(s => time >= s.from && time < s.to) ?? spec.shots.at(-1);
   const local = (time - shot.from) / (shot.to - shot.from), entrance = reduced ? 1 : Math.min(1, local / .18), smooth = entrance * entrance * (3 - 2 * entrance);
-  return { scene: shot.id, composition: shot.composition, time, title: shot.title, caption: shot.caption, beat: time * spec.bpm / 60, frameIndex: Math.min(Math.round(spec.duration * spec.fps) - 1, Math.floor(time * spec.fps + 1e-8)), typeOffset: reduced ? 0 : (1 - smooth) * 24, opacity: reduced ? 1 : .4 + .6 * smooth, background: spec.background ? { ...spec.background, x: spec.background.pan.from.x + (spec.background.pan.to.x-spec.background.pan.from.x)*(reduced?0:time/spec.duration), y: spec.background.pan.from.y + (spec.background.pan.to.y-spec.background.pan.from.y)*(reduced?0:time/spec.duration), scale: spec.background.zoom.from + (spec.background.zoom.to-spec.background.zoom.from)*(reduced?0:time/spec.duration) } : null, primitive: shot.primitive ? samplePrimitive(shot, Math.max(0, Math.min(1, local)), spec, reduced) : null };
+  return { scene: shot.id, composition: shot.composition, time, title: shot.title, caption: shot.caption, beat: time * spec.bpm / 60, frameIndex: Math.min(Math.round(spec.duration * fpsValue(spec)) - 1, Math.floor(time * fpsValue(spec) + 1e-8)), typeOffset: reduced ? 0 : (1 - smooth) * 24, opacity: reduced ? 1 : .4 + .6 * smooth, background: spec.background ? { ...spec.background, x: spec.background.pan.from.x + (spec.background.pan.to.x-spec.background.pan.from.x)*(reduced?0:time/spec.duration), y: spec.background.pan.from.y + (spec.background.pan.to.y-spec.background.pan.from.y)*(reduced?0:time/spec.duration), scale: spec.background.zoom.from + (spec.background.zoom.to-spec.background.zoom.from)*(reduced?0:time/spec.duration) } : null, primitive: shot.primitive ? samplePrimitive(shot, Math.max(0, Math.min(1, local)), spec, reduced) : null };
 }
 export function subframeTimes(spec, index, samples = 1, shutter = .5) {
-  validateFilm(spec); if (!Number.isInteger(index) || index < 0 || index >= Math.round(spec.duration * spec.fps) || !Number.isInteger(samples) || samples < 1 || samples > 4) throw Error('Invalid frame/subframe budget'); number(shutter, 0, 1);
-  const time = index / spec.fps, shot = spec.shots.find(s => time >= s.from && time < s.to);
-  return Array.from({ length: samples }, (_, j) => Math.max(shot.from, Math.min(shot.to - 1e-9, time + ((j + .5) / samples - .5) * shutter / spec.fps)));
+  validateFilm(spec); if (!Number.isInteger(index) || index < 0 || index >= Math.round(spec.duration * fpsValue(spec)) || !Number.isInteger(samples) || samples < 1 || samples > 4) throw Error('Invalid frame/subframe budget'); number(shutter, 0, 1);
+  const time = index / fpsValue(spec), shot = spec.shots.find(s => time >= s.from && time < s.to);
+  return Array.from({ length: samples }, (_, j) => Math.max(shot.from, Math.min(shot.to - 1e-9, time + ((j + .5) / samples - .5) * shutter / fpsValue(spec))));
 }
 export function renderFilm(stage, frame, spec = DEFAULT_FILM) {
   const background = stage.querySelector('#film-background'); background.replaceChildren();
@@ -55,7 +58,7 @@ export function renderFilm(stage, frame, spec = DEFAULT_FILM) {
   stage.dataset.shot = frame.composition; stage.dataset.scene = frame.scene;
   stage.querySelector('#film-title').textContent = frame.title; stage.querySelector('#film-caption').textContent = frame.caption;
   const title = stage.querySelector('#film-title'); title.style.transform = `translateY(${frame.typeOffset}px)`; title.style.opacity = String(frame.opacity);
-  stage.querySelector('#film-clock').textContent = `FRAME ${frame.frameIndex} / ${Math.round(spec.duration * spec.fps) - 1} · BEAT ${frame.beat.toFixed(2)} · ${spec.fps} FPS STUDY`;
+  stage.querySelector('#film-clock').textContent = `FRAME ${frame.frameIndex} / ${Math.round(spec.duration * fpsValue(spec)) - 1} · BEAT ${frame.beat.toFixed(2)} · ${fpsText(spec)} FPS STUDY`;
 }
 export function validateCues(cues, duration) {
   if (!Array.isArray(cues) || cues.length < 1 || cues.length > 200) throw Error('Caption budget'); let end = 0;

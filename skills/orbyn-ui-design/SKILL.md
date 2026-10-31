@@ -20,6 +20,12 @@ use [reference palettes and semantic colour](references/colour-palettes.md).
 Keep an existing project brand first; optional references are not automatic theme
 adoption. Its gallery separates raw labels, derived roles and contextual checks.
 
+For code-driven UI motion and an editable preview, use the existing
+[motion composition and inspector](examples/spatial-review/motion/README.md).
+Keep live gesture velocity, interrupted presence, keyboard takeover and reduced
+motion separate from deterministic export seeks. Optional graphics/audio backends
+never become prerequisites for ordinary product UI.
+
 ## Read before designing
 
 - Read `AGENTS.md` and the agreed task scope; preserve scope and stage order.

@@ -9992,6 +9992,90 @@
       "rubric": {
         "scope": "Uses the statechart/model evidence owner for the requested text explanation and respects the explicit exclusion of artwork; no mandatory themed plate or illustration workflow."
       }
+    },
+    {
+      "id": "motion-custom-composition",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Author a 20-second layered explanation from repo code with a new custom component, nested overlapping clips and 30000/1001 FPS. Reopen review and export with no external authoring app. Preserve the existing nested workspace.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic development case; no provider/model/GPU installation or universal parity claim.",
+      "rubric": {
+        "composition": "Uses trusted source registration, inert saved data, explicit rational clocks/half-open intervals, actual preview/export readiness and existing source-bound review writer; examples do not restrict domain.",
+        "boundary": "Preserves consumer scope, nested workspace and current defaults; reports actual evidence and unqualified capabilities separately."
+      }
+    },
+    {
+      "id": "motion-live-interruption",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Build an editable live panel preview that survives open-close-open, a second pointer, keyboard takeover and reduced-motion changes. Preserve undo/reset/save/reopen and reject old completions.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic development case; no provider/model/GPU installation or universal parity claim.",
+      "rubric": {
+        "interaction": "Separates physical live velocity from pure export sampling; generation-safe exits/readiness, pointer ownership, teardown and existing review protocol are tested rather than claimed from code alone.",
+        "boundary": "Preserves consumer scope, nested workspace and current defaults; reports actual evidence and unqualified capabilities separately."
+      }
+    },
+    {
+      "id": "motion-optional-backend",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A local agent can render DOM/SVG but has no GPU or speech model. Explain and demonstrate the supported motion route while a user asks for 3D, particles and forced-aligned captions. Do not install or download anything.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic development case; no provider/model/GPU installation or universal parity claim.",
+      "rubric": {
+        "qualification": "Keeps core useful, identifies exact optional dependency/model profiles and actual blocked cells, refuses to equate source/stubs/synthetic tests with GPU/native/ASR qualification.",
+        "boundary": "Preserves consumer scope, nested workspace and current defaults; reports actual evidence and unqualified capabilities separately."
+      }
+    },
+    {
+      "id": "motion-exact-trace",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Animate a supplied statechart trace which revisits a node through two different guarded edges. Show the actual numbered occurrences and full chart records. Do not invent checker results.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic development case; no provider/model/GPU installation or universal parity claim.",
+      "rubric": {
+        "identity": "Preserves exact incoming edge and occurrence IDs; rejects fake edges between path-member nodes and retains guards, report/text fallback and distinction between supplied replay and checker evidence.",
+        "boundary": "Preserves consumer scope, nested workspace and current defaults; reports actual evidence and unqualified capabilities separately."
+      }
     }
   ]
 }

@@ -1,0 +1,4 @@
+# Optional local audio profile. Install into a task-owned environment, not globally.
+# Runtime receipts record complete installed versions and prepared model hashes.
+librosa==1.0.0
+whisperx==3.8.6

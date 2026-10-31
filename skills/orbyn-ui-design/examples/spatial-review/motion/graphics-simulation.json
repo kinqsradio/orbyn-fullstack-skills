@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "sourceRevision": "orbyn-graphics-study-v1",
+  "tickRate": 120,
+  "maxTicks": 720,
+  "gravity": [
+    0,
+    -9.81,
+    0
+  ],
+  "bodies": [
+    {
+      "id": "floor",
+      "motion": "static",
+      "shape": {
+        "type": "box",
+        "halfExtents": [
+          5,
+          0.2,
+          5
+        ]
+      },
+      "position": [
+        0,
+        -0.2,
+        0
+      ]
+    },
+    {
+      "id": "ball",
+      "shape": {
+        "type": "sphere",
+        "radius": 0.4
+      },
+      "position": [
+        -1,
+        3,
+        0
+      ],
+      "restitution": 0.7
+    }
+  ],
+  "events": [
+    {
+      "tick": 120,
+      "op": "add",
+      "body": {
+        "id": "second",
+        "shape": {
+          "type": "sphere",
+          "radius": 0.3
+        },
+        "position": [
+          0,
+          4,
+          0
+        ],
+        "restitution": 0.6
+      }
+    },
+    {
+      "tick": 180,
+      "op": "set",
+      "id": "ball",
+      "values": {
+        "friction": 0.8,
+        "restitution": 0.2
+      }
+    },
+    {
+      "tick": 300,
+      "op": "remove",
+      "id": "second"
+    },
+    {
+      "tick": 420,
+      "op": "add",
+      "body": {
+        "id": "second",
+        "shape": {
+          "type": "sphere",
+          "radius": 0.3
+        },
+        "position": [
+          1,
+          4,
+          1
+        ],
+        "restitution": 0.5
+      }
+    }
+  ]
+}

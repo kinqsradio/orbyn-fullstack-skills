@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "sourceRevision": "orbyn-graphics-study-v1",
+  "background": "#e9eee7",
+  "camera": {
+    "type": "perspective",
+    "position": [
+      7,
+      4.5,
+      8
+    ],
+    "target": [
+      0,
+      1,
+      0
+    ],
+    "fov": 43
+  },
+  "lights": [
+    {
+      "type": "ambient",
+      "color": "#ffffff",
+      "intensity": 1.6
+    },
+    {
+      "type": "directional",
+      "color": "#fff2dc",
+      "intensity": 3,
+      "position": [
+        4,
+        6,
+        3
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "path": "marker.glb",
+      "sha256": "2eb2262d608fcb771f3bedaaa25eb6fa37dea4786342b03c3b6103ffdb72841b"
+    }
+  ],
+  "parts": [
+    {
+      "id": "floor",
+      "geometry": {
+        "type": "box",
+        "args": [
+          10,
+          0.4,
+          10
+        ]
+      },
+      "position": [
+        0,
+        -0.2,
+        0
+      ],
+      "material": {
+        "color": "#9cae9a",
+        "roughness": 0.9
+      }
+    },
+    {
+      "id": "ball",
+      "geometry": {
+        "type": "sphere",
+        "args": [
+          0.4,
+          24,
+          16
+        ]
+      },
+      "position": [
+        -1,
+        3,
+        0
+      ],
+      "material": {
+        "color": "#d99a5d",
+        "metalness": 0.1,
+        "roughness": 0.3
+      }
+    },
+    {
+      "id": "second",
+      "geometry": {
+        "type": "sphere",
+        "args": [
+          0.3,
+          24,
+          16
+        ]
+      },
+      "position": [
+        0,
+        4,
+        0
+      ],
+      "material": {
+        "color": "#527a93",
+        "roughness": 0.4
+      }
+    },
+    {
+      "id": "marker",
+      "geometry": {
+        "type": "asset",
+        "path": "marker.glb"
+      },
+      "position": [
+        2,
+        0,
+        0
+      ],
+      "motion": [
+        {
+          "property": "rotation",
+          "from": [
+            0,
+            0,
+            0
+          ],
+          "to": [
+            0,
+            6.28318530718,
+            0
+          ],
+          "start": 0,
+          "end": 6
+        }
+      ]
+    }
+  ]
+}

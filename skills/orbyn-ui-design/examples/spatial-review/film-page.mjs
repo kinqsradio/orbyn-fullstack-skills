@@ -1,10 +1,10 @@
 import { stabilizePrimitive } from './film-primitives.mjs';
-import { DEFAULT_FILM, validateFilm, sampleFilm, renderFilm } from './film.mjs';
+import { fpsValue, DEFAULT_FILM, validateFilm, sampleFilm, renderFilm } from './film.mjs';
 const stage = document.getElementById('film-stage'); let spec = DEFAULT_FILM;
 await document.fonts.ready;
 window.motionFilm = {
   setSpec(value) { spec = structuredClone(validateFilm(value)); },
-  seek(time, reduced = false, outputIndex = null) { const frame = sampleFilm(spec, time, reduced); if (outputIndex !== null) { frame.frameIndex = outputIndex; frame.beat = outputIndex / spec.fps * spec.bpm / 60; frame.primitive = stabilizePrimitive(frame.primitive, sampleFilm(spec, outputIndex / spec.fps, reduced).primitive); } renderFilm(stage, frame, spec); return frame; },
+  seek(time, reduced = false, outputIndex = null) { const frame = sampleFilm(spec, time, reduced); if (outputIndex !== null) { frame.frameIndex = outputIndex; frame.beat = outputIndex / fpsValue(spec) * spec.bpm / 60; frame.primitive = stabilizePrimitive(frame.primitive, sampleFilm(spec, outputIndex / fpsValue(spec), reduced).primitive); } renderFilm(stage, frame, spec); return frame; },
   async ready() { await document.fonts.ready; await Promise.all([...stage.querySelectorAll('img')].map(n => n.decode())); },
   inspect() {
     const safe = stage.querySelector('.film-safe').getBoundingClientRect();

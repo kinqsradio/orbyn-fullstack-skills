@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "title": "Tidal observatory",
+  "fps": {"numerator": 30000, "denominator": 1001},
+  "durationFrames": 90,
+  "sourceRevision": "tidal-observatory-v1",
+  "bindings": [
+    {"id":"tide-height","clip":"harbor","property":"props.height","label":"Tide height","type":"number","min":20,"max":160,"step":1,"default":90},
+    {"id":"tide-color","clip":"harbor","property":"props.color","label":"Water color","type":"color","default":"#8fe0b1"},
+    {"id":"tide-label","clip":"harbor","property":"props.label","label":"Readout","type":"enum","options":["TIDAL OBSERVATORY","A LIVING COAST"],"default":"TIDAL OBSERVATORY"}
+  ],
+  "clips": [{"id":"harbor","component":"tidal-observatory","start":0,"duration":90,"transform":{"x":64,"y":80},"props":{}}]
+}

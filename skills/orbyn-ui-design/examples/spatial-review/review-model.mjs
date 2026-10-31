@@ -1,10 +1,15 @@
 import { canonical, parseJSONStrict } from './review-core.mjs';
 import { timeline, SCENARIOS } from './timeline.mjs';
+import { validateGraphicsContext } from './motion/graphics-profiles.mjs';
+import { validateMotionContext } from './motion/profiles.mjs';
 export { canonical, parseJSONStrict };
 const fields = (v, names) => { if (!v || typeof v !== 'object' || Array.isArray(v) || Object.keys(v).sort().join('|') !== [...names].sort().join('|')) throw Error('Unknown/missing fields'); };
 const finite = (v, low, high) => { if (typeof v !== 'number' || !Number.isFinite(v) || v < low || v > high) throw Error('Invalid finite bound'); };
 const text = (v, size, empty = false) => { if (typeof v !== 'string' || v.length > size || (!empty && !v.trim())) throw Error('Invalid text'); };
 export function validateContext(c, manifest) {
+  if (manifest.prototype.id === 'graphics-review-v1') return validateGraphicsContext(c, manifest);
+  if (manifest.prototype.id === 'motion-composition-v1') return validateMotionContext(c, manifest);
+  if (manifest.reviewProfile !== undefined) throw Error('Unsupported review profile');
   fields(c, ['modelRevision', 'partId', 'camera', 'animation', 'layers', 'viewport', ...(Object.hasOwn(c ?? {}, 'filmRevision') ? ['filmRevision'] : [])]);
   if (typeof c.partId !== 'string' || typeof c.modelRevision !== 'string' || c.modelRevision !== manifest.assets['engine-data.json'] || !manifest.targets.some(t => t.id === 'part/' + c.partId)) throw Error('Stale model/part');
   fields(c.camera, ['yaw', 'elevation', 'scale']); finite(c.camera.yaw, -180, 180);
@@ -41,7 +46,7 @@ export function propose(before, doc, manifest) {
   if ((before.split(start).length - 1) !== (before.split(end).length - 1) || before.split(start).length > 2 || (before.includes(end) && before.indexOf(end) < before.indexOf(start))) throw Error('Ambiguous design block');
   const safe = v => v.replace(/[<>&`*_[\]\\]/g, x => `&#${x.charCodeAt(0)};`).replace(/\r?\n/g, ' / ');
   const lines = [start, '## Spatial prototype review', `Source fingerprint: ${doc.prototype.fingerprint}`, 'Submission is feedback, not automatic design acceptance.'];
-  for (const c of doc.comments) lines.push(`- ${c.disposition}: ${c.id}; target ${c.targetId}; ${safe(c.context.animation.scene)} at ${c.context.animation.time}s; camera yaw ${c.context.camera.yaw}; model ${c.context.modelRevision}\n  Feedback: ${safe(c.text)}\n  Decision: ${safe(c.decision || 'Unresolved; retain question')}`);
+  for (const c of doc.comments) lines.push(`- ${c.disposition}: ${c.id}; target ${c.targetId}; ${safe(c.context.animation.scene)} at ${c.context.animation.time}s; camera ${c.context.profile === 'graphics-v1' ? `position ${c.context.camera.position.join(',')}, target ${c.context.camera.target.join(',')}` : c.context.profile === 'motion-v1' ? `x ${c.context.camera.x}, y ${c.context.camera.y}, zoom ${c.context.camera.zoom}` : `yaw ${c.context.camera.yaw}`}; model ${c.context.modelRevision}\n  Feedback: ${safe(c.text)}\n  Decision: ${safe(c.decision || 'Unresolved; retain question')}`);
   lines.push(end);
   const block = lines.join('\n'); return before.includes(start) ? before.slice(0, before.indexOf(start)) + block + before.slice(before.indexOf(end) + end.length) : before + '\n\n' + block + '\n';
 }
