@@ -1,0 +1,757 @@
+{
+  "title": "From a question to a clean handoff",
+  "subtitle": "Our engineering workflow: evidence moves the work forward; authority controls external effects.",
+  "evidence": "Policy illustration derived from current Orbyn workflow, PR delivery/iteration and task-closeout guidance. This is an authored overview, not an executed model check or a live task status. Source, commit, push, PR and resources remain independently verified records. Loops show selected recovery paths; the full workflow contains additional blocked, pause and cancellation cases. Retained/retired are closeout dispositions, not proof of successful delivery. This is a change-delivery overview; read-only tasks do not require building or publication, and routine work uses proportional investigation and optional isolation.",
+  "width": 2100,
+  "height": 2450,
+  "nodes": [
+    {
+      "id": "scope",
+      "title": "01 / Establish the task",
+      "x": 120,
+      "y": 330,
+      "width": 450,
+      "height": 270,
+      "lines": [
+        "Lead: resolve target and instructions.",
+        "Confirm benefit, scope and authority."
+      ],
+      "parent": "understand",
+      "start": true
+    },
+    {
+      "id": "research",
+      "title": "02 / Understand and design",
+      "x": 700,
+      "y": 330,
+      "width": 450,
+      "height": 270,
+      "lines": [
+        "Trace source; reproduce the real problem.",
+        "Choose owners, boundaries and focused checks."
+      ],
+      "parent": "understand"
+    },
+    {
+      "id": "build",
+      "title": "03 / Build the candidate",
+      "x": 1280,
+      "y": 330,
+      "width": 450,
+      "height": 270,
+      "lines": [
+        "Use an owned checkout; isolate when needed.",
+        "Delegate bounded slices when useful."
+      ],
+      "parent": "understand"
+    },
+    {
+      "id": "verify",
+      "title": "04 / Inspect and verify",
+      "x": 1280,
+      "y": 800,
+      "width": 450,
+      "height": 270,
+      "lines": [
+        "Lead reviews the actual diff and result.",
+        "Check failure cases and relevant consumers."
+      ],
+      "parent": "prepare"
+    },
+    {
+      "id": "commit",
+      "title": "05 / Verify the commit",
+      "x": 700,
+      "y": 800,
+      "width": 450,
+      "height": 270,
+      "lines": [
+        "Stage only intended, verified changes.",
+        "Read back successful HEAD and tree."
+      ],
+      "parent": "prepare"
+    },
+    {
+      "id": "push",
+      "title": "06 / Observe the pushed ref",
+      "x": 120,
+      "y": 800,
+      "width": 450,
+      "height": 270,
+      "lines": [
+        "Use the authorized destination and ref.",
+        "Remote head must match the intended commit."
+      ],
+      "parent": "prepare"
+    },
+    {
+      "id": "pr",
+      "title": "07 / Open and review the PR",
+      "x": 120,
+      "y": 1270,
+      "width": 450,
+      "height": 270,
+      "lines": [
+        "Read back PR identity, head and base.",
+        "Review and CI are separate gates."
+      ],
+      "parent": "deliver"
+    },
+    {
+      "id": "merge",
+      "title": "08 / Observe the landing",
+      "x": 700,
+      "y": 1270,
+      "width": 450,
+      "height": 270,
+      "lines": [
+        "Merge only within existing authorization.",
+        "Read back landing, checks and local main."
+      ],
+      "parent": "deliver"
+    },
+    {
+      "id": "closeout",
+      "title": "09 / Reconcile resources",
+      "x": 1280,
+      "y": 1270,
+      "width": 450,
+      "height": 270,
+      "lines": [
+        "Inspect later source, owners and active use.",
+        "Preserve artifacts; verify recovery."
+      ],
+      "parent": "deliver"
+    },
+    {
+      "id": "retire",
+      "title": "Retired with recovery",
+      "x": 1280,
+      "y": 1740,
+      "width": 450,
+      "height": 270,
+      "lines": [
+        "Only the approved exact inactive paths.",
+        "Use supported removal and verify readback."
+      ],
+      "parent": "disposition",
+      "terminal": true
+    },
+    {
+      "id": "hold",
+      "title": "Retained for a reason",
+      "x": 700,
+      "y": 1740,
+      "width": 450,
+      "height": 270,
+      "lines": [
+        "Keep source, evidence and live previews.",
+        "Name an owner, next action and review trigger."
+      ],
+      "parent": "disposition",
+      "terminal": true
+    }
+  ],
+  "edges": [
+    {
+      "id": "scope.clear",
+      "from": "scope",
+      "to": "research",
+      "label": "Investigate",
+      "guard": "scope clear",
+      "points": [
+        [
+          580,
+          465
+        ],
+        [
+          688,
+          465
+        ]
+      ],
+      "labelX": 590,
+      "labelY": 370,
+      "labelWidth": 100,
+      "details": {
+        "fullTransition": "Begin investigation",
+        "fullGuard": "scope is clear"
+      }
+    },
+    {
+      "id": "design.ready",
+      "from": "research",
+      "to": "build",
+      "label": "Build",
+      "guard": "design settled",
+      "points": [
+        [
+          1160,
+          465
+        ],
+        [
+          1268,
+          465
+        ]
+      ],
+      "labelX": 1170,
+      "labelY": 365,
+      "labelWidth": 100,
+      "details": {
+        "fullTransition": "Choose the design",
+        "fullGuard": "owner and checks selected"
+      }
+    },
+    {
+      "id": "candidate.ready",
+      "from": "build",
+      "to": "verify",
+      "label": "Inspect candidate",
+      "guard": "implementation ready",
+      "points": [
+        [
+          1505,
+          610
+        ],
+        [
+          1505,
+          788
+        ]
+      ],
+      "labelX": 1530,
+      "labelY": 680,
+      "labelWidth": 190
+    },
+    {
+      "id": "checks.pass",
+      "from": "verify",
+      "to": "commit",
+      "label": "Commit",
+      "guard": "commit in scope",
+      "points": [
+        [
+          1268,
+          935
+        ],
+        [
+          1160,
+          935
+        ]
+      ],
+      "labelX": 1170,
+      "labelY": 835,
+      "labelWidth": 100,
+      "details": {
+        "fullTransition": "Checks pass",
+        "fullGuard": "required checks pass; diff reviewed; evidence current; commit within task authority"
+      }
+    },
+    {
+      "id": "commit.observed",
+      "from": "commit",
+      "to": "push",
+      "label": "Push",
+      "guard": "authorized",
+      "points": [
+        [
+          688,
+          935
+        ],
+        [
+          580,
+          935
+        ]
+      ],
+      "labelX": 590,
+      "labelY": 825,
+      "labelWidth": 100,
+      "details": {
+        "fullTransition": "Publish source",
+        "fullGuard": "publication authorized"
+      }
+    },
+    {
+      "id": "remote.observed",
+      "from": "push",
+      "to": "pr",
+      "label": "Open PR",
+      "guard": "publication authorized; remote head matches",
+      "points": [
+        [
+          345,
+          1080
+        ],
+        [
+          345,
+          1258
+        ]
+      ],
+      "labelX": 370,
+      "labelY": 1140,
+      "labelWidth": 290
+    },
+    {
+      "id": "review.ready",
+      "from": "pr",
+      "to": "merge",
+      "label": "Merge",
+      "guard": "gates satisfied",
+      "points": [
+        [
+          580,
+          1405
+        ],
+        [
+          688,
+          1405
+        ]
+      ],
+      "labelX": 590,
+      "labelY": 1295,
+      "labelWidth": 100,
+      "details": {
+        "fullTransition": "Land candidate",
+        "fullGuard": "current checks and review satisfied; merge authorized"
+      }
+    },
+    {
+      "id": "landing.observed",
+      "from": "merge",
+      "to": "closeout",
+      "label": "Closeout",
+      "guard": "landing observed",
+      "points": [
+        [
+          1160,
+          1405
+        ],
+        [
+          1268,
+          1405
+        ]
+      ],
+      "labelX": 1170,
+      "labelY": 1300,
+      "labelWidth": 100,
+      "details": {
+        "fullTransition": "Assess closeout",
+        "fullGuard": "actual landing and main verified"
+      }
+    },
+    {
+      "id": "cleanup.safe",
+      "from": "closeout",
+      "to": "retire",
+      "label": "Retire exact path",
+      "guard": "cleanup authorized; inactive; recoverable",
+      "points": [
+        [
+          1505,
+          1550
+        ],
+        [
+          1505,
+          1728
+        ]
+      ],
+      "labelX": 1530,
+      "labelY": 1610,
+      "labelWidth": 190
+    },
+    {
+      "id": "cleanup.hold",
+      "from": "closeout",
+      "to": "hold",
+      "label": "Retain resources",
+      "guard": "active, unreviewed, unknown or needed",
+      "points": [
+        [
+          1268,
+          1480
+        ],
+        [
+          1220,
+          1480
+        ],
+        [
+          1220,
+          1875
+        ],
+        [
+          1160,
+          1875
+        ]
+      ],
+      "labelX": 1190,
+      "labelY": 1650,
+      "labelWidth": 245
+    },
+    {
+      "id": "checks.fail",
+      "from": "verify",
+      "to": "build",
+      "label": "Correct the cause",
+      "guard": "check fails or evidence is missing",
+      "points": [
+        [
+          1740,
+          935
+        ],
+        [
+          1810,
+          935
+        ],
+        [
+          1810,
+          465
+        ],
+        [
+          1740,
+          465
+        ]
+      ],
+      "labelX": 1830,
+      "labelY": 660,
+      "labelWidth": 235
+    },
+    {
+      "id": "review.changes",
+      "from": "pr",
+      "to": "build",
+      "label": "Resolve scoped feedback",
+      "guard": "changes requested or current-head CI fails",
+      "points": [
+        [
+          580,
+          1480
+        ],
+        [
+          640,
+          1480
+        ],
+        [
+          640,
+          1180
+        ],
+        [
+          1780,
+          1180
+        ],
+        [
+          1780,
+          550
+        ],
+        [
+          1740,
+          550
+        ]
+      ],
+      "labelX": 1390,
+      "labelY": 1155,
+      "labelWidth": 350
+    },
+    {
+      "id": "local.handoff",
+      "from": "verify",
+      "to": "hold",
+      "label": "Local review endpoint",
+      "guard": "no publication requested; preserve candidate",
+      "points": [
+        [
+          1500,
+          1080
+        ],
+        [
+          1500,
+          1110
+        ],
+        [
+          670,
+          1110
+        ],
+        [
+          670,
+          1700
+        ],
+        [
+          925,
+          1700
+        ],
+        [
+          925,
+          1728
+        ]
+      ],
+      "labelX": 710,
+      "labelY": 1640,
+      "labelWidth": 380
+    },
+    {
+      "id": "pr.closed",
+      "from": "pr",
+      "to": "hold",
+      "label": "Closed without merge",
+      "guard": "preserve unlanded work and next decision",
+      "points": [
+        [
+          345,
+          1550
+        ],
+        [
+          345,
+          1875
+        ],
+        [
+          688,
+          1875
+        ]
+      ],
+      "labelX": 370,
+      "labelY": 1700,
+      "labelWidth": 290
+    }
+  ],
+  "groups": [
+    {
+      "id": "understand",
+      "title": "UNDERSTAND / task, evidence and ownership",
+      "kind": "parent",
+      "x": 80,
+      "y": 250,
+      "width": 1690,
+      "height": 400
+    },
+    {
+      "id": "prepare",
+      "title": "PREPARE / candidate, checks and source",
+      "kind": "parent",
+      "x": 80,
+      "y": 730,
+      "width": 1690,
+      "height": 400
+    },
+    {
+      "id": "deliver",
+      "title": "DELIVER / authorized effects and observed state",
+      "kind": "parent",
+      "x": 80,
+      "y": 1200,
+      "width": 1690,
+      "height": 400
+    },
+    {
+      "id": "disposition",
+      "title": "CLOSEOUT / preserve first, then decide",
+      "kind": "parent",
+      "x": 80,
+      "y": 1670,
+      "width": 1690,
+      "height": 400
+    }
+  ],
+  "theme": {
+    "paper": "#f4efe2",
+    "ink": "#303e3a",
+    "accent": "#3e7165",
+    "warning": "#a14b3b"
+  },
+  "trace": [],
+  "decorations": [
+    {
+      "id": "workbench",
+      "title": "THE WORKBENCH / source, investigation, verification and retained evidence",
+      "x": 180,
+      "y": 2150,
+      "width": 1700,
+      "height": 230,
+      "shapes": [
+        {
+          "kind": "polyline",
+          "points": [
+            [
+              30,
+              195
+            ],
+            [
+              1650,
+              195
+            ]
+          ],
+          "stroke": "#3e7165",
+          "strokeWidth": 3
+        },
+        {
+          "kind": "rect",
+          "x": 100,
+          "y": 62,
+          "width": 155,
+          "height": 104,
+          "fill": "#fffaf0",
+          "stroke": "#3e7165",
+          "strokeWidth": 2
+        },
+        {
+          "kind": "rect",
+          "x": 112,
+          "y": 72,
+          "width": 155,
+          "height": 104,
+          "fill": "#fffaf0",
+          "stroke": "#3e7165",
+          "strokeWidth": 2
+        },
+        {
+          "kind": "rect",
+          "x": 124,
+          "y": 82,
+          "width": 155,
+          "height": 104,
+          "fill": "#fffaf0",
+          "stroke": "#3e7165",
+          "strokeWidth": 2
+        },
+        {
+          "kind": "polyline",
+          "points": [
+            [
+              145,
+              112
+            ],
+            [
+              250,
+              112
+            ]
+          ],
+          "stroke": "#3e7165",
+          "strokeWidth": 2
+        },
+        {
+          "kind": "polyline",
+          "points": [
+            [
+              145,
+              136
+            ],
+            [
+              250,
+              136
+            ]
+          ],
+          "stroke": "#3e7165",
+          "strokeWidth": 2
+        },
+        {
+          "kind": "polyline",
+          "points": [
+            [
+              145,
+              160
+            ],
+            [
+              250,
+              160
+            ]
+          ],
+          "stroke": "#3e7165",
+          "strokeWidth": 2
+        },
+        {
+          "kind": "circle",
+          "cx": 575,
+          "cy": 110,
+          "r": 52,
+          "fill": "#dbe8df",
+          "stroke": "#3e7165",
+          "strokeWidth": 3
+        },
+        {
+          "kind": "polyline",
+          "points": [
+            [
+              612,
+              147
+            ],
+            [
+              654,
+              187
+            ]
+          ],
+          "stroke": "#3e7165",
+          "strokeWidth": 8
+        },
+        {
+          "kind": "rect",
+          "x": 870,
+          "y": 70,
+          "width": 190,
+          "height": 110,
+          "fill": "#dbe8df",
+          "stroke": "#3e7165",
+          "strokeWidth": 2
+        },
+        {
+          "kind": "polyline",
+          "points": [
+            [
+              905,
+              125
+            ],
+            [
+              937,
+              155
+            ],
+            [
+              1022,
+              91
+            ]
+          ],
+          "stroke": "#3e7165",
+          "strokeWidth": 5
+        },
+        {
+          "kind": "rect",
+          "x": 1340,
+          "y": 100,
+          "width": 210,
+          "height": 90,
+          "fill": "#e5cfa7",
+          "stroke": "#3e7165",
+          "strokeWidth": 2
+        },
+        {
+          "kind": "polyline",
+          "points": [
+            [
+              1340,
+              100
+            ],
+            [
+              1445,
+              145
+            ],
+            [
+              1550,
+              100
+            ]
+          ],
+          "stroke": "#3e7165",
+          "strokeWidth": 2
+        },
+        {
+          "kind": "polyline",
+          "points": [
+            [
+              1445,
+              145
+            ],
+            [
+              1445,
+              190
+            ]
+          ],
+          "stroke": "#3e7165",
+          "strokeWidth": 2
+        }
+      ]
+    }
+  ]
+}

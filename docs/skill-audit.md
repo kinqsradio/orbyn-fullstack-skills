@@ -731,3 +731,16 @@ recorded evidence; no universal style, provider, font-mesh/GPU or accessibility
 parity is claimed. The reviewed ZIP supplies inspiration only, not redistributed
 code or assets. Active wording uses motion films. One prior development prompt is
 renamed accordingly and two cases are added; frozen holdouts remain unchanged.
+
+
+## Illustrated statechart authoring
+
+Architect retains behavior, model evidence and projection ownership; technical
+illustration owns original domain drawing craft. Their conditional
+[illustrated-statechart contract](../skills/architect/references/illustrated-statecharts.md)
+keeps semantic records, exact trace occurrences, plain graphs, accessible tables
+and layout overlays together. Examples do not restrict domains or graph shapes.
+A declarative drawing helper accepts explicit geometry; it does not introduce an
+arbitrary Mermaid parser, new formal checker, rendering dependency or skill.
+Three development cases extend 430 to 433 definitions; prior cases and frozen
+holdouts stay unchanged. Static evaluation checks do not qualify live agents.

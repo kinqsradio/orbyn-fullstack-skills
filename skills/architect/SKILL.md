@@ -42,6 +42,8 @@ For statecharts, lifecycle races or behavior that a human needs to inspect, use
 design from current-code behavior, expose forbidden states and connect important
 rules to source and preview scenarios. A chart alone does not verify a property.
 Use `tdd` for model checking and drift, and `orbyn-ui-design` for the human preview.
+For domain artwork over a statechart, use [illustrated statecharts](references/illustrated-statecharts.md)
+and technical-illustration while keeping plain semantics and evidence accessible.
 
 ## Code organization and module boundaries
 

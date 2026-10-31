@@ -22,6 +22,13 @@
           "revision": "519d36aa98955bf680db01bcde5fdfba686dc901",
           "license": "MIT",
           "relationship": "reviewed-inspiration; independently authored projection and per-property receipt examples; no upstream compiler code or runtime imported"
+        },
+        {
+          "credit": "Kevin Ngo",
+          "source": "https://github.com/kevintngo/statechart-art/tree/7b7b918bcc069941854a2973b2a26f71091c6fab",
+          "revision": "7b7b918bcc069941854a2973b2a26f71091c6fab",
+          "license": "MIT",
+          "relationship": "reviewed-inspiration; independently authored illustrated-statechart method and workshop replay plate; no upstream drawing code, fonts, models or assets imported"
         }
       ],
       "incorporated_material": [
@@ -1550,6 +1557,13 @@
           "source": "https://www.scenario.com/explorations/kinetic-film/",
           "relationship": "reviewed-inspiration only; no license found in reviewed ZIP, no source code/fonts/assets/instructions redistributed; independently authored motion guidance and deterministic synthetic example",
           "reviewed_zip_sha256": "2217ab5dbd452185a5c3c1509994da46b1ac20d2ebeaa888536244372ce73ebf"
+        },
+        {
+          "credit": "Kevin Ngo",
+          "source": "https://github.com/kevintngo/statechart-art/tree/7b7b918bcc069941854a2973b2a26f71091c6fab",
+          "revision": "7b7b918bcc069941854a2973b2a26f71091c6fab",
+          "license": "MIT",
+          "relationship": "reviewed-inspiration; independently authored illustrated-statechart method and workshop replay plate; no upstream drawing code, fonts, models or assets imported"
         }
       ]
     }
