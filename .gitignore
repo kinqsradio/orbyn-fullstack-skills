@@ -20,3 +20,6 @@ output/
 
 # Local photo-based cafe prototype.
 /design/cafe-model/
+
+# Local CT exploration prototype and public sample volume.
+/design/ct-explorer/
