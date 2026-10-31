@@ -14,3 +14,9 @@ output/
 
 # Independent contribution clones and worktrees; never library content.
 /repo/
+
+# Local generated heart-model review package.
+/design/heart-model/
+
+# Local photo-based cafe prototype.
+/design/cafe-model/
