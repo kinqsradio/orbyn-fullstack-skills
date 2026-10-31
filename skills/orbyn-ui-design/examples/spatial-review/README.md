@@ -100,3 +100,10 @@ and deterministic timeline/design proposal checks.
 `node --test tests/spatial-review.browser.mjs`. It retains owned fixtures/results,
 closes its own browser/server, and never installs dependencies. Candidate screenshots
 (`REVIEW_CAPTURE=1`) do not approve a visual baseline.
+
+## Arbitrary code-driven compositions
+
+The [motion source and inspector](motion/README.md) add trusted custom components,
+nested clips, rational clocks, sampled tracks and a source-bound motion profile
+using the same durable review writer. Prepare with `--motion-example 0`, `1` or
+`2`, then open `motion/demo.html`. Legacy V12/film packages remain supported.

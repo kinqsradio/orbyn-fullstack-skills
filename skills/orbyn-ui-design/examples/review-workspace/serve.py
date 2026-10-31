@@ -102,9 +102,11 @@ def validate(doc, manifest):
     return doc
 
 
-def make_server(package, port=0, *, assets=None, validator=None):
+def make_server(package, port=0, *, assets=None, validator=None, allow_wasm=False):
     # Trusted local adapters choose a bounded static allowlist and schema validator.
     # HTTP requests never select filesystem write paths or executable validators.
+    if type(allow_wasm) is not bool: raise ValueError('Trusted boolean WASM profile selection required')
+    script_policy = "script-src 'self'" + (" 'wasm-unsafe-eval'" if allow_wasm else "")
     assets = dict(ASSETS if assets is None else assets)
     validator = validate if validator is None else validator
     if not assets or len(assets) > 100 or "index.html" not in assets or "manifest.json" not in assets:
@@ -165,7 +167,7 @@ def make_server(package, port=0, *, assets=None, validator=None):
             self.send_header("Content-Length", str(len(raw)))
             self.send_header("Cache-Control", "no-store")
             self.send_header("X-Content-Type-Options", "nosniff")
-            self.send_header("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'")
+            self.send_header("Content-Security-Policy", "default-src 'self'; " + script_policy + "; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'")
             self.end_headers()
             self.wfile.write(raw)
         def do_GET(self):

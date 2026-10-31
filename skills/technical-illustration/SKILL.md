@@ -24,6 +24,12 @@ For requested illustrated statecharts, follow architect's
 actual chart or trace records; architect retains state, guard, projection and
 verification ownership. Keep exact numbered paths and the plain/text fallback.
 
+For arbitrary code-authored layered compositions, sampled tracks, rational clocks,
+vector/audio/media adapters or conditional 3D/simulation/effects, use the
+[code-driven motion contract](../orbyn-ui-design/examples/spatial-review/motion/README.md).
+Use the existing UI owner for live takeover and the existing review writer for
+source-bound settings and decisions; no new authoring app or provider is required.
+
 ## Build one coherent artifact
 
 1. State the explanation, audience, inputs, meaningful states and smallest useful

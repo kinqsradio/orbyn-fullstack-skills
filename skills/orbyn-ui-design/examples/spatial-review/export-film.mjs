@@ -1,9 +1,10 @@
+import {rate} from './motion/time.mjs';
 // Original bounded export pipeline. Requires existing Playwright/Chrome/Python/FFmpeg.
 import { readFile, writeFile, mkdir, realpath, lstat, copyFile, stat, statfs } from 'node:fs/promises';
 import { resolve, join, dirname } from 'node:path';
 import { spawn } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { DEFAULT_FILM, validateFilm, subframeTimes, webVTT, validateCues } from './film.mjs';
+import { fpsValue, fpsText, DEFAULT_FILM, validateFilm, subframeTimes, webVTT, validateCues } from './film.mjs';
 import { canonical, parseJSONStrict } from './review-core.mjs';
 const args = process.argv.slice(2), options = {};
 const flags = new Set(['package', 'output', 'spec', 'audio', 'captions', 'width', 'height', 'samples', 'shutter', 'grain', 'bloom', 'threads', 'timeout', 'playwright', 'chrome', 'python', 'ffmpeg', 'ffprobe', 'reduced-motion']);
@@ -16,7 +17,7 @@ const samples = numeric('samples', 1, 1, 4, true), shutter = numeric('shutter', 
 const pkg = await realpath(options.package), output = resolve(options.output), hash = v => createHash('sha256').update(v).digest('hex');
 if ((await lstat(dirname(output))).isSymbolicLink() || await realpath(dirname(output)) !== dirname(output)) throw Error('Output needs an existing real owner directory');
 const spec = validateFilm(options.spec ? parseJSONStrict(await readFile(resolve(options.spec), 'utf8')) : structuredClone(DEFAULT_FILM));
-const frames = Math.round(spec.duration * spec.fps);
+const frames = Math.round(spec.duration * fpsValue(spec));
 const cues = validateCues(options.captions ? parseJSONStrict(await readFile(resolve(options.captions), 'utf8')) : spec.shots.map(s => ({ start: s.from, end: s.to, text: s.caption })), spec.duration);
 if (options.audio && (!(await lstat(resolve(options.audio))).isFile() || (await lstat(resolve(options.audio))).isSymbolicLink())) throw Error('Audio must be an explicitly selected regular local file');
 const manifest = parseJSONStrict(await readFile(join(pkg, 'manifest.json'), 'utf8'));
@@ -85,22 +86,22 @@ try {
     if (index % 30 === 0) { const remaining = await statfs(output); if (Number(remaining.bavail * remaining.bsize) < 100 * 1024 * 1024) throw Error('Remaining disk reserve below render budget'); receipt.renderedFrames = index + 1; await persist(); }
   }
   await browser.close(); browser = null; await stop(server); owned.delete(server); await writeFile(join(output, 'source-server.log'), serverLog); await verifySource();
-  const base = samples > 1 ? `tmix=frames=${samples}:weights='${Array(samples).fill(1).join(' ')}',select='eq(mod(n,${samples}),${samples - 1})',setpts=N/(${spec.fps}*TB),scale=${width}:${height}:flags=lanczos,setsar=1` : `scale=${width}:${height}:flags=lanczos,setsar=1`;
+  const base = samples > 1 ? `tmix=frames=${samples}:weights='${Array(samples).fill(1).join(' ')}',select='eq(mod(n,${samples}),${samples - 1})',setpts=N/(${fpsText(spec)}*TB),scale=${width}:${height}:flags=lanczos,setsar=1` : `scale=${width}:${height}:flags=lanczos,setsar=1`;
   let graph = `[0:v]${base},format=yuv420p[clean];`, current = 'clean';
   if (bloom) { graph += `[clean]split=2[base][highlight];[highlight]lutyuv=y='max(0,val-180)*3':u=128:v=128,gblur=sigma=6[glow];[base][glow]blend=all_mode=screen:all_opacity=${bloom}[bloom];`; current = 'bloom'; }
   if (grain) { graph += `[${current}]noise=alls=${grain}:allf=t+u:all_seed=42[grain];`; current = 'grain'; }
   graph += `[${current}]format=yuv420p[video]`;
-  const input = ['-hide_banner', '-loglevel', 'error', '-n', '-threads', String(threads), '-framerate', String(spec.fps * samples), '-i', join(output, 'frames/frame-%06d.png')];
+  const input = ['-hide_banner', '-loglevel', 'error', '-n', '-threads', String(threads), '-framerate', `${rate(spec.fps).numerator*samples}/${rate(spec.fps).denominator}`, '-i', join(output, 'frames/frame-%06d.png')];
   let captionIndex = 1;
   if (options.audio) { input.push('-protocol_whitelist', 'file,pipe', '-i', join(output, 'audio-input')); captionIndex++; }
   input.push('-i', join(output, 'captions.vtt'));
   const audio = options.audio ? ['-map', '1:a:0', '-af', `apad,atrim=duration=${spec.duration},asetpts=PTS-STARTPTS`, '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-ac', '2'] : ['-an'];
-  const command = [...input, '-filter_complex_threads', String(threads), '-filter_complex', graph, '-map', '[video]', ...audio, '-map', `${captionIndex}:s:0`, '-c:s', 'mov_text', '-metadata:s:s:0', 'language=eng', '-c:v', 'libx264', '-preset', 'medium', '-level:v', width * height > 2073600 ? '5.2' : '4.2', '-crf', '20', '-pix_fmt', 'yuv420p', '-r', String(spec.fps), '-frames:v', String(frames), '-threads', String(threads), '-t', String(spec.duration), '-movflags', '+faststart', join(output, 'film.mp4')];
+  const command = [...input, '-filter_complex_threads', String(threads), '-filter_complex', graph, '-map', '[video]', ...audio, '-map', `${captionIndex}:s:0`, '-c:s', 'mov_text', '-metadata:s:s:0', 'language=eng', '-c:v', 'libx264', '-preset', 'medium', '-level:v', width * height > 2073600 ? '5.2' : '4.2', '-crf', '20', '-pix_fmt', 'yuv420p', '-r', fpsText(spec), '-frames:v', String(frames), '-threads', String(threads), '-t', String(spec.duration), '-movflags', '+faststart', join(output, 'film.mp4')];
   receipt.status = 'encoding'; receipt.encodeCommand = [ffmpeg, ...command.map(v => typeof v === 'string' ? v.replaceAll(output, '<export>') : v)]; await persist();
   await run(ffmpeg, command, 'encode');
   const probe = JSON.parse(await run(ffprobe, ['-v', 'error', '-count_frames', '-show_streams', '-show_format', '-of', 'json', join(output, 'film.mp4')], 'probe'));
   const video = probe.streams.find(s => s.codec_type === 'video'), rational = v => { const [n, d] = v.split('/').map(Number); return n / d; };
-  if (!video || video.codec_name !== 'h264' || video.pix_fmt !== 'yuv420p' || video.width !== width || video.height !== height || Number(video.nb_read_frames) !== frames || Math.abs(rational(video.avg_frame_rate) - spec.fps) > .001 || Math.abs(Number(video.duration) - spec.duration) > 1 / spec.fps || (options.audio && !probe.streams.some(s => s.codec_type === 'audio')) || !probe.streams.some(s => s.codec_type === 'subtitle')) throw Error('Encoded stream contract differs');
+  if (!video || video.codec_name !== 'h264' || video.pix_fmt !== 'yuv420p' || video.width !== width || video.height !== height || Number(video.nb_read_frames) !== frames || Math.abs(rational(video.avg_frame_rate) - fpsValue(spec)) > .001 || Math.abs(Number(video.duration) - spec.duration) > 1 / fpsValue(spec) || (options.audio && !probe.streams.some(s => s.codec_type === 'audio')) || !probe.streams.some(s => s.codec_type === 'subtitle')) throw Error('Encoded stream contract differs');
   await run(ffmpeg, ['-v', 'error', '-threads', String(threads), '-i', join(output, 'film.mp4'), '-map', '0:v:0', '-map', '0:a?', '-f', 'null', '-'], 'decode');
   await run(ffmpeg, ['-v', 'error', '-n', '-i', join(output, 'film.mp4'), '-map', '0:s:0', '-c:s', 'webvtt', join(output, 'captions-decoded.vtt')], 'caption-decode');
   const lines = (await readFile(join(output, 'captions-decoded.vtt'), 'utf8')).replace(/\r/g, '').split('\n'), decoded = [];

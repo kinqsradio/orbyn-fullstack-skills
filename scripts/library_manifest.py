@@ -69,6 +69,19 @@ def safe_path(root, relative):
     return root / relative
 
 
+def original_motion_asset(path, root):
+    """One original self-contained GLB fixture; no general binary import route."""
+    relative = path.relative_to(root).as_posix()
+    if relative != 'skills/orbyn-ui-design/examples/spatial-review/motion/graphics-demo-assets/marker.glb':
+        return False
+    if not 12 <= path.stat().st_size <= 1024 * 1024:
+        return False
+    raw = path.read_bytes()
+    return (12 <= len(raw) <= 1024 * 1024 and raw[:4] == b'glTF'
+            and int.from_bytes(raw[4:8], 'little') == 2
+            and int.from_bytes(raw[8:12], 'little') == len(raw))
+
+
 def inventory(root):
     catalog = load(safe_path(root, 'skills/catalog.json'))
     names = [entry['name'] for entry in catalog['skills']]
@@ -87,7 +100,7 @@ def inventory(root):
             safe_path(root, relative)
             if path.is_dir():
                 continue
-            if path.name != 'LICENSE' and path.suffix not in EXTENSIONS and not pinned_support_asset(path, root):
+            if path.name != 'LICENSE' and path.suffix not in EXTENSIONS and not pinned_support_asset(path, root) and not original_motion_asset(path, root):
                 raise ValueError(f'Unexpected skill asset type: {relative}')
             if path.stat().st_size > 1024 * 1024:
                 raise ValueError(f'Skill asset exceeds 1 MiB: {relative}')

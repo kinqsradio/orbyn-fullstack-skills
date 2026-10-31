@@ -744,3 +744,17 @@ A declarative drawing helper accepts explicit geometry; it does not introduce an
 arbitrary Mermaid parser, new formal checker, rendering dependency or skill.
 Three development cases extend 430 to 433 definitions; prior cases and frozen
 holdouts stay unchanged. Static evaluation checks do not qualify live agents.
+
+## Code-driven motion contracts and optional adapters
+
+The existing technical-illustration and UI owners now route arbitrary trusted
+source components through rational clocks, layered/nested clips, sampled tracks,
+readiness and asynchronous disposal. Three independently authored DOM/SVG domains
+and an inspector exercise takeover, presence and history; motion review reuses the
+schema-2 source-bound writer while legacy film/review formats stay supported.
+Vector/interchange, audio/alignment, generic 3D, simulation, effects and media EDL
+remain distinct conditional capabilities with their own tests/profile receipts.
+The [implementation coverage](work/code-driven-motion.md) distinguishes executable
+contracts from actual backend qualification. Four development cases are added;
+prior cases and frozen holdouts remain unchanged. No authoring app, provider,
+model download, target skill installation or nesting/default change follows.

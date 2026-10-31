@@ -1,0 +1,21 @@
+{
+  "name": "orbyn-motion-graphics-profile",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Optional local graphics and physics qualification profile; no authoring app or hosted renderer.",
+  "dependencies": {
+    "jolt-physics": "1.1.1",
+    "postprocessing": "6.39.5",
+    "three": "0.186.1",
+    "three-gpu-pathtracer": "0.0.27",
+    "three-mesh-bvh": "0.9.17",
+    "xatlas-web": "0.1.0"
+  },
+  "scripts": {
+    "test": "node --test ../graphics*.test.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.5"
+  }
+}
