@@ -10162,6 +10162,96 @@
         "adjacent": "Uses ordinary UI request/generation and draft recovery methods. Does not introduce AG-UI, CopilotKit, a stream protocol, a new service or model/provider setup for this adjacent task.",
         "evidence": "Distinguishes source/schema/helper fixtures from actual adapter/SDK/service qualification; reports executed and unperformed checks honestly."
       }
+    },
+    {
+      "id": "assistant-chat-product-tokens",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Improve our assistant composer using assistant-ui ideas. Keep the product's existing/planned semantic colours and components. A send acknowledgement currently erases newer typing; IME and attachment pending/error paths also need coverage. Do not install a provider or change target app source in this review.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic development definition. No SDK/service/model call, target installation, provider/default change, publication or production effect is authorized.",
+      "rubric": {
+        "ownership": "Keeps canonical messages with the actual runtime, preserves snapshot/newer drafts, fences duplicate and unknown sends, distinguishes ready/error/cancel attachment states, and retains native IME/multiline behavior.",
+        "brand": "Uses consuming product semantic tokens and accessible existing controls; no upstream theme or automatic SDK/Cloud/provider adoption. Fixture palettes are synthetic only.",
+        "evidence": "Distinguishes original helper/fixture checks, source inspection, live routing and real renderer/SDK/product observations; no fabricated qualification."
+      }
+    },
+    {
+      "id": "assistant-chat-thread-lifetimes",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Design the assistant UI boundary for A to B to A thread navigation while old composer/upload callbacks still arrive. People also read earlier answers while new content grows. Give failure and legitimate controls; no real SDK or service setup.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic development definition. No SDK/service/model call, target installation, provider/default change, publication or production effect is authorized.",
+      "rubric": {
+        "identity": "Uses actual account/thread and delivery generation, preserves scoped drafts/unknown pending operation, fences stale callbacks even on return to same thread; current-owner reconciliation remains distinct.",
+        "reading": "Preserves reading intent, thread-specific viewport/anchor and focus; explicit jump follows. Separately tests actual browser content growth/prepend/disclosure and keyboard/assistive behavior.",
+        "evidence": "Distinguishes original helper/fixture checks, source inspection, live routing and real renderer/SDK/product observations; no fabricated qualification."
+      }
+    },
+    {
+      "id": "assistant-chat-runtime-capabilities",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Plan assistant-ui adoption for an existing React product whose runtime already owns messages. Show typed content parts, unknown fallback, attachments and edit/retry/branch controls without duplicating stores or claiming renderer registration authorizes tools.",
+      "expected_skills": [
+        "orbyn-ui-design",
+        "orbyn-ai-application"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic development definition. No SDK/service/model call, target installation, provider/default change, publication or production effect is authorized.",
+      "rubric": {
+        "runtime": "Checks actual selected package/React peers and supported adapter, reuses one canonical runtime, selects minimal provider/primitives and capability-backed actions; no implied Cloud/provider initialization.",
+        "parts": "Uses stable message/part IDs, trusted versioned renderer props, safe unknown non-executable fallback, passive history and current effect-owner authority. Reports source/helper versus actual SDK/application evidence.",
+        "evidence": "Distinguishes original helper/fixture checks, source inspection, live routing and real renderer/SDK/product observations; no fabricated qualification."
+      }
+    },
+    {
+      "id": "assistant-chat-adjacent-comments",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Improve a plain comments form and list. There is no model, streaming generation, tool call or conversation runtime. Preserve the project's colours and draft on failed save.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [
+        "orbyn-ai-application"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic development definition. No SDK/service/model call, target installation, provider/default change, publication or production effect is authorized.",
+      "rubric": {
+        "adjacent": "Uses ordinary UI async/draft and product token guidance; does not add assistant-ui, an AI runtime, provider setup or chat-only branching/tool policies.",
+        "evidence": "Distinguishes original helper/fixture checks, source inspection, live routing and real renderer/SDK/product observations; no fabricated qualification."
+      }
     }
   ]
 }

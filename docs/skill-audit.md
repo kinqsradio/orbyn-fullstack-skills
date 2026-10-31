@@ -771,3 +771,17 @@ JSON inputs do not qualify AG-UI/CopilotKit transport, SDK, durable recovery or 
 service. Four development definitions extend 438 to 442; all prior objects and
 holdouts remain unchanged. Pinned reviewed inspiration is recorded separately from
 retained source lineage. No catalog owner, nesting or host/provider default changes.
+
+## Product-owned assistant-chat surfaces
+
+The existing UI owner adds conditional assistant-chat composition and an original
+provider-free fixture: canonical runtime versus local state, admitted composer
+snapshots, scoped thread/delivery lifetimes, attachment states, safe typed parts,
+read-only capabilities and intent-aware reading. The AI owner links this method
+to existing streaming/effect contracts. Two explicitly synthetic consumer token
+maps demonstrate product-owned colours without adopting an upstream theme.
+Four development definitions extend 442 to 446; prior cases and frozen holdouts
+remain unchanged. Pinned assistant-ui source supplies reviewed inspiration only;
+no SDK, Cloud/provider service, upstream source/assets or runtime installed.
+Helper tests, browser observations, host trials and actual SDK/product qualification
+remain separate. Canonical catalog owners, nesting and host defaults are unchanged.
