@@ -1,7 +1,8 @@
 # Set up the nested engineering workspace
 
 Open the complete library checkout as the agent workspace and ask the agent to
-set up the target by URL or existing path. Nested is the only supported setup.
+set up the target by URL or existing path. Nested is the default setup; a target can also be
+[registered in place](../skills/orbyn-setup/references/repository-workspaces.md#in-place-targets) by explicit decision.
 There is no target installer, copied skill bundle, consumer lock, pin promotion
 or skill synchronization pipeline. The agent completes local steps automatically;
 the human does not need extra skill invocations.

@@ -1,6 +1,6 @@
 # Nested engineering workspace
 
-## One supported layout
+## Default layout
 
 ```text
 orbyn-fullstack-skills/          open this as the agent workspace
@@ -14,12 +14,38 @@ orbyn-fullstack-skills/          open this as the agent workspace
       fix-save/                 target linked worktree
 ```
 
-Use nested workspaces exclusively. Do not install, vendor, copy or symlink shared
+Use the nested layout unless a person or managing application registers a target
+[in place](#in-place-targets). Do not install, vendor, copy or symlink shared
 skills into targets; do not create target public-skill locks or sync pipelines.
 The library alone changes when shared skills improve. Report its actual revision
 and dirty state; an open PR candidate is not released `main`. Teams can agree a
 reviewed library revision and check it out in their outer workspace without adding
 a library dependency inside every target repository.
+
+## In-place targets
+
+A person, or an application managing this library for them, can register a target
+that stays at its existing path. The library remains the agent's root; the task
+names the target's absolute path. This is the same outer/target relationship
+without relocation, not a target installation. Registering a path authorizes work
+in that checkout only; it does not authorize moving, cloning or deleting it.
+
+- Grant the host access to the selected checkout with its own session mechanism,
+  such as an additional-directory flag or sandbox writable root. Never edit
+  user-wide settings or write into the target to achieve this.
+- Compare writes against the canonical checkout path, including symlink escapes,
+  and resolve relative tool paths explicitly: the agent's working directory is
+  the library, not the target.
+- Read target instructions directly. A separate root makes host discovery less
+  certain than nesting, so report it as unobserved unless actually observed.
+- Run `python3 skills/orbyn-setup/scripts/workspace.py check --in-place --target <path>`.
+  It requires a Git root, and refuses the library, anything inside it and any
+  folder containing it.
+- Worktrees stay siblings of the primary clone, at `<project>-wt/<purpose>/` beside
+  the target. No target files, excludes or instructions are written.
+
+Choosing in-place registration is an explicit decision. A setup request with no
+such decision still uses the nested layout.
 
 ## Instructions and ownership
 
@@ -96,8 +122,9 @@ setup code merely to check nesting. No REA engine or runtime upgrade follows.
 
 The helper uses Git metadata only. `prepare` creates the ignored workspace folder;
 `check` reads root/revision/status/instruction metadata and flags same-name skills.
-It refuses external targets, symlinked roots, ancestor/subdirectory confusion and
-linked worktrees whose common Git metadata remains outside the nested workspace.
+By default it refuses external targets, symlinked roots, ancestor/subdirectory
+confusion and linked worktrees whose common Git metadata remains outside the nested
+workspace; `--in-place` applies the separate rules above.
 It never clones, moves or rewrites the target, edits global configuration, or
 claims observed host discovery. Agents complete authorized Git operations separately.
 

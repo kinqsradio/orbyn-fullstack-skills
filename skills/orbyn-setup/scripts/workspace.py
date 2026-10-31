@@ -53,21 +53,25 @@ def prepare(library):
             'target_files_changed': False, 'host_discovery': 'not_observed'}
 
 
-def check(library, target):
+def check(library, target, in_place=False):
     root = library_root(library)
     target = real_path(target)
     workspace = root/'repo'
-    if target == workspace or not target.is_relative_to(workspace):
+    if in_place:
+        if target.is_relative_to(root) or root.is_relative_to(target):
+            raise ValueError('An in-place target must sit outside the library and must not contain it')
+    elif target == workspace or not target.is_relative_to(workspace):
         raise ValueError('Target must be nested under this library repo/; preserve external checkouts until migration is authorized')
     if Path(git(target, 'rev-parse', '--show-toplevel')).resolve() != target:
         raise ValueError('Select the target Git root, not a subdirectory or ancestor repository')
-    common = Path(git(target, 'rev-parse', '--path-format=absolute', '--git-common-dir')).resolve()
-    if not common.is_relative_to(workspace):
-        raise ValueError('Target Git metadata belongs outside repo/; an external linked worktree is not a migrated primary clone')
-    relative = target.relative_to(root).as_posix()
-    ignored = subprocess.run(['git', '-C', str(root), 'check-ignore', '--no-index', '--quiet', '--', relative])
-    if ignored.returncode:
-        raise ValueError('Target is exposed by library ignore rules')
+    if not in_place:
+        common = Path(git(target, 'rev-parse', '--path-format=absolute', '--git-common-dir')).resolve()
+        if not common.is_relative_to(workspace):
+            raise ValueError('Target Git metadata belongs outside repo/; an external linked worktree is not a migrated primary clone')
+        relative = target.relative_to(root).as_posix()
+        ignored = subprocess.run(['git', '-C', str(root), 'check-ignore', '--no-index', '--quiet', '--', relative])
+        if ignored.returncode:
+            raise ValueError('Target is exposed by library ignore rules')
     # Inspect metadata only; never execute project hooks, setup or source code.
     documents = [name for name in INSTRUCTIONS if (target/name).is_file()]
     skill_names = {entry['name'] for entry in json.loads((root/'skills/catalog.json').read_text())['skills']}
@@ -84,6 +88,7 @@ def check(library, target):
             'target_instructions': documents,
             'target_skill_directories': [f'{host}/skills' for host in HOSTS if (target/host/'skills').is_dir()],
             'same_name_target_skills': collisions,
+            'layout': 'in_place' if in_place else 'nested',
             'target_files_changed': False, 'host_discovery': 'not_observed'}
 
 
@@ -92,11 +97,13 @@ def main():
     parser.add_argument('command', choices=['prepare', 'check'])
     parser.add_argument('--library', type=Path, default=Path(__file__).resolve().parents[3])
     parser.add_argument('--target', type=Path)
+    parser.add_argument('--in-place', action='store_true',
+                        help='check a registered target that stays outside the library')
     args = parser.parse_args()
     try:
         if args.command == 'check' and args.target is None:
             parser.error('--target is required for check')
-        result = prepare(args.library) if args.command == 'prepare' else check(args.library, args.target)
+        result = prepare(args.library) if args.command == 'prepare' else check(args.library, args.target, args.in_place)
         print(json.dumps(result, indent=2))
     except (OSError, ValueError, subprocess.SubprocessError) as error:
         parser.exit(1, f'Workspace stopped: {error}\n')

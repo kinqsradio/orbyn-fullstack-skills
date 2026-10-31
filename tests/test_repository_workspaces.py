@@ -99,6 +99,34 @@ class RepositoryWorkspaceTests(unittest.TestCase):
             workspace.check(self.root,self.root/'repo')
         self.assertEqual(list(outside.iterdir()),[])
 
+    def test_in_place_target_is_reported_without_changes(self):
+        external=self.root.parent/'in-place';external.mkdir()
+        self.git(external,'init','-b','main')
+        (external/'AGENTS.md').write_text('Project policy')
+        self.git(external,'add','.');self.commit(external)
+        before=(external/'AGENTS.md').read_bytes()
+        result=workspace.check(self.root,external,in_place=True)
+        self.assertEqual(result['layout'],'in_place')
+        self.assertEqual(result['target_instructions'],['AGENTS.md'])
+        self.assertEqual((external/'AGENTS.md').read_bytes(),before)
+        self.assertFalse((external/'.claude').exists())
+        with self.assertRaisesRegex(ValueError,'nested under'):
+            workspace.check(self.root,external)
+
+    def test_in_place_refuses_the_library_its_contents_and_its_parents(self):
+        nested=self.root/'repo/inner';nested.mkdir(parents=True)
+        for path in (self.root,nested,self.root.parent):
+            with self.subTest(path=path),self.assertRaisesRegex(ValueError,'outside the library'):
+                workspace.check(self.root,path,in_place=True)
+
+    def test_in_place_still_requires_the_target_git_root(self):
+        external=self.root.parent/'rooted';(external/'src').mkdir(parents=True)
+        self.git(external,'init','-b','main')
+        (external/'README.md').write_text('Root')
+        self.git(external,'add','.');self.commit(external)
+        with self.assertRaisesRegex(ValueError,'Git root'):
+            workspace.check(self.root,external/'src',in_place=True)
+
     def test_external_linked_worktree_is_not_a_migrated_primary_clone(self):
         external=self.root.parent/'external';external.mkdir()
         self.git(external,'init','-b','main')

@@ -7,8 +7,9 @@ target checkout and [project context](docs/agents/stack.md) before applying exam
 
 ## Nested contribution repositories
 
-Use only the ignored nested `repo/` workspace for independent target clones and
-sibling worktrees. Follow the [workspace contract](skills/orbyn-setup/references/repository-workspaces.md).
+Use the ignored nested `repo/` workspace for independent target clones and sibling
+worktrees, unless a person or managing application explicitly
+[registered the target in place](skills/orbyn-setup/references/repository-workspaces.md#in-place-targets). Follow the [workspace contract](skills/orbyn-setup/references/repository-workspaces.md).
 Open the outer library as the agent workspace and identify the target Git root
 before editing. Read both the relevant shared methods and the target's own
 instructions, contribution rules and skills. Preserve upstream guidance in place;
@@ -29,7 +30,7 @@ For a setup request, use [orbyn-setup](skills/orbyn-setup/SKILL.md). Complete th
 workspace preparation and checks yourself; do not ask the human to choose an
 installation layout or invoke individual helpers. No shared skills are installed,
 copied, linked or synchronized into target repositories. Company skills and
-existing docs/settings stay with their owner. Existing external checkouts require
+existing docs/settings stay with their owner. Unregistered external checkouts require
 coordinated, recoverable migration; do not move active paths or lose local output.
 Never infer authority for model/provider changes, publication or production effects.
 
