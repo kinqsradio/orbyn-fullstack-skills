@@ -6,8 +6,9 @@ description: "Prepare the nested Orbyn Engineering workspace, inspect target ins
 # Nested workspace setup
 
 Use one complete library checkout as the engineering workspace. Targets are
-independent Git repositories under its ignored `repo/` directory. This is the
-only supported setup; there is no target installation, copy, pin synchronization
+independent Git repositories, under its ignored `repo/` directory by default or
+[registered in place](references/repository-workspaces.md#in-place-targets) by
+explicit decision. There is no target installation, copy, pin synchronization
 or company-skill migration. Follow the [workspace contract](references/repository-workspaces.md).
 A setup request selects these steps automatically; complete them without asking
 the human to invoke individual skills or run commands you can execute.
@@ -16,9 +17,9 @@ the human to invoke individual skills or run commands you can execute.
 
 Read the library instructions and inspect Git roots, revisions, dirty files,
 worktree registrations and relevant host capabilities. Resolve the target from
-the request; ask only if its identity is ambiguous. Do not ask the human to choose
-between nested and in-place installation. Existing external checkouts are
-migration inputs, not an alternative supported layout. Preserve them and their
+the request; ask only if its identity is ambiguous. Do not ask the human to choose a
+layout: use nested unless they or a managing application registered the target in
+place. Otherwise, existing external checkouts are migration inputs. Preserve them and their
 active processes/output until relocation is explicitly authorized and their
 owners release the path. See [retiring old installations](references/repository-workspaces.md#retiring-old-installations).
 

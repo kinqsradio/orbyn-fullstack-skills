@@ -55,10 +55,12 @@ does not prove the host binding changed. Use [continuation readiness](../orbyn-s
 
 ## Sibling location and names
 
-Targets use the library-root ignored `repo/` workspace exclusively; follow the
+Targets use the library-root ignored `repo/` workspace by default; follow the
 [nested repository contract](../orbyn-setup/references/repository-workspaces.md).
 For `orbyn-fullstack-skills/repo/widget`, use sibling `repo/widget-wt/<purpose>/`.
-Preserve target instructions/skills and inspect its Git state separately. Existing
+A target [registered in place](../orbyn-setup/references/repository-workspaces.md#in-place-targets)
+uses the same sibling rule beside its own path.
+Preserve target instructions/skills and inspect its Git state separately. Other existing
 external checkouts remain preservation inputs until a coordinated authorized move;
 never move active work merely to satisfy the layout. The library's own maintenance
 worktrees can use its established external sibling root, keeping library and target

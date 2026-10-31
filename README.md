@@ -101,7 +101,9 @@ Cursor or your local tool-using agent. Tell it:
 > clone or safely reconcile the target under `repo/`, check the workspace, and
 > complete the setup yourself. Do not install or migrate shared skills into it.
 
-**Nested is the only supported layout.** Targets have independent Git histories:
+**Nested is the default layout.** A person or managing application can instead
+[register a target in place](skills/orbyn-setup/references/repository-workspaces.md#in-place-targets).
+Targets have independent Git histories:
 
 ```mermaid
 flowchart TB
@@ -151,8 +153,8 @@ every task. Everything under `repo/` stays outside the library's Git index.
 The agent uses [orbyn-setup](skills/orbyn-setup/SKILL.md), prepares the workspace,
 reads the target's instructions in place and checks both Git roots. You do not
 need to invoke each skill, choose installer flags, namespace company skills or
-maintain consumer pins. There is no target installation or sync process. Existing
-external checkouts require a coordinated migration that preserves active paths,
+maintain consumer pins. There is no target installation or sync process. Unless
+registered in place, existing external checkouts require a coordinated migration that preserves active paths,
 private configuration, ignored output and worktrees. Setup never moves them just
 to satisfy the layout. See the [setup guide](docs/installation.md).
 
