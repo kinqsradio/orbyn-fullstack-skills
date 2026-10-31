@@ -758,3 +758,16 @@ The [implementation coverage](work/code-driven-motion.md) distinguishes executab
 contracts from actual backend qualification. Four development cases are added;
 prior cases and frozen holdouts remain unchanged. No authoring app, provider,
 model download, target skill installation or nesting/default change follows.
+
+## Typed streaming interactions
+
+The existing AI application owner now connects typed progress/state, transport and
+run terminal witnesses, projection repair, passive history and supported pending
+resume through one conditional method. Minimal tool-effects, UI async-state,
+backend and TDD links retain their current ownership instead of duplicating rules.
+An original provider-free project-plan fixture exercises the actual sample reducer,
+bounded queue and simulated effect owner. Its memory/renderer/effects and complete
+JSON inputs do not qualify AG-UI/CopilotKit transport, SDK, durable recovery or a
+service. Four development definitions extend 438 to 442; all prior objects and
+holdouts remain unchanged. Pinned reviewed inspiration is recorded separately from
+retained source lineage. No catalog owner, nesting or host/provider default changes.

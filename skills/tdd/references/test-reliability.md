@@ -86,3 +86,5 @@ a hardcoded timing-vector return must fail the correctness gate even if fast.
 Count process launches/operations when that is the cost contract; wall-time noise
 alone is not a stable bound. Keep code correctness, fixture validity, browser
 surface and observed agent use separate. A controlled test is not production proof.
+
+For agent/UI event streams, select relevant controls from the [streaming interaction method](../../orbyn-ai-application/references/streaming-interactions.md#worked-example-and-verification). Exercise the actual selected decoder/reducer/effect boundary and healthy recovery; a handwritten fixture is not SDK, transport or durable-service conformance.
