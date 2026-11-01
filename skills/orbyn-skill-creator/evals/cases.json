@@ -11295,6 +11295,27 @@
         "message"
       ],
       "excluded": "Do not add claims the document does not support."
+    },
+    {
+      "id": "worktree-retire-after-merge",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "The PR for this task just merged. Close out the worktree; its ignored output holds review receipts and a large dependency cache.",
+      "expected_skills": [
+        "orbyn-worktree"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Do not touch other tasks' worktrees or empty the trash.",
+      "rubric": {
+        "preservation": "Archives ignored receipts before removal and recognizes that plain git worktree remove deletes ignored files.",
+        "landing": "Proves the exact head landed rather than relying on a gone branch or clean status.",
+        "closeout": "Sends only rebuildable caches to the trash, removes without force and reports what was archived, trashed and still takes disk space."
+      }
     }
   ]
 }

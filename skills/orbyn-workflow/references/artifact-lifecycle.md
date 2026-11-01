@@ -47,8 +47,9 @@ auto-delete TTL or scheduled janitor is a library default.
   and retiring superseded versions/servers under actual authority. A review hold
   needs a reason/trigger, not permanent hosting or automatic expiry.
 - **Regenerable cache:** record pinned inputs/lockfile, supported reconstruction
-  command and any unique diagnostics before proposing eviction. Reuse supported
-  package caches; shared mutable `node_modules`, build outputs or fixture state
+  command and any unique diagnostics before proposing eviction. Point package managers, virtual environments and
+  model downloads at a shared cache outside the task tree where the tool supports
+  it, so a worktree stays small. Reuse supported package caches; shared mutable `node_modules`, build outputs or fixture state
   need demonstrated resolver/cache isolation before cross-worktree reuse. A folder
   named cache may contain valuable output; classification follows contents/owner.
 - **Credentials, configuration and volume data:** preserve their actual security,
