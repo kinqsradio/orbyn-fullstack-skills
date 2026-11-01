@@ -6,6 +6,19 @@
 
 # Skill-system audit — current candidate and historical evidence
 
+## Lyric performance and export evidence
+
+The existing technical-illustration route retains music-video ownership and its
+busiest-section preview. Its conditional [lyric-performance method](../skills/technical-illustration/references/lyric-performance.md)
+distinguishes line captions from individual word compositions and the background
+exporter's limits from authored local 2D puppeting. Blink registration/cycle review,
+slower part motion without shifted vocal arrivals, actual typography raster probes
+and separate cadence/mux/playback evidence are judgment guidance, not new helper
+enforcement. Five synthetic development definitions cover those failures and the
+calm-caption adjacent control. Static validation does not establish live routing,
+rendered quality or a measured baseline/candidate improvement. Existing holdout
+criteria and source attribution remain unchanged.
+
 ## Entrypoint, authoring and helper revision
 
 Ratings across all 36 owners (mean 7.3 of 10, judged from entrypoints and case

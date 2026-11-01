@@ -273,11 +273,13 @@ reduced-motion export; source hash and decoded readiness are checked. Inspect fo
 retention and foreground contrast; no automatic contrast/accessibility guarantee
 follows from dimming.
 
-A still image can supply camera motion, atmosphere and layered typography. It does
-not create new poses, lip-sync, singing or character actions. Requests requiring
-those need the project's actual animation/video-production tools and separately
-qualified assets/providers. Report missing capability before committing to that
-result; never silently substitute a moving still for requested character animation.
+This background path supplies camera motion, atmosphere and layered typography.
+Visible character performance needs authored animation beyond its pan/zoom model.
+For bounded local 2D puppeting and individually timed words, follow
+[lyric performance](../../../technical-illustration/references/lyric-performance.md).
+New poses, lip-sync and natural acting require suitable assets and a qualified
+animation path. Report missing capability for the requested result; never silently
+substitute a moving still for requested character animation.
 Audio mixing, automatic beat detection, word-level lyric alignment and song-rights
 clearance remain explicit separate work. The exporter supports a selected local
 track and authored caption timings; it does not claim to solve those tasks.

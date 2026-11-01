@@ -87,6 +87,9 @@ No browser bypass, publisher, auth edit, history capture or model call is implie
 - For a music video, lyric video, anime-style or ambient background, full animation,
   motion graphics or a visualizer, read [video scenarios](references/video-scenarios.md)
   first; it sets what each kind needs and how it fails.
+- For individually timed lyric typography with artwork performance, read
+  [lyric performance](references/lyric-performance.md) for the representative preview,
+  local puppeting limits, blink integrity and rendered type checks.
 - For any logo, brand mark, intro, outro or end card, read
   [logo and branding](references/logo-and-branding.md).
 - For one supplied image that must drive relighting, parallax, figure echoes or
