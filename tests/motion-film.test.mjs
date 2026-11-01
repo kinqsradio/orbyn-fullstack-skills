@@ -50,3 +50,41 @@ assert.equal(stabilizePrimitive(wordA,wordB).word,wordB.word);
 const background=structuredClone(DEFAULT_FILM);background.background={asset:'media/gallery.png',alt:'Original scenery study',fit:'cover',focal:{x:.5,y:.5},pan:{from:{x:-.05,y:0},to:{x:.05,y:0}},zoom:{from:1.2,to:1.3},dim:.4};validateFilm(background);
 assert.ok(sampleFilm(background,0).background.x < sampleFilm(background,12).background.x); assert.equal(sampleFilm(background,12,true).background.x,-.05);
 const uncovered=structuredClone(background);uncovered.background.zoom.from=1;assert.throws(()=>validateFilm(uncovered));
+
+const song={version:1,title:'Synthetic long film',fps:60,bpm:120,duration:9549/60,shots:[{id:'whole',from:0,to:9549/60,composition:'title',title:'LONG',caption:'Synthetic full-length film.'}]};
+assert.throws(()=>validateFilm(structuredClone(song)),/./);assert.equal(validateFilm({...structuredClone(song),longForm:true}).longForm,true);
+assert.throws(()=>validateFilm({...structuredClone(song),longForm:false}));
+assert.throws(()=>validateFilm({...structuredClone(song),longForm:true,duration:901,shots:[{...song.shots[0],to:901}]}));
+const manyShots=structuredClone(song);manyShots.longForm=true;manyShots.shots=Array.from({length:25},(_,i)=>({...song.shots[0],id:'shot-'+i,from:i,to:i===24?song.duration:i+1}));assert.equal(validateFilm(manyShots).shots.length,25);
+
+const stream=await import(pathToFileURL(join(process.argv[2],'frame-stream.mjs')));
+const {PassThrough,Writable}=await import('node:stream');const {EventEmitter}=await import('node:events');const {mkdtemp,writeFile,symlink,rm}=await import('node:fs/promises');const {tmpdir}=await import('node:os');
+assert.deepEqual(stream.angleArgs('darwin'),['--use-angle=metal']);assert.deepEqual(stream.angleArgs('linux'),[]);assert.deepEqual(stream.angleArgs('win32'),[]);
+assert.ok(stream.softwareRenderer('ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device))'));assert.ok(!stream.softwareRenderer('ANGLE (Apple, ANGLE Metal Renderer: Apple M3)'));
+
+// An asymmetric card tells every flip apart; a symmetric one would pass them all.
+const card=stream.orientationChart(),rows=p=>stream.flipRows(p,card.width,card.height),columns=p=>{const o=new Uint8Array(p.length);for(let y=0;y<card.height;y++)for(let x=0;x<card.width;x++)o.set(p.subarray((y*card.width+x)*4,(y*card.width+x)*4+4),(y*card.width+card.width-1-x)*4);return o;};
+const read=p=>stream.classifyOrientation(p,card.width,card.height);
+assert.equal(read(card.pixels),'upright');assert.equal(read(rows(card.pixels)),'flipped-vertical');assert.equal(read(columns(card.pixels)),'flipped-horizontal');assert.equal(read(rows(columns(card.pixels))),'rotated-180');
+assert.equal(read(new Uint8Array(card.pixels.length)),'unrecognized');assert.equal(read(card.pixels.map((v,i)=>i%4===3?255:v>>1)),'upright');
+assert.deepEqual(rows(rows(card.pixels)),card.pixels);
+
+// A full pipe holds the writer until the encoder drains; a dead encoder rejects instead of hanging.
+const fakeEncoder=stdin=>Object.assign(new EventEmitter(),{stdin});
+const slow=[];const held=new Writable({highWaterMark:4,write(chunk,_,done){slow.push(done);}});const sink=stream.encoderSink(fakeEncoder(held));
+await sink.write(Buffer.alloc(2));let drained=false;const blocked=sink.write(Buffer.alloc(8)).then(()=>{drained=true;});await new Promise(r=>setTimeout(r,20));assert.equal(drained,false);
+while(slow.length)slow.shift()();await new Promise(r=>setTimeout(r,20));while(slow.length)slow.shift()();await blocked;assert.equal(drained,true);
+const dying=fakeEncoder(new Writable({highWaterMark:1,write(){}}));const lost=stream.encoderSink(dying);const pending=lost.write(Buffer.alloc(8));dying.emit('exit',1,null);await assert.rejects(pending,/Encoder exited early: 1/);await assert.rejects(lost.write(Buffer.alloc(1)),/Encoder exited early/);
+const done=fakeEncoder(new PassThrough());const finished=stream.encoderSink(done);finished.finish();done.emit('exit',0,null);assert.equal(finished.failure,null);
+
+const dir=await mkdtemp(join(tmpdir(),'frame-stream-'));await writeFile(join(dir,'index.html'),'<!doctype html>');await writeFile(join(dir,'notes.py'),'excluded');await writeFile(join(dir,'.secret.json'),'{}');
+const sealed=await stream.sealSource(dir);assert.deepEqual([...sealed.files.keys()],['/index.html']);assert.deepEqual(sealed.excluded,['notes.py']);
+const written=[];const host=stream.frameServer({files:sealed.files,frameBytes:4,write:async c=>written.push(c)});const base=await host.listen();
+const post=(path,body)=>fetch(new URL(path,base),{method:'POST',body});
+const served=await fetch(base+'index.html');assert.equal(served.status,200);assert.match(served.headers.get('content-security-policy'),/^default-src 'self'/);assert.equal((await fetch(base+'notes.py')).status,404);assert.equal((await post('/wrong-token/frame/0',new Uint8Array(4))).status,404);
+assert.equal((await post(host.calibrationUrl,new Uint8Array([1,2,3,4]))).status,204);assert.deepEqual([...host.calibration],[1,2,3,4]);assert.equal(written.length,0);assert.equal(host.accepted,0);
+assert.equal((await post(host.frameUrl(0),new Uint8Array(4))).status,204);assert.equal(host.accepted,1);assert.equal(host.failure,null);
+assert.equal((await post(host.frameUrl(2),new Uint8Array(4))).status,409);assert.match(host.failure.message,/out of order/);
+await host.close();
+const shortHost=stream.frameServer({files:sealed.files,frameBytes:4,write:async()=>{}});const shortBase=await shortHost.listen();assert.equal((await fetch(new URL(shortHost.frameUrl(0),shortBase),{method:'POST',body:new Uint8Array(3)})).status,413);assert.match(shortHost.failure.message,/Frame size/);await shortHost.close();
+await symlink('/etc/hosts',join(dir,'link.json'));await assert.rejects(stream.sealSource(dir),/Frame source link/);await rm(dir,{recursive:true});

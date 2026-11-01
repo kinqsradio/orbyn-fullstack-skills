@@ -9882,6 +9882,28 @@
       }
     },
     {
+      "id": "motion-film-long-form-stream",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "My code-driven music video is a 2 minute 40 song at 60 fps. Export the whole thing from our WebGL page to MP4 with the track, and make sure it is not upside down or strobing.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Development definitions; actual export/browser evidence and content/rights/accessibility review remain separate from hosted model performance.",
+      "rubric": {
+        "execution": "Marks the spec longForm and exports with --stream and a sealed --frame-source, so frames stay off disk and a stalled encoder pauses rendering; declares rowOrder and passes the asymmetric orientation card through the real passes before encoding.",
+        "evidence": "Reports stream probe and decode receipts, renderer and software flag, then runs flash-check on the encoded file. Keeps a pass as a screen, not a certified analysis, and states whether the full-length export actually ran."
+      }
+    },
+    {
       "id": "motion-film-primitives-media-rewind",
       "kind": "outcome",
       "split": "development",

@@ -22,7 +22,8 @@ background/page exit and clean up owned frames/listeners. Reduced motion uses a
 meaningful static alternative/manual seeking, without blocking information or
 essential controls. Do not autoplay audio. Honour the target's accessibility needs;
 fast cutting or constant movement is a style decision, not a universal quality gate.
-Check flashing, movement-triggered discomfort, focus, readable dwell and pause/stop.
+Check movement-triggered discomfort, focus, readable dwell and pause/stop, and
+[measure flashing](#check-flashing-on-the-rendered-file) on the rendered file.
 
 For text, wait for actual font readiness, fit every intended aspect/viewport, reserve
 safe areas for captions and keep reading order and contrast. Do not treat a measured
@@ -30,6 +31,29 @@ fraction of moving frames as accessibility or readability evidence. Captions mus
 follow the real spoken/audible content when audio exists; the V12 example's silent
 explanatory text is not evidence of captioning an audio track. Provide transcript
 and meaningful content without relying on motion or sound alone.
+
+## Check flashing on the rendered file
+
+Run the check on the encoded video, since grading, blur and encoding all change
+what flashes. It needs existing FFmpeg and writes nothing:
+
+```sh
+python3 skills/technical-illustration/scripts/flash-check.py /ABS/film.mp4
+```
+
+It prints JSON and exits 0 at three flashes a second or fewer, 1 above that, and 2
+when it cannot read the video. `startsAtSeconds` and `windowCell` locate the worst
+second. It applies the WCAG 2.2 thresholds: a general flash is an opposing pair of
+luminance swings of at least 10% with the darker state below 0.80; a red flash is
+an opposing pair where one state is saturated red and chromaticity moves more than
+0.2. Either kind counts only over more than 25% of a window one third of the frame
+each way, which estimates a 10 degree field. A localized flash therefore fails even
+when the frame average barely moves. A 5 Hz strobe on a third-by-third patch exits 1;
+the same strobe on a small patch exits 0.
+
+Treat a pass as a screen. It is not a Harding or PEAT certification, it averages
+away detail finer than its grid, and it assumes the frame fills the screen. Fix a
+failure in the source, then render and check again.
 
 ## Persist and qualify the actual delivery
 
@@ -75,7 +99,9 @@ The original [exporter](../../orbyn-ui-design/examples/spatial-review/motion-fil
 provides authored JSON shots, frame-aligned cuts, FPS/BPM, palette/local font roles,
 pure seek/replay, shared preview/render DOM, cut-bounded temporal averaging,
 optional highlight bloom/seeded grain, local audio, timed subtitles, H.264 MP4,
-poster, probe/decode/fast-start and source/output receipts. No Scenario connection
+poster, probe/decode/fast-start and source/output receipts, and
+[streaming export](../../orbyn-ui-design/examples/spatial-review/motion-films.md#stream-a-full-length-film)
+for full-length songs. No Scenario connection
 is required. Keep unsupported cells visible; matching output format is not matching
 every visual block, quality metric or provider service.
 
