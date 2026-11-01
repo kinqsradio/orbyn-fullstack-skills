@@ -11598,6 +11598,122 @@
         "message"
       ],
       "excluded": "A still social graphic is not a motion film."
+    },
+    {
+      "id": "lyric-performance-combined-brief",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Use my licensed original drawing, synthetic demo audio and supplied words 'Lanterns drift softly' for a full-song visualizer. Move the hair and hand, frame the face closer, add nearby background motion and animate large and small individual words. Local 2D is fine; do not upload anything.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition; no live host trial, rendered media or creative acceptance is established by case validation.",
+      "rubric": {
+        "brief": "Separates part performance, camera crop, word hierarchy/arrivals and audio reaction; does not substitute a zooming portrait and line captions.",
+        "reuse": "Uses the existing motion/audio owners and a busiest-section encoded sample before the long-form streaming render, without inventing a provider requirement or another approval gate.",
+        "limits": "Labels local 2D puppeting and its limits; does not claim generated poses or a true 3D rig.",
+        "words": "Keeps supplied words authoritative, timings editable and the caption track independently readable; inspects actual font raster and dense entrance extremes."
+      }
+    },
+    {
+      "id": "lyric-performance-blink-integrity",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "The eye patch slides and the pupil distorts during the blink in my original illustrated character preview. I have matching open, half-closed and closed drawings. Repair the local animation.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition; no live host trial, rendered media or creative acceptance is established by case validation.",
+      "rubric": {
+        "integrity": "Registers replacement drawings to stable facial landmarks, limits the composite region and checks colour/crop without accepting a registration score as visual proof.",
+        "cycle": "Checks open/intermediate/closed/reopened source and encoded frames close up for seams, face drift and residual iris; removes the independent pupil distortion unless justified by the inspected cycle.",
+        "scope": "Uses the supplied drawings; does not require generating new eye assets or invoking an external service."
+      }
+    },
+    {
+      "id": "lyric-performance-slower-motion",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "The word arrivals match my synthetic demo vocals, but the body and hand twitch too fast and the image jumps when two kick onsets are close. Slow the motion without changing those arrival times.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition; no live host trial, rendered media or creative acceptance is established by case validation.",
+      "rubric": {
+        "timing": "Preserves accepted word arrivals while adjusting cycle lengths, displacement, easing or entrance duration.",
+        "motion": "Separates slower phrase-scale body/hand motion with delayed follow-through from selected onset accents and smoothed sustained energy.",
+        "continuity": "Inspects closely spaced onsets and joins; uses continuous attack/release or overlapping decays instead of resetting the previous pulse.",
+        "acceptance": "Checks an encoded sample with sound and distinguishes perceived smoothness from FPS and encoder success."
+      }
+    },
+    {
+      "id": "lyric-performance-raster-and-mux",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "My synthetic lyric layout manifest is in bounds, but encoded words overlap. Video packets have the intended constant cadence while MP4 average-rate headers disagree. Diagnose both; keep the separate unbranded poster intact.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition; no live host trial, rendered media or creative acceptance is established by case validation.",
+      "rubric": {
+        "type": "Probes actual loaded fonts through the delivery rasterizer, including large/small words, outlines and entrance extremes; does not accept layout bounds alone.",
+        "mux": "Investigates packet remux to a new output before retiming or re-encoding; compares ordered encoded payloads and every packet PTS/DTS/duration in a common time base and reports changes.",
+        "evidence": "Probes and fully decodes audio/video, separates cadence from mux headers and viewing/listening, and checks the poster independently; does not claim mechanical success proves creative acceptance."
+      }
+    },
+    {
+      "id": "lyric-performance-adjacent-calm-captions",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Make a calm looping background for my synthetic demo track with ordinary readable line captions. Keep the supplied portrait still; I do not want character motion or kinetic word effects.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Synthetic development definition; no live host trial, rendered media or creative acceptance is established by case validation.",
+      "rubric": {
+        "scope": "Uses the simpler background and line-caption path without adding puppeting, replacement eyes or individual word effects.",
+        "checks": "Retains source-lyric, readable caption, loop and finished-file checks appropriate to the request; does not impose a new asset-generation or approval stage."
+      }
     }
   ]
 }

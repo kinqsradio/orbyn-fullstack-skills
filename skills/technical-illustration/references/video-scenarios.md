@@ -48,7 +48,10 @@ layer. Keep new haze or light subtle, and judge it against the source image.
 
 ## Lyric video
 
-The job is reading along, so type comes first and art serves it.
+Choose readable line captions or individually timed kinetic compositions from the
+brief. For a combined artwork visualizer and word animation, use
+[lyric performance](lyric-performance.md); the line-caption defaults below are not
+a requirement to replace that composition with subtitles.
 
 1. Use only the supplied lyrics. Time them with [music timing](music-timing.md), and
    never display transcribed text the user did not supply.
@@ -85,9 +88,12 @@ slow layered movement.
 - **Finish:** add light grain and a soft bloom on highlights, and check them against
   the [effect budgets](../../orbyn-ui-design/examples/spatial-review/motion-films.md#motion-blur-effects-and-budgets).
 
-Watch for: a cutout edge against bright backlight, and a character who should be
-moving but cannot. A still gives camera movement and atmosphere, not new poses,
-talking or hair in the wind.
+Watch for: a cutout edge against bright backlight, and a character whose motion was
+promised but never authored. The background exporter supplies camera motion and
+atmosphere. Local deformation, part pivots and registered replacement drawings can
+add bounded 2D puppeting; inspect exposed edges and the face using
+[lyric performance](lyric-performance.md). New poses, talking and natural acting
+need suitable assets and a qualified animation path.
 
 Done when a viewer reads it as a scene, and nothing looks sliced or swimming.
 
@@ -119,10 +125,11 @@ Done when you can watch it pass the seam three times and not find it.
 
 ## Full animation
 
-State the limit first. Code draws what a model describes. It can animate shapes,
-vector characters and rigged cutouts, but it won't turn a still into a performance.
-If the request needs natural acting, lip-sync or hand-drawn character work, say so
-before starting and name what can be delivered instead.
+State the limit first. Code draws what a model describes: shapes, vector characters,
+rigged cutouts or bounded 2D puppeting of supplied artwork. Distinguish that from
+newly generated poses or a true 3D rig. If natural acting, lip-sync or hand-drawn
+character work exceeds the available assets and tools, name the missing capability
+and the feasible result before starting.
 
 1. Write a shot list: what happens, for how long, and why.
 2. Build an animatic of blocked shapes and approve its timing with the audio. Changes

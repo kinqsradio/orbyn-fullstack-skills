@@ -81,6 +81,22 @@ native rendering or complete accessibility. State unperformed export/platform
 cells. Existing behavior/a11y/pixel tests remain the regression owners; never
 blindly accept newly generated baselines.
 
+Separate export evidence: full video/audio decode catches unreadable streams;
+packet presentation/decode timestamps and spacing check cadence; container rate and
+duration fields check mux metadata. Playback with sound and close-up cycle review
+check perceptual smoothness, audible sync and visible artifacts. Frame differences,
+a higher FPS or a successful hardware encode do not establish creative acceptance.
+Preserve separately requested outputs, such as an unbranded poster, with their own
+checks rather than inheriting the film's branding settings.
+
+If timestamps already have the intended cadence but container headers disagree,
+investigate a packet remux before re-encoding or retiming. Use a new output and
+compare stream identities, ordered encoded-payload hashes and every packet's PTS,
+DTS and duration in a common time base, then probe and fully decode the result.
+Report any changed fields; a payload hash alone does not prove timestamp
+preservation. This is a conditional diagnosis, not a generic timing-repair command
+or qualification of every codec/container.
+
 Reviewed inspiration: Scenario's [kinetic film method](https://www.scenario.com/explorations/kinetic-film/),
 ZIP SHA-256 `2217ab5dbd452185a5c3c1509994da46b1ac20d2ebeaa888536244372ce73ebf`
 reviewed 30 October 2026. No license was found in the reviewed ZIP: no source code,
@@ -138,9 +154,11 @@ For music-led supplied art/track requests, use the [music-video intake and backg
 path](../../orbyn-ui-design/examples/spatial-review/motion-films.md#music-led-artwork-and-music-videos).
 Choose source/rights, actual track/BPM or markers, aspect/duration, crop/focal motion
 and verified text/captions. The original full-frame background path supports a
-moving still with foreground scenes and music; it cannot invent character action
-or lip-sync. Such requests require actual animation/video tools; do not silently
-replace them with a pan/zoom still or invoke a paid provider without task authority.
+moving still with foreground scenes and music. Character motion requires authored
+animation beyond that background path; [lyric performance](lyric-performance.md)
+describes bounded local 2D options and their limits. Do not silently replace
+requested part motion with a pan/zoom still or invoke a paid provider without task
+authority.
 
 For frame-accurate audio-reactive shaders, a checkable beat grid or timing supplied
 lyrics, use [music timing](music-timing.md).
