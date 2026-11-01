@@ -1,0 +1,4 @@
+# Optional known-lyrics timing profile. Install into a task-owned environment, not globally.
+# Lighter than audio-requirements.txt: no torch, WhisperX or alignment model.
+# Pinned to the release whose source was read; no model run is recorded for it.
+faster-whisper==1.2.1

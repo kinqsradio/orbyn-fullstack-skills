@@ -5,7 +5,8 @@ import importlib.metadata
 import math
 from pathlib import Path
 import sys
-from audio_tools import cancellation_signals, decode_audio, digest, new_output, receipt, regular_file, run, write_json
+from audio_features import bake_features, parse_fps
+from audio_tools import cancellation_signals, decode_audio, digest, new_output, read_json, receipt, regular_file, run, write_json
 
 
 def analyze(y, sr, hop, bins, librosa, np):
@@ -33,6 +34,15 @@ def analyze(y, sr, hop, bins, librosa, np):
     }
 
 
+def read_sections(path):
+    sections = read_json(regular_file(path, 1024 * 1024))
+    if not isinstance(sections, list) or len(sections) > 500 or any(
+            not isinstance(s, dict) or set(s) != {'label', 'start'} or not isinstance(s['label'], str)
+            or isinstance(s['start'], bool) or not isinstance(s['start'], (int, float)) or s['start'] < 0 for s in sections):
+        raise ValueError('Sections must be a bounded list of label/start records')
+    return sections
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--input', required=True, type=Path)
@@ -43,8 +53,19 @@ def main():
     parser.add_argument('--hop-length', type=int, default=512)
     parser.add_argument('--waveform-bins', type=int, default=512)
     parser.add_argument('--max-seconds', type=int, default=600)
+    parser.add_argument('--fps', help='Bake per-video-frame features, for example 30 or 30000/1001')
+    parser.add_argument('--bars', type=int, default=32, help='Log-spectrum bars per frame')
+    parser.add_argument('--beats-per-bar', type=int, default=4)
+    parser.add_argument('--downbeat', type=float, help='Manually verified bar-line time in seconds')
+    parser.add_argument('--sections', type=Path, help='JSON list of {label, start} boundaries to check')
     args = parser.parse_args()
     source = regular_file(args.input)
+    fps = parse_fps(args.fps) if args.fps else None
+    sections = read_sections(args.sections) if args.sections else []
+    if (args.sections or args.downbeat is not None) and fps is None:
+        raise ValueError('--sections and --downbeat require --fps')
+    if not 2 <= args.beats_per_bar <= 12:
+        raise ValueError('Invalid beats per bar')
     if args.sample_rate not in [16000, 22050, 44100, 48000] or not 64 <= args.hop_length <= 4096 or not 16 <= args.waveform_bins <= 2048 or not 1 <= args.max_seconds <= 3600:
         raise ValueError('Invalid audio analysis budgets')
     output = new_output(args.out)
@@ -64,10 +85,18 @@ def main():
                 'limits': ['Beat/tempo estimates may be ambiguous; manual corrections are authoritative.',
                            'Audio analysis does not transcribe words or establish media rights.']}
         write_json(output / 'audio-analysis.json', data)
+        if fps is not None:
+            write_json(output / 'audio-features.json',
+                       {'version': 1, 'audioSha256': original,
+                        **bake_features(y, sr, fps, result['beats'], args.beats_per_bar, args.downbeat, sections, bar_count=args.bars),
+                        'limits': ['Windows are centered on each frame, so an attack can read up to half a window early.',
+                                   'Grid offset is beat phase only. Treat a bar line as real only when downbeat status is estimated or manual.',
+                                   'A fitted grid can sit a half beat or double-time away from what a listener counts.']},
+                       compact=True)
         if digest(source) != original:
             raise ValueError('Audio source changed during analysis')
         receipt(output, 'completed', source,
-                toolSources={p.name: digest(p) for p in [Path(__file__), Path(__file__).with_name('audio_tools.py')]}, decodedSha256=digest(decoded),
+                toolSources={p.name: digest(p) for p in [Path(__file__), *(Path(__file__).with_name(n) for n in ['audio_tools.py', 'audio_features.py'])]}, decodedSha256=digest(decoded),
                 dependencies={n: importlib.metadata.version(n) for n in ['librosa', 'numpy', 'scipy', 'soundfile']},
                 ffmpeg=run([args.ffmpeg, '-version'], output, 'ffmpeg-version').splitlines()[0])
         print(output / 'audio-analysis.json')

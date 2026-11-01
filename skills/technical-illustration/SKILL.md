@@ -68,6 +68,8 @@ No browser bypass, publisher, auth edit, history capture or model call is implie
    inspect actual probe/decode/playback receipts and unsupported parity cells.
    Run `python3 scripts/flash-check.py film.mp4` on the finished file; exit 1 means
    more than three flashes in a second, so fix the source and render again.
+   For audio-reactive frames, beat-grid or section checks and supplied lyrics, use
+   [music timing](references/music-timing.md).
 7. Package the selected modules, artifact model/style/assets and reproducible checks
    using [dependencies and update](references/dependencies-and-update.md). Preserve
    notices and original/adapted hashes. Deliver artifact, evidence and actual limits.

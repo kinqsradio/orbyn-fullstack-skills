@@ -45,8 +45,9 @@ def read_json(path, limit=8 * 1024 * 1024):
                       parse_constant=reject_constant, parse_float=finite_float)
 
 
-def write_json(path, value):
-    Path(path).write_text(json.dumps(value, indent=2, allow_nan=False) + '\n')
+def write_json(path, value, compact=False):
+    options = {'separators': (',', ':')} if compact else {'indent': 2}
+    Path(path).write_text(json.dumps(value, allow_nan=False, **options) + '\n')
 
 
 def new_output(path):

@@ -36,6 +36,23 @@ those with confidence scores. ASR segments are bounded to decoded sample length
 before forced alignment; original times and adjustments remain in the output.
 Unresolved words retain null timestamps. Silence is not a successful transcript.
 
+Add `--fps 30` (or a rational rate such as `30000/1001`) to also write
+`audio-features.json`: per-frame band energies, a kick onset envelope and log
+spectrum bars, plus beat-grid phase, downbeat status and boundary checks. These
+need numpy, already part of the profile above. `featureSampler` in `audio.mjs`
+validates the file once and returns one frame's values. [Music timing](../../../../technical-illustration/references/music-timing.md)
+says how to read them and which lyric method fits.
+
+For supplied lyrics, `align-lyrics.py` is a lighter path that installs only
+`lyrics-requirements.txt`, then runs a local model or reads a heard-word list:
+
+```sh
+python motion/align-lyrics.py --input ./assets/track.wav --lyrics ./design/lyrics.txt \
+  --model-dir ./output/models/small.en --out ./output/lyrics-1
+```
+
+Its `transcript.json` feeds the correction flow below.
+
 Author a correction JSON with the exact source hash and transcript revision:
 
 ```json
@@ -68,8 +85,9 @@ Before delivering media, carry accepted cues into the EDL, verify extracted text
 and actual A/V timing, and inspect playback. These tools do not establish media
 rights, lip-sync, generated character poses or musical quality.
 
-Run `node --test motion/audio.test.mjs` and
-`python motion/audio_tools_test.py` for offline contracts. Actual model, codec,
+Run `node --test motion/audio.test.mjs`, `python motion/audio_tools_test.py` and
+the library's `tests/test_audio_features.py` and `tests/test_known_lyrics.py` for
+offline contracts. Actual model, codec,
 platform and perceptual qualification is separate. Failed/cancelled attempts stay
 in their own output directories; SIGINT/SIGTERM settles owned subprocesses and
 retains the job receipt. No tool overwrites a prior attempt or purges a cache.

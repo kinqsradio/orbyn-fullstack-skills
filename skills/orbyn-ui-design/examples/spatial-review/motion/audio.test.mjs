@@ -4,7 +4,7 @@ import {mkdtemp,writeFile,readFile,rm,realpath} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {spawnSync} from 'node:child_process';
-import {validateAnalysis, sampleAudio, withBeatCorrections, validateTranscript, correctWords, wordsToCues} from './audio.mjs';
+import {validateAnalysis, sampleAudio, withBeatCorrections, validateTranscript, correctWords, wordsToCues, featureSampler} from './audio.mjs';
 const sha='a'.repeat(64);
 const analysis=()=>({version:1,audio:{sha256:sha,bytes:100,duration:2,sourceSampleRate:22050,sourceChannels:1},analysis:{sampleRate:22050,hopLength:512,units:'seconds',duration:2,status:'estimated',tempo:120,beats:[.5,1,1.5],onsets:[.5,1],energy:[{time:0,rms:0},{time:1,rms:1}],waveform:[{time:0,min:-.5,max:.5}]},manual:{beats:null,words:[]},limits:[]});
 const transcript=()=>({version:1,audioSha256:sha,duration:2,language:'en',model:{origin:'test estimate'},revision:1,words:[{id:'word-0',text:'Hello',start:.1,end:.5,status:'aligned',score:.9},{id:'word-1',text:'world',start:null,end:null,status:'missing',score:null}],history:[]});
@@ -14,6 +14,20 @@ test('audio features seek without history and explicit beat corrections supersed
  sampleAudio(data,1.5);assert.equal(sampleAudio(data,.2).beatIndex,-1);
  const corrected=withBeatCorrections(data,sha,[.25,.75]);assert.equal(sampleAudio(corrected,.5).beatSource,'manual');assert.equal(sampleAudio(corrected,.5).beatPhase,.5);
  assert.equal(JSON.stringify(data),original);
+});
+const features=()=>({version:1,audioSha256:sha,sampleRate:22050,fps:{num:30,den:1},frames:2,fftSize:2048,status:'estimated',bands:[{name:'bass',lowHz:60,highHz:250,peak:.5}],bandEnergy:{bass:[.25,1]},kick:[0,1],barEdgesHz:[40,80,160],barFloorDb:60,bars:[[0,.5],[1,.25]],grid:{status:'fitted',beatCount:8,bpm:120,periodSeconds:.5,offsetSeconds:.137,phase:.274,residualMs:1},downbeat:{status:'unknown',time:null,beatsPerBar:4,barOffsetBeats:null,method:'test'},boundaries:[],boundaryRotation:{counts:[0,0,0,0],best:null,boundaries:0},limits:[]});
+test('baked features seek by exact frame and keep grid phase apart from the bar line',()=>{
+ const sample=featureSampler(features(),sha);
+ assert.deepEqual(sample(1),{frame:1,time:1/30,bands:{bass:1},kick:1,bars:[1,.25],gridPhase:sample(1).gridPhase,downbeatStatus:'unknown',barPhase:null,audioSha256:sha});
+ assert.equal(sample(0).kick,0);assert.equal(sample(1).kick,1);
+ assert.ok(Math.abs(sample(0).gridPhase-(1-.274))<1e-9);
+ const manual=features();manual.downbeat={status:'manual',time:.137,beatsPerBar:4,barOffsetBeats:0,method:'manual'};
+ assert.ok(Math.abs(featureSampler(manual)(0).barPhase-(4-.274)/4)<1e-9);
+ assert.throws(()=>sample(2),/frame/);assert.throws(()=>sample(.5),/frame/);
+});
+test('feature files refuse stale sources, broken shapes and an unverified bar line',()=>{
+ assert.throws(()=>featureSampler(features(),'b'.repeat(64)),/Stale/);
+ for(const mutate of [d=>d.kick.pop(),d=>d.bars[1].pop(),d=>d.bars[0][0]=1.5,d=>d.bandEnergy.bass[0]=NaN,d=>delete d.bandEnergy.bass,d=>d.barEdgesHz=[40,30,20],d=>d.downbeat.time=.5,d=>{d.downbeat.status='estimated';},d=>{d.grid.status='magic';}]){const d=features();mutate(d);assert.throws(()=>featureSampler(d));}
 });
 test('stale source, duplicate/nonfinite times and invalid waveform reject',()=>{
  assert.throws(()=>validateAnalysis(analysis(),'b'.repeat(64)),/Stale/);
