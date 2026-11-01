@@ -8,7 +8,7 @@ Inspect CMake/build manifests, supported C++ standard, compiler/standard library
 
 - Use RAII and owning standard containers or `unique_ptr` by default where they match the interface. Prefer the rule of zero, and document non-owning pointer and reference lifetimes.
 - string_view and span borrow storage; they do not extend its lifetime. Check invalidation from reallocation, moves and escaping callbacks. Pushing to a vector inside a range-for over it is undefined when it reallocates.
-- Preserve exception guarantees and project error policy. Destructors are `noexcept` by default, so an escaping exception calls `std::terminate`. Mark move operations `noexcept`, or vector reallocation may copy instead.
+- Preserve exception guarantees and project error policy. Destructors are `noexcept` by default, so an escaping exception calls `std::terminate`. Declare a move `noexcept` only when its implementation and member/base moves cannot throw. Prefer defaulted exception inference or an accurate conditional specification such as `noexcept(std::is_nothrow_move_constructible_v<Member>)` for a single-member move. An unconditional promise on a throwing move terminates instead of preserving a catchable exception. Vector reallocation may copy to preserve its exception guarantee; correctness comes before suppressing that copy.
 - Keep locks scoped to the complete invariant and avoid callbacks or blocking I/O under them. shared_ptr does not synchronize the pointed-to state and can form retention cycles.
 
 ## Worked failure and correction
@@ -27,7 +27,7 @@ that owns stable backing storage for the full use interval.
 
 ## Traps to check
 
-- A lambda stored or run on another thread must not capture locals by reference (`[&]`). Capture by value and state the lifetime.
+- Choose captures from the actual lifetime and synchronization contract. A stored/escaping callback must not outlive referenced locals; capture values or suitable owning state when it can escape. A joined worker may safely capture a parent-owned result by reference if the object survives every use and reads occur after join (or under suitable synchronization). Capturing that result by value updates a copy and loses the intended output. Join on every exit path, and protect concurrent accesses; value capture alone does not make borrowed pointers or shared state safe.
 - Destroying a joinable `std::thread` calls `std::terminate`. Use `std::jthread` from C++20, or join on every path.
 - `map[key]` inserts a default value when the key is missing. Use `find` or `contains` for lookups.
 - `vector::reserve` changes capacity, not size: writing `v[0]` into an empty reserved vector is invalid. Use push, emplace or resize.
