@@ -1,15 +1,17 @@
 # Lyric video and artwork animation: production reference
 
-Use when supplied artwork, music and lyrics become a visualizer with individually
-timed words or visible character movement. Apply the sections that match the brief.
+Use for a visualizer with individually timed words or visible character movement.
+Music videos are generated from code by default, under the [code-only rule](code-only.md).
+The supplied-artwork sections apply only when the user asks you to animate their image.
+Apply the sections that match the brief.
 For ordinary line captions, use the simpler [lyric-video path](video-scenarios.md#lyric-video).
 
 ## Resolve the production inputs
 
-Identify the source art, audio, authoritative lyric text, permitted use, delivery
-format and existing renderer. Reuse the [motion tools](../../orbyn-ui-design/examples/spatial-review/motion/README.md)
+Identify the audio, authoritative lyric text, delivery format and existing renderer.
+Add a source image and its permitted use only when the user asked to use one. Reuse the [motion tools](../../orbyn-ui-design/examples/spatial-review/motion/README.md)
 and [music timing](music-timing.md) before writing another renderer or alignment
-tool. This reference supplies production guidance, not a bundled rig or provider.
+tool. For a character built in code, use [character animation](character-animation.md).
 
 | Decision | Establish from the brief | Check in the short sample |
 | --- | --- | --- |
@@ -19,16 +21,17 @@ tool. This reference supplies production guidance, not a bundled rig or provider
 | Audio reaction | Sustained energy versus selected onset accents | Accents follow music without making every joint twitch |
 
 Infer these choices from the brief and refinements; ask only about material
-unknowns. A calm still portrait with line captions is a valid separate direction.
+unknowns. A portrait still needs [real character motion](animate-an-image.md), even with
+calm line captions.
 
 ## Choose a method that matches the requested motion
 
 | Method | Useful for | Boundary to describe |
 | --- | --- | --- |
-| Camera and layer motion | Crop changes, depth, atmosphere | A pan/zoom alone supplies no character performance |
+| Camera and layer motion | Crop changes, depth, atmosphere | Support only; a pan or zoom alone never counts as animating an image |
 | Masked deformation or named parts with pivots | Bounded hair, body and hand movement | Local 2D puppeting; no newly generated poses or editable 3D rig |
 | Registered replacement drawings | Authored blinks or other small state changes | Quality depends on matching the source and inspecting the full cycle |
-| A qualified animation path with suitable assets | New poses, lip-sync, natural acting | Establish the actual tool/asset capability for that request |
+| A code-built character rig | New poses, lip movement, acting | Stylised by design; more acting takes more authored poses |
 
 Use the smallest viable local method. Limited puppeting may satisfy the brief
 without an external service. Describe its limits before promising a performance.
@@ -85,8 +88,8 @@ requested, but the sample is a zooming portrait with one caption line.
 and word composition. Author the required local motion, preserve source lyrics
 and audible arrivals, then inspect another bounded encoded sample.
 
-**Adjacent control:** a calm background with ordinary captions needs no puppeting,
-replacement eyes or individual word effects.
+**Adjacent control:** a scenery background with no character and ordinary captions
+needs no puppeting, replacement eyes or individual word effects.
 
 ## Evidence to report
 

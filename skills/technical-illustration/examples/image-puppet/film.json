@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "title": "Image puppet proof",
+  "fps": 30,
+  "bpm": 150,
+  "duration": 10,
+  "shots": [
+    {"id": "portrait", "from": 0, "to": 10, "composition": "title", "title": "PORTRAIT", "caption": "A locked-off portrait whose hair, eyes and breathing move."}
+  ]
+}

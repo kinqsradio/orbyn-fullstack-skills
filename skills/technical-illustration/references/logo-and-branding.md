@@ -54,8 +54,8 @@ exact logo, sharp and complete.
 - Time the landing to a beat or the end of a phrase. Keep any sound short.
 - Hold the finished logo for at least 1.5 seconds, so it can be read.
 
-For a logo inside supplied art, [still to layers](still-to-layers.md) can mask it for
-relighting. Keep its shape unchanged, because a glow is fine and a warp isn't.
+For a logo inside supplied art, and when the user approves OpenCV,
+[still to layers](still-to-layers.md) can mask it for relighting. Keep its shape unchanged, because a glow is fine and a warp isn't.
 
 ## Check it
 

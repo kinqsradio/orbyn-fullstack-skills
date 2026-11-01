@@ -1,9 +1,18 @@
 # Still to layers
 
-Use this when one supplied image has to act like a layered scene: relight a figure,
-shift it against its backdrop, trail echoes of it or run an effect behind it. The
-image has no layers, so you author them: polygons and thresholds in a JSON spec,
-and OpenCV turns those into masks a shader can sample.
+This helper needs OpenCV, a third-party library, so it is opt-in: use it only when the
+user approves OpenCV for the job, and report that. The default cut is the dependency-free
+`mask.mjs` in [animate an image](animate-an-image.md).
+
+Layers are not character animation. When the image holds a character, that character
+must really move under [animate an image](animate-an-image.md), whatever else is done
+with these masks. Relighting, parallax, echoes and effects behind a figure are extras on
+top of that motion. Used alone they never count as animating the image.
+
+With that approval, use this when one supplied image has to act like a layered scene:
+relight a figure, shift it against its backdrop, trail echoes of it or run an effect
+behind it. The image has no layers, so you author them: polygons and thresholds in a JSON
+spec, and OpenCV turns those into masks a shader can sample.
 
 Skip this when the source already has layers, or when the effect covers the whole
 frame and never needs to know where the figure is.
@@ -11,8 +20,8 @@ frame and never needs to know where the figure is.
 ## Run it
 
 `scripts/still_to_layers.py` (relative to the skill root) needs OpenCV, which the
-library does not install. Add it to the project's environment, and record the version
-from `layers.json`:
+library does not install. Once the user has approved it, add it to the project's
+environment and record the version from `layers.json`:
 
 ```bash
 python3 -m pip install opencv-python-headless

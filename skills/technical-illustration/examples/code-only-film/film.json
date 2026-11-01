@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "title": "Code-only proof film",
+  "fps": 30,
+  "bpm": 150,
+  "duration": 12,
+  "shots": [
+    {"id": "approach", "from": 0, "to": 3.2, "composition": "title", "title": "APPROACH", "caption": "A small figure walks the valley toward a far light."},
+    {"id": "profile", "from": 3.2, "to": 6.4, "composition": "title", "title": "PROFILE", "caption": "Seen from the side, each foot holds its place on the rock."},
+    {"id": "word", "from": 6.4, "to": 9.6, "composition": "title", "title": "ONWARD", "caption": "The word ONWARD stands behind the walker."},
+    {"id": "vista", "from": 9.6, "to": 12, "composition": "title", "title": "VISTA", "caption": "The camera lifts away; the light still waits on the horizon."}
+  ]
+}

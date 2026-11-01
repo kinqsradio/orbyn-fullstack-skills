@@ -19,6 +19,17 @@ calm-caption adjacent control. Static validation does not establish live routing
 rendered quality or a measured baseline/candidate improvement. Existing holdout
 criteria and source attribution remain unchanged.
 
+## Code-only animation
+
+`technical-illustration` now requires every picture and movement to come from code
+written in the project, with FFmpeg and a headless browser as the only outside
+infrastructure. An image that is used must have its character animated, and a pan or
+zoom alone never counts. The revision adds character, 3D world, image and video style
+guidance, a dependency-free rig kit and image puppet, a standard-library audio bake and
+`check-code-only.py`. Two silent proof films were rendered and inspected: a 3D walk and an
+animated drawn portrait. No real song, real supplied illustration at length or live agent
+trial has been measured, and timings came from studying five public videos by eye.
+
 ## Entrypoint, authoring and helper revision
 
 Ratings across all 36 owners (mean 7.3 of 10, judged from entrypoints and case

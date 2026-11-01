@@ -126,6 +126,11 @@ window.streamFrame = {
 };
 ```
 
+`time` is the moment to draw, which `--samples` spreads across the shutter. A page must
+draw from it: one that works out time from `index` gets the same picture on every
+sample, so the render costs more and shows no blur. Keep `index` for per-frame values
+such as grain.
+
 Before encoding, `calibrate` proves the picture is upright; read
 [full-screen pass orientation](../../../technical-illustration/references/fullscreen-pass-orientation.md).
 `read` runs in the same task as `render`, so the buffer needs no preservation.
@@ -240,6 +245,11 @@ pixel-identical parity with the reviewed source's styling/provider ecosystem.
 ## Music-led artwork and music videos
 
 Choose the kind of film first in [video scenarios](../../../technical-illustration/references/video-scenarios.md).
+Music videos are generated entirely from code under the
+[code-only rule](../../../technical-illustration/references/code-only.md). Treat the
+owned-art route below as an exception the user asks for. For a character or 3D world,
+use a canvas page with `--frame-source`; the
+[code-only film](../../../technical-illustration/examples/code-only-film/) is a worked one.
 
 For a supplied art/background plus track request, establish the actual files, rights
 and intended use; duration/aspect/platform; the art's focal area; the intended mood
@@ -273,13 +283,15 @@ reduced-motion export; source hash and decoded readiness are checked. Inspect fo
 retention and foreground contrast; no automatic contrast/accessibility guarantee
 follows from dimming.
 
-This background path supplies camera motion, atmosphere and layered typography.
-Visible character performance needs authored animation beyond its pan/zoom model.
-For bounded local 2D puppeting and individually timed words, follow
+This background path supplies camera motion, atmosphere and layered typography, so
+use it alone only for an image with no character in it. Never ship a moving still of a
+character. When the image holds a character, that character must really move, whether
+or not the brief asked for it: follow
+[animate an image](../../../technical-illustration/references/animate-an-image.md).
+For individually timed words, follow
 [lyric performance](../../../technical-illustration/references/lyric-performance.md).
-New poses, lip-sync and natural acting require suitable assets and a qualified
-animation path. Report missing capability for the requested result; never silently
-substitute a moving still for requested character animation.
+For new poses, lip movement or acting, build the character in code with
+[character animation](../../../technical-illustration/references/character-animation.md).
 Audio mixing, automatic beat detection, word-level lyric alignment and song-rights
 clearance remain explicit separate work. The exporter supports a selected local
 track and authored caption timings; it does not claim to solve those tasks.

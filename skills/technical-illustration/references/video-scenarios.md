@@ -2,6 +2,8 @@
 
 Each kind of video fails in its own way. Find the row that fits, then follow its
 section. A job can combine sections: an anime background behind lyrics uses both.
+Everything here is built under the [code-only rule](code-only.md). For how a style's
+motion and timing work, see [video styles](video-styles.md).
 
 | Request                                       | Section                                                 |
 | --------------------------------------------- | ------------------------------------------------------- |
@@ -20,8 +22,8 @@ Ordinary trimming or editing of existing footage goes to the project's media too
 
 Ask only what you cannot infer. A wrong answer here means a full re-render.
 
-- **Sources and rights:** which audio, art, lyrics and logo are supplied, and may
-  they be used this way?
+- **Sources and rights:** which audio, lyrics and logo are supplied, and may they be
+  used this way? All visuals are generated, so a cover beside the track stays unused.
 - **Delivery:** platform, aspect ratio, length and whether it must loop.
 - **Words:** lyrics, narration, titles or none?
 - **Motion budget:** what actually moves, given the sources?
@@ -35,7 +37,7 @@ Use these defaults when the brief is silent, and say that you chose them.
 | Visualizer, fast camera moves       | 60         | Beat response stays sharp               |
 
 Render 1920x1080 unless told otherwise. Before a full render, review a 10-second
-sample around the busiest section. Anything over 120 seconds uses
+sample around the busiest section. Anything over 120 seconds or 3,600 frames uses
 [long-form streaming](../../orbyn-ui-design/examples/spatial-review/motion-films.md#stream-a-full-length-film).
 
 Every video finishes with `flash-check.py`, a real viewing of the file and the
@@ -75,10 +77,10 @@ Aim for the look of painted scenery with a little life in it: a sky, a horizon, 
 slow layered movement.
 
 - **Rights:** work in the style, not from a specific show. Refuse to reproduce named
-  characters, series stills or studio logos. Supplied art needs the user's rights.
-- **Source:** with one supplied image, split it using
-  [still to layers](still-to-layers.md). Without one, build it in code: gradient sky,
-  two or three cloud layers, a silhouetted mid-ground and flat cel shadows.
+  characters, series stills or studio logos.
+- **Source:** build it in code: gradient sky, two or three cloud layers, a silhouetted
+  mid-ground and flat cel shadows. For an anime image the user supplies, animate the
+  character in it under [animate an image](animate-an-image.md).
 - **Depth:** move layers at different speeds, with the farthest slowest. Keep the
   camera slow, because fast parallax exposes flat layers.
 - **Life:** add one or two seeded effects, such as drifting petals, rain, light shafts
@@ -88,12 +90,11 @@ slow layered movement.
 - **Finish:** add light grain and a soft bloom on highlights, and check them against
   the [effect budgets](../../orbyn-ui-design/examples/spatial-review/motion-films.md#motion-blur-effects-and-budgets).
 
-Watch for: a cutout edge against bright backlight, and a character whose motion was
-promised but never authored. The background exporter supplies camera motion and
-atmosphere. Local deformation, part pivots and registered replacement drawings can
-add bounded 2D puppeting; inspect exposed edges and the face using
-[lyric performance](lyric-performance.md). New poses, talking and natural acting
-need suitable assets and a qualified animation path.
+Watch for: a flat-looking layer edge against bright backlight, and a character whose
+motion was promised but never authored. Build characters from a code rig under
+[character animation](character-animation.md), which gives new poses and acting. With
+a user-supplied image, part pivots and registered replacement drawings add bounded 2D
+puppeting, as [lyric performance](lyric-performance.md) describes.
 
 Done when a viewer reads it as a scene, and nothing looks sliced or swimming.
 
@@ -125,11 +126,10 @@ Done when you can watch it pass the seam three times and not find it.
 
 ## Full animation
 
-State the limit first. Code draws what a model describes: shapes, vector characters,
-rigged cutouts or bounded 2D puppeting of supplied artwork. Distinguish that from
-newly generated poses or a true 3D rig. If natural acting, lip-sync or hand-drawn
-character work exceeds the available assets and tools, name the missing capability
-and the feasible result before starting.
+Build the whole film in code. Characters are rigs you write, so new poses, walks, faces
+and lip movement are all authored data under [character animation](character-animation.md).
+Worlds come from [3D worlds](3d-worlds.md). State the honest limit as one of style and
+effort: a code-built character is stylised, and more acting takes more authored poses.
 
 1. Write a shot list: what happens, for how long, and why.
 2. Build an animatic of blocked shapes and approve its timing with the audio. Changes
@@ -154,7 +154,9 @@ Promos, explainers, kinetic type and product videos are about one message.
 1. Write the single sentence the viewer should keep.
 2. Assign one idea to each shot, and read every on-screen word aloud to time it.
 3. Use a small consistent set of easings and one direction of travel.
-4. Use real numbers and real screens. Label anything synthetic as a mockup.
+4. Use real numbers. Draw product screens in code from the real layout, and label them
+   as mockups. A real screenshot or recording goes in only when the user names that
+   file for this job.
 5. Finish on one clear action, and hold the end card for at least 3 seconds.
 
 Use the [fourteen scene primitives](../../orbyn-ui-design/examples/spatial-review/motion-films.md#fourteen-scene-primitives)
@@ -168,10 +170,11 @@ Done when someone who has not seen it can repeat the message after one viewing.
 
 ## Audio visualizer
 
-Bake per-frame features with [music timing](music-timing.md) and drive shapes from
+Bake per-frame band energies, RMS and onsets with `scripts/audio-bake.py`, which needs
+only Python and FFmpeg, as [music timing](music-timing.md) shows. Drive shapes from
 them. Map bass to size, onsets to accents and high bands to fine detail. Ease every
-value on its way down, so shapes fall smoothly instead of chattering. Keep a focal
-point, such as supplied cover art, and let the bars support it.
+value on its way down, so shapes fall smoothly instead of chattering. Keep one generated
+focal point, drawn from the song's words or mood, and let the bars support it.
 
 Watch for: strobing on kicks, so limit brightness jumps and run `flash-check.py`.
 

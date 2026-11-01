@@ -23,7 +23,8 @@ application dependencies. Use the actual consuming lock in a real project. Npm
 lifecycle scripts and runtime downloads are not implicitly authorized; a prepared
 lock does not prove installed bytes or browser hydration. PDF inspection requires
 an existing permitted renderer; WebGL needs its recorded renderer/context.
-`scripts/still_to_layers.py` needs OpenCV in the project's environment and exits
+`scripts/still_to_layers.py` is opt-in: it needs OpenCV in the project's environment,
+which only the user can approve for a job, and it exits
 with the install command when it is missing.
 
 ## Package an authorized artifact

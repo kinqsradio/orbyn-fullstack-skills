@@ -1,6 +1,6 @@
 ---
 name: technical-illustration
-description: "Create or repair deterministic code-driven motion scenes, motion films, music-led artwork or lyric videos and model-driven technical illustrations, with accessible interaction and inspected SVG, React, print or conditional WebGL/beta3D outputs."
+description: "Create or repair deterministic code-only motion films, music and lyric videos, character animation, 3D worlds and model-driven technical illustrations, with accessible interaction and inspected SVG, React, print or conditional WebGL/beta3D outputs."
 ---
 
 # Model-driven technical illustrations
@@ -10,6 +10,15 @@ film or music-led artwork/lyric video whose model controls what is drawn, moved,
 read and exported. This owner constructs motion from an explicit sampled model.
 Choose a physical metaphor only when it clarifies the idea; disclose where the
 analogy stops.
+
+## Build only from code
+
+Every picture and movement comes from code written in the project: no generators, hosted
+models, 3D or animation libraries, stock or downloaded assets, rigs, motion capture or
+creative tools. Music videos use no album artwork unless the user asks for it, and an image that is
+used must have its character animated, not just a moving camera. Treat a
+missing asset as code to write. Read the [code-only rule](references/code-only.md) before
+starting a video, and only the user can lift it for a named item.
 
 ## Check the route
 
@@ -33,6 +42,8 @@ Apply these contracts when the request matches:
   [code-driven motion contract](../orbyn-ui-design/examples/spatial-review/motion/README.md).
   Use the existing UI owner for live takeover and the existing review writer for
   source-bound settings and decisions; no new authoring app or provider is required.
+  Its Lottie input, Three.js profile and packaged adapters fall under the
+  [code-only rule](references/code-only.md), so use them only when the user approves them.
 
 ## Set the boundary
 
@@ -66,11 +77,12 @@ No browser bypass, publisher, auth edit, history capture or model call is implie
 6. For MP4 delivery, use the original [motion-film exporter](../orbyn-ui-design/examples/spatial-review/motion-films.md).
    Author a validated scene/beat specification and run the existing-tool pipeline;
    inspect actual probe/decode/playback receipts and unsupported parity cells.
-   Run `python3 scripts/flash-check.py film.mp4` on the finished file; exit 1 means
+   Run `python3 scripts/check-code-only.py <source>` before rendering, then
+   `python3 scripts/flash-check.py film.mp4` on the finished file; exit 1 means
    more than three flashes in a second, so fix the source and render again. When it
    carries words or a logo, also run `scripts/legibility-check.py` on a plate.
-   For audio-reactive frames, beat-grid or section checks and supplied lyrics, use
-   [music timing](references/music-timing.md).
+   For audio-reactive frames, onsets and supplied lyrics, start with
+   `python3 scripts/audio-bake.py` as [music timing](references/music-timing.md) shows.
 7. Package the selected modules, artifact model/style/assets and reproducible checks
    using [dependencies and update](references/dependencies-and-update.md). Preserve
    notices and original/adapted hashes. Deliver artifact, evidence and actual limits.
@@ -84,24 +96,32 @@ No browser bypass, publisher, auth edit, history capture or model call is implie
 - For what a flash result covers and how to act on it, read
   [motion sequences](references/motion-sequences.md#check-flashing-on-the-rendered-file).
 
+- For any video built from an image, read [animate an image](references/animate-an-image.md):
+  the character in it must move, and camera motion alone never counts.
 - For a music video, lyric video, anime-style or ambient background, full animation,
   motion graphics or a visualizer, read [video scenarios](references/video-scenarios.md)
   first; it sets what each kind needs and how it fails.
+- For how a style's motion works and its timing, such as hit-pulse, word-stack or
+  kinetic-cut videos, read [video styles](references/video-styles.md).
+- For any character, body movement, walk, face, hair or acting, read
+  [character animation](references/character-animation.md).
+- For terrain, worlds, raymarching, cameras or a figure in 3D, read
+  [3D worlds](references/3d-worlds.md).
 - For individually timed lyric typography with artwork performance, read
   [lyric performance](references/lyric-performance.md) for the representative preview,
   local puppeting limits, blink integrity and rendered type checks.
 - For any logo, brand mark, intro, outro or end card, read
   [logo and branding](references/logo-and-branding.md).
-- For one supplied image that must drive relighting, parallax, figure echoes or
-  effects behind a subject, read [still to layers](references/still-to-layers.md).
+- For relighting, parallax or echoes added to an animated image, and only when the user
+  approves OpenCV, read [still to layers](references/still-to-layers.md).
 
 ## Bundled support and evidence limits
 
 - The MIT support under `references/upstream/anatomy/` is a pinned maintained
   adaptation, not an upstream installation or active skill. The source record and
   snapshot describe exact scope. Read actual APIs before authoring a new model.
-- Browser, React peers, PDF tools, OpenCV and GPU are conditional prerequisites; unavailable
-  surfaces remain blocked. Core SVG does not qualify React, print, WebGL or beta 3D.
+- Browser, React peers, PDF tools and GPU are conditional prerequisites, and OpenCV is one
+  only when the user approves it; unavailable surfaces remain blocked. Core SVG does not qualify React, print, WebGL or beta 3D.
 - The source's full configured audits are finite sampled checks, not continuous
   physical proof. Keep supported runtime/platform evidence separate from written
   methods and model behavior.

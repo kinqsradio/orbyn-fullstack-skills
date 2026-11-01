@@ -1,5 +1,10 @@
 # Local audio analysis and correction
 
+Start with `audio-bake.py` from the [music timing](../../../../technical-illustration/references/music-timing.md)
+method, which needs only Python and FFmpeg. The tools below are opt-in under the
+[code-only rule](../../../../technical-illustration/references/code-only.md), so use them
+only when the user approves them for the job.
+
 These optional source tools use reviewed Python packages and existing FFmpeg/
 FFprobe binaries. Ordinary UI preparation does not install them, download models
 or call a hosted provider. Keep their environment, model profile and generated
@@ -51,7 +56,10 @@ python motion/align-lyrics.py --input ./assets/track.wav --lyrics ./design/lyric
   --model-dir ./output/models/small.en --out ./output/lyrics-1
 ```
 
-Its `transcript.json` feeds the correction flow below.
+Its `transcript.json` feeds the correction flow below. With a hand-placed word list,
+`--asr-words words.json --no-repeat-repair` needs no Python packages at all. Repeat
+repair is the only step that needs numpy, and untimed lines then stay listed as
+unresolved.
 
 Author a correction JSON with the exact source hash and transcript revision:
 
