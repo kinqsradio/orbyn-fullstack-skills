@@ -73,6 +73,27 @@ class EvaluationTests(unittest.TestCase):
         self.save()
         return result
 
+    def test_migration_allows_required_plan_composition_but_requires_execution_evidence(self):
+        result = self.complete('plan-adjacent-do-the-migration')
+        result['selected_skills'] = ['figure-it-out', 'orbyn-plan']
+        self.save()
+        report = evaluator.grade(self.path)
+        self.assertEqual(report['results'][0]['routing'], 'pass')
+        self.assertEqual(report['counts']['pass'], 1)
+        self.assertIn('execution', self.cases['plan-adjacent-do-the-migration'].get('rubric', {}))
+        with (self.path.parent/'answer.md').open('a', encoding='utf-8') as answer:
+            answer.write(' Only a plan was produced.')
+        result['rubric']['execution'] = {'status': 'fail', 'evidence': 'Only a plan was produced.'}
+        self.save()
+        report = evaluator.grade(self.path)
+        self.assertEqual(report['results'][0]['routing'], 'pass')
+        self.assertEqual(report['counts']['fail'], 1)
+        del result['rubric']['execution']
+        self.save()
+        report = evaluator.grade(self.path)
+        self.assertEqual(report['results'][0]['routing'], 'pass')
+        self.assertEqual(report['counts']['unverified'], 1)
+
     def test_prepare_keeps_answers_out_and_results_unverified(self):
         tasks = json.loads((self.path.parent/'tasks.json').read_text())
         self.assertEqual(len(tasks), len(self.cases))

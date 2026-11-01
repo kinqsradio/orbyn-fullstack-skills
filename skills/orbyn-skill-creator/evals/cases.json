@@ -11123,22 +11123,24 @@
     },
     {
       "id": "plan-adjacent-do-the-migration",
-      "kind": "routing",
+      "kind": "outcome",
       "split": "development",
       "prompt": "Finish moving all services to the new config format. You are authorized to edit every one.",
       "expected_skills": [
         "figure-it-out"
       ],
-      "forbidden_skills": [
-        "orbyn-plan"
-      ],
+      "forbidden_skills": [],
       "forbidden_actions": [
         "publish",
         "deploy",
         "merge",
         "message"
       ],
-      "excluded": "Do not stop at a plan."
+      "excluded": "Do not stop at a plan.",
+      "rubric": {
+        "execution": "Uses figure-it-out to inventory and complete the authorized migration units, with actual changed artifacts and relevant verification receipts; orbyn-plan may legitimately establish or revise its execution plan. A plan alone does not satisfy completion. Reports any blocked/unverified work instead of claiming the full migration is done.",
+        "evidence": "Records skills actually read, including legitimate composition; distinguishes routing selection from observed implementation and verification. Claims require matching artifacts/receipts, not merely selecting an execution skill."
+      }
     },
     {
       "id": "plan-complex-change",
