@@ -1,80 +1,103 @@
-# Compose lyric typography with artwork performance
+# Lyric video and artwork animation: production reference
 
-Use for a music-led artwork visualizer with individually timed words or visible
-character movement. Ordinary line captions can keep the simpler
-[lyric-video path](video-scenarios.md#lyric-video). Reuse the existing
-[motion tools](../../orbyn-ui-design/examples/spatial-review/motion/README.md) and
-[music timing](music-timing.md) before writing another renderer or alignment tool.
-This method adds no bundled character rig or animation provider.
+Use when supplied artwork, music and lyrics become a visualizer with individually
+timed words or visible character movement. Apply the sections that match the brief.
+For ordinary line captions, use the simpler [lyric-video path](video-scenarios.md#lyric-video).
 
-## Make the brief visible in a short sample
+## Resolve the production inputs
 
-Separate four decisions: character/part performance, camera framing, typography,
-and audio reaction. State which parts move and how visibly, the focal crop, whether
-words have individual arrivals and size hierarchy, and which accents follow audio.
-Infer these from the brief and refinements; ask only about material unknowns.
+Identify the source art, audio, authoritative lyric text, permitted use, delivery
+format and existing renderer. Reuse the [motion tools](../../orbyn-ui-design/examples/spatial-review/motion/README.md)
+and [music timing](music-timing.md) before writing another renderer or alignment
+tool. This reference supplies production guidance, not a bundled rig or provider.
 
-Use the existing busiest-section preview before the expensive full render. Include
-dense words, a strong accent, a full blink if used, and representative part motion.
-Inspect the actual encoded sample with sound, at delivery size and a small viewing
-size. Resolve an observed mismatch in the source, then repeat the bounded sample.
-This is an execution checkpoint, not a new requirement to obtain permission when
-the user has already authorized the work. Full songs retain the existing
-[streaming contract](../../orbyn-ui-design/examples/spatial-review/motion-films.md#stream-a-full-length-film).
+| Decision | Establish from the brief | Check in the short sample |
+| --- | --- | --- |
+| Character performance | Which parts move, range and pace | Hair, hand and face motion are visible at the intended crop |
+| Camera | Focal point, framing and section changes | Subject remains framed and moved layers expose no holes |
+| Typography | Line captions or separate word arrivals; emphasis hierarchy | Dense phrases read at delivery and small viewing sizes |
+| Audio reaction | Sustained energy versus selected onset accents | Accents follow music without making every joint twitch |
 
-Worked failure: a request for moving hair, a swaying hand and large/small arriving
-words receives a zooming portrait with one caption line. The four decisions expose
-the missing part motion and word composition in seconds, before rendering the song.
-A calm background with ordinary captions is a legitimate different brief.
+Infer these choices from the brief and refinements; ask only about material
+unknowns. A calm still portrait with line captions is a valid separate direction.
 
-## Preserve the drawing while moving it
+## Choose a method that matches the requested motion
 
-Choose the smallest viable local method: camera/layer motion, masked deformation,
-named parts with pivots, or registered replacement drawings. Describe local 2D
-puppeting honestly. A moving still alone does not supply character acting; a small
-deformation is not a generated pose or an editable 3D rig. Establish missing tools
-only for the performance actually requested; limited local motion may be sufficient.
+| Method | Useful for | Boundary to describe |
+| --- | --- | --- |
+| Camera and layer motion | Crop changes, depth, atmosphere | A pan/zoom alone supplies no character performance |
+| Masked deformation or named parts with pivots | Bounded hair, body and hand movement | Local 2D puppeting; no newly generated poses or editable 3D rig |
+| Registered replacement drawings | Authored blinks or other small state changes | Quality depends on matching the source and inspecting the full cycle |
+| A qualified animation path with suitable assets | New poses, lip-sync, natural acting | Establish the actual tool/asset capability for that request |
 
-For blinks, compare open, intermediate, closed and reopened states against the
-source face. If using replacement artwork, register it to stable facial landmarks,
-match colour and crop, and composite only the intended region. Check that the
-surrounding face holds still and that eyes close cleanly. Independent pupil warps
-can break gaze and eyelid anatomy; omit them unless the complete cycle survives
-close-up inspection. Inspect both source frames and the encoded cycle for sliding
-patches, exposed seams and residual iris. Registration scores alone cannot accept
-the drawing. This is conditional asset QA, not a requirement to generate eye assets.
+Use the smallest viable local method. Limited puppeting may satisfy the brief
+without an external service. Describe its limits before promising a performance.
 
-## Separate movement pace from vocal timing
+For a blink, compare open, intermediate, closed and reopened states against the
+source face. Register replacement drawings to stable facial landmarks, match
+colour/crop, and composite only the intended region. Inspect source frames and the
+encoded cycle close up for sliding patches, face drift, seams and residual iris.
+A high registration score alone cannot accept the drawing. Independent pupil warps
+can break gaze and eyelid anatomy; omit them unless the full cycle survives review.
+These checks apply when animating eyes; they do not require generating eye assets.
 
-When a preview feels too fast, adjust body/hand cycle lengths, displacement,
-camera easing and word entrance duration while preserving accepted word arrivals.
-Phrase-scale sway and delayed hair/cloth follow-through can provide slower motion
-under faster accents. Use a smoothed energy envelope for sustained movement;
-reserve onsets for selected accents rather than twitching every joint on each kick.
+## Tune motion without shifting vocal arrivals
 
-Sample pulse attack and release continuously. Overlapping decays or a continuous
-envelope avoid dropping an unfinished pulse when the next onset arrives. Inspect
-closely spaced onsets and section joins. Tempo, amplitude, frame rate and the number
-of effects remain choices for this brief; more frames or a new encoder cannot
-establish that the movement feels right.
+| Symptom | Adjustment to try | Trap to check |
+| --- | --- | --- |
+| Body or hand feels hurried | Lengthen cycles, reduce displacement; try phrase-scale sway | Keep accepted word arrivals unchanged |
+| Hair moves rigidly with the head | Delay follow-through and tune its amplitude | Check attachments and exposed edges at extremes |
+| Everything reacts on each kick | Smooth sustained energy; reserve onsets for selected accents | Independent parts need distinct motion roles |
+| Image jumps at closely spaced onsets | Continuous attack/release or overlapping decays | Do not discard an unfinished pulse at the next onset |
+| Word entrances feel abrupt | Ease or lengthen the entrance around the accepted arrival | Preserve audible timing and readable dwell |
 
-## Check words through the actual renderer
+Inspect closely spaced onsets, section joins and full movement cycles. Tempo,
+amplitude, frame rate, fonts, colours and effect counts remain brief-specific
+choices. More frames or a new encoder cannot establish that movement feels right.
 
-Keep supplied text authoritative and generated timings editable. Compare the
-ordered words and counts, inspect missing/collapsed timings and preceding-silence
-errors, and review audible arrivals in the short sample. A complete word count
-does not prove every timestamp correct. Preserve unresolved estimates as such.
+## Keep lyric text and timing corrigible
+
+Keep supplied text authoritative and generated timings editable. Compare ordered
+words and counts; inspect missing/collapsed timestamps and first words attached to
+preceding silence. Review audible arrivals in the short sample, retaining unresolved
+estimates as such. A complete word count does not prove every timestamp correct.
 
 Compose phrases with readable hierarchy and per-word timing when requested.
-For synthetic text such as “Lanterns drift softly”, emphasize “Lanterns”, keep the
-connecting words smaller and preserve their separate audible arrivals. Choose
-effects to serve the phrase rather than requiring a fixed effect count. Keep the
-caption track readable independently of the decorative word animation.
+For synthetic text such as “Lanterns drift softly”, emphasize “Lanterns”, use smaller
+supporting words and retain each audible arrival. Choose effects that serve the
+phrase, with a caption track readable independently of the decorative animation.
 
-Measure and probe with the actual rendering backend and loaded fonts. Font/em
-metrics from one library can disagree with another rasterizer, including libass.
-Render representative large/small words, outlines and entrance extremes, then
-inspect their raster bounds, overlap, safe areas and contrast. A layout manifest
-cannot establish that the encoded glyphs match it. Finish with the existing
-[encoded delivery checks](motion-sequences.md#persist-and-qualify-the-actual-delivery)
-and report viewing/listening coverage separately from mechanical checks.
+## Measure typography in the delivery renderer
+
+Font/em measurements can differ between rasterizers, including Pillow and libass.
+Probe with the actual backend and loaded fonts: large/small words, outlines,
+dense phrases and entrance extremes. Inspect raster bounds, overlap, safe areas
+and contrast in the encoded sample. A layout manifest does not establish that
+the encoded glyphs match it. Keep the existing plate legibility check as a screen,
+alongside reading the finished type.
+
+## Worked failure and correction
+
+**Symptom:** moving hair, a swaying hand and large/small arriving words were
+requested, but the sample is a zooming portrait with one caption line.
+
+**Correction:** use the four decisions above to expose the missing part motion
+and word composition. Author the required local motion, preserve source lyrics
+and audible arrivals, then inspect another bounded encoded sample.
+
+**Adjacent control:** a calm background with ordinary captions needs no puppeting,
+replacement eyes or individual word effects.
+
+## Evidence to report
+
+Use the existing busiest-section preview before the expensive full render. Include
+dense words, a strong accent, a complete blink if used and representative part
+motion. View the encoded sample with sound at delivery and small viewing sizes.
+Fix observed mismatches in the source and repeat the bounded sample. This is a
+production check within existing authority, not another permission ceremony.
+
+Full songs retain [long-form streaming](../../orbyn-ui-design/examples/spatial-review/motion-films.md#stream-a-full-length-film).
+For delivery, use [encoded output qualification](motion-sequences.md#persist-and-qualify-the-actual-delivery):
+report decode, cadence, mux metadata and viewing/listening coverage separately.
+Keep subjective acceptance distinct from mechanical passes and preserve separately
+requested outputs, such as an unbranded poster, with their own checks.
