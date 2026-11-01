@@ -99,6 +99,11 @@ local/committed/pushed/merged/published state. Do not claim independent review f
 your own edits. New branches use purpose-based `feat/`, `fix/`, `docs/`, `chore/`
 or `refactor/` names without agent/vendor/model branding.
 
+Library maintainers give standing cleanup authority: after a task's PR merges, its
+owner retires that task's own worktree under
+[retire at delivery](skills/orbyn-worktree/references/task-closeout.md#retire-at-delivery).
+This covers no other owner's tree, and never covers `repo/` targets or emptying the trash.
+
 For worktree isolation, naming and cleanup, follow
 [orbyn-worktree](skills/orbyn-worktree/SKILL.md). Use the primary clone’s sibling
 `<repo>-wt/<purpose>/` root by default; preserve existing owned work and output.
