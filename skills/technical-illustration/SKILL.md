@@ -86,10 +86,15 @@ No browser bypass, publisher, auth edit, history capture or model call is implie
 - The MIT support under `references/upstream/anatomy/` is a pinned maintained
   adaptation, not an upstream installation or active skill. The source record and
   snapshot describe exact scope. Read actual APIs before authoring a new model.
-- Browser, React peers, PDF tools and GPU are conditional prerequisites; unavailable
+- Browser, React peers, PDF tools, OpenCV and GPU are conditional prerequisites; unavailable
   surfaces remain blocked. Core SVG does not qualify React, print, WebGL or beta 3D.
 - The source's full configured audits are finite sampled checks, not continuous
   physical proof. Keep supported runtime/platform evidence separate from written
   methods and model behavior.
 - Existing TDD, UI, performance and publication policies remain the owners of their
   general contracts.
+
+## Read when needed
+
+- For one supplied image that must drive relighting, parallax, figure echoes or
+  effects behind a subject, read [still to layers](references/still-to-layers.md).
