@@ -8,7 +8,7 @@ import shutil
 import subprocess
 SOURCE = Path(__file__).resolve().parent
 SKILLS = SOURCE.parents[2]
-FILES = ['index.html', 'style.css', 'engine.mjs', 'model.mjs', 'build.mjs', 'model.test.mjs', 'timeline.mjs', 'review-model.mjs', 'review.mjs', 'review.css', 'serve.py', 'reconcile.mjs', 'README.md', 'film.mjs', 'film.html', 'film-page.mjs', 'export-film.mjs', 'motion-films.md', 'film-primitives.mjs', 'demo-media.mjs', 'film-gallery.json', 'film-music-video.example.json']
+FILES = ['index.html', 'style.css', 'engine.mjs', 'model.mjs', 'build.mjs', 'model.test.mjs', 'timeline.mjs', 'review-model.mjs', 'review.mjs', 'review.css', 'serve.py', 'reconcile.mjs', 'README.md', 'film.mjs', 'film.html', 'film-page.mjs', 'export-film.mjs', 'frame-stream.mjs', 'motion-films.md', 'film-primitives.mjs', 'demo-media.mjs', 'film-gallery.json', 'film-music-video.example.json']
 
 
 def prepare(destination, node='node', assets=None, motion_example=None, motion_project=None, component_source=None, graphics_profile=None):

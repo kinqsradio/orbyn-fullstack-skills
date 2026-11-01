@@ -74,7 +74,8 @@ of pixel-identical upstream effects. Avoid blur/effects that reduce legibility.
 
 One browser/page renders sequentially; encoder threads are bounded 1–4. Current
 bounded envelope: even dimensions up to 3840 per side and 8,294,400 pixels,
-10–60 FPS, duration up to 120 seconds and no more than 3,600 output frames. The
+10–60 FPS, duration up to 120 seconds and no more than 3,600 output frames, or
+the [long-form limits](#stream-a-full-length-film) with `--stream`. The
 12-second 720p qualification is evidence for that tested workload, not a promise
 that every permitted extreme passes. `--timeout` is 10–1,800 seconds (default 600),
 with conservative raw-frame disk reservation checks, a remaining-space floor, retained failures and owned-process cancellation. No
@@ -83,6 +84,69 @@ full-film qualification at that resolution. Capture normalizes the long edge to
 1,280 logical pixels and scales device pixels, then Lanczos-normalizes the encoded
 frame to exact output dimensions; the same composition survives 720p/1080p/4K.
 Portrait or custom aspect ratios still require their own readability review.
+
+## Stream a full-length film
+
+A 159-second song at 60 FPS has 9,549 frames, which is past the default limits and
+far past what raw frames should take on disk. Add `"longForm": true` to the spec
+and `--stream` to the command. The film may then run 900 seconds, 54,000 frames and
+240 shots, and `--timeout` may reach 14,400 seconds. Without `--stream` a `longForm`
+spec is rejected.
+
+```sh
+node /ABS/PACKAGE/export-film.mjs --package /ABS/PACKAGE --output /ABS/REPO/docs/design/NEW_EXPORT --spec /ABS/song.json --audio /ABS/owned-track.wav --stream --frame-source /ABS/canvas-film --width 1920 --height 1080 --timeout 3600 --playwright /ABS/playwright/index.mjs
+```
+
+The encoder starts first and frames go straight to its stdin, so a full pipe pauses
+rendering and no frame reaches disk. Disk reservation covers the encoded film only.
+Retained output matches the other path, minus `frames/`. To look at a source frame,
+render it again; a failed film leaves its receipt and logs but no frames.
+
+Two capture sources share that pipe:
+
+| Source | Command | Pixels |
+|---|---|---|
+| Film stage (`film.html`) | `--stream` | PNG screenshots piped to FFmpeg, slower but with the same DOM renderer and layout checks |
+| Canvas page | `--stream --frame-source /ABS/DIR` | Raw RGBA read in the page and POSTed to a tokened loopback server |
+
+`--frame-source` names a directory with `index.html`. The exporter reads its web
+files into memory once, serves them from loopback and hashes them into the receipt.
+Links reject, other file types stay unserved and are listed as excluded, and
+a Content-Security-Policy header blocks requests off that origin. The page defines `window.streamFrame`:
+
+```js
+window.streamFrame = {
+  rowOrder: 'bottom-first',                  // or 'top-first'; there is no default
+  boot({width, height, frames, fps, spec, reducedMotion}) {},
+  calibrate({width, height, pixels}) {},     // draw this Y-down card through the real passes
+  render({index, time, sample}) {},          // pure: draw from index/time only
+  read() { return pixels; }                  // opaque RGBA, width*height*4 bytes
+};
+```
+
+Before encoding, `calibrate` proves the picture is upright; read
+[full-screen pass orientation](../../../technical-illustration/references/fullscreen-pass-orientation.md).
+`read` runs in the same task as `render`, so the buffer needs no preservation.
+
+On macOS the exporter launches Chromium with `--use-angle=metal`, because headless
+Chromium otherwise falls back from the GPU. Other platforms get no extra flag.
+Only canvas pages receive it, and `receipt.stream.renderer` records what ran. Treat
+`softwareRenderer: true` as a separate qualification cell, and raise `--timeout`
+to suit: SwiftShader is far slower than a GPU.
+
+Streaming adds its own receipts. `stream-probe.log` repeats every check in
+[Validate the actual output](#validate-the-actual-output) and also requires BT.709
+tags, which this path writes so colour matches on HD players. `stream-decode.log`
+fails on any decoder message or a decoded frame count that differs from the film.
+`receipt.stream` records capture source, accepted frames and bytes, renderer,
+orientation, probe and decode results. An out-of-order or wrong-sized frame, or an
+encoder that exits early, fails the export at once and retains the receipt.
+
+Recorded qualification: a synthetic two-pass WebGL2 page ran 9,549 frames at 1080p60
+with a tone track on an Apple M1 Pro over Metal. It took 12 minutes, passed 79 GB
+of pixels through the pipe and left 19 MB on disk, peaking at 466 MB in the Node
+process. That is evidence for that workload only. Heavy shaders, a real song, the
+film stage at full length and other platforms each need their own run.
 
 ## Optional audio and captions
 
@@ -115,9 +179,10 @@ Byte hashes are receipts, not cross-machine visual determinism or meaningful-fil
 quality. Open/play/seek the real MP4 in the intended player, inspect cuts and text,
 and record any remaining audio/caption/platform limits.
 
-The focused Python/Node checks cover specs, bad controls, no overwrite and failure
-settlement. `MOTION_EXPORT_TESTS=1` with the existing browser/tool variables described
-in the README runs the real small MP4 blur/effects/caption probe/decode test. Full
+The focused Python/Node checks cover specs, bad controls, no overwrite, failure
+settlement and the streaming sink, server and orientation classifier. `MOTION_EXPORT_TESTS=1` with the existing browser/tool variables described
+in the README runs the real small MP4 blur/effects/caption probe/decode test and
+the real streaming, flipped-pass and encoder-death controls. Full
 12-second 360-frame 720p export is a separate recorded qualification, not a model
 benchmark or blanket native/GPU/accessibility certification.
 

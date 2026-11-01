@@ -50,6 +50,20 @@ class MotionExportTests(unittest.TestCase):
         self.out.mkdir(); sentinel = self.out/'receipt.json'; sentinel.write_text('preserve me')
         self.assertNotEqual(self.run_export().returncode, 0); self.assertEqual(sentinel.read_text(), 'preserve me')
 
+    def write_long_spec(self):
+        spec = self.owner/'long.json'; spec.write_text(json.dumps({'version': 1, 'longForm': True, 'title': 'Synthetic long film', 'fps': 60, 'bpm': 120, 'duration': 9549/60, 'shots': [{'id': 'whole', 'from': 0, 'to': 9549/60, 'composition': 'title', 'title': 'LONG', 'caption': 'Synthetic full-length film.'}]}))
+        return spec
+
+    def test_long_form_film_requires_the_streaming_path(self):
+        spec = self.write_long_spec()
+        result = self.run_export('--spec', str(spec))
+        self.assertNotEqual(result.returncode, 0); self.assertIn('needs --stream', result.stderr); self.assertFalse(self.out.exists())
+
+    def test_frame_source_alone_and_stream_timeout_are_bounded(self):
+        self.assertIn('needs --stream', self.run_export('--frame-source', str(self.owner)).stderr); self.assertFalse(self.out.exists())
+        self.assertNotEqual(self.run_export('--stream', '--timeout', '20000').returncode, 0); self.assertFalse(self.out.exists())
+        self.assertNotEqual(self.run_export('--timeout', '2000').returncode, 0); self.assertFalse(self.out.exists())
+
     def test_owned_raster_inputs_are_sealed_and_markup_rejects(self):
         imported = self.owner/'imported'
         module('film_import_prepare', SOURCE/'prepare.py').prepare(imported, self.node, {'cover': self.pkg/'media/gallery.png'})
@@ -128,3 +142,58 @@ exit 0
             self.assertTrue(interrupted['cleanup']['browserCloseCompleted']); self.assertTrue(all(c['exitCode'] is not None or c['signal'] is not None for c in interrupted['cleanup']['directChildren']))
         finally:
             if process.poll() is None: process.kill(); process.communicate()
+
+    def streamed(self, source, tool=None, timeout='60'):
+        spec = self.owner/'stream.json'; spec.write_text(json.dumps({'version': 1, 'title': 'Synthetic stream', 'fps': 30, 'bpm': 120, 'duration': 2, 'shots': [{'id': 'whole', 'from': 0, 'to': 2, 'composition': 'title', 'title': 'STREAM', 'caption': 'Synthetic pixels.'}]}))
+        return self.run_export('--spec', str(spec), '--stream', '--frame-source', str(source), '--width', '320', '--height', '240', '--timeout', timeout, '--ffmpeg', tool or shutil.which('ffmpeg') or '/missing', '--ffprobe', shutil.which('ffprobe') or '/missing')
+
+    def rgb_at(self, video, x, y):
+        raw = subprocess.run([shutil.which('ffmpeg'), '-v', 'error', '-i', str(video), '-frames:v', '1', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'], capture_output=True, check=True).stdout
+        return tuple(raw[(y*320+x)*3:(y*320+x)*3+3])
+
+    @unittest.skipUnless(os.environ.get('MOTION_EXPORT_TESTS') == '1', 'Optional actual existing browser/FFmpeg export; set MOTION_EXPORT_TESTS=1')
+    def test_actual_stream_keeps_frames_off_disk_and_writes_receipts(self):
+        result = self.streamed(ROOT/'tests/fixtures/stream-film')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        receipt = json.loads((self.out/'receipt.json').read_text()); stream = receipt['stream']
+        self.assertEqual(receipt['status'], 'complete'); self.assertFalse((self.out/'frames').exists())
+        self.assertEqual((stream['capture'], stream['rowOrder'], stream['orientation'], stream['frames'], stream['bytes']), ('canvas-rgba', 'bottom-first', 'upright', 60, 60*320*240*4))
+        self.assertEqual((stream['probe']['frames'], stream['probe']['colorSpace'], stream['decode']['frames'], stream['decode']['decoderMessages']), (60, 'bt709', 60, 0))
+        self.assertTrue((self.out/'stream-probe.log').is_file()); self.assertTrue((self.out/'stream-decode.log').is_file())
+        self.assertIn('/film.js', receipt['frameSource']['files'])
+        top, bottom = self.rgb_at(self.out/'film.mp4', 200, 40), self.rgb_at(self.out/'film.mp4', 200, 200)
+        self.assertGreater(top[0], 200); self.assertLess(top[1], 40); self.assertLess(top[2], 40)
+        self.assertGreater(bottom[2], 200); self.assertLess(bottom[0], 40); self.assertLess(bottom[1], 40)
+
+    @unittest.skipUnless(os.environ.get('MOTION_EXPORT_TESTS') == '1', 'Optional actual existing browser/FFmpeg export; set MOTION_EXPORT_TESTS=1')
+    def test_actual_upside_down_passes_stop_before_encoding(self):
+        broken = self.owner/'broken'; shutil.copytree(ROOT/'tests/fixtures/stream-film', broken)
+        film = broken/'film.js'; text = film.read_text(); film.write_text(text.replace("const ART_V = '1. - uv.y'", "const ART_V = 'uv.y'"))
+        result = self.streamed(broken)
+        self.assertNotEqual(result.returncode, 0)
+        receipt = json.loads((self.out/'receipt.json').read_text())
+        self.assertEqual(receipt['stream']['orientation'], 'flipped-vertical'); self.assertIn('orientation', receipt['error']); self.assertFalse((self.out/'film.mp4').exists())
+
+    @unittest.skipUnless(os.environ.get('MOTION_EXPORT_TESTS') == '1', 'Optional actual existing browser/FFmpeg export; set MOTION_EXPORT_TESTS=1')
+    def test_actual_encoder_death_fails_the_export_quickly(self):
+        tool = self.owner/'ffmpeg'
+        tool.write_text(f'#!/bin/sh\ncase "$1" in -version) exec {shutil.which("ffmpeg")} -version;; esac\nhead -c 100000 >/dev/null\nexit 9\n'); tool.chmod(0o700)
+        started = time.monotonic(); result = self.streamed(ROOT/'tests/fixtures/stream-film', tool=str(tool))
+        self.assertNotEqual(result.returncode, 0); self.assertLess(time.monotonic() - started, 30)
+        receipt = json.loads((self.out/'receipt.json').read_text()); self.assertEqual(receipt['status'], 'failed'); self.assertIn('Encoder', receipt['error'])
+
+    @unittest.skipUnless(os.environ.get('MOTION_EXPORT_TESTS') == '1', 'Optional actual existing browser/FFmpeg export; set MOTION_EXPORT_TESTS=1')
+    def test_actual_stalled_encoder_hits_the_time_budget(self):
+        tool = self.owner/'ffmpeg'
+        tool.write_text(f'#!/bin/sh\ncase "$1" in -version) exec {shutil.which("ffmpeg")} -version;; esac\ntrap "" TERM\nsleep 60\n'); tool.chmod(0o700)
+        started = time.monotonic(); result = self.streamed(ROOT/'tests/fixtures/stream-film', tool=str(tool), timeout='10')
+        self.assertNotEqual(result.returncode, 0); self.assertLess(time.monotonic() - started, 25)
+        receipt = json.loads((self.out/'receipt.json').read_text()); self.assertEqual(receipt['status'], 'cancelled'); self.assertTrue(receipt['cleanup']['browserCloseCompleted'])
+
+    @unittest.skipUnless(os.environ.get('MOTION_EXPORT_TESTS') == '1', 'Optional actual existing browser/FFmpeg export; set MOTION_EXPORT_TESTS=1')
+    def test_actual_dom_stage_streams_without_frames(self):
+        spec = self.owner/'dom.json'; spec.write_text(json.dumps({'version': 1, 'title': 'Synthetic DOM stream', 'fps': 10, 'bpm': 120, 'duration': 1, 'shots': [{'id': 'whole', 'from': 0, 'to': 1, 'composition': 'title', 'title': 'STREAM', 'caption': 'Synthetic stage.'}]}))
+        result = self.run_export('--spec', str(spec), '--stream', '--width', '640', '--height', '360', '--samples', '2', '--ffmpeg', shutil.which('ffmpeg') or '/missing', '--ffprobe', shutil.which('ffprobe') or '/missing')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        receipt = json.loads((self.out/'receipt.json').read_text())
+        self.assertEqual((receipt['stream']['capture'], receipt['stream']['frames'], receipt['stream']['decode']['frames']), ('dom-png', 20, 10)); self.assertFalse((self.out/'frames').exists())
