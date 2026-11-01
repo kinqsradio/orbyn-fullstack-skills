@@ -124,6 +124,12 @@ only after ownership, later commits, dependencies, ignored artifacts, live previ
 and recovery are resolved. A refusal has no automatic force fallback; local/remote
 ref deletion and tracking prune remain separate.
 
+After a merge, [retire the worktree in the same closeout](references/task-closeout.md#retire-at-delivery)
+when you have cleanup authority, and archive its ignored files first: plain
+`git worktree remove` deletes them. Keep a merged tree only with a named reason and
+review event. Before creating a worktree, run the inventory and retire your own
+finished trees.
+
 Return the selected path/base/head, verified delivery state, retained resources,
 recovery pointers and actual closeout disposition. A dry run changes nothing.
 
