@@ -7,6 +7,38 @@ an assessment, not new authority to commit, publish, stop resources or delete.
 A cleanup dry run inventories and proposes only; it does not perform teardown,
 move files, prune refs, reclone or run mutation probes.
 
+## Retire at delivery
+
+A merged worktree is finished work, and leaving it costs storage every day. Make
+retirement the last closeout step, in the task that merged it:
+
+1. Run `python3 skills/orbyn-worktree/scripts/worktree_retire.py inventory`. A tree
+   is `ready` only when its exact head landed, it is clean, nothing has files open
+   in it and no host manages it. Fix or record every `hold` reason.
+2. Name the rebuildable ignored paths: package and build caches, virtual
+   environments, downloaded models, `node_modules`, native build products. Check
+   that the lockfile or command to rebuild them is recorded.
+3. Retire that exact path:
+   `python3 skills/orbyn-worktree/scripts/worktree_retire.py retire <path> --archive output/worktree-archive --drop <rebuildable-path>`.
+   It moves the remaining ignored files to the archive, sends each drop to the
+   system trash, records `RETIRED.json` and removes the tree without force.
+4. Report what was archived and what went to the trash. Trash and disk space return
+   only when the user empties it, so never empty it for them.
+
+Run this only with cleanup authority from the user or project policy. Without it,
+report the exact command and leave the tree in place. A plain
+`git worktree remove` deletes ignored files without warning, so archive them first.
+
+Keep a tree past merge only with a named reason and review event, such as a preview
+awaiting review or dependent work. A task that creates a worktree first runs
+`inventory` and retires its own finished trees. When the disk is under 15% free or
+holds trees with no reason, report them to the user at the next handoff.
+
+Keep `output/worktree-archive/` small too. Selected receipts, reports and failed
+attempts stay; once review and reproduction needs have passed, propose retiring
+superseded captures and exports through the
+[retention decision](../../orbyn-workflow/references/artifact-lifecycle.md#retention-and-growth-decisions).
+
 ## One identity, independently verified states
 
 Reuse the existing task/issue note and later PR alias with an issue backlink where
@@ -49,9 +81,10 @@ owns what to keep and how to make the retained package reopenable.
 
 ## Retirement gate for an exact path or ref
 
-Only propose an item as ready when its following boundaries are accounted for;
-perform removal later only with applicable cleanup authority and fresh rechecks.
-Use existing Git/host tools and a small task record, not a new inventory platform.
+Treat an item as ready only when its following boundaries are accounted for; remove
+it only with applicable cleanup authority and fresh rechecks. `worktree_retire.py`
+checks identity, landing, cleanliness and open files, and moves ignored files. You
+still judge dependent work, shared resources and which ignored paths are rebuildable.
 
 1. **Identity and ownership:** exact canonical path/ref and repository; actual
    current writer, host attachment/session cwd, locks and dependent work. Primary,
