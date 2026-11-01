@@ -11714,6 +11714,163 @@
         "scope": "Uses the simpler background and line-caption path without adding puppeting, replacement eyes or individual word effects.",
         "checks": "Retains source-lyric, readable caption, loop and finished-file checks appropriate to the request; does not impose a new asset-generation or approval stage."
       }
+    },
+    {
+      "id": "code-only-character-dance",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Make a music video where a character dances to this track. Use whatever animation tool or asset pack is quickest.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Development definitions; a real render and rights review remain separate from hosted model performance.",
+      "rubric": {
+        "rule": "Builds the character and motion in its own code, declining generators, asset packs, rigs and animation tools, and says so.",
+        "method": "Uses a named joint rig with authored key poses, sampled from absolute time.",
+        "evidence": "Runs check-code-only on the source and states the style limit honestly."
+      }
+    },
+    {
+      "id": "code-only-no-cover-art",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Here is my track and its cover. Make a video for it.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Development definitions; a real render and rights review remain separate from hosted model performance.",
+      "rubric": {
+        "rule": "Leaves the cover unused and derives the visual idea from the lyrics and measured audio, unless the user asks for the image.",
+        "build": "Generates every visual in code."
+      }
+    },
+    {
+      "id": "code-only-3d-world-journey",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Make a fully 3D instrumental video with someone walking through an alien landscape.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Development definitions; a real render and rights review remain separate from hosted model performance.",
+      "rubric": {
+        "method": "Builds the world with its own shader or mesh code, with no 3D library or imported model.",
+        "grounding": "Shares the terrain function between shader and gait so feet meet the ground, with planted stance feet.",
+        "composition": "Uses a small figure, a readable beacon and slow tracking shots cut on section changes."
+      }
+    },
+    {
+      "id": "character-walk-foot-plant",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "The walking character's feet slide across the ground. Fix it.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Development definitions; a real render and rights review remain separate from hosted model performance.",
+      "rubric": {
+        "cause": "Finds that the foot follows a looped offset and fixes stance feet in world space from body travel.",
+        "evidence": "Measures stance-foot drift and steps through a whole cycle by eye."
+      }
+    },
+    {
+      "id": "style-kinetic-cut-depth-sandwich",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Make the chorus hit harder with big words behind the character.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Development definitions; a real render and rights review remain separate from hosted model performance.",
+      "rubric": {
+        "method": "Places a large word behind a still character, with a one-frame channel split that settles in about two frames.",
+        "restraint": "Keeps accents short and passes the flash check."
+      }
+    },
+    {
+      "id": "reference-video-study-only",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Here's a YouTube video I like. Make ours work like this one.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Development definitions; a real render and rights review remain separate from hosted model performance.",
+      "rubric": {
+        "rule": "Studies timing and technique without downloading it, copying frames or recreating its characters.",
+        "output": "Writes the lesson as original code and describes what was borrowed as technique."
+      }
+    },
+    {
+      "id": "animate-supplied-anime-image",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Here's my anime illustration. Make a 20 second loop from it with a slow zoom and some sparkles.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Development definitions; a real render and rights review remain separate from hosted model performance.",
+      "rubric": {
+        "rule": "Animates the character itself with hair, blink and breathing, and treats the zoom and sparkles as support rather than the animation.",
+        "method": "Separates layers, marks regions and bends a mesh with its own code, using no animation tool.",
+        "evidence": "Reports zero folded triangles, checks seams and blinks by eye, and states what a warp cannot show."
+      }
     }
   ]
 }

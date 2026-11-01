@@ -5,6 +5,7 @@ import importlib.metadata
 from pathlib import Path
 import re
 import sys
+import wave
 from audio_tools import cancellation_signals, decode_audio, digest, new_output, read_json, receipt, regular_file, run, write_json
 from known_lyrics import REPEAT_THRESHOLD, align_supplied, lyric_prompt, mark_collapsed, parse_lyrics, repair_repeats, validate_heard
 from lyrics_worker import read_samples
@@ -26,6 +27,17 @@ def heard_words(args, lines, output, decoded):
     return read_json(output / 'raw-asr.json')['words'], read_json(output / 'asr-runtime.json')
 
 
+def repair_off(words):
+    """The record repair_repeats would give, for a run without numpy."""
+    untimed = sorted({w['line'] for w in words if w['start'] is None})
+    return {'repaired': [], 'unresolved': [{'line': n, 'reason': 'repeat repair was turned off'} for n in untimed], 'provenance': {}}
+
+
+def decoded_seconds(path):
+    with wave.open(str(path), 'rb') as source:
+        return source.getnframes() / source.getframerate()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ['input', 'lyrics', 'out']:
@@ -34,6 +46,7 @@ def main():
     source_of_times.add_argument('--model-dir', type=Path, help='Local converted faster-whisper model, such as small.en')
     source_of_times.add_argument('--asr-words', type=Path, help='JSON {producedBy, words} from another runtime or a manual pass')
     parser.add_argument('--repeat-threshold', type=float, default=REPEAT_THRESHOLD)
+    parser.add_argument('--no-repeat-repair', action='store_true', help='Skip repeated-line repair, which is the only step here that needs numpy')
     parser.add_argument('--language', default='en')
     parser.add_argument('--device', choices=['cpu', 'cuda'], default='cpu')
     parser.add_argument('--threads', type=int, default=2)
@@ -52,14 +65,14 @@ def main():
     try:
         lines = parse_lyrics(args.lyrics.read_text())
         decoded, _audio = decode_audio(source, output, args.ffmpeg, args.ffprobe, 16000, args.max_seconds)
-        samples = read_samples(decoded)
-        duration = len(samples) / 16000
+        samples = None if args.no_repeat_repair else read_samples(decoded)
+        duration = decoded_seconds(decoded)
         heard, asr_runtime = heard_words(args, lines, output, decoded)
         words, rejected = align_supplied(lines, validate_heard(heard, duration))
         collapsed = mark_collapsed(words)
-        repeats = repair_repeats(samples, 16000, words, lines, args.repeat_threshold)
+        repeats = repair_off(words) if args.no_repeat_repair else repair_repeats(samples, 16000, words, lines, args.repeat_threshold)
         runtimes = {'asr': asr_runtime,
-                    'repeats': {'kind': 'numpy-waveform-correlation', 'numpy': importlib.metadata.version('numpy'), 'threshold': args.repeat_threshold}}
+                    'repeats': {'kind': 'off'} if args.no_repeat_repair else {'kind': 'numpy-waveform-correlation', 'numpy': importlib.metadata.version('numpy'), 'threshold': args.repeat_threshold}}
         fields = ['id', 'text', 'start', 'end', 'status', 'score']
         write_json(output / 'transcript.json', {
             'version': 1, 'audioSha256': original, 'duration': duration, 'language': args.language, 'revision': 1,
@@ -80,6 +93,10 @@ def main():
                 note='Timing is an estimate. Heard words outside the supplied lyrics are retained for review and never displayed.')
         print(output / 'transcript.json')
         return 0
+    except ModuleNotFoundError as error:
+        receipt(output, 'failed', source, error=f'ModuleNotFoundError: {error}')
+        print(f'{error}. Repeat repair needs numpy; pass --no-repeat-repair to run without it.', file=sys.stderr)
+        return 2
     except (Exception, KeyboardInterrupt) as error:
         receipt(output, 'cancelled' if isinstance(error, KeyboardInterrupt) else 'failed', source,
                 error=type(error).__name__ + ': ' + str(error))

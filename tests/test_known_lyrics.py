@@ -2,6 +2,7 @@
 """Known-lyrics timing contracts on invented text and generated tones; no model runs."""
 import hashlib
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -254,6 +255,28 @@ class AlignCli(unittest.TestCase):
                for i, w in enumerate(['Hold', 'the', 'line', 'tonight'])]
         self.words = self.root / 'heard.json'
         self.words.write_text(json.dumps({'producedBy': 'synthetic test list', 'words': heard}))
+
+    def run_without_numpy(self, *extra):
+        (self.root / 'numpy.py').write_text("raise ModuleNotFoundError('numpy is blocked for this run')\n")
+        return subprocess.run([sys.executable, str(MOTION / 'align-lyrics.py'), *extra], capture_output=True, text=True, cwd=self.root,
+                              env={'PYTHONPATH': str(self.root), 'PATH': os.environ['PATH']})
+
+    def test_a_hand_placed_list_runs_without_numpy_when_repair_is_off(self):
+        out = self.root / 'hand'
+        result = self.run_without_numpy('--input', str(self.source), '--lyrics', str(self.lyrics), '--asr-words', str(self.words),
+                                        '--out', str(out), '--no-repeat-repair')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        timing = json.loads((out / 'lyric-timing.json').read_text())
+        self.assertEqual(timing['runtimes']['repeats'], {'kind': 'off'})
+        self.assertEqual(timing['repeats']['repaired'], [])
+        self.assertTrue(all(item['reason'] == 'repeat repair was turned off' for item in timing['repeats']['unresolved']))
+        self.assertEqual(json.loads((out / 'transcript.json').read_text())['model']['runtimes']['repeats'], {'kind': 'off'})
+
+    def test_without_numpy_the_error_names_the_way_out(self):
+        result = self.run_without_numpy('--input', str(self.source), '--lyrics', str(self.lyrics), '--asr-words', str(self.words),
+                                        '--out', str(self.root / 'blocked'))
+        self.assertEqual(result.returncode, 2)
+        self.assertIn('--no-repeat-repair', result.stderr)
 
     def test_supplied_timing_writes_a_transcript_and_records_each_runtime(self):
         out = self.root / 'attempt'

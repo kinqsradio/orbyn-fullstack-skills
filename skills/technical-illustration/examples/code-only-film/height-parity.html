@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Height parity</title></head>
+<body><pre id="result">running</pre>
+<script type="module">
+// Runs the shader's own height() on the GPU beside the JavaScript height() and writes
+// the largest difference into the page, for tests/test_character_rig.py to read.
+import { SCENE } from './shaders.mjs';
+import { height } from './world.mjs';
+
+const SIZE = 48, TOLERANCE = .01;
+// The walked trail, a valley wall and the far climb toward the beacon.
+const GRIDS = [[-6, -4, .29], [-80, 40, 3.1], [-40, 300, 2.3]];
+const start = SCENE.indexOf('float lattice('), end = SCENE.indexOf('int lodAt(');
+const FRAGMENT = `#version 300 es
+precision highp float; precision highp int; uniform vec2 uOrigin; uniform float uStep; out vec4 color;
+${SCENE.slice(start, end)}
+void main() { color = vec4(height(uOrigin + floor(gl_FragCoord.xy) * uStep, 0)); }`;
+const VERTEX = `#version 300 es
+void main() { gl_Position = vec4(float((gl_VertexID & 1) * 4 - 1), float((gl_VertexID & 2) * 2 - 1), 0., 1.); }`;
+
+function run() {
+  if (start < 0 || end < 0) throw Error('height() not found in the scene shader');
+  const gl = document.createElement('canvas').getContext('webgl2');
+  if (!gl) return { status: 'unavailable', reason: 'WebGL2' };
+  if (!gl.getExtension('EXT_color_buffer_float')) return { status: 'unavailable', reason: 'float targets' };
+  const shader = (type, text) => { const s = gl.createShader(type); gl.shaderSource(s, text); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw Error(gl.getShaderInfoLog(s)); return s; };
+  const program = gl.createProgram();
+  gl.attachShader(program, shader(gl.VERTEX_SHADER, VERTEX)); gl.attachShader(program, shader(gl.FRAGMENT_SHADER, FRAGMENT)); gl.linkProgram(program);
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw Error(gl.getProgramInfoLog(program));
+  gl.useProgram(program); gl.bindVertexArray(gl.createVertexArray());
+  const texture = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, texture); gl.texStorage2D(gl.TEXTURE_2D, 1, gl.RGBA32F, SIZE, SIZE);
+  gl.bindFramebuffer(gl.FRAMEBUFFER, gl.createFramebuffer()); gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
+  if (gl.checkFramebufferStatus(gl.FRAMEBUFFER) !== gl.FRAMEBUFFER_COMPLETE) return { status: 'unavailable', reason: 'float framebuffer' };
+  gl.viewport(0, 0, SIZE, SIZE);
+  const pixels = new Float32Array(SIZE * SIZE * 4);
+  let worst = 0, points = 0, spread = [Infinity, -Infinity];
+  for (const [x0, z0, step] of GRIDS) {
+    gl.uniform2f(gl.getUniformLocation(program, 'uOrigin'), x0, z0); gl.uniform1f(gl.getUniformLocation(program, 'uStep'), step);
+    gl.drawArrays(gl.TRIANGLES, 0, 3); gl.readPixels(0, 0, SIZE, SIZE, gl.RGBA, gl.FLOAT, pixels);
+    for (let j = 0; j < SIZE; j++) for (let i = 0; i < SIZE; i++) {
+      const ours = height(Math.fround(Math.fround(x0) + i * Math.fround(step)), Math.fround(Math.fround(z0) + j * Math.fround(step))), theirs = pixels[(j * SIZE + i) * 4];
+      worst = Math.max(worst, Math.abs(ours - theirs)); points++;
+      spread = [Math.min(spread[0], ours), Math.max(spread[1], ours)];
+    }
+  }
+  return { status: worst <= TOLERANCE ? 'match' : 'differ', worst, tolerance: TOLERANCE, points, spread, renderer: gl.getParameter(gl.RENDERER) };
+}
+
+let outcome;
+try { outcome = run(); } catch (error) { outcome = { status: 'error', reason: String(error) }; }
+document.getElementById('result').textContent = JSON.stringify(outcome);
+</script></body>
+</html>

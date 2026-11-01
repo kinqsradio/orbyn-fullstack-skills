@@ -175,6 +175,9 @@ and mathematical explainers. [lottie.mjs](lottie.mjs) exposes the executable
 data is sampled without an expression-capable player, while expressions, remote
 assets, unsupported masks/mattes/text/font features and excessive budgets refuse
 before rendering. This is a bounded interchange route, not every Lottie feature.
+A Lottie file is third-party animation under the
+[code-only rule](../../../../technical-illustration/references/code-only.md), so use this
+route only when the user approves it for the job.
 The original `vector-study.json` and trusted `vector-study.mjs` remain in the outer
 library as source-authoring inputs; select them explicitly for a fresh package:
 

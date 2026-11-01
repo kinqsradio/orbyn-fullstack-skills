@@ -153,11 +153,12 @@ parity or permission to generate assets, publish or deploy.
 For music-led supplied art/track requests, use the [music-video intake and background
 path](../../orbyn-ui-design/examples/spatial-review/motion-films.md#music-led-artwork-and-music-videos).
 Choose source/rights, actual track/BPM or markers, aspect/duration, crop/focal motion
-and verified text/captions. The original full-frame background path supports a
-moving still with foreground scenes and music. Character motion requires authored
-animation beyond that background path; [lyric performance](lyric-performance.md)
-describes bounded local 2D options and their limits. Do not silently replace
-requested part motion with a pan/zoom still or invoke a paid provider without task
+and verified text/captions. The original full-frame background path pans and zooms a
+picture under foreground scenes and music, so use it only for an image with no character
+in it. When the image holds a character, that character must really move: follow
+[animate an image](animate-an-image.md), and treat pan, zoom and layers as support for
+that motion. [Lyric performance](lyric-performance.md) describes bounded local 2D options
+and their limits. Do not invoke a paid provider without task
 authority.
 
 For frame-accurate audio-reactive shaders, a checkable beat grid or timing supplied
