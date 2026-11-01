@@ -51,6 +51,42 @@ export function withBeatCorrections(data, expectedSha256, beats) {
   validateAnalysis(data, expectedSha256); times(beats, data.analysis.duration);
   const corrected = structuredClone(data); corrected.manual.beats = [...beats]; return corrected;
 }
+export function validateFeatures(data, expectedSha256 = data.audioSha256) {
+  fields(data, ['version', 'audioSha256', 'sampleRate', 'fps', 'frames', 'fftSize', 'status', 'bands', 'bandEnergy', 'kick', 'barEdgesHz', 'barFloorDb', 'bars', 'grid', 'downbeat', 'boundaries', 'boundaryRotation', 'limits']);
+  hash(data.audioSha256); hash(expectedSha256);
+  if (data.version !== 1 || data.audioSha256 !== expectedSha256) throw Error('Stale audio features');
+  fields(data.fps, ['num', 'den']);
+  const whole = (v, low, high) => { if (!Number.isSafeInteger(v) || v < low || v > high) throw Error('Invalid feature count'); return v; };
+  whole(data.fps.num, 1, 1e6); whole(data.fps.den, 1, 1e6); whole(data.frames, 1, 1e6); number(data.sampleRate, 1, 192000);
+  const unit = v => number(v, 0, 1), series = values => { if (!Array.isArray(values) || values.length !== data.frames) throw Error('Feature frame count'); values.forEach(unit); };
+  if (!['silent', 'estimated'].includes(data.status) || !Array.isArray(data.bands) || !data.bands.length) throw Error('Audio feature status/bands');
+  series(data.kick);
+  if (Object.keys(data.bandEnergy).length !== data.bands.length) throw Error('Audio feature bands');
+  for (const band of data.bands) { fields(band, ['name', 'lowHz', 'highHz', 'peak']); if (!Object.hasOwn(data.bandEnergy, band.name)) throw Error('Audio feature bands'); series(data.bandEnergy[band.name]); }
+  const edges = data.barEdgesHz; if (!Array.isArray(edges) || edges.length < 2 || edges.some((v, i) => number(v, 1, 96000) <= (edges[i - 1] ?? 0))) throw Error('Spectrum bar edges');
+  if (!Array.isArray(data.bars) || data.bars.length !== data.frames) throw Error('Feature frame count');
+  for (const row of data.bars) { if (!Array.isArray(row) || row.length !== edges.length - 1) throw Error('Spectrum bar count'); row.forEach(unit); }
+  const { grid, downbeat } = data;
+  if (!['fitted', 'irregular', 'unknown'].includes(grid?.status) || !['manual', 'estimated', 'unknown', 'conflict'].includes(downbeat?.status)) throw Error('Grid/downbeat status');
+  whole(downbeat.beatsPerBar, 2, 12);
+  // A bar line is usable only from accent evidence or a person; grid phase never implies one.
+  if ((downbeat.time !== null) !== ['manual', 'estimated'].includes(downbeat.status) || (downbeat.time !== null && grid.status !== 'fitted')) throw Error('Downbeat time/status');
+  if (downbeat.time !== null) number(downbeat.time);
+  inert(data.boundaries); inert(data.boundaryRotation); inert(data.limits); return data;
+}
+// Validates once: a sampled seek reads one row from a table of every frame.
+export function featureSampler(data, expectedSha256 = data.audioSha256) {
+  validateFeatures(data, expectedSha256);
+  const { fps, grid, downbeat } = data, names = data.bands.map(band => band.name);
+  const phase = (time, origin, period) => (((time - origin) / period) % 1 + 1) % 1;
+  return frame => {
+    if (!Number.isSafeInteger(frame) || frame < 0 || frame >= data.frames) throw Error('Audio feature frame out of range');
+    const time = frame * fps.den / fps.num, fitted = grid.status === 'fitted';
+    return { frame, time, bands: Object.fromEntries(names.map(name => [name, data.bandEnergy[name][frame]])), kick: data.kick[frame], bars: data.bars[frame],
+      gridPhase: fitted ? phase(time, grid.offsetSeconds, grid.periodSeconds) : null, downbeatStatus: downbeat.status,
+      barPhase: downbeat.time === null ? null : phase(time, downbeat.time, grid.periodSeconds * downbeat.beatsPerBar), audioSha256: data.audioSha256 };
+  };
+}
 export function validateTranscript(data, expectedSha256 = data.audioSha256) {
   fields(data, ['version', 'audioSha256', 'duration', 'language', 'model', 'revision', 'words', 'history']);
   hash(data.audioSha256); hash(expectedSha256);

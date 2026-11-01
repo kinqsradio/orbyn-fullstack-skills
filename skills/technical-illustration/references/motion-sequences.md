@@ -115,3 +115,6 @@ and verified text/captions. The original full-frame background path supports a
 moving still with foreground scenes and music; it cannot invent character action
 or lip-sync. Such requests require actual animation/video tools; do not silently
 replace them with a pan/zoom still or invoke a paid provider without task authority.
+
+For frame-accurate audio-reactive shaders, a checkable beat grid or timing supplied
+lyrics, use [music timing](music-timing.md).

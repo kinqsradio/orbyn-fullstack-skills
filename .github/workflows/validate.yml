@@ -27,6 +27,8 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Validate library, presets and evaluation cases
         run: python3 scripts/check-library.py
+      - name: Install numpy for generated-audio contract tests
+        run: python3 -m pip install numpy==2.3.5
       - name: Verify helpers with synthetic fixtures (no model calls)
         run: python3 -m unittest discover -s tests -v
       - name: Verify bundled audit record validators (synthetic data, no target audit)

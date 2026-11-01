@@ -66,6 +66,8 @@ No browser bypass, publisher, auth edit, history capture or model call is implie
 6. For MP4 delivery, use the original [motion-film exporter](../orbyn-ui-design/examples/spatial-review/motion-films.md).
    Author a validated scene/beat specification and run the existing-tool pipeline;
    inspect actual probe/decode/playback receipts and unsupported parity cells.
+   For audio-reactive frames, beat-grid or section checks and supplied lyrics, use
+   [music timing](references/music-timing.md).
 7. Package the selected modules, artifact model/style/assets and reproducible checks
    using [dependencies and update](references/dependencies-and-update.md). Preserve
    notices and original/adapted hashes. Deliver artifact, evidence and actual limits.
