@@ -15,7 +15,9 @@ const number = (v, low, high) => { if (typeof v !== 'number' || !Number.isFinite
 const aligned = v => Math.abs(v - Math.round(v)) < 1e-7;
 const text = (v, max) => { if (typeof v !== 'string' || !v.trim() || v.length > max) throw Error('Invalid film text'); };
 export function validateFilm(spec) {
-  exact(spec, ['version', 'title', 'fps', 'bpm', 'duration', 'shots', ...(Object.hasOwn(spec, 'palette') ? ['palette'] : []), ...(Object.hasOwn(spec, 'font') ? ['font'] : []), ...(Object.hasOwn(spec, 'background') ? ['background'] : [])]);
+  exact(spec, ['version', 'title', 'fps', 'bpm', 'duration', 'shots', ...(Object.hasOwn(spec, 'palette') ? ['palette'] : []), ...(Object.hasOwn(spec, 'font') ? ['font'] : []), ...(Object.hasOwn(spec, 'background') ? ['background'] : []), ...(Object.hasOwn(spec, 'longForm') ? ['longForm'] : [])]);
+  if (Object.hasOwn(spec, 'longForm') && spec.longForm !== true) throw Error('Invalid longForm flag');
+  const long = spec.longForm === true;
   if (spec.palette) { exact(spec.palette, ['paper', 'ink', 'accent', 'deep']); if (Object.values(spec.palette).some(v => typeof v !== 'string' || !/^#[0-9a-f]{6}$/i.test(v))) throw Error('Invalid film palette'); } else if (Object.hasOwn(spec, 'palette')) throw Error('Invalid film palette');
   if (Object.hasOwn(spec, 'font') && !['system-ui', 'serif', 'monospace'].includes(spec.font)) throw Error('Unsupported local font family');
   if (Object.hasOwn(spec, 'background')) {
@@ -24,8 +26,8 @@ export function validateFilm(spec) {
     exact(b.focal,['x','y']); number(b.focal.x,0,1); number(b.focal.y,0,1); exact(b.pan,['from','to']); exact(b.zoom,['from','to']); number(b.dim,0,.8);
     for(const end of ['from','to']) { exact(b.pan[end],['x','y']); number(b.zoom[end],1,2); number(b.pan[end].x,-.25,.25); number(b.pan[end].y,-.25,.25); if(b.fit==='cover' && (Math.abs(b.pan[end].x)>(b.zoom[end]-1)/2 || Math.abs(b.pan[end].y)>(b.zoom[end]-1)/2)) throw Error('Background pan exposes uncovered frame'); }
   }
-  if (![1,2].includes(spec.version) || (spec.version===1 && !Number.isInteger(spec.fps)) || (spec.version===2 && typeof spec.fps!=='object')) throw Error('Unsupported film version/rate'); text(spec.title, 100); number(fpsValue(spec), 10, 60); number(spec.bpm, 20, 240); number(spec.duration, .1, 120);
-  if (!aligned(spec.duration * fpsValue(spec)) || spec.duration * fpsValue(spec) > 3600 || !Array.isArray(spec.shots) || spec.shots.length < 1 || spec.shots.length > 24) throw Error('Film frame/shot budget');
+  if (![1,2].includes(spec.version) || (spec.version===1 && !Number.isInteger(spec.fps)) || (spec.version===2 && typeof spec.fps!=='object')) throw Error('Unsupported film version/rate'); text(spec.title, 100); number(fpsValue(spec), 10, 60); number(spec.bpm, 20, 240); number(spec.duration, .1, long ? 900 : 120);
+  if (!aligned(spec.duration * fpsValue(spec)) || spec.duration * fpsValue(spec) > (long ? 54000 : 3600) || !Array.isArray(spec.shots) || spec.shots.length < 1 || spec.shots.length > (long ? 240 : 24)) throw Error('Film frame/shot budget');
   let end = 0; const ids = new Set();
   for (const s of spec.shots) {
     exact(s, ['id', 'from', 'to', 'composition', 'title', 'caption', ...(Object.hasOwn(s, 'primitive') ? ['primitive', 'data'] : [])]);

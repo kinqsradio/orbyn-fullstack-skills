@@ -66,9 +66,20 @@ No browser bypass, publisher, auth edit, history capture or model call is implie
 6. For MP4 delivery, use the original [motion-film exporter](../orbyn-ui-design/examples/spatial-review/motion-films.md).
    Author a validated scene/beat specification and run the existing-tool pipeline;
    inspect actual probe/decode/playback receipts and unsupported parity cells.
+   Run `python3 scripts/flash-check.py film.mp4` on the finished file; exit 1 means
+   more than three flashes in a second, so fix the source and render again.
 7. Package the selected modules, artifact model/style/assets and reproducible checks
    using [dependencies and update](references/dependencies-and-update.md). Preserve
    notices and original/adapted hashes. Deliver artifact, evidence and actual limits.
+
+## Read when needed
+
+- For a full-length song, or any film over 120 seconds or 3,600 frames, read
+  [long-form streaming](../orbyn-ui-design/examples/spatial-review/motion-films.md#stream-a-full-length-film).
+- For a film or figure that uses WebGL framebuffers or `readPixels`, read
+  [full-screen pass orientation](references/fullscreen-pass-orientation.md).
+- For what a flash result covers and how to act on it, read
+  [motion sequences](references/motion-sequences.md#check-flashing-on-the-rendered-file).
 
 ## Bundled support and evidence limits
 
