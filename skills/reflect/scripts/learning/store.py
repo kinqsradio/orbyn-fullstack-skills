@@ -159,9 +159,11 @@ def register(root, selection):
 
 
 class Memory:
-    def __init__(self, root, selection, skills):
+    def __init__(self, root, selection, skills, retired=()):
         self.root = root_path(root)
-        self.skills = skills
+        # Stored references outlive a skill's retirement; new ones need a current owner.
+        self.owners = set(skills)
+        self.skills = self.owners | set(retired)
         self.conn = control(root)
         try:
             self._enabled()
@@ -269,7 +271,7 @@ class Memory:
         def action():
             require(self.conn.execute('SELECT count(*) FROM data.records').fetchone()[0] < 10000,
                     'Local store limit is 10,000 records')
-            record = make(payload, {'kind': self.kind, 'owner_id': self.sid}, self.skills, self.aliases())
+            record = make(payload, {'kind': self.kind, 'owner_id': self.sid}, self.owners, self.aliases())
             duplicates = []
             for row in self.conn.execute('SELECT body FROM data.records'):
                 other = decode(row[0])
@@ -287,6 +289,11 @@ class Memory:
             for rid, revision in revisions.items():
                 record = self._get(rid)
                 require(type(revision) is int and record['revision'] == revision, 'Revision conflict; reread record')
+                added = patch.get('related_skills', [])
+                if isinstance(added, list):  # Other shapes fail validation below.
+                    kept = record.get('related_skills', [])
+                    require(all(s in kept or (isinstance(s, str) and s in self.owners) for s in added),
+                            'Unknown skill owner')
                 record.update(patch)
                 record.update(revision=revision + 1, updated_at=now())
                 records.append(validate(record, self.skills, self.aliases()))

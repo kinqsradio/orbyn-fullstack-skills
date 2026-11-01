@@ -13,6 +13,14 @@ error interpretation and compatibility. A useful owner absorbs a coherent subset
 of that burden. A pass-through that changes names alone often adds navigation
 without hiding complexity; a small adapter enforcing authority can be valuable.
 
+When caller burden or shallow wrappers motivate a refactor, list everything a
+caller must know: inputs, invariants, ordering, failures and lifecycle. Compare
+that burden with the behavior the module hides. Remove a pass-through that adds
+no useful boundary; keep an owner whose removal would spread complexity across
+callers. Place seams around actual variation and effects, then verify behavior
+through that interface when authorized. Use the project's vocabulary; create a
+glossary or durable rationale only for a real recurring ambiguity.
+
 Separate pure domain decisions from effect wiring where the project benefits.
 Do not create interfaces for every class or copy one architecture into every
 language. Go packages, Rust modules/crates, Python packages, JVM/.NET assemblies

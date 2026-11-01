@@ -7,7 +7,7 @@ function status(message, error = false) {
   $("status").className = error ? "error" : "";
 }
 function render({ preserveInput = false } = {}) {
-  const s = session.state, owner = source.owner.inspect();
+  const s = session.state, owner = source.owner.inspect(), focused = document.activeElement;
   for (const key of ["transport", "run", "business"]) $(key).textContent = s[key];
   $("projection").textContent = `${s.synced ? "Synchronized" : "Repair required"} \xB7 revision ${s.revision ?? "none"}`;
   $("decision").textContent = s.call ? `${s.call.status} \xB7 ${s.call.bytes} argument bytes` : "No complete call";
@@ -31,6 +31,8 @@ function render({ preserveInput = false } = {}) {
   $("record").textContent = `v${owner.record.version} \xB7 ${owner.record.plan.title}`;
   $("writes").textContent = `Business writes: ${owner.writes} \xB7 answered decisions: ${owner.answered}`;
   $("trace").textContent = JSON.stringify(s.trace, null, 2);
+  // A control disabled by this render loses focus; keep the person at its outcome.
+  if (focused?.disabled) $("status").focus({ preventScroll: true });
 }
 async function play(kind, { history = false, reuse = false } = {}) {
   const lease = ++generation, oldDraft = reuse && session.state.dirty ? session.state.draft : null;

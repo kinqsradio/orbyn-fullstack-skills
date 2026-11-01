@@ -4,6 +4,9 @@ Use this method only for an explicitly requested execution evaluation. An answer
 about a hypothetical PR is not evidence that an agent reproduced a bug, changed
 code, preserved local work or delivered the right commit. The agent/controller
 completes the setup and checks; the human need not invoke each skill manually.
+Its real source/tests/Git and local PR fixture supply stronger evidence than scenario
+answers. Keep hosted-provider qualification and ordinary model calls under their own
+authorization.
 
 ## The local fixture and its boundary
 

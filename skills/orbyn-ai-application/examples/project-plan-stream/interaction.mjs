@@ -369,7 +369,7 @@ function createSession(scope, owner, { history = false } = {}) {
       ensure();
       state.transport = "closed";
       fail("delivery-overflow-or-failure");
-      if (state.business !== "confirmed") state.business = "unknown";
+      if (!["confirmed", "rejected"].includes(state.business)) state.business = "unknown";
     },
     eof() {
       ensure();
@@ -381,7 +381,7 @@ function createSession(scope, owner, { history = false } = {}) {
       }
       if (!state.run.startsWith("reported-")) {
         state.run = "incomplete";
-        state.business = state.business === "confirmed" ? "confirmed" : "unknown";
+        if (!["confirmed", "rejected"].includes(state.business)) state.business = "unknown";
         state.activeDecision = false;
         note("eof", "terminal-unconfirmed");
       }

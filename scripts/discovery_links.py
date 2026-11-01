@@ -7,6 +7,14 @@ import re
 NAME = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+)*')
 
 
+def resolves_to(link, target):
+    """A link loop matches nothing; Python 3.11 raises where 3.13 returns the path."""
+    try:
+        return link.resolve() == target.resolve()
+    except RuntimeError:
+        return False
+
+
 def retirements(catalog):
     """Only explicit one-step retirements into a current canonical owner."""
     retired = catalog.get('retired_skills', {})
@@ -34,7 +42,7 @@ def plan_retired_links(project, source_root, retired, sources, hosts):
                 continue  # A smaller unrelated selection never uninstalls old skills.
             link = base/old
             target = source_root/'skills'/old
-            if link.is_symlink() and link.resolve() == target.resolve():
+            if link.is_symlink() and resolves_to(link, target):
                 if (target/'SKILL.md').exists() or (target/'SKILL.md').is_symlink():
                     raise ValueError(f'Retired skill still has an active source: {old}')
                 pending[link] = target.resolve()
@@ -43,7 +51,7 @@ def plan_retired_links(project, source_root, retired, sources, hosts):
 
 def remove_retired_links(pending):
     for link, target in pending.items():
-        if not link.is_symlink() or link.resolve() != target:
+        if not link.is_symlink() or not resolves_to(link, target):
             raise ValueError(f'Retired discovery entry changed after preflight; preserved: {link}')
     for link in pending:
         link.unlink()  # Only preflighted symlinks; never their target directories.
@@ -62,7 +70,7 @@ def plan_links(project, sources, hosts, require_existing=False):
             if not (target / 'SKILL.md').is_file():
                 raise ValueError(f'Missing skill source: {name}')
             if link.exists() or link.is_symlink():
-                if not link.is_symlink() or link.resolve() != target.resolve():
+                if not link.is_symlink() or not resolves_to(link, target):
                     raise ValueError(f'Conflicting discovery entry: {link}')
             elif require_existing:
                 raise ValueError(f'Missing project discovery link: {link}')

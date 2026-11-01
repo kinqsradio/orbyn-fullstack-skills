@@ -1,28 +1,20 @@
 ---
 name: orbyn-content-design
-description: Write and arrange concise Orbyn product content, labels, status, errors and help across web, desktop and mobile. Use for visible interface copy and content hierarchy; preserve user-authored documents and messages.
+description: Write and arrange concise product content, labels, status, errors and help across web, desktop and mobile. Use for visible interface copy and content hierarchy; preserve user-authored documents and messages.
 ---
 
 # Orbyn Content Design
 
-Use the consuming product's vocabulary and brand. Orbyn examples illustrate the
-method; they are not required product features. Make the next action understandable
-at a glance. Routine application screens must not
-read like product documentation or a generated essay. Use with the layout skill
-at `skills/orbyn-ui-design/SKILL.md`; follow the agreed task scope and `AGENTS.md`.
+Make the next action understandable at a glance. Routine application screens must
+not read like product documentation or a generated essay. Use the consuming
+product's vocabulary and brand; Orbyn examples illustrate the method and are not
+required product features. Use with the layout skill at
+`skills/orbyn-ui-design/SKILL.md`; follow the agreed task scope and `AGENTS.md`.
 
-For LinkedIn/social announcements and personal posts, use
-[social-content](../social-content/SKILL.md), with
+This skill owns in-product language. For LinkedIn/social announcements and personal
+posts, use [social-content](../social-content/SKILL.md), with
 [social-preview](../social-preview/SKILL.md) for graphics and feed mockups.
-This skill owns in-product language; marketing drafts do not change app copy.
-
-## Whole-product editing
-
-For an agreed full redesign, inventory every screen and shared surface before
-claiming coverage. Review headings, positions, helper copy, empty/error/loading
-states and selection labels in each family. Theme changes do not qualify content.
-Use grouped settings rows; optional explanations belong in named help, not repeated
-paragraphs under every switch. Preserve user-authored text and essential consequences.
+Marketing drafts do not change app copy.
 
 ## Decide what belongs on screen
 
@@ -40,22 +32,22 @@ paragraphs under every switch. Preserve user-authored text and essential consequ
   just to explain a single setting.
 - Routine Settings/Admin/task surfaces need no welcome essay, motivational quote,
   feature list or marketing footer. Public landing pages can tell the product
-  story; they still need deliberate sections rather than repeated benefit prose.
+  story, in deliberate sections instead of repeated benefit prose.
 
 ## Write concise, specific copy
 
 Use sentence case, familiar terms and concrete verbs. As local starting targets,
 aim for labels of 1–4 words, headings of 2–6 words and helpers around 12–18 words.
-These are editing prompts, not hard limits: clarity and consequences take priority.
-Check the actual narrow layout and translations instead of enforcing word counts
-with tests or clipping text.
+These are editing prompts, not hard limits: clarity and consequences take priority. Check the actual
+narrow layout and translations instead of enforcing word counts with tests or
+clipping text.
 
-- Buttons name the outcome: “Add provider”, “Connect ChatGPT”, “Retry”. Context
+- Buttons name the outcome: “Add provider”, “Connect account”, “Retry”. Context
   must identify the target when several actions exist; icon-only actions need
   accessible names. Keep vocabulary consistent across clients.
 - Status gives the fact: “Off”, “Connected”, “Loading models…”, “Waiting for you”.
-  Do not show the same progress sentence in several visible places. Keep needed
-  live-region announcements accessible without creating duplicate visual copy.
+  Show each progress sentence in one visible place. Keep needed live-region
+  announcements accessible without creating duplicate visual copy.
 - Errors give the problem and a useful next step near the initiating action.
   For example: “Couldn't load models. Try again.” Preserve drafts. Put request
   IDs and technical diagnostics in a revealable detail, not the headline.
@@ -66,14 +58,9 @@ with tests or clipping text.
   chat differs from Background and Overnight. Other products use their own
   concepts; do not impose those features or names.
 
-## Outcomes, attention and control labels
-
-For agent results, daily briefs, routine notifications or execution controls, use
-[factual outcomes and attention](references/outcomes-and-attention.md). Separate
-goal evidence from run termination; preserve partial/failed/waiting/interrupted
-and unknown outcomes, grouped review and distinct pause/stop/revoke/mute effects.
-The [synthetic routine review](examples/routine-review.md) makes the method concrete.
-This changes presentation guidance, not authority or the backend status owner.
+For whole-phrase localization, plural/interpolation/fallback, mixed-direction
+technical text and live native labels, use the UI owner’s
+[localization and RTL contract](../orbyn-ui-design/references/localization-rtl.md).
 
 ## Present real content and long values
 
@@ -86,32 +73,29 @@ This changes presentation guidance, not authority or the backend status owner.
 - Use badges or a compact metadata line for provider kind and state instead of
   embedding every detail in the title. Avoid repeated labels when context already
   names the field. Never show secret/token fragments as decorative metadata.
-- QA fixtures should have short realistic display names, such as “Test provider”.
-  Store “inert”, ownership, no-vendor-call guarantees and cleanup identifiers in
-  fixture receipts/reports, not a long UI title. Preserve existing fixture identity
-  and do not rename it during an active visual batch without coordination.
 - On narrow screens, prioritize the task over explanatory text and repeated
   branding. Reflow controls and use existing text roles; do not shrink fonts,
   disable text scaling or clip content to disguise excess copy.
+
+## Outcomes, attention and control labels
+
+For agent results, daily briefs, routine notifications or execution controls, use
+[factual outcomes and attention](references/outcomes-and-attention.md). Separate
+goal evidence from run termination; preserve partial/failed/waiting/interrupted
+and unknown outcomes, grouped review and distinct pause/stop/revoke/mute effects.
+The [synthetic routine review](examples/routine-review.md) makes the method concrete.
+This changes presentation guidance, not authority or the backend status owner.
 
 ## Review within the existing visual batch
 
 Before handoff, remove repetition and read only the visible headings, values and
 actions: the task should still make sense. Check that optional help is discoverable
-and essential information stays visible. If independent visual review is requested, give the assigned inspector specific
-content risks in the stable-candidate batch; do not start another screenshot sweep solely
-because this skill or documentation changed. Evaluate scanability and task space,
-not just whether all boxes fit. Preserve the full agreed acceptance requirements.
+and essential information stays visible. Evaluate scanability and task space, not
+just whether all boxes fit. Preserve the full agreed acceptance requirements.
 
-## Research basis
+If independent visual review is requested, give the assigned inspector specific
+content risks in the stable-candidate batch; do not start another screenshot sweep
+solely because this skill or documentation changed.
 
-Reviewed 8 October 2026. GOV.UK's [text-input guidance](https://design-system.service.gov.uk/components/text-input/)
-supports short direct labels, visible field labels and relevant hints. Its
-[details guidance](https://design-system.service.gov.uk/components/details/)
-supports disclosing help needed by some users while keeping generally necessary
-information visible. The word targets, fixture names and signed-in copy choices
-above are Orbyn conventions, not standards imposed by those sources.
-
-For whole-phrase localization, plural/interpolation/fallback, mixed-direction
-technical text and live native labels, use the UI owner’s
-[localization and RTL contract](../orbyn-ui-design/references/localization-rtl.md).
+For an agreed full redesign, QA fixture names or the sources behind these targets,
+read [conditional review](references/conditional-review.md).

@@ -159,7 +159,7 @@ def make_server(package, port=0, *, assets=None, validator=None, allow_wasm=Fals
                 return False
             if self.headers.get("Sec-Fetch-Site", "none") not in ("none", "same-origin"):
                 return False
-            return not write or (origin == f"http://{host}" and secrets.compare_digest(self.headers.get("X-Review-Token", ""), token))
+            return not write or (origin == f"http://{host}" and secrets.compare_digest(self.headers.get("X-Review-Token", "").encode(), token.encode()))
         def reply(self, code, body, mime="application/json"):
             raw = body if isinstance(body, bytes) else json.dumps(body, ensure_ascii=True, allow_nan=False).encode()
             self.send_response(code)

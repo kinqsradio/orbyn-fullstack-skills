@@ -12,7 +12,7 @@ export function decodeTrace(text) {
   for (let i = 1; i + 1 < parts.length; i += 2) {
     const match = [null, parts[i], parts[i + 1]];
     const values = {};
-    for (const line of match[2].split('\n')) {
+    for (const line of match[2].split(/\r?\n/)) {
       const field = line.match(/^\/\\ (\w+) = (.+)$/);
       if (!field) continue;
       const [, key, raw] = field;

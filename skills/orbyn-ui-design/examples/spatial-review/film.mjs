@@ -62,7 +62,7 @@ export function renderFilm(stage, frame, spec = DEFAULT_FILM) {
 }
 export function validateCues(cues, duration) {
   if (!Array.isArray(cues) || cues.length < 1 || cues.length > 200) throw Error('Caption budget'); let end = 0;
-  for (const cue of cues) { exact(cue, ['start', 'end', 'text']); number(cue.start, 0, duration); number(cue.end, 0, duration); text(cue.text, 500); if (cue.start < end || cue.end <= cue.start) throw Error('Caption overlap/order'); end = cue.end; }
+  for (const cue of cues) { exact(cue, ['start', 'end', 'text']); number(cue.start, 0, duration); number(cue.end, 0, duration); text(cue.text, 500); if (/\u0000|^\s*\r?\n|\r?\n\s*\r?\n/.test(cue.text)) throw Error('Caption text cannot contain a blank line or NUL'); if (cue.start < end || cue.end <= cue.start) throw Error('Caption overlap/order'); end = cue.end; }
   return cues;
 }
 export function webVTT(cues, duration) {

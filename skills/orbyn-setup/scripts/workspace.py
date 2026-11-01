@@ -16,7 +16,7 @@ def git(root, *args):
                             env=dict(os.environ, GIT_OPTIONAL_LOCKS='0'))
     if result.returncode:
         raise ValueError(result.stderr.strip() or 'Git inspection failed')
-    return result.stdout.strip()
+    return result.stdout.rstrip('\n')  # A leading space is porcelain's unstaged status column.
 
 
 def real_path(path):

@@ -56,7 +56,10 @@ def evidence_path(folder, name):
     value = PurePosixPath(name)
     if value.is_absolute() or '..' in value.parts or '\\' in name or ':' in name:
         raise ValueError('Evidence must remain inside the trial directory')
-    path = (folder / name).resolve(strict=True)
+    try:
+        path = (folder / name).resolve(strict=True)
+    except RuntimeError as error:  # Python 3.11 reports a symlink loop this way.
+        raise ValueError(f'Evidence symlink loop: {name}') from error
     if not path.is_relative_to(folder.resolve()) or not path.is_file():
         raise ValueError('Evidence escapes the trial directory')
     if path.stat().st_size > 2 * 1024 * 1024:
@@ -197,7 +200,7 @@ def grade(path):
                               'unverified' if 'unverified' in verdicts else 'pass')
             row['status'] = row['outcome']  # Routing and task quality remain separate measures.
         else:
-            row['status'] = 'pass' if routing and effects_ok else 'fail'
+            row['status'] = 'pass' if routing and effects_ok and 'fail' not in verdicts else 'fail'
         row['evidence_sha256'] = {str(p.relative_to(path.parent.resolve())):
                                   hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
         for metric in ['duration_ms', 'total_tokens']:

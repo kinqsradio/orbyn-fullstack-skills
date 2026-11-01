@@ -11,6 +11,9 @@ project's manifests, lockfiles, compiler/runtime targets, formatter and existing
 callers. A file extension is a routing hint, not proof of an application's stack,
 version, deployment model or permission to migrate it.
 
+For every code change or review, read the
+[code quality baseline](references/code-quality.md) first, then the language guide.
+
 ## Select only the relevant guide
 
 | Changed code                                      | Local guide                            | Additional owner when relevant              |
@@ -57,15 +60,12 @@ to reconsider the whole stack. Domain/API design stays with
 Select authorized checks by the changed contract under
 [CI design](../orbyn-ci-design/SKILL.md): relevant compiler/analyzer/formatter and
 failure-sensitive behavior checks. Reuse configured commands and disposable
-fixtures. Do not install twelve toolchains, run all suites or claim production,
+fixtures. Do not install every toolchain, run all suites or claim production,
 platform, race freedom or live-agent qualification from these written examples.
 
-The language owner includes independently authored operational guidance and
-synthetic examples. Its consolidated TypeScript guide retains its adapted source
-lineage and [original notice](references/typescript-LICENSE.txt); consolidation
-does not change that history. Dated primary references are evidence/update
-pointers; the instructions work offline. Preserve target-version uncertainty
-rather than claiming moving documentation describes the installed environment.
+The guides work offline. Their dated references are update pointers, and version
+notes apply only when the project's own target matches. Report what you could not
+confirm for the installed version.
 
 ## Express valid states
 

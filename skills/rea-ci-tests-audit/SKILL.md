@@ -8,23 +8,27 @@ description: "Audit REA test and CI quality when specifically requested; does no
 Use this local procedure for an explicit REA CI/test assessment. Ordinary application
 CI belongs to [CI design](../orbyn-ci-design/SKILL.md); a single product regression
 does not require a suite audit. Read the target's local contribution/testing rules.
+
 An audit request does not itself authorize source mutation, a security scan,
 publication or engine installation. Execute checks only within the requested scope.
 
 ## Establish what actually runs
 
 Pin baseline/candidate revisions, workflow revision, toolchain, host prerequisites,
-command and selected tests. Preserve other work in its checkout. A historical pass
-belongs to its executed revision. If offline history or runtime is missing, assess
+command and selected tests. Preserve other work in its checkout. Credit a historical
+pass only to the revision it ran on. If offline history or runtime is missing, assess
 available source/logs and label the missing baseline or lane explicitly.
 
 Trace workflow triggers and path selection through job dependencies, package
 scripts, test discovery, fixture generation, subprocesses, artifacts and final gates.
-Include runtime registration or generated data absent from import graphs. Check
-positive and negative selection paths: required cases should be discovered once
-per intended configuration; intentional platform repeats are separate coverage.
-A missing explicit test or required report must not become a green zero-test lane.
-Optional provider lanes may skip with their prerequisites and missing evidence named.
+Include runtime registration or generated data absent from import graphs.
+
+Check positive and negative selection paths:
+
+- Confirm required cases are discovered once per intended configuration; count
+  intentional platform repeats as separate coverage.
+- A missing explicit test or required report must not become a green zero-test lane.
+- Let an optional provider lane skip with its prerequisites and missing evidence named.
 
 For a [local/engine investigation handoff](../reverse-engineer-anything/references/local-tools.md),
 check local inspection without an engine, missing-decoder fallback, preservation
@@ -37,9 +41,11 @@ REA engine run. A missing optional engine must not skip available local checks.
 For each suspicious pass/failure, name the expected observable behavior, producer,
 consumer and independent oracle. Determine whether a mock reaches the production
 boundary it claims to exercise. Preserve intentionally malformed fixture families
-and their intended rejection. In an authorized disposable copy, a controlled
-failure/mutation can establish whether an assertion or gate detects the regression;
-do not modify another session's checkout or weaken the oracle to get green.
+and their intended rejection.
+
+In an authorized disposable copy, a controlled failure/mutation can establish whether
+an assertion or gate detects the regression. Do not modify another session's checkout
+or weaken the oracle to get green.
 
 Separate reproduced defects, supported costs, hypotheses and unavailable evidence.
 For a failing candidate, compare a clean baseline with the same command and conditions
@@ -49,7 +55,7 @@ fake-provider, boundary and real-engine evidence. Use
 [evidence and recovery](../reverse-engineer-anything/references/evidence-and-recovery.md)
 for partial observations, timeouts and cleanup.
 
-## Assess cost and deliver
+## Assess cost
 
 Measure equivalent completed coverage before recommending optimization. Separate
 setup/build, execution, instrumentation, dependency waits and runner scheduling.
@@ -58,10 +64,12 @@ Preserve malformed input, cancellation, cleanup, identity, permission, capacity
 and meaningful concurrency cases where relevant. Cached historical provider success
 does not qualify a new runtime, permissions or engine contents.
 
+## Fix and deliver
+
 If fixes are authorized, change the owning boundary and verify affected consumers
 and meaningful negative cases. Do not suppress failures, blanket-retry, raise all
-timeouts or prune checks solely to make CI green. Full suites are justified by
-broad risk or unresolved discovery, not every documentation correction.
+timeouts or prune checks solely to make CI green. Run a full suite for broad risk
+or unresolved discovery, not for every documentation correction.
 
 Return revision, scope, reproduction, observed/expected result, consequence,
 recommended correction and check limitations for each finding. Distinguish local

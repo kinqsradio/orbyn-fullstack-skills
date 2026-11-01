@@ -66,7 +66,7 @@ clears that marker, explain the interrupted-run trigger, unsafe reuse and requir
 marker lifetime; label an unexecuted trace source-derived. If the current guard
 already preserves the marker, do not file that older allegation as a new defect.
 Useful lasting rationale belongs in clearer code or a
-[source comment](../../unslop/SKILL.md#comments-inside-source) when edits are authorized.
+[source comment](../../unslop/references/source-comments.md) when edits are authorized.
 
 Reviewed inspiration, 27 October 2026:
 [Google review comments](https://github.com/google/eng-practices/blob/3bb3ec25b3b0199f4940b1aa75f0ac5c5753301c/review/reviewer/comments.md).

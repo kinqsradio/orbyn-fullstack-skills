@@ -6,6 +6,7 @@ import { walk, bugs } from '../skills/architect/references/upstream/pstack-state
 import { mermaid } from '../skills/architect/references/upstream/pstack-statechart/compiler/backends/mermaid.ts';
 
 import { guardView } from '../skills/architect/scripts/guard-statechart-view.mjs';
+import { decodeTrace } from '../skills/architect/examples/leased-job/replay.mjs';
 
 const graph = (nodes, edges) => ({ states: new Map(nodes.map(([id, vars, start = false, breaks = []]) => [id, { vars, start, breaks }])), steps: edges.map(([from, to, action]) => ({ from, to, action })) });
 const draw = (g, view, loops = []) => {
@@ -69,4 +70,11 @@ test('invariant and temporal rule identities remain distinct despite equal names
 
 test('guard rejects malformed step exports instead of silently replacing them', () => {
   assert.throws(() => guardView({ step: 'not a function' }), /step must be a function/);
+});
+
+test('sample trace decoder accepts the CRLF output its state header already allows', () => {
+  const trace = ['State 1: <Initial predicate>', '/\\ phase = "ready"', '/\\ generation = 0', '/\\ owner = 0', '/\\ tokens = <<0, 0>>', '/\\ resultGeneration = 0', '/\\ resultWorker = 0', '/\\ publishCount = 0', '/\\ lateCancel = FALSE', ''];
+  const lf = [...trace, 'State 2: <Claim line 1>', ...trace.slice(1)].join('\n');
+  const crlf = lf.replaceAll('\n', '\r\n');
+  assert.deepEqual(decodeTrace(crlf), decodeTrace(lf));
 });

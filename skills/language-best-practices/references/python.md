@@ -6,46 +6,50 @@ Inspect pyproject.toml or packaging metadata, lockfile, interpreter floor and th
 
 ## Apply at the affected boundary
 
-- Own files/connections with context managers and close async resources before their event loop ends. Do not perform blocking I/O directly in a coroutine's event loop.
-- Propagate asyncio cancellation after cleanup. TaskGroup requires Python 3.11+; do not backport its syntax into an older target or swallow BaseException to make a job look successful.
-- Type hints and dataclasses do not validate external values. Parse at the boundary and keep mutable defaults per instance.
-- Distinguish bytes from text and naive from timezone-aware timestamps at transport/storage boundaries. Avoid mutable default arguments and broad exception-to-success fallbacks.
+- Own files and connections with `with`/`async with`, and close async resources before their event loop ends. Move blocking I/O out of coroutines with an async client or `asyncio.to_thread`.
+- Keep a reference to every `create_task` result: the event loop holds tasks weakly, so an unreferenced task can be collected mid-run. Prefer `asyncio.TaskGroup` (3.11+ only), which holds, awaits and raises for its children.
+- Propagate asyncio cancellation after cleanup. Do not swallow `CancelledError` or `BaseException` to make a job look successful.
+- Catch the narrowest exception that you can act on, and keep the cause: `raise SyncError(invoice_id) from err`.
+- Type hints and dataclasses do not validate external values. Parse at the boundary.
+- Distinguish bytes from text. Pass `encoding="utf-8"` explicitly: Python uses UTF-8 by default only from 3.15, and earlier versions follow the locale.
+- Use aware timestamps: `datetime.now(UTC)` (3.11+). `datetime.utcnow()` is deprecated and returns a naive value.
 
 ## Worked failure and correction
 
-Two instances must not share a pending-work list:
+A default argument is built once, so every call shares it:
 
 ```python
-from dataclasses import dataclass, field
+# Wrong: pending persists across calls.
+def enqueue(item, pending=[]):
+    pending.append(item)
+    return pending
 
-@dataclass
-class PendingWork:
-    ids: list[str] = field(default_factory=list)
+def enqueue(item, pending=None):
+    pending = [] if pending is None else pending
+    pending.append(item)
+    return pending
 ```
 
-The factory fixes per-instance ownership; it does not make concurrent mutation
-safe or turn parsed strings into authorized task identifiers.
+In a dataclass, use `field(default_factory=list)`. The fix gives per-call or
+per-instance ownership; it does not make concurrent mutation safe or turn parsed
+strings into authorized task identifiers.
+
+## Traps to check
+
+- Closures bind names, not values: `[lambda: i for i in ids]` all see the last `i`. Bind with `functools.partial` or a default argument.
+- Pass `subprocess.run` an argument list; avoid `shell=True` with any input. Never `pickle.load` or `yaml.load` untrusted data; use JSON or `yaml.safe_load`.
+- Keep imports free of network and setup effects, and preserve package boundaries instead of patching `sys.path`. The application owns log handlers.
+- Register cleanup during partial setup.
+- Use explicit validation for external input: `assert` disappears under `-O`, so required checks and side effects must not depend on it. Assertions remain appropriate for tests and debug invariants.
 
 ## Evidence to report
 
 Use the configured type checker and formatter, then authorized focused tests for malformed input, cleanup or cancellation. Do not claim a type checker validates runtime input.
 
-## Maintainability and checks
-
-Keep imports free of unrequested network/setup effects, preserve package/syntax
-boundaries instead of patching sys.path, and let the application own log handlers.
-Register cleanup during partial setup. Use explicit validation/error paths for
-external input: `assert` can disappear under `-O`. Assertions remain appropriate
-for tests/debug invariants; required checks and side effects must not depend on them.
-
 ## Primary references
 
-Reviewed 24 October 2026. These independently written instructions and synthetic
-examples are usable offline. The links identify semantics and update evidence;
-verify compatibility with the project's target before using newer APIs.
+Reviewed 24 October 2026: [Python 3.13 asyncio](https://docs.python.org/3.13/library/asyncio-task.html), [Python 3.13 dataclasses](https://docs.python.org/3.13/library/dataclasses.html), [logging ownership](https://docs.python.org/3/library/logging.html).
 
-[Python 3.13 asyncio](https://docs.python.org/3.13/library/asyncio-task.html), [Python 3.13 dataclasses](https://docs.python.org/3.13/library/dataclasses.html).
+Focused semantics reviewed 30 October 2026: [assert optimization](https://docs.python.org/3.13/reference/simple_stmts.html#the-assert-statement).
 
-[Python logging ownership](https://docs.python.org/3/library/logging.html).
-
-Focused semantics reviewed 30 October 2026: [Python assert optimization](https://docs.python.org/3.13/reference/simple_stmts.html#the-assert-statement).
+Reviewed 1 November 2026: [create_task references and TaskGroup](https://docs.python.org/3/library/asyncio-task.html), [datetime.utcnow deprecation](https://docs.python.org/3/library/datetime.html), [Python 3.15 UTF-8 default](https://docs.python.org/3.15/whatsnew/3.15.html), [supported branches](https://devguide.python.org/versions/) (3.15 released 9 October 2026; 3.10 is end-of-life).

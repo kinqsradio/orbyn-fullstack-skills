@@ -112,9 +112,11 @@ def main():
     try:
         brief = json.loads(args.brief.read_text(encoding="utf-8"))
         html, post = render(brief, args.brief.resolve().parent)
+        # Encode first: unencodable text must not leave an output directory that blocks a retry.
+        encoded = html.encode("utf-8"), post.encode("utf-8")
         args.output.mkdir(parents=True, exist_ok=False)
-        (args.output / "preview.html").write_text(html, encoding="utf-8")
-        (args.output / "post.txt").write_text(post, encoding="utf-8")
+        (args.output / "preview.html").write_bytes(encoded[0])
+        (args.output / "post.txt").write_bytes(encoded[1])
     except (OSError, ValueError) as error:
         parser.exit(2, f"Preview error: {error}\n")
     print(f"Created {args.output.resolve() / 'preview.html'} and post.txt (HTML/text only).")

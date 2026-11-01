@@ -72,7 +72,11 @@ def report_path(root, relative):
     p = Path(relative)
     require(not p.is_absolute() and '..' not in p.parts, 'Report path escapes input root')
     result = root / p
-    require(result.resolve().is_relative_to(root), 'Report symlink escapes input root')
+    try:
+        resolved = result.resolve()
+    except RuntimeError as error:  # Python 3.11 reports a symlink loop this way.
+        raise ValueError('Report symlink loop') from error
+    require(resolved.is_relative_to(root), 'Report symlink escapes input root')
     require(result.is_file(), f'Missing report: {relative}')
     return result
 

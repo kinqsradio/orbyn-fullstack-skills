@@ -11,6 +11,9 @@ Use this local method for REA tooling itself. Ordinary APIs belong to
 nearest existing contracts from disk. Source, docs and a connected catalog can
 represent different revisions; record which supports each decision.
 
+No runtime installation, source-pin change, publication or model configuration
+follows from this skill; follow the user's scope and existing project policy.
+
 ## Choose the boundary
 
 State the analyst question, target identity, expected facts, allowed effects and
@@ -22,33 +25,42 @@ Do not combine unrelated inspect, mutate and runtime modes just to reduce tool c
 Use inspection for object facts, discovery for candidates, tracing for supported
 relationships and comparison for explicit paired observations. Compose a workflow
 only when repeated use demonstrates a join that can preserve choices, evidence
-and unknowns. A new cache, orchestration language or mandatory multi-call plan
-needs an actual requirement existing primitives cannot satisfy.
+and unknowns. Add a new cache, orchestration language or mandatory multi-call plan
+only for an actual requirement existing primitives cannot satisfy.
 
 ## Specify the contract before implementation
 
 Define strict inputs, target/admission identity, meaningful options, output fields,
 coverage and errors. Keep observed, derived and inferred relationships distinct.
+
+Keep the requested answer and provenance usable inline, with supported
+summaries/paging for large facts and access to full evidence. Report unknown
+coverage as unknown, not as an empty complete result; complete static direct edges
+do not establish all runtime edges. Use the shared [evidence contract](../reverse-engineer-anything/references/evidence-and-recovery.md)
+for summary-versus-dossier composition and integrity failures.
+
 When local CLI observations feed a deeper operation, accept them only as the
 contract's supported context. Bind target digest/architecture and selection at
 admission, and produce real engine evidence; arbitrary local text is not an
 engine-issued dossier. Keep local and engine facts distinguishable in exports.
-Unknown coverage is not an empty complete result; complete static direct edges do
-not establish all runtime edges. Keep the requested answer and provenance usable
-inline, with supported summaries/paging for large facts and access to full evidence.
-Use the shared [evidence contract](../reverse-engineer-anything/references/evidence-and-recovery.md)
-for summary-versus-dossier composition and integrity failures.
+
+## Declare effects and resource owners
 
 Declare process, filesystem, network, UI and mutation effects. Identify resource
 owners and transitions: admission, readiness, active work, cancellation, observed
-exit and verified release. A launch handle is not readiness; process exit does
-not prove output closure. Attach ownership does not imply permission to kill the
-target. Retain partial results and the primary diagnostic if cleanup fails; bind
-recovery to unresolved owners and block conflicting replacement work. Shared
-producers need independently cancellable waits and an explicit final-owner cleanup.
+exit and verified release.
 
-Keep provider interpretation in its owning layer. CLI and MCP should reuse the
-same application semantics and typed errors rather than reparsing raw reports.
+- A launch handle is not readiness; process exit does not prove output closure.
+- Attach ownership does not imply permission to kill the target.
+- Retain partial results and the primary diagnostic if cleanup fails; bind recovery
+  to unresolved owners and block conflicting replacement work.
+- Shared producers need independently cancellable waits and an explicit final-owner
+  cleanup.
+
+## Keep layers in place
+
+Keep provider interpretation in its owning layer. Reuse the same application
+semantics and typed errors in CLI and MCP rather than reparsing raw reports.
 Review actual generated catalog/schema ownership in the target before edits;
 do not hand-edit generated files to hide drift or invent unavailable capabilities.
 
@@ -57,10 +69,8 @@ do not hand-edit generated files to hide drift or invent unavailable capabilitie
 For design-only work, return the proposed input/result, effects, state/error model,
 closest alternative, compatibility migration and verification plan. For authorized
 implementation, migrate affected consumers and generated contracts together.
-Choose checks at real trust, integrity, cancellation and cleanup boundaries;
-mock-provider coverage and live-engine evidence remain separate.
+Choose checks at real trust, integrity, cancellation and cleanup boundaries; keep
+mock-provider coverage and live-engine evidence separate.
 
 See the [worked example](references/worked-example.md) and
-[source record](../reverse-engineer-anything/references/source-record.md). No runtime
-installation, source-pin change, publication or model configuration follows from
-this skill; follow the user's scope and existing project policy.
+[source record](../reverse-engineer-anything/references/source-record.md).

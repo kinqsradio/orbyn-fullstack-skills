@@ -3,7 +3,7 @@
     "id": "export-room",
     "version": 1,
     "candidate": "synthetic-v1",
-    "fingerprint": "081c5b448972d4217d5bd27b7236145a08aebb90f36a5c1606de09df3f331fdf"
+    "fingerprint": "62294fc0ab5ac0846b01a2a37d95733d09ccab28e9c05e37e147355600aa1bfd"
   },
   "targets": [
     {
@@ -134,8 +134,8 @@
     }
   ],
   "assets": {
-    "index.html": "1d1e5fa1a7f63918bd7489fd3c552c4b6ae76663adb4e919acbd570d39e7073d",
-    "review.css": "31fb9e9b0851671f86f5253d096473d348fb735d01dfde2c842d25b82e507bfc",
+    "index.html": "bdb2de9821e2a9485390cce0933a6a4a5ebdbc04e72792a1d3941ec41f23efd6",
+    "review.css": "a87363091259b8d404c10320fa75feb4664fb2be4e9a80e8c3680234953e9e53",
     "review.mjs": "b866e08894f054d87ee9af6978c2a031b11cfb78024b555d5888442477befb94",
     "model.mjs": "236ac92c12e4937ada5df9e76b998eaa94eac43f7bc6fae5c6bce00fa78bfc47",
     "boot.mjs": "5d04f12e2f739669ef10b877fed69d60b89ae59d2fede1bc47822b1a74bfa4e6"

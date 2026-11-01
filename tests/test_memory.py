@@ -656,5 +656,60 @@ c.execute('DELETE FROM records'); print('ready',flush=True); time.sleep(30)
         self.assertEqual(path.read_text(), 'Improved method.\n')
 
 
+    def test_patch_keeps_crlf_and_non_lf_separators_exact(self):
+        repo = self.base / 'line-endings'
+        folder = repo / 'skills/orbyn-ui-design'
+        folder.mkdir(parents=True)
+        original = {'crlf.md': b'first\r\nsecond\r\nthird\r\n',
+                    'separator.md': 'keep this\nold\nand\x0cthis\n'.encode()}
+        changed = {'crlf.md': b'first\r\nchanged\r\nthird\r\n',
+                   'separator.md': 'keep this\nnew\nand\x0cthis\n'.encode()}
+        for name, data in original.items():
+            (folder / name).write_bytes(data)
+        self.git(repo, 'init', '-b', 'main')
+        self.git(repo, 'add', 'skills')
+        self.git(repo, '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '-m', 'fixture')
+        head = self.git(repo, 'rev-parse', 'HEAD')
+        for name, data in changed.items():
+            (folder / name).write_bytes(data)
+        rid = self.create()
+        cid = artifacts.propose(self.memory, self.brief(base_revision=head), {rid: 1}, 'propose-lines')['candidate_id']
+        result = artifacts.prepare_patch(self.memory, cid, repo, [f'skills/orbyn-ui-design/{n}' for n in original], True)
+        patch = Path(result['path']).read_bytes()
+        self.assertNotIn(b'-first', patch)
+        self.git(repo, 'checkout', '--', 'skills')
+        self.git(repo, 'apply', result['path'])
+        for name, data in changed.items():
+            self.assertEqual((folder / name).read_bytes(), data)
+
+    def test_retired_skill_reference_does_not_lock_the_store(self):
+        retired = 'typescript-best-practices'
+        self.assertNotIn(retired, SKILLS)
+        with store.Memory(self.root, self.selection, SKILLS | {retired}) as earlier:
+            rid = next(iter(earlier.create(payload(related_skills=[retired]), 'before-retirement')['records']))
+        found = subprocess.run(self.command('find'), text=True, capture_output=True)
+        self.assertEqual(found.returncode, 0, found.stderr)
+        self.assertEqual(json.loads(found.stdout)['result']['matches'], 1)
+        added = self.write('new.json', payload(related_skills=[retired]))
+        refused = subprocess.run(self.command('remember', '--input', added, '--op', 'after-retirement'),
+                                 text=True, capture_output=True)
+        self.assertEqual(refused.returncode, 1)
+        self.assertIn('Unknown skill owner', refused.stderr)
+        with store.Memory(self.root, self.selection, SKILLS, {retired}) as memory:
+            kept = next(iter(memory.create(payload(title='Kept owner', related_skills=[]), 'current')['records']))
+            with self.assertRaisesRegex(Exception, 'Unknown skill owner'):
+                memory.update_many({kept: 1}, {'related_skills': [retired]}, 'add-retired')
+            retained = memory.update_many({rid: 1}, {'category': 'solution-pattern'}, 'keep-retired')
+            self.assertEqual(retained['records'][rid], 2)
+            same = memory.update_many({rid: 2}, {'related_skills': [retired]}, 'resend-retired')
+            self.assertEqual(same['records'][rid], 3)
+            bundle = {'schema_version': 1, 'store_id': memory.sid, 'records': [{**memory.show(rid), 'id': 'mem_new_retired'}]}
+            with self.assertRaisesRegex(Exception, 'Unknown skill owner'):
+                artifacts.import_records(memory, bundle, 'import-retired')
+        forgotten = subprocess.run(self.command('forget', rid, '--revision', 3, '--op', 'forget-retired'),
+                                   text=True, capture_output=True)
+        self.assertEqual(forgotten.returncode, 0, forgotten.stderr)
+
+
 if __name__ == '__main__':
     unittest.main()

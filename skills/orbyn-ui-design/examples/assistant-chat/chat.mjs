@@ -102,8 +102,9 @@ export class Composer {
   }
 }
 
-export function enterAction({ key, shiftKey, isComposing }) {
-  return key === 'Enter' && !shiftKey && !isComposing ? 'submit' : 'native';
+export function enterAction({ key, shiftKey, isComposing, keyCode }) {
+  // WebKit fires compositionend first, so keyCode 229 is its only composition signal.
+  return key === 'Enter' && !shiftKey && !isComposing && keyCode !== 229 ? 'submit' : 'native';
 }
 
 export function projectPart(part) {

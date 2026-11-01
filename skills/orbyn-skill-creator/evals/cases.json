@@ -10252,6 +10252,1024 @@
         "adjacent": "Uses ordinary UI async/draft and product token guidance; does not add assistant-ui, an AI runtime, provider setup or chat-only branching/tool policies.",
         "evidence": "Distinguishes original helper/fixture checks, source inspection, live routing and real renderer/SDK/product observations; no fabricated qualification."
       }
+    },
+    {
+      "id": "holdout-arena-queue",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "We keep going back and forth between a lease table and a broker for job claims. Sketch both against the same failure trace and pick one.",
+      "expected_skills": [
+        "arena"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not implement the selected design in the product."
+    },
+    {
+      "id": "holdout-figure-it-out-logger",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Move every service off the old logger to the new one and keep going until none are left. You are authorized to edit all of them.",
+      "expected_skills": [
+        "figure-it-out"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not stop at a plan or leave call sites as future work."
+    },
+    {
+      "id": "holdout-how-notification",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "What actually happens between clicking Send invite and the email going out?",
+      "expected_skills": [
+        "how"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not change the code or claim why it was designed this way."
+    },
+    {
+      "id": "holdout-interrogate-retry",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Here is my retry patch. Try to break it before I trust it.",
+      "expected_skills": [
+        "interrogate"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not rewrite the patch during review."
+    },
+    {
+      "id": "holdout-language-rust-arc",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Review this Rust function that clones an Arc across threads for ownership mistakes.",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not load guides for other languages."
+    },
+    {
+      "id": "holdout-ai-grounded-answers",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Our help assistant invents policy details. Make its answers cite the retrieved documents and refuse when nothing matches.",
+      "expected_skills": [
+        "orbyn-ai-application"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not configure hosts or train a model."
+    },
+    {
+      "id": "holdout-backend-idempotent-charge",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Add an endpoint for creating an invoice that is safe when the client retries after a timeout.",
+      "expected_skills": [
+        "orbyn-backend-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not change the stored format beyond what the endpoint requires."
+    },
+    {
+      "id": "holdout-content-empty-state",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "The empty inbox screen says Nothing to see here. Rewrite it and the button beside it.",
+      "expected_skills": [
+        "orbyn-content-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not restyle the screen."
+    },
+    {
+      "id": "holdout-plan-rollout",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Give me a sequenced plan for moving billing to the new service. Do not change anything yet.",
+      "expected_skills": [
+        "orbyn-plan"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not begin the migration."
+    },
+    {
+      "id": "holdout-research-sync-engine",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Before we commit, find out whether the sync library supports partial replication on the current release.",
+      "expected_skills": [
+        "orbyn-research"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not choose an implementation before the evidence is in."
+    },
+    {
+      "id": "holdout-security-audit-offline",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Do a source security audit of this service locally; our hosted scanner is not available here.",
+      "expected_skills": [
+        "orbyn-security-audit"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not fix findings during the audit."
+    },
+    {
+      "id": "holdout-remediation-open-redirect",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "The scanner already reported an open redirect in the login callback. Fix that finding and add a guard so it does not come back.",
+      "expected_skills": [
+        "orbyn-security-remediation"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not start a new security scan."
+    },
+    {
+      "id": "holdout-setup-workspace",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Get this workspace ready for working on our product repo.",
+      "expected_skills": [
+        "orbyn-setup"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not install shared skills into the target."
+    },
+    {
+      "id": "holdout-skill-creator-merge",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "These two skills in the library attract the same requests. Merge them and keep discovery working.",
+      "expected_skills": [
+        "orbyn-skill-creator"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not publish a release."
+    },
+    {
+      "id": "holdout-stack-queue-choice",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "We have no job system yet. Should this new product use Postgres-backed jobs or a managed queue?",
+      "expected_skills": [
+        "orbyn-stack-selection"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not reopen choices the project has already settled."
+    },
+    {
+      "id": "holdout-ui-settings-flow",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "The settings page is confusing on phones. Redesign the flow so people can find notification options.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not change backend settings storage."
+    },
+    {
+      "id": "holdout-upstream-new-release",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "An external skill we adapted has a new release. Compare it with our pinned revision and tell me what is worth taking.",
+      "expected_skills": [
+        "orbyn-upstream-review"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not replace our adaptation or advance the pin in a review."
+    },
+    {
+      "id": "holdout-workflow-bug-report",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Users say exports sometimes come out empty. Take this from diagnosis through a verified fix.",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not deploy or merge the fix."
+    },
+    {
+      "id": "holdout-worktree-parallel-branch",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Set up a separate worktree so I can work on the hotfix while this branch stays as it is.",
+      "expected_skills": [
+        "orbyn-worktree"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not delete or reset existing worktrees."
+    },
+    {
+      "id": "holdout-rea-analysis-slow",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "This REA call-graph pass is the measured bottleneck on large binaries. Speed it up.",
+      "expected_skills": [
+        "rea-analysis-optimization"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not optimize without a comparable measurement."
+    },
+    {
+      "id": "holdout-rea-changelog-release",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Prepare the REA release notes for this tag range.",
+      "expected_skills": [
+        "rea-changelog-update"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not publish the notes."
+    },
+    {
+      "id": "holdout-rea-tests-audit",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Audit which of REA's CI checks actually protect anything.",
+      "expected_skills": [
+        "rea-ci-tests-audit"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not run qualification for unrelated work."
+    },
+    {
+      "id": "holdout-rea-mcp-tool",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Design a new REA MCP tool for listing imported symbols.",
+      "expected_skills": [
+        "rea-tool-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not treat this as ordinary product API work."
+    },
+    {
+      "id": "holdout-reflect-forget",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Forget the note you saved about the old deploy process.",
+      "expected_skills": [
+        "reflect"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not change unrelated memories."
+    },
+    {
+      "id": "holdout-reverse-engineer-installer",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "I only have this shipped installer. Work out what it writes to disk.",
+      "expected_skills": [
+        "reverse-engineer-anything"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not execute the installer outside an authorized sandbox."
+    },
+    {
+      "id": "holdout-show-work-overnight",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Run this schema cleanup while I sleep and leave me a trail I can review in the morning.",
+      "expected_skills": [
+        "show-me-your-work"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not log routine tool output."
+    },
+    {
+      "id": "holdout-illustration-orbit",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Build an interactive figure where the drawn orbit and the readouts come from the same model.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not build a data chart or a product screen."
+    },
+    {
+      "id": "holdout-unslop-readme",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "This README section sounds machine-written. Tighten it without changing the claims.",
+      "expected_skills": [
+        "unslop"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not add benefits the source does not support."
+    },
+    {
+      "id": "arena-second-renderer",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Two approaches for the canvas renderer both look viable. Build a small sketch of each and compare them on the same scene.",
+      "expected_skills": [
+        "arena"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not run a tournament or merge incompatible designs."
+    },
+    {
+      "id": "arena-adjacent-single-design",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Design the data shape and interface for task reminders.",
+      "expected_skills": [
+        "architect"
+      ],
+      "forbidden_skills": [
+        "arena"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not build competing sketches when one design resolves the question."
+    },
+    {
+      "id": "automate-me-second-commit-style",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "From now on always show me the diff before you commit. Save that as a skill for my work here.",
+      "expected_skills": [
+        "automate-me"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not change global settings or recurring tasks."
+    },
+    {
+      "id": "automate-me-adjacent-lesson",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "That fix failed because we assumed the cache was warm. What should we change in the skill that owns this?",
+      "expected_skills": [
+        "reflect"
+      ],
+      "forbidden_skills": [
+        "automate-me"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not record an inferred preference."
+    },
+    {
+      "id": "figure-it-out-second-api-removal",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Remove the deprecated API from all callers and delete it. Finish the whole thing.",
+      "expected_skills": [
+        "figure-it-out"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not report success while callers remain."
+    },
+    {
+      "id": "figure-it-out-adjacent-plan-only",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Outline how we would remove the deprecated API. I only want the plan.",
+      "expected_skills": [
+        "orbyn-plan"
+      ],
+      "forbidden_skills": [
+        "figure-it-out"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not edit any callers."
+    },
+    {
+      "id": "security-audit-second-dependency-paths",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Audit this repo's authentication code by hand and give me structured findings; nothing hosted is allowed.",
+      "expected_skills": [
+        "orbyn-security-audit"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not make fixes."
+    },
+    {
+      "id": "security-audit-adjacent-known-finding",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Fix the SQL injection finding already logged against the reports endpoint.",
+      "expected_skills": [
+        "orbyn-security-remediation"
+      ],
+      "forbidden_skills": [
+        "orbyn-security-audit"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not run a fresh audit."
+    },
+    {
+      "id": "remediation-second-ssrf",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Resolve the existing SSRF finding in the image fetcher and record the evidence.",
+      "expected_skills": [
+        "orbyn-security-remediation"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not start or rejoin a scan."
+    },
+    {
+      "id": "remediation-adjacent-new-audit",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Check this service for vulnerabilities; we have no findings yet.",
+      "expected_skills": [
+        "orbyn-security-audit"
+      ],
+      "forbidden_skills": [
+        "orbyn-security-remediation"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not treat a suspicion as an existing finding."
+    },
+    {
+      "id": "rea-analysis-second-memory",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "REA runs out of memory in the measured decompile phase. Reduce it without losing evidence.",
+      "expected_skills": [
+        "rea-analysis-optimization"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not change analysis results to save resources."
+    },
+    {
+      "id": "rea-analysis-adjacent-app-slow",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Our web dashboard got slow after the last release. Find why.",
+      "expected_skills": [
+        "how"
+      ],
+      "forbidden_skills": [
+        "rea-analysis-optimization"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not apply REA-specific guidance to product code."
+    },
+    {
+      "id": "rea-changelog-second-hotfix",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Draft notes for the REA hotfix from the pinned history.",
+      "expected_skills": [
+        "rea-changelog-update"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not publish a release."
+    },
+    {
+      "id": "rea-changelog-adjacent-product-post",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Write a short launch post about our new export feature.",
+      "expected_skills": [
+        "social-content"
+      ],
+      "forbidden_skills": [
+        "rea-changelog-update"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not infer REA history from this repository."
+    },
+    {
+      "id": "rea-tests-second-flaky",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Tell me which REA tests are low value and what they cost in CI.",
+      "expected_skills": [
+        "rea-ci-tests-audit"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not rewrite the suite during the audit."
+    },
+    {
+      "id": "rea-tests-adjacent-product-ci",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Our product CI runs everything on each PR. Make it select affected checks.",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [
+        "rea-ci-tests-audit"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not apply REA audit guidance to product CI."
+    },
+    {
+      "id": "rea-tool-second-cli",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Add a REA CLI command for exporting cross-references. Specify the contract first.",
+      "expected_skills": [
+        "rea-tool-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not implement before the contract is specified."
+    },
+    {
+      "id": "rea-tool-adjacent-product-api",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Design the REST API for sharing a project with teammates.",
+      "expected_skills": [
+        "orbyn-backend-design"
+      ],
+      "forbidden_skills": [
+        "rea-tool-design"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not use REA tool conventions for product APIs."
+    },
+    {
+      "id": "holdout-architect-notifications",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Design how notification preferences should be stored and who owns them before anyone starts building.",
+      "expected_skills": [
+        "architect"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not implement the design."
+    },
+    {
+      "id": "holdout-tdd-stale-write",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "Write a test that fails on the stale update bug before we touch the fix.",
+      "expected_skills": [
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not change production code before the failing test exists."
+    },
+    {
+      "id": "why-second-retry-limit",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Why does the importer stop after three retries? Check the history.",
+      "expected_skills": [
+        "why"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not change the limit or message the author."
+    },
+    {
+      "id": "automate-me-third-review-format",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Save the way I like review summaries as a skill I can reuse here.",
+      "expected_skills": [
+        "automate-me"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not change global settings."
+    },
+    {
+      "id": "plan-adjacent-do-the-migration",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Finish moving all services to the new config format. You are authorized to edit every one.",
+      "expected_skills": [
+        "figure-it-out"
+      ],
+      "forbidden_skills": [
+        "orbyn-plan"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not stop at a plan."
+    },
+    {
+      "id": "plan-complex-change",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "This permissions change touches the API and two clients. Plan it, then implement it.",
+      "expected_skills": [
+        "orbyn-plan"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not widen scope beyond the requested change."
+    },
+    {
+      "id": "architect-adjacent-two-sketches",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Both storage designs look viable and we cannot tell from the docs. Build a sketch of each and compare.",
+      "expected_skills": [
+        "arena"
+      ],
+      "forbidden_skills": [
+        "architect"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not settle the choice from a single design."
+    },
+    {
+      "id": "reflect-adjacent-saved-preference",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Make a skill that captures how I want release notes written.",
+      "expected_skills": [
+        "automate-me"
+      ],
+      "forbidden_skills": [
+        "reflect"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not treat a stated preference as a task lesson."
+    },
+    {
+      "id": "skill-creator-adjacent-personal-preference",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Save my preference for short commit messages in a local skill.",
+      "expected_skills": [
+        "automate-me"
+      ],
+      "forbidden_skills": [
+        "orbyn-skill-creator"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not change the shared library."
+    },
+    {
+      "id": "automate-me-adjacent-library-skill",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Add a new shared skill to the library for reviewing database indexes.",
+      "expected_skills": [
+        "orbyn-skill-creator"
+      ],
+      "forbidden_skills": [
+        "automate-me"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not treat a library skill as a personal preference."
+    },
+    {
+      "id": "unslop-adjacent-button-copy",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "This dialog button and its error message read badly. Rewrite the copy.",
+      "expected_skills": [
+        "orbyn-content-design"
+      ],
+      "forbidden_skills": [
+        "unslop"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not restyle the dialog."
+    },
+    {
+      "id": "content-adjacent-doc-edit",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Tighten this design document so it reads like a person wrote it.",
+      "expected_skills": [
+        "unslop"
+      ],
+      "forbidden_skills": [
+        "orbyn-content-design"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not add claims the document does not support."
     }
   ]
 }

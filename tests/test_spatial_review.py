@@ -20,6 +20,20 @@ def module(name, path):
     m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); return m
 
 
+class PrepareDiagnosticsTests(unittest.TestCase):
+    def test_failed_node_step_reports_its_stderr(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory).resolve()
+            node = base / 'fake-node'
+            node.write_text('#!/bin/sh\necho "composition rejected: scene 3" >&2\nexit 3\n')
+            node.chmod(0o755)
+            result = subprocess.run([sys.executable, '-B', str(SOURCE / 'prepare.py'), '--destination', str(base / 'package'),
+                                     '--node', str(node)], capture_output=True, text=True)
+            self.assertEqual(result.returncode, 1)
+            self.assertIn('composition rejected: scene 3', result.stderr)
+            self.assertNotIn('Traceback', result.stderr)
+
+
 class SpatialReviewTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

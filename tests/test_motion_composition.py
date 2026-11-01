@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import tempfile
 import threading
+import time
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -113,6 +114,27 @@ class MotionExportBoundaryTests(unittest.TestCase):
             result = subprocess.run(cli + ['--output', str(base / 'fresh')], text=True, capture_output=True)
             self.assertNotEqual(result.returncode, 0); self.assertIn('Stale source', result.stderr)
             self.assertFalse((base / 'fresh').exists())
+
+    def test_failed_browser_close_still_stops_the_owned_server(self):
+        node = shutil.which('node')
+        if not node: self.skipTest('Existing Node required; no install')
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp).resolve(); pkg = base / 'motion'
+            load('export_close_prepare', SOURCE / 'prepare.py').prepare(pkg, node, motion_example=0)
+            marker = base / 'server-exited'
+            server = base / 'python'
+            server.write_text(f'''#!/bin/sh
+trap 'touch "{marker}"; exit 0' TERM
+echo http://127.0.0.1:9/
+while :; do sleep 0.05; done
+'''); server.chmod(0o700)
+            playwright = base / 'playwright-stub.mjs'
+            playwright.write_text("export const chromium={launch:async()=>({version:()=>'stub',newPage:async()=>{throw Error('page failed');},close:async()=>{throw Error('close failed');}})};\n")
+            subprocess.run([node, str(SOURCE / 'motion/export-composition.mjs'), '--package', str(pkg), '--output', str(base / 'out'), '--playwright', str(playwright), '--python', str(server)], text=True, capture_output=True, timeout=30)
+            for _ in range(60):
+                if marker.exists(): break
+                time.sleep(.05)
+            self.assertTrue(marker.exists(), 'Owned preview server survived a failed browser close')
 
 class CustomMotionSourceTests(unittest.TestCase):
     def test_external_project_and_trusted_component_are_copied_and_static_closure_parsed(self):

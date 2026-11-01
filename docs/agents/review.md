@@ -13,4 +13,4 @@ live-provider or production acceptance evidence.
 Use the [feedback contract](../../skills/orbyn-workflow/references/engineering-scope.md#actionable-review-feedback)
 for supported findings and the [PR feedback method](../../skills/orbyn-workflow/playbooks/pr-iteration.md#deliver-line-anchored-feedback)
 for current line anchors, host surfaces and publication authority. Preserve useful
-[source rationale](../../skills/unslop/SKILL.md#comments-inside-source) when edits are authorized.
+[source rationale](../../skills/unslop/references/source-comments.md) when edits are authorized.

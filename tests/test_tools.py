@@ -89,6 +89,16 @@ class RendererTests(unittest.TestCase):
             with self.subTest(brief=brief), self.assertRaises(ValueError):
                 renderer.render(brief,ROOT)
 
+    def test_preview_cli_encoding_failure_leaves_no_partial_output(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base=Path(directory);brief=base/'brief.json';target=base/'preview'
+            brief.write_text(json.dumps({'post':'Truncated emoji \ud83d'}))
+            import sys
+            result=subprocess.run([sys.executable,'-B',str(ROOT/'skills/social-preview/scripts/render_preview.py'),
+                                   '--brief',str(brief),'--output',str(target)],capture_output=True,text=True)
+            self.assertEqual(result.returncode,2)
+            self.assertFalse(target.exists())
+
     def test_preview_cli_refuses_overwrite(self):
         with tempfile.TemporaryDirectory() as directory:
             base=Path(directory);brief=base/'brief.json';target=base/'existing'

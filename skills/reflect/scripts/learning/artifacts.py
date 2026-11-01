@@ -131,7 +131,7 @@ def import_records(memory, bundle, operation):
         require(all(isinstance(r, dict) for r in records), 'Import records must be objects')
         require(memory.conn.execute('SELECT count(*) FROM data.records').fetchone()[0] + len(records) <= 10000,
                 'Local store limit is 10,000 records')
-        validated = [validate(dict(r), memory.skills, memory.aliases()) for r in records]
+        validated = [validate(dict(r), memory.owners, memory.aliases()) for r in records]  # Every import is a new record.
         require(len({r['id'] for r in validated}) == len(validated), 'Duplicate import IDs')
         ids = {r['id'] for r in validated}
         for record in validated:
@@ -148,7 +148,7 @@ def import_records(memory, bundle, operation):
                     memory._get(relation['id'])
         for record in validated:
             record.update(status='proposed', revision=record['revision'] + 1, updated_at=now())
-            validate(record, memory.skills, memory.aliases())
+            validate(record, memory.owners, memory.aliases())
         for record in validated:
             memory.conn.execute('INSERT INTO data.records VALUES (?,?,?)',
                                 (record['id'], record['revision'], canonical(record)))
@@ -217,7 +217,7 @@ def propose(memory, brief, revisions, operation):
     fields = {'title', 'skill', 'base_revision', 'problem', 'proposed_change', 'synthetic_case',
               'counterexample', 'validation_plan', 'delivery'}
     require(isinstance(brief, dict) and set(brief) == fields, 'Invalid lesson brief')
-    require(isinstance(brief['skill'], str) and brief['skill'] in memory.skills, 'Unknown skill owner')
+    require(isinstance(brief['skill'], str) and brief['skill'] in memory.owners, 'Unknown skill owner')
     require(brief['delivery'] in ('manual', 'local-branch', 'fork-branch'), 'Unsupported delivery mode')
     require(isinstance(brief['base_revision'], str) and re.fullmatch('[0-9a-f]{40}', brief['base_revision']), 'Use full library base SHA')
     from .schema import text
@@ -308,13 +308,16 @@ def prepare_patch(memory, cid, checkout, files, reviewed):
                                 capture_output=True, timeout=20)
         require(result.returncode in (0, 128), 'Cannot read base file')
         before = result.stdout.decode('utf-8') if result.returncode == 0 else ''
-        after = destination.read_text(encoding='utf-8')
+        # Bytes, not read_text: universal newlines would rewrite every CRLF line.
+        after = destination.read_bytes().decode('utf-8')
         require('\x00' not in before + after, 'Binary patches are unsupported')
         require((not before or before.endswith('\n')) and (not after or after.endswith('\n')),
                 'Normalize final newlines before preparing the patch')
         if before == after:
             continue
-        patches.extend(difflib.unified_diff(before.splitlines(keepends=True), after.splitlines(keepends=True),
+        # Patch lines end only at LF; splitlines also breaks on CR, FF and U+2028.
+        lines = lambda value: [line + '\n' for line in value.split('\n')[:-1]]
+        patches.extend(difflib.unified_diff(lines(before), lines(after),
                                            fromfile='a/' + name if result.returncode == 0 else '/dev/null', tofile='b/' + name))
     patch = ''.join(patches)
     require(bool(patch) and len(patch.encode()) <= 2097152, 'Patch is empty or exceeds 2 MiB')

@@ -30,6 +30,18 @@ class SkillRetirementTests(unittest.TestCase):
             link.parent.mkdir(parents=True,exist_ok=True)
             link.symlink_to(os.path.relpath(ROOT/'skills'/OLD,link.parent))
 
+    def test_discovery_link_loop_is_a_conflict_not_a_crash(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory).resolve()
+            source = base/'skills/how'
+            source.mkdir(parents=True)
+            (source/'SKILL.md').write_text('fixture')
+            link = base/'.claude/skills/how'
+            link.parent.mkdir(parents=True)
+            link.symlink_to('how')
+            with self.assertRaisesRegex(ValueError, 'Conflicting discovery entry'):
+                local.plan_links(base, {'how': source}, ['.claude'])
+
     def test_old_explicit_selection_maps_to_one_owner(self):
         self.assertEqual(selection.selection([OLD]),{NEW})
         self.assertNotIn(OLD,selection.selection(all_skills=True))

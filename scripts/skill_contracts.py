@@ -6,6 +6,12 @@ import subprocess
 from pathlib import Path
 from urllib.parse import unquote
 
+# Limits from skills/orbyn-skill-creator/references/authoring-standard.md.
+MAX_ENTRYPOINT_WORDS = 1200
+MAX_DESCRIPTION_CHARS = 300
+MIN_POSITIVE_CASES = 2
+MAINTAINER_BOILERPLATE = ('historical source notices remain in provenance',)
+
 
 def check_local_workspaces(root):
     """Inspect only the library's index/ignore rules, never nested project data."""
@@ -98,6 +104,45 @@ def check_audit(root, names):
     if len(rows) != len(set(rows)) or set(rows) != names:
         return ['Full-catalog audit coverage differs from the catalog']
     return []
+
+
+def check_entrypoint(name, text):
+    """Hold the authoring standard's limits so entrypoints cannot silently regrow."""
+    fenced = re.fullmatch(r'---\n(.*?\n)---\n(.*)', text, re.S)
+    if not fenced:
+        return [f'{name}: SKILL.md needs closed frontmatter fences']
+    front, body = fenced.groups()
+    errors = []
+    description = re.search(r'^description:[ \t]*(.*)\n(?=([ \t]+\S)?)', front, re.M)
+    if description:
+        value = description.group(1).strip('"\' ')
+        if not value or value[0] in '>|' or description.group(2):
+            errors.append(f'{name}: description must be one literal line')
+        elif len(value) > MAX_DESCRIPTION_CHARS:
+            errors.append(f'{name}: description exceeds {MAX_DESCRIPTION_CHARS} characters')
+    if len(body.split()) > MAX_ENTRYPOINT_WORDS:
+        errors.append(f'{name}: SKILL.md exceeds {MAX_ENTRYPOINT_WORDS} words; move conditional detail to a reference')
+    prose = re.sub(r'\s+', ' ', body).lower()
+    errors += [f'{name}: maintainer note in SKILL.md belongs in provenance: {phrase}'
+               for phrase in MAINTAINER_BOILERPLATE if phrase in prose]
+    return errors
+
+
+def check_case_coverage(names, cases):
+    """Every skill needs repeat development cases and a holdout it alone must pass."""
+    positive = {name: 0 for name in names}
+    holdout = set()
+    for case in cases:
+        if case['split'] == 'holdout':
+            # A shared holdout passes when any expected skill is selected.
+            holdout.update(case['expected_skills'] if len(case['expected_skills']) == 1 else ())
+            continue
+        for name in set(case['expected_skills']):
+            positive[name] = positive.get(name, 0) + 1
+    errors = [f'{name}: needs at least {MIN_POSITIVE_CASES} positive development cases'
+              for name in sorted(names) if positive[name] < MIN_POSITIVE_CASES]
+    errors += [f'{name}: needs a holdout case expecting only this skill' for name in sorted(names - holdout)]
+    return errors
 
 
 def check_portable_links(root, managed_files, snapshots=()):

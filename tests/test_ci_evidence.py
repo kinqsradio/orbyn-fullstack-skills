@@ -48,6 +48,13 @@ class CIEvidenceTests(unittest.TestCase):
             result.update(failure_type='AssertionError' if state=='failed' else 'ConnectionError', message=message)
         return result
 
+    def test_report_symlink_loop_is_a_blocker_not_a_crash(self):
+        (self.root/'loop.jsonl').symlink_to('loop.jsonl')
+        self.plan['runs'][1]['path'] = 'loop.jsonl'
+        result, _ = self.run_plan()
+        self.assertFalse(result['ci_evidence_ready'])
+        self.assertTrue(any('Invalid report' in row['reason'] for row in result['blockers']))
+
     def test_streamed_scale_and_non_destructive_output(self):
         scale = self.root/'larger'
         lab.stress(scale, 10000)

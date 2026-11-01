@@ -44,10 +44,24 @@ post, deliver one. Adapt the substance for each platform instead of mechanically
 shortening the same text. Preserve useful paragraph breaks. Use hashtags, emoji
 and calls to action only when they suit the author and purpose.
 
-For carousels, choose a narrative suited to the evidence: problem → explanation
-→ example → takeaway, or a short demonstration. Give each slide one job and a
-clear reading order. Write slide text, visual intent and alt text together.
-Do not stretch a small point into an arbitrary slide count.
+## Plan a carousel
+
+Choose a narrative suited to the evidence: problem → explanation → example →
+takeaway, or a short demonstration. Give each slide one job and a clear reading
+order. Write slide text, visual intent and alt text together. Do not stretch a
+small point into an arbitrary slide count.
+
+## Check platform rules
+
+Check current primary platform guidance when a request depends on exact upload
+limits, format support or other changing rules. If those rules cannot be checked,
+draft from supplied evidence and mark that specific limit unverified. Do not present
+posting frequency, algorithm tricks or a preview's truncation as established
+platform behavior.
+
+The method here is self-contained. The [local source record](references/source-record.md)
+holds research context, source distinctions and the pinned social text and
+references for offline inspection.
 
 ## Handoff and boundaries
 
@@ -63,15 +77,6 @@ and help. Use [UI design](../orbyn-ui-design/SKILL.md) for changes to the produc
 itself. A slide outline is not a rendered carousel. A content calendar is a draft
 plan, not a scheduled automation. Publishing, scheduling, comments and messages
 require the user's applicable instruction; preparing content does not perform them.
-
-Check current primary platform guidance when a request depends on exact upload
-limits, format support or other changing rules. Do not present posting frequency,
-algorithm tricks or a preview's truncation as established platform behavior.
-Research context and source distinctions live in the
-[local source record](references/source-record.md).
-For offline source inspection, use the [local pinned social text and references](references/source-record.md).
-The active method above is self-contained. If current platform rules cannot be
-checked, draft from supplied evidence and mark that specific limit unverified.
 
 ## Worked example
 

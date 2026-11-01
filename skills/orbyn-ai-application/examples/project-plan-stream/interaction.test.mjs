@@ -349,3 +349,14 @@ test("bounded execution admission refuses overflow without replacing the valid a
   owner.decide(latest, "proposal-a", "accept", PROPOSAL);
   assert.equal(owner.inspect().writes, 1);
 });
+test("a recorded rejection survives a later disconnect or delivery failure", () => {
+  for (const interrupt of ["eof", "deliveryFailure"]) {
+    const { owner, events } = fixture();
+    const s = createSession(SCOPE, owner);
+    for (const e of events.slice(0, 8)) s.ingest(raw(e)); // run-end is never delivered
+    s.decide("reject");
+    s[interrupt]();
+    assert.equal(s.state.business, "rejected", interrupt);
+    assert.equal(owner.inspect().writes, 0);
+  }
+});

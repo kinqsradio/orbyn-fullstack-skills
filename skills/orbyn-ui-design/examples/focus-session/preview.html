@@ -302,6 +302,7 @@ details summary{
   cursor:pointer;
   color:#566783;
   font-size:13px;
+  min-height:44px;
   padding:3px 0 10px
 }
 details[open] summary{
@@ -340,8 +341,9 @@ details[open] summary{
   background:#fff1ee;
   color:#9a3626
 }
-.feedback[hidden]{
-  display:none
+.feedback:empty{
+  margin:0;
+  padding:0
 }
 .planned{
   margin-top:26px;
@@ -381,6 +383,7 @@ details[open] summary{
 }
 .remove{
   align-self:center;
+  min-height:44px;
   font-size:12px;
   background:none;
   border:0;
@@ -403,7 +406,7 @@ details[open] summary{
   padding:10px 15px;
   color:#36557b;
   font-size:13px;
-  min-height:42px
+  min-height:44px
 }
 .demo{
   margin-top:28px;
@@ -432,7 +435,7 @@ details[open] summary{
   margin-bottom:6px
 }
 .demo select{
-  min-height:40px;
+  min-height:44px;
   border:1px solid #cdd7e6;
   border-radius:7px;
   padding:8px;
@@ -445,7 +448,7 @@ details[open] summary{
 .footer{
   margin-top:18px;
   font-size:12px;
-  color:#7c889a;
+  color:var(--muted);
   line-height:1.6
 }
 [hidden]{
@@ -523,7 +526,8 @@ details[open] summary{
   .continue{
     display:inline-block;
     font-size:13px;
-    margin-top:16px
+    margin-top:4px;
+    padding:12px 0
   }
   .planned{
     margin-top:20px
@@ -621,7 +625,7 @@ details[open] summary{
 </fieldset>
 <button class="primary" id="submit" type="submit">Add focus block</button>
 <p class="effect-note">Demo only. This adds a block to this preview; it does not change your calendar.</p>
-<p class="feedback" id="feedback" role="status" aria-live="polite" hidden>
+<p class="feedback" id="feedback" role="status" aria-live="polite">
 </p>
 </form>
 </section>
@@ -662,7 +666,6 @@ function tell(text,error=false){const el=byId('feedback');
 el.textContent=text;
 el.classList.toggle('error',error);
 el.setAttribute('role',error?'alert':'status');
-el.hidden=!text;
 }
 
 function setBusy(busy){byId('tasks').disabled=busy;
@@ -743,6 +746,7 @@ renderBlocks();
 byId('session-form').addEventListener('submit',async event=>{event.preventDefault();
 if(byId('submit').disabled||!selected)return;
 const own=++generation;
+const origin=document.activeElement;
 const payload={id:++counter,title:samples.find(x=>x.id===selected).title,duration:byId('duration').value,start:byId('start').value,note:byId('note').value};
 const shouldFail=failures>0;
 if(shouldFail)failures--;
@@ -759,6 +763,8 @@ return;
 }blocks.push(payload);
 renderBlocks();
 tell('Focus block added to this preview.');
+// Busy state disabled the control in use; return there unless focus already moved on.
+if(document.activeElement===document.body)origin.focus();
 });
 
 byId('scenario').addEventListener('change',event=>{mode=event.target.value;
