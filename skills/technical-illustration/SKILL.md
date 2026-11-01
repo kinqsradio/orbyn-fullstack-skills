@@ -67,7 +67,8 @@ No browser bypass, publisher, auth edit, history capture or model call is implie
    Author a validated scene/beat specification and run the existing-tool pipeline;
    inspect actual probe/decode/playback receipts and unsupported parity cells.
    Run `python3 scripts/flash-check.py film.mp4` on the finished file; exit 1 means
-   more than three flashes in a second, so fix the source and render again.
+   more than three flashes in a second, so fix the source and render again. When it
+   carries words or a logo, also run `scripts/legibility-check.py` on a plate.
    For audio-reactive frames, beat-grid or section checks and supplied lyrics, use
    [music timing](references/music-timing.md).
 7. Package the selected modules, artifact model/style/assets and reproducible checks
@@ -83,6 +84,14 @@ No browser bypass, publisher, auth edit, history capture or model call is implie
 - For what a flash result covers and how to act on it, read
   [motion sequences](references/motion-sequences.md#check-flashing-on-the-rendered-file).
 
+- For a music video, lyric video, anime-style or ambient background, full animation,
+  motion graphics or a visualizer, read [video scenarios](references/video-scenarios.md)
+  first; it sets what each kind needs and how it fails.
+- For any logo, brand mark, intro, outro or end card, read
+  [logo and branding](references/logo-and-branding.md).
+- For one supplied image that must drive relighting, parallax, figure echoes or
+  effects behind a subject, read [still to layers](references/still-to-layers.md).
+
 ## Bundled support and evidence limits
 
 - The MIT support under `references/upstream/anatomy/` is a pinned maintained
@@ -95,8 +104,3 @@ No browser bypass, publisher, auth edit, history capture or model call is implie
   methods and model behavior.
 - Existing TDD, UI, performance and publication policies remain the owners of their
   general contracts.
-
-## Read when needed
-
-- For one supplied image that must drive relighting, parallax, figure echoes or
-  effects behind a subject, read [still to layers](references/still-to-layers.md).

@@ -55,7 +55,9 @@ No arbitrary JavaScript/CSS/URLs are evaluated from the JSON. Fonts are existing
 local families; source-specific downloaded fonts and external media are not imported.
 The browser waits for font readiness and checks text bounds in every captured
 subframe. This detects overflow, not contrast, reading comprehension or all safe
-areas; inspect meaningful frames in the intended format.
+areas; inspect meaningful frames in the intended format, and run the
+[legibility check](../../../technical-illustration/references/video-scenarios.md#check-words-and-logos)
+for contrast and safe areas.
 
 `film.html` and the interactive preview share `film.mjs` and its DOM renderer.
 `--reduced-motion` exports static entrances while preserving complete content.
@@ -236,6 +238,8 @@ pixel-identical parity with the reviewed source's styling/provider ecosystem.
 
 
 ## Music-led artwork and music videos
+
+Choose the kind of film first in [video scenarios](../../../technical-illustration/references/video-scenarios.md).
 
 For a supplied art/background plus track request, establish the actual files, rights
 and intended use; duration/aspect/platform; the art's focal area; the intended mood

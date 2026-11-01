@@ -187,6 +187,14 @@ class SyntheticStill(Workspace):
         second = self.run_layers(authored(), image, 'second')
         self.assertEqual((first/'maps.png').read_bytes(), (second/'maps.png').read_bytes())
 
+    def test_the_guide_example_spec_is_accepted(self):
+        guide = (ROOT/'skills/technical-illustration/references/still-to-layers.md').read_text()
+        example = guide.split('```json\n', 1)[1].split('```', 1)[0]
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder)/'spec.json'
+            path.write_text(example)
+            self.assertIn('figure', layers.load_spec(path))
+
     def test_seeded_dark_hair_warns_and_a_hand_silhouette_recovers_it(self):
         image, truth = scene(dark_hair=True)
         maps, receipt = self.load(self.run_layers(authored(), image, 'seeded'))
