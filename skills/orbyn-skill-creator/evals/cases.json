@@ -10057,6 +10057,29 @@
       }
     },
     {
+      "id": "still-to-layers-flat-edge",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "I only have one flat cover image of a dark-haired singer on a dark background. Make the video light them from behind with a bright rim, with smoke behind them and a slow parallax push.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message"
+      ],
+      "excluded": "Synthetic development case; no supplied artwork, provider or GPU run. Coherence evidence only, not a recorded behaviour trial.",
+      "rubric": {
+        "decision": "Splits the still into authored figure, logo and highlight masks plus a background plate before writing shader code.",
+        "negative_control": "Treats seeded GrabCut output as finished, or reads coverage or a quiet receipt as proof the dark hair edge survives bright backlight.",
+        "evidence_surface": "Inspected edge-check image over white, a hand-authored silhouette for the dark hair and the actual brightest backlight frame.",
+        "boundary": "Keeps the supplied image and its maps in the project's ignored workspace and adds OpenCV only to that project's environment."
+      }
+    },
+    {
       "id": "motion-exact-trace",
       "kind": "outcome",
       "split": "development",
