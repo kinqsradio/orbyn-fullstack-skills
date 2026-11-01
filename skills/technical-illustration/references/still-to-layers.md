@@ -38,7 +38,6 @@ otherwise drop a mask without a word.
     "foreground": [[[0.4, 0.5], [0.6, 0.5], [0.6, 0.95], [0.4, 0.95]]],
     "background": [[[0, 0], [0.2, 0], [0.2, 1], [0, 1]]],
     "probable": [],
-    "silhouette": {"zones": [], "shapes": []},
     "iterations": 5,
     "feather_px": 1.2
   },
@@ -56,7 +55,8 @@ otherwise drop a mask without a word.
 - **Highlight:** high-pass detail, kept only inside authored zones. Fine detail exists
   everywhere, so zones are required. Raise `floor` to drop texture, and lower
   `ceiling` to push the remaining detail to full strength.
-- **Silhouette:** inside each zone, `shapes` replaces the GrabCut result.
+- **Silhouette:** optional. Inside each zone, `shapes` replaces the GrabCut result.
+  Leave the key out when you have no zones, because an empty list is refused.
 
 The run fails if a section produces an empty mask or the figure fills the frame.
 
@@ -64,6 +64,12 @@ The run fails if a section produces an empty mask or the figure fills the frame.
 
 Look at `edge-check.png` before writing any lighting code. It puts the cutout over
 pure white, which is what a bright backlight does to it.
+
+Seed all the open backdrop, not just its corners. On a sunset test, GrabCut took a
+patch of sky near the headland into the figure. The cutout looked fine on white, but
+the patch slid with the figure as a faint rectangle in the moving film. Treat a
+`lowContrastEdgeShare` warning as a reason to add background seeds, then check for
+stray mask in the open backdrop.
 
 **Known limit:** dark hair on a dark background has no colour step for GrabCut to
 follow, so it needs a hand-authored silhouette. Without one, bright backlight exposes
@@ -106,6 +112,8 @@ For an echo, sample R at an offset or scale, tint it and add it in `behindFigure
 Share `uFigureShift` and the model's other values with the rest of the figure, as
 [WebGL](webgl.md) describes.
 
-The plate is a smooth fill that only reads as backdrop near the outline, so a large
+For a horizon scene, the smooth fill can show as a flat patch with a hard edge. Fill
+each masked row from its nearest visible pixel instead, then soften the join. The
+plate is a smooth fill that only reads as backdrop near the outline, so a large
 parallax shift shows the blur. Check the frame with the largest shift and the frame
 with the brightest backlight by eye.
