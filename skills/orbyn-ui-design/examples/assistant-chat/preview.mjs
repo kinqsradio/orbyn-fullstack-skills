@@ -31,7 +31,7 @@ function append(session, author, part) {
   transcript.scrollTop = scrollPolicy({ atEnd, cause: 'append' }) === 'follow' ? transcript.scrollHeight : top;
 }
 function refresh() {
-  const composer = active.composer;
+  const composer = active.composer, focused = document.activeElement;
   if (byId('draft').value !== composer.draft) byId('draft').value = composer.draft;
   byId('draft').readOnly = composer.readOnly;
   byId('readonly').checked = composer.readOnly;
@@ -64,6 +64,8 @@ function refresh() {
     }
     list.append(row);
   }
+  // A control disabled above would drop keyboard focus to the page.
+  if (focused?.disabled) byId('draft').focus({ preventScroll: true });
 }
 function activate(thread) {
   if (active) { active.scrollTop = transcript.scrollTop; active.composer.fenceDelivery(); previous = active; }
@@ -103,7 +105,7 @@ byId('draft').addEventListener('input', event => { active.composer.edit(event.ta
 byId('draft').addEventListener('compositionstart', () => { composing = true; });
 byId('draft').addEventListener('compositionend', () => { composing = false; });
 byId('draft').addEventListener('keydown', event => {
-  if (enterAction({ key: event.key, shiftKey: event.shiftKey, isComposing: event.isComposing || composing }) === 'submit') {
+  if (enterAction({ key: event.key, shiftKey: event.shiftKey, isComposing: event.isComposing || composing, keyCode: event.keyCode }) === 'submit') {
     event.preventDefault(); byId('composer').requestSubmit();
   }
 });

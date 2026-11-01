@@ -15,6 +15,19 @@ from test_tools import ROOT, module
 
 
 
+class ProjectContextTests(unittest.TestCase):
+    def test_context_symlink_loop_is_an_ordinary_refusal(self):
+        context = module('project_context', ROOT/'skills/orbyn-setup/scripts/project_context.py')
+        with tempfile.TemporaryDirectory() as directory:
+            project = Path(directory).resolve()
+            (project/'.agents').mkdir()
+            (project/'loop.md').symlink_to('loop.md')
+            (project/context.CONTEXT).write_text(json.dumps({'schema_version': 1, 'project_name': 'Fixture',
+                                                             'documents': {'guide': 'loop.md'}, 'owners': {}}))
+            with self.assertRaises((ValueError, OSError)):
+                context.check(project)
+
+
 class OfflineSourceTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()

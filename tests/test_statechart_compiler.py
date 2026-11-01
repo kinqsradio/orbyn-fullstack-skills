@@ -62,6 +62,13 @@ class AdapterContracts(unittest.TestCase):
             self.assertTrue((record / 'stderr.txt').read_text())
             self.assertFalse(out.exists())
 
+    def test_tool_symlink_loop_is_an_ordinary_refusal(self):
+        with tempfile.TemporaryDirectory() as temp:
+            loop = Path(temp) / 'loop'
+            loop.symlink_to('loop')
+            with self.assertRaises((ValueError, OSError)):
+                adapter.identity(loop)
+
     def test_unknown_tlc_identity_is_refused_without_execution(self):
         with tempfile.TemporaryDirectory() as temp:
             jar = Path(temp) / 'wrong.jar'; jar.write_bytes(b'not pinned TLC')

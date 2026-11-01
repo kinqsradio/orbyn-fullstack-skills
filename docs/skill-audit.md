@@ -6,6 +6,22 @@
 
 # Skill-system audit — current candidate and historical evidence
 
+## Entrypoint, authoring and helper revision
+
+Ratings across all 36 owners (mean 7.3 of 10, judged from entrypoints and case
+coverage) found oversized entrypoints, execution methods buried behind a shared
+pointer paragraph, overlapping triggers, project paths in shared skills and 28
+skills with no holdout case. This revision moves methods into `SKILL.md`, orders
+each entrypoint by task, moves conditional detail to references and adds the
+[authoring standard](../skills/orbyn-skill-creator/references/authoring-standard.md).
+`scripts/check-library.py` now fails on entrypoint size, description length,
+maintainer notes in entrypoints and missing case coverage. Every skill has its own holdout
+and at least two positive development cases. Those cases are authored and unexecuted: they
+check suite coherence and are not live-agent results. Earlier trial results apply
+to their recorded revisions, not to this rewritten text. No skill was merged or
+retired, because routing could not be measured here; the `rea-*` set remains a
+consolidation candidate for a future measured change.
+
 ## Concise contracts across all language routes
 
 The existing [language owner](../skills/language-best-practices/SKILL.md) refines

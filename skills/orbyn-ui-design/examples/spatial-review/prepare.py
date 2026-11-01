@@ -141,4 +141,7 @@ if __name__ == '__main__':
         label, separator, path = value.partition('=')
         if not separator or label in assets: p.error('Unique ID=LOCAL_RASTER required')
         assets[label] = path
-    print(json.dumps(prepare(a.destination, a.node, assets, a.motion_example, a.motion_project, a.component_source, a.graphics_profile), indent=2))
+    try:
+        print(json.dumps(prepare(a.destination, a.node, assets, a.motion_example, a.motion_project, a.component_source, a.graphics_profile), indent=2))
+    except subprocess.CalledProcessError as error:
+        p.exit(1, f'Prepare stopped: {error.cmd[0]} exited {error.returncode}; partial output retained in {a.destination}\n{(error.stderr or "").strip()[-4000:]}\n')

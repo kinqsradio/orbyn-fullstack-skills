@@ -26,3 +26,9 @@ test('source positions and role origins remain distinct',()=>{
  assert.equal(data.palettes.flatMap(p=>p.swatches).filter(Boolean).length,41);assert.equal(data.palettes[2].swatches[2],null);
  for(const p of data.palettes)for(const roles of Object.values(p.role_proposals))for(const value of Object.values(roles))assert(p.swatches.includes(value)||Object.hasOwn(data.added_colours,value));
 });
+test('named palette group and scrollable audit table are exposed to assistive technology',()=>{
+ const page=fs.readFileSync(new URL('../skills/orbyn-ui-design/examples/colour-gallery/gallery.html',import.meta.url),'utf8');
+ const script=fs.readFileSync(new URL('../skills/orbyn-ui-design/examples/colour-gallery/gallery.mjs',import.meta.url),'utf8');
+ assert.match(page,/id="palettes" role="group" aria-label=/);
+ assert.match(script,/class="table-scroll" tabindex="0" role="region" aria-label=/);
+});

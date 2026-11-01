@@ -11,8 +11,9 @@ Inspect the relevant entry points, callers, tests and recent changes. Identify
 the capability, its consumers and who owns its state and effects. Propose a
 functional grouping when related code is repeatedly changed or understood
 together. Routes can suggest a starting point; they are not proof that everything
-used on a page belongs to that page. Mark an inferred grouping as a hypothesis
-when history or callers are unavailable.
+used on a page belongs to that page. Justify the grouping with callers and change
+history; folder names alone do not establish independence. Mark an inferred grouping
+as a hypothesis when history or callers are unavailable.
 
 Keep a capability's components, hooks, query helpers and local types close when
 they share that owner. A local `components/` subfolder can still be useful; the
@@ -32,8 +33,9 @@ private details, and allowed dependency directions. A directory move improves
 navigation but cannot prevent another feature from importing a private helper.
 Avoid cycles and imports from domain contracts into client implementations.
 
-Use the project's existing import rules or package interfaces when they can
-enforce the contract. Separate packages are appropriate when their ownership,
+Prefer an incremental change using the project's existing import rules or package
+interfaces when they can enforce the contract, over a new workspace or a package
+for every directory. Separate packages are appropriate when their ownership,
 distribution or build isolation justifies the cost. Do not add a monorepo tool,
 workspace or blanket barrel file solely to implement this guidance. Check actual
 resolver and bundler behavior before claiming that an interface is enforced.

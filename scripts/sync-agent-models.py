@@ -34,9 +34,11 @@ def set_toml(text, section, key, value):
     else:
         start, end = 0, headers[0].start() if headers else len(text)
     body = text[start:end]
-    pattern = rf'^{re.escape(key)}\s*=.*$'
+    # A comment is only separable after one complete scalar; anything else is replaced whole.
+    scalar = r'''"(?:[^"\\\n]|\\.)*"|'[^'\n]*'|true|false'''
+    pattern = rf'^{re.escape(key)}\s*=[ \t]*(?:(?:{scalar})(?P<comment>[ \t]*#.*)|.*)$'
     if re.search(pattern, body, re.M):
-        body = re.sub(pattern, lambda _: f'{key} = {encoded}', body, flags=re.M)
+        body = re.sub(pattern, lambda m: f'{key} = {encoded}{m["comment"] or ""}', body, flags=re.M)
     else:
         body = body.rstrip() + f'\n{key} = {encoded}\n\n'
     result = text[:start] + body + text[end:]

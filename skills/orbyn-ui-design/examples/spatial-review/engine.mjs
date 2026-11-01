@@ -9,7 +9,13 @@ let storyTime = 0, storyScenario = 'mechanism', storyRunning = false, activePart
 const listeners = new Set();
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 $('motion-note').textContent = reduced.matches ? 'Reduced motion detected. Start paused; use angle scrubbing or Next firing.' : 'Playback starts paused. 1× is a deliberately slow 30 rpm teaching speed.';
-const [svg, data] = await Promise.all([fetch('engine.svg').then(r => { if (!r.ok) throw Error('Geometry unavailable'); return r.text(); }), fetch('engine-data.json').then(r => r.json())]);
+const geometry = (name, read) => fetch(name).then(r => { if (!r.ok) throw Error('Geometry unavailable'); return read(r); });
+const [svg, data] = await Promise.all([geometry('engine.svg', r => r.text()), geometry('engine-data.json', r => r.json())]).catch(error => {
+  // Controls stay disabled; say so instead of leaving the loading label in place.
+  $('render-state').textContent = 'Geometry unavailable; reload to retry.';
+  $('review-status').textContent = $('review-summary').textContent = 'Review unavailable: geometry failed to load. No repo save occurred.';
+  throw error;
+});
 // Local builder-owned SVG, never user comments or remote markup.
 $('stage').innerHTML = svg;
 const controller = TURN.mount($('stage'), data);
@@ -91,4 +97,4 @@ const api = {
   restore(c) { pause(); activePart = c.partId; storyTime = c.animation.time; storyScenario = c.animation.scenario; angle = c.animation.cycleAngle; yaw = c.camera.yaw; const cylinder = c.partId.match(/(?:piston|rod|liner)-(A[1-6]|B[1-6])$/)?.[1]; if (cylinder) selected = cylinder; $('speed').value = String(c.animation.rate); $('guides').checked = c.layers.guides; $('rods').checked = c.layers.rods; $('stage').classList.toggle('hide-guides', !c.layers.guides); $('stage').classList.toggle('hide-rods', !c.layers.rods); update(); },
   onChange(fn) { listeners.add(fn); return () => listeners.delete(fn); }
 };
-import('./review.mjs').then(m => m.mountReview(api)).catch(error => { $('review-status').textContent = 'Review unavailable: ' + error.message + '. No repo save occurred.'; });
+import('./review.mjs').then(m => m.mountReview(api)).catch(error => { $('review-status').textContent = $('review-summary').textContent = 'Review unavailable: ' + error.message + '. No repo save occurred.'; });

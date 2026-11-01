@@ -85,6 +85,7 @@ The [original gallery](../examples/colour-gallery/guide.md) lets a human choose
 among all seven references, inspect light/dark roles and origins, try hover/focus,
 local simulated form success/error and intentionally failing pair choices. It
 works offline; its standards links are update pointers, not execution dependencies.
+It separates raw labels, derived roles and contextual checks.
 A build is not browser verification or evidence that target brand tokens changed.
 
 Carry approved semantic roles through the existing web/desktop/mobile component

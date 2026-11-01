@@ -38,7 +38,7 @@ export async function mountReview(api) {
   }
   function render() {
     $('mode').textContent = annotation ? 'Comment mode on' : 'Comment mode'; $('mode').setAttribute('aria-pressed', String(annotation));
-    $('text').disabled = doc.state === 'submitted'; $('post').disabled = doc.state === 'submitted'; $('finish').disabled = saving || doc.state === 'submitted'; $('save').disabled = saving;
+    $('text').disabled = !doc.pending || doc.state === 'submitted'; $('post').disabled = !doc.pending || doc.state === 'submitted'; $('finish').disabled = saving || doc.state === 'submitted'; $('save').disabled = saving;
     $('target').value = doc.pending?.targetId ?? '';
     $('text').value = doc.pending?.text ?? '';
     $('context').textContent = doc.pending ? `${doc.pending.targetId} · ${doc.pending.context.animation.scene} / ${doc.pending.context.animation.time.toFixed(2)}s · yaw ${doc.pending.context.camera.yaw}° · captured viewport ${doc.pending.context.viewport.width}×${doc.pending.context.viewport.height}` : `${doc.state} · ${doc.comments.length} comments · current camera/time/layers saved as settings`;

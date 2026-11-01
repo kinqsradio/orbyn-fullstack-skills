@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 import tempfile
 import threading
 import unittest
@@ -87,6 +88,31 @@ class PrototypeReviewTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertEqual(json.loads(body)["revision"], 1)
         self.assertEqual(self.save(next_doc, 1)[0], 200)
+
+    def test_non_ascii_token_is_refused_not_dropped(self):
+        status, _, _ = self.save(self.doc, headers={"X-Review-Token": "café"})
+        self.assertEqual(status, 403)
+        self.assertFalse((self.root / "review.json").exists())
+
+    def test_seal_is_stable_and_write_failure_keeps_the_manifest(self):
+        path = self.root / "manifest.json"
+        path.chmod(0o644)
+        before = path.read_bytes()
+        seal = EXAMPLE / "seal.py"
+        program = ("import resource, signal, sys, importlib.util\n"
+                   "spec = importlib.util.spec_from_file_location('seal', sys.argv[1])\n"
+                   "module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)\n"
+                   "signal.signal(signal.SIGXFSZ, signal.SIG_IGN)\n"
+                   "resource.setrlimit(resource.RLIMIT_FSIZE, (64, 64))\n"
+                   "module.seal(sys.argv[2])\n")
+        result = subprocess.run([sys.executable, "-B", "-c", program, str(seal), str(self.root)], capture_output=True, text=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertEqual(path.read_bytes(), before)
+        self.assertEqual(sorted(p.name for p in self.root.glob(".manifest-*")), [])
+        done = subprocess.run([sys.executable, "-B", str(seal), "--package", str(self.root)], capture_output=True, text=True)
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertEqual(done.stdout.strip(), json.loads(path.read_text())["prototype"]["fingerprint"])
+        self.assertEqual(path.stat().st_mode & 0o777, 0o644)
 
     def test_origin_host_and_request_token_required(self):
         self.assertEqual(self.save(self.doc, headers={"Origin": "https://elsewhere.example"})[0], 403)

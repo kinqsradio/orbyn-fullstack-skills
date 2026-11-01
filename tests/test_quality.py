@@ -162,6 +162,24 @@ class EvaluationTests(unittest.TestCase):
         self.save()
         self.assertEqual(evaluator.grade(self.path)['counts']['fail'], 1)
 
+    def test_routing_case_rubric_failure_fails_the_row(self):
+        result = self.complete('statechart-art-adjacent-text-only')
+        self.assertEqual(evaluator.grade(self.path)['counts']['pass'], 1)
+        result['rubric']['scope']['status'] = 'fail'
+        self.save()
+        report = evaluator.grade(self.path)
+        self.assertEqual(report['counts']['fail'], 1)
+        self.assertEqual(report['results'][0]['status'], 'fail')
+
+    def test_evidence_symlink_loop_is_an_ordinary_refusal(self):
+        result = self.complete('statechart-art-adjacent-text-only')
+        loop = self.path.parent/'loop.txt'
+        loop.symlink_to('loop.txt')
+        result['transcript'] = 'loop.txt'
+        self.save()
+        with self.assertRaises((ValueError, OSError)):
+            evaluator.grade(self.path)
+
     def test_suite_changes_and_duplicate_results_are_rejected(self):
         self.focus('trace-save')
         self.run['suite_sha256'] = '0'*64

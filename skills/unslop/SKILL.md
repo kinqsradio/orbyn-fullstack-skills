@@ -1,63 +1,54 @@
 ---
 name: unslop
-description: "Edit agent prose and documentation for clear factual communication while preserving the requested voice and evidence."
+description: "Edit agent prose and documentation for clear factual communication while preserving the requested voice and evidence. Use orbyn-content-design for interface copy and social-content for posts."
 ---
 
 # Unslop
 
+## Edit the passage
+
+1. Identify the reader, the requested outcome and the statements whose wording
+   carries technical or evidential meaning.
+2. Before shortening anything, mark what must survive: exact names, measured
+   quantities, release state, caveats, attribution, uncertainty and the user's
+   writing style or intended voice.
+3. For a tutorial, how-to, reference or explanation, apply the conditional
+   [document purpose method](../orbyn-workflow/references/explanation-and-recaps.md#technical-documents)
+   before polishing sentences.
+4. Edit one passage around its main point. Lead with the concrete result or
+   action. Use familiar words and verbs, one main idea per paragraph and paragraph
+   breaks that follow the reasoning. Add headings only when they help navigation.
+   Keep terminology consistent with the owning product or API contract.
+5. Replace vague claims with supported actions or outcomes. Remove filler,
+   repetition, duplicated setup, inflated claims, forced contrasts and decorative
+   formatting. Do not manufacture metrics or a numerical benefit, and do not remove
+   evidence to make prose sound stronger.
+6. Read the complete result as a whole, for meaning. A checklist of forbidden words
+   cannot prove clear writing, and word-count reduction alone is not a quality
+   measure.
+7. Return the requested edited copy. Add an evidence note only where a factual gap
+   affects publication.
+
+Two cases to watch:
+
+- “The export is ready” may be shorter but false if only HTML source was generated;
+  retain the missing PDF inspection.
+- A user's intentional humor or informal phrasing is not automatically filler.
+
+## Scope and owners
+
 Follow the consuming project's instructions and requested scope; use the
-[portable defaults](../orbyn-workflow/references/project-policy.md) only where guidance is missing.
+[portable defaults](../orbyn-workflow/references/project-policy.md) only where
+guidance is missing.
 
-Lead with the concrete result or action. Use familiar words and verbs, one main
-idea per paragraph, and headings only when they help navigation. Remove filler,
-repetition, inflated claims, forced contrasts and decorative formatting.
-
-Preserve the user's writing style when editing their material. Preserve exact
-names, measured results, caveats, attribution and uncertainty. Do not manufacture
-metrics or remove evidence to make prose sound stronger. Code comments should
-explain non-obvious constraints rather than narrate the next line.
-
-Use [content design](../orbyn-content-design/SKILL.md) for product copy. Do not
-rewrite user-authored product content as a side effect of UI simplification.
-Read the edited passage as a whole; a checklist of forbidden words cannot prove
-clear writing.
-
-Use [social-content](../social-content/SKILL.md) for social post strategy, author
-voice, platform adaptation and carousel copy; this skill supplies the prose pass.
-Use [social-preview](../social-preview/SKILL.md) for rendered feed mockups and
-attached visuals. Editing a caption does not require generating visual assets.
-
-## Comments inside source
-
-Prefer clear names and straightforward code for local mechanics. Preserve a
-non-obvious invariant, ordering requirement, ownership boundary, compatibility
-reason or deliberate tradeoff beside the code whose safe modification depends on
-it. Explain the consequence of breaking the constraint; avoid narrating an obvious
-assignment or using a comment to excuse unnecessary complexity.
-
-For example, “Keep pending work visible so later submissions cannot reuse partial
-state after an interrupted run” preserves a reason; “set the pending flag” merely
-repeats the operation. Recheck nearby claims when behavior changes: correct stale
-explanations and remove obsolete narration. Preserve legal notices, generated-code
-warnings and useful safety/compatibility rationale under the project's conventions.
-Do not apply blanket comment deletion or a required comment count.
-
-Keep changing CI status and long experiment history in existing evidence/docs.
-A link may supplement essential rationale, but should not replace it. Comments
-are claims, not enforcement; critical behavior still needs the appropriate code
-structure, assertion or regression. With authorized edits, move durable review
-reasoning into clearer code or a source comment; review-only work changes neither.
-Use the [review feedback contract](../orbyn-workflow/references/engineering-scope.md#actionable-review-feedback)
-for findings and delivery authority.
-
-Reviewed inspiration, 27 October 2026:
-[Google review criteria for comments](https://github.com/google/eng-practices/blob/3bb3ec25b3b0199f4940b1aa75f0ac5c5753301c/review/reviewer/looking-for.md#comments).
-This independently authored guidance imports no upstream text or tooling.
-
-## Operational method
-
-Use the [local operating method](references/operating-method.md) for the execution
-sequence, concrete failure case, expected result and stopping condition. It is
-Orbyn-authored guidance; historical source notices remain in provenance.
-
-For a tutorial, how-to, reference or explanation, apply the conditional [document purpose method](../orbyn-workflow/references/explanation-and-recaps.md#technical-documents) before polishing sentences.
+- Product copy and labels: use [content design](../orbyn-content-design/SKILL.md).
+  Do not rewrite user-authored product content as a side effect of UI simplification.
+- Social posts: use [social-content](../social-content/SKILL.md) for post strategy,
+  author voice, platform adaptation and carousel copy; this skill supplies the
+  prose pass.
+- Visuals: use [social-preview](../social-preview/SKILL.md) for rendered feed
+  mockups, attached visuals and visual composition. Editing a caption does not
+  require generating visual assets.
+- Source comments: they explain non-obvious constraints and leave the next line to
+  the code. When writing or reviewing them, read
+  [source comments](references/source-comments.md).

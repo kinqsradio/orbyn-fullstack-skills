@@ -51,7 +51,7 @@ async function run(command, argv, label) {
   budget(); const child = spawn(command, argv, { stdio: ['ignore', 'pipe', 'pipe'] }); owned.add(child);
   let stdout = '', stderr = '';
   child.stdout.on('data', b => { stdout += b; if (stdout.length > 2000000) child.kill('SIGTERM'); }); child.stderr.on('data', b => { stderr += b; if (stderr.length > 2000000) child.kill('SIGTERM'); });
-  try { const code = await new Promise((res, rej) => { child.once('error', rej); child.once('exit', (code, signal) => res(signal || code)); }); await writeFile(join(output, label + '.log'), stderr + stdout); if (code !== 0) throw Error(label + ' failed: ' + String(code)); budget(); return stdout; }
+  try { const code = await new Promise((res, rej) => { child.once('error', rej); child.once('close', (code, signal) => res(signal || code)); child.once('exit', () => { const drain = setTimeout(() => { child.stdout.destroy(); child.stderr.destroy(); }, 2000); child.once('close', () => clearTimeout(drain)); }); }); await writeFile(join(output, label + '.log'), stderr + stdout); if (code !== 0) throw Error(label + ' failed: ' + String(code)); budget(); return stdout; }
   finally { await stop(child); owned.delete(child); }
 }
 try {

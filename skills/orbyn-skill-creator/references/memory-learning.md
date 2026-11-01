@@ -52,6 +52,9 @@ score or model runner.
 
 ## Delivery choices
 
+Manual/local and optional fork-branch delivery reuse the same checks and authorization;
+neither implies automatic learning, acceptance or an upstream PR.
+
 - Manual/local: retain the base-bound patch and evidence. This works offline and
   without a GitHub account; no commit is necessary.
 - Local branch: within explicit commit scope, apply/verify and commit the approved

@@ -8,7 +8,7 @@ import runpy
 import subprocess
 import sys
 
-from skill_contracts import check_audit, check_discovery, check_incorporated_material, check_links, check_local_workspaces, check_portable_links
+from skill_contracts import check_audit, check_case_coverage, check_discovery, check_entrypoint, check_incorporated_material, check_links, check_local_workspaces, check_portable_links
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -30,6 +30,7 @@ def main():
     require(names == set(provenance), 'Catalog/provenance coverage differs')
     errors.extend(check_discovery(ROOT, names, catalog['skills']))
     errors.extend(check_audit(ROOT, names))
+    errors.extend(check_case_coverage(names, json.loads((ROOT/'skills/orbyn-skill-creator/evals/cases.json').read_text())['cases']))
     for name in sorted(names):
         skill = ROOT/'skills'/name/'SKILL.md'
         text = skill.read_text()
@@ -37,6 +38,7 @@ def main():
         front = text.split('---', 2)[1] if text.startswith('---\n') else ''
         require(f'\nname: {name}\n' in '\n'+front, f'{name}: mismatched name')
         require(bool(re.search(r'^description: \S.+$', front, re.M)), f'{name}: missing single-line description')
+        errors.extend(check_entrypoint(name, text))
         require((skill.parent/'LICENSE').is_file(), f'{name}: missing portable license')
         record = provenance.get(name, {})
         errors.extend(check_incorporated_material(ROOT, name, record))

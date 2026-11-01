@@ -13,6 +13,9 @@ Resolve the actual target, not the outer library, before binding a project.
 Never silently put personal/project context in the public library or a fork.
 Use [memory.py](../scripts/memory.py) with Python 3.11+; `--help` describes its CLI.
 The human asks for the outcome; the agent executes these steps within scope.
+Verify manual/off mode and CRUD capability with synthetic data only when testing
+is authorized. Preserve existing host memory. Fork delivery is a separate choice
+from local capture.
 
 Example paths below are placeholders, not preconfigured storage:
 

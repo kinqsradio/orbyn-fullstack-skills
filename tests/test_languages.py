@@ -68,6 +68,17 @@ class LanguageRoutingTests(unittest.TestCase):
             self.assertTrue(resolved.is_file(), relative)
             self.assertTrue(resolved.read_text().strip())
 
+    def test_quality_baseline_precedes_language_guides(self):
+        entrypoint = (GUIDE / 'SKILL.md').read_text()
+        self.assertTrue((GUIDE / 'references/code-quality.md').is_file())
+        self.assertLess(entrypoint.index('references/code-quality.md'),
+                        entrypoint.index('## Select only the relevant guide'))
+
+    def test_typescript_notice_stays_reachable(self):
+        guide = (GUIDE / 'references/typescript.md').read_text()
+        self.assertIn('](typescript-LICENSE.txt)', guide)
+        self.assertTrue((GUIDE / 'references/typescript-LICENSE.txt').is_file())
+
     def test_unmatched_language_does_not_choose_a_stack(self):
         result = router.route(['main.ex', 'Dockerfile', 'Makefile', '.env'])
         self.assertEqual(result['guides'], [])

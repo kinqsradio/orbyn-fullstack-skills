@@ -20,6 +20,35 @@ class SkillContractTests(unittest.TestCase):
         self.skill.parent.mkdir(parents=True)
         self.skill.write_text('# Example\n\n## Actual step\n\n## Actual step\n')
 
+    def test_entrypoint_limits_reject_regrowth_and_maintainer_notes(self):
+        ok = '---\nname: example\ndescription: "Do one thing."\n---\n\n# Example\n'
+        self.assertEqual(contracts.check_entrypoint('example', ok), [])
+        long_body = ok + 'word ' * (contracts.MAX_ENTRYPOINT_WORDS + 1)
+        self.assertIn('exceeds', contracts.check_entrypoint('example', long_body)[0])
+        long_text = ok.replace('Do one thing.', 'x' * (contracts.MAX_DESCRIPTION_CHARS + 1))
+        self.assertIn('description', contracts.check_entrypoint('example', long_text)[0])
+        folded = ok.replace('"Do one thing."', '>-')
+        self.assertIn('one literal line', contracts.check_entrypoint('example', folded)[0])
+        continued = ok.replace('"Do one thing."\n', 'Short\n  ' + 'x' * 400 + '\n')
+        self.assertIn('one literal line', contracts.check_entrypoint('example', continued)[0])
+        self.assertIn('one literal line', contracts.check_entrypoint('example', ok.replace('"Do one thing."', '  '))[0])
+        self.assertIn('closed frontmatter', contracts.check_entrypoint('example', ok.replace('---\n\n#', '--- \n\n#'))[0])
+        self.assertIn('closed frontmatter', contracts.check_entrypoint('example', '---\nname: example\n' + 'word ' * 5000)[0])
+        self.assertIn('provenance', contracts.check_entrypoint('example', ok + 'Historical source notices remain in provenance.\n')[0])
+        wrapped = ok + 'It is ours; historical source notices\nremain in provenance.\n'
+        self.assertIn('provenance', contracts.check_entrypoint('example', wrapped)[0])
+
+    def test_case_coverage_requires_repeat_positives_and_a_holdout(self):
+        case = lambda split, *more: {'expected_skills': ['example', *more], 'split': split}
+        development = [case('development')] * 2
+        self.assertEqual(contracts.check_case_coverage({'example'}, [*development, case('holdout')]), [])
+        self.assertIn('holdout', contracts.check_case_coverage({'example'}, development)[0])
+        self.assertIn('positive', contracts.check_case_coverage({'example'}, [case('development'), case('holdout')])[0])
+        doubled = [case('development', 'example'), case('holdout')]
+        self.assertIn('positive', contracts.check_case_coverage({'example'}, doubled)[0])
+        shared = [*development, case('holdout', 'other')]
+        self.assertIn('holdout', contracts.check_case_coverage({'example'}, shared)[0])
+
     def test_nested_upstream_entrypoint_is_rejected_even_with_valid_canonical_skill(self):
         source = self.skill.parent/'references/upstream/vendor/SKILL.md'
         source.parent.mkdir(parents=True)

@@ -67,6 +67,19 @@ class ModelRegistryTests(unittest.TestCase):
         self.run_sync('--check')
         self.assertEqual(before,self.snapshot())
 
+    def test_trailing_comment_on_owned_key_is_not_drift_and_survives_update(self):
+        self.run_sync('--write')
+        config = self.root/'.codex/config.toml'
+        lines = config.read_text().splitlines()
+        index = next(i for i, line in enumerate(lines) if line.startswith('model = '))
+        lines[index] += ' # reviewed "pin"'
+        config.write_text('\n'.join(lines)+'\n')
+        self.run_sync('--check')
+        self.change(lambda data: data['agents']['orbyn-agent']['codex'].update(model='gpt-fixture'))
+        self.run_sync('--write')
+        self.assertIn('model = "gpt-fixture" # reviewed "pin"\n', config.read_text())
+        self.assertEqual(tomllib.loads(config.read_text())['model'], 'gpt-fixture')
+
     def test_optional_cannot_be_default_for_either_host(self):
         original=self.source.read_bytes()
         for host in ['codex','claude']:

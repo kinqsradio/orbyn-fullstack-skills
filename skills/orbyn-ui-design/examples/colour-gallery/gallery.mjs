@@ -36,7 +36,7 @@ function start() {
    <p class="help secondary">Use a name your teammates can recognize.</p><div class="actions"><button class="primary" type="submit">Save preview</button><button class="secondary-button" type="button" disabled>Export unavailable</button></div>
    <p class="feedback" aria-live="polite">✓ Ready — no changes saved.</p><p class="error-example">⚠ Error example — permissions need review.</p></form>
    <details class="roles"><summary>Semantic roles & origins</summary><dl></dl></details>
-   <details class="audit"><summary>Computed role-pair checks</summary><div class="table-scroll"><table><caption>Solid sRGB numeric checks; not full accessibility compliance</caption><thead><tr><th>Pair / criterion</th><th>Ratio</th><th>Target</th><th>Result</th></tr></thead><tbody></tbody></table></div></details>`;
+   <details class="audit"><summary>Computed role-pair checks</summary><div class="table-scroll" tabindex="0" role="region" aria-label="Computed role-pair checks"><table><caption>Solid sRGB numeric checks; not full accessibility compliance</caption><thead><tr><th>Pair / criterion</th><th>Ratio</th><th>Target</th><th>Result</th></tr></thead><tbody></tbody></table></div></details>`;
   section.querySelector('.mode').textContent=mode==='light'?'Light proposal':'Dark proposal';
   const form=section.querySelector('form'),input=form.elements.title,feedback=section.querySelector('.feedback');
   input.id=`title-${mode}`;feedback.id=`feedback-${mode}`;input.setAttribute('aria-describedby',feedback.id);

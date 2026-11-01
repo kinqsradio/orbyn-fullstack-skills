@@ -16,7 +16,10 @@ COMPILER = Path(__file__).resolve().parents[1] / 'references/upstream/pstack-sta
 
 
 def identity(path):
-    path = Path(path).resolve(strict=True)
+    try:
+        path = Path(path).resolve(strict=True)
+    except RuntimeError as error:  # Python 3.11 reports a symlink loop this way.
+        raise ValueError(f'Symlink loop: {path}') from error
     if not path.is_file():
         raise ValueError(f'Not a regular file: {path}')
     return {'path': str(path), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}

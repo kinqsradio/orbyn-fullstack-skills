@@ -118,6 +118,11 @@ not evidence that a product's actions have already passed them.
   in the agreed task requirements. Convenience must not turn a suggestion into an authorized write.
 - Keep contextual suggestions in a stable location; do not rearrange primary
   navigation or change settings based on inferred preferences without a choice.
+- For model-powered behavior, use [AI application engineering](../../orbyn-ai-application/SKILL.md)
+  for grounding, quality and tool contracts. The UI keeps capability expectations,
+  source/uncertainty, correction, dismissal and manual continuation visible.
+- Treat feedback as separate from training consent, and do not enable automatic
+  capture from it.
 
 ## Acceptance beyond screenshots
 
@@ -138,6 +143,12 @@ give exact steps for a known defect's recheck. Agent walkthroughs are expert QA,
 not evidence from representative human participants. Where user testing is done,
 record completion, errors, assistance, and time without claiming a universal
 usability score. Do not collect new analytics or personal data implicitly.
+
+For validation with people, use [user evidence](../../orbyn-research/references/user-evidence.md)
+to choose nonleading representative tasks and accessible participation. Separate
+observed usability from demand/adoption or causal benefit;
+[product discovery](../../orbyn-plan/references/product-discovery.md) owns that
+outcome decision.
 
 
 ## Add rows and confirmed receipts

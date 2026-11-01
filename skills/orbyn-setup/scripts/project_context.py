@@ -13,7 +13,10 @@ def local_path(project, value, file_only=False):
     path = PurePosixPath(value)
     if path.is_absolute() or '..' in path.parts or '\\' in value or ':' in value:
         raise ValueError(f'Expected a project-relative path: {value}')
-    target = (project / value).resolve(strict=True)
+    try:
+        target = (project / value).resolve(strict=True)
+    except RuntimeError as error:  # Python 3.11 reports a symlink loop this way.
+        raise ValueError(f'Context path is a symlink loop: {value}') from error
     if not target.is_relative_to(project) or (file_only and not target.is_file()):
         raise ValueError(f'Context path leaves the project or has the wrong kind: {value}')
     return target

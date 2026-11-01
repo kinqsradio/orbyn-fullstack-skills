@@ -70,6 +70,8 @@ test('IME and multiline preserve native keyboard input', () => {
   assert.equal(enterAction({ key: 'Enter', isComposing: true }), 'native');
   assert.equal(enterAction({ key: 'Enter', shiftKey: true }), 'native');
   assert.equal(enterAction({ key: 'Enter' }), 'submit');
+  // WebKit ends composition before this keydown, so only keyCode 229 identifies it.
+  assert.equal(enterAction({ key: 'Enter', isComposing: false, keyCode: 229 }), 'native');
   const c = new Composer('a/t'); c.edit('Text');
   assert.equal(c.submit({ composing: true }), null);
 });

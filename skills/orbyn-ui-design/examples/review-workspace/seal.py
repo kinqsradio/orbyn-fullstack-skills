@@ -6,7 +6,9 @@ an explicit review round before resealing changed prototype source.
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
+import tempfile
 
 
 def seal(root):
@@ -24,7 +26,18 @@ def seal(root):
         assets[name] = hashlib.sha256(p.read_bytes()).hexdigest()
     payload = {"prototype": prototype, "targets": manifest["targets"], "assets": assets}
     fingerprint = hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
-    path.write_text(json.dumps({**payload, "prototype": {**prototype, "fingerprint": fingerprint}}, indent=2) + "\n")
+    # Authored targets live only here: a failed write must leave the old manifest intact.
+    mode = path.stat().st_mode & 0o777
+    fd, temp = tempfile.mkstemp(prefix=".manifest-", dir=root)
+    try:
+        with os.fdopen(fd, "w") as stream:
+            stream.write(json.dumps({**payload, "prototype": {**prototype, "fingerprint": fingerprint}}, indent=2) + "\n")
+            stream.flush(); os.fsync(stream.fileno())
+        os.chmod(temp, mode)
+        os.replace(temp, path)
+    finally:
+        if os.path.exists(temp):
+            os.unlink(temp)  # Only this run's own temporary file.
     return fingerprint
 
 

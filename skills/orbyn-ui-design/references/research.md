@@ -81,6 +81,16 @@ Refresh the relevant primary source when changing a standards-dependent rule;
 reinspect local tokens when implementation has changed. Do not fetch research or
 configure external tools for every small UI edit when this reference suffices.
 
+## Orbyn example: token and component owners
+
+This mapping is Orbyn's own application only. Other projects use their own theme and
+token owners, so resolve those from the consuming project's stack guide and manifests,
+and never create these paths to fit the skill.
+
+- Shared theme: `packages/core/src/theme/presentation.ts`.
+- Desktop and web styles: `desktop/src/styles/global.css`.
+- Mobile theme: `mobile/src/theme/index.ts`.
+
 ## Workspace composition review
 
 The [workspace method](workspace-composition.md#reviewed-inspiration-and-limits)

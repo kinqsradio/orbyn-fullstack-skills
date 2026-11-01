@@ -55,6 +55,8 @@ and report the limitation; do not copy shared policy into the target to mask it.
 2. Change the owning skill or helper. Explain the user request, the decision it
    improves, expected input/output and adjacent tasks that should not select it.
    Improve an existing owner before adding another overlapping skill.
+   Follow the [authoring standard](skills/orbyn-skill-creator/references/authoring-standard.md);
+   `scripts/check-library.py` fails on its size, description and case-coverage limits.
 3. Preserve source attribution and licenses. A direct adaptation needs an exact
    upstream URL/revision, applicable notice and a `provenance.json` entry. Reviewed
    inspiration is labelled separately; do not imply original authors contributed

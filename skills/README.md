@@ -18,9 +18,9 @@ This index is generated in the full library from `catalog.json` and frontmatter 
 
 ## Workflow and planning
 
-- [automate-me](automate-me/SKILL.md) — Capture explicitly requested working preferences in a reusable local skill, using the current conversation or user-selected examples.
-- [figure-it-out](figure-it-out/SKILL.md) — Plan and execute an authorized large migration or cross-cutting task with measurable completion criteria and a concise evidence trail.
-- [orbyn-plan](orbyn-plan/SKILL.md) — Refine an engineering request or scope and sequence a change, migration or investigation. Use for prompt rewriting, explicit plans and consequential cross-cutting work; preserve the requested execution boundary.
+- [automate-me](automate-me/SKILL.md) — Capture a working preference the user explicitly asks to keep in a reusable local skill, using the current conversation or user-selected examples. Use reflect for lessons from task evidence and orbyn-skill-creator for shared library skills.
+- [figure-it-out](figure-it-out/SKILL.md) — Execute an authorized large migration or cross-cutting change through to its measurable end state, tracking every unit. Use orbyn-plan when the deliverable is only a plan.
+- [orbyn-plan](orbyn-plan/SKILL.md) — Refine an engineering request or scope and sequence a change, migration or investigation. Use for prompt rewriting, explicit plans and complex changes; preserve the requested execution boundary. Use figure-it-out to carry out an authorized large migration.
 - [orbyn-research](orbyn-research/SKILL.md) — Resolve a specific product-evidence, architectural, dependency, platform or design uncertainty using local evidence and authoritative external sources before choosing an implementation.
 - [orbyn-setup](orbyn-setup/SKILL.md) — Prepare the nested Orbyn Engineering workspace, inspect target instructions and skills in place, and verify isolation without installing shared skills into target repositories.
 - [orbyn-skill-creator](orbyn-skill-creator/SKILL.md) — Create, refine, merge or retire Orbyn repository skills while keeping task routing, technology boundaries, host discovery and documentation consistent.
@@ -28,19 +28,19 @@ This index is generated in the full library from `catalog.json` and frontmatter 
 - [orbyn-workflow](orbyn-workflow/SKILL.md) — Route engineering work through investigation, design, implementation and verification, including open-source contribution intake and bounded PR feedback/CI iteration. Follow the consuming project's instructions.
 - [orbyn-worktree](orbyn-worktree/SKILL.md) — Manage local task branches, private contribution storage when supported and Git worktree isolation; use sibling <repo>-wt directories, purpose-based names and preservation before cleanup.
 - [reflect](reflect/SKILL.md) — Remember, find, classify, correct or forget explicitly authorized local engineering memory; reflect on current-task evidence and propose bounded improvements to existing skill owners.
-- [show-me-your-work](show-me-your-work/SKILL.md) — Keep a compact decision and evidence trail for substantial migrations or unattended work that the user will review later.
+- [show-me-your-work](show-me-your-work/SKILL.md) — Keep a compact decision and evidence trail for substantial migrations or unattended work that the user will review later; not for routine tasks already explained by Git, PR and CI.
 
 ## Engineering practice
 
 - [architect](architect/SKILL.md) — Design data shapes, interfaces, ownership, statecharts and module boundaries for substantive features or refactors; use for lifecycle rules, code organization, vertical modules and shared-code extraction.
-- [arena](arena/SKILL.md) — Compare competing design or implementation sketches when a consequential choice cannot be resolved cheaply from existing evidence.
+- [arena](arena/SKILL.md) — Build and compare competing design or implementation sketches when a consequential choice cannot be resolved cheaply from existing evidence. Use architect for a single design.
 - [how](how/SKILL.md) — Trace source behavior, data flow and dependency impact across code, build and runtime boundaries; reproduce and reduce defects before explaining or changing an unfamiliar subsystem.
 - [interrogate](interrogate/SKILL.md) — Challenge a specified design, patch or claim for concrete correctness, ownership and evidence gaps. Use for adversarial review, not every routine edit.
 - [language-best-practices](language-best-practices/SKILL.md) — Implement or review TypeScript, JavaScript, Python, Go, Rust, Java, Kotlin, C#, Swift, C, C++, SQL or shell code using its actual runtime, ownership and error contracts. Select only the affected local guide, including TypeScript schemas and lifecycle contracts.
-- [orbyn-security-remediation](orbyn-security-remediation/SKILL.md) — Investigate and resolve existing Orbyn security findings, record evidence and add preventive checks without starting a security scan.
+- [orbyn-security-remediation](orbyn-security-remediation/SKILL.md) — Investigate and resolve existing security findings from Codex Security or a comparable record, capture evidence and add preventive checks without starting a security scan.
 - [orbyn-stack-selection](orbyn-stack-selection/SKILL.md) — Choose or reassess a language, framework, database, runtime, hosting or build-versus-buy option from project constraints and current primary evidence. Produce a decision with operating and migration costs; ordinary implementation keeps the established stack.
 - [tdd](tdd/SKILL.md) — Design focused contract tests, failing-before regressions or verification of critical properties; use for requested TDD, model checking and verification drift, with practical boundaries and explicit evidence limits.
-- [unslop](unslop/SKILL.md) — Edit agent prose and documentation for clear factual communication while preserving the requested voice and evidence.
+- [unslop](unslop/SKILL.md) — Edit agent prose and documentation for clear factual communication while preserving the requested voice and evidence. Use orbyn-content-design for interface copy and social-content for posts.
 - [why](why/SKILL.md) — Investigate design rationale, regressions and trade-offs using Git history and relevant authorized records; distinguish documented intent from inference.
 
 ## Fullstack contracts and delivery
@@ -53,9 +53,9 @@ This index is generated in the full library from `catalog.json` and frontmatter 
 
 ## Product design
 
-- [orbyn-content-design](orbyn-content-design/SKILL.md) — Write and arrange concise Orbyn product content, labels, status, errors and help across web, desktop and mobile. Use for visible interface copy and content hierarchy; preserve user-authored documents and messages.
-- [orbyn-ui-design](orbyn-ui-design/SKILL.md) — Design, implement, or review Orbyn UI and UX across web, desktop, and mobile: task flows, concise copy, responsive layouts, overlays, and AI interactions. Use for visible product flows; not backend-only work.
-- [technical-illustration](technical-illustration/SKILL.md) — Create or repair deterministic code-driven motion scenes, motion films, music-led artwork/lyric videos and model-driven technical illustrations with coherent geometry, motion, readouts, accessible interaction and inspected SVG, React, print or conditional WebGL/beta3D outputs.
+- [orbyn-content-design](orbyn-content-design/SKILL.md) — Write and arrange concise product content, labels, status, errors and help across web, desktop and mobile. Use for visible interface copy and content hierarchy; preserve user-authored documents and messages.
+- [orbyn-ui-design](orbyn-ui-design/SKILL.md) — Design, implement, or review product UI and UX across web, desktop, and mobile: task flows, concise copy, responsive layouts, overlays, and AI interactions. Use for visible product flows; not backend-only work.
+- [technical-illustration](technical-illustration/SKILL.md) — Create or repair deterministic code-driven motion scenes, motion films, music-led artwork or lyric videos and model-driven technical illustrations, with accessible interaction and inspected SVG, React, print or conditional WebGL/beta3D outputs.
 
 ## Social content and visuals
 

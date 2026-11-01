@@ -1,34 +1,45 @@
 ---
 name: technical-illustration
-description: "Create or repair deterministic code-driven motion scenes, motion films, music-led artwork/lyric videos and model-driven technical illustrations with coherent geometry, motion, readouts, accessible interaction and inspected SVG, React, print or conditional WebGL/beta3D outputs."
+description: "Create or repair deterministic code-driven motion scenes, motion films, music-led artwork or lyric videos and model-driven technical illustrations, with accessible interaction and inspected SVG, React, print or conditional WebGL/beta3D outputs."
 ---
 
 # Model-driven technical illustrations
 
 Use for an explanatory interactive figure, code-driven timed prototype, motion
 film or music-led artwork/lyric video whose model controls what is drawn, moved,
-read and exported. Ordinary app layout belongs to UI design, social posters
-to social-preview, simple flow diagrams to existing explanation methods and
-scientific plots to the scientific plotting tool. Ordinary editing of existing
-video footage stays with the project media tools; this owner constructs motion
-from an explicit sampled model rather than acting as a general video editor. Choose a physical metaphor only
-when it clarifies the idea; disclose where the analogy stops.
+read and exported. This owner constructs motion from an explicit sampled model.
+Choose a physical metaphor only when it clarifies the idea; disclose where the
+analogy stops.
+
+## Check the route
+
+Send these to their owners:
+
+- Ordinary app layout: UI design.
+- Social posters: social-preview.
+- Simple flow diagrams: existing explanation methods.
+- Data-driven scientific plots: the project's plotting library.
+- Ordinary editing of existing video footage: the project media tools. This owner
+  does not act as a general video editor.
+
+Apply these contracts when the request matches:
+
+- Requested illustrated statecharts: follow architect's
+  [art contract](../architect/references/illustrated-statecharts.md). Draw from the
+  actual chart or trace records; architect retains state, guard, projection and
+  verification ownership. Keep exact numbered paths and the plain/text fallback.
+- Arbitrary code-authored layered compositions, sampled tracks, rational clocks,
+  vector/audio/media adapters or conditional 3D/simulation/effects: use the
+  [code-driven motion contract](../orbyn-ui-design/examples/spatial-review/motion/README.md).
+  Use the existing UI owner for live takeover and the existing review writer for
+  source-bound settings and decisions; no new authoring app or provider is required.
+
+## Set the boundary
 
 Resolve the target, its instructions, artifact/output owner and allowed effects.
 Shared methods stay in the outer library. Authorized drawing modules may be
 packaged into the actual artifact; never install shared instructions into targets.
 No browser bypass, publisher, auth edit, history capture or model call is implied.
-
-For requested illustrated statecharts, follow architect's
-[art contract](../architect/references/illustrated-statecharts.md). Draw from the
-actual chart or trace records; architect retains state, guard, projection and
-verification ownership. Keep exact numbered paths and the plain/text fallback.
-
-For arbitrary code-authored layered compositions, sampled tracks, rational clocks,
-vector/audio/media adapters or conditional 3D/simulation/effects, use the
-[code-driven motion contract](../orbyn-ui-design/examples/spatial-review/motion/README.md).
-Use the existing UI owner for live takeover and the existing review writer for
-source-bound settings and decisions; no new authoring app or provider is required.
 
 ## Build one coherent artifact
 
@@ -59,12 +70,15 @@ source-bound settings and decisions; no new authoring app or provider is require
    using [dependencies and update](references/dependencies-and-update.md). Preserve
    notices and original/adapted hashes. Deliver artifact, evidence and actual limits.
 
-The bundled MIT support under `references/upstream/anatomy/` is a pinned maintained
-adaptation, not an upstream installation or active skill. The source record and
-snapshot describe exact scope. Read actual APIs before authoring a new model.
-Browser, React peers, PDF tools and GPU are conditional prerequisites; unavailable
-surfaces remain blocked. Core SVG does not qualify React, print, WebGL or beta 3D.
-The source's full configured audits are finite sampled checks, not continuous
-physical proof. Keep supported runtime/platform evidence separate from written
-methods and model behavior. Existing TDD, UI, performance and publication policies
-remain the owners of their general contracts.
+## Bundled support and evidence limits
+
+- The MIT support under `references/upstream/anatomy/` is a pinned maintained
+  adaptation, not an upstream installation or active skill. The source record and
+  snapshot describe exact scope. Read actual APIs before authoring a new model.
+- Browser, React peers, PDF tools and GPU are conditional prerequisites; unavailable
+  surfaces remain blocked. Core SVG does not qualify React, print, WebGL or beta 3D.
+- The source's full configured audits are finite sampled checks, not continuous
+  physical proof. Keep supported runtime/platform evidence separate from written
+  methods and model behavior.
+- Existing TDD, UI, performance and publication policies remain the owners of their
+  general contracts.

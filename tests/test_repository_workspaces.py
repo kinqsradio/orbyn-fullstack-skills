@@ -67,6 +67,12 @@ class RepositoryWorkspaceTests(unittest.TestCase):
         self.assertFalse((target/'skills').exists())
         self.assertFalse((target/'.agents/skills/language-best-practices').exists())
 
+    def test_status_keeps_the_unstaged_column_of_the_first_entry(self):
+        target,_=self.target()
+        (target/'AGENT.md').write_text('Unstaged target change')
+        report=workspace.check(self.root,target)
+        self.assertEqual(report['target_status'],' M AGENT.md')
+
     def test_worktree_retains_own_root_dirty_changes_and_common_metadata(self):
         target,_=self.target();tree=self.root/'repo/widget-wt/bug-fix'
         self.git(target,'worktree','add','-b','fix/fixture',str(tree),'HEAD')

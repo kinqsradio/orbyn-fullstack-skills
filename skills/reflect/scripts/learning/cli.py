@@ -88,8 +88,9 @@ def dispatch(args):
         return store.register(args.root, selection)
     # Resolve the catalog relative to this package, so host discovery symlinks work.
     catalog = Path(__file__).resolve().parents[3] / 'catalog.json'
-    skills = {r['name'] for r in artifacts.read_json(catalog)['skills']}
-    with store.Memory(args.root, selection, skills) as memory:
+    registry = artifacts.read_json(catalog)
+    skills = {r['name'] for r in registry['skills']}
+    with store.Memory(args.root, selection, skills, registry.get('retired_skills', ())) as memory:
         read = artifacts.read_json
         cmd = args.command
         if cmd == 'taxonomy':

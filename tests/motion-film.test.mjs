@@ -19,6 +19,8 @@ assert.throws(() => subframeTimes(DEFAULT_FILM, 360)); assert.throws(() => subfr
 const captions = webVTT([{ start: 0, end: 4.1, text: '<b>plain</b>\nSecond line' }], 12);
 assert.ok(captions.includes('00:00:04.100')); assert.ok(captions.includes('&lt;b&gt;')); assert.ok(captions.startsWith('WEBVTT\n\n'));
 assert.throws(() => webVTT([], 12));
+// A blank line ends a WebVTT cue, so its second paragraph would become a broken cue.
+for (const text of ['one\n\ntwo', 'one\r\n\r\ntwo', 'one\n  \ntwo', 'one\u0000two', '\nlost caption', '\r\nlost caption', '  \nlost caption']) assert.throws(() => webVTT([{ start: 0, end: 4, text }], 12), /Invalid film text|Caption text/);
 assert.throws(() => webVTT([{ start: 0, end: 4, text: 'a' }, { start: 3, end: 5, text: 'b' }], 12));
 console.log('Motion spec, decimal frame boundaries, deterministic backwards seek, cut-safe subframes and caption controls passed.');
 

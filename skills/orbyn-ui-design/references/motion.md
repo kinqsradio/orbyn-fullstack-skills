@@ -56,3 +56,11 @@ is the interval before visual removal; settling is completion within the chosen
 position/velocity tolerance. A glossary helps feedback without restricting language.
 
 [Selected methods and notices](mobile/sources.md) preserve adaptation lineage.
+
+## Code-driven composition
+
+For code-driven UI motion and an editable preview, use the existing
+[motion composition and inspector](../examples/spatial-review/motion/README.md).
+Keep live gesture velocity, interrupted presence, keyboard takeover and reduced
+motion separate from deterministic export seeks. Keep optional graphics/audio
+backends out of ordinary product UI prerequisites.

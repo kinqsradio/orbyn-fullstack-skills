@@ -104,6 +104,13 @@ bytes; grade or reproduce them from that revision rather than rewriting their
 results against an expanded suite. New cases require fresh observations before
 claiming coverage or comparing scores.
 
+Use this suite for positive, adjacent, no-skill and outcome cases. Update a case when
+its contract changes, and keep frozen criteria fixed after observing a held-out result.
+`python3 skills/orbyn-skill-creator/scripts/evaluate.py validate` checks the suite.
+Report prepared or incomplete trials as unverified. Helper fixtures test the tooling;
+use only captured, reviewed host trials as evidence of skill behavior. Record baseline
+and candidate results separately before claiming an improvement.
+
 ## CI and contributions
 
 Ordinary PR CI runs static case validation and fixture tests without model calls or

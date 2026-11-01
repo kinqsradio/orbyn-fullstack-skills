@@ -65,6 +65,38 @@ class MotionExportTests(unittest.TestCase):
         receipt = json.loads((self.out/'receipt.json').read_text()); self.assertEqual(receipt['status'], 'failed'); self.assertIn('ENOENT', receipt['error'])
         self.assertFalse((self.out/'film.mp4').exists())
 
+    def test_probe_stdout_is_read_to_end_of_stream(self):
+        # A descendant keeps the pipe open past the tool's exit, so an exit-only reader loses its tail.
+        pad = 'x' * 200000
+        probe = self.owner/'ffprobe'
+        probe.write_text(f'''#!/bin/sh
+case "$1" in
+  -version) echo ffprobe stub; exit 0;;
+esac
+(sleep 0.3; printf '%s' '"}}}}') &
+printf '%s' '{{"streams":[{{"codec_type":"audio"}}],"format":{{"format_name":"wav","pad":"{pad}'
+exit 0
+''')
+        probe.chmod(0o700)
+        server = self.owner/'python'
+        server.write_text('#!/bin/sh\ncase "$1" in --version) echo Python stub; exit 0;; esac\nexit 7\n'); server.chmod(0o700)
+        audio = self.owner/'tone.wav'; audio.write_bytes(b'RIFF')
+        result = self.run_export('--audio', str(audio), '--ffmpeg', shutil.which('true'), '--ffprobe', str(probe), '--python', str(server))
+        self.assertNotEqual(result.returncode, 0)
+        error = json.loads((self.out/'receipt.json').read_text())['error']
+        self.assertIn('Source server exited', error)  # Past the audio probe, not a truncated-JSON failure.
+
+    def test_descendant_holding_stdout_cannot_outlast_the_drain(self):
+        # Cancellation cannot reach a tool that already exited, so the wait itself must be bounded.
+        tool = self.owner/'ffmpeg'
+        tool.write_text('#!/bin/sh\n(sleep 15) &\nexit 0\n'); tool.chmod(0o700)
+        server = self.owner/'python'
+        server.write_text('#!/bin/sh\nexit 7\n'); server.chmod(0o700)
+        started = time.monotonic()
+        result = self.run_export('--ffmpeg', str(tool), '--ffprobe', shutil.which('true'), '--python', str(server))
+        self.assertLess(time.monotonic() - started, 12)
+        self.assertNotEqual(result.returncode, 0)
+
     @unittest.skipUnless(os.environ.get('MOTION_EXPORT_TESTS') == '1', 'Optional actual existing browser/FFmpeg export; set MOTION_EXPORT_TESTS=1')
     def test_actual_mp4_blur_effects_captions_probe_decode(self):
         spec = self.owner/'film.json'; spec.write_text(json.dumps({'version': 1, 'title': 'Synthetic export check', 'fps': 10, 'bpm': 120, 'duration': 1, 'shots': [{'id': 'intro', 'from': 0, 'to': .5, 'composition': 'title', 'title': 'MOTION', 'caption': 'Original frames.'}, {'id': 'end', 'from': .5, 'to': 1, 'composition': 'end-card', 'title': 'REVIEW', 'caption': 'Readable ending.'}]}))

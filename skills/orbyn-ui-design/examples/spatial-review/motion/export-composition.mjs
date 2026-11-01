@@ -50,7 +50,7 @@ function stop(child){if(child.exitCode!==null||child.signalCode!==null)return;ch
 const cancel=()=>{cancelled=true;for(const child of children)stop(child);browser?.close().catch(()=>{});};
 const budget=()=>{if(cancelled||Date.now()-started>timeout*1000)throw Error('Export cancelled/time budget');};
 process.on('SIGINT',cancel);process.on('SIGTERM',cancel);const timer=setTimeout(cancel,timeout*1000);
-async function run(binary,args,label){budget();const child=spawn(binary,args,{stdio:['ignore','pipe','pipe']});children.add(child);let stdout='',stderr='';child.stdout.on('data',b=>{stdout+=b;if(stdout.length>2e6)stop(child);});child.stderr.on('data',b=>{stderr+=b;if(stderr.length>2e6)stop(child);});try{const code=await new Promise((res,rej)=>{child.once('error',rej);child.once('exit',res);});await writeFile(join(out,label+'.log'),stdout+stderr);if(code!==0)throw Error(label+' failed');budget();return stdout;}finally{children.delete(child);}}
+async function run(binary,args,label){budget();const child=spawn(binary,args,{stdio:['ignore','pipe','pipe']});children.add(child);let stdout='',stderr='';child.stdout.on('data',b=>{stdout+=b;if(stdout.length>2e6)stop(child);});child.stderr.on('data',b=>{stderr+=b;if(stderr.length>2e6)stop(child);});try{const code=await new Promise((res,rej)=>{child.once('error',rej);child.once('close',res);child.once('exit',()=>{const drain=setTimeout(()=>{child.stdout.destroy();child.stderr.destroy();},2000);child.once('close',()=>clearTimeout(drain));});});await writeFile(join(out,label+'.log'),stdout+stderr);if(code!==0)throw Error(label+' failed');budget();return stdout;}finally{children.delete(child);}}
 try{
  await persist();
  server=spawn(options['--python']??'python3',[join(pkg,'serve.py'),'--package',pkg],{stdio:['ignore','pipe','pipe']});children.add(server);
@@ -71,4 +71,4 @@ try{
  await run(options['--ffmpeg']??'ffmpeg',['-v','error','-i',join(out,'composition.mp4'),'-f','null','-'],'decode');
  await verify();budget();receipt.status='complete';receipt.elapsedSeconds=(Date.now()-started)/1000;receipt.videoSha256=hash(await readFile(join(out,'composition.mp4')));receipt.probe=probe;await persist();console.log(JSON.stringify(receipt));
 }catch(error){receipt.status=cancelled?'cancelled':'failed';receipt.error=error.message;await persist();throw error;}
-finally{clearTimeout(timer);process.removeListener('SIGINT',cancel);process.removeListener('SIGTERM',cancel);await browser?.close();for(const child of children)stop(child);}
+finally{clearTimeout(timer);process.removeListener('SIGINT',cancel);process.removeListener('SIGTERM',cancel);try{await browser?.close();}finally{for(const child of children)stop(child);}}

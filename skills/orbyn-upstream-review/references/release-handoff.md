@@ -1,7 +1,9 @@
 # One shared candidate and a complete release handoff
 
 Before shared edits, inspect library main, relevant open PR heads/bases and owned
-local diffs. Select one canonical authoring candidate and serialize shared writes.
+local diffs, including existing PR dependencies before making another branch.
+Select one canonical authoring candidate and serialize shared writes. Keep one
+authoring owner and reconcile consumer edits against their recorded baseline.
 Independent target repositories remain under the ignored nested workspace with
 existing instructions and skills preserved. No consumer copy, lock, installation
 or sync promotion is supported.
@@ -9,11 +11,14 @@ or sync promotion is supported.
 When a stack is needed, record dependency order and exact revisions. Continue from
 the actual parent candidate and reconcile against the merged parent before review.
 Do not overwrite another owner's local edits or call an open PR released main.
+A green candidate check does not make an outdated public `main` or consumer lock
+current, and a feature branch is not the eventual squash SHA.
 
 For authorized delivery, review the final diff/checks, merge dependencies in order,
 verify the actual merged full SHA and terminal main CI, then coordinate updating
-the outer library checkout. Preserve dirty work, target checkouts, private settings,
-outputs, active sessions and previews. Library updates do not authorize target
+the one outer library checkout. Merge only when authorized. Preserve dirty work,
+target checkouts, private settings, outputs, active sessions, previews and local
+artifacts. Keep company context and raw research outside public content. Library updates do not authorize target
 code changes, external messages, publication, deployment or a REA engine upgrade.
 No target integration PR follows automatically.
 
