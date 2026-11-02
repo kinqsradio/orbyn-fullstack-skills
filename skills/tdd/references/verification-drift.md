@@ -4,6 +4,8 @@ Use after covered code changes, merges, refactors or a request to check whether 
 model still describes the implementation. A green run of an old abstraction can
 be stale evidence. Do not change product code in a drift-only task.
 
+Find the check by what it does (a project skill or script that runs a model checker, prover or verifier against named code); it has no fixed name. If none exists, stop and offer to [leave one](formal-verification.md#leave-a-project-local-check).
+
 1. Find the real check and its property, coverage, source identity, configuration,
    bounds, assumptions, tools and last confirmed correspondence. Run it unchanged
    first. If no coverage record exists, mark the baseline uncertain; inspect the
@@ -36,6 +38,8 @@ After modeling both real actions, a counterexample may expose parking over live
 work. Reproduce that ordering in the real controller before calling it a code bug.
 Another change might leave the model stale without breaking the property; report
 updated only after checking correspondence and failure sensitivity.
+
+A check that passed before the update and fails after it was passing on a stale description; say so.
 
 Maintained method adapted from the sources in [the source record](verification-source.md).
 

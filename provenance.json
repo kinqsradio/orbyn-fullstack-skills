@@ -150,6 +150,42 @@
           "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
           "relationship": "selected-method-adaptation",
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/ae5650febf4320793844c12c4adaa937f417f8da/pstack/skills/correct/SKILL.md",
+          "revision": "ae5650febf4320793844c12c4adaa937f417f8da",
+          "local_path": "skills/architect/references/principles/encode-lessons-in-structure.md",
+          "license_file": "skills/architect/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4",
+          "changes": "Merged the highest-level-first ladder, lint messages that name the fix, proof against a past mistake and the rule table, in original wording; bug-fix playbook links here. Reviewed at candidate ae5650f only; earlier pins for other material are unchanged and this is not an advance of the whole upstream."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/ae5650febf4320793844c12c4adaa937f417f8da/pstack/skills/principle-attack-the-premise/SKILL.md",
+          "revision": "ae5650febf4320793844c12c4adaa937f417f8da",
+          "local_path": "skills/architect/references/principles/attack-the-premise.md",
+          "license_file": "skills/architect/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4",
+          "changes": "Short method rewritten with a synthetic retry example; debugging form stays in the how reproduction owner. Reviewed at candidate ae5650f only; earlier pins for other material are unchanged and this is not an advance of the whole upstream."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/ae5650febf4320793844c12c4adaa937f417f8da/pstack/skills/principle-model-the-domain/SKILL.md",
+          "revision": "ae5650febf4320793844c12c4adaa937f417f8da",
+          "local_path": "skills/architect/references/principles/model-the-domain.md",
+          "license_file": "skills/architect/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4",
+          "changes": "Short method rewritten with a synthetic status-flag example and links to existing vertical-code and statechart owners. Reviewed at candidate ae5650f only; earlier pins for other material are unchanged and this is not an advance of the whole upstream."
         }
       ],
       "reviewed_sources": [
@@ -200,6 +236,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Deterministic core and replay verification reference"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Repeated-mistake ladder, attack-the-premise and model-the-domain principles"
         }
       ]
     },
@@ -923,6 +966,13 @@
           "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
           "effort": "medium",
           "date": "2026-11-02",
+          "scope": "Evaluation score pointer and four pstack-update eval cases"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
           "scope": "Eval report: agent-evals status, PR comment, history and dashboard"
         }
       ]
@@ -1330,6 +1380,30 @@
           "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
           "relationship": "selected-method-adaptation",
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/ae5650febf4320793844c12c4adaa937f417f8da/pstack/skills/principle-explain-the-number/SKILL.md",
+          "revision": "ae5650febf4320793844c12c4adaa937f417f8da",
+          "local_path": "skills/orbyn-workflow/references/principles/explain-the-number.md",
+          "license_file": "skills/orbyn-workflow/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4",
+          "changes": "Merged the explain-the-number principle with the benchmark checklist into one conditional method with a synthetic export example; perf-issue links to it. Reviewed at candidate ae5650f only; earlier pins for other material are unchanged and this is not an advance of the whole upstream."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/ae5650febf4320793844c12c4adaa937f417f8da/pstack/skills/benchmark-checklist/SKILL.md",
+          "revision": "ae5650febf4320793844c12c4adaa937f417f8da",
+          "local_path": "skills/orbyn-workflow/references/principles/explain-the-number.md",
+          "license_file": "skills/orbyn-workflow/references/principles/LICENSE.txt",
+          "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4",
+          "changes": "Benchmark-checklist questions and report form, merged with the explain-the-number principle in the same file. Reviewed at candidate ae5650f only; this is not an advance of the whole upstream."
         }
       ],
       "reviewed_sources": [
@@ -1429,6 +1503,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Pointer from the answer-key reference to harvest.py"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Explain-the-number method, bug-fix ladder link and principle index"
         },
         {
           "tool": "Claude Code",
@@ -1712,6 +1793,42 @@
           "license_sha256": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b",
           "relationship": "selected-method-adaptation",
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/ae5650febf4320793844c12c4adaa937f417f8da/pstack/skills/create-formal-verification-skill/SKILL.md",
+          "revision": "ae5650febf4320793844c12c4adaa937f417f8da",
+          "local_path": "skills/tdd/references/formal-verification.md",
+          "license_file": "skills/tdd/references/verification-LICENSE.txt",
+          "license_sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
+          "changes": "Added the project-local check section: target choice, project ownership and user authority, rerun cost, coverage record and sync commit, scratch-break proof. No scripts imported. Reviewed at candidate ae5650f only; earlier pins for other material are unchanged and this is not an advance of the whole upstream."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/ae5650febf4320793844c12c4adaa937f417f8da/pstack/skills/maintain-formal-verification-skill/SKILL.md",
+          "revision": "ae5650febf4320793844c12c4adaa937f417f8da",
+          "local_path": "skills/tdd/references/verification-drift.md",
+          "license_file": "skills/tdd/references/verification-LICENSE.txt",
+          "license_sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
+          "changes": "Added finding the check by function, the missing-check stop and the stale-pass wording. Reviewed at candidate ae5650f only; earlier pins for other material are unchanged and this is not an advance of the whole upstream."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Lauren Tan (pstack); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Lauren Tan",
+          "license": "MIT",
+          "source": "https://github.com/cursor/plugins/blob/ae5650febf4320793844c12c4adaa937f417f8da/pstack/skills/principle-test-behavior-not-implementation/SKILL.md",
+          "revision": "ae5650febf4320793844c12c4adaa937f417f8da",
+          "local_path": "skills/tdd/references/test-strategy.md",
+          "license_file": "skills/tdd/references/verification-LICENSE.txt",
+          "license_sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
+          "changes": "Added the two-edit test judgment with synthetic examples. Reviewed at candidate ae5650f only; earlier pins for other material are unchanged and this is not an advance of the whole upstream."
         }
       ],
       "reviewed_sources": [
@@ -1748,6 +1865,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Replaced the always-test default with the unit-test decision rule"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Project-local verification check, drift stop and two-edit test judgment"
         }
       ]
     },
@@ -1788,6 +1912,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Lint rule for comments that restate code"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Encode claimed constraints sentence in source comments"
         }
       ]
     },

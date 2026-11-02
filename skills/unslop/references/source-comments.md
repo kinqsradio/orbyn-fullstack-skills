@@ -20,6 +20,7 @@ operation.
 - Do not apply blanket comment deletion or a required comment count.
 - Keep changing CI status and long experiment history in existing evidence/docs.
 - A link may supplement essential rationale; it does not replace it.
+- When a comment claims a constraint ("do not remove", "must run before X"), offer to turn it into a type, an assertion or a test, and delete the comment only once that check exists; if it cannot be enforced, the comment stays.
 - Comments are claims, not enforcement. Critical behavior still needs the
   appropriate code structure, assertion or regression.
 
