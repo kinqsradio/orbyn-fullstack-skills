@@ -708,7 +708,7 @@ def render_text(result, explain):
             if explain:
                 for old in item['overridden']:
                     lines.append(f'    overridden: {old["value"]} from {old["source"]}')
-    lines.append('naming: Orbyn [Role] [N] - [Model] - [Task] - [Evidence or ID]')
+    lines.append('naming: Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]')
     lines.append('escalation: ' + ', '.join(f'{a} -> {b}' for a, b in result['escalation'].items())
                  + ' (record the reason; effort never rises with the tier)')
     checks = result['verification']['required_checks']

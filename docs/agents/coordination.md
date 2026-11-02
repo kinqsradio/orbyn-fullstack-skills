@@ -9,7 +9,7 @@ Start with one child and never exceed the resolved limits (defaults in the
 [model policy](model-policy.md#default-routing-and-delegation)). Never create
 user-owned project chats unless the human explicitly requests them.
 
-Name each child and session `Orbyn [Role] [N] - [Model] - [Task] - [Evidence or ID]`,
+Name each child and session `Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]`,
 as the [lead contract](../../skills/orbyn-workflow/references/lead-contract.md#name-children-and-sessions)
 defines.
 
