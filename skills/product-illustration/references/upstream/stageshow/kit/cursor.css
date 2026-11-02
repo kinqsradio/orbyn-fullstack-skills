@@ -91,7 +91,7 @@
     width: 22px;
     height: 22px;
     margin: -11px 0 0 -11px;
-    /* Glass, like the iPadOS pointer: no outline, a translucent tint that
+    /* A glass pointer: no outline, a translucent tint that
        blurs and lifts what's under it, a soft top highlight and a faint shadow.
        The blur goes while pressed (below): the dot then sits on the thing
        being pressed (a checkbox, a row's words) and a blur smears it */

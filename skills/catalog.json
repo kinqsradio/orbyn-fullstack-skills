@@ -81,6 +81,15 @@
       ]
     },
     {
+      "name": "motion-match",
+      "category": "Product design",
+      "related": [
+        "orbyn-ui-design",
+        "technical-illustration",
+        "product-illustration"
+      ]
+    },
+    {
       "name": "orbyn-ai-application",
       "category": "Fullstack contracts and delivery",
       "related": [
@@ -361,6 +370,16 @@
         "unslop",
         "orbyn-ui-design",
         "product-illustration"
+      ]
+    },
+    {
+      "name": "stack-diagram",
+      "category": "Product design",
+      "related": [
+        "architect",
+        "technical-illustration",
+        "product-illustration",
+        "orbyn-ui-design"
       ]
     },
     {

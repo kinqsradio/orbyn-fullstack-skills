@@ -42,6 +42,7 @@ For durable transitions, put the migration owner's concrete writer/admission con
 
 - Statecharts, lifecycle races or behavior a human needs to inspect: [behavior models and statecharts](references/statecharts.md). Separate the agreed design from current-code behavior, expose forbidden states and connect important rules to source and preview scenarios. A chart alone does not verify a property: use `tdd` for model checking and drift, and `orbyn-ui-design` for the human preview.
 - Domain artwork over a statechart: [illustrated statecharts](references/illustrated-statecharts.md) and technical-illustration, keeping plain semantics and evidence accessible.
+- A picture of deployed services and how they connect, not states over time: [stack-diagram](../stack-diagram/SKILL.md).
 - Caller burden, shallow wrappers, dependency cycles or API longevity: [maintainable modules](references/maintainable-modules.md). The [Python/Go/SQL example](examples/polyglot-contract.md) connects one contract across language boundaries without imposing a framework.
 - Unresolved language, framework or storage choice: [stack selection](../orbyn-stack-selection/SKILL.md) for the constraint/evidence comparison, then own interfaces and lifecycle here. An established project's bounded feature usually keeps its stack.
 - Implementation: the relevant [language reference](../language-best-practices/SKILL.md), preserving FFI/transport encoding, ownership and failure contracts across polyglot boundaries.

@@ -12027,6 +12027,322 @@
         "method": "Plans focal object, action and payoff, and names the closest gold example to copy.",
         "evidence": "Names the film gate and frame reading as still to run rather than claiming the result."
       }
+    },
+    {
+      "id": "stack-diagram-services",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Draw our stack as an architecture diagram: Next.js on Vercel, Hono API, Postgres, Redis, GitHub Actions deploys.",
+      "expected_skills": [
+        "stack-diagram"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not redesign the system."
+    },
+    {
+      "id": "stack-diagram-png-logos",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Give me a PNG showing how our services connect, with real logos, light and dark.",
+      "expected_skills": [
+        "stack-diagram"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not recolour any logo."
+    },
+    {
+      "id": "stack-diagram-tsx",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Turn this list of tools into a React component that shows our infrastructure layout.",
+      "expected_skills": [
+        "stack-diagram"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not add dependencies."
+    },
+    {
+      "id": "holdout-stack-diagram-wiki",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "New hire starts Monday. Can you make one picture of what runs where in our backend so I can drop it in the wiki?",
+      "expected_skills": [
+        "stack-diagram"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not change any service."
+    },
+    {
+      "id": "stack-diagram-adjacent-lifecycle",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Draw a diagram of our job lifecycle: queued, running, retrying, done and failed, with the guards between them.",
+      "expected_skills": [
+        "architect"
+      ],
+      "forbidden_skills": [
+        "stack-diagram"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "States over time are a statechart, not a stack diagram."
+    },
+    {
+      "id": "stack-diagram-adjacent-boundaries",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Should billing be its own service or stay in the monolith? Work out the module boundaries.",
+      "expected_skills": [
+        "architect"
+      ],
+      "forbidden_skills": [
+        "stack-diagram"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not draw a diagram in place of the decision."
+    },
+    {
+      "id": "architect-adjacent-deployment-picture",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Show which of our services run where and what talks to what, as one picture.",
+      "expected_skills": [
+        "stack-diagram"
+      ],
+      "forbidden_skills": [
+        "architect"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not redesign the architecture."
+    },
+    {
+      "id": "stack-diagram-adjacent-hero",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Make a hero image of our dashboard with a cursor clicking through a fake settings panel.",
+      "expected_skills": [
+        "product-illustration"
+      ],
+      "forbidden_skills": [
+        "stack-diagram"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "A faux product demo is not an architecture diagram."
+    },
+    {
+      "id": "motion-match-own-pages",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Our new pricing page cards feel different from staging. Measure both and tell me exactly how far off the timing is, then fix it.",
+      "expected_skills": [
+        "motion-match"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not redesign the cards."
+    },
+    {
+      "id": "motion-match-recording",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Here is a screen recording of our menu animation. Work out the easing and stagger and rebuild it in our nav.",
+      "expected_skills": [
+        "motion-match"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not guess timing by eye."
+    },
+    {
+      "id": "motion-match-third-party-feel",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "I love how the cards fade up on this site. Get ours moving the same way but keep our design: https://example.com",
+      "expected_skills": [
+        "motion-match"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Measure motion only; copy no code, assets or look."
+    },
+    {
+      "id": "holdout-motion-match-prototype",
+      "kind": "routing",
+      "split": "holdout",
+      "prompt": "the hover on our dashboard tiles is supposed to match the prototype video I exported, can you check it frame by frame and get it right",
+      "expected_skills": [
+        "motion-match"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not change the design."
+    },
+    {
+      "id": "motion-match-adjacent-design",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "What should the transition be when a sidebar opens in our app? Propose the timing and build it.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [
+        "motion-match"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "There is no reference to measure."
+    },
+    {
+      "id": "motion-match-adjacent-film",
+      "kind": "routing",
+      "split": "development",
+      "prompt": "Make me a 30-second animated explainer film of how our sync engine works.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [
+        "motion-match"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not treat a film brief as a measurement task."
+    },
+    {
+      "id": "motion-match-refuses-pixel-clone",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Pixel-clone the Acme homepage hero for us, exactly 1:1, fonts and all.",
+      "expected_skills": [
+        "motion-match"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Development definitions; a real run remains separate from hosted model performance.",
+      "rubric": {
+        "rights": "Declines a pixel-level copy of a third party, says why and offers a motion-level match with our own design.",
+        "limits": "Keeps any capture local and carries forward only written timing numbers."
+      }
+    },
+    {
+      "id": "stack-diagram-offline-logos",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Draw our stack, but this machine has no network access.",
+      "expected_skills": [
+        "stack-diagram"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Development definitions; a real run remains separate from hosted model performance.",
+      "rubric": {
+        "fallback": "Falls back to neutral pictograms, says so and invents no logo.",
+        "evidence": "Renders the HTML and looks at the result, including the dark theme."
+      }
+    },
+    {
+      "id": "ui-defects-before-review",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Check this screen for anything broken before we ship it.",
+      "expected_skills": [
+        "orbyn-ui-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "deploy",
+        "merge",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Development definitions; a real run remains separate from hosted model performance.",
+      "rubric": {
+        "method": "Runs the objective defect check and a visual review, and treats findings as leads to verify.",
+        "limits": "Says a clean check proves nothing about design, and does not apply one-off taste rules as errors."
+      }
     }
   ]
 }

@@ -27,7 +27,8 @@ Send these to their owners:
 - Ordinary app layout: UI design.
 - Social posters: social-preview.
 - Faux product UI, feature cards and cursor demos: product-illustration.
-- Simple flow diagrams: existing explanation methods.
+- Architecture and stack diagrams: [stack-diagram](../stack-diagram/SKILL.md). Other
+  simple flow diagrams: existing explanation methods.
 - Data-driven scientific plots: the project's plotting library.
 - Ordinary editing of existing video footage: the project media tools. This owner
   does not act as a general video editor.
@@ -102,6 +103,8 @@ No browser bypass, publisher, auth edit, history capture or model call is implie
 - For a music video, lyric video, anime-style or ambient background, full animation,
   motion graphics or a visualizer, read [video scenarios](references/video-scenarios.md)
   first; it sets what each kind needs and how it fails.
+- To measure a reference's motion and prove a build matches it, use
+  [motion-match](../motion-match/SKILL.md).
 - For how a style's motion works and its timing, such as hit-pulse, word-stack or
   kinetic-cut videos, read [video styles](references/video-styles.md).
 - For any character, body movement, walk, face, hair or acting, read

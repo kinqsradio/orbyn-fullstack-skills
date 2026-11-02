@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/caru-ini/stack-diagram",
+  "revision": "75dbd3e3c6fe28844322e6064d3a947b870a6c61",
+  "license": "MIT",
+  "license_files": [
+    "LICENSE",
+    "LICENSE-Orbyn.txt"
+  ],
+  "relationship": "maintained selected adaptation; the adapted files live in the skill, and source-manifest.json holds original and maintained fingerprints",
+  "files": {
+    "LICENSE": {
+      "sha256": "7b153fc3f5f1ccce2b9ac98a35301c666c025db85d6c44565e13304774d144a9"
+    },
+    "LICENSE-Orbyn.txt": {
+      "sha256": "b960a8c01d83aa48ed709780a5c9940f8e2861f2fdcdc8f931fbe3ece90a5e04"
+    },
+    "SOURCE.md": {
+      "sha256": "9680ea83c81674fb4f2f7b558515d99c4fc3cf16b76f7097a98382ba8b76e799"
+    },
+    "source-manifest.json": {
+      "sha256": "5195e0ebace54c595b88fc33432a10858ee0dfd4138469c84d18fcb78e1a16bf"
+    }
+  }
+}

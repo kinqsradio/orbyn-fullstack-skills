@@ -67,3 +67,15 @@ implementation evidence separately. Small visual work stays small.
 Use the [artifact lifecycle](../../orbyn-workflow/references/artifact-lifecycle.md)
 for storage, server lifetime and cleanup. Confirm the human can exercise the
 interaction; a source file or screenshot alone leaves that open.
+
+## Check for objective defects
+
+Run `python3 scripts/ui_check.py <source>` from the skill folder before review. Exit 1 means
+an image with no alternative text or disabled zoom. Everything else is a warning to read
+against the code: focus rings removed, buttons and links with no name, clickable `div`s,
+positive `tabIndex`, `transition: all` and missing reduced-motion support. The report lists
+skipped files, and counts raw controls beside shared ones, which shows drift worth tidying.
+
+It judges no taste, and a pass says nothing about how the screen looks, so it never replaces
+this review. On one real application it gave no errors and 7 warnings, of which 4 were real
+candidates: a focus style on a wrapper with a different name still reads as missing.

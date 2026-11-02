@@ -27,9 +27,14 @@ rule, as do `still_to_layers.py` (OpenCV), `analyze-audio.py` (librosa and numpy
 speech model. Leave them out unless the user approves them for the job.
 
 The [product-illustration](../../product-illustration/SKILL.md) kit is adapted MIT source
-held in this library, and React is its host runtime. Web illustrations built with it are
-outside this video rule. A video that uses the kit needs the user's approval for React and
-must list it as an allowance in the report. Everything else in this rule still applies.
+held in this library, and its host runtime is React, react-dom and lucide-react. Web
+illustrations built with it are outside this video rule. A video that uses the kit needs the
+user's approval for those three modules and must list them as allowances in the report, or
+it replaces `Icon` and renders without them. Everything else in this rule still applies.
+
+A [stack diagram](../../stack-diagram/SKILL.md) stays outside this rule as a document, and
+its fetched logos are not supplied ones. A diagram inside a film is redrawn in the film's own
+code, using only logos the user supplied.
 
 ## Treat missing things as code to write
 
@@ -60,8 +65,10 @@ alone never counts.
 ## References are for learning
 
 Study a reference video for technique: timing, composition, shot length, how a hit
-decays. Keep the lesson, as in [video styles](video-styles.md). Never download a
-reference, copy its frames or art, recreate its characters or trace its shots.
+decays. Keep the lesson, as in [video styles](video-styles.md). Never download a reference
+to reuse it, copy its frames or art, recreate its characters or trace its shots. A
+measurement capture under [motion-match](../../motion-match/SKILL.md) is allowed: it stays in
+an ignored local folder, only its written numbers carry forward, and it is never a deliverable.
 
 ## Prove it
 

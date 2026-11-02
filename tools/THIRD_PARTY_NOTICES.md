@@ -99,3 +99,22 @@ pins the revision and lists what was selected, excluded and changed; the complet
 [MIT notice](../skills/product-illustration/LICENSE) travels with the skill. App artwork,
 third-party marks, photographs and real-product studies are not distributed. Orbyn
 maintains the adaptation.
+
+## stack-diagram
+
+Selected scripts, the template and guidance in `stack-diagram` adapt
+[stack-diagram](https://github.com/caru-ini/stack-diagram) by caru-ini, MIT, at commit
+`75dbd3e3c6fe28844322e6064d3a947b870a6c61`. The
+[source record](../skills/stack-diagram/references/upstream/stack-diagram/SOURCE.md) lists
+what was kept and changed, and the [MIT notice](../skills/stack-diagram/LICENSE) travels
+with the skill. No fonts or brand logos are included. Logos fetched for a job remain the
+trademarks of their owners.
+
+## motion-match
+
+Selected references and scripts in `motion-match` adapt
+[reanimate](https://github.com/NiazMorshed2007/reanimate) by Niaz Morshed, MIT, at commit
+`3f7a55a2986a84ca2173e86ee9127eefe31d046d`, ported from Bun to Node with original PNG, diff
+and sheet code. The [source record](../skills/motion-match/references/upstream/reanimate/SOURCE.md)
+lists what was kept and excluded, and the [MIT notice](../skills/motion-match/LICENSE)
+travels with the skill.

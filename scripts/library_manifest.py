@@ -10,6 +10,7 @@ REPOSITORY = 'https://github.com/kinqsradio/orbyn-fullstack-skills'
 MANIFEST = 'distribution/manifest.json'
 NAME = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+)*')
 EXTENSIONS = {'.md', '.json', '.py', '.sh', '.cjs', '.mjs', '.html', '.css', '.txt', '.yaml', '.yml', '.tla', '.cfg'}
+ORIGINAL_SVG_ROOT = 'skills/stack-diagram/assets/generic/'  # The one folder that ships SVG, all of it neutral.
 PINNED_SUPPORT_EXTENSIONS = {'.ts', '.tsx', '.css', '.png'}
 
 
@@ -100,7 +101,7 @@ def inventory(root):
             safe_path(root, relative)
             if path.is_dir():
                 continue
-            if path.name != 'LICENSE' and path.suffix not in EXTENSIONS and not pinned_support_asset(path, root) and not original_motion_asset(path, root):
+            if path.name != 'LICENSE' and path.suffix not in EXTENSIONS and not pinned_support_asset(path, root) and not original_motion_asset(path, root) and not (path.suffix == '.svg' and relative.startswith(ORIGINAL_SVG_ROOT)):
                 raise ValueError(f'Unexpected skill asset type: {relative}')
             if path.stat().st_size > 1024 * 1024:
                 raise ValueError(f'Skill asset exceeds 1 MiB: {relative}')

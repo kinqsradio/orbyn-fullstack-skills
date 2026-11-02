@@ -129,13 +129,13 @@ Index: [Restraint](#restraint), [Type](#type), [Spacing and alignment](#spacing-
 - **Chrome for the task:** a sharing panel needs a document, permissions and an action; a browser bar explains nothing.
 - **Columns run the full height of their window** (`Window sidebar`); a column that stops short leaves a seam (`examples/chrome`).
 - **Window chrome is fixed at 38px;** `barSize="tall"` (64px) only for a real icon-and-label toolbar (`examples/chrome`).
-- **Never draw platform chrome from memory;** open the real app or a screenshot first.
+- **Never draw platform chrome by hand;** use the kit's `Window` and `Phone`, which draw it for you.
 - **Floating sidebar window:** solid white window, only the floating sidebar is glass, gray glyphs, selected row on a gray pill (`examples/chrome`).
 - **Quiet browser windows** center their content and carry a rounded, centered URL pill (`examples/static-card`).
 - **A document that is not the hero is content:** a ruled page with real margins, not another window.
 - **Phones come from the kit** (the frames are in `kit.md`, Phone); `photo` falls back to `pro`, never an empty bezel (`examples/phones`).
 - **System surfaces keep their real proportions.** Never shrink the lock screen clock; the payoff wins by content, timing and crop (`examples/status-island`).
-- **A notification is one bold title over its message** with `Notification`'s geometry and a real app icon (`examples/phones`).
+- **A notification is one bold title over its message** with `Notification`'s geometry and an icon the user supplied, or a neutral kit icon (`examples/phones`).
 - **Nothing sits under the island;** a sheet or grabber starts below the status bar.
 - **The status bar and home indicator come from the Phone,** never drawn by hand. A second indicator inside the app shows as a bar that scales into place and a sliver under the real one. An app that covers a dark screen turns the Phone's `dark` off as its surface arrives, and both fade to dark.
 - **A phone is lit from its first frame:** never dimmed, blacked out or faded up.

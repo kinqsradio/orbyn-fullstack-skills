@@ -29,6 +29,14 @@ calm-caption adjacent control. Static validation does not establish live routing
 rendered quality or a measured baseline/candidate improvement. Existing holdout
 criteria and source attribution remain unchanged.
 
+## Diagrams, motion measurement and interface defects
+
+`stack-diagram` and `motion-match` adapt two MIT skills, and `ui_check.py` adds a small
+original check. `ai-design-check` was reviewed and rejected as a dependency: on a real
+application its only three errors were false alarms and its taste rules favour one style,
+so only the idea of a static check carried over, limited to objective defects. Together
+with the other new owners this leaves live agent behaviour unmeasured.
+
 ## Code-only animation
 
 `technical-illustration` now requires every picture and movement to come from code
@@ -361,6 +369,8 @@ to their owner instead of duplicating a complete workflow.
 | [rea-ci-tests-audit](../skills/rea-ci-tests-audit/SKILL.md) | Local CI/test assessment method | Explicit REA CI scope + revision/workflow → Discovery, failure-gate and provider-evidence assessment | Source assessment and synthetic cases do not qualify hosted or real-provider lanes |
 | [rea-tool-design](../skills/rea-tool-design/SKILL.md) | Local tool-contract method | Explicit REA tool change → Inputs, evidence, effects, lifecycle and compatibility plan | Design-only scope does not authorize implementation or provider tests |
 | [product-illustration](../skills/product-illustration/SKILL.md) | New adapted artifact owner | Brief, shown size and the user's own or a fictional product → Faux product still or cursor demo with filmed rehearsal | Gate output, frames read and browser checked stay separate; no real company's identity |
+| [stack-diagram](../skills/stack-diagram/SKILL.md) | New adapted artifact owner | Described stack and optional fetched logos → Self-contained architecture diagram as HTML, PNG or TSX | Designing the system, or states over time, stays with architect |
+| [motion-match](../skills/motion-match/SKILL.md) | New adapted method owner | Reference with a declared rights level → Written motion spec, then a build measured until it passes | Third-party references stay at motion level; no copying of code, assets or look |
 | [reflect](../skills/reflect/SKILL.md)                                                                                       | Expanded local method             | Current task, failed assumption and authorized skill scope → Bounded structural lesson at canonical owner              | Plugin caches, unsupported generalization and memory authority            |
 | [reverse-engineer-anything](../skills/reverse-engineer-anything/SKILL.md) | Local artifact investigation method | Authorized artifact + actual tools → Selected facts, provenance, coverage and cleanup state | Offline guidance is complete; runtime, target bytes and schema support remain prerequisites |
 | [show-me-your-work](../skills/show-me-your-work/SKILL.md)                                                                   | Expanded local method             | Task candidate, decisions and check receipts → Compact single-writer evidence trail                                    | Missing terminal results, sensitive payloads and competing logs           |

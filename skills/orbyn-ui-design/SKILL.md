@@ -13,7 +13,9 @@ This skill owns changes to the product UI itself. For social announcement graphi
 product screenshot compositions and feed mockups, use
 [social-preview](../social-preview/SKILL.md), with
 [social-content](../social-content/SKILL.md) for the post; a promotional mockup is
-not an implemented screen. For faux product UI as a marketing still or cursor demo, use
+not an implemented screen. To measure motion against a reference and prove a build matches it, use
+[motion-match](../motion-match/SKILL.md). Copy or clone only our own work, or work the user
+owns or has licensed; for anyone else's product, measure how it moves and keep our own design. For faux product UI as a marketing still or cursor demo, use
 [product-illustration](../product-illustration/SKILL.md).
 
 ## Read before designing
