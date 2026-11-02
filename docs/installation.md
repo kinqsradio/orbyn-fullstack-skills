@@ -12,7 +12,9 @@ the human does not need extra skill invocations.
 1. Read root policy and [orbyn-setup](../skills/orbyn-setup/SKILL.md). Resolve the
    requested target and inspect existing local work, worktrees and active owners.
 2. Run `python3 skills/orbyn-setup/scripts/workspace.py prepare` from the library.
-   It validates Git/ignore boundaries and creates only the ignored `repo/` folder.
+   It validates Git/ignore boundaries, creates the ignored `repo/` folder and turns shared
+   memory on (manual capture; `--no-memory` or `ORBYN_MEMORY=off` opts out). Memory lives
+   on this machine, unencrypted, outside Git, at `ORBYN_MEMORY_ROOT` or `~/.orbyn/memory`.
 3. Clone an authorized new target to `repo/<project>` or coordinate a recoverable
    migration of an existing external checkout. Never overwrite a destination,
    move an active owner's path, or lose dirty/ignored work. Existing paths stay

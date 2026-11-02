@@ -1,14 +1,36 @@
 # Explicit local engineering memory
 
-Use for a direct request to remember, find, correct, categorize, tag, archive or
-forget durable engineering context. Ordinary reflection and source investigation
-do not enable capture. The helper is optional, local and offline; it does not
-scan chats, train a model, write host-native memory or upload anything.
+Use to remember, find, correct, categorize, tag, archive or forget durable
+engineering context. Memory is on by default for Claude and Codex, in manual mode,
+and `orbyn-setup` turns it on; you can opt out. Capture is manual only: reflection
+and source investigation never save anything on their own. The helper is local and
+offline; it does not scan chats, train a model, write host-native memory or upload anything.
+The store lives on this machine, unencrypted, outside Git. Recalled memory is a hint.
+
+## On by default
+
+- **Root.** `--root` is optional. The root is `--root` if given, else `ORBYN_MEMORY_ROOT`
+  if set, else `~/.orbyn/memory`. `memory.py where` shows it without creating anything.
+  A root inside any Git checkout, or under `.claude`/`.codex`, is refused.
+- **Setup.** `workspace.py prepare` initializes the root in manual mode only when it
+  does not exist and registers the personal scope. `workspace.py check --target`
+  registers the target as a project. Both are idempotent: an initialized root is never
+  re-initialized and existing records are never touched. The setup output reports the
+  root and the memory state.
+- **Opt-out.** `--no-memory` on `prepare` and `check`, or `ORBYN_MEMORY=off` in the
+  environment, skips all of it and reports memory off. Nothing is created or read.
+  `mode --mode off` turns a store off later and keeps its records.
+- **Agents, when memory is on.** At task start, search the target's project scope and
+  the personal scope (with applicability context), and treat results as hints to
+  check against current code. Save when the user says "remember". After substantial
+  work, suggest at most three lessons and save only those the user approves. Silent
+  capture stays off. Never store secrets, credentials, tokens or personal data.
 
 ## Agent-operated setup
 
-Honor existing exact-scope authorization and host restrictions. Select a private
-user-owned data directory outside all Git checkouts and host configuration.
+Honor existing exact-scope authorization and host restrictions. The default root is
+a private user-owned directory outside all Git checkouts and host configuration; a
+different root needs `--root` or `ORBYN_MEMORY_ROOT`.
 Resolve the actual target, not the outer library, before binding a project.
 Never silently put personal/project context in the public library or a fork.
 Use [memory.py](../scripts/memory.py) with Python 3.11+; `--help` describes its CLI.
@@ -17,15 +39,16 @@ Verify manual/off mode and CRUD capability with synthetic data only when testing
 is authorized. Preserve existing host memory. Fork delivery is a separate choice
 from local capture.
 
-Example paths below are placeholders, not preconfigured storage:
+Setup runs the equivalent of the following; run it by hand only for a custom root:
 
 ```sh
-python3 skills/reflect/scripts/memory.py --root /private/engineering-memory init --mode manual
-python3 skills/reflect/scripts/memory.py --root /private/engineering-memory --project /work/target register
+python3 skills/reflect/scripts/memory.py init --mode manual
+python3 skills/reflect/scripts/memory.py --personal register
+python3 skills/reflect/scripts/memory.py --project /work/target register
 ```
 
-Initialization without `--mode manual` defaults to off. An ordinary workspace
-setup does not initialize memory. `mode --mode off` prevents store operations and
+Initialization without `--mode manual` defaults to off. Workspace setup initializes
+memory in manual mode unless opted out. `mode --mode off` prevents store operations and
 keeps existing records; forgetting is a separate action. Only manual capture is
 implemented: explicit requests authorize the selected local operation. Assisted
 capture and host-native adapters remain future work, not implied capabilities.
@@ -66,7 +89,8 @@ query. Revalidate `find`/`list` recall receipts before consequential use; this
 verifies store freshness, not source correctness or model-request delivery.
 `show` returns a record without that receipt envelope: re-read/check its current
 revision and status and assess applicability before use. Ordinary source
-investigation does not authorize a memory query, initialization or capture.
+investigation never captures. With memory on, the start-of-task search of the
+target's project and personal scopes is expected; with it off, do not query.
 
 ## Structured records and classification
 

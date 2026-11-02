@@ -3,8 +3,10 @@ import json
 from pathlib import Path
 import subprocess
 import sys
+import os
 import tempfile
 import unittest
+from unittest import mock
 
 from test_tools import ROOT, module, sync
 
@@ -16,6 +18,10 @@ class RepositoryWorkspaceTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
+        # Never reach the real ~/.orbyn/memory: ordinary setup tests run with memory off.
+        patcher = mock.patch.dict(os.environ, {'ORBYN_MEMORY': 'off'})
+        patcher.start()
+        self.addCleanup(patcher.stop)
         self.root = Path(self.temp.name).resolve()/'library'
         self.root.mkdir()
         self.git(self.root, 'init', '-b', 'main')
@@ -204,3 +210,94 @@ class RepositoryWorkspaceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'outside skills allowlist'):
             sync.safe_path(self.root,'repo/widget/skills/private/SKILL.md')
         self.assertEqual(private.read_text(),'Target-only content')
+
+
+class MemoryDefaultSetupTests(unittest.TestCase):
+    """Setup turns shared memory on by default, once, and honours the opt-out."""
+
+    def setUp(self):
+        # Reuse the synthetic library and target fixtures without rerunning their tests.
+        fixture = RepositoryWorkspaceTests('test_setup_preserves_all_target_rules_skills_and_git_excludes')
+        fixture.setUp()
+        self.addCleanup(fixture.doCleanups)
+        self.temp, self.root, self.target = fixture.temp, fixture.root, fixture.target
+        home = Path(self.temp.name).resolve()/'home'
+        home.mkdir()
+        self.home = home
+        patcher = mock.patch.dict(os.environ, {'HOME': str(home)})
+        patcher.start()
+        self.addCleanup(patcher.stop)
+        os.environ.pop('ORBYN_MEMORY', None)
+        os.environ.pop('ORBYN_MEMORY_ROOT', None)
+        self.store = home/'.orbyn/memory'
+
+    def stores(self):
+        return sorted(p.name for p in (self.store/'stores').iterdir()) if (self.store/'stores').is_dir() else []
+
+    def test_prepare_initializes_once_and_registers_personal(self):
+        report = workspace.prepare(self.root)['memory']
+        self.assertEqual((report['state'], report['mode'], report['root']), ('on', 'manual', str(self.store)))
+        self.assertTrue(report['initialized_now'])
+        self.assertEqual(report['scopes'], ['personal'])
+        self.assertEqual(len(self.stores()), 1)
+
+    def test_prepare_is_idempotent_and_keeps_existing_records(self):
+        workspace.prepare(self.root)
+        registry = (self.store/'registry.sqlite3').read_bytes()
+        marker = self.store/'stores'/self.stores()[0]/'memory.sqlite3'
+        before = marker.read_bytes()
+        again = workspace.prepare(self.root)['memory']
+        self.assertFalse(again['initialized_now'])
+        self.assertEqual(len(self.stores()), 1)
+        self.assertEqual((self.store/'registry.sqlite3').read_bytes(), registry)
+        self.assertEqual(marker.read_bytes(), before)
+
+    def test_check_registers_the_target_as_a_project(self):
+        target, _ = self.target()
+        report = workspace.check(self.root, target)['memory']
+        self.assertEqual(report['state'], 'on')
+        self.assertEqual(report['scopes'], ['personal', 'project'])
+        self.assertEqual(len(self.stores()), 2)
+        workspace.check(self.root, target)
+        self.assertEqual(len(self.stores()), 2)
+
+    def test_existing_store_with_records_is_untouched(self):
+        cli = [sys.executable, str(ROOT/'skills/reflect/scripts/memory.py')]
+        run = lambda *a: subprocess.run(cli + list(a), capture_output=True, text=True, check=True)
+        run('init', '--mode', 'manual')
+        run('--personal', 'register')
+        draft = self.home/'draft.json'
+        draft.write_text(json.dumps({'title': 'Keep me', 'statement': 'Synthetic lesson.',
+                                     'category': 'learning', 'domains': ['testing']}))
+        run('--personal', 'remember', '--input', str(draft), '--op', 'seed_1')
+        stores = {p: p.read_bytes() for p in self.store.rglob('*') if p.is_file() and p.name != 'registry.sqlite3'}
+        report = workspace.prepare(self.root)['memory']
+        self.assertFalse(report['initialized_now'])
+        found = json.loads(run('--personal', 'find', '--query', 'Keep').stdout)['result']
+        self.assertEqual([r['title'] for r in found['records']], ['Keep me'])
+        self.assertEqual({p: p.read_bytes() for p in stores}, stores)
+
+    def test_flag_and_env_opt_out_leave_no_files(self):
+        target, _ = self.target()
+        for report in (workspace.prepare(self.root, no_memory=True)['memory'],
+                       workspace.check(self.root, target, no_memory=True)['memory']):
+            self.assertEqual(report['state'], 'off')
+        with mock.patch.dict(os.environ, {'ORBYN_MEMORY': 'OFF'}):
+            self.assertEqual(workspace.prepare(self.root)['memory']['state'], 'off')
+        self.assertFalse((self.home/'.orbyn').exists())
+
+    def test_cli_flag_prints_memory_off(self):
+        cli = [sys.executable, str(ROOT/'skills/orbyn-setup/scripts/workspace.py'), 'prepare', '--library', str(self.root)]
+        result = subprocess.run(cli + ['--no-memory'], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(json.loads(result.stdout)['memory']['state'], 'off')
+        self.assertFalse((self.home/'.orbyn').exists())
+
+    def test_env_root_wins_and_git_checkout_root_is_blocked(self):
+        elsewhere = Path(self.temp.name).resolve()/'elsewhere'
+        with mock.patch.dict(os.environ, {'ORBYN_MEMORY_ROOT': str(elsewhere)}):
+            self.assertEqual(workspace.prepare(self.root)['memory']['root'], str(elsewhere))
+        with mock.patch.dict(os.environ, {'ORBYN_MEMORY_ROOT': str(self.root/'memory')}):
+            report = workspace.prepare(self.root)['memory']
+        self.assertEqual(report['state'], 'blocked')
+        self.assertFalse((self.root/'memory').exists())

@@ -760,6 +760,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Harness and security workflow revision"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Setup initializes and registers shared memory by default, with a --no-memory and ORBYN_MEMORY=off opt-out"
         }
       ]
     },
@@ -826,6 +833,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Added upstream watcher evaluation cases"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Added memory default, remember, suggest and opt-out evaluation cases"
         }
       ]
     },
@@ -1289,6 +1303,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Cleanup retention inversion, opt-out and LOW DISK line"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Memory default rules in the workflow handoff and operating method"
         }
       ]
     },
@@ -1389,6 +1410,13 @@
           "model": "unrecorded",
           "date": "2026-11-02",
           "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Shared memory on by default: standard root resolver, default-use agent rules and opt-out wording"
         }
       ]
     },

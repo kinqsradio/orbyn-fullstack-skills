@@ -78,7 +78,9 @@ handoffs below.
 
 - Setup: [orbyn-setup](../orbyn-setup/SKILL.md), selected automatically.
 - Checkout isolation or a requested worktree: [orbyn-worktree](../orbyn-worktree/SKILL.md).
-- Explicit durable remember/find/correct/tag/category/forget requests:
+- Memory (on by default; `ORBYN_MEMORY=off` opts out): search the target's project and
+  personal scope at task start and treat results as hints; save on "remember"; after
+  substantial work suggest at most three lessons and save only approved ones. Details:
   [reflect's local memory flow](../reflect/references/memory.md).
 - Durable handoff: the optional [task record](references/task-record.md).
 - Explicit plans or a complex change: [orbyn-plan](../orbyn-plan/SKILL.md).

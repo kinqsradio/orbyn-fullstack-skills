@@ -221,10 +221,10 @@ merge does not authorize changing your target repository.
 
 ```mermaid
 flowchart TB
-  accTitle: Optional local memory and reviewed improvements
-  accDescr: An engineering gap can lead to an opt-in local lesson or directly to a synthetic contribution proposal. Evaluation, publication authorization, human review and acceptance precede a shared update.
+  accTitle: Local memory and reviewed improvements
+  accDescr: An engineering gap can lead to an approved local lesson or directly to a synthetic contribution proposal. Evaluation, publication authorization, human review and acceptance precede a shared update.
   gap["Observed engineering gap"]
-  memory["Opt-in local lesson<br/>Tags · categories · evidence"]
+  memory["Approved local lesson<br/>Tags · categories · evidence"]
   choice{"Keep a lesson<br/>or propose a fix?"}
   local["Keep local<br/>Find · correct · forget"]
   proposal["Propose + evaluate<br/>Synthetic regression"]
@@ -239,18 +239,19 @@ flowchart TB
   shared -. future work .-> gap
 ```
 
-Local memory is optional; a contribution can start directly from a demonstrated
+Local memory is on by default and can be turned off; a contribution can start directly from a demonstrated
 gap. Use synthetic examples
 and relevant checks, with paired trials when assessing changed agent behavior.
 Human review precedes a shared update; neither capture nor merging is automatic.
 
 ## Examples and evaluations
 
-Optional [local engineering memory](../skills/reflect/references/memory.md) supports
-explicit remember/find/update/archive/forget requests, categories, domains and
+[Local engineering memory](../skills/reflect/references/memory.md) is on by default
+(opt out with `--no-memory` or `ORBYN_MEMORY=off`) and supports
+remember/find/update/archive/forget requests, categories, domains and
 namespaced tags. It works offline with Python/SQLite and private JSON, Markdown
-or HTML review exports. Memory stays outside Git and host-native stores; ordinary
-setup does not enable capture. Selected lessons can become reviewed local patches
+or HTML review exports. The store lives on this machine, unencrypted, outside Git and
+host-native stores; capture is manual only. Selected lessons can become reviewed local patches
 or authorized fork contributions through the existing skill owners. No automatic
 model learning, background collection or remote upload is included.
 

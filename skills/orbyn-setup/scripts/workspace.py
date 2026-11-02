@@ -5,10 +5,13 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import sys
 
 INSTRUCTIONS = ('AGENTS.md', 'AGENT.md', 'CLAUDE.md', '.cursorrules', 'codex.md',
                 'CONTRIBUTING.md', 'SECURITY.md')
 HOSTS = ('.agents', '.claude', '.cursor')
+MEMORY_CLI = Path(__file__).resolve().parents[2]/'reflect/scripts/memory.py'
+MEMORY_OFF = ('off', '0', 'false', 'no')
 
 
 def git(root, *args):
@@ -45,15 +48,49 @@ def library_root(path):
     return root
 
 
-def prepare(library):
+def memory_cli(*args):
+    result = subprocess.run([sys.executable, str(MEMORY_CLI), *map(str, args)], capture_output=True, text=True)
+    if result.returncode:
+        try:
+            raise ValueError(json.loads(result.stderr)['error'])
+        except (json.JSONDecodeError, KeyError, TypeError):
+            raise ValueError(result.stderr.strip() or 'Memory helper failed')
+    return json.loads(result.stdout)['result']
+
+
+def memory_setup(no_memory=False, project=None):
+    """Turn shared memory on in manual mode unless opted out; never re-initialize or touch records."""
+    if no_memory or os.environ.get('ORBYN_MEMORY', '').strip().lower() in MEMORY_OFF:
+        return {'state': 'off', 'reason': '--no-memory' if no_memory else 'ORBYN_MEMORY=off',
+                'note': 'Memory is off; nothing was created or read.'}
+    try:
+        where = memory_cli('where')
+        report = {'state': 'on', 'mode': 'manual', 'root': where['root'], 'root_source': where['source'],
+                  'initialized_now': False, 'scopes': []}
+        if not where['initialized']:
+            memory_cli('init', '--mode', 'manual')
+            report['initialized_now'] = True
+        for name, selector in (('personal', ['--personal']), ('project', ['--project', project] if project else None)):
+            if selector:
+                memory_cli(*selector, 'register')
+                report['scopes'].append(name)
+        return report
+    except ValueError as error:
+        state = 'off' if str(error) == 'Memory is off' else 'blocked'
+        return {'state': state, 'reason': str(error),
+                'note': 'Memory is off for this store.' if state == 'off' else 'Memory was not set up; the rest of setup is unaffected.'}
+
+
+def prepare(library, no_memory=False):
     root = library_root(library)
     (root/'repo').mkdir(exist_ok=True)
     library_root(root)  # Recheck before reporting success if a concurrent writer changed the boundary.
     return {'library': str(root), 'workspace': str(root/'repo'),
+            'memory': memory_setup(no_memory),
             'target_files_changed': False, 'host_discovery': 'not_observed'}
 
 
-def check(library, target, in_place=False):
+def check(library, target, in_place=False, no_memory=False):
     root = library_root(library)
     target = real_path(target)
     workspace = root/'repo'
@@ -89,6 +126,7 @@ def check(library, target, in_place=False):
             'target_skill_directories': [f'{host}/skills' for host in HOSTS if (target/host/'skills').is_dir()],
             'same_name_target_skills': collisions,
             'layout': 'in_place' if in_place else 'nested',
+            'memory': memory_setup(no_memory, target),
             'target_files_changed': False, 'host_discovery': 'not_observed'}
 
 
@@ -99,11 +137,14 @@ def main():
     parser.add_argument('--target', type=Path)
     parser.add_argument('--in-place', action='store_true',
                         help='check a registered target that stays outside the library')
+    parser.add_argument('--no-memory', action='store_true',
+                        help='skip shared memory setup (also ORBYN_MEMORY=off)')
     args = parser.parse_args()
     try:
         if args.command == 'check' and args.target is None:
             parser.error('--target is required for check')
-        result = prepare(args.library) if args.command == 'prepare' else check(args.library, args.target, args.in_place)
+        result = prepare(args.library, args.no_memory) if args.command == 'prepare' \
+            else check(args.library, args.target, args.in_place, args.no_memory)
         print(json.dumps(result, indent=2))
     except (OSError, ValueError, subprocess.SubprocessError) as error:
         parser.exit(1, f'Workspace stopped: {error}\n')

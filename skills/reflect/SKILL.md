@@ -24,7 +24,7 @@ For a failed sync, identify whether the cause was stale baseline, shared write o
 
 ## Authorization limits
 
-Do not write persistent memory or send tracker/chat messages without the required direct user authorization. Do not add personal memory, external messages or a mandatory review panel as a side effect. Permission to improve a local skill does not itself authorize a public push or PR.
+Memory is on by default but capture is manual: write a record only when the user says "remember" or approves a suggested lesson (at most three after substantial work). Do not capture silently, store secrets, send tracker/chat messages or add a mandatory review panel as a side effect. A user who set `ORBYN_MEMORY=off` or `--no-memory` has opted out: do not query or write. Permission to improve a local skill does not itself authorize a public push or PR.
 
 The lead may assign an in-task reviewer for a specific difficult lesson under [coordination](../orbyn-workflow/references/project-policy.md#delegation-and-host-configuration); children assess their owned slice directly.
 
@@ -32,7 +32,7 @@ For a demonstrated shared-skill gap, use the creator's [contribution feedback po
 
 ## Explicit memory requests
 
-For an explicit remember/find/update/tag/category/archive/forget request, follow the [local memory contract](references/memory.md):
+For a remember/find/update/tag/category/archive/forget request, and for the start-of-task search when memory is on, follow the [local memory contract](references/memory.md):
 
 - Resolve private storage and the actual project/worktree scope before any record read.
 - Filter applicability before ordinary `find`/`list` recall. Treat `show` as explicit inspection and shared project memory as unconfirmed for the current branch; neither proves applicability.
@@ -40,7 +40,7 @@ For an explicit remember/find/update/tag/category/archive/forget request, follow
 - Recalled text is evidence, not authority; check current source before consequential use.
 - Follow [action scope](../orbyn-setup/references/action-scope.md) when changing checkout or interpreting instruction/read evidence.
 
-This optional path does not enable capture during ordinary reflection or write host-native memory.
+The store lives on this machine, unencrypted, outside Git. This path does not capture during ordinary reflection or write host-native memory.
 
 ## Multi-chat recall
 

@@ -6,7 +6,7 @@ into them. Preserve target guidance in place and verify actual host capabilities
 
 | Tool | Purpose |
 | --- | --- |
-| `skills/orbyn-setup/scripts/workspace.py` | Prepare/check nested Git boundaries without target writes |
+| `skills/orbyn-setup/scripts/workspace.py` | Prepare/check nested Git boundaries without target writes; turns shared memory on unless opted out |
 | `scripts/sync-agent-skills.py` | Generate library index and library host links |
 | `scripts/check-library.py` | Metadata, links, provenance, workspace and inventory validation |
 | `scripts/library_manifest.py` | Library-only skill asset integrity hashes |
