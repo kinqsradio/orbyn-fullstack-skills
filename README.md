@@ -61,77 +61,21 @@ yes. No file in a repository can grant an agent permission.
 
 Every request follows one path, and checks hold it to the rules at each step.
 
-```mermaid
-flowchart LR
-  accTitle: How Orbyn skills run
-  accDescr: You ask the host agent. AGENTS.md and the harness set the rules and limits. A lead uses the owning skill and briefs scouts and workers. The change then passes checks and CI, the PR gate and your approval before reaching main.
-  you(["You"]) ==> host["Host<br/>agent"]
-  subgraph start["Start"]
-    rules["AGENTS.md"] ==> harness["Harness"]
-  end
-  subgraph work["Work"]
-    skill["Owning<br/>skill"] --> lead["Lead<br/>Opus, Sol"]
-    lead ==> worker["Worker<br/>Sonnet, Terra"]
-    lead --> scout["Scout<br/>Haiku, Luna"]
-  end
-  subgraph prove["Prove"]
-    checks["Checks<br/>and CI"] ==> gate["PR<br/>gate"] ==> review["You<br/>approve"]
-  end
-  host ==> rules
-  harness ==> lead
-  worker ==> checks
-  review ==> main["main"]
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/orbyn-stack-dark.png">
+  <img src="docs/images/orbyn-stack.png" alt="Stack diagram: a request goes from you through the host agent, AGENTS.md and the harness to a lead, which briefs scouts and workers. The skill library guides the lead, and repository settings feed the harness. The change passes local checks, CI, the PR gate and maintainer review before reaching main, and trust records are checked in CI.">
+</picture>
 
-The thick line is one request. Thin lines show what guides it. The [guide](docs/guide.md#full-diagrams) has the full versions of these diagrams.
+Blue is the path of one request. Grey shows what guides it, and dashed lines show checks and release.
 
 Each task resolves its repository's settings first, then moves through planning,
 delegation, review and verification. You're asked to review it only once
 verification and the PR gate have passed.
 
-```mermaid
-stateDiagram-v2
-  accTitle: How one task moves
-  accDescr: The agent resolves the target and harness, or stops and reports. It routes small edits directly and delegates substantial work, reviews the diff, verifies and reports. Fixes loop back to delegation.
-  direction LR
-  state "Harness resolved" as Harness
-  state "Direct edit" as Direct
-  [*] --> Harness
-  Harness --> Stopped: fails
-  Stopped --> [*]
-  Harness --> Routed
-  Routed --> Direct: small
-  Routed --> Delegated: substantial
-  Delegated --> Reviewed
-  Reviewed --> Delegated: fix
-  Reviewed --> Verified
-  Direct --> Verified
-  Verified --> Delegated: check fails
-  Verified --> Reported
-  Reported --> [*]
-```
-
-Children run on the cheapest tier that fits. A scout escalates to a worker and a worker
-to a lead, with the reason recorded. If you approve a PR, the gate takes over:
-
-```mermaid
-stateDiagram-v2
-  accTitle: How the PR gate reads a pull request
-  accDescr: The gate holds drafts, labels incomplete descriptions, waits for CI, and asks for review only when both Validate runs are green. You decide the merge.
-  direction LR
-  state "Gate reads PR" as Reads
-  [*] --> Reads
-  Reads --> Draft: draft
-  Draft --> Reads: marked ready
-  Reads --> Incomplete: gaps
-  Incomplete --> Waiting: fixed
-  Reads --> Waiting: complete
-  Waiting --> Failing: CI failed
-  Failing --> Waiting: fix pushed
-  Waiting --> Ready: CI green
-  Ready --> Merged: you approve
-  Merged --> [*]
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/orbyn-task-flow-dark.png">
+  <img src="docs/images/orbyn-task-flow.png" alt="Statechart: a task moves from received through target, harness, routing and planning into delegated children, review, verification and a report. A failed harness stops the task. It then ends locally, or passes through the PR gate, where drafts wait, gaps are labelled, and only a green PR reaches review and your merge.">
+</picture>
 
 The agent loads only what the job needs, so 39 skills don't crowd its context. Small
 edits skip the ceremony. Rules run as code wherever they can, so CI catches drift

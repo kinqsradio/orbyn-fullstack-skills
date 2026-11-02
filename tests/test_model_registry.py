@@ -229,6 +229,16 @@ class ModelRegistryTests(unittest.TestCase):
         self.run_sync('--write',ok=False)
         self.assertEqual(before,self.snapshot())
 
+    def test_cleanup_defaults_are_required_and_validated(self):
+        for mutate in (lambda d: d.pop('cleanup'), lambda d: d['cleanup'].update(low_disk_free_percent=80),
+                       lambda d: d['cleanup'].update(cache_idle_days=0), lambda d: d['cleanup'].pop('archive_max_mb')):
+            with self.subTest(mutate=mutate):
+                self.source.write_text((ROOT/'docs/agents/models.json').read_text())
+                self.change(mutate)
+                before=self.snapshot()
+                self.run_sync('--write',ok=False)
+                self.assertEqual(before,self.snapshot())
+
     def test_generated_agent_bodies_drift_is_reported_and_repaired(self):
         self.run_sync('--write')
         for relative, old in [('.claude/agents/orbyn-scout.md', 'You never decide, design, debug or write new logic.'),

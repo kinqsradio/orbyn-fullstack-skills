@@ -80,7 +80,9 @@ Use the user/project-agreed storage/resource budget from actual inventory. If
 expensive disposable copies would exceed it, stop creating them and continue
 useful authorized low-storage/read-only work or report the bounded blocker.
 Allocated directory sums are not reclaimable physical bytes. Do not invent a
-threshold, delete caches to make room, stop foreign resources or install a janitor.
+threshold, delete caches by hand to make room, stop foreign resources or install a
+janitor. The only cleanup is the Trash-based report and apply at task closeout, before
+creating a worktree and on a `LOW DISK` line; if that frees too little, report it.
 Retention triggers do not schedule work; future cleanup/monitoring needs its own
 applicable authority and supported host capability.
 
