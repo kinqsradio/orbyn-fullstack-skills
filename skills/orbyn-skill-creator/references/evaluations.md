@@ -15,6 +15,8 @@ call a model, execute arbitrary artifacts, access accounts or infer a host's mod
    architecture quality. A transcript is evidence to inspect, not a trusted claim
    that its author performed every stated action.
 
+Before trusting or reporting any score, apply [explain the number](../../orbyn-workflow/references/principles/explain-the-number.md): did every trial do the task, does the gap exceed trial-to-trial spread, and what limits the score.
+
 Never present fixture scores as agent performance. A real run requires supported,
 authorized host execution. Record the full host version, model, effort/processing
 and relevant tool configuration in the `host` and `model` provenance strings.

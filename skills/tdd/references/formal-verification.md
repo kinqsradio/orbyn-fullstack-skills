@@ -112,6 +112,12 @@ Report projection validation failures and missing charts independently of checke
 results. A compiler's chart or rerun thresholds are version-specific tool limits,
 not universal safe model sizes or permission to reduce the requested scope.
 
+## Leave a project-local check
+
+The generated skill belongs to the project. Write it only when the user asks for or approves a durable check, and put it in the project's existing skill path under [project verification](../../orbyn-skill-creator/references/project-verification.md); this library installs nothing into a target. Choose the target from the code: the promise whose break costs users most and that ordinary tests reach least, not the easiest model to turn green. Ask the user only what the code cannot show.
+
+The generated skill must let a cold reader tell whether a change touches the covered code, run the check with one command in a time short enough to use on every relevant change, tell a modeling error from a real bug, and update the check when a change is intended. State the property and its harm in one plain sentence each, and tell a counterexample as short steps in the code's words. Record the covered files and functions and the commit at which the check was last confirmed; the next agent advances that commit only after confirming the check describes the code at the new one. If the check is a TLA+ model, point to the statechart method by name and copy none of its commands or paths, which change between releases. Follow the generated skill once as the next agent on a scratch change that breaks the property; until it catches the break it is a draft.
+
 ## Deliver and maintain
 
 Return the property, tool rationale, command, actual result, negative control,

@@ -11,6 +11,11 @@ Retain output quality, authority and coverage. Label cold/warm runs and unmeasur
 costs. Smaller output alone does not prove lower tokens or faster execution.
 Missing baseline or runtime access remains an evidence gap, not an assumed gain.
 
+Before measuring, and before trusting, reporting or acting on a number, follow
+[explain the number](../references/principles/explain-the-number.md): name the
+limiter, check the arithmetic against it and rule out a wrong measurement.
+Vet the baseline with it before this playbook plans from it.
+
 Before a comparative claim, inspect what the harness actually times and counts.
 Confirm the intended work completes inside that interval, validate its result and
 count errors, rejected requests, retries and timeouts. Match relevant builds,

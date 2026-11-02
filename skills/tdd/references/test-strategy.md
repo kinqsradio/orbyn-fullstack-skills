@@ -21,6 +21,15 @@ owned resources, or retries retain one logical operation identity. A helper-call
 count or error-string snapshot can pass while the real contract still fails.
 Keep ordinary legitimate controls so an overbroad rejection cannot look correct.
 
+## Judge a test by two edits
+
+A test is a claim about what the code does for its users: return values, errors, state they can read back, and effects on outside systems (a request sent, a row written). Private helpers, internal call order and which collaborator did the work are implementation. Imagine two edits:
+
+- **Break the behavior** (wrong value, skipped effect, effect done twice). If the test still passes, it proves nothing. Usual causes: an assertion looser than the contract, an expected value computed by the code under test, a restated constant that never runs the code that reads it, data the test built itself.
+- **Change the internals** with every observable result unchanged. If the test fails, it is pinned to the implementation and will need rewriting at each refactor while catching no bug.
+
+Keep a test that fails on the first edit and survives the second; rewrite or delete the rest. Drive the real interface with a concrete input and take the expected value from the requirement. The contract decides, not the assertion's shape: "an empty cart never charges" is behavior when the payment client sees no call, paired with a case where the charge happens so the test shows it can see a call. The payload a mocked external service receives is behavior; a call to an internal helper is not. Assert the error type callers branch on, not wording nobody reads. An invariant such as a key present in two tables is behavior too.
+
 ## Justify the added coverage
 
 Before expanding a test suite, name the useful missing contract or requested
