@@ -85,6 +85,18 @@ repository text" label and must be one line without control characters.
   reviewer, security, security_verifier, security_engineer, engineer,
   engineer_complex, investigator, verifier, mechanical, tiny_edit.
 - `verification.required_checks`: up to 32 one-line strings.
+- `cleanup`: limits for `worktree_retire.py report` and `apply`. `enabled` (true) is a
+  boolean; the rest are positive integers: `cache_idle_days` (7), `worktree_idle_days`
+  (1), `output_idle_days` (14), `archive_max_days` (30), `archive_max_mb` (500),
+  `references_idle_days` (30) and `low_disk_free_percent` (15, range 1..50). Shorter
+  days or a smaller archive send more to the Trash, so a target file may only lengthen
+  the day values, raise `archive_max_mb` and lower `low_disk_free_percent`; anything
+  else is clamped to the default with a notice. A target may also set `enabled: false`
+  to opt that clone out of all cleanup, and no other file turns it back on. The tool reads
+the opt-out from the checked-out file and from the one on the pinned base (`origin/main`);
+either opts out, and a library opt-out stops every class. Only the
+  owner's local file or `--set cleanup.<key>=<n>` may shorten. The tool resolves them
+  per repository and takes the library's for `output/`, the archive and references.
 - `notes`: one line of up to 2000 characters, no control characters.
 
 Rejected: unknown keys, providers, roles or tiers; human-only or accelerated
@@ -94,6 +106,19 @@ setting; locked security roles or lead work routed below the lead tier;
 architect, reviewer or complex-engineering work routed to a scout; and an effort
 above the cap for `gpt-6.1-sol`, `gpt-6.1-terra`, `sonnet` or `fable` (full ids
 included). Only the user's explicit instruction can exceed an effort cap.
+
+## The cleanup line
+
+`resolve` prints the `cleanup` values and a read-only status: percent of disk free, a
+`LOW DISK` line only when free space is known and under `low_disk_free_percent`, a
+separate neutral count of other worktrees (from `git worktree list`) and, when either
+applies, the command to run the cleanup `report`. On `LOW DISK` it tells the agent to
+report to the user when `apply` cannot free space, because cleanup only moves files to
+the Trash and that space returns when the user empties it; it never suggests removing
+files. It makes no `gh` call, walks no folders and writes nothing; a
+value it cannot read counts as a reason to run the report. Act on the line at task
+closeout, before creating a worktree and on `LOW DISK`, following
+[clean the workspace](../../orbyn-worktree/references/task-closeout.md#clean-the-workspace).
 
 ## What the host enforces
 

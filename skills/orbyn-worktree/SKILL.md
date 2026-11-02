@@ -119,16 +119,23 @@ push, PR and resource states, decide retention with a reason/review trigger,
 and assess exact-path retirement separately from permission to remove it.
 
 Never delete another owner's work; unknown ownership means hold. A squash merge or
-clean status alone does not clear a tree for removal. Use supported managed archive/Git removal
-only after ownership, later commits, dependencies, ignored artifacts, live previews
-and recovery are resolved. A refusal has no automatic force fallback; local/remote
-ref deletion and tracking prune remain separate.
+clean status alone does not clear a tree for removal. Retire a tree only through
+`worktree_retire.py`, which moves the whole folder to the system Trash and then clears
+that one Git registration (a restored folder is files only). `apply` proves only
+what the report shows: landing, a clean tree, no hidden changes, nothing open and no
+hold. The owning task or a person still judges ownership, dependent work, shared
+resources, live previews and recovery, and records any open question as a `HOLD.json`.
+A refusal has no automatic force fallback; local/remote ref deletion and tracking
+prune remain separate.
 
 After a merge, [retire the worktree in the same closeout](references/task-closeout.md#retire-at-delivery)
-when you have cleanup authority, and archive its ignored files first: plain
-`git worktree remove` deletes them. Keep a merged tree only with a named reason and
-review event. Before creating a worktree, run the inventory and retire your own
-finished trees.
+when you have cleanup authority: the tool moves the whole folder, ignored files
+included, to the Trash, so never hand-run `git worktree remove` on a live tree, which deletes them.
+Keep a merged tree only with a named reason and
+review event, recorded in a `HOLD.json` at its root. At closeout, before creating a
+worktree and when `harness.py resolve` reports low disk, [run the workspace cleanup](references/task-closeout.md#clean-the-workspace):
+`worktree_retire.py report`, then `apply`. It trashes only finished worktrees, rebuildable
+caches and idle output, archive and references; everything else in `repo/` is report-only.
 
 Return the selected path/base/head, verified delivery state, retained resources,
 recovery pointers and actual closeout disposition. A dry run changes nothing.

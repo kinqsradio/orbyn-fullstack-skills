@@ -267,6 +267,7 @@ def main():
     problems = harness.allowed_model_errors(data.get('allowed_models'), {p: {t: agents[n][p] for n, t in TIERS.items()}
                                                                          for p in ('codex', 'claude')}, [human[p]['model'] for p in human])
     require(not problems, 'Invalid allowed_models: ' + '; '.join(problems))
+    require(isinstance(data.get('cleanup'), dict), 'Missing cleanup defaults')
     portable = harness.defaults_from_registry(data)
     problems = harness.validate_layer(portable, [human[p]['model'] for p in human], complete=True)
     require(not problems, 'Routing or tier defaults invalid: ' + '; '.join(problems))

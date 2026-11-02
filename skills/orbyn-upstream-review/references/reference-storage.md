@@ -58,4 +58,17 @@ approved offline support and notices.
 
 Its terminal retention decision follows [artifact retention](../../orbyn-workflow/references/artifact-lifecycle.md#retention-and-growth-decisions)
 and the [closeout gate](../../orbyn-worktree/references/task-closeout.md); a download
-or new review does not authorize cache eviction or a janitor.
+or new review does not authorize cache eviction or a janitor beyond the workspace
+cleanup below.
+
+## Cleanup of idle sources
+
+The workspace cleanup may send an idle `orbyn-references/<slug>/<sha>/` folder to the
+system Trash after `references_idle_days` (default 30), only when the sibling
+`<sha>.json` receipt names a repository and revision, and the folder name is the full
+40-hex revision. The receipt and `comparison.json` stay, so the comparison remains
+reproducible from a fresh download at that revision. A folder with no receipt, a
+secret-looking file (a `.env`, key or credentials file) or a nested `.git` inside, or a
+valid `HOLD.json` is held or report-only. Write the receipt when you download, and add a `HOLD.json`
+(`reason`, `review_by`) to keep a source past its idle limit. Trash space returns only
+when the user empties it.

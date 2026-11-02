@@ -14,7 +14,9 @@ lower cost or tighten, and delegation numbers above the default are clamped. The
 local file is the owner's and may raise delegation limits. Neither file can change
 a lead tier or a locked security role; only --set can. This tool reads files and
 prints results. It never writes settings into a target, never starts a model and
-never runs a check that a harness file lists.
+never runs a check that a harness file lists. It also reads free disk space and the
+registered worktrees (no `gh`, no folder walks) so `resolve` can say when to run the
+cleanup report; the `cleanup` values are the limits that report uses.
 
 Exit status: 0 ok, 1 invalid file or drift, 2 could not run (bad target, bad
 --set, unreadable defaults or arguments).
@@ -24,6 +26,7 @@ import importlib.util
 import json
 import os
 import re
+import shlex
 import shutil
 import stat
 import subprocess
@@ -39,16 +42,23 @@ EFFORTS = ('low', 'medium', 'high')
 ROLE_KEYS = ('lead', 'architect', 'reviewer', 'security', 'security_verifier', 'security_engineer', 'engineer',
              'engineer_complex', 'investigator', 'verifier', 'mechanical', 'tiny_edit')
 LOCKED_ROLES = ('lead', 'security', 'security_verifier', 'security_engineer')
-FILE_KEYS = {'schema_version', 'tiers', 'delegation', 'routing', 'verification', 'notes'}
+FILE_KEYS = {'schema_version', 'tiers', 'delegation', 'cleanup', 'routing', 'verification', 'notes'}
 DEFAULTS_KEYS = {'generated_from', 'agents', 'escalation', 'allowed_models', 'effort_caps', 'claude_minimum_versions',
                  'human_only'}
 DELEGATION_RANGES = {'max_children': (0, 8), 'max_depth': (1, 3), 'read_only_children_extra': (0, 8)}
+CLEANUP_RANGES = {'cache_idle_days': (1, 3650), 'worktree_idle_days': (1, 3650), 'output_idle_days': (1, 3650),
+                  'archive_max_days': (1, 3650), 'archive_max_mb': (1, 10_000_000), 'references_idle_days': (1, 3650),
+                  'low_disk_free_percent': (1, 50)}
+CLEANUP_KEYS = (*CLEANUP_RANGES, 'enabled')
+# Cleanup acts sooner (more goes to the Trash) when a day count or archive_max_mb is lower, or low_disk_free_percent higher.
+CLEANUP_HIGHER_IS_SOONER = ('low_disk_free_percent',)
 MODEL_PATTERN = re.compile(r'[A-Za-z0-9][A-Za-z0-9._:-]{0,63}')
 SLUG_PATTERN = re.compile(r'[A-Za-z0-9][A-Za-z0-9._-]{0,127}')
 HUMAN_ONLY_TOKENS = ('astra', 'fable')
 ACCELERATED_TOKENS = ('fast', 'priority', 'ultra')
 HOST_BINARIES = {'claude': 'claude', 'codex': 'codex'}
 RULES = {
+    'cleanup': 'Limits for the worktree_retire.py report and apply; a repository file may only keep things longer, never act sooner.',
     'delegation.max_children': 'Most children one owner may have active at once; 0 means no delegation.',
     'delegation.max_depth': 'Spawn depth below the lead; 1 means children never spawn.',
     'delegation.read_only_children_extra': 'Extra read-only children allowed above max_children; ignored when max_children is 0.',
@@ -292,6 +302,28 @@ def validate_layer(data, human_only=(), complete=False, allowed=None, is_file=Fa
                         errors.append(f'delegation.{key} is missing')
     elif complete:
         errors.append('delegation is missing')
+    if 'cleanup' in data:
+        cleanup = data['cleanup']
+        if not isinstance(cleanup, dict):
+            errors.append('cleanup must be an object')
+        else:
+            for key in sorted(set(cleanup) - set(CLEANUP_KEYS)):
+                errors.append(f'cleanup: unknown key {key!r}')
+            if 'enabled' in cleanup and type(cleanup['enabled']) is not bool:
+                errors.append('cleanup.enabled must be true or false')
+            for key, (low, high) in CLEANUP_RANGES.items():
+                if key in cleanup:
+                    value = cleanup[key]
+                    if not is_int(value):
+                        errors.append(f'cleanup.{key} must be an integer')
+                    elif not low <= value <= high:
+                        errors.append(f'cleanup.{key} must be in {low}..{high}')
+            if complete:
+                for key in CLEANUP_KEYS:
+                    if key not in cleanup:
+                        errors.append(f'cleanup.{key} is missing')
+    elif complete:
+        errors.append('cleanup is missing')
     if 'routing' in data:
         routing = data['routing']
         if not isinstance(routing, dict):
@@ -356,6 +388,8 @@ def flatten(layer):
                 out[f'tiers.{provider}.{tier}.{key}'] = value
     for key, value in layer.get('delegation', {}).items():
         out[f'delegation.{key}'] = value
+    for key, value in layer.get('cleanup', {}).items():
+        out[f'cleanup.{key}'] = value
     for role, value in layer.get('routing', {}).items():
         for provider in PROVIDERS:
             out[f'routing.{role}.{provider}'] = value[provider] if isinstance(value, dict) and provider in value else (
@@ -407,6 +441,7 @@ def defaults_from_registry(registry):
         'tiers': ordered,
         'agents': {tier: agents[tier] for tier in TIERS},
         'delegation': dict(registry['delegation']),
+        'cleanup': dict(registry['cleanup']),
         'routing': {role: registry['routing'][role] for role in ROLE_KEYS},
         'escalation': dict(registry['escalation']),
         'allowed_models': {p: {t: list(registry['allowed_models'][p][t]) for t in TIERS} for p in PROVIDERS},
@@ -551,10 +586,50 @@ def file_layer(data, label, human, allowed, caps, defaults, defaults_flat, targe
             else:
                 notices.append(f'{label} raises {key} from {defaults_flat[key]} to {flat[key]}: '
                                'a resource limit only; the file authorises no effect and does not change host settings')
+    for key in CLEANUP_RANGES:
+        key = f'cleanup.{key}'
+        if key in flat:
+            default, value = defaults_flat[key], flat[key]
+            if (value > default) if key.removeprefix('cleanup.') in CLEANUP_HIGHER_IS_SOONER else (value < default):
+                if target:
+                    notices.append(f'{label} asks for {key} {value}; clamped to the default {default}. A target file may only '
+                                   'lengthen the day values, raise archive_max_mb and lower low_disk_free_percent, because '
+                                   'anything else sends more to the Trash')
+                    flat[key] = default
+                else:
+                    notices.append(f'{label} sets {key} to {value}, below the safe default {default}: cleanup acts sooner; '
+                                   'it authorises no effect')
     if not target:
         notices.extend(f'{label} raises {key} above the default {defaults_flat[key]!r}: it costs more, authorises no effect'
                        for key in raised(flat, defaults_flat))
     return flat
+
+
+def cleanup_status(root, workspace, limit):
+    """Free disk and other worktrees, read-only and cheap: no gh calls and no folder walks.
+
+    LOW DISK is claimed only when free space is known and under the limit. A fact that cannot be read
+    still sends the agent to the report, never to "all clear"."""
+    try:
+        usage = shutil.disk_usage(root)
+        free = round(usage.free * 100 / usage.total, 1)
+    except (OSError, ZeroDivisionError):
+        free = None
+    others = None
+    try:
+        listed = subprocess.run(['git', '-C', str(root), 'worktree', 'list', '--porcelain', '-z'], capture_output=True, text=True,
+                                timeout=10, env={**os.environ, 'GIT_OPTIONAL_LOCKS': '0'})
+        if listed.returncode == 0:
+            others = max(sum(field.startswith('worktree ') for field in listed.stdout.split('\0')) - 1, 0)
+    except (OSError, subprocess.SubprocessError):
+        pass
+    low = free is not None and free < limit
+    command = None
+    if low or free is None or others is None or others:
+        tool = SCRIPT.parents[2] / 'orbyn-worktree' / 'scripts' / 'worktree_retire.py'
+        command = f'python3 {shlex.quote(str(tool))} report --workspace {shlex.quote(os.path.realpath(workspace or SCRIPT.parents[3]))}'
+        command = ''.join('?' if bad_char(c) else c for c in command)
+    return {'free_percent': free, 'low_disk': low, 'other_worktrees': others, 'run': command}
 
 
 def resolve(target, hosts, sets=(), workspace=None, slug=None, defaults_path=DEFAULTS_PATH,
@@ -605,6 +680,10 @@ def resolve(target, hosts, sets=(), workspace=None, slug=None, defaults_path=DEF
         winner = chain[-1]
         effective[key] = {'value': winner['value'], 'source': winner['source'],
                           'overridden': [{'source': c['source'], 'value': c['value']} for c in reversed(chain[:-1])]}
+    off = next((c for c in chains.get('cleanup.enabled', []) if c['value'] is False), None)
+    if off and not effective['cleanup.enabled']['source'].startswith('user instruction'):
+        # Any file that opts a repository out of cleanup wins over another file that turns it back on.
+        effective['cleanup.enabled'] = {'value': False, 'source': off['source'], 'overridden': []}
     extra_key = 'delegation.read_only_children_extra'
     if 'delegation.max_children' in user_flat and extra_key not in user_flat:
         if not effective[extra_key]['source'].startswith('library default'):
@@ -636,6 +715,8 @@ def resolve(target, hosts, sets=(), workspace=None, slug=None, defaults_path=DEF
         'target': str(root), 'slug': local_name, 'workspace': str(ws) if ws else None,
         'layers': [{'name': n, 'where': w, 'status': s} for n, w, _, s in layers],
         'delegation': {k: effective[f'delegation.{k}'] for k in DELEGATION_RANGES},
+        'cleanup': {k: effective[f'cleanup.{k}'] for k in CLEANUP_KEYS},
+        'cleanup_status': cleanup_status(root, ws, effective['cleanup.low_disk_free_percent']['value']),
         'read_only_cap': cap,
         'escalation': defaults['escalation'],
         'verification': {'required_checks': effective.get('verification.required_checks',
@@ -701,6 +782,25 @@ def render_text(result, explain):
             for old in item['overridden']:
                 lines.append(f'    overridden: {old["value"]} from {old["source"]}')
     lines.append(f'  read-only child cap       {result["read_only_cap"]}')
+    lines.append('cleanup')
+    for key, item in result['cleanup'].items():
+        lines.append(f'  {key:<26}{item["value"]}   [{item["source"]}]')
+        if explain:
+            for old in item['overridden']:
+                lines.append(f'    overridden: {old["value"]} from {old["source"]}')
+    status = result['cleanup_status']
+    free = 'disk free unknown' if status['free_percent'] is None else f'{status["free_percent"]}% disk free'
+    lines.append(f'  {free}')
+    if status['low_disk']:
+        lines.append(f'  LOW DISK: {status["free_percent"]}% is under the {result["cleanup"]["low_disk_free_percent"]["value"]}% limit. '
+                     'Run the cleanup report, then apply. If apply cannot free space, tell the user; cleanup only moves files to '
+                     'the Trash, and that space returns when the user empties it. Never remove files by hand or empty the Trash.')
+    if status['other_worktrees'] is None:
+        lines.append('  other worktrees: unknown')
+    elif status['other_worktrees']:
+        lines.append(f'  other worktrees: {status["other_worktrees"]}')
+    if status['run']:
+        lines.append(f'  cleanup report, at task closeout and before creating a worktree: {status["run"]}')
     for host, entry in result['hosts'].items():
         lines.append(f'routing ({host})')
         for role, item in entry['routing'].items():
