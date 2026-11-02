@@ -1,6 +1,6 @@
 # Conditional engineering methods
 
-The 20 former principle entrypoints are maintained references under execution
+The 20 former principle entrypoints and three later additions are maintained references under execution
 owners. Essential rules appear in those owners; load only a method needed for a
 current decision. Each method retains its source attribution and local license.
 These are not discoverable skills or additional mandatory stages.
@@ -10,6 +10,8 @@ These are not discoverable skills or additional mandatory stages.
 - [encode lessons in structure](../../architect/references/principles/encode-lessons-in-structure.md): Prevent a demonstrated recurring error at its owning boundary.
 - [exhaust the design space](../../architect/references/principles/exhaust-the-design-space.md): Resolve a consequential unfamiliar design choice by comparing concrete alternatives.
 - [experience first](../../orbyn-ui-design/references/principles/experience-first.md): Resolve product trade-offs around the person completing the task.
+- [attack the premise](../../architect/references/principles/attack-the-premise.md): Test the belief shared by repeated failed fixes before attempting another.
+- [explain the number](principles/explain-the-number.md): Find the limiter and rule out a wrong measurement before trusting or reporting a number.
 - [fix root causes](../../how/references/principles/fix-root-causes.md): Trace a defect to the owner of the invalid state or interpretation.
 - [foundational thinking](../../architect/references/principles/foundational-thinking.md): Choose data shape, ownership and lifecycle before adding logic.
 - [guard the context window](../../how/references/principles/guard-the-context-window.md): Keep investigation context useful during large searches and long tasks.
@@ -17,6 +19,7 @@ These are not discoverable skills or additional mandatory stages.
 - [make operations idempotent](../../orbyn-backend-design/references/principles/make-operations-idempotent.md): Design commands and workers that tolerate retries, crashes and duplicate delivery.
 - [migrate callers then delete legacy apis](../../architect/references/principles/migrate-callers-then-delete-legacy-apis.md): Replace an internal API while eliminating duplicate old paths.
 - [minimize reader load](../../architect/references/principles/minimize-reader-load.md): Reduce indirection and hidden mutable state in difficult-to-follow code.
+- [model the domain](../../architect/references/principles/model-the-domain.md): Encode the real domain in a structure that rules out invalid states and deletes branches.
 - [never block on the human](../../orbyn-plan/references/principles/never-block-on-the-human.md): Continue authorized reversible work without unnecessary confirmation.
 - [outcome oriented execution](principles/outcome-oriented-execution.md): Complete an agreed migration without accumulating temporary compatibility debt.
 - [prove it works](principles/prove-it-works.md): Match a completion claim to direct evidence about the requested artifact.

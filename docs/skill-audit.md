@@ -868,3 +868,41 @@ remain unchanged. Pinned assistant-ui source supplies reviewed inspiration only;
 no SDK, Cloud/provider service, upstream source/assets or runtime installed.
 Helper tests, browser observations, host trials and actual SDK/product qualification
 remain separate. Canonical catalog owners, nesting and host defaults are unchanged.
+
+## pstack candidate `ae5650f` — 2 November 2026
+
+Review-only candidate of [cursor/plugins `pstack/`](https://github.com/cursor/plugins/tree/ae5650febf4320793844c12c4adaa937f417f8da/pstack)
+(MIT, Lauren Tan), read through a blobless clone in ignored `orbyn-references/`; nothing
+from it was run. Earlier pins (`74dd2291…`, `99b609a7…`, statechart snapshot `1ba91fc2…`)
+stay for material not re-adapted below; this does not update the whole upstream. Adapted
+text is in our own words with synthetic examples; no new skill was added.
+
+| pstack skill | Disposition | Owner or reason |
+| --- | --- | --- |
+| benchmark-checklist | Adopted | [explain the number](../skills/orbyn-workflow/references/principles/explain-the-number.md), linked from the performance playbook |
+| blast-radius | Already covered | `how` (dependency impact) and `interrogate` (adversarial review) |
+| bro | Already covered | [explanations and recaps](../skills/orbyn-workflow/references/explanation-and-recaps.md) and `unslop` |
+| correct | Adopted | Ladder in [encode lessons in structure](../skills/architect/references/principles/encode-lessons-in-structure.md); the bug-fix lint step links to it |
+| create-formal-verification-skill | Adopted (delta) | [project-local check section](../skills/tdd/references/formal-verification.md#leave-a-project-local-check); earlier import already covered the rest |
+| create-verification-skill | Already covered | [project verification](../skills/orbyn-skill-creator/references/project-verification.md) application adapters |
+| in-your-own-words | Already covered | `orbyn-plan` request refinement |
+| ketchup | Already covered | Recap rules in [explanations and recaps](../skills/orbyn-workflow/references/explanation-and-recaps.md) |
+| ketchup-video | Not applicable | Slide-video recap; no owner needs it |
+| maintain-formal-verification-skill | Adopted (delta) | [drift review](../skills/tdd/references/verification-drift.md): find by function, stop when none, stale-pass wording |
+| maintain-verification-skill | Already covered | Drift review and project verification maintenance; the scheduled multi-reader PR pass is not adopted (delegation limits, no automatic PRs) |
+| make-bot-ui | Not applicable | Tied to pstack's bot wake mechanism |
+| no-comments | Adopted (idea only) | One sentence in [source comments](../skills/unslop/references/source-comments.md); necessary comments stay, and the subagent flow is not adopted |
+| poteto-help | Not applicable | pstack setup and mode guidance |
+| principle-attack-the-premise | Adopted | [attack the premise](../skills/architect/references/principles/attack-the-premise.md); the debugging form already lives in `how` reproduction |
+| principle-explain-the-number | Adopted | [explain the number](../skills/orbyn-workflow/references/principles/explain-the-number.md); evaluation guide points to it for scores |
+| principle-model-the-domain | Adopted | [model the domain](../skills/architect/references/principles/model-the-domain.md), after checking foundational thinking and vertical code organization |
+| principle-test-behavior-not-implementation | Adopted | [two-edit test judgment](../skills/tdd/references/test-strategy.md#judge-a-test-by-two-edits) |
+| recall | Already covered | `reflect` local memory |
+| sharpen | Already covered | `orbyn-plan` prompt refinement |
+| statechart | Already covered | Candidate skill and compiler tree are byte-identical to the bundled snapshot at `1ba91fc2…` (27 hashes re-verified), so no refresh. Not adopted: mise-based Java/TLC bootstrap and network install (no-install rule), Pele rendering (external renderer), step-hiding and mark rules (already in our [statecharts](../skills/architect/references/statecharts.md)) |
+| swarm | Already covered | Bounded delegation in `orbyn-workflow`; unbounded fan-out is not adopted |
+| teach | Already covered | `how` and `why` plus recap rules |
+| technical-writing | Already covered | `unslop` and `orbyn-content-design`; Diátaxis and STE rule sets not adopted |
+
+Four development eval cases are added (592 to 596); prior cases and holdouts are
+unchanged. They are static definitions, not recorded trials.

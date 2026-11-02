@@ -13146,6 +13146,105 @@
         "measure": "Measure it in CI from the built artifact and fail the build when exceeded.",
         "report": "Report the delta on PRs."
       }
+    },
+    {
+      "id": "repeated-mistake-made-impossible",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In a synthetic repository, reviewers have twice reverted agent changes that import a private payment helper directly instead of the public checkout module. Explain in Markdown how to stop this class of mistake from recurring; do not edit code.",
+      "expected_skills": [
+        "architect"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "A reminder in an instruction file alone is not a fix.",
+      "rubric": {
+        "ladder": "Tries architecture first (hide the helper or give one supported entry), then types, then a lint or CI check, then a test, with docs last.",
+        "message": "The lint or CI error names the module to use instead.",
+        "proof": "Proves the check fails on one of the reverted changes and passes on a legitimate import.",
+        "table": "Keeps a rule-to-enforcement record only with authority and drops a rule once the mistake cannot happen."
+      }
+    },
+    {
+      "id": "formal-verification-skill-for-costly-code",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A synthetic job queue sometimes runs one lease twice after a worker retry, and unit tests never hit the order. Explain in Markdown how to leave a reusable check for the next agent; do not run tools or edit the repository.",
+      "expected_skills": [
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not claim a model pass without a run.",
+      "rubric": {
+        "target": "Chooses the costly lease-handoff promise from the code, not an easy toy model.",
+        "tool": "Picks a method that fits interleavings and says why, without installing anything.",
+        "skill": "Leaves a project-local skill in the project's existing path only with the user's authority, recording covered code and the commit last confirmed.",
+        "proof": "Shows the check fails on a scratch break of the real guard and is restored."
+      }
+    },
+    {
+      "id": "explain-the-number-before-reporting",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A synthetic benchmark says a new serializer makes an export 40 percent faster. Explain in Markdown what to check before the number goes into a PR; do not run benchmarks.",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "A single unexplained run is not a verdict.",
+      "rubric": {
+        "limiter": "Names the limiting resource from a profile and checks that the changed piece is large enough to give 40 percent.",
+        "wrong": "Rules out errors, work that never ran, an untuned side and noise.",
+        "runs": "Alternates sides for at least five runs and reports median and range.",
+        "verdict": "Leads with a verdict and calls it inconclusive when the limiter is unnamed."
+      }
+    },
+    {
+      "id": "attack-the-premise-after-two-failures",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A synthetic checkout test fails again after two fixes that both assumed the payment call is slow, a longer timeout and a retry. Explain in Markdown what to do before a third fix; do not change code.",
+      "expected_skills": [
+        "how"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not propose a third timeout change first.",
+      "rubric": {
+        "premise": "Writes down the shared premise that the call is slow.",
+        "test": "Names an observation that would differ if the premise were false, such as how failures cluster by tenant or payload.",
+        "follow": "Follows the evidence to a different cause or asks the next why, and keeps the failed attempts."
+      }
     }
   ]
 }
