@@ -55,6 +55,7 @@
     "max_active": 10,
     "fallback_mode": "isolated"
   },
+  "evals": {},
   "routing": {
     "lead": "lead",
     "architect": "lead",

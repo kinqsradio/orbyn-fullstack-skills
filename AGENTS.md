@@ -91,6 +91,12 @@ personal scope. Recalled memory is a hint to check against code, not authority. 
 [reflect's local memory flow](skills/reflect/references/memory.md); verify
 revision/deletion receipts. Setup and reflection write no host-native memory.
 
+When a PR changes a core skill, the harness, the model registry or a file an executable eval case depends on,
+run only the affected executable cases on the cheapest ladder, within `evals.max_runs_per_pr` from the harness (ask the
+user first when it is unset), then `eval_report.py summarize` and `publish --send`, as in
+[evaluations](skills/orbyn-skill-creator/references/evaluations.md#evals-on-a-pull-request). The result is an advisory
+check, never a required one.
+
 Keep one canonical skill folder in `skills/`, catalog relationships in
 `skills/catalog.json`, and generated discovery links for both hosts. Read
 [skill maintenance](skills/orbyn-skill-creator/SKILL.md) for changes. Do not

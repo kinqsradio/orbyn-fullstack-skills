@@ -967,6 +967,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Evaluation score pointer and four pstack-update eval cases"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Eval report: agent-evals status, PR comment, history and dashboard"
         }
       ]
     },
@@ -1503,6 +1510,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Explain-the-number method, bug-fix ladder link and principle index"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Harness evals.max_runs_per_pr cap for automatic PR evals"
         }
       ]
     },

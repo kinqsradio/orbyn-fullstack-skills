@@ -100,6 +100,11 @@ the opt-out from the checked-out file and from the one on the pinned base (`orig
 either opts out, and a library opt-out stops every class. Only the
   owner's local file or `--set cleanup.<key>=<n>` may shorten. The tool resolves them
   per repository and takes the library's for `output/`, the archive and references.
+- `evals.max_runs_per_pr`: integer 1..1000, unset by default. The most live eval runs an
+  agent may spend on one PR; unset means ask the user before spending anything. Only the
+  owner's local file or `--set evals.max_runs_per_pr=<n>` may set it. A target file that
+  contains `evals` is rejected, because a committed file must not authorise spending.
+  See [evaluations](../../orbyn-skill-creator/references/evaluations.md#evals-on-a-pull-request).
 - `work`: how the repository is worked, see [the work mode](#the-work-mode).
   `mode` is `simple`, `isolated` or `parallel`; `max_active` is an integer 1..32
   (default 10) and matters in `parallel`.

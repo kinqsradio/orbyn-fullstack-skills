@@ -269,6 +269,7 @@ def main():
     require(not problems, 'Invalid allowed_models: ' + '; '.join(problems))
     require(isinstance(data.get('cleanup'), dict), 'Missing cleanup defaults')
     require(isinstance(data.get('work'), dict), 'Missing work defaults')
+    require(data.get('evals') == {}, 'Eval defaults must leave max_runs_per_pr unset; only a local file or the user sets it')
     portable = harness.defaults_from_registry(data)
     problems = harness.validate_layer(portable, [human[p]['model'] for p in human], complete=True)
     require(not problems, 'Routing or tier defaults invalid: ' + '; '.join(problems))

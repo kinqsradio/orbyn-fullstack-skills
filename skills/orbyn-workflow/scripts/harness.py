@@ -50,7 +50,7 @@ EFFORTS = ('low', 'medium', 'high')
 ROLE_KEYS = ('lead', 'architect', 'reviewer', 'security', 'security_verifier', 'security_engineer', 'engineer',
              'engineer_complex', 'investigator', 'verifier', 'mechanical', 'tiny_edit')
 LOCKED_ROLES = ('lead', 'security', 'security_verifier', 'security_engineer')
-FILE_KEYS = {'schema_version', 'tiers', 'delegation', 'cleanup', 'work', 'routing', 'verification', 'notes'}
+FILE_KEYS = {'schema_version', 'tiers', 'delegation', 'cleanup', 'work', 'evals', 'routing', 'verification', 'notes'}
 DEFAULTS_KEYS = {'generated_from', 'agents', 'escalation', 'allowed_models', 'effort_caps', 'claude_minimum_versions',
                  'human_only'}
 DELEGATION_RANGES = {'max_children': (0, 8), 'max_depth': (1, 3), 'read_only_children_extra': (0, 8)}
@@ -58,6 +58,7 @@ CLEANUP_RANGES = {'cache_idle_days': (1, 3650), 'worktree_idle_days': (1, 3650),
                   'archive_max_days': (1, 3650), 'archive_max_mb': (1, 10_000_000), 'references_idle_days': (1, 3650),
                   'low_disk_free_percent': (1, 50)}
 CLEANUP_KEYS = (*CLEANUP_RANGES, 'enabled')
+EVALS_RANGES = {'max_runs_per_pr': (1, 1000)}  # unset by default: with no cap the agent asks before spending
 WORK_MODES = ('simple', 'isolated', 'parallel')  # cheapest first
 WORK_MAX_ACTIVE = (1, 32)
 # Cleanup acts sooner (more goes to the Trash) when a day count or archive_max_mb is lower, or low_disk_free_percent higher.
@@ -69,6 +70,7 @@ ACCELERATED_TOKENS = ('fast', 'priority', 'ultra')
 HOST_BINARIES = {'claude': 'claude', 'codex': 'codex'}
 RULES = {
     'cleanup': 'Limits for the worktree_retire.py report and apply; a repository file may only keep things longer, never act sooner.',
+    'evals.max_runs_per_pr': 'Most live eval runs an agent may spend on one PR; unset means ask the user first. Only the owner\'s local file or --set may set it, never a target file.',
     'work.mode': 'How the repository is worked: simple edits in place, isolated uses a worktree per task, parallel runs many; a target file may only choose a cheaper mode.',
     'work.max_active': 'Most worktrees or sessions active at once in parallel mode; the rest queue.',
     'delegation.max_children': 'Most children one owner may have active at once; 0 means no delegation.',
@@ -360,6 +362,22 @@ def validate_layer(data, human_only=(), complete=False, allowed=None, is_file=Fa
                         errors.append(f'work.{key} is missing')
     elif complete:
         errors.append('work is missing')
+    if 'evals' in data:
+        evals = data['evals']
+        if not isinstance(evals, dict):
+            errors.append('evals must be an object')
+        else:
+            for key in sorted(set(evals) - set(EVALS_RANGES)):
+                errors.append(f'evals: unknown key {key!r}')
+            for key, (low, high) in EVALS_RANGES.items():
+                if key in evals:
+                    value = evals[key]
+                    if not is_int(value):
+                        errors.append(f'evals.{key} must be an integer')
+                    elif not low <= value <= high:
+                        errors.append(f'evals.{key} must be in {low}..{high}')
+    elif complete:
+        errors.append('evals is missing')
     if 'routing' in data:
         routing = data['routing']
         if not isinstance(routing, dict):
@@ -429,6 +447,8 @@ def flatten(layer):
     for key in ('mode', 'max_active'):
         if key in layer.get('work', {}):
             out[f'work.{key}'] = layer['work'][key]
+    for key, value in layer.get('evals', {}).items():
+        out[f'evals.{key}'] = value
     for role, value in layer.get('routing', {}).items():
         for provider in PROVIDERS:
             out[f'routing.{role}.{provider}'] = value[provider] if isinstance(value, dict) and provider in value else (
@@ -482,6 +502,7 @@ def defaults_from_registry(registry):
         'delegation': dict(registry['delegation']),
         'cleanup': dict(registry['cleanup']),
         'work': dict(registry['work']),
+        'evals': dict(registry.get('evals', {})),
         'routing': {role: registry['routing'][role] for role in ROLE_KEYS},
         'escalation': dict(registry['escalation']),
         'allowed_models': {p: {t: list(registry['allowed_models'][p][t]) for t in TIERS} for p in PROVIDERS},
@@ -652,6 +673,8 @@ def file_layer(data, label, human, allowed, caps, defaults, defaults_flat, targe
     The target file is repository data: tiers and routing may only get cheaper and delegation
     numbers above the default are clamped. The owner's local file may raise them, with a notice."""
     errors = validate_layer(data, human, allowed=allowed, is_file=True) + cap_errors(data, caps, defaults['tiers'])
+    if target and 'evals' in data:
+        errors.append('evals: a target file cannot set the eval spending cap; only the owner\'s local file or the user\'s --set can')
     flat = flatten(data) if not errors else {}
     if target and not errors:
         errors = [f'{key}: a target file may only lower cost or tighten, not raise the default {defaults_flat[key]!r}'
@@ -843,6 +866,7 @@ def resolve(target, hosts, sets=(), workspace=None, slug=None, defaults_path=DEF
         'layers': [{'name': n, 'where': w, 'status': s} for n, w, _, s in layers],
         'delegation': {k: effective[f'delegation.{k}'] for k in DELEGATION_RANGES},
         'cleanup': {k: effective[f'cleanup.{k}'] for k in CLEANUP_KEYS},
+        'evals': {k: effective.get(f'evals.{k}') for k in EVALS_RANGES},
         'work': {
             'mode': work_mode, 'set': work_mode is not None, 'effective_mode': work_mode['value'] if work_mode else fallback,
             'max_active': effective['work.max_active'], 'fallback_mode': fallback,
@@ -931,6 +955,11 @@ def render_text(result, explain):
     else:
         lines.append('work mode: not set')
         lines.append(f'  {work["ask"]}')
+    for key, item in result['evals'].items():
+        if item is None:
+            lines.append(f'evals.{key}: not set (ask the user before any live eval run)')
+        else:
+            lines.append(f'evals.{key}: {item["value"]}   [{item["source"]}]')
     lines.append('cleanup')
     for key, item in result['cleanup'].items():
         lines.append(f'  {key:<26}{item["value"]}   [{item["source"]}]')
