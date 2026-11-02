@@ -62,65 +62,36 @@ yes. No file in a repository can grant an agent permission.
 Every request follows one path, and checks hold it to the rules at each step.
 
 ```mermaid
-flowchart TB
+flowchart LR
   accTitle: How Orbyn skills run
-  accDescr: A request goes from you through the host agent, AGENTS.md and the harness to a lead, which briefs scouts and workers. The change passes local checks, CI, the PR gate and maintainer review before reaching main. The skill library guides the lead, repository settings feed the harness, and trust records are checked in CI.
-  you(["You<br/>ask in chat"])
-  host["Host agent<br/>Claude Code, Codex, Cursor"]
+  accDescr: A request goes from you to the host agent, then AGENTS.md and the harness, to a lead that briefs scouts and workers. The skill library guides the lead. The change passes local checks, CI, the PR gate and your approval before reaching main.
+  you(["You"]) ==> host["Host agent"]
   subgraph start["Start of every task"]
-    direction LR
-    rules["AGENTS.md<br/>shared rules"]
-    harness["Harness<br/>resolved first"]
+    direction TB
+    rules["AGENTS.md"] ==> harness["Harness<br/>tiers and limits"]
+    settings["Repo settings"] --> harness
   end
   subgraph library["Skill library"]
-    direction LR
-    discovery["Discovery<br/>host skill links"]
-    workflow["orbyn-workflow<br/>picks the playbook"]
-    skill["Owning skill<br/>method on demand"]
+    direction TB
+    workflow["orbyn-workflow<br/>picks the playbook"] --> skill["Owning skill<br/>method on demand"]
   end
   subgraph agents["Agents"]
     direction TB
-    lead["Lead<br/>Opus or Sol"]
-    scout["Scout<br/>Haiku or Luna"]
-    worker["Worker<br/>Sonnet or Terra"]
-  end
-  subgraph target["Your repository"]
-    direction LR
-    settings["Repo settings<br/>.orbyn/harness.json"]
-    change["The change<br/>code and tests"]
-  end
-  subgraph records["Trust records"]
-    direction LR
-    provenance["Provenance<br/>how each was built"]
-    credits["Credits<br/>every source named"]
-    evals["Eval cases"]
-    upstream["Upstream records<br/>pinned by hash"]
+    lead["Lead<br/>Opus or Sol"] ==> worker["Worker<br/>Sonnet or Terra"]
+    lead --> scout["Scout<br/>Haiku or Luna"]
   end
   subgraph merge["Before merge"]
-    direction LR
-    local["Local checks<br/>tests, drift"]
-    ci["CI<br/>Python 3.11, 3.13"]
-    gate["PR gate<br/>disclosure, green CI"]
-    review["Maintainer<br/>you approve"]
-    main["main<br/>next version"]
+    direction TB
+    checks["Local checks and CI"] ==> gate["PR gate"] ==> review["You approve"] ==> main["main"]
   end
-  you ==> host ==> rules ==> harness
-  harness ==>|tiers and limits| lead
-  lead ==>|brief| worker
-  lead -->|brief| scout
-  worker ==>|edits| change
-  change ==>|checks| local
-  local ==> ci ==> gate ==>|ready| review ==>|merge| main
-  host -->|finds skills| discovery
-  rules -->|routes| workflow
-  discovery --> workflow --> skill
-  skill -->|method| lead
-  settings -->|read first| harness
-  records -.->|checked in CI| ci
-  main -.->|released| discovery
+  host ==> rules
+  rules --> workflow
+  harness ==> lead
+  skill --> lead
+  worker ==> checks
 ```
 
-The thick line is one request. Thin lines show what guides it, and dashed lines show checks and release.
+The thick line is one request. Thin lines show what guides it. The [guide](docs/guide.md#full-diagrams) has the full versions of these diagrams.
 
 Each task resolves its repository's settings first, then moves through planning,
 delegation, review and verification. You're asked to review it only once
@@ -129,51 +100,45 @@ verification and the PR gate have passed.
 ```mermaid
 stateDiagram-v2
   accTitle: How one task moves
-  accDescr: A task moves from received through target, harness, routing and planning into delegated children, review, verification and a report. It then ends locally or passes through the PR gate to merge. A harness failure stops the task and reports it.
-  direction TB
-  state "Target resolved" as Target
+  accDescr: The agent resolves the target and harness, or stops and reports. It routes small edits directly and delegates substantial work, reviews the diff, verifies and reports. Fixes loop back to delegation.
+  direction LR
   state "Harness resolved" as Harness
   state "Direct edit" as Direct
-  state "Lead child" as LeadChild
-  state "Pull request, read by the PR gate" as PR {
-    state "Gate reads PR" as Reads
-    [*] --> Reads
-    Reads --> Draft: is a draft
-    Draft --> Reads: marked ready
-    Reads --> Incomplete: disclosure gaps
-    Incomplete --> Waiting: description fixed
-    Reads --> Waiting: description complete
-    Waiting --> Failing: Validate failed
-    Failing --> Waiting: fix pushed
-    Waiting --> Ready: both Validate runs green
-    Ready --> Merged: you approve the merge
-    Merged --> [*]
-  }
-  state Delegated {
-    [*] --> Scout: mechanical
-    [*] --> Worker: assigned code
-    [*] --> LeadChild: hard or security
-    Scout --> Worker: needs judgement
-    Worker --> LeadChild: too hard, reason recorded
-  }
-  [*] --> Received
-  Received --> Target: read its rules
-  Target --> Harness: harness exits 0
-  Target --> Stopped: harness fails or is missing
+  [*] --> Harness
+  Harness --> Stopped: fails
   Stopped --> [*]
-  Harness --> Routed: one playbook chosen
-  Routed --> Direct: small clear edit
-  Routed --> Planned: substantial work
-  Planned --> Delegated: within resolved limits
-  Delegated --> Reviewed: lead reads the diff
-  Reviewed --> Delegated: concrete fix
-  Reviewed --> Verified: contract met
-  Direct --> Verified: edit made
+  Harness --> Routed
+  Routed --> Direct: small
+  Routed --> Delegated: substantial
+  Delegated --> Reviewed
+  Reviewed --> Delegated: fix
+  Reviewed --> Verified
+  Direct --> Verified
   Verified --> Delegated: check fails
-  Verified --> Reported: evidence inspected
-  Reported --> Done: no PR asked for
-  Done --> [*]
-  Reported --> PR: you approve a PR
+  Verified --> Reported
+  Reported --> [*]
+```
+
+Children run on the cheapest tier that fits. A scout escalates to a worker and a worker
+to a lead, with the reason recorded. If you approve a PR, the gate takes over:
+
+```mermaid
+stateDiagram-v2
+  accTitle: How the PR gate reads a pull request
+  accDescr: The gate holds drafts, labels incomplete descriptions, waits for CI, and asks for review only when both Validate runs are green. You decide the merge.
+  direction LR
+  state "Gate reads PR" as Reads
+  [*] --> Reads
+  Reads --> Draft: draft
+  Draft --> Reads: marked ready
+  Reads --> Incomplete: gaps
+  Incomplete --> Waiting: fixed
+  Reads --> Waiting: complete
+  Waiting --> Failing: CI failed
+  Failing --> Waiting: fix pushed
+  Waiting --> Ready: CI green
+  Ready --> Merged: you approve
+  Merged --> [*]
 ```
 
 The agent loads only what the job needs, so 39 skills don't crowd its context. Small
