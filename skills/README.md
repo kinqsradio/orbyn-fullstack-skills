@@ -6,7 +6,8 @@ Start with [orbyn-workflow](orbyn-workflow/SKILL.md) and the
 [orbyn-plan](orbyn-plan/SKILL.md) for planning and
 [orbyn-setup](orbyn-setup/SKILL.md) for host configuration.
 
-Library folders are linked into Codex and Claude Code at this workspace root.
+Library folders are linked into the agent hosts' skill directories at this workspace root
+(`.agents`, `.claude`, `.kiro`, `.junie`).
 Targets live in ignored `repo/` and retain their own instructions and skills.
 Read their guidance in place under the [ownership guide](orbyn-setup/references/project-skills.md).
 No shared skills are installed or synchronized into target repositories.

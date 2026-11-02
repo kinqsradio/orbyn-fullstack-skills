@@ -58,7 +58,7 @@ def main():
         body = re.sub(r'```.*?```', '', path.read_text(), flags=re.S)
         errors.extend(check_links(ROOT, path, snapshots))
         require('/'+'Users/' not in body and '/'+'home/' not in body, f'Local home path in public document: {path.relative_to(ROOT)}')
-    for script in ['sync-agent-skills.py','sync-agent-models.py']:
+    for script in ['sync-agent-skills.py','sync-agent-models.py','sync-host-instructions.py']:
         result = subprocess.run([sys.executable, str(ROOT/'scripts'/script), '--check'], capture_output=True, text=True)
         require(result.returncode == 0, result.stderr.strip() or f'{script} failed')
     result = subprocess.run([sys.executable, str(ROOT/'skills/orbyn-workflow/scripts/harness.py'), 'check', '--root', str(ROOT)], capture_output=True, text=True)

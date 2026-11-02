@@ -7,6 +7,7 @@ from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+HOSTS = ['.agents', '.claude', '.kiro', '.junie']  # Kiro and Junie symlink-following is unconfirmed.
 parser = argparse.ArgumentParser(description=__doc__)
 mode = parser.add_mutually_exclusive_group()
 mode.add_argument('--write', action='store_true', help='update index and add missing canonical skill links')
@@ -34,11 +35,11 @@ retired_links = {}
 try:
     sources = {name: ROOT / 'skills' / name for name in actual}
     retired = project_tools['retirements'](catalog)
-    retired_links = project_tools['plan_retired_links'](ROOT, ROOT, retired, sources, ['.agents', '.claude'])
+    retired_links = project_tools['plan_retired_links'](ROOT, ROOT, retired, sources, HOSTS)
     if retired_links and not args.write:
         errors.append('Known retired discovery links remain; run sync-agent-skills.py --write')
-    pending = project_tools['plan_links'](ROOT, sources, ['.agents', '.claude'], not args.write)
-    for host in ['.agents', '.claude']:
+    pending = project_tools['plan_links'](ROOT, sources, HOSTS, not args.write)
+    for host in HOSTS:
         base = ROOT / host / 'skills'
         if base.exists():
             for link in base.iterdir():
@@ -57,7 +58,8 @@ Start with [orbyn-workflow](orbyn-workflow/SKILL.md) and the
 [orbyn-plan](orbyn-plan/SKILL.md) for planning and
 [orbyn-setup](orbyn-setup/SKILL.md) for host configuration.
 
-Library folders are linked into Codex and Claude Code at this workspace root.
+Library folders are linked into the agent hosts' skill directories at this workspace root
+(`.agents`, `.claude`, `.kiro`, `.junie`).
 Targets live in ignored `repo/` and retain their own instructions and skills.
 Read their guidance in place under the [ownership guide](orbyn-setup/references/project-skills.md).
 No shared skills are installed or synchronized into target repositories.
