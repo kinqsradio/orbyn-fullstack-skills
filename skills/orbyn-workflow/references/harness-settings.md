@@ -10,7 +10,7 @@ python3 <orbyn-workflow skill directory>/scripts/harness.py resolve --target <ta
 Run the `harness.py` in the directory of the loaded `orbyn-workflow` skill, by
 absolute path. If that script is missing, stop and report it; never fall back to
 the library defaults. The tool reads files and prints the effective value of every
-setting with its source. It writes nothing, starts no model and never runs a check
+setting with its source. `resolve` writes nothing (only `setup` saves the work mode), starts no model and never runs a check
 a file lists. Exit 0 is success. Exit 1 is an invalid file or drift: report the
 file and message to the user and stop; do not guess a value. Exit 2 means the tool
 could not run (bad target, bad `--set`, unreadable defaults or arguments): fix the
@@ -36,6 +36,9 @@ parent is this library. A linked worktree uses its primary clone's name. The slu
 joins the path parts under `repo/` with `--`; a part containing `--`, `..`, a
 leading dot or a trailing dash gives no slug, so two clones never share a file.
 Anything else has no local file. `--slug` names the file for a clone inside `repo/`.
+A clone registered in place, outside `repo/`, uses
+`repo/.harness/inplace--<folder name>--<first 12 hex of sha256 of the resolved Git common dir path>.json`
+instead, found only through a verified Git link, so worktrees of one clone share it.
 
 ## Trust
 
@@ -97,6 +100,9 @@ the opt-out from the checked-out file and from the one on the pinned base (`orig
 either opts out, and a library opt-out stops every class. Only the
   owner's local file or `--set cleanup.<key>=<n>` may shorten. The tool resolves them
   per repository and takes the library's for `output/`, the archive and references.
+- `work`: how the repository is worked, see [the work mode](#the-work-mode).
+  `mode` is `simple`, `isolated` or `parallel`; `max_active` is an integer 1..32
+  (default 10) and matters in `parallel`.
 - `notes`: one line of up to 2000 characters, no control characters.
 
 Rejected: unknown keys, providers, roles or tiers; human-only or accelerated
@@ -106,6 +112,46 @@ setting; locked security roles or lead work routed below the lead tier;
 architect, reviewer or complex-engineering work routed to a scout; and an effort
 above the cap for `gpt-6.1-sol`, `gpt-6.1-terra`, `sonnet` or `fable` (full ids
 included). Only the user's explicit instruction can exceed an effort cap.
+
+## The work mode
+
+Each repository has a saved work mode that agents read first. `resolve` prints it
+with its source, or `work mode: not set` with the ask-once instruction, in both text
+and JSON.
+
+| Mode | Checkouts | Subagents |
+| --- | --- | --- |
+| `simple` | Edit in the current checkout; no worktrees. | None unless the user asks in chat. |
+| `isolated` | A worktree per task. Today's behaviour. | The resolved default limits. |
+| `parallel` | Many worktrees and sessions, at most `max_active` (default 10) at once; the rest queue. | The resolved limits per task. |
+
+A small clear edit stays in the current checkout in every mode, and a chat
+instruction such as "just do it here" overrides the mode for that task. `parallel`
+creates more trees, so closeout cleanup matters: `resolve` repeats that in one line.
+
+- **Where it lives.** `work.mode` (and `work.max_active`) in the owner's local
+  `repo/.harness/<slug>.json`, which Git ignores and a clone's worktrees share through
+  the worktree-to-primary mapping. For a target registered in place outside `repo/`,
+  the tool reads the in-place owner file in the same folder instead (name above); the
+  common dir is shared by the clone's worktrees. Nothing is stored in the repository,
+  because code in an untrusted repo could write there. It has the local file's trust.
+  A workspace that is or sits inside the target is refused.
+- **Trust.** The modes order `simple` < `isolated` < `parallel`. A target's committed
+  `.orbyn/harness.json` may only choose a lower mode than the owner's, or than the
+  `isolated` default when the owner has not chosen, and may only lower `max_active`;
+  anything more is clamped with a notice. Only the local file, the in-place owner
+  file or `--set` make the mode "set": a target's value never suppresses the ask and
+  is shown inside it as the repository's suggestion, still clamped. `--set work.mode=<mode>` is the user and wins.
+- **Unset.** The default is "ask, else isolated". Ask the user once with the three
+  choices and suggest `isolated`, then save the answer with
+  `harness.py setup --target <target> --mode <mode> [--max-active N]`. If nobody can
+  answer, such as in an unattended run, use `isolated` for that task and save nothing.
+- **Setup is the only write.** It writes atomically, and only to the local file (or
+  the in-place owner file for an in-place target), never into tracked files or the
+  target's working tree. It opens the folder without following links and writes
+  relative to that handle. It validates first and refuses symbolic links, tracked paths
+  and an existing file that is invalid. The location comes from Git and the target
+  name alone, so nothing in a target file can redirect it. `resolve` stays read-only.
 
 ## The cleanup line
 
