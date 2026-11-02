@@ -1,0 +1,31 @@
+name: Upstream watch
+# Runs from main only. It reads upstream metadata through the API and files issues; it never
+# downloads or runs upstream code, opens no pull request and never advances a pin.
+on:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: upstream-watch
+  cancel-in-progress: false
+jobs:
+  watch:
+    name: Upstream watch
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Report upstream changes in issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: python3 scripts/upstream_watch.py
