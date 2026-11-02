@@ -13050,6 +13050,102 @@
         "coverage": "Covers deleting only what is stale and keeping recent and unrelated files, using a disposable temporary folder, never the real cache.",
         "evidence": "Records the choice in one line, such as 'Tests: unit, deletes files'."
       }
+    },
+    {
+      "id": "bug-class-becomes-lint-rule",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A synthetic bug was fixed: an async callback inside forEach dropped its promises. Explain what else to do after the fix in Markdown; do not change code.",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "A plan is not a written rule or a new tool.",
+      "rubric": {
+        "class": "Ask whether the bug belongs to a class a static rule can catch.",
+        "rule": "Add a rule in the project's existing linter, preferring its custom-rule mechanism, with no new tool without need.",
+        "test": "The rule's test is a failing example and a passing example."
+      }
+    },
+    {
+      "id": "hot-path-no-allocation",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A synthetic animation loop drops frames on a mid-range phone. Explain how to keep its per-frame code fast in Markdown; do not run benchmarks.",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "A plan is not a measured speedup.",
+      "rubric": {
+        "mark": "Mark hot code in its path or name.",
+        "lint": "Enforce no per-frame allocation with a lint rule and pool or preallocate.",
+        "budget": "Set a frame budget for a target device and frame rate, and measure frame-time percentiles and GC pauses with the platform profiler."
+      }
+    },
+    {
+      "id": "replay-verifies-score",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A synthetic browser game posts its final score to the server. Explain how to stop forged scores in Markdown; do not change code.",
+      "expected_skills": [
+        "architect"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not trust the client-reported score.",
+      "rubric": {
+        "core": "Deterministic simulation with fixed timestep and seeded randomness.",
+        "log": "The input log is the record of a run; the server re-simulates it.",
+        "trust": "Trust only inputs, never reported outcomes, and version the simulation so old logs replay."
+      }
+    },
+    {
+      "id": "size-budget-fails-build",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A synthetic web app keeps growing its first download. Explain a CI check for it in Markdown; do not edit workflows.",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not import another product's byte limit as a default.",
+      "rubric": {
+        "budget": "The project chooses an explicit compressed-byte budget for the first download.",
+        "measure": "Measure it in CI from the built artifact and fail the build when exceeded.",
+        "report": "Report the delta on PRs."
+      }
     }
   ]
 }

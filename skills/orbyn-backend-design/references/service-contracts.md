@@ -18,6 +18,8 @@ errors stable enough for recovery without returning stack traces, SQL text or
 credentials. Preserve API compatibility rather than standardizing every error
 into a new envelope during an unrelated fix.
 
+To accept a client-submitted result such as a score, re-simulate it from the input log; see [deterministic core and replay](../../architect/references/deterministic-replay.md).
+
 ## Make repeated and concurrent calls explicit
 
 Define an operation key, its principal/scope, payload-equivalence rule, retention

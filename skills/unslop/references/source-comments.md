@@ -16,6 +16,7 @@ operation.
   obsolete narration.
 - Preserve legal notices, generated-code warnings and useful safety/compatibility
   rationale under the project's conventions.
+- A lint rule may flag comments that only restate the code. Comments for constraints the code cannot express stay; do not ban comments.
 - Do not apply blanket comment deletion or a required comment count.
 - Keep changing CI status and long experiment history in existing evidence/docs.
 - A link may supplement essential rationale; it does not replace it.
