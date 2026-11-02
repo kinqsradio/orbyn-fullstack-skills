@@ -808,6 +808,13 @@
         },
         {
           "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Add effort to the child and session naming pattern"
+        },
+        {
+          "tool": "Claude Code",
           "model": "claude-opus-5-5",
           "effort": "medium",
           "date": "2026-11-02",
@@ -1254,6 +1261,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Harness and security workflow revision"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Add effort to the child and session naming pattern"
         }
       ]
     },

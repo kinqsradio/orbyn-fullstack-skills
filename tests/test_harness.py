@@ -135,7 +135,7 @@ class DefaultsAndPrecedence(HarnessCase):
     def test_the_text_output_states_the_naming_pattern(self):
         result = subprocess.run([sys.executable, str(TOOL), 'resolve', '--target', str(self.target), '--workspace',
                                  str(self.workspace)], capture_output=True, text=True)
-        self.assertIn('Orbyn [Role] [N] - [Model] - [Task] - [Evidence or ID]', result.stdout)
+        self.assertIn('Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]', result.stdout)
 
     def test_resolve_never_writes_into_the_target_or_workspace(self):
         self.write_target(valid(notes='x'))
