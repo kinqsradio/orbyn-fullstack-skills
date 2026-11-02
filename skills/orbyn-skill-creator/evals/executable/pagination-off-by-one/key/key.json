@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "task": "pagination-off-by-one",
+  "protected": [
+    "tests"
+  ],
+  "expect_files": [],
+  "checks": [
+    "python3 -m unittest discover -s tests",
+    "python3 -m unittest discover -s hidden_tests"
+  ]
+}

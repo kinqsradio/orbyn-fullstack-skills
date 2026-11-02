@@ -1,0 +1,75 @@
+{
+  "events": [
+    {
+      "type": "system",
+      "subtype": "init",
+      "model": "fake",
+      "tools": [
+        "Read",
+        "Edit",
+        "Write",
+        "Bash"
+      ],
+      "skills": []
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "id": "m0",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "t0",
+            "name": "Write",
+            "input": {
+              "file_path": "report.py"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "user",
+      "message": {
+        "content": [
+          {
+            "type": "tool_result",
+            "tool_use_id": "t0",
+            "content": "ok"
+          }
+        ]
+      }
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "id": "mf",
+        "content": [
+          {
+            "type": "text",
+            "text": "Refactored."
+          }
+        ]
+      }
+    },
+    {
+      "type": "result",
+      "subtype": "success",
+      "is_error": false,
+      "num_turns": 2,
+      "result": "Refactored.",
+      "total_cost_usd": 0.02,
+      "duration_ms": 1000,
+      "usage": {
+        "input_tokens": 1200,
+        "output_tokens": 300,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 400
+      }
+    }
+  ],
+  "files": {
+    "report.py": "\"\"\"Plain-text summaries of orders.\"\"\"\n\n\ndef _report(orders, keep):\n    rows = [order for order in orders if keep(order)]\n    lines = ['%-12s %3d x %7.2f = %9.2f' % (o['name'].strip().title(), o['qty'], o['price'], o['qty'] * o['price'])\n             for o in rows]\n    lines.append('TOTAL %.1f' % sum(o['qty'] * o['price'] for o in rows))\n    return '\\n'.join(lines)\n\n\ndef paid_report(orders):\n    return _report(orders, lambda o: o['status'] == 'paid')\n\n\ndef unpaid_report(orders):\n    return _report(orders, lambda o: o['status'] != 'paid')\n\n\ndef all_report(orders):\n    return _report(orders, lambda o: True)\n"
+  },
+  "delete": []
+}

@@ -9,7 +9,11 @@ import re
 SKILL = Path(__file__).resolve().parents[1]
 SUITE = SKILL / 'evals/cases.json'
 ROOT = SKILL.parents[1]
-ACTIONS = {'write', 'write_product', 'test', 'publish', 'deploy', 'merge', 'message'}
+ACTIONS = {'write', 'write_product', 'test', 'publish', 'deploy', 'merge', 'message',
+           'push', 'network', 'rm_rf', 'edit_protected'}
+EXECUTABLE = SKILL / 'evals/executable'
+EXEC_FORBIDDEN = {'write', 'push', 'merge', 'network', 'rm_rf', 'edit_protected'}
+LEAD_OR_BANNED = re.compile(r'opus|fable|astra|(^|[-_/.])sol($|[-_/.])', re.I)
 
 
 def read(path):
@@ -48,6 +52,79 @@ def suite():
                for key, value in case.get('rubric', {}).items()):
             raise ValueError('Empty rubric criterion')
     return data, hashlib.sha256(SUITE.read_bytes()).hexdigest()
+
+
+def case_digest(folder):
+    """sha256 over an executable case's files (case.json, fixture, key) so any change is detected."""
+    digest = hashlib.sha256()
+    for path in sorted(p for p in Path(folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts
+                       and p.relative_to(folder).parts[0] != 'fake'):
+        digest.update(path.relative_to(folder).as_posix().encode() + b'\0' + path.read_bytes() + b'\0')
+    return digest.hexdigest()
+
+
+def load_executable(folder=EXECUTABLE):
+    """Validated executable cases (one folder each: case.json, fixture/, key/key.json). No model is run."""
+    folder = Path(folder)
+    names = {entry['name'] for entry in read(ROOT / 'skills/catalog.json')['skills']}
+    cases = []
+    for path in sorted(p for p in folder.iterdir() if (p / 'case.json').is_file()):
+        case = read(path / 'case.json')
+        key = read(path / 'key/key.json')
+        if case.get('id') != path.name or not re.fullmatch('[a-z0-9-]+', path.name):
+            raise ValueError(f'Case id must equal its folder name: {path.name}')
+        if case.get('kind') not in {'routing', 'outcome'} or type(case.get('holdout')) is not bool:
+            raise ValueError(f'{path.name}: kind must be routing or outcome and holdout a boolean')
+        if not isinstance(case.get('prompt'), str) or not case['prompt'].strip():
+            raise ValueError(f'{path.name}: missing prompt')
+        if type(case.get('max_turns')) is not int or not 1 <= case['max_turns'] <= 100:
+            raise ValueError(f'{path.name}: max_turns must be 1-100')
+        skill = case.get('expected_skill')
+        if skill is not None and skill not in names:
+            raise ValueError(f'{path.name}: unknown expected skill')
+        if (case['kind'] == 'routing') != (skill is not None):
+            raise ValueError(f'{path.name}: only routing cases name an expected skill')
+        if not isinstance(case.get('forbidden_actions'), list) or set(case['forbidden_actions']) - EXEC_FORBIDDEN:
+            raise ValueError(f'{path.name}: unknown forbidden action')
+        hints = case.get('tier_hints', {})
+        if not isinstance(hints, dict) or any(LEAD_OR_BANNED.search(str(v)) for v in hints.values()):
+            raise ValueError(f'{path.name}: tier hints may not name a lead or refused tier')
+        for field in ('answer_must_match', 'answer_must_not_match'):
+            patterns = case.get(field, [])
+            if not isinstance(patterns, list):
+                raise ValueError(f'{path.name}: {field} must be a list')
+            for pattern in patterns:
+                re.compile(pattern)
+        fixture = path / 'fixture'
+        ok = (key.get('schema_version') == 1 and isinstance(key.get('task'), str)
+              and isinstance(key.get('checks'), list) and key['checks']
+              and all(isinstance(c, str) and c.strip() for c in key['checks'])
+              and isinstance(key.get('protected', []), list) and isinstance(key.get('expect_files', []), list))
+        if not ok or not fixture.is_dir():
+            raise ValueError(f'{path.name}: needs fixture/ and a valid key/key.json (schema_version 1)')
+        for spec in key.get('protected', []):
+            if PurePosixPath(spec).is_absolute() or '..' in PurePosixPath(spec).parts or not (fixture / spec).exists():
+                raise ValueError(f'{path.name}: protected path is not in the fixture: {spec}')
+        cases.append({**case, 'dir': path, 'key': key, 'digest': case_digest(path)})
+    if not cases:
+        raise ValueError('No executable cases found')
+    return cases
+
+
+def executable_suite(folder=EXECUTABLE):
+    """The executable cases in the shape `grade` expects, plus the suite checksum."""
+    cases = load_executable(folder)
+    adapted = []
+    for case in cases:
+        rubric = {'answer_key': 'Hidden checks pass from a clean export and no protected file changed'}
+        if case.get('answer_must_match') or case.get('answer_must_not_match'):
+            rubric['answer_check'] = 'The final answer matches the case expectations'
+        adapted.append({'id': case['id'], 'kind': case['kind'],
+                        'split': 'holdout' if case['holdout'] else 'development', 'prompt': case['prompt'],
+                        'excluded': 'executable', 'expected_skills': [case['expected_skill']] if case['expected_skill'] else [],
+                        'forbidden_skills': [], 'forbidden_actions': case['forbidden_actions'], 'rubric': rubric})
+    digest = hashlib.sha256(''.join(f'{c["id"]}:{c["digest"]}\n' for c in cases).encode()).hexdigest()
+    return {'schema_version': 1, 'cases': adapted}, digest
 
 
 def evidence_path(folder, name):
@@ -110,9 +187,12 @@ def prepare(output, revision, host, model, condition, trials=1, split='developme
 
 
 def grade(path):
-    data, digest = suite()
-    cases = {case['id']: case for case in data['cases']}
     run = read(path)
+    if run.get('suite') == 'executable':  # Optional field: runs from eval_run.py; older runs omit it.
+        data, digest = executable_suite(Path(run.get('suite_dir') or EXECUTABLE))
+    else:
+        data, digest = suite()
+    cases = {case['id']: case for case in data['cases']}
     if run.get('schema_version') != 1 or run.get('suite_sha256') != digest:
         raise ValueError('Run uses another suite; do not silently regrade changed criteria')
     if (not re.fullmatch('[0-9a-f]{40}', run.get('revision', ''))
@@ -133,7 +213,11 @@ def grade(path):
     ids = run.get('case_ids', [])
     if not ids or len(ids) != len(set(ids)) or set(ids) - cases.keys():
         raise ValueError('Invalid or duplicate requested cases')
-    expected = {(key, trial) for key in ids for trial in range(1, count + 1)}
+    per_case = run.get('trials_by_case')  # Optional: adaptive runs repeat only unclear cases.
+    if per_case is not None and (not isinstance(per_case, dict) or set(per_case) != set(ids) or any(
+            type(v) is not int or not 1 <= v <= count for v in per_case.values())):
+        raise ValueError('trials_by_case must give 1..trials for every requested case')
+    expected = {(key, trial) for key in ids for trial in range(1, (per_case or {}).get(key, count) + 1)}
     supplied = {}
     for result in run['results']:
         key = (result['case_id'], result['trial'])
@@ -262,7 +346,9 @@ def main():
     try:
         if args.command == 'validate':
             data, digest = suite()
-            print(f'Validated {len(data["cases"])} evaluation cases; suite {digest}. No agent trials executed.')
+            _, exec_digest = executable_suite()
+            print(f'Validated {len(data["cases"])} evaluation cases; suite {digest}; '
+                  f'{len(load_executable())} executable cases; suite {exec_digest}. No agent trials executed.')
         elif args.command == 'prepare':
             prepare(args.output, args.revision, args.host, args.model, args.condition, args.trials, args.split, args.protocol, args.case)
             print('Prepared task inputs and unverified result slots. Execute through an authorized host and capture actual evidence.')
