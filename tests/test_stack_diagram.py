@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+import signal
 import socket
 import struct
 import subprocess
@@ -309,6 +310,56 @@ class FetchLimits(unittest.TestCase):
             urls = [u for _, u, _ in fetch.sources('hono')]
         self.assertTrue(all('@' in u for u in urls), urls)
 
+    def test_a_name_that_answers_privately_is_refused_before_connecting(self):
+        answers = [(2, 1, 6, '', ('203.0.113.9', 443)), (2, 1, 6, '', ('10.0.0.8', 443))]
+        with mock.patch.object(fetch.socket, 'getaddrinfo', return_value=answers), \
+                mock.patch.object(fetch.socket, 'create_connection') as connect:
+            with self.assertRaises(fetch.FetchRefused):
+                fetch.pinned_connection(('flip.example', 443))
+        connect.assert_not_called()
+
+    def test_the_connection_uses_the_address_that_was_checked(self):
+        answers = [(2, 1, 6, '', ('8.8.8.8', 443))]
+        with mock.patch.object(fetch.socket, 'getaddrinfo', return_value=answers), \
+                mock.patch.object(fetch.socket, 'create_connection') as connect:
+            fetch.pinned_connection(('logo.example', 443), 5)
+        self.assertEqual(connect.call_args.args[0], ('8.8.8.8', 443))
+
+    def test_a_dead_first_address_does_not_hide_a_working_one(self):
+        answers = [(10, 1, 6, '', ('2001:db8::1', 443, 0, 0)), (2, 1, 6, '', ('8.8.8.8', 443))]
+        worked = object()
+        with mock.patch.object(fetch, 'is_public', return_value=True), \
+                mock.patch.object(fetch.socket, 'getaddrinfo', return_value=answers), \
+                mock.patch.object(fetch.socket, 'create_connection', side_effect=[ConnectionRefusedError(), worked]) as connect:
+            self.assertIs(fetch.pinned_connection(('logo.example', 443), 5), worked)
+        self.assertEqual([call.args[0] for call in connect.call_args_list], [('2001:db8::1', 443), ('8.8.8.8', 443)])
+
+    def test_when_every_address_fails_the_last_error_is_raised(self):
+        answers = [(2, 1, 6, '', ('8.8.8.8', 443)), (2, 1, 6, '', ('8.8.4.4', 443))]
+        with mock.patch.object(fetch.socket, 'getaddrinfo', return_value=answers), \
+                mock.patch.object(fetch.socket, 'create_connection', side_effect=[ConnectionRefusedError('a'), TimeoutError('b')]):
+            with self.assertRaises(TimeoutError):
+                fetch.pinned_connection(('logo.example', 443), 5)
+
+    def test_a_private_proxy_is_not_judged_as_the_destination(self):
+        listener = socket.socket()
+        self.addCleanup(listener.close)
+        listener.bind(('127.0.0.1', 0))
+        listener.listen(5)
+
+        def connect_to_stand_in(connection):
+            connection.sock = socket.create_connection(listener.getsockname())
+            self.addCleanup(connection.sock.close)
+
+        with mock.patch.object(http.client.HTTPSConnection, 'connect', connect_to_stand_in):
+            tunnelled = fetch.GuardedConnection('logo.example')
+            tunnelled.set_tunnel('logo.example')
+            tunnelled.connect()  # The peer is a loopback proxy: not refused.
+            self.assertIsNotNone(tunnelled.sock)
+            direct = fetch.GuardedConnection('logo.example')
+            with self.assertRaises(fetch.FetchRefused):  # Without a proxy the same peer is refused.
+                direct.connect()
+
     def test_a_redirect_to_non_https_is_rejected(self):
         for target in ('http://logo.example/a.svg', 'file:///etc/passwd', 'ftp://logo.example/a.svg'):
             routes = {LOGO_URL: (302, {'Location': target}, b'')}
@@ -367,6 +418,48 @@ class FetchRun(unittest.TestCase):
         self.directory = tempfile.TemporaryDirectory()
         self.addCleanup(self.directory.cleanup)
         self.out = Path(self.directory.name)/'icons'
+
+    def test_an_interrupted_run_still_records_what_it_stored(self):
+        real = fetch.use_pictogram
+        calls = []
+        def stop_on_second(*args):
+            calls.append(args)
+            if len(calls) == 2:
+                raise KeyboardInterrupt
+            return real(*args)
+        with mock.patch.object(fetch, 'use_pictogram', side_effect=stop_on_second), \
+                mock.patch.object(sys, 'argv', ['fetch_icons', str(self.out), 'user~server', 'second~box']), \
+                self.assertRaises(KeyboardInterrupt), contextlib.redirect_stdout(io.StringIO()):
+            fetch.main()
+        self.assertEqual(sorted(self.manifest()), ['user'])
+
+    def interrupted_dark_fetch(self, interrupt):
+        dark_url = 'https://logo.example/alpha_dark.svg'
+
+        def read(url):
+            if url == dark_url:
+                interrupt()
+            return LOGO
+        with mock.patch.object(fetch, 'sources', return_value=[('stand-in', LOGO_URL, dark_url)]), \
+                mock.patch.object(fetch, 'read', side_effect=read), mock.patch.object(fetch, 'require_ignored'), \
+                contextlib.redirect_stdout(io.StringIO()):
+            return fetch.main([str(self.out), 'alpha:alpha', '--allow-network'])
+
+    def test_an_interrupt_during_the_dark_variant_keeps_the_stored_icon_in_the_manifest(self):
+        def interrupt():
+            raise KeyboardInterrupt
+        with self.assertRaises(KeyboardInterrupt):
+            self.interrupted_dark_fetch(interrupt)
+        self.assertTrue((self.out/'alpha.svg').exists())
+        self.assertEqual(self.manifest()['alpha']['file'], 'alpha.svg')
+
+    def test_sigterm_writes_the_manifest_and_restores_the_handler(self):
+        before = signal.getsignal(signal.SIGTERM)
+        with self.assertRaises(SystemExit) as raised:
+            self.interrupted_dark_fetch(lambda: os.kill(os.getpid(), signal.SIGTERM))
+        self.assertEqual(raised.exception.code, 128+signal.SIGTERM)
+        self.assertEqual(self.manifest()['alpha']['file'], 'alpha.svg')
+        self.assertIs(signal.getsignal(signal.SIGTERM), before)
 
     def manifest(self):
         return json.loads((self.out/'manifest.json').read_text())
@@ -533,6 +626,11 @@ class Build(unittest.TestCase):
             self.assertEqual(code, 1, token)
             self.assertIn(token, message)
             self.assertFalse(self.out.exists())
+
+    def test_a_meta_refresh_fails_the_build(self):
+        code, message = self.run_build(self.draft('<meta http-equiv="Refresh" content="0;url=https://x.example"><i>%%CREDITS%%</i>'))
+        self.assertEqual(code, 1)
+        self.assertIn('meta refresh', message)
 
     def test_a_draft_without_a_credit_slot_fails(self):
         code, message = self.run_build(self.draft('<p>hello</p>'))

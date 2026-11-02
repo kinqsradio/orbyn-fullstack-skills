@@ -16,7 +16,7 @@ not merely its task name. Keep independent work moving when another item is bloc
 An invalid shared premise suspends its dependent work, not unrelated slices.
 
 Follow the [coordination boundary](../references/project-policy.md#delegation-and-host-configuration):
-one lead, default one child, at most two active children and no recursive delegates.
+one lead, one child by default, never more than the resolved harness `max_children`, and no recursive delegates.
 One coupled writer is sufficient. Complete a representative first unit through
 its intended verification/endpoint before scaling a large queue; a trivial pilot
 does not qualify materially different unit types. Refresh the brief after a pilot

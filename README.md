@@ -342,6 +342,8 @@ records scope, candidate, ownership, observed checks and next action. Its offlin
 checker rejects stale revisions and inconsistent completion claims; receiving
 agents still inspect the actual evidence. Small tasks do not need a packet.
 
+Every external source this library uses is listed in [CREDITS.md](CREDITS.md).
+
 CI validates metadata, references, attribution, catalog/discovery consistency,
 the distribution manifest and helper/synchronization behavior. It does not prove
 live model routing, rendered design quality, native UX or production correctness.

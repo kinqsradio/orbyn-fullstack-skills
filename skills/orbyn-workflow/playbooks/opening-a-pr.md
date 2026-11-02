@@ -67,6 +67,15 @@ the target instructions, issue overlap and reproduction. Once a PR exists, use
 [bounded iteration](pr-iteration.md) for feedback, current-head checks and honest
 delivery gates. PR creation alone does not authorize comments, merge or a monitor.
 
+## Disclose how it was built
+
+Where the target uses this library's template, fill in the Agent disclosure section from
+what actually ran: tools, exact model IDs, effort and what a person decided. Add a new
+`authoring` entry in `provenance.json` for each changed library skill. Follow the target's
+own PR template and policy where it has one. Fill these in from the record of the work,
+and never guess. In this library, review is requested automatically once the section is
+complete and CI is green.
+
 ## Make the review path explicit
 
 For a substantial diff, point reviewers first to the core behavior, then wiring,

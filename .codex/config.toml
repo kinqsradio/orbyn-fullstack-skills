@@ -9,16 +9,16 @@ fast_mode = false
 ultrafast_mode = false
 
 [agents]
-max_threads = 2
+max_concurrent_threads_per_session = 2
 
-[agents.orbyn-agent]
-description = "Complex planning, implementation, diagnosis and review"
-config_file = "agents/orbyn-agent.toml"
+[agents.orbyn-lead]
+description = "Planning, architecture, consequential review, security and ambiguous diagnosis"
+config_file = "agents/orbyn-lead.toml"
 
-[agents.orbyn-light]
-description = "Bounded lookup, small edits, documentation and authorized checks"
-config_file = "agents/orbyn-light.toml"
+[agents.orbyn-scout]
+description = "Bounded mechanical search, extraction and named checks that need no judgement"
+config_file = "agents/orbyn-scout.toml"
 
-[agents.orbyn-middle]
-description = "Optional middle tier for explicitly selected bounded engineering assignments"
-config_file = "agents/orbyn-middle.toml"
+[agents.orbyn-worker]
+description = "Assigned implementation, tests and cleanup"
+config_file = "agents/orbyn-worker.toml"

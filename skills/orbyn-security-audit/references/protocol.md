@@ -46,6 +46,32 @@ is not inspected coverage. Validate the ledger when created and after changes.
 Reserve capacity for independent verification and a final coverage review before
 hunting; stop taking new units when that reserve would exceed the user’s budget.
 
+When a [threat model](threat-model.md) exists for the target, read its
+`threat-model.json` first and seed the ledger from it instead of by hand:
+
+```sh
+python3 scripts/threats_to_ledger.py /path/to/owned-audit/threat-model.json --root /path/to/target --out /path/to/owned-audit/coverage-ledger.json
+```
+
+The converter refuses a model that fails `scripts/check_threat_model.py`, never
+overwrites, and writes only to the path given, which must sit in an ignored
+folder. It seeds only threats still open for investigation, one `planned` unit
+each. It prints every other threat with its reason (`retired`, `protected`,
+`resolved`, `decision` or `no handoff`); keep that line in the coverage notes. A
+threat handed to `remediation` stays seeded. A unit takes the
+model's architecture as `surface`, the boundary's guide row as `boundary`, the
+boundary name as `subsystem` and `tm:T<n>` as `attack_class`, so the threat id is
+inside the coverage id and survives every later wave. The cited paths become
+`starting_paths`. A planned unit claims no review. Re-read the cited lines
+yourself, then change the unit to `covered`, `candidate` or `blocked` through
+the normal fields. Add a unit by hand for a `protected` threat only when its
+counterexample covers a path you are about to rely on. The threat model's evidence
+is a lead, not a verdict.
+
+Before closing the run, reconcile the threat ids with the
+[checker's ledger mode](threat-model/artifact-contract.md#handoff). The bundled
+ledger validator does not compare fingerprints with threats.
+
 ## 3. Investigate a boundary hypothesis
 
 Trace accepted input through propagation to the effect/control. Record actual
@@ -94,17 +120,22 @@ evidence, validation/rejection rationale and unresolved facts.
 | `needs_validation` | A specific source-grounded hypothesis with an exact unresolved fact and safe validation plan; no severity |
 | `rejected` | A disproved hypothesis with its reason and retained source evidence |
 
+A finding that comes from a threat keeps its id in `fingerprint`, since the pinned
+schema has no other field for it: exactly `tm:T<n>`, or `tm:T<n>/<slug>` when one
+threat yields several findings. The id comes first, is never renumbered, and
+sorting by fingerprint still holds. Remediation and verification key on this string.
+
 An unsupported best-practice preference, guessed deployment setting or absent
 second defense is not a confirmed vulnerability. Missing verification capacity
 means incomplete work, not an invented finding verdict. Fresh record review checks
 source anchors and consistency before prose is derived. Material replacement of
 a claim needs another independent review within the actual budget.
 
-The agent invokes the validators for authorized artifacts from this directory:
+The agent invokes the validators for authorized artifacts from the skill directory:
 
 ```sh
-node upstream/audit-records/validate-findings.cjs /path/to/owned-audit/findings.json
-node upstream/audit-records/validate-coverage-ledger.cjs /path/to/owned-audit/coverage-ledger.json
+node references/upstream/audit-records/validate-findings.cjs /path/to/owned-audit/findings.json
+node references/upstream/audit-records/validate-coverage-ledger.cjs /path/to/owned-audit/coverage-ledger.json
 ```
 
 Node and the record helpers must be available locally; no download is implied.
@@ -121,6 +152,16 @@ Set run status to complete only when scoped coverage and independent validation
 are finished and both validators pass. Otherwise record incomplete status, exact
 reason, affected candidates/units and next evidence needed. A finite audit cannot
 promise exhaustive absence of vulnerabilities.
+
+## 7. Verify a remediation
+
+A fresh verifier, never the author of the patch, checks each remediated finding
+against the original invariant. It re-reads the patched source, runs the finding's
+own `not_run` check from the threat model when execution is authorized under
+section 3, and tries the alternate path to the same effect. It returns `closed`,
+`still open` or `regression` for each id, with the lines read and the checks run.
+An unrun check keeps the id `still open` with the missing result named. A passing
+focused test the engineer added is evidence, not the verification.
 
 Remediation, live checks, issue publication, messages and hosted scanner runs
 remain separately authorized effects. Return the local result without requiring

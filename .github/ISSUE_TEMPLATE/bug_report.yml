@@ -11,6 +11,14 @@ body:
       label: Revision and affected skill/helper
     validations:
       required: true
+  - type: input
+    id: agent
+    attributes:
+      label: Tools, models and effort used
+      description: How this was found or written, such as "Claude Code, claude-opus-5-5, medium". Write "human only" if no agent was involved.
+      placeholder: Codex, gpt-6.1-sol, medium
+    validations:
+      required: true
   - type: textarea
     id: reproduction
     attributes:

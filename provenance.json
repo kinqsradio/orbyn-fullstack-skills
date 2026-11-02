@@ -179,7 +179,15 @@
         "source_path": "pstack/skills/statechart/scripts",
         "snapshot": "skills/architect/references/upstream/pstack-statechart/snapshot.json",
         "scope": "26 unmodified runtime .ts files and original MIT notice; no bootstrap, runtime binaries, upstream skill aliases or test corpus"
-      }
+      },
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
+      ]
     },
     "arena": {
       "relationship": "adapted",
@@ -195,6 +203,21 @@
           "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Harness and security workflow revision"
         }
       ]
     },
@@ -213,6 +236,14 @@
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
       ]
     },
     "figure-it-out": {
@@ -222,7 +253,22 @@
       "license": "MIT",
       "source": "https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/figure-it-out/SKILL.md",
       "revision": "74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12",
-      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged."
+      "changes": "Orbyn authority/evidence boundaries, project-aware integration and concrete engineering decision examples. Added an independently authored local operating method covering execution, failure analysis, output and stopping conditions in the 24 October full-catalog audit; historical source lineage remains unchanged.",
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Harness and security workflow revision"
+        }
+      ]
     },
     "how": {
       "relationship": "adapted",
@@ -301,6 +347,21 @@
           "license": "MIT",
           "relationship": "reviewed-inspiration; independently authored generic engineering guidance, no product host/usage integration or OpenCode source runtime imported"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Harness and security workflow revision"
+        }
       ]
     },
     "interrogate": {
@@ -325,6 +386,14 @@
           "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
         }
       ]
     },
@@ -384,6 +453,14 @@
           "source": "https://github.com/macro-inc/macro/tree/fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "revision": "fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "relationship": "reviewed-inspiration; independent engineering methods, no source text/code/assets/runtime imported; source review is not observed enforcement"
+        }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
         }
       ]
     },
@@ -453,6 +530,14 @@
           "relationship": "selected-method-adaptation",
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
       ]
     },
     "orbyn-content-design": {
@@ -482,6 +567,14 @@
           "revision": "881de25e941bb7c53380ffddb17c39d3d01ad06b",
           "relationship": "reviewed-inspiration; source-based outcome and recovery questions, no rendered qualification or source/runtime import"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
       ]
     },
     "orbyn-data-migration": {
@@ -490,7 +583,15 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-data-migration",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original writer-cutover example."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original writer-cutover example.",
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
+      ]
     },
     "orbyn-plan": {
       "relationship": "original",
@@ -545,6 +646,14 @@
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
       ]
     },
     "orbyn-research": {
@@ -575,6 +684,14 @@
           "source": "https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works",
           "relationship": "reviewed-inspiration; original synthesis, no source text or code imported"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
       ]
     },
     "orbyn-security-remediation": {
@@ -583,7 +700,22 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-security-remediation",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable.",
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Harness and security workflow revision"
+        }
+      ]
     },
     "orbyn-setup": {
       "relationship": "adapted",
@@ -606,6 +738,21 @@
           "revision": "f0160a12627fcf9107bcb5914bba2b012bd1d23e",
           "license": "MIT",
           "relationship": "reviewed-inspiration; independently authored generic engineering guidance, no product host/usage integration or OpenCode source runtime imported"
+        }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Harness and security workflow revision"
         }
       ]
     },
@@ -636,6 +783,21 @@
           "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Harness and security workflow revision"
         }
       ]
     },
@@ -925,6 +1087,14 @@
           "license": "MIT",
           "relationship": "reviewed-inspiration; independently authored assistant-chat surface guidance, product-token teaching fixture or owner crosslink; no upstream source, theme, assets, SDK, service or workflow text imported"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
       ]
     },
     "orbyn-workflow": {
@@ -1056,6 +1226,21 @@
           "revision": "fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "relationship": "reviewed-inspiration; independent engineering methods, no source text/code/assets/runtime imported; source review is not observed enforcement"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Harness and security workflow revision"
+        }
       ]
     },
     "rea-analysis-optimization": {
@@ -1065,7 +1250,15 @@
       "license": "MIT",
       "source": "https://github.com/morluto/rea/blob/ccc7da309d7db385d5c6d73b0a3a8e093be33504/.agents/skills/rea-analysis-optimization/SKILL.md",
       "revision": "ccc7da309d7db385d5c6d73b0a3a8e093be33504",
-      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority. Replaced mandatory remote reading with a maintained local method, failure boundaries and synthetic worked examples; retained historical source revision and MIT notices. Shared evidence/recovery guidance discovers actual schemas and does not upgrade or install the REA engine."
+      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority. Replaced mandatory remote reading with a maintained local method, failure boundaries and synthetic worked examples; retained historical source revision and MIT notices. Shared evidence/recovery guidance discovers actual schemas and does not upgrade or install the REA engine.",
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
+      ]
     },
     "rea-changelog-update": {
       "relationship": "adapted",
@@ -1074,7 +1267,15 @@
       "license": "MIT",
       "source": "https://github.com/morluto/rea/blob/ccc7da309d7db385d5c6d73b0a3a8e093be33504/.agents/skills/rea-changelog-update/SKILL.md",
       "revision": "ccc7da309d7db385d5c6d73b0a3a8e093be33504",
-      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority. Replaced mandatory remote reading with a maintained local method, failure boundaries and synthetic worked examples; retained historical source revision and MIT notices. Shared evidence/recovery guidance discovers actual schemas and does not upgrade or install the REA engine."
+      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority. Replaced mandatory remote reading with a maintained local method, failure boundaries and synthetic worked examples; retained historical source revision and MIT notices. Shared evidence/recovery guidance discovers actual schemas and does not upgrade or install the REA engine.",
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
+      ]
     },
     "rea-ci-tests-audit": {
       "relationship": "adapted",
@@ -1083,7 +1284,15 @@
       "license": "MIT",
       "source": "https://github.com/morluto/rea/blob/ccc7da309d7db385d5c6d73b0a3a8e093be33504/.agents/skills/rea-ci-tests-audit/SKILL.md",
       "revision": "ccc7da309d7db385d5c6d73b0a3a8e093be33504",
-      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority. Replaced mandatory remote reading with a maintained local method, failure boundaries and synthetic worked examples; retained historical source revision and MIT notices. Shared evidence/recovery guidance discovers actual schemas and does not upgrade or install the REA engine."
+      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority. Replaced mandatory remote reading with a maintained local method, failure boundaries and synthetic worked examples; retained historical source revision and MIT notices. Shared evidence/recovery guidance discovers actual schemas and does not upgrade or install the REA engine.",
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
+      ]
     },
     "rea-tool-design": {
       "relationship": "adapted",
@@ -1092,7 +1301,15 @@
       "license": "MIT",
       "source": "https://github.com/morluto/rea/blob/ccc7da309d7db385d5c6d73b0a3a8e093be33504/.agents/skills/rea-tool-design/SKILL.md",
       "revision": "ccc7da309d7db385d5c6d73b0a3a8e093be33504",
-      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority. Replaced mandatory remote reading with a maintained local method, failure boundaries and synthetic worked examples; retained historical source revision and MIT notices. Shared evidence/recovery guidance discovers actual schemas and does not upgrade or install the REA engine."
+      "changes": "Bounded optional runtime integration, source/runtime evidence separation and project authority. Replaced mandatory remote reading with a maintained local method, failure boundaries and synthetic worked examples; retained historical source revision and MIT notices. Shared evidence/recovery guidance discovers actual schemas and does not upgrade or install the REA engine.",
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
+      ]
     },
     "reflect": {
       "relationship": "adapted",
@@ -1116,6 +1333,14 @@
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
       ]
     },
     "reverse-engineer-anything": {
@@ -1132,6 +1357,14 @@
           "revision": "2250e67bc271c83f9e200ee298aa04a2457438a6",
           "relationship": "selected-guidance-adaptation; documentation review only, historical engine/source pin unchanged",
           "local_record": "skills/reverse-engineer-anything/references/source-record.md"
+        }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
         }
       ]
     },
@@ -1150,6 +1383,14 @@
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
       ]
     },
     "social-content": {
@@ -1158,7 +1399,15 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/social-content",
-      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original source-bound announcement example and project voice pointers. Added an unmodified, pinned MIT social source/reference snapshot with its license; active guidance remains independently authored."
+      "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original source-bound announcement example and project voice pointers. Added an unmodified, pinned MIT social source/reference snapshot with its license; active guidance remains independently authored.",
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
+      ]
     },
     "social-preview": {
       "relationship": "original",
@@ -1173,6 +1422,14 @@
           "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
         }
       ]
     },
@@ -1274,6 +1531,14 @@
           "revision": "fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "relationship": "reviewed-inspiration; independent engineering methods, no source text/code/assets/runtime imported; source review is not observed enforcement"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
       ]
     },
     "unslop": {
@@ -1299,6 +1564,14 @@
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
       ]
     },
     "why": {
@@ -1316,16 +1589,51 @@
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
       ]
     },
     "orbyn-security-audit": {
       "relationship": "adapted",
-      "credit": "Cloudflare, Inc.; Orbyn adaptations by Anh Dang and contributors",
+      "credit": "Cloudflare, Inc. (audit record tooling); Jim Manico (Grim Prompter threat-model adaptation); Orbyn adaptations by Anh Dang and contributors",
       "copyright": "Copyright (c) 2025-2026 Cloudflare, Inc.",
       "license": "MIT",
       "source": "https://github.com/cloudflare/security-audit-skill/tree/c1c8a8c1471069fb0e188eeaff69b8e8db6564a8/skills/security-audit",
       "revision": "c1c8a8c1471069fb0e188eeaff69b8e8db6564a8",
-      "changes": "Orbyn-owned audit workflow, protocol and threat-boundary guide. Only the licensed record schema, validators and their synthetic fixtures are retained as support files; no upstream skill entry point or workflow text is installed."
+      "changes": "Orbyn-owned audit workflow, protocol and threat-boundary guide. Only the licensed record schema, validators and synthetic fixtures are retained as support files from the Cloudflare source. Threat-model mode adapts selected MIT Grim Prompter material: the read-only operating boundary, evidence guide, architecture and method selection, challenger, change reviewer, artifact contract, tool and shared-credential boundaries, and twelve architecture checks, condensed into references/threat-model with per-file original and maintained hashes under references/upstream/grim-prompter. The 36 deep chains, 24 other quick prompts, 29 method prompts and all install or host-specific steps are excluded. Original additions: the threat-model checker, the threat-to-ledger converter, the join with the boundary guide, status words, run-folder and no-publication rules, the threat model, audit, remediation and verification workflow, and the verification protocol section.",
+      "incorporated_material": [
+        {
+          "source": "https://github.com/jmanico/grim-prompter/tree/14d7292ad60434f5bf96f1792412f07e1b7531ed",
+          "revision": "14d7292ad60434f5bf96f1792412f07e1b7531ed",
+          "license": "MIT",
+          "local_path": "skills/orbyn-security-audit/references/upstream/grim-prompter/SOURCE.md",
+          "license_file": "skills/orbyn-security-audit/references/upstream/grim-prompter/LICENSE",
+          "relationship": "selected-maintained-adaptation",
+          "copyright": "Copyright (c) 2026 Jim Manico",
+          "license_sha256": "e12b09de9f3d07a057e95b07681ed0f1bf29d156148156b02fc4ef945b677f2a"
+        }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Harness and security workflow revision"
+        }
+      ]
     },
     "orbyn-worktree": {
       "relationship": "original",
@@ -1333,7 +1641,15 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-worktree",
-      "changes": "Original worktree ownership/lifecycle guidance: sibling repo-wt roots, neutral purpose names, reuse, verified base and preservation before cleanup. Includes local-first branch ownership, bounded delegate branches, stable personal contribution fork names and verified authorized publication. Prefer private contribution storage when supported, retain local work if privacy is unavailable, and distinguish a public native fork from a private standalone backup. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Added exact-topology host readiness and blocked-metadata preservation guidance; primary-clone readiness does not qualify linked-worktree writes. Clarified independently authored one-time workspace layout selection: ask when unresolved, recommend nested for new contribution workspaces, honor explicit existing paths/delegated default and preserve active work. Installer destination API and source lineage remain unchanged. Added independently authored instruction/search re-resolution after selecting a worktree; shared history or memory does not prove branch applicability. Existing lineage and notices retained. Added independently authored designated feature-worktree verification guidance or synthetic development cases: affected checks, stage boundaries, exclusions, widening triggers, required-status preservation and no per-task CI/CD automation. Existing lineage and notices retained; no upstream text or code imported. Added independently authored task/resource closeout, checkout/replacement or retention/cache-reuse guidance and synthetic development boundaries. Original additions preserve all prior attribution/import records; no upstream source text, runtime, cleanup helper or automatic scheduler imported."
+      "changes": "Original worktree ownership/lifecycle guidance: sibling repo-wt roots, neutral purpose names, reuse, verified base and preservation before cleanup. Includes local-first branch ownership, bounded delegate branches, stable personal contribution fork names and verified authorized publication. Prefer private contribution storage when supported, retain local work if privacy is unavailable, and distinguish a public native fork from a private standalone backup. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Added exact-topology host readiness and blocked-metadata preservation guidance; primary-clone readiness does not qualify linked-worktree writes. Clarified independently authored one-time workspace layout selection: ask when unresolved, recommend nested for new contribution workspaces, honor explicit existing paths/delegated default and preserve active work. Installer destination API and source lineage remain unchanged. Added independently authored instruction/search re-resolution after selecting a worktree; shared history or memory does not prove branch applicability. Existing lineage and notices retained. Added independently authored designated feature-worktree verification guidance or synthetic development cases: affected checks, stage boundaries, exclusions, widening triggers, required-status preservation and no per-task CI/CD automation. Existing lineage and notices retained; no upstream text or code imported. Added independently authored task/resource closeout, checkout/replacement or retention/cache-reuse guidance and synthetic development boundaries. Original additions preserve all prior attribution/import records; no upstream source text, runtime, cleanup helper or automatic scheduler imported.",
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
+      ]
     },
     "orbyn-upstream-review": {
       "relationship": "original",
@@ -1349,6 +1665,14 @@
           "revision": "f0160a12627fcf9107bcb5914bba2b012bd1d23e",
           "license": "MIT",
           "relationship": "reviewed-inspiration; independently authored generic engineering guidance, no product host/usage integration or OpenCode source runtime imported"
+        }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
         }
       ]
     },
@@ -1442,6 +1766,14 @@
           "revision": "fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "relationship": "reviewed-inspiration; independent engineering methods, no source text/code/assets/runtime imported; source review is not observed enforcement"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
       ]
     },
     "orbyn-stack-selection": {
@@ -1450,7 +1782,15 @@
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
       "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-stack-selection",
-      "changes": "Independently authored project-aware guidance and synthetic worked examples, informed by dated primary references linked locally; no external skill text or documentation snapshots imported. Added original conditional comparative-implementation research guidance, owner handoffs or synthetic development evaluation coverage; no third-party material imported and historical lineage retained."
+      "changes": "Independently authored project-aware guidance and synthetic worked examples, informed by dated primary references linked locally; no external skill text or documentation snapshots imported. Added original conditional comparative-implementation research guidance, owner handoffs or synthetic development evaluation coverage; no third-party material imported and historical lineage retained.",
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
+      ]
     },
     "orbyn-ai-application": {
       "relationship": "original",
@@ -1563,6 +1903,14 @@
           "revision": "881de25e941bb7c53380ffddb17c39d3d01ad06b",
           "relationship": "reviewed-inspiration; source-based outcome and recovery questions, no rendered qualification or source/runtime import"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
       ]
     },
     "technical-illustration": {
@@ -1599,6 +1947,14 @@
           "license": "MIT",
           "relationship": "reviewed-inspiration; independently authored illustrated-statechart method and workshop replay plate; no upstream drawing code, fonts, models or assets imported"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "unrecorded",
+          "model": "unrecorded",
+          "date": "2026-11-02",
+          "scope": "Work before this record existed"
+        }
       ]
     },
     "product-illustration": {
@@ -1619,6 +1975,15 @@
           "relationship": "selected-maintained-adaptation",
           "copyright": "Copyright (c) 2026 Benji Taylor",
           "license_sha256": "f9420246652580af24aa2bc48531c17f0f377b064bc7ea218afeb983923ef643"
+        }
+      ],
+      "authoring": [
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Adapted and reviewed in Orbyn"
         }
       ]
     },
@@ -1641,6 +2006,22 @@
           "copyright": "Copyright (c) 2026 caru-ini",
           "license_sha256": "7b153fc3f5f1ccce2b9ac98a35301c666c025db85d6c44565e13304774d144a9"
         }
+      ],
+      "authoring": [
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Adapted and reviewed in Orbyn"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Harness and security workflow revision"
+        }
       ]
     },
     "motion-match": {
@@ -1661,6 +2042,15 @@
           "relationship": "selected-maintained-adaptation",
           "copyright": "Copyright (c) 2026 Niaz Morshed",
           "license_sha256": "6bce4169a631cbe6d18089ed7e15d7ffe2afd736272d0ed9dc0e40e7f98d6f41"
+        }
+      ],
+      "authoring": [
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Adapted and reviewed in Orbyn"
         }
       ]
     }

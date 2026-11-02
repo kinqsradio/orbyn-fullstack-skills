@@ -54,7 +54,7 @@ Local raw evidence is under the primary checkout's ignored `orbyn-references/cur
 
 - Shared methods stay in outer `skills/`; independent target repositories/worktrees remain under ignored `repo/`. No copied, linked or synchronized shared-skill installation into targets.
 - Keep 35 canonical top-level owners unless a genuinely distinct unsupported task later earns a separately reviewed owner. Use conditional sections/references for the proposed improvements.
-- Keep Luna High and Sol Medium defaults and Terra Medium optional. Preserve standard processing, actual consumer policy, at most two active children and no recursive delegation. No hidden CLI inference or automatic model/provider fallback.
+- Keep the resolved harness tiers and effort (the lead, worker and scout agents and their defaults). Preserve standard processing, actual consumer policy, no more active children than the resolved `max_children` and no recursive delegation. No hidden CLI inference or automatic model/provider fallback.
 - Read required instructions explicitly in the selected target; use shell `rg`/`rg --files` when usable and accept native search. Instruction lookup is separate from code filtering, including hidden/ignored instruction paths.
 - Preserve target instructions, company skills, private data, unrelated edits, active resources, licenses and original import history. Raw source stays ignored. Required offline guidance must not depend on that ignored download.
 - Local work, commit, push, PR, review posting, merge, scheduling and deployment retain their actual authorization. A promise of autonomy supplies no additional effects.

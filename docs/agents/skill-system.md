@@ -8,10 +8,10 @@ not itself create new project chats. Skills exchange concrete artifacts: source 
 plan, changed files or a verification record. They do not recursively invoke each
 other or load the whole catalog. [Roles](roles.md) define responsibility;
 [stack](stack.md) defines the technology boundary. [Model policy](model-policy.md)
-routes complex work to the standard tier and bounded work to the light tier in
-[models.json](models.json), and reserves its human-only tier for explicit selection.
-An optional Codex-only middle tier requires explicit human selection for the
-assignment; it does not change the light/standard defaults or Claude routing.
+routes decisions to the lead tier, assigned implementation to the worker tier and
+bounded mechanical work to the scout tier in [models.json](models.json), as
+resolved per repository by the [harness](harness.md). It reserves its human-only
+tier for explicit selection.
 
 | Task or unknown                     | Primary skill                              | Useful input / handoff                                                                              |
 | ----------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------- |

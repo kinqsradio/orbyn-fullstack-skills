@@ -1,6 +1,6 @@
 # Claude Code
 
-Read [AGENTS.md](AGENTS.md), then only the shared skills relevant to the task.
+Read [AGENTS.md](AGENTS.md) and resolve the harness first (its top section), then only the shared skills relevant to the task.
 Canonical skills are linked at this outer workspace's `.claude/skills`. Resolve
 the nested target and read its own root/nested instructions and local skills in
 place, including any future project-owned AGENT.md or AGENTS.md. Target rules,

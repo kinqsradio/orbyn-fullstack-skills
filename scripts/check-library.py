@@ -8,7 +8,7 @@ import runpy
 import subprocess
 import sys
 
-from skill_contracts import check_audit, check_case_coverage, check_discovery, check_entrypoint, check_incorporated_material, check_links, check_local_workspaces, check_portable_links
+from skill_contracts import check_audit, check_authoring, check_case_coverage, check_licences, check_discovery, check_entrypoint, check_incorporated_material, check_links, check_local_workspaces, check_portable_links
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -42,6 +42,8 @@ def main():
         require((skill.parent/'LICENSE').is_file(), f'{name}: missing portable license')
         record = provenance.get(name, {})
         errors.extend(check_incorporated_material(ROOT, name, record))
+        errors.extend(check_authoring(name, record))
+        errors.extend(check_licences(ROOT, name, record))
         require(bool(record.get('credit')) and bool(record.get('source')), f'{name}: incomplete attribution')
         require(record.get('relationship') in {'adapted','original','reference-adapter'}, f'{name}: unknown provenance relationship')
         if (skill.parent/'LICENSE').exists():
@@ -59,6 +61,8 @@ def main():
     for script in ['sync-agent-skills.py','sync-agent-models.py']:
         result = subprocess.run([sys.executable, str(ROOT/'scripts'/script), '--check'], capture_output=True, text=True)
         require(result.returncode == 0, result.stderr.strip() or f'{script} failed')
+    result = subprocess.run([sys.executable, str(ROOT/'skills/orbyn-workflow/scripts/harness.py'), 'check', '--root', str(ROOT)], capture_output=True, text=True)
+    require(result.returncode == 0, result.stderr.strip() or 'Harness defaults check failed')
     result = subprocess.run([sys.executable, str(ROOT/'scripts/library_manifest.py'), '--root', str(ROOT)], capture_output=True, text=True)
     require(result.returncode == 0, result.stderr.strip() or 'Manifest failed')
     spec = importlib.util.spec_from_file_location('reading_groups', ROOT/'scripts/skill_selection.py')
@@ -70,6 +74,8 @@ def main():
         errors.append(f'Invalid presets: {error}')
     result = subprocess.run([sys.executable, str(ROOT/'skills/orbyn-skill-creator/scripts/evaluate.py'), 'validate'], capture_output=True, text=True)
     require(result.returncode == 0, result.stderr.strip() or 'Evaluation suite failed')
+    result = subprocess.run([sys.executable, str(ROOT/'scripts/credits.py'), '--check'], capture_output=True, text=True)
+    require(result.returncode == 0, result.stderr.strip() or 'CREDITS.md is stale')
     if errors:
         print('\n'.join(errors), file=sys.stderr)
         return 1

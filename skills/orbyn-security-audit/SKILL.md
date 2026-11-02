@@ -1,44 +1,66 @@
 ---
 name: orbyn-security-audit
-description: "Perform an explicitly requested local or offline source security audit when a hosted scanner is unavailable or a portable audit is requested; preserve coverage, independent validation and structured findings."
+description: "Threat-model a design or sensitive feature, or run an explicitly requested local source audit, read-only, with path:line evidence and independent validation; also verify a patched finding. Use orbyn-security-remediation to fix saved findings, architect for non-security design."
 ---
 
-# Portable source security audit
+# Threat model and local security audit
 
-Use this workflow only within an explicit audit request and the consuming
-project's policy. Creating, researching or installing this skill does not start
-an audit. Questions about one saved finding belong to
-[security remediation](../orbyn-security-remediation/SKILL.md). If a requested
-hosted security integration is available, use its owning workflow; do not run
-duplicate local and hosted scans or silently substitute one for the other.
+Use this when the person asks for a threat model, when a sensitive feature reaches its design stage (sign-in, sharing, payments, tool access, a new trust boundary), or when they explicitly ask for a local or portable source audit because a hosted scanner is unavailable. Creating or editing this skill starts nothing. A saved finding to fix goes to [security remediation](../orbyn-security-remediation/SKILL.md). If a hosted security integration is available and requested, use its owning workflow; do not run both or substitute one silently.
 
-Select this skill from the ordinary audit request; the human does not need to
-invoke reconnaissance, hunting, verification and reporting separately. Follow
-the [local audit protocol](references/protocol.md) for the complete
-coverage and findings contracts, validators and threat-class references.
+Run security work on the lead tier, never the scout tier. Scouts may not touch security work; the lead owns scope, shared records and every verdict.
 
-## Method
+## Authority
 
-1. **Set the boundary.** Identify the target checkout, exact source revision and dirty files, requested paths, allowed tools, execution scope, output location and budget. Inspect only the relevant instructions and source. Keep the target read-only. Resolve domain, API, storage, client, worker, infrastructure and external trust boundaries from actual source; absent layers stay inapplicable.
-2. **Set up output.** Use a new owned output directory outside the target unless the user selected an ignored in-repo location. The lead owns run metadata, architecture, coverage ledger and findings; each investigator/verifier gets a separate scratch/output scope. Record models, source identity, capabilities, budget and missing evidence.
-3. **Map** inputs, principals, effects and existing controls. Seed a coverage ledger from reachable source paths and relevant threat classes, with concrete owners.
-4. **Investigate bounded units.** Reserve capacity for independent verification and coverage criticism before adding hunting work. Track inspected, blocked and deferred units; a grep hit or assigned task is not completed coverage.
-5. **Challenge candidates.** Deduplicate by boundary/root cause and have a fresh authorized verifier try to disprove each one against the same source. Keep rejected and unresolved evidence. A same-author reread is not independent verification.
-6. **Produce structured findings** and verify the records again before deriving prose. Use the bundled schema and coverage/findings validators; reports and JSON must agree. Report source coverage and exclusions rather than implying exhaustiveness.
-7. **Return** run identity, coverage, structured records, report, explicit blockers and smallest proposed source fixes. Remediation is a separate authorized handoff.
+Everything here is local and read-only. No scan or test against a live system, no exploitation, no use of credentials, no change to the target, and no publication, issue, message or hosted scan without the person's own request. Execute target-controlled code only when the person authorizes it and the [protocol](references/protocol.md) controls can be enforced. A threat model of a private target is sensitive: it goes to an ignored run folder and is never committed, uploaded or quoted elsewhere.
 
-The [synthetic blocked-evidence example](examples/static-limit.md) demonstrates an incomplete source observation without assigning unsupported severity.
+## One workflow
 
-## Finding standard
+Security work moves through four stages. Each passes the next a file with stable ids, not a conclusion.
 
-For every proposed defect, name the lower-trust actor/input, intended control, crossed boundary, affected resource and bounded observed result. Distinguish `confirmed`, `needs_validation` and `rejected`; unresolved records name the missing fact and carry no severity. A best-practice gap or defense-in-depth suggestion without a reachable violation is not a confirmed vulnerability. Only confirmed findings receive severity, calibrated to the demonstrated consequence.
+1. **Threat model** (this skill): design-level threats, each with `path:start-end` evidence, counterevidence and a check to run later. Output: `threat-model.json`.
+2. **Audit** (this skill): each threat marked `observed_weakness` or worth testing becomes a coverage unit. A fresh verifier tries to disprove it. Output: findings that are `confirmed`, `needs_validation` or `rejected`, carrying the threat id first in each `fingerprint`, as `tm:T1`.
+3. **Remediation** ([orbyn-security-remediation](../orbyn-security-remediation/SKILL.md)): fixes each confirmed finding at the owning boundary and adds a preventive check. Output: a ledger naming the invariant, the patch and the check.
+4. **Verification** (this skill, a fresh verifier): re-reads the fix against the original invariant and the threat's `not_run` check, and returns `closed`, `still open` or `regression` per id. Remediation never grades its own fix.
 
-## Execution and evidence limits
+Start at the stage the request names and take the earlier stage's file when it exists. A request to threat-model and fix is four handoffs, not one step.
 
-Use local source and the bundled references offline. Execute target-controlled builds, tests, fixtures or processes only when authorized and all controls in the local protocol can be enforced: isolated network/environment, read-only target, owned scratch writes and bounded resources. Otherwise continue static inspection, record the exact missing execution evidence and retain an incomplete/unverified result. Never use a live endpoint or production identity as a fallback.
+## Method: threat-model mode
 
-Fresh investigators/verifiers must preserve the configured model, processing and role boundaries. If the host cannot provide required independence, record the blocker and return preliminary source observations; do not claim a completed independently verified audit. A user budget or review cap is a hard limit, not a reason to relabel unfinished work complete.
+Read [the threat-model method](references/threat-model.md) first. In short:
 
-## Authorization limits
+1. **Scope.** Record the decision the model supports, the target and revision, what is out, and the run folder `output/threat-model/<date>-<mode>-<slug>/`. Check Git ignores it before writing.
+2. **Evidence.** Read the target read-only, cite `path:start-end` for each observation, and keep gaps. Never run the target's own scripts.
+3. **Choose.** Walk the [boundary guide](references/threat-boundaries.md) rows, then one primary architecture and its checks file, which add to those rows. Name a guide row on every model boundary. Add a method only if a question needs one.
+4. **Analyse** each supported scenario: asset, actor capability, reachable path, prerequisites, existing control, what argues against it, and the observation that would decide it.
+5. **Challenge.** A short self-check for quick depth; a fresh context for deep.
+6. **Check and hand off.** Run `python3 scripts/check_threat_model.py <run>/threat-model.json --root <target>`, then write `report.md` and list handoffs.
 
-Do not change target source, publish findings, open issues, message authors or start a hosted Codex Security scan merely because this method describes audits. The workflow uses local coordination policy and preserves the user’s authority for every external action. Existing company audit policy stays in the target's existing guides or skills, outside public library content.
+### Worked failure
+
+A feature request: "expiring share links, before we build". The first draft lists "token guessing, XSS, CSRF" because the word was "web". None cites a file, and nothing says what the feature does with a revoked link. The checker would refuse it: no evidence, no actor capability, no deciding observation.
+
+The corrected pass reads the revoke and stream code and records a design hypothesis: revoke deletes the row (`src/share/revoke.ts:40-58`), but the stream reads the link once at connect (`src/share/stream.ts:12-30`) and never rechecks, so a connected recipient keeps receiving after revocation. It names the counterevidence it did not find, the deciding question ("does any later frame recheck?"), and a `not_run` check. It hands `tm:T1` to audit. The audit confirms it, remediation rechecks the link per frame, and the verifier runs the check. These paths are a synthetic illustration.
+
+## Method: audit mode
+
+1. **Set the boundary.** Identify the target, exact revision and dirty files, requested paths, allowed tools, execution scope, output location and budget. Keep the target read-only. Resolve boundaries from actual source; absent layers stay inapplicable.
+2. **Set up output.** Use a new owned directory outside the target unless the person chose an ignored in-repo location. The lead owns run metadata, architecture, coverage and findings; each worker gets its own scratch scope. Record models, source identity, capabilities, budget and missing evidence.
+3. **Map** inputs, principals, effects and controls against the [boundary guide](references/threat-boundaries.md). With a threat model, seed the ledger from it: `python3 scripts/threats_to_ledger.py <run>/threat-model.json --root <target> --out <run>/coverage-ledger.json`. Units are `planned` and carry `tm:T<n>`; only threats still open are seeded, and the run keeps the printed reason for each one that is not. Add the rest by hand.
+4. **Investigate bounded units.** Reserve capacity for independent verification first. A grep hit or an assigned task is not coverage.
+5. **Challenge candidates.** Deduplicate by boundary and root cause. A fresh verifier tries to disprove each one on the same source. A same-author reread is not independent.
+6. **Produce records** with the bundled schema and validators: `node references/upstream/audit-records/validate-coverage-ledger.cjs <run>/coverage-ledger.json` and `validate-findings.cjs <run>/findings.json`, same folder. A finding from a threat starts its `fingerprint` with `tm:T<n>`; confirm no id was lost with `python3 scripts/check_threat_model.py <run>/threat-model.json --ledger <run>/coverage-ledger.json --findings <run>/findings.json`. Reports and JSON must agree. State coverage and exclusions, never exhaustiveness.
+7. **Return** run identity, coverage, records, report, blockers and the smallest proposed fixes. Remediation is a separate authorized handoff.
+
+For every proposed defect, name the lower-trust actor or input, the intended control, the crossed boundary, the affected resource and a bounded observed result. Only `confirmed` findings get a severity. A best-practice gap with no reachable violation is not a vulnerability. See the [blocked-evidence example](examples/static-limit.md).
+
+## Execution limits
+
+Use local source and bundled references offline. Without isolation, keep inspecting statically, record the missing result and leave the work incomplete; never fall back to a live endpoint or a production identity. If the host cannot provide independent verifiers or the configured tier, record the blocker and return preliminary observations, not a completed audit. A budget is a hard limit.
+
+## Read when needed
+
+- For coverage ledgers, validators, record schema, execution sandbox and deliverables, read [the audit protocol](references/protocol.md).
+- For which boundaries to question, and the row names a model must use, read [threat boundaries](references/threat-boundaries.md).
+- For depth, modes, the read-only rules, the run folder and the baseline questions, read [the threat-model method](references/threat-model.md).
+- For the artifact files and the JSON the checker enforces, read [the artifact contract](references/threat-model/artifact-contract.md).
+- For agents, RAG, tools or supply chain, read the matching file in `references/threat-model/architectures/` and [tool credential boundaries](references/threat-model/tool-credential-boundaries.md).

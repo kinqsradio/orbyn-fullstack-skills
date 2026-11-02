@@ -21,7 +21,7 @@ For a live-update decision, feed both sketches the same reconnect, ordering and 
 
 ## Delegation limits
 
-The owning lead uses named native Orbyn Architect/Engineer assignments under the [workflow](../orbyn-workflow/SKILL.md), with disjoint candidate paths. Keep at most two active children across the task; compare sequentially when slots are occupied. A child forbidden delegation compares sketches directly within its owned scope.
+The owning lead uses named native Orbyn Architect/Engineer assignments under the [workflow](../orbyn-workflow/SKILL.md), with disjoint candidate paths. Keep within the resolved `max_children` across the task; compare sequentially when slots are occupied. A child forbidden delegation compares sketches directly within its owned scope.
 
 If the host cannot supply permitted delegates, compare sequential sketches directly and disclose that the review was not independent. Unavailable independent/model-family review remains a limit, not permission to change defaults or run a hidden panel.
 

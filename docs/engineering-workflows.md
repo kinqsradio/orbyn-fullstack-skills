@@ -13,7 +13,7 @@ or making the user invoke a sequence of helper skills.
 | Observable behavior, effect seams and one verified failing contract at a time                   | `tdd`                              |
 | Concrete caller/contract risks, counterexamples and proportionate evidence                      | `interrogate`                      |
 | Existing project discovery, local company namespaces and backed-up setup                        | `orbyn-setup`                      |
-| Explicit portable source audit, coverage, independent verification and structured records       | `orbyn-security-audit`             |
+| Threat model, explicit portable source audit, independent verification and structured records       | `orbyn-security-audit`             |
 
 The user describes the outcome. The agent chooses relevant owners, uses the
 consumer’s terminology, completes authorized helper steps and reports actual

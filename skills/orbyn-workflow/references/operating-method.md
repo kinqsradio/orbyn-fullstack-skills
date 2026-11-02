@@ -75,7 +75,8 @@ workflows.
 
 ### Security audit
 
-For an explicitly requested portable/offline source audit, use
+For threat modelling, design-stage security review or an explicitly requested
+portable/offline source audit, use
 [orbyn-security-audit](../../orbyn-security-audit/SKILL.md). Existing findings remain
 with remediation, and a hosted security scan retains its own workflow.
 

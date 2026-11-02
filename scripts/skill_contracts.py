@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Static discovery, links and local Git boundaries; no project-source execution."""
 import hashlib
+import json
 import re
 import subprocess
 from pathlib import Path
@@ -10,6 +11,10 @@ from urllib.parse import unquote
 MAX_ENTRYPOINT_WORDS = 1200
 MAX_DESCRIPTION_CHARS = 300
 MIN_POSITIVE_CASES = 2
+AUTHORING_RULE_DATE = '2026-11-02'
+# Licences we may modify and redistribute with credit as the only obligation. Copyleft
+# asks for more than credit, so such sources are cited and never copied.
+ALLOWED_LICENCES = {'MIT', 'Apache-2.0', 'BSD-2-Clause', 'BSD-3-Clause', 'ISC', 'Zlib', 'CC-BY-4.0', 'CC0-1.0', 'Unlicense'}
 MAINTAINER_BOILERPLATE = ('historical source notices remain in provenance',)
 
 
@@ -125,6 +130,37 @@ def check_entrypoint(name, text):
     prose = re.sub(r'\s+', ' ', body).lower()
     errors += [f'{name}: maintainer note in SKILL.md belongs in provenance: {phrase}'
                for phrase in MAINTAINER_BOILERPLATE if phrase in prose]
+    return errors
+
+
+def check_licences(root, name, record):
+    """Anything bundled or adapted must carry an allowed licence; others are cited, not copied."""
+    errors = []
+    if record.get('license') not in ALLOWED_LICENCES:
+        errors.append(f"{name}: only licences that require nothing beyond credit may be bundled, found {record.get('license')}")
+    for item in record.get('incorporated_material') or []:
+        if item.get('license') not in ALLOWED_LICENCES:
+            errors.append(f"{name}: incorporated material needs a licence that requires nothing beyond credit: {item.get('source')}")
+    for path in sorted((root/'skills'/name).glob('references/upstream/*/snapshot.json')):
+        license_name = json.loads(path.read_text()).get('license')
+        if license_name not in ALLOWED_LICENCES:
+            errors.append(f'{name}: bundled source needs a licence that requires nothing beyond credit, found {license_name}: {path.parent.name}')
+    return errors
+
+
+def check_authoring(name, record):
+    """Each skill says which tools and models built it; history before this rule is unrecorded."""
+    entries = record.get('authoring')
+    if not isinstance(entries, list) or not entries:
+        return [f'{name}: provenance needs an authoring list naming the tools and models used']
+    errors = []
+    for entry in entries:
+        if not isinstance(entry, dict) or not all(isinstance(entry.get(k), str) and entry[k] for k in ('tool', 'model', 'date')):
+            errors.append(f'{name}: authoring entries need tool, model and date')
+        elif not re.fullmatch(r'\d{4}-\d{2}-\d{2}', entry['date']):
+            errors.append(f'{name}: authoring date must be YYYY-MM-DD')
+        elif entry['tool'] == 'unrecorded' and entry['date'] > AUTHORING_RULE_DATE:
+            errors.append(f'{name}: work after {AUTHORING_RULE_DATE} must name its tool and model')
     return errors
 
 

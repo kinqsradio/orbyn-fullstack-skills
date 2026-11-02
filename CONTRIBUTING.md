@@ -68,9 +68,24 @@ and report the limitation; do not copy shared policy into the target to mask it.
    comparison. Follow the [evaluation guide](skills/orbyn-skill-creator/references/evaluations.md).
    Run the checks below. Include a realistic use case and actual results in the
    PR template; clearly label any live routing/rendering checks not performed.
-5. Push your branch and open a PR to `kinqsradio/orbyn-fullstack-skills:main`.
-   Maintainers review routing, authority, portability, evidence and licensing.
-   A green check is necessary evidence, not automatic merge approval.
+5. Say how it was built. We expect skills and policies to be made with agents, because
+   they do this well, so every contribution names its tools, exact models and effort:
+   in the PR's Agent disclosure section, and as a new `authoring` entry in
+   `provenance.json` for each changed skill. If your agent opens the PR, it fills these
+   in. CI fails a changed skill with no new entry.
+
+   Credit everything. List every external skill or project you used, with its link,
+   exact commit and licence. Copy or adapt only what we may modify and redistribute with
+   credit as the only obligation, such as MIT, Apache-2.0, BSD, ISC, CC-BY or CC0. Record
+   it in `provenance.json`, and keep its licence text and any NOTICE file. Copyleft licences
+   such as GPL and AGPL, non-commercial terms, and code with no licence may only be
+   reviewed for ideas, with no text copied. [CREDITS.md](CREDITS.md) is generated from those records.
+6. Push your branch and open a PR to `kinqsradio/orbyn-fullstack-skills:main`. The
+   [PR gate](.github/workflows/pr-gate.yml) labels it `needs-disclosure` until the
+   description is complete. Once it is complete and CI is green, it is labelled
+   `ready-for-review` and the maintainer is asked to review. Incomplete PRs are not
+   sent for review. Maintainers review routing, authority, portability, evidence and
+   licensing. A green check is necessary evidence, not automatic merge approval.
 
 ```sh
 python3 scripts/sync-agent-skills.py --write

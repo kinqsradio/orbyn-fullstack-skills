@@ -23,3 +23,6 @@ output/
 
 # Local CT exploration prototype and public sample volume.
 /design/ct-explorer/
+
+# Local preview launcher with absolute paths.
+.claude/launch.json

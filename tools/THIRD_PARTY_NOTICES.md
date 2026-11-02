@@ -64,6 +64,18 @@ identifies the exact revision and original paths. The active workflow/protocol
 are maintained separately under Orbyn ownership. No upstream skill entry point
 or workflow text is bundled.
 
+Threat-model mode in `orbyn-security-audit` adapts selected material from
+[Grim Prompter](https://github.com/jmanico/grim-prompter) by Jim Manico, MIT, at commit
+`14d7292ad60434f5bf96f1792412f07e1b7531ed`: the read-only operating boundary, evidence and
+selection helpers, challenger and change reviewer, artifact contract, tool-credential
+boundaries and twelve architecture checks, condensed with per-file original and maintained
+hashes. The [source record](../skills/orbyn-security-audit/references/upstream/grim-prompter/SOURCE.md)
+lists what was kept, changed and excluded, and the
+[MIT notice](../skills/orbyn-security-audit/references/upstream/grim-prompter/LICENSE) travels
+with the skill. No method prompts or method-source text are bundled. STRIDE, LINDDUN, MITRE
+ATT&CK, CAPEC, ATLAS, the Cyber Kill Chain, CVSS and similar names belong to their owners;
+this library describes how to apply questions from them and implies no endorsement.
+
 ## Reviewed engineering ideas
 
 Matt Pocock’s engineering ideas informed improvements to existing owners. No
