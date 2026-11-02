@@ -10,6 +10,9 @@ reply and snapshot ordering independently: an event can precede its command repl
 and a storage load can resolve after newer state. Tests must place these events
 in the adverse order and check the current owner before a late mutation applies.
 
+For a result that must be reproduced or verified from client inputs, see
+[deterministic core and replay](deterministic-replay.md).
+
 ## Registry selection and freshness
 
 Define duplicate-key policy and selected implementation identity at registration,

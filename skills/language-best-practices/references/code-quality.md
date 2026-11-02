@@ -113,3 +113,28 @@ Give each change one purpose. Read the full diff as a reviewer before finishing.
 - Do: check that every hunk is needed, debug output is gone, failure paths work and all callers moved.
 - Do: run the formatter and relevant checks your task authorizes, then report what you ran and skipped under [prove it works](../../orbyn-workflow/references/principles/prove-it-works.md).
 - Avoid: reformatting untouched lines, drive-by renames, or claiming success from a clean compile.
+
+## Turn a bug-class into a lint rule
+
+After a fix, a repeatable mistake belongs in the project's existing linter (ESLint,
+Ruff, golangci-lint, clippy), not a new tool. Test the rule with a failing and a
+passing example.
+
+TypeScript, a custom ESLint rule that flags `forEach(async ...)` because the
+promises are dropped:
+
+```ts
+// fails: errors vanish and the caller does not wait
+items.forEach(async (item) => { await save(item); });
+// passes
+await Promise.all(items.map((item) => save(item)));
+```
+
+Python, enable Ruff's `B006` (mutable default argument) after one shared-list bug:
+
+```python
+def add(item, bucket=[]):  # fails: the list is shared across calls
+    ...
+def add(item, bucket=None):  # passes
+    bucket = [] if bucket is None else bucket
+```

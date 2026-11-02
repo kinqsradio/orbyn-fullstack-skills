@@ -193,6 +193,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Recorded source_root in the statechart snapshot for the upstream watcher"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Deterministic core and replay verification reference"
         }
       ]
     },
@@ -468,6 +475,13 @@
           "model": "unrecorded",
           "date": "2026-11-02",
           "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Pointer to replay verification of client-submitted results"
         }
       ]
     },
@@ -551,6 +565,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Pointer to the changed-module unit-test selection in change-scope.md"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Compressed first-download size budget gate"
         }
       ]
     },
@@ -882,6 +903,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Added answer-key and unit-test decision evaluation cases"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Eval cases for lint rules from bugs, real-time loops, replay and size budgets"
         }
       ]
     },
@@ -1373,6 +1401,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Task answer key, answer_key.py verifier and the harness library-as-workspace fix"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Bug-to-lint-rule step and real-time loops reference"
         }
       ]
     },
@@ -1718,6 +1753,13 @@
           "model": "unrecorded",
           "date": "2026-11-02",
           "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Lint rule for comments that restate code"
         }
       ]
     },
@@ -1969,6 +2011,13 @@
           "model": "unrecorded",
           "date": "2026-11-02",
           "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Bug-class lint rule examples for TypeScript and Python"
         }
       ]
     },

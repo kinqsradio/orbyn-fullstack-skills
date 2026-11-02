@@ -50,7 +50,7 @@ or error-fast path is not a gain. On plateau, use evidence to rank a different
 mechanism or stop at the declared budget with an inconclusive/blocked result;
 no arbitrary minimum iteration count, relaxed target or unlimited hillclimb.
 
-For ordinary UI or RN motion, read the [motion performance method](../../orbyn-ui-design/references/animation-performance.md). Compare the same completed interaction under the same workload, preserving input/layout and runtime identity; screenshots alone cannot establish speed.
+For code that runs every frame or tick, read [real-time loops](../references/real-time-loops.md). For ordinary UI or RN motion, read the [motion performance method](../../orbyn-ui-design/references/animation-performance.md). Compare the same completed interaction under the same workload, preserving input/layout and runtime identity; screenshots alone cannot establish speed.
 
 ## Build budgets are constraints, not latency results
 
@@ -58,8 +58,9 @@ Use for a changed startup/build/deployment boundary with an actual workload or
 service constraint. Derive the budget from the consuming project's delivery,
 parse/initialization or diagnostic needs; record its owner/source, artifact types,
 units, compression basis, per-file versus aggregate scope and what blocks delivery.
-Reuse its bundler/build check. Do not import another product's byte limits or add
-a plugin/benchmark framework solely to match this example.
+Reuse its bundler/build check. The project sets its own number; do not import another product's byte limits or add
+a plugin/benchmark framework solely to match this example. For the CI gate, see
+[size budget](../../orbyn-ci-design/references/release-verification.md#fail-the-build-on-a-size-budget).
 
 Synthetic lazy export viewer: an existing build gate limits the emitted entry's
 static JS/CSS dependency closure to a project-agreed budget `B`. Count each asset

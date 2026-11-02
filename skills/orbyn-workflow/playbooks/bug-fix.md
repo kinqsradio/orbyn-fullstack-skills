@@ -15,6 +15,13 @@ investigation and implementation under the parent [workflow](../SKILL.md).
 5. Perform authorized verification of the corrected contract, using the original
    reproduction when available. Unavailable reproduction remains a limitation.
 
+6. After the fix, ask whether the bug belongs to a class a static rule can catch
+   (for example, an awaited call missing in a loop). If so, add a rule to the
+   project's existing linter, preferring its custom-rule mechanism over a new
+   tool. Its test is one failing example and one passing example. See
+   [encode lessons in structure](../../architect/references/principles/encode-lessons-in-structure.md)
+   and the [lint rule examples](../../language-best-practices/references/code-quality.md#turn-a-bug-class-into-a-lint-rule).
+
 Small clear fixes stay direct; children implement their assigned fix directly.
 Do not broaden runtime access, testing or delivery authority to obtain evidence.
 Reproduction-only requests stop at the evidence and limitations. For an upstream

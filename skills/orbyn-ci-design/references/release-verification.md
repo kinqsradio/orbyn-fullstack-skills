@@ -46,6 +46,23 @@ despite unknown evidence simply to achieve a one-attempt-green target. Baseline
 failures and infrastructure problems need diagnosis and disposition; neither is
 automatic permission to waive the candidate's required checks.
 
+## Fail the build on a size budget
+
+Use for a client download where first-load bytes matter.
+
+1. The project chooses an explicit budget for the first download, in compressed
+   bytes (for example gzip or brotli), and records who set it and why. Never copy
+   another product's limit as a default.
+2. Measure it in CI from the built artifact, not from source: sum the files the
+   first page load fetches.
+3. Fail the build when the total exceeds the budget; exit non-zero and name the
+   largest files.
+4. Report the delta against the base branch on each PR, such as "+3.1 KB, 92% of
+   budget".
+
+Synthetic example: budget 200 KB compressed; the PR build measures 204 KB, so the
+check fails and the comment shows the +9 KB change.
+
 Independently authored guidance reviewed 25 October 2026 against
 [GitHub environment protection](https://docs.github.com/en/actions/concepts/workflows-and-actions/deployment-environments)
 and [artifact digest validation](https://docs.github.com/en/actions/tutorials/store-and-share-data).
