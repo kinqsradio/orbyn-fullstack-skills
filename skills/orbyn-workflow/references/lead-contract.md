@@ -32,6 +32,15 @@ For read-only investigation, one line naming the independent slices or why one
 investigator is sufficient is enough. Revisit the checkpoint when a phase changes
 ownership or dependencies.
 
+## Answer key
+
+For substantial work, write the [answer key](answer-key.md) before implementation:
+the commands that prove success, the expected end state and the protected paths. The
+worker's brief names the outcome, not the key; a separate verifier checks the
+committed candidate from a clean copy, and a changed protected path fails the task.
+Decide unit tests with tdd's [rule](../../tdd/SKILL.md#do-we-need-a-unit-test-here)
+and record the choice in one line (`Tests: none, docs only`).
+
 ## Delegate within the current session
 
 Resolve the [harness](harness-settings.md) first; its limits and tiers are the

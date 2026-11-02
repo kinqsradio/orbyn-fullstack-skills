@@ -569,8 +569,10 @@ def is_library(path):
     return (path / 'skills' / 'catalog.json').is_file() and (path / 'scripts' / 'sync-agent-models.py').is_file()
 
 
-def find_workspace(primary, explicit):
-    """The outer workspace: the one --workspace names, else the outermost repo/ above the clone that holds this library."""
+def find_workspace(primary, explicit, root=None):
+    """The outer workspace: the one --workspace names, else the outermost repo/ above the clone that holds this library.
+
+    A target that is the library holding this script is its own workspace, so its in-place file is found without --workspace."""
     if explicit:
         workspace = Path(explicit)
         if not workspace.is_dir():
@@ -579,6 +581,8 @@ def find_workspace(primary, explicit):
     for parent in reversed(primary.parents):
         if parent.name == 'repo' and is_library(parent.parent):
             return parent.parent
+    if root is not None and root.resolve() == SCRIPT.parents[3] and is_library(root.resolve()):
+        return root.resolve()
     return None
 
 
@@ -742,7 +746,7 @@ def resolve(target, hosts, sets=(), workspace=None, slug=None, defaults_path=DEF
     caps, allowed = expanded_caps(defaults), model_allowlist(defaults)
     root = git_root(target)
     primary = primary_clone(root)
-    ws = find_workspace(primary, workspace)
+    ws = find_workspace(primary, workspace, root)
     check_workspace(ws, root)
     defaults_flat = flatten(defaults)
     layers = [('library default', 'references/harness-defaults.json', defaults_flat, 'used')]
@@ -1091,7 +1095,7 @@ def owner_file(root, workspace, slug):
 
     Nothing in the target's own files can move it. Returns (workspace, file name, label)."""
     primary = primary_clone(root)
-    ws = find_workspace(primary, workspace)
+    ws = find_workspace(primary, workspace, root)
     if ws is None:
         raise CannotRun('no workspace found; the work mode is saved in the workspace repo/.harness folder (pass --workspace)')
     check_workspace(ws, root)
