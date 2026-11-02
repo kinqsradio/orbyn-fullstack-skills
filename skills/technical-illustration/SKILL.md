@@ -26,6 +26,7 @@ Send these to their owners:
 
 - Ordinary app layout: UI design.
 - Social posters: social-preview.
+- Faux product UI, feature cards and cursor demos: product-illustration.
 - Simple flow diagrams: existing explanation methods.
 - Data-driven scientific plots: the project's plotting library.
 - Ordinary editing of existing video footage: the project media tools. This owner

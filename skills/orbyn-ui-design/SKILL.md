@@ -13,7 +13,8 @@ This skill owns changes to the product UI itself. For social announcement graphi
 product screenshot compositions and feed mockups, use
 [social-preview](../social-preview/SKILL.md), with
 [social-content](../social-content/SKILL.md) for the post; a promotional mockup is
-not an implemented screen.
+not an implemented screen. For faux product UI as a marketing still or cursor demo, use
+[product-illustration](../product-illustration/SKILL.md).
 
 ## Read before designing
 

@@ -226,7 +226,8 @@
         "orbyn-workflow",
         "architect",
         "tdd",
-        "orbyn-ai-application"
+        "orbyn-ai-application",
+        "product-illustration"
       ]
     },
     {
@@ -268,6 +269,16 @@
         "orbyn-workflow",
         "orbyn-setup",
         "orbyn-plan"
+      ]
+    },
+    {
+      "name": "product-illustration",
+      "category": "Product design",
+      "related": [
+        "orbyn-ui-design",
+        "technical-illustration",
+        "social-preview",
+        "orbyn-content-design"
       ]
     },
     {
@@ -348,7 +359,8 @@
       "related": [
         "social-content",
         "unslop",
-        "orbyn-ui-design"
+        "orbyn-ui-design",
+        "product-illustration"
       ]
     },
     {
@@ -371,7 +383,8 @@
         "orbyn-ui-design",
         "tdd",
         "social-preview",
-        "orbyn-upstream-review"
+        "orbyn-upstream-review",
+        "product-illustration"
       ]
     },
     {

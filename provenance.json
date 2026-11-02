@@ -1594,6 +1594,27 @@
           "relationship": "reviewed-inspiration; independently authored illustrated-statechart method and workshop replay plate; no upstream drawing code, fonts, models or assets imported"
         }
       ]
+    },
+    "product-illustration": {
+      "relationship": "adapted",
+      "credit": "Benji Taylor (Stageshow); Orbyn adaptations by Anh Dang and contributors",
+      "copyright": "Copyright (c) 2026 Benji Taylor",
+      "license": "MIT",
+      "source": "https://github.com/benjitaylor/skills/tree/802057409787133703c56001080169e347305572/stageshow",
+      "revision": "802057409787133703c56001080169e347305572",
+      "changes": "Selected MIT kit, examples, teaching pairs, playground and verification tools held under references/upstream/stageshow with per-file original and maintained hashes; guides adapted beside the entrypoint with hashes in guides.json. App icons, third-party marks and their registry, photographs, real-product studies, the brand-marks and monochrome examples, the repository PNG, lockfile and optional portless dependency excluded. BrandMark reworked for a consumer-supplied logo. Real company and product names, name-as-a-look values and named device or OS terms replaced with fictional or generic ones; status bar glyphs and the desktop arrow redrawn from plain geometry. hero-demo reworked and its gate faults fixed. Entrypoint rewritten to the Orbyn authoring standard with host, offline and worktree rules kept; install-to-global advice removed.",
+      "incorporated_material": [
+        {
+          "source": "https://github.com/benjitaylor/skills/tree/802057409787133703c56001080169e347305572/stageshow",
+          "revision": "802057409787133703c56001080169e347305572",
+          "license": "MIT",
+          "local_path": "skills/product-illustration/references/upstream/stageshow/SOURCE.md",
+          "license_file": "skills/product-illustration/references/upstream/stageshow/LICENSE",
+          "relationship": "selected-maintained-adaptation",
+          "copyright": "Copyright (c) 2026 Benji Taylor",
+          "license_sha256": "f9420246652580af24aa2bc48531c17f0f377b064bc7ea218afeb983923ef643"
+        }
+      ]
     }
   }
 }

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/benjitaylor/skills",
+  "revision": "802057409787133703c56001080169e347305572",
+  "entrypoint": {
+    "source_path": "stageshow/SKILL.md",
+    "original_sha256": "a9b790ab20631961dcc71ae5955710d5bda10d62469f43767a6a38c650e5e9d7",
+    "relationship": "rewritten as skills/product-illustration/SKILL.md"
+  },
+  "guides": {
+    "annotations.md": {
+      "source_path": "stageshow/references/annotations.md",
+      "original_sha256": "1fb2e8bbda27a0e47267ce661a49336ac729bafeb31947fafd197fb6a06fa4ad",
+      "relationship": "byte-identical-selected-source"
+    },
+    "backgrounds.md": {
+      "source_path": "stageshow/references/backgrounds.md",
+      "original_sha256": "b3b0775c2a5da5fc9fa53cb7ef2d199aa7d81e94c35960b993313b704119ebb1",
+      "relationship": "byte-identical-selected-source"
+    },
+    "bento.md": {
+      "source_path": "stageshow/references/bento.md",
+      "original_sha256": "c57f8206153d5935e5b7af842baec66a120fdfea62f5804491254b9d74f3e075",
+      "relationship": "byte-identical-selected-source"
+    },
+    "choreography.md": {
+      "source_path": "stageshow/references/choreography.md",
+      "original_sha256": "084c09e6815a30c3f1feabd25f9f59da73f2aeaba1f8abc423ec0b9dea806651",
+      "relationship": "byte-identical-selected-source"
+    },
+    "craft.md": {
+      "source_path": "stageshow/references/craft.md",
+      "original_sha256": "4251bc0e6d0c20808f6a166b4e1cf5c4e081541df807bdcdfa2a7256f4e5c2f7",
+      "relationship": "maintained-adaptation"
+    },
+    "framing.md": {
+      "source_path": "stageshow/references/framing.md",
+      "original_sha256": "7843aa673d50068ce5ff70c16eaedf4db77cf74dff14d9601b3f4f61bc10cf2b",
+      "relationship": "maintained-adaptation"
+    },
+    "gold-examples.md": {
+      "source_path": "stageshow/SKILL.md",
+      "original_sha256": "a9b790ab20631961dcc71ae5955710d5bda10d62469f43767a6a38c650e5e9d7",
+      "relationship": "maintained-adaptation"
+    },
+    "interaction-lessons.md": {
+      "source_path": "stageshow/references/products.md",
+      "original_sha256": "fd8310397b7796a4b7253e7792ddf4e920c32df1f3b6dd28b56441009c18a8ea",
+      "relationship": "maintained-adaptation"
+    },
+    "kit.md": {
+      "source_path": "stageshow/references/kit.md",
+      "original_sha256": "6122536c2a7edf0712c753cafb5456d6b607905b5c3c81cb28a04a8c097603be",
+      "relationship": "maintained-adaptation"
+    },
+    "logos.md": {
+      "source_path": "stageshow/references/brands.md",
+      "original_sha256": "6d2140be308f07ab0da31b118d95163216f40ce63859944f9fb9041ad9b80ac8",
+      "relationship": "maintained-adaptation"
+    },
+    "looks.md": {
+      "source_path": "stageshow/references/looks.md",
+      "original_sha256": "b740348560893e253408c2e86067fdde4517784cf92d95f458c5d4c69135a4de",
+      "relationship": "maintained-adaptation"
+    },
+    "motion.md": {
+      "source_path": "stageshow/references/motion.md",
+      "original_sha256": "6ccf5899c7fd186c9d629d80618e1a54bc0193b468b919a33e02aec267cc5d0a",
+      "relationship": "maintained-adaptation"
+    },
+    "rehearse.md": {
+      "source_path": "stageshow/references/rehearse.md",
+      "original_sha256": "03644a4bcbd614d842e53a54824c6560267570a82cc70de31ffb096fe416bdf4",
+      "relationship": "maintained-adaptation"
+    },
+    "review.md": {
+      "source_path": "stageshow/references/review.md",
+      "original_sha256": "76bb8fd33cb77ebcded5bfc9573b5132637ed9a711c1738daeef89de72aa7fe5",
+      "relationship": "maintained-adaptation"
+    },
+    "teaching.md": {
+      "source_path": "stageshow/references/teaching.md",
+      "original_sha256": "2c06ac6028176c9d7aa13d3eba3f7db3d047d416cc09a43ef083a4f1d6e5f823",
+      "relationship": "byte-identical-selected-source"
+    },
+    "verify.md": {
+      "source_path": "stageshow/references/verify.md",
+      "original_sha256": "597f0cb24abe6fda20fb55de6ac379d981a4a63618b80b400b94e20abf1289bf",
+      "relationship": "byte-identical-selected-source"
+    }
+  }
+}

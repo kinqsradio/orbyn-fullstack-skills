@@ -89,3 +89,13 @@ pins the reviewed revision, paths and hashes; the complete
 [MIT notice](../skills/orbyn-ui-design/references/hallmark-LICENSE.txt) is distributed
 with the local adaptations. No themes, photos, fonts, scripts or upstream skill
 entrypoint are installed. Orbyn maintains the adapted UI methods.
+
+## Stageshow product illustration kit
+
+The kit, examples, playground and verification tools in `product-illustration`, and its
+guides, are adapted from Stageshow in benjitaylor/skills, Copyright (c) 2026 Benji Taylor,
+under MIT. The [source record](../skills/product-illustration/references/upstream/stageshow/SOURCE.md)
+pins the revision and lists what was selected, excluded and changed; the complete
+[MIT notice](../skills/product-illustration/LICENSE) travels with the skill. App artwork,
+third-party marks, photographs and real-product studies are not distributed. Orbyn
+maintains the adaptation.

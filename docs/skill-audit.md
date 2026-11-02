@@ -6,6 +6,16 @@
 
 # Skill-system audit — current candidate and historical evidence
 
+## Product illustration
+
+A new `product-illustration` owner covers faux product UI as stills and cursor demos,
+which no existing owner did. It selectively adapts the MIT-licensed Stageshow kit with
+pinned hashes, a per-file manifest and an excluded list in its
+[source record](../skills/product-illustration/references/upstream/stageshow/SOURCE.md).
+Third-party artwork, real-product studies and named-company looks were left out or
+reworked. New routing and outcome cases are static definitions: no recorded trial
+establishes live selection. Scratch typecheck, CSS and film runs are local evidence.
+
 ## Lyric performance and export evidence
 
 The existing technical-illustration route retains music-video ownership and its
@@ -350,6 +360,7 @@ to their owner instead of duplicating a complete workflow.
 | [rea-changelog-update](../skills/rea-changelog-update/SKILL.md) | Local release-note method | Actual REA baseline/target history → Bounded notes, verified attribution and migration limits | Missing REA history or account associations stay unknown; no publication |
 | [rea-ci-tests-audit](../skills/rea-ci-tests-audit/SKILL.md) | Local CI/test assessment method | Explicit REA CI scope + revision/workflow → Discovery, failure-gate and provider-evidence assessment | Source assessment and synthetic cases do not qualify hosted or real-provider lanes |
 | [rea-tool-design](../skills/rea-tool-design/SKILL.md) | Local tool-contract method | Explicit REA tool change → Inputs, evidence, effects, lifecycle and compatibility plan | Design-only scope does not authorize implementation or provider tests |
+| [product-illustration](../skills/product-illustration/SKILL.md) | New adapted artifact owner | Brief, shown size and the user's own or a fictional product → Faux product still or cursor demo with filmed rehearsal | Gate output, frames read and browser checked stay separate; no real company's identity |
 | [reflect](../skills/reflect/SKILL.md)                                                                                       | Expanded local method             | Current task, failed assumption and authorized skill scope → Bounded structural lesson at canonical owner              | Plugin caches, unsupported generalization and memory authority            |
 | [reverse-engineer-anything](../skills/reverse-engineer-anything/SKILL.md) | Local artifact investigation method | Authorized artifact + actual tools → Selected facts, provenance, coverage and cleanup state | Offline guidance is complete; runtime, target bytes and schema support remain prerequisites |
 | [show-me-your-work](../skills/show-me-your-work/SKILL.md)                                                                   | Expanded local method             | Task candidate, decisions and check receipts → Compact single-writer evidence trail                                    | Missing terminal results, sensitive payloads and competing logs           |
