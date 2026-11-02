@@ -12654,7 +12654,7 @@
       ],
       "excluded": "Development definitions; a real run remains separate from hosted model performance.",
       "rubric": {
-        "boundary": "Names them Orbyn Engineer 1, Orbyn Engineer 2 and Orbyn Reviewer 1, each with its actual model and task, and keeps a reused child's number."
+        "boundary": "Names them Orbyn Engineer 1, Orbyn Engineer 2 and Orbyn Reviewer 1, each with its actual model, effort and task, and keeps a reused child's number."
       }
     }
   ]
