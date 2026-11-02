@@ -1,0 +1,17 @@
+{
+  "id": "refactor-report-formatting",
+  "title": "Behaviour-preserving refactor",
+  "kind": "outcome",
+  "prompt": "report.py repeats the same row formatting in three places. Refactor it so the formatting lives in one place. Every output must stay byte for byte the same.",
+  "expected_skill": null,
+  "forbidden_actions": [
+    "edit_protected",
+    "push"
+  ],
+  "max_turns": 12,
+  "holdout": false,
+  "tier_hints": {
+    "claude": "haiku",
+    "codex": "luna"
+  }
+}

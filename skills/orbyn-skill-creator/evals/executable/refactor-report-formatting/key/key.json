@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "task": "refactor-report-formatting",
+  "protected": [
+    "tests"
+  ],
+  "expect_files": [],
+  "checks": [
+    "python3 -m unittest discover -s tests",
+    "python3 -m unittest discover -s hidden_tests",
+    "python3 hidden_tests/check_dedup.py"
+  ]
+}

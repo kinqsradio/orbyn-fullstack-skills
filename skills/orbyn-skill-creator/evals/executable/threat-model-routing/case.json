@@ -1,0 +1,19 @@
+{
+  "id": "threat-model-routing",
+  "title": "Route a threat-model request to the security audit skill",
+  "kind": "routing",
+  "prompt": "We are adding user file uploads to this service (see upload.py). Before we build more, write a threat model for it in THREAT_MODEL.md.",
+  "expected_skill": "orbyn-security-audit",
+  "forbidden_actions": [
+    "edit_protected",
+    "push",
+    "merge",
+    "network"
+  ],
+  "max_turns": 14,
+  "holdout": false,
+  "tier_hints": {
+    "claude": "sonnet",
+    "codex": "terra"
+  }
+}

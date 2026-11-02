@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "task": "docs-only-no-test",
+  "protected": [
+    "tests",
+    "cli.py"
+  ],
+  "expect_files": [],
+  "checks": [
+    "python3 -m unittest discover -s tests",
+    "python3 hidden_tests/check_readme.py"
+  ]
+}

@@ -98,6 +98,62 @@ and [skill discovery guide](https://developers.openai.com/codex/skills). Isolate
 global skills and previous context using supported per-run controls. Host behavior
 and available flags vary by version; this evaluator does not launch a host for you.
 
+## Executable evals at least cost
+
+For work with a checkable outcome, grade with code first. Each case under
+[`evals/executable/`](../evals/executable) holds a prompt, a tiny stdlib fixture with existing tests and a
+hidden key (`key/key.json` plus hidden tests) in the subset of the
+[answer key](../../orbyn-workflow/references/answer-key.md) that `freeze` produces: `checks`, `protected`
+paths and `expect_files`. [`eval_run.py`](../scripts/eval_run.py) exports the fixture into a throwaway Git
+repo with one commit, runs the host headless, commits the final tree and grades it with `answer_key.py` using
+a key that never enters the copy. It also applies the case's forbidden actions (push, merge, network,
+`rm -rf`, edits to protected paths) to the actions seen in the event stream. Its `run.json` is accepted by
+`evaluate.py grade` and `compare` (optional `suite: executable` and `trials_by_case` fields; older runs are
+unchanged). The shipped keys are public examples that validate the tooling and the holdout split is by
+convention only; keep your own project keys out of any checkout an agent can read, and build them from your
+history with [`harvest.py`](../scripts/harvest.py).
+
+What keeps the cost down:
+
+- **Code grading first.** A subjective answer is the exception, not the default.
+- **Adaptive trials.** `--trials auto` runs each case once and repeats, up to 3 runs, only when a run failed
+  or the results mix. It reports pass^k (every one of the k runs passed) for repeated cases.
+- **Tier ladder.** `--ladder claude` is haiku then sonnet and `--ladder codex` is luna then terra. A case
+  climbs only on failure and records the cheapest tier that passed. Routing cases start at sonnet or terra;
+  in real work the lead tier makes the routing call, so the result is a close proxy, not identical.
+- **Never the lead tier by default.** Opus and Sol run only with `--allow-lead-tier`, which adds them as a
+  last rung and prints a warning that they cost about twice as much. `--model` refuses opus, sol, fable and
+  astra without that flag, and fable and astra are refused outright.
+- **Cached baseline.** `without` results are cached by case, host, model and CLI version (and the case
+  files) and reused unless `--refresh-baseline`. The cache lives in the ignored `output/eval-cache`.
+- **Small fixtures, run only on change.** Keep fixtures under about 150 lines. Skip cases a recorded run
+  showed non-discriminating (same outcome for every condition and tier); `--include-non-discriminating` runs
+  them anyway. Run when a skill, a case or the CLI changes, not on every commit.
+
+Subscription plans may be used through the CLIs; there is then no per-run dollar figure. Cost and tokens are
+recorded only when the stream reports them and never estimated, and `--max-runs` is the cap that always
+works. `--max-budget-usd` (Claude only) is passed to the CLI per run and also counted across runs.
+
+Nothing runs without `--live`. A live run needs `--max-runs` (any host) or `--max-budget-usd` (Claude), and
+`--out`. Print the dry plan first: it lists the cases, tiers, the maximum run count and the budget cap.
+
+```sh
+python3 skills/orbyn-skill-creator/scripts/eval_run.py --host claude --ladder claude --condition both --case pagination-off-by-one --case docs-only-no-test
+python3 skills/orbyn-skill-creator/scripts/eval_run.py --host claude --ladder claude --condition both --case pagination-off-by-one --case docs-only-no-test --live --max-budget-usd 2 --max-runs 12 --out output/evals/pilot-1
+python3 skills/orbyn-skill-creator/scripts/evaluate.py grade output/evals/pilot-1/with/haiku/run.json
+```
+
+Use `--host codex --ladder codex --max-runs 12` for Codex (no budget flag exists). For a paired
+`compare`, pass the same integer `--trials` to both conditions, because adaptive counts differ.
+The runner builds exact flags from the installed `--help` and records the CLI version; a flag the help does
+not list is recorded as unsupported (for example `--max-turns` on Claude 2.1.150), and the runner enforces
+the turn limit itself by stopping the process. Stream samples in the tests are synthetic and unverified
+against real CLI output; a first live pilot is the check.
+
+A judge model is for subjective cases only, taken from the other vendor, and used only after calibration
+against the user's own labels. The default judge is the cheapest calibrated model: haiku or luna, then
+sonnet or terra only if the cheaper one fails calibration.
+
 ## Suite evolution
 
 When adding development cases, keep existing holdout criteria unchanged and record

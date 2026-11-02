@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "task": "threat-model-routing",
+  "protected": [
+    "tests"
+  ],
+  "expect_files": [
+    "THREAT_MODEL.md"
+  ],
+  "checks": [
+    "python3 -m unittest discover -s tests",
+    "python3 hidden_tests/check_threat_model.py"
+  ]
+}

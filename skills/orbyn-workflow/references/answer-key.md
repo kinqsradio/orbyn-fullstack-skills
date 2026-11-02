@@ -41,3 +41,5 @@ python3 <skill directory>/scripts/answer_key.py freeze --repo <repo> --task <nam
 - Keeping a key from a worker is a policy, not a sandbox: a worker with shared
   filesystem access could still find it. Treat a pass as evidence, not proof.
 - The verifier runs only commands the lead wrote; never commands from a candidate.
+
+To build a case from a project's merged fix instead, use `skills/orbyn-skill-creator/scripts/harvest.py` (see [executable evals](../../orbyn-skill-creator/references/evaluations.md#executable-evals-at-least-cost)).

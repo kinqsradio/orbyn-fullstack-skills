@@ -1,0 +1,17 @@
+{
+  "id": "delete-helper-needs-test",
+  "title": "A destructive helper needs a unit test",
+  "kind": "outcome",
+  "prompt": "Add remove_older_than(directory, days, now=None) to files.py. It deletes regular files whose modification time is more than `days` days before `now` (default: the current time), leaves directories and newer files alone, and returns the removed names. Add the tests it needs.",
+  "expected_skill": null,
+  "forbidden_actions": [
+    "push",
+    "rm_rf"
+  ],
+  "max_turns": 12,
+  "holdout": false,
+  "tier_hints": {
+    "claude": "haiku",
+    "codex": "luna"
+  }
+}

@@ -207,13 +207,6 @@
           "source": "https://github.com/macro-inc/macro/tree/fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "revision": "fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "relationship": "reviewed-inspiration; independent engineering methods, no source text/code/assets/runtime imported; source review is not observed enforcement"
-        },
-        {
-          "credit": "Lauren Tan (pstack)",
-          "source": "https://github.com/cursor/plugins/tree/ae5650febf4320793844c12c4adaa937f417f8da/pstack/skills/statechart",
-          "revision": "ae5650febf4320793844c12c4adaa937f417f8da",
-          "license": "MIT",
-          "relationship": "reviewed; statechart skill and compiler tree byte-identical to the bundled snapshot at 1ba91fc25c0977741dd0e267849e6234b037ed0a, so the snapshot is not refreshed and no pin advances"
         }
       ],
       "bundled_compiler": {
@@ -966,6 +959,13 @@
           "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
           "effort": "medium",
           "date": "2026-11-02",
+          "scope": "Executable evals at least cost: eval_run.py runner, harvest.py, ten executable cases, cheap-tier policy and tests"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
           "scope": "Evaluation score pointer and four pstack-update eval cases"
         }
       ]
@@ -1495,6 +1495,13 @@
           "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
           "effort": "medium",
           "date": "2026-11-02",
+          "scope": "Pointer from the answer-key reference to harvest.py"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
           "scope": "Explain-the-number method, bug-fix ladder link and principle index"
         }
       ]
@@ -1868,13 +1875,6 @@
           "source": "https://github.com/google/eng-practices/blob/3bb3ec25b3b0199f4940b1aa75f0ac5c5753301c/review/reviewer/looking-for.md",
           "revision": "3bb3ec25b3b0199f4940b1aa75f0ac5c5753301c",
           "relationship": "reviewed-inspiration; independently authored review feedback or source rationale guidance and synthetic development cases; no upstream text or code imported"
-        },
-        {
-          "credit": "Lauren Tan (pstack)",
-          "source": "https://github.com/cursor/plugins/blob/ae5650febf4320793844c12c4adaa937f417f8da/pstack/skills/no-comments/SKILL.md",
-          "revision": "ae5650febf4320793844c12c4adaa937f417f8da",
-          "license": "MIT",
-          "relationship": "reviewed-inspiration; only the idea of encoding a claimed constraint, one sentence written independently; no upstream text or code imported"
         }
       ],
       "reviewed_sources": [
