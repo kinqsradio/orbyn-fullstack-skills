@@ -8,9 +8,21 @@ description: "Design focused contract tests, failing-before regressions or verif
 Follow the consuming project's instructions and requested scope; use the
 [portable defaults](../orbyn-workflow/references/project-policy.md) only where guidance is missing.
 
-An implementation or repair request normally includes focused local regression
-checks. Respect tests excluded by the current user, session or consumer policy;
-this skill grants no production or live-provider authority.
+Respect tests excluded by the current user, session or consumer policy; this skill
+grants no production or live-provider authority.
+
+## Do we need a unit test here?
+
+Decide before writing one. Tests are for where they earn their place.
+
+| Situation | Choice |
+| --- | --- |
+| Deterministic code where a silent break is costly: moving or deleting files, secrets, money, stored data, parsing, security boundaries, or a fixed bug that could return | Unit test |
+| Agent behaviour and whole outcomes | An [answer-key](../orbyn-workflow/references/answer-key.md) check or an eval |
+| Skill text and docs, thin glue, one-off scripts, or anything an existing test or type check already covers | Neither; UI gets a visual check instead |
+
+Record the choice in one line in the task record or PR evidence, for example
+`Tests: none, docs only` or `Tests: unit, deletes files`.
 
 ## Method
 

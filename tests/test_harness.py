@@ -1056,3 +1056,45 @@ class WorkMode(HarnessCase):
         self.assertTrue(self.local_path().is_file())
         self.assertEqual(self.resolve(ok=1).returncode, 1)
 
+
+
+class LibraryAsTarget(HarnessCase):
+    """The library that holds harness.py is its own workspace when it is the target."""
+
+    def setUp(self):
+        super().setUp()
+        self.library_root = self.base / 'library'
+        for relative in ('skills/orbyn-workflow/references/harness-defaults.json',
+                         'skills/orbyn-workflow/scripts/harness.py'):
+            (self.library_root / relative).parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT / relative, self.library_root / relative)
+        self.library(self.library_root)
+        (self.library_root / '.git').mkdir()
+        self.tool = self.library_root / 'skills/orbyn-workflow/scripts/harness.py'
+
+    def resolve_library(self, *extra):
+        result = subprocess.run([sys.executable, str(self.tool), 'resolve', '--target', str(self.library_root),
+                                 '--host', 'claude', '--no-probe', '--json', *extra], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        return json.loads(result.stdout)
+
+    def test_the_saved_in_place_mode_is_found_without_a_workspace_flag(self):
+        import hashlib
+        common = (self.library_root / '.git').resolve()
+        name = f'inplace--library--{hashlib.sha256(str(common).encode()).hexdigest()[:12]}'
+        saved = self.library_root / 'repo' / '.harness' / f'{name}.json'
+        saved.parent.mkdir(parents=True)
+        saved.write_text(json.dumps(valid(work={'mode': 'simple'})))
+        implicit = self.resolve_library()
+        explicit = self.resolve_library('--workspace', str(self.library_root))
+        self.assertEqual(implicit['workspace'], str(self.library_root))
+        self.assertEqual(implicit['work']['mode']['value'], 'simple')
+        self.assertEqual(implicit['work'], explicit['work'])
+
+    def test_another_checkout_is_not_given_the_library_as_workspace(self):
+        elsewhere = self.base / 'elsewhere' / 'app'
+        (elsewhere / '.git').mkdir(parents=True)
+        result = subprocess.run([sys.executable, str(self.tool), 'resolve', '--target', str(elsewhere),
+                                 '--host', 'claude', '--no-probe', '--json'], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIsNone(json.loads(result.stdout)['workspace'])

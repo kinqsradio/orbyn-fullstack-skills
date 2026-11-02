@@ -875,6 +875,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Added memory default, remember, suggest and opt-out evaluation cases"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Added answer-key and unit-test decision evaluation cases"
         }
       ]
     },
@@ -1359,6 +1366,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Memory default rules in the workflow handoff and operating method"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Task answer key, answer_key.py verifier and the harness library-as-workspace fix"
         }
       ]
     },
@@ -1664,6 +1678,13 @@
           "model": "unrecorded",
           "date": "2026-11-02",
           "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Replaced the always-test default with the unit-test decision rule"
         }
       ]
     },
