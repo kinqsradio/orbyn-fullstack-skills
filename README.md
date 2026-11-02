@@ -62,33 +62,36 @@ yes. No file in a repository can grant an agent permission.
 Every request follows one path, and checks hold it to the rules at each step.
 
 ```mermaid
-flowchart LR
+flowchart TB
   accTitle: How Orbyn skills run
-  accDescr: A request goes from you to the host agent, then AGENTS.md and the harness, to a lead that briefs scouts and workers. The skill library guides the lead. The change passes local checks, CI, the PR gate and your approval before reaching main.
-  you(["You"]) ==> host["Host agent"]
+  accDescr: You ask the host agent. AGENTS.md and the harness resolve the rules and limits, and the skill library supplies the method. A lead briefs scouts and workers. The change then passes local checks, CI, the PR gate and your approval before reaching main.
+  subgraph ask["You ask"]
+    direction LR
+    you(["You"]) ==> host["Host agent<br/>Claude Code, Codex, Cursor"]
+  end
   subgraph start["Start of every task"]
-    direction TB
-    rules["AGENTS.md"] ==> harness["Harness<br/>tiers and limits"]
+    direction LR
+    rules["AGENTS.md<br/>shared rules"] ==> harness["Harness<br/>tiers and limits"]
     settings["Repo settings"] --> harness
   end
   subgraph library["Skill library"]
-    direction TB
+    direction LR
     workflow["orbyn-workflow<br/>picks the playbook"] --> skill["Owning skill<br/>method on demand"]
   end
   subgraph agents["Agents"]
-    direction TB
-    lead["Lead<br/>Opus or Sol"] ==> worker["Worker<br/>Sonnet or Terra"]
-    lead --> scout["Scout<br/>Haiku or Luna"]
+    direction LR
+    scout["Scout<br/>Haiku or Luna"] ~~~ lead["Lead<br/>Opus or Sol"]
+    lead ==> worker["Worker<br/>Sonnet or Terra"]
   end
   subgraph merge["Before merge"]
-    direction TB
+    direction LR
     checks["Local checks and CI"] ==> gate["PR gate"] ==> review["You approve"] ==> main["main"]
   end
-  host ==> rules
-  rules --> workflow
-  harness ==> lead
-  skill --> lead
-  worker ==> checks
+  ask ==> start
+  start --> library
+  start ==> agents
+  library --> agents
+  agents ==> merge
 ```
 
 The thick line is one request. Thin lines show what guides it. The [guide](docs/guide.md#full-diagrams) has the full versions of these diagrams.
