@@ -22,7 +22,7 @@
       "sha256": "f0208bbd3fcf673798db0f03133c177f4a55cb48419fd84932dbec9c9f397905"
     },
     "SOURCE.md": {
-      "sha256": "d7a94c6904d7c003d871d30b0d5eadbd77e4c0327c140af72b9b23e7e1fe4290"
+      "sha256": "6efff6080651a4c6d8882cdf8670da8bad3012a78e0baed8dc1f77bd9a01fc0a"
     },
     "examples/ai-cards/cards.css": {
       "sha256": "7fbaf1be5fbc1da96565cb3befa14b59b0f4ee1156d0e64c3bac0993722b4107"
@@ -259,7 +259,7 @@
       "sha256": "34a03e06a3f64ef2343385d5359654d5c1d1bacf82acae6d26905192d4f9d61b"
     },
     "examples/payout-flow/pace.css": {
-      "sha256": "109d9a883082017ca013c38185ecf03650137ef9af7e5f7792d7b07b765cf544"
+      "sha256": "5832cd7929e59955603e54362668e2972eb12bc57efce5d0fc6c153b0df65f0d"
     },
     "examples/phone-touch/fitness.css": {
       "sha256": "49c6b03cdb010bfa8d3a8d7199c98448d6a59327af9902c787eab32df3cd6592"
@@ -322,7 +322,7 @@
       "sha256": "cb48629cc564e9da5087be3da7c4fc0ada2339efde7f7a2a439b0378622267a9"
     },
     "examples/story/story.css": {
-      "sha256": "23164a433a118aee6b85a1d31e32f7d118e23294b22a70636a37cec9926aa6fb"
+      "sha256": "211475f5d8a046a8593cb9f1a6937183ac3b80295d067c5a42cea6918c2d29b9"
     },
     "examples/subscriptions/index.tsx": {
       "sha256": "3eb8c744dab25bcc2226285247dc20579657d71ccc33e13f309e516766ff18e9"
@@ -421,7 +421,7 @@
       "sha256": "197b758f616a4012501ad48f0d73f101ab3ca6f39ef1a6256081361377ea71bb"
     },
     "kit/cursor.css": {
-      "sha256": "834b0e1864efd276f9bde57e871e710bf70dd11bfbf9ec68e04bcf3a76eeaef8"
+      "sha256": "d7bcfb777ad76dcdd4a673e2bec8f5cdc70d9226d15d7fa2973feac5f9412926"
     },
     "kit/cursor.tsx": {
       "sha256": "d6b9d4c04dad1b194fe078dd8a9f40d0d05b8a8240492c0d0311c439a13a566b"
@@ -718,7 +718,7 @@
       "sha256": "0b1a7ca7aae394b67233c6823026aca5a1d139c8cd8de3e3359531c65672538b"
     },
     "source-manifest.json": {
-      "sha256": "c5ae29cafabd40b5b5948edd2b2221abdf795bd3f301cbfe5d3720d908d728d3"
+      "sha256": "17bd2900c40edb1bad08b29e6466ac011e74173b3f60654b49896b4831c53f2c"
     },
     "teaching/composition.css": {
       "sha256": "9b1de058af4f0cc5483e5f4106955266cb77fe36609b69de5bb40df280183278"
@@ -760,7 +760,7 @@
       "sha256": "843769b85bfc7f2ff574073ea99957a8c0e199592b2497571ceb5268209babda"
     },
     "teaching/scenes.tsx": {
-      "sha256": "f807aab4abca3f779700c47ec39e4af457c10df70777b9d04d04bbe90a8d6a42"
+      "sha256": "4a5406448549ca73a1e0513fcd6bb6c7325d2c5fb1e7f4f1eba3459538a528a8"
     },
     "teaching/style.css": {
       "sha256": "a607b29da70eaa685452dc8446c09964f07ae9b170820e3585486683f9af45f2"

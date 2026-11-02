@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/NiazMorshed2007/reanimate",
+  "revision": "3f7a55a2986a84ca2173e86ee9127eefe31d046d",
+  "source_path": "skills/reanimate",
+  "license": "MIT",
+  "credit": "Niaz Morshed; maintained Orbyn adaptations by Anh Dang and contributors",
+  "files": {
+    "LICENSE": {
+      "sha256": "6bce4169a631cbe6d18089ed7e15d7ffe2afd736272d0ed9dc0e40e7f98d6f41",
+      "source_path": "skills/reanimate/LICENSE",
+      "original_sha256": "6bce4169a631cbe6d18089ed7e15d7ffe2afd736272d0ed9dc0e40e7f98d6f41",
+      "relationship": "byte-identical-selected-source"
+    },
+    "SKILL.md": {
+      "sha256": "574570216ea25ed5ad58c881ecd286d799ac16cbec74184f013fd11b612d0207",
+      "source_path": "skills/reanimate/SKILL.md",
+      "original_sha256": "dec8499d220918750de9d5ca14162f7fe5bf96edda84dbf851355545e1adedc8",
+      "relationship": "maintained-adaptation"
+    },
+    "references/analysis.md": {
+      "sha256": "79f66d56156a70128b0ca80081c94bb9d15e81be0268e78a73ed4a77c0257eff",
+      "source_path": "skills/reanimate/references/analysis.md",
+      "original_sha256": "859fc52aa2b606e8be50406b026adaa40a222c7407388ff05faddf2449685081",
+      "relationship": "maintained-adaptation"
+    },
+    "references/capture.md": {
+      "sha256": "a185cc84ed87c9cadf8bfb73fcc2eabce838f34169c702e491c6758d5d6dbf5a",
+      "source_path": "skills/reanimate/references/capture.md",
+      "original_sha256": "9b2251a8c06a3fc240f472e079f6a4e35bcf603d0b78b2ad8ef4877e5814c3e7",
+      "relationship": "maintained-adaptation"
+    },
+    "references/implementation.md": {
+      "sha256": "d3437ad94bdb803e61eadcb4a5e1076224caf26bbf63d533903ede9e36dae190",
+      "source_path": "skills/reanimate/references/implementation.md",
+      "original_sha256": "91b5ce233c673fddd2b704ddf4c19f9e385b57265063fa576cba7998cfdcbb48",
+      "relationship": "maintained-adaptation"
+    },
+    "references/verify.md": {
+      "sha256": "9c7240b6d1f76e15076dce0ef943e2776874d54fc03d02f9918631e91830ebe9",
+      "source_path": "skills/reanimate/references/verify.md",
+      "original_sha256": "068a7bbea01f0ea3f76342a2ab632eae2fe336689c1236ad65baf2779e77e216",
+      "relationship": "maintained-adaptation"
+    },
+    "scripts/capture.mjs": {
+      "sha256": "a959c421a4546bb8ab7e5f962b1b7902ef61540e023d183915291ac1a22ed56b",
+      "source_path": "skills/reanimate/scripts/capture.ts",
+      "original_sha256": "605ceb44ff627c038f12d402a908b3f6df042391e2f85025cabd3e0a6e12730c",
+      "relationship": "maintained-adaptation"
+    },
+    "scripts/compare.mjs": {
+      "sha256": "b9e54cb5ccd3dd187a5507c1cdf9153a35189b3cafe2cdddd9336e49c256d19c",
+      "source_path": "skills/reanimate/scripts/compare.ts",
+      "original_sha256": "c907d1a8a131bc7af8e9114e9eb06e0ba001ee2c26b4c300b55335918738ddb5",
+      "relationship": "maintained-adaptation"
+    },
+    "scripts/diff.mjs": {
+      "sha256": "46cea4fe5b6bdcd3703ed40ea837ccd689393e278c729247ed3d63cf357bcdc4",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "scripts/easing.mjs": {
+      "sha256": "a0ee78ed80e29b1577a6f61e05d03a7262caf549f72fdb38f1805b916e688116",
+      "source_path": "skills/reanimate/scripts/easing.ts",
+      "original_sha256": "0bb9ad7833c4b4c9e1b1dcfe9b1223ee22d74424f44b33a2d5724cd44ffa2656",
+      "relationship": "maintained-adaptation"
+    },
+    "scripts/frames.mjs": {
+      "sha256": "7ed223166bf6a3ba775a61994cfa1f5d1478a6e87f2a3522f1927d97122aaff2",
+      "source_path": "skills/reanimate/scripts/frames.ts",
+      "original_sha256": "52dee2562900069c6814f830939b892d949bd59537929b3a6313f0695207015c",
+      "relationship": "maintained-adaptation"
+    },
+    "scripts/inpage/clock.mjs": {
+      "sha256": "8cf219b0d37c3f365fd26edb1b6e8cd7eaa493f62cec4e190257b7c4e7f45f54",
+      "source_path": "skills/reanimate/scripts/inpage/clock.js",
+      "original_sha256": "52b34d5267432a3eca342eb57dcb09084841055b8e62ce707c199afc50d0d5ff",
+      "relationship": "maintained-adaptation"
+    },
+    "scripts/inpage/inspect.mjs": {
+      "sha256": "89004c383f54782f9fc10a6b3e3caa7e95e32dbca3ecc6471079463cc0cbf266",
+      "source_path": "skills/reanimate/scripts/capture.ts",
+      "original_sha256": "605ceb44ff627c038f12d402a908b3f6df042391e2f85025cabd3e0a6e12730c",
+      "relationship": "maintained-adaptation"
+    },
+    "scripts/lib.mjs": {
+      "sha256": "c1caa34fce1e5223732fe73d6c193c178db071b9b04807ee4dbe08548e997417",
+      "source_path": "skills/reanimate/scripts/lib.ts",
+      "original_sha256": "1ec9f75dab68894ac4c7f91197f13b80f1417bdaffe1b7dfa1382918c913d680",
+      "relationship": "maintained-adaptation"
+    },
+    "scripts/png.mjs": {
+      "sha256": "9134211b465af73d0b376c0198538346e77702eca3e473984aebd148757b6828",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "scripts/sheet.mjs": {
+      "sha256": "dce95906b7dbb26b1a9f6d8beda6f54c290ed0aa0dc07d224fbeeb21ff2b9f79",
+      "source_path": "skills/reanimate/scripts/sheet.ts",
+      "original_sha256": "6267c057d808eb8cfc68052fb7ca097834930a7aa995d7afccb1cd2a3d9c921c",
+      "relationship": "maintained-adaptation"
+    },
+    "scripts/spec.mjs": {
+      "sha256": "8ad467419066daffcb5688542397fee93ac87752bfa328a60dd95b70eb9531bf",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "tests/clock.test.mjs": {
+      "sha256": "f6d05e1768f0db1feab7be0eaa46e0b757c0522b5fa2ee048753d83a052292ce",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "tests/compare.test.mjs": {
+      "sha256": "ed3fbbe11bb0f224c4ca6acdcb35120d1499fffefc4f9677cd1b365b9dbdb1d7",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "tests/diff.test.mjs": {
+      "sha256": "80deeb785d4fcf012f47e80f9c92f9bc6140d9188fdc7a2dbd081e540ce97a77",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "tests/easing.test.mjs": {
+      "sha256": "2cce9465165b2f5962a2944eceb2f02db2d652e0b0b53d1c2a6315a56733a9ef",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "tests/helpers.mjs": {
+      "sha256": "5a1f44f04ee288ab74dddc2c96a5e573b2fbb1b96f4504b3de02c900116bf65d",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "tests/media.test.mjs": {
+      "sha256": "0f4ab67bfd6289d19dddfa6e74bd2ef3550a3325e3cb90c0a4a232e0f50ee487",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "tests/rights.test.mjs": {
+      "sha256": "40851f31797efe2ba96d7cde71116efc24733c3fcb9854c03b769d9d78db19b5",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "tests/sheet.test.mjs": {
+      "sha256": "859c5f0a0ffebafcff7933413210b15d2ab3113b235abe202c298d963f31f09f",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "tests/spec.test.mjs": {
+      "sha256": "2d2581248a694a0f0748facfecd2bd373328b7d4e5aea68f616ccf500c3ab5ea",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    }
+  }
+}

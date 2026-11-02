@@ -53,9 +53,11 @@ This index is generated in the full library from `catalog.json` and frontmatter 
 
 ## Product design
 
+- [motion-match](motion-match/SKILL.md) — Copy, clone or match how something moves: measure timing and easing, write a spec, build, film ours the same way and compare until the numbers pass; third-party references stay at motion level. Use orbyn-ui-design to design motion, technical-illustration for films, product-illustration for faux UI.
 - [orbyn-content-design](orbyn-content-design/SKILL.md) — Write and arrange concise product content, labels, status, errors and help across web, desktop and mobile. Use for visible interface copy and content hierarchy; preserve user-authored documents and messages.
 - [orbyn-ui-design](orbyn-ui-design/SKILL.md) — Design, implement, or review product UI and UX across web, desktop, and mobile: task flows, concise copy, responsive layouts, overlays, and AI interactions. Use for visible product flows; not backend-only work.
 - [product-illustration](product-illustration/SKILL.md) — Build faux product UI as stills or animated cursor demos: heroes, feature cards, bento grids, cursor walkthroughs. Use orbyn-ui-design for real product screens, technical-illustration for films and model-driven figures, social-preview for posters.
+- [stack-diagram](stack-diagram/SKILL.md) — Turn a described stack into an architecture diagram as self-contained HTML, PNG or TSX, with grouped nodes and three edge kinds. Use architect for system design and state or lifecycle diagrams, technical-illustration for model-driven figures and motion, product-illustration for faux product UI.
 - [technical-illustration](technical-illustration/SKILL.md) — Create or repair deterministic code-only motion films, music and lyric videos, character animation, 3D worlds and model-driven technical illustrations, with accessible interaction and inspected SVG, React, print or conditional WebGL/beta3D outputs.
 
 ## Social content and visuals

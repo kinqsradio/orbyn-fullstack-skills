@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/caru-ini/stack-diagram",
+  "revision": "75dbd3e3c6fe28844322e6064d3a947b870a6c61",
+  "source_path": "skills/stack-diagram",
+  "license": "MIT",
+  "credit": "caru-ini; maintained Orbyn adaptations by Anh Dang and contributors",
+  "file_keys": "paths under the skill root, skills/stack-diagram/",
+  "exclusions": [
+    "skills/stack-diagram/assets/fonts/",
+    "docs/",
+    "README.md",
+    ".github/workflows/release.yml",
+    ".gitignore"
+  ],
+  "limits": "Pinned selected and adapted bytes and finite tests only; not a full semantic audit, a browser guarantee or agent behaviour evidence.",
+  "files": {
+    "LICENSE": {
+      "sha256": "7b153fc3f5f1ccce2b9ac98a35301c666c025db85d6c44565e13304774d144a9",
+      "source_path": "LICENSE",
+      "original_sha256": "7b153fc3f5f1ccce2b9ac98a35301c666c025db85d6c44565e13304774d144a9",
+      "relationship": "byte-identical-selected-source"
+    },
+    "SKILL.md": {
+      "sha256": "44d2a134698322bbf9c0e475051b7ac0de64c5a35816c3f7995d59d4a86ad5a8",
+      "source_path": "skills/stack-diagram/SKILL.md",
+      "original_sha256": "b32b05b7eeb0f93fcc297fa1e1d8e56a7306b6b7c989c4ed4f8522a996a9086e",
+      "relationship": "maintained-adaptation"
+    },
+    "assets/generic/box.svg": {
+      "sha256": "8a6627599de0bec12b5fa273e746b9afe419c39644ba4b8d385085e1af524f5e",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "assets/generic/branch.svg": {
+      "sha256": "b8ffd430828631caf2951357da7c698de574d7e5c15fc2f2520ad6209341b4c1",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "assets/generic/browser.svg": {
+      "sha256": "626b27b7681ff5ff0c25b1d235ca49883bdb59185fe2b4063b44ab9a147f88a8",
+      "source_path": "skills/stack-diagram/assets/generic/browser.svg",
+      "original_sha256": "626b27b7681ff5ff0c25b1d235ca49883bdb59185fe2b4063b44ab9a147f88a8",
+      "relationship": "byte-identical-selected-source"
+    },
+    "assets/generic/check.svg": {
+      "sha256": "058639f1218b9283290ab88e03d7b2656dd8299cc4a62d647fb1fab61d762551",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "assets/generic/database.svg": {
+      "sha256": "98b18140a6501c1cbffeaf37776bade857f3c02eb881f7f408cda970435bc29e",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "assets/generic/device.svg": {
+      "sha256": "abe1c203068bef6c10727e434614fefcb68d3b02139838fcfd3a9b9d2fac7f91",
+      "source_path": "skills/stack-diagram/assets/generic/device.svg",
+      "original_sha256": "abe1c203068bef6c10727e434614fefcb68d3b02139838fcfd3a9b9d2fac7f91",
+      "relationship": "byte-identical-selected-source"
+    },
+    "assets/generic/document.svg": {
+      "sha256": "0d21dd44174cc157d6129cf4f7f2b4a0e0b379fe4d93913709068fc2150e3317",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "assets/generic/folder.svg": {
+      "sha256": "8d2b5b5a1a5e042ba79174359d8516c2e3c0defb78de02d8db2192b84c0a8180",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "assets/generic/internet.svg": {
+      "sha256": "f28c67cdda8b1b234f4993d1ac557b20fb8e5cb307e398c1cf720f54ef5dc3de",
+      "source_path": "skills/stack-diagram/assets/generic/internet.svg",
+      "original_sha256": "f28c67cdda8b1b234f4993d1ac557b20fb8e5cb307e398c1cf720f54ef5dc3de",
+      "relationship": "byte-identical-selected-source"
+    },
+    "assets/generic/link.svg": {
+      "sha256": "b0f6214d19b51e044bea01338dc191abfe8c23baf5116a8ccd68ec6c40164b7b",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "assets/generic/server.svg": {
+      "sha256": "81a828c927db27160a7af9d076e541686ae0b6ec96794638b7a265a4e3e26289",
+      "source_path": "skills/stack-diagram/assets/generic/server.svg",
+      "original_sha256": "81a828c927db27160a7af9d076e541686ae0b6ec96794638b7a265a4e3e26289",
+      "relationship": "byte-identical-selected-source"
+    },
+    "assets/generic/terminal.svg": {
+      "sha256": "f67d3784e11aec0169c3e40a85010ecdc2362b5b07a0b5e6368230e338ad0e5d",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "assets/generic/user.svg": {
+      "sha256": "a383d2e82346d3c14958eab164946898a0cf07f0f33defce7f55532ec1c9f1e9",
+      "source_path": "skills/stack-diagram/assets/generic/user.svg",
+      "original_sha256": "a383d2e82346d3c14958eab164946898a0cf07f0f33defce7f55532ec1c9f1e9",
+      "relationship": "byte-identical-selected-source"
+    },
+    "assets/template.html": {
+      "sha256": "195d0e4a1d4c6a79ad872ecfcb3a3cecd7ae8aa6eb1386deef65aaeaff5b8bef",
+      "source_path": "skills/stack-diagram/assets/template.html",
+      "original_sha256": "6b4a32f762de15684e3ae09f51524c92edf5b27092f4fd6cf88ba73fb8811be0",
+      "relationship": "maintained-adaptation"
+    },
+    "references/aws.md": {
+      "sha256": "c89f9464ab9affc5809dc29762663b7f1c23e5407b6abe847ef059b9e4a22e56",
+      "source_path": "skills/stack-diagram/SKILL.md",
+      "original_sha256": "b32b05b7eeb0f93fcc297fa1e1d8e56a7306b6b7c989c4ed4f8522a996a9086e",
+      "relationship": "maintained-adaptation"
+    },
+    "references/geometry.md": {
+      "sha256": "9f50932703c8ec8b6eceb663827bafb198c937ec0e7ffde1816a354111745ca2",
+      "source_path": "skills/stack-diagram/references/geometry.md",
+      "original_sha256": "0b823440933abb5c1c25dbd19f98e74bf3289e89b4adecb970c5e99c56e09f6e",
+      "relationship": "maintained-adaptation"
+    },
+    "references/icons.md": {
+      "sha256": "f9a1e1b0b348f5b2dd78830fdb9a172de1b51b023e2f7b0be556ae9b9fdb6edc",
+      "source_path": "skills/stack-diagram/SKILL.md",
+      "original_sha256": "b32b05b7eeb0f93fcc297fa1e1d8e56a7306b6b7c989c4ed4f8522a996a9086e",
+      "relationship": "maintained-adaptation"
+    },
+    "references/tsx.md": {
+      "sha256": "f863131e72d25fa0698fbd7b8b1b0240d2182742a2e3a318f997a05d94d86d6d",
+      "source_path": "skills/stack-diagram/references/tsx.md",
+      "original_sha256": "7f39b64a61c64c2860ca78868a99b63c6f1ee909f686efd625d3bfd6d8751053",
+      "relationship": "maintained-adaptation"
+    },
+    "references/upstream/stack-diagram/LICENSE": {
+      "sha256": "7b153fc3f5f1ccce2b9ac98a35301c666c025db85d6c44565e13304774d144a9",
+      "source_path": "LICENSE",
+      "original_sha256": "7b153fc3f5f1ccce2b9ac98a35301c666c025db85d6c44565e13304774d144a9",
+      "relationship": "byte-identical-selected-source"
+    },
+    "references/upstream/stack-diagram/LICENSE-Orbyn.txt": {
+      "sha256": "b960a8c01d83aa48ed709780a5c9940f8e2861f2fdcdc8f931fbe3ece90a5e04",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "references/upstream/stack-diagram/SOURCE.md": {
+      "sha256": "9680ea83c81674fb4f2f7b558515d99c4fc3cf16b76f7097a98382ba8b76e799",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "scripts/build.py": {
+      "sha256": "a9fb9b07f630c2d1f99997aaf342ba9f52f7295ece8154352db2d56abe540d34",
+      "source_path": "skills/stack-diagram/scripts/build.py",
+      "original_sha256": "28049a14bbec3a1264a9b61a7d6abe435f1932393ba9b991068ea5690e83d3a7",
+      "relationship": "maintained-adaptation"
+    },
+    "scripts/fetch_icons.py": {
+      "sha256": "a7ae0086dfb0b3fc66f1adae6c415a9a8dc0e7ee817ba3ebbaac1eeb95f02ed7",
+      "source_path": "skills/stack-diagram/scripts/fetch_icons.py",
+      "original_sha256": "7d33945bd80aebef01d601295347021a2b74dc3c6772b86be0cf2fb0da74730a",
+      "relationship": "maintained-adaptation"
+    },
+    "scripts/render_png.py": {
+      "sha256": "5ae695759c52f195237c971ba4e529c3eab53e3cfa8a40eedf630a75f0039f3d",
+      "source_path": "skills/stack-diagram/scripts/render_png.py",
+      "original_sha256": "588873e0441cf4e796a1f916e00f90975c23c952def4a9477f01ef8ebb0f206b",
+      "relationship": "maintained-adaptation"
+    },
+    "scripts/repo_guard.py": {
+      "sha256": "390b1db098bf0034f720fbf9b3288fb741db089235f8f8e21c669dcccc82caa7",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    },
+    "scripts/sanitise_svg.py": {
+      "sha256": "7da2ea698422bceec7dc6855c32c032558a7658b5220ab61fd81286d77445094",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    }
+  }
+}

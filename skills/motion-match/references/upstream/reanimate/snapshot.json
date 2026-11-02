@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/NiazMorshed2007/reanimate",
+  "revision": "3f7a55a2986a84ca2173e86ee9127eefe31d046d",
+  "license": "MIT",
+  "license_files": [
+    "LICENSE",
+    "LICENSE-Orbyn.txt"
+  ],
+  "relationship": "maintained selected adaptation; original/adapted fingerprints separate in source-manifest.json",
+  "files": {
+    "LICENSE": {
+      "sha256": "6bce4169a631cbe6d18089ed7e15d7ffe2afd736272d0ed9dc0e40e7f98d6f41"
+    },
+    "LICENSE-Orbyn.txt": {
+      "sha256": "b960a8c01d83aa48ed709780a5c9940f8e2861f2fdcdc8f931fbe3ece90a5e04"
+    },
+    "SOURCE.md": {
+      "sha256": "3e55f2bc95f1c4c8c8ae64e74300de5bb200e17c1dbcf7aa17129e9d17952e89"
+    },
+    "source-manifest.json": {
+      "sha256": "52abece4807c5e57af9c6030e42f691be4ec26c9db97a459b74d74a2fa44be23"
+    }
+  }
+}

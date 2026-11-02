@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
+import { useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { Phone, Stage, Window } from '../kit'
 import './scenes.css'
 
@@ -96,7 +96,7 @@ function CropFiller({ good, compact }: SceneProps) {
 }
 
 function TileLead({ good, compact }: SceneProps) {
-  const tile = (title: string, body: JSX.Element, cls = '') => <div className={`cs-tile ${cls}`}><h3>{title}</h3>{body}</div>
+  const tile = (title: string, body: ReactNode, cls = '') => <div className={`cs-tile ${cls}`}><h3>{title}</h3>{body}</div>
   const bars = <div className="cs-tile-bars"><i /><i /><i /></div>
   if (!good) return <div className="cs-scene cs-tiles" data-compact={compact || undefined}>
     {tile('Write together', bars)}{tile('Find anything', bars)}{tile('Works offline', bars)}{tile('Connects your tools', bars)}

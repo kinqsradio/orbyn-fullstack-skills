@@ -1,9 +1,9 @@
 /* All rules belong to this example, including its responsive variants. */
 .sp {
   & .ss-stage {
-    --ss-accent: #635bff;
+    --ss-accent: #2f7d6d;
     --ss-accent-2: #e15bff;
-    --ss-accent-soft: rgba(99, 91, 255, 0.1);
+    --ss-accent-soft: rgba(47, 125, 109, 0.1);
     /* A travel curve chosen for this payout story, not a universal preset. */
     --sp-ease: cubic-bezier(0.45, 0, 0.1, 1);
     overflow: hidden;
@@ -16,7 +16,7 @@
   .sp-wash {
     position: absolute;
     inset: 0;
-    background: radial-gradient(50% 60% at 100% 0%, rgba(99, 91, 255, 0.16), transparent 70%);
+    background: radial-gradient(50% 60% at 100% 0%, rgba(47, 125, 109, 0.16), transparent 70%);
   }
 
   .sp-strong { font-weight: 600; }

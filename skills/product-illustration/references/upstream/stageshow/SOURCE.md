@@ -56,3 +56,7 @@ skill entrypoint and `../../gold-examples.md`.
 
 Upstream install commands and host-specific steps are not imported or activated. Source
 identity is not runtime proof.
+
+## Generic geometry kept
+
+The phone frame, status bar, notification and keyboard keep the dimensions and proportions measured upstream, because they are generic device geometry. They can still look like a familiar device, and message bubbles use common blue and green tints. Replace them when a brand needs its own look.

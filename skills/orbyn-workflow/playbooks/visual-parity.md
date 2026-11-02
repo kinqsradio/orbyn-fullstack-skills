@@ -1,6 +1,11 @@
 # Compare a visual reference
 
 Use the parent [workflow](../SKILL.md) and [UI owner](../../orbyn-ui-design/SKILL.md).
+Settle who owns the reference first. Exact parity applies to our own designs, or a design the
+user owns or has licensed. For anyone else's product, match how it moves through
+[motion-match](../../motion-match/SKILL.md) and keep our own design: never copy their code,
+assets, fonts, brand, layout or copy.
+
 Pin the supplied reference and actual candidate, content fixture, viewport, zoom,
 theme and interaction state. Label a conceptual reference rather than presenting
 it as existing product behavior.

@@ -31,7 +31,7 @@
       "relationship": "maintained-adaptation"
     },
     "SOURCE.md": {
-      "sha256": "d7a94c6904d7c003d871d30b0d5eadbd77e4c0327c140af72b9b23e7e1fe4290",
+      "sha256": "6efff6080651a4c6d8882cdf8670da8bad3012a78e0baed8dc1f77bd9a01fc0a",
       "source_path": "Orbyn-authored maintained support record/helper",
       "original_sha256": null,
       "relationship": "original-helper-or-record"
@@ -505,10 +505,10 @@
       "relationship": "maintained-adaptation"
     },
     "examples/payout-flow/pace.css": {
-      "sha256": "109d9a883082017ca013c38185ecf03650137ef9af7e5f7792d7b07b765cf544",
+      "sha256": "5832cd7929e59955603e54362668e2972eb12bc57efce5d0fc6c153b0df65f0d",
       "source_path": "stageshow/examples/payout-flow/pace.css",
       "original_sha256": "109d9a883082017ca013c38185ecf03650137ef9af7e5f7792d7b07b765cf544",
-      "relationship": "byte-identical-selected-source"
+      "relationship": "adapted-selected-source"
     },
     "examples/phone-touch/fitness.css": {
       "sha256": "49c6b03cdb010bfa8d3a8d7199c98448d6a59327af9902c787eab32df3cd6592",
@@ -631,10 +631,10 @@
       "relationship": "byte-identical-selected-source"
     },
     "examples/story/story.css": {
-      "sha256": "23164a433a118aee6b85a1d31e32f7d118e23294b22a70636a37cec9926aa6fb",
+      "sha256": "211475f5d8a046a8593cb9f1a6937183ac3b80295d067c5a42cea6918c2d29b9",
       "source_path": "stageshow/examples/story/story.css",
       "original_sha256": "23164a433a118aee6b85a1d31e32f7d118e23294b22a70636a37cec9926aa6fb",
-      "relationship": "byte-identical-selected-source"
+      "relationship": "adapted-selected-source"
     },
     "examples/subscriptions/index.tsx": {
       "sha256": "3eb8c744dab25bcc2226285247dc20579657d71ccc33e13f309e516766ff18e9",
@@ -829,7 +829,7 @@
       "relationship": "byte-identical-selected-source"
     },
     "kit/cursor.css": {
-      "sha256": "834b0e1864efd276f9bde57e871e710bf70dd11bfbf9ec68e04bcf3a76eeaef8",
+      "sha256": "d7bcfb777ad76dcdd4a673e2bec8f5cdc70d9226d15d7fa2973feac5f9412926",
       "source_path": "stageshow/kit/cursor.css",
       "original_sha256": "40c69aaff8c7c970f49ef9f9f4c6d8c3f89fdf4218d8aa703cf5b36483a9e42d",
       "relationship": "maintained-adaptation"
@@ -1501,7 +1501,7 @@
       "relationship": "byte-identical-selected-source"
     },
     "teaching/scenes.tsx": {
-      "sha256": "f807aab4abca3f779700c47ec39e4af457c10df70777b9d04d04bbe90a8d6a42",
+      "sha256": "4a5406448549ca73a1e0513fcd6bb6c7325d2c5fb1e7f4f1eba3459538a528a8",
       "source_path": "stageshow/teaching/scenes.tsx",
       "original_sha256": "36e0aa7d4222f593d3fe6a3773bf8136887dac23d4475e3e2903d368dd775a64",
       "relationship": "maintained-adaptation"
