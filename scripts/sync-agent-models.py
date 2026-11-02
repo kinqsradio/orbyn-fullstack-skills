@@ -17,6 +17,7 @@ TIERS = {'orbyn-lead': 'lead', 'orbyn-worker': 'worker', 'orbyn-scout': 'scout'}
 
 
 def load_harness():
+    sys.dont_write_bytecode = True  # a generator must leave nothing in the skill folder
     spec = importlib.util.spec_from_file_location('orbyn_harness', HARNESS)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
