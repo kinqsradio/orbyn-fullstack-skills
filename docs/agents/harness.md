@@ -8,7 +8,11 @@ How any request flows. Each step has one owner; this page only links them.
    defaults. Schema, trust rules and rejections:
    [harness settings](../../skills/orbyn-workflow/references/harness-settings.md).
    Library defaults and what each host enforces: [model policy](model-policy.md).
-2. **Classify size.** A small clear edit stays direct. Substantial work follows
+   The result also prints the repository's work mode (`simple`, `isolated` or
+   `parallel`) or `work mode: not set`; when unset, ask the user once, save the
+   answer with `harness.py setup`, and use `isolated` for the task if nobody can
+   answer.
+2. **Classify size.** A small clear edit stays direct in every work mode. Substantial work follows
    the [workflow](../../skills/orbyn-workflow/SKILL.md).
 3. **Pick the playbook.** The workflow's playbook table owns the choice.
 4. **Assign tiers.** Use the resolved routing: lead for decisions, worker for

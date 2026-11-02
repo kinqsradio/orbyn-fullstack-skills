@@ -3,6 +3,7 @@
 
 Commands
   resolve --target PATH [--host claude|codex] [--json] [--explain]
+  setup --target PATH --mode simple|isolated|parallel [--max-active N]
   validate FILE
   check [--root DIR]
 
@@ -12,9 +13,14 @@ Precedence, highest first: user instruction (--set), the target's own
 references/harness-defaults.json. The target file is repository data: it may only
 lower cost or tighten, and delegation numbers above the default are clamped. The
 local file is the owner's and may raise delegation limits. Neither file can change
-a lead tier or a locked security role; only --set can. This tool reads files and
-prints results. It never writes settings into a target, never starts a model and
-never runs a check that a harness file lists. It also reads free disk space and the
+a lead tier or a locked security role; only --set can. For a target registered in
+place outside repo/, the owner's file is repo/.harness/inplace--<folder>--<12 hex of
+the sha256 of the resolved Git common dir>.json, with the local file's trust.
+`work.mode` says how the repository is worked (simple < isolated < parallel); a
+target file may only choose a cheaper mode and never makes the mode "set". `resolve`
+reads files and prints results. The only write is `setup`, which saves the work mode
+atomically to that owner file in the workspace, never into a target's files. The tool never starts a model and never runs a check that a harness file
+lists. It also reads free disk space and the
 registered worktrees (no `gh`, no folder walks) so `resolve` can say when to run the
 cleanup report; the `cleanup` values are the limits that report uses.
 
@@ -23,11 +29,13 @@ Exit status: 0 ok, 1 invalid file or drift, 2 could not run (bad target, bad
 """
 import argparse
 import importlib.util
+import hashlib
 import json
 import os
 import re
 import shlex
 import shutil
+import secrets
 import stat
 import subprocess
 import sys
@@ -42,7 +50,7 @@ EFFORTS = ('low', 'medium', 'high')
 ROLE_KEYS = ('lead', 'architect', 'reviewer', 'security', 'security_verifier', 'security_engineer', 'engineer',
              'engineer_complex', 'investigator', 'verifier', 'mechanical', 'tiny_edit')
 LOCKED_ROLES = ('lead', 'security', 'security_verifier', 'security_engineer')
-FILE_KEYS = {'schema_version', 'tiers', 'delegation', 'cleanup', 'routing', 'verification', 'notes'}
+FILE_KEYS = {'schema_version', 'tiers', 'delegation', 'cleanup', 'work', 'routing', 'verification', 'notes'}
 DEFAULTS_KEYS = {'generated_from', 'agents', 'escalation', 'allowed_models', 'effort_caps', 'claude_minimum_versions',
                  'human_only'}
 DELEGATION_RANGES = {'max_children': (0, 8), 'max_depth': (1, 3), 'read_only_children_extra': (0, 8)}
@@ -50,6 +58,8 @@ CLEANUP_RANGES = {'cache_idle_days': (1, 3650), 'worktree_idle_days': (1, 3650),
                   'archive_max_days': (1, 3650), 'archive_max_mb': (1, 10_000_000), 'references_idle_days': (1, 3650),
                   'low_disk_free_percent': (1, 50)}
 CLEANUP_KEYS = (*CLEANUP_RANGES, 'enabled')
+WORK_MODES = ('simple', 'isolated', 'parallel')  # cheapest first
+WORK_MAX_ACTIVE = (1, 32)
 # Cleanup acts sooner (more goes to the Trash) when a day count or archive_max_mb is lower, or low_disk_free_percent higher.
 CLEANUP_HIGHER_IS_SOONER = ('low_disk_free_percent',)
 MODEL_PATTERN = re.compile(r'[A-Za-z0-9][A-Za-z0-9._:-]{0,63}')
@@ -59,6 +69,8 @@ ACCELERATED_TOKENS = ('fast', 'priority', 'ultra')
 HOST_BINARIES = {'claude': 'claude', 'codex': 'codex'}
 RULES = {
     'cleanup': 'Limits for the worktree_retire.py report and apply; a repository file may only keep things longer, never act sooner.',
+    'work.mode': 'How the repository is worked: simple edits in place, isolated uses a worktree per task, parallel runs many; a target file may only choose a cheaper mode.',
+    'work.max_active': 'Most worktrees or sessions active at once in parallel mode; the rest queue.',
     'delegation.max_children': 'Most children one owner may have active at once; 0 means no delegation.',
     'delegation.max_depth': 'Spawn depth below the lead; 1 means children never spawn.',
     'delegation.read_only_children_extra': 'Extra read-only children allowed above max_children; ignored when max_children is 0.',
@@ -324,6 +336,30 @@ def validate_layer(data, human_only=(), complete=False, allowed=None, is_file=Fa
                         errors.append(f'cleanup.{key} is missing')
     elif complete:
         errors.append('cleanup is missing')
+    if 'work' in data:
+        work = data['work']
+        if not isinstance(work, dict):
+            errors.append('work must be an object')
+        else:
+            for key in sorted(set(work) - {'mode', 'max_active'} - ({'fallback_mode'} if complete else set())):
+                errors.append(f'work: unknown key {key!r}')
+            for key in ('mode', 'fallback_mode'):
+                if key in work and work[key] not in WORK_MODES:
+                    errors.append(f'work.{key} must be one of {", ".join(WORK_MODES)}')
+            if 'max_active' in work:
+                value, (low, high) = work['max_active'], WORK_MAX_ACTIVE
+                if not is_int(value):
+                    errors.append('work.max_active must be an integer')
+                elif not low <= value <= high:
+                    errors.append(f'work.max_active must be in {low}..{high}')
+            if complete:
+                if 'mode' in work:
+                    errors.append('work.mode is not a library default: an unset mode is asked once, then falls back')
+                for key in ('max_active', 'fallback_mode'):
+                    if key not in work:
+                        errors.append(f'work.{key} is missing')
+    elif complete:
+        errors.append('work is missing')
     if 'routing' in data:
         routing = data['routing']
         if not isinstance(routing, dict):
@@ -390,6 +426,9 @@ def flatten(layer):
         out[f'delegation.{key}'] = value
     for key, value in layer.get('cleanup', {}).items():
         out[f'cleanup.{key}'] = value
+    for key in ('mode', 'max_active'):
+        if key in layer.get('work', {}):
+            out[f'work.{key}'] = layer['work'][key]
     for role, value in layer.get('routing', {}).items():
         for provider in PROVIDERS:
             out[f'routing.{role}.{provider}'] = value[provider] if isinstance(value, dict) and provider in value else (
@@ -442,6 +481,7 @@ def defaults_from_registry(registry):
         'agents': {tier: agents[tier] for tier in TIERS},
         'delegation': dict(registry['delegation']),
         'cleanup': dict(registry['cleanup']),
+        'work': dict(registry['work']),
         'routing': {role: registry['routing'][role] for role in ROLE_KEYS},
         'escalation': dict(registry['escalation']),
         'allowed_models': {p: {t: list(registry['allowed_models'][p][t]) for t in TIERS} for p in PROVIDERS},
@@ -471,20 +511,58 @@ def git_root(target):
     raise CannotRun(f'target is not inside a Git checkout: {target}')
 
 
-def primary_clone(root):
-    """The primary clone of a linked worktree, from its Git common directory; root otherwise.
+def worktree_common(root):
+    """The Git common directory a linked worktree names, or None when its .git file is not acknowledged.
 
     The link must point back at this worktree, so a copied .git file cannot borrow another clone."""
     marker = root / '.git'
-    if marker.is_file():
+    if marker.is_file() and not marker.is_symlink():
         try:
             gitdir = (root / marker.read_text().splitlines()[0].split(':', 1)[1].strip()).resolve()
             common = (gitdir / (gitdir / 'commondir').read_text().strip()).resolve()
-            if Path((gitdir / 'gitdir').read_text().strip()).resolve() == marker.resolve() and common.name == '.git':
-                return common.parent
+            if Path((gitdir / 'gitdir').read_text().strip()).resolve() == marker.resolve():
+                return common
         except (OSError, IndexError, ValueError):
             pass
-    return root
+    return None
+
+
+def primary_clone(root):
+    """The primary clone of a linked worktree, from its Git common directory; root otherwise."""
+    common = worktree_common(root)
+    return common.parent if common is not None and common.name == '.git' else root
+
+
+def git_common_dir(root):
+    """The verified Git common directory shared by a checkout and its worktrees, else None."""
+    marker = root / '.git'
+    if marker.is_dir() and not marker.is_symlink():
+        return marker.resolve()
+    return worktree_common(root)
+
+
+def inplace_name(root):
+    """The owner file name for a clone registered in place: folder name plus a hash of its resolved Git common dir.
+
+    Worktrees of one clone share a common dir, so they share the name. None when the link cannot be verified."""
+    common = git_common_dir(root)
+    if common is None:
+        return None
+    folder = common.parent.name if common.name == '.git' else common.name
+    folder = re.sub(r'\.{2,}', '-', re.sub(r'[^A-Za-z0-9._-]', '-', folder)).strip('.-')[:60] or 'target'
+    return f'inplace--{folder}--{hashlib.sha256(str(common).encode()).hexdigest()[:12]}'
+
+
+def check_workspace(workspace, root):
+    """A workspace that is, or sits inside, the target (the library itself excepted: its repo/ is ignored) would let
+    repository data stand in for the owner's files."""
+    here = root.resolve()
+    if workspace is not None and (root.resolve() in workspace.parents or (workspace == here and not is_library(here))):
+        raise CannotRun(f'workspace {workspace} is inside the target {root}; repository data cannot be the owner\'s file')
+
+
+def under_repo(primary, workspace):
+    return workspace is not None and primary != workspace / 'repo' and (workspace / 'repo') in primary.parents
 
 
 def is_library(path):
@@ -605,6 +683,22 @@ def file_layer(data, label, human, allowed, caps, defaults, defaults_flat, targe
     return flat
 
 
+def clamp_work(flat, lower, fallback, notices):
+    """A target file may only choose a cheaper work mode and lower max_active than the owner's (else the default)."""
+    def below(key, default):
+        return next((layer[key] for layer in reversed(lower) if key in layer), default)
+    ceiling = below('work.mode', fallback)
+    if 'work.mode' in flat and WORK_MODES.index(flat['work.mode']) > WORK_MODES.index(ceiling):
+        notices.append(f'target file .orbyn/harness.json asks for work.mode {flat["work.mode"]}; clamped to {ceiling}. '
+                       'A target file may only choose a cheaper mode (simple < isolated < parallel), never a bigger one')
+        flat['work.mode'] = ceiling
+    limit = below('work.max_active', lower[0]['work.max_active'])
+    if flat.get('work.max_active', 0) > limit:
+        notices.append(f'target file .orbyn/harness.json asks for work.max_active {flat["work.max_active"]}; clamped to {limit}. '
+                       'A target file may only lower it')
+        flat['work.max_active'] = limit
+
+
 def cleanup_status(root, workspace, limit):
     """Free disk and other worktrees, read-only and cheap: no gh calls and no folder walks.
 
@@ -632,6 +726,15 @@ def cleanup_status(root, workspace, limit):
     return {'free_percent': free, 'low_disk': low, 'other_worktrees': others, 'run': command}
 
 
+WORK_ASK = ('Ask the user once which work mode this repository should use, offering the three choices and suggesting isolated: '
+            'simple (edit in the current checkout; no worktrees and no subagents unless the user asks in chat), '
+            'isolated (a worktree per task and the default delegation limits) or parallel (many worktrees and sessions, '
+            'max_active at once, the rest queued). Save the answer with `{command} --mode <mode> [--max-active N]`. '
+            'If nobody can answer, such as in an unattended run, use {fallback} for this task and save nothing. '
+            'A small clear edit stays in the current checkout in every mode, and a chat instruction such as "just do it here" '
+            'overrides the mode for that task.')
+
+
 def resolve(target, hosts, sets=(), workspace=None, slug=None, defaults_path=DEFAULTS_PATH,
             versions=None, probe=True):
     defaults = load_defaults(defaults_path)
@@ -640,6 +743,7 @@ def resolve(target, hosts, sets=(), workspace=None, slug=None, defaults_path=DEF
     root = git_root(target)
     primary = primary_clone(root)
     ws = find_workspace(primary, workspace)
+    check_workspace(ws, root)
     defaults_flat = flatten(defaults)
     layers = [('library default', 'references/harness-defaults.json', defaults_flat, 'used')]
     notices, warnings = [], []
@@ -656,9 +760,24 @@ def resolve(target, hosts, sets=(), workspace=None, slug=None, defaults_path=DEF
         flat = None if data is None else file_layer(data, f'local file {where}', human, allowed, caps, defaults,
                                                     defaults_flat, False, notices)
         layers.append(('local file', where, flat or {}, 'absent' if data is None else 'used'))
+    inplace = inplace_name(root) if ws is not None and local_name is None and not under_repo(primary, ws) else None
+    if inplace is not None:
+        # A target registered in place has no repo/ slot; its owner's file sits in the workspace under a name made from
+        # its folder and resolved Git common dir, so every worktree of the clone shares it. It has the local file's trust.
+        where = f'repo/.harness/{inplace}.json'
+        data = read_file(ws / 'repo' / '.harness' / f'{inplace}.json', f'in-place file {where}')
+        flat = None if data is None else file_layer(data, f'in-place file {where}', human, allowed, caps, defaults,
+                                                    defaults_flat, False, notices)
+        layers.append(('in-place file', where, flat or {}, 'absent' if data is None else 'used'))
     label = 'target file .orbyn/harness.json'
     data = read_file(root / '.orbyn' / 'harness.json', label)
     flat = None if data is None else file_layer(data, label, human, allowed, caps, defaults, defaults_flat, True, notices)
+    suggestion = None
+    if flat:
+        clamp_work(flat, [layer[2] for layer in layers], defaults['work']['fallback_mode'], notices)
+        if 'work.mode' in flat and not any('work.mode' in layer[2] for layer in layers):
+            # Only the owner's file or --set makes the mode "set"; a committed value is shown as the repo's suggestion.
+            suggestion = flat.pop('work.mode')
     layers.append(('target file', '.orbyn/harness.json', flat or {}, 'absent' if data is None else 'used'))
     user_flat = {}
     if sets:
@@ -711,11 +830,24 @@ def resolve(target, hosts, sets=(), workspace=None, slug=None, defaults_path=DEF
         cap = 8
         notices.append('max_children plus read_only_children_extra is capped at 8')
 
+    work_mode = effective.get('work.mode')
+    suggestion = None if work_mode else suggestion
+    setup_command = ''.join('?' if bad_char(c) else c for c in f'python3 {shlex.quote(str(SCRIPT))} setup --target {shlex.quote(str(root))}')
+    fallback = defaults['work']['fallback_mode']
     result = {
         'target': str(root), 'slug': local_name, 'workspace': str(ws) if ws else None,
         'layers': [{'name': n, 'where': w, 'status': s} for n, w, _, s in layers],
         'delegation': {k: effective[f'delegation.{k}'] for k in DELEGATION_RANGES},
         'cleanup': {k: effective[f'cleanup.{k}'] for k in CLEANUP_KEYS},
+        'work': {
+            'mode': work_mode, 'set': work_mode is not None, 'effective_mode': work_mode['value'] if work_mode else fallback,
+            'max_active': effective['work.max_active'], 'fallback_mode': fallback,
+            'suggested': suggestion,
+            'ask': None if work_mode else WORK_ASK.format(command=setup_command, fallback=fallback) + (
+                f' The repository\'s own file suggests {suggestion} (already limited to what a target file may choose); '
+                'it is a suggestion only and does not set the mode.' if suggestion else ''),
+            'setup_command': setup_command,
+        },
         'cleanup_status': cleanup_status(root, ws, effective['cleanup.low_disk_free_percent']['value']),
         'read_only_cap': cap,
         'escalation': defaults['escalation'],
@@ -782,6 +914,19 @@ def render_text(result, explain):
             for old in item['overridden']:
                 lines.append(f'    overridden: {old["value"]} from {old["source"]}')
     lines.append(f'  read-only child cap       {result["read_only_cap"]}')
+    work = result['work']
+    if work['set']:
+        lines.append(f'work mode: {work["mode"]["value"]}   [{work["mode"]["source"]}]')
+        if explain:
+            lines.append(f'    rule: {RULES["work.mode"]}')
+            for old in work['mode']['overridden']:
+                lines.append(f'    overridden: {old["value"]} from {old["source"]}')
+        if work['mode']['value'] == 'parallel':
+            lines.append(f'  max_active                {work["max_active"]["value"]}   [{work["max_active"]["source"]}]')
+            lines.append('  parallel creates more worktrees: run the cleanup report at every closeout')
+    else:
+        lines.append('work mode: not set')
+        lines.append(f'  {work["ask"]}')
     lines.append('cleanup')
     for key, item in result['cleanup'].items():
         lines.append(f'  {key:<26}{item["value"]}   [{item["source"]}]')
@@ -900,6 +1045,125 @@ def command_check(args):
     return 0
 
 
+def tracked(path):
+    """True when Git, run in the folder that holds the file, lists it as a tracked path."""
+    try:
+        listed = subprocess.run(['git', '-C', str(path.parent), 'ls-files', '--error-unmatch', '--', path.name],
+                                capture_output=True, text=True, timeout=10, env={**os.environ, 'GIT_OPTIONAL_LOCKS': '0'})
+    except (OSError, subprocess.SubprocessError):
+        raise CannotRun(f'cannot tell whether {path} is tracked; refusing to write')
+    return listed.returncode == 0
+
+
+DIR_FLAGS = os.O_RDONLY | getattr(os, 'O_NOFOLLOW', 0) | getattr(os, 'O_DIRECTORY', 0)
+
+
+def open_dir(name, parent_fd=None):
+    """Open a real directory without following a link; None when it is absent."""
+    try:
+        return os.open(name, DIR_FLAGS, dir_fd=parent_fd)
+    except FileNotFoundError:
+        return None
+    except OSError as error:
+        raise CannotRun(f'refusing folder {name}: not a plain directory ({error.strerror})')
+
+
+def read_in(folder_fd, name, label):
+    """Read a regular file relative to an open folder, refusing links and large files."""
+    try:
+        descriptor = os.open(name, os.O_RDONLY | getattr(os, 'O_NOFOLLOW', 0), dir_fd=folder_fd)
+    except FileNotFoundError:
+        return None
+    except OSError as error:
+        raise Invalid(f'{label}: refusing symbolic link or unreadable file ({error.strerror})')
+    with os.fdopen(descriptor, 'rb') as handle:
+        info = os.fstat(handle.fileno())
+        if not stat.S_ISREG(info.st_mode):
+            raise Invalid(f'{label}: not a regular file')
+        raw = handle.read(MAX_BYTES + 1)
+    if len(raw) > MAX_BYTES:
+        raise Invalid(f'{label}: larger than {MAX_BYTES} bytes')
+    return parse_json(raw, label)
+
+
+def owner_file(root, workspace, slug):
+    """The workspace file name and label for the owner's work setting, from Git topology and the slug only.
+
+    Nothing in the target's own files can move it. Returns (workspace, file name, label)."""
+    primary = primary_clone(root)
+    ws = find_workspace(primary, workspace)
+    if ws is None:
+        raise CannotRun('no workspace found; the work mode is saved in the workspace repo/.harness folder (pass --workspace)')
+    check_workspace(ws, root)
+    name = target_slug(primary, ws, slug)
+    if name is None:
+        if under_repo(primary, ws):
+            raise CannotRun('this clone has no safe local file name inside repo/; pass --slug')
+        name = inplace_name(root)
+        if name is None:
+            raise CannotRun('cannot verify the Git common directory of this checkout; refusing to write')
+        return ws, f'{name}.json', f'in-place file repo/.harness/{name}.json'
+    return ws, f'{name}.json', f'local file repo/.harness/{name}.json'
+
+
+def command_setup(args):
+    """Save the work mode atomically to the owner's file in the workspace; the only write this tool makes."""
+    if args.max_active is not None and args.mode != 'parallel':
+        raise CannotRun('--max-active applies only to --mode parallel')
+    defaults = load_defaults(args.defaults)
+    root = git_root(args.target)
+    ws, filename, label = owner_file(root, args.workspace, args.slug)
+    repo_fd = open_dir(ws / 'repo')
+    if repo_fd is None:
+        raise CannotRun(f'workspace repo/ folder does not exist: {ws / "repo"}')
+    folder_fd = None
+    try:
+        folder_fd = open_dir('.harness', repo_fd)
+        destination = ws / 'repo' / '.harness' / filename
+        if folder_fd is not None and tracked(destination):
+            raise CannotRun(f'refusing to write a tracked path: {destination}')
+        existing = None if folder_fd is None else read_in(folder_fd, filename, label)
+        data = existing if existing is not None else {'schema_version': 1}
+        work = dict(data.get('work', {})) if isinstance(data.get('work', {}), dict) else {}
+        work['mode'] = args.mode
+        if args.max_active is not None:
+            work['max_active'] = args.max_active
+        data = {**data, 'work': work}
+        human = [m for p in PROVIDERS for m in defaults['human_only'][p]]
+        errors = validate_layer(data, human, allowed=model_allowlist(defaults), is_file=True) + cap_errors(
+            data, expanded_caps(defaults), defaults['tiers'])
+        if errors:
+            raise Invalid([f'{label}: {e}' for e in errors])
+        text = json.dumps(data, indent=2) + '\n'
+        if len(text.encode()) > MAX_BYTES:
+            raise Invalid(f'{label}: larger than {MAX_BYTES} bytes')
+        if folder_fd is None:
+            os.mkdir('.harness', 0o755, dir_fd=repo_fd)
+            folder_fd = open_dir('.harness', repo_fd)
+        temporary = f'.harness-{secrets.token_hex(8)}.tmp'
+        # Everything below is relative to the open folder handle, so the folder cannot be swapped after the checks.
+        descriptor = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, 'O_NOFOLLOW', 0), 0o644, dir_fd=folder_fd)
+        try:
+            with os.fdopen(descriptor, 'w') as handle:
+                handle.write(text)
+                handle.flush()
+                os.fsync(handle.fileno())
+            os.replace(temporary, filename, src_dir_fd=folder_fd, dst_dir_fd=folder_fd)
+        except BaseException:
+            try:
+                os.unlink(temporary, dir_fd=folder_fd)
+            except OSError:
+                pass
+            raise
+    finally:
+        if folder_fd is not None:
+            os.close(folder_fd)
+        os.close(repo_fd)
+    print(f'OK: saved work.mode={args.mode}' + (f' work.max_active={args.max_active}' if args.max_active is not None else '')
+          + f' to {label}. Nothing else was written.')
+    return 0
+
+
 def command_resolve(args):
     hosts = [args.host] if args.host else list(PROVIDERS)
     versions = None
@@ -934,6 +1198,13 @@ def build_parser():
     res.add_argument('--host-version', help='installed host version to compare with minimums (needs --host)')
     res.add_argument('--no-probe', action='store_true', help='do not run <host> --version')
     res.add_argument('--defaults', default=DEFAULTS_PATH, help=argparse.SUPPRESS)
+    setup = sub.add_parser('setup', help="save the target's work mode to the owner's local file (the only write)")
+    setup.add_argument('--target', required=True)
+    setup.add_argument('--mode', required=True, choices=WORK_MODES)
+    setup.add_argument('--max-active', type=int, metavar='N', help='parallel only: most worktrees or sessions active at once')
+    setup.add_argument('--workspace', help='outer workspace holding repo/.harness (default: found from the target)')
+    setup.add_argument('--slug', help='local file name without .json (default: derived from the target)')
+    setup.add_argument('--defaults', default=DEFAULTS_PATH, help=argparse.SUPPRESS)
     val = sub.add_parser('validate', help='validate one harness file')
     val.add_argument('file')
     val.add_argument('--defaults', default=DEFAULTS_PATH, help=argparse.SUPPRESS)
@@ -946,7 +1217,7 @@ def build_parser():
 def main(argv=None):
     args = build_parser().parse_args(argv)
     try:
-        return {'resolve': command_resolve, 'validate': command_validate, 'check': command_check}[args.command](args)
+        return {'resolve': command_resolve, 'setup': command_setup, 'validate': command_validate, 'check': command_check}[args.command](args)
     except Invalid as error:
         for item in error.errors:
             print(f'invalid: {item}', file=sys.stderr)

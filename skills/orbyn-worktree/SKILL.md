@@ -12,6 +12,15 @@ without a separate invocation. Follow the consuming project's instructions,
 requested checkout and host permissions. A small clear edit can stay in its
 current checkout.
 
+## Create a worktree by work mode
+
+Read the repository's `work mode` from `harness.py resolve` first. `simple`: no
+worktree; edit in the current checkout. `isolated`: one worktree per task. `parallel`:
+one worktree per active task, at most `max_active` at once, the rest queued. A small
+clear edit stays in the current checkout in every mode, and a chat instruction such
+as "just do it here" overrides the mode for that task. `parallel` leaves more trees
+to retire, so run the cleanup report at every closeout.
+
 ## Resolve the repository and owner first
 
 Inspect the current checkout, branch, HEAD, tracked/untracked changes and

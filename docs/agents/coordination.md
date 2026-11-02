@@ -9,6 +9,12 @@ Start with one child and never exceed the resolved limits (defaults in the
 [model policy](model-policy.md#default-routing-and-delegation)). Never create
 user-owned project chats unless the human explicitly requests them.
 
+Read the repository's saved work mode in the same result: `simple` means no worktrees
+and no subagents unless the user asks in chat, `isolated` is today's worktree per
+task within these limits, and `parallel` runs many worktrees and sessions up to
+`max_active` (default 10) with the rest queued. A small clear edit stays direct in
+every mode, and "just do it here" in chat overrides the mode for that task.
+
 Name each child and session `Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]`,
 as the [lead contract](../../skills/orbyn-workflow/references/lead-contract.md#name-children-and-sessions)
 defines.

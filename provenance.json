@@ -753,6 +753,20 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Harness and security workflow revision"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Add the per-repository work mode (simple, isolated, parallel)"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Implement the work mode setting, setup command, tests and eval cases"
         }
       ]
     },
@@ -812,6 +826,20 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Cleanup evaluation cases"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Add the per-repository work mode (simple, isolated, parallel)"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Implement the work mode setting, setup command, tests and eval cases"
         }
       ]
     },
@@ -1275,6 +1303,20 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Cleanup retention inversion, opt-out and LOW DISK line"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Add the per-repository work mode (simple, isolated, parallel)"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Implement the work mode setting, setup command, tests and eval cases"
         }
       ]
     },
@@ -1697,6 +1739,20 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Trash-based retirement and cleanup safety fixes"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Add the per-repository work mode (simple, isolated, parallel)"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Implement the work mode setting, setup command, tests and eval cases"
         }
       ]
     },
