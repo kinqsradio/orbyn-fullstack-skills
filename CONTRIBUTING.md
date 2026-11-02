@@ -97,7 +97,9 @@ git diff --check
 
 The manifest update makes the proposed shared-file changes explicit; inspect it
 with the diff. Do not edit hashes to conceal a mismatched source or missing file.
-`skills/README.md` and both host discovery directories are generated. Every skill
+`skills/README.md` and both host discovery directories are generated. A `related`
+entry in `skills/catalog.json` runs one way, from a skill to what it depends on or
+hands off to, so it needs no reverse entry. Every skill
 needs a portable `LICENSE` and provenance entry. Keep substantial optional guidance
 under linked references; do not pad every task with mandatory stages or panels.
 

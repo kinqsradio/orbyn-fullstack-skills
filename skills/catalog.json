@@ -182,7 +182,7 @@
     },
     {
       "name": "orbyn-security-remediation",
-      "category": "Engineering practice",
+      "category": "Fullstack contracts and delivery",
       "related": [
         "how",
         "orbyn-backend-design",

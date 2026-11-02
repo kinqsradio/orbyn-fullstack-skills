@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 TOOL = ROOT / 'skills/orbyn-workflow/scripts/harness.py'
@@ -692,6 +693,136 @@ class DriftAndPortableDefaults(HarnessCase):
         self.assertEqual(registry['claude_minimum_versions'], {'opus': '2.1.280', 'sonnet': '2.1.284', 'haiku': '2.1.293'})
         models = {a[p]['model'] for a in registry['agents'].values() for p in ('codex', 'claude')}
         self.assertEqual(models, {'gpt-6.1-sol', 'gpt-6.1-terra', 'gpt-6-luna', 'opus', 'sonnet', 'haiku'})
+
+
+class CleanupSettings(HarnessCase):
+    LIMITS = {'enabled': True, 'cache_idle_days': 7, 'worktree_idle_days': 1, 'output_idle_days': 14, 'archive_max_days': 30,
+              'archive_max_mb': 500, 'references_idle_days': 30, 'low_disk_free_percent': 15}
+
+    def values(self, result):
+        return {key: item['value'] for key, item in result['cleanup'].items()}
+
+    def load(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('harness_under_test', TOOL)
+        harness = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(harness)
+        return harness
+
+    def test_registry_defaults_flow_to_resolve_with_their_source(self):
+        result = self.resolve()
+        self.assertEqual(self.values(result), self.LIMITS)
+        self.assertEqual(json.loads(REGISTRY.read_text())['cleanup'], self.LIMITS)
+        self.assertTrue(all(item['source'].startswith('library default') for item in result['cleanup'].values()))
+
+    def test_values_must_be_positive_integers_the_disk_percent_one_to_fifty_and_enabled_a_boolean(self):
+        for key, bad in [('cache_idle_days', 0), ('cache_idle_days', -3), ('output_idle_days', True), ('archive_max_mb', 1.5),
+                         ('archive_max_days', '30'), ('references_idle_days', None), ('worktree_idle_days', 0), ('low_disk_free_percent', 0),
+                         ('low_disk_free_percent', 51), ('enabled', 1), ('enabled', 'no'), ('surprise', 1)]:
+            with self.subTest(key=key, bad=bad):
+                self.write_target(valid(cleanup={key: bad}))
+                self.assertEqual(self.resolve(ok=1).returncode, 1)
+        self.write_target(valid(cleanup='soon'))
+        self.assertIn('cleanup must be an object', self.resolve(ok=1).stderr)
+        self.write_target(valid(cleanup={'low_disk_free_percent': 1, 'cache_idle_days': 3650}))
+        self.assertEqual(self.values(self.resolve())['low_disk_free_percent'], 1)
+
+    def test_a_target_file_may_only_keep_things_longer_and_anything_sooner_is_clamped_with_a_notice(self):
+        self.write_target(valid(cleanup={'cache_idle_days': 1, 'worktree_idle_days': 1, 'output_idle_days': 2, 'archive_max_days': 3,
+                                         'archive_max_mb': 1, 'references_idle_days': 1, 'low_disk_free_percent': 50}))
+        result = self.resolve()
+        self.assertEqual(self.values(result), self.LIMITS)
+        text = ' '.join(result['notices'])
+        for key in ('cache_idle_days', 'output_idle_days', 'archive_max_days', 'archive_max_mb', 'references_idle_days', 'low_disk_free_percent'):
+            self.assertIn(f'cleanup.{key}', text)
+        self.assertIn('sends more to the Trash', text)
+        self.assertEqual(sum('clamped to the default' in n for n in result['notices']), 6)
+        self.write_target(valid(cleanup={'cache_idle_days': 30, 'worktree_idle_days': 9, 'output_idle_days': 99, 'archive_max_days': 90,
+                                         'archive_max_mb': 5000, 'references_idle_days': 365, 'low_disk_free_percent': 5}))
+        longer = self.values(self.resolve())
+        self.assertEqual((longer['cache_idle_days'], longer['archive_max_mb'], longer['low_disk_free_percent']), (30, 5000, 5))
+
+    def test_a_target_file_can_switch_cleanup_off_and_no_other_file_can_switch_it_back_on(self):
+        self.write_target(valid(cleanup={'enabled': False}))
+        self.assertIs(self.values(self.resolve())['enabled'], False)
+        self.write_local(valid(cleanup={'enabled': False}))
+        self.write_target(valid(cleanup={'enabled': True}))
+        self.assertIs(self.values(self.resolve())['enabled'], False)
+        self.assertIs(self.values(self.resolve('--set', 'cleanup.enabled=true'))['enabled'], True)
+
+    def test_only_the_local_file_or_the_user_may_shorten_retention(self):
+        self.write_local(valid(cleanup={'cache_idle_days': 2, 'low_disk_free_percent': 40}))
+        result = self.resolve()
+        self.assertEqual((self.values(result)['cache_idle_days'], self.values(result)['low_disk_free_percent']), (2, 40))
+        self.assertIn('acts sooner', ' '.join(result['notices']))
+        self.write_target(valid(cleanup={'cache_idle_days': 20}))
+        self.assertEqual(self.values(self.resolve())['cache_idle_days'], 20)
+        result = self.resolve('--set', 'cleanup.cache_idle_days=1')
+        self.assertEqual(result['cleanup']['cache_idle_days']['value'], 1)
+        self.assertEqual(result['cleanup']['cache_idle_days']['source'], 'user instruction (--set)')
+        self.assertEqual(self.run_tool('resolve', '--target', str(self.target), '--workspace', str(self.workspace), '--no-probe',
+                                       '--set', 'cleanup.low_disk_free_percent=99', ok=2).returncode, 2)
+
+    def test_the_status_says_low_disk_only_when_it_is_and_keeps_other_worktrees_neutral(self):
+        harness = self.load()
+        repo = self.base / 'clone'
+        repo.mkdir()
+        git = lambda *args: subprocess.run(['git', '-C', str(repo), *args], check=True, capture_output=True, text=True)
+        git('init', '-q', '-b', 'main')
+        git('-c', 'user.name=T', '-c', 'user.email=t@example.test', 'commit', '-q', '--allow-empty', '-m', 'x')
+        plenty = type('U', (), {'total': 100, 'free': 60})
+        scarce = type('U', (), {'total': 100, 'free': 5})
+        with mock.patch.object(harness.shutil, 'disk_usage', return_value=plenty):
+            calm = harness.cleanup_status(repo, None, 15)
+            self.assertEqual((calm['free_percent'], calm['other_worktrees'], calm['low_disk'], calm['run']), (60.0, 0, False, None))
+            git('worktree', 'add', '-q', '-b', 'feat/x', str(self.base / 'wt'))
+            busy = harness.cleanup_status(repo, self.workspace, 15)
+            self.assertEqual((busy['other_worktrees'], busy['low_disk']), (1, False))
+            self.assertIn('worktree_retire.py', busy['run'])
+            self.assertIn(str(self.workspace), busy['run'])
+        git('worktree', 'remove', str(self.base / 'wt'))
+        with mock.patch.object(harness.shutil, 'disk_usage', return_value=scarce):
+            low = harness.cleanup_status(repo, None, 15)
+            self.assertTrue(low['low_disk'] and low['run'])
+        with mock.patch.object(harness.shutil, 'disk_usage', side_effect=OSError):
+            unknown = harness.cleanup_status(repo, None, 15)
+            self.assertFalse(unknown['low_disk'])
+            self.assertTrue(unknown['run'])
+        with mock.patch.object(harness.shutil, 'disk_usage', return_value=plenty):
+            self.assertIsNone(harness.cleanup_status(self.base / 'not-a-repo', None, 15)['other_worktrees'])
+
+    def test_resolve_reads_only_git_and_disk_for_the_line(self):
+        harness = self.load()
+        seen, real = [], subprocess.run
+        def watch(command, *args, **kwargs):
+            seen.append(command[0])
+            return real(command, *args, **kwargs)
+        with mock.patch.object(harness.subprocess, 'run', side_effect=watch):
+            harness.cleanup_status(self.target, None, 15)
+        self.assertEqual(set(seen), {'git'})
+
+    def test_text_output_gives_a_low_disk_state_and_never_suggests_rm(self):
+        harness = self.load()
+        result = harness.resolve(self.target, ['claude'], workspace=str(self.workspace), probe=False)
+        result['cleanup_status'] = {**result['cleanup_status'], 'low_disk': True, 'free_percent': 4.0, 'run': 'python3 report'}
+        low = harness.render_text(result, False)
+        self.assertIn('LOW DISK: 4.0%', low)
+        self.assertIn('tell the user', low)
+        self.assertIn('Trash', low)
+        self.assertNotRegex(low, r'\brm\b(?! files)')
+        result['cleanup_status'] = {**result['cleanup_status'], 'low_disk': False, 'other_worktrees': 3}
+        calm = harness.render_text(result, False)
+        self.assertNotIn('LOW DISK', calm)
+        self.assertIn('other worktrees: 3', calm)
+
+    def test_both_outputs_carry_the_cleanup_line_and_resolve_writes_nothing(self):
+        before = sorted(str(p) for p in self.base.rglob('*'))
+        result = self.resolve()
+        self.assertEqual(set(result['cleanup_status']), {'free_percent', 'low_disk', 'other_worktrees', 'run'})
+        text = self.run_tool('resolve', '--target', str(self.target), '--workspace', str(self.workspace), '--no-probe',
+                             '--host', 'claude').stdout
+        self.assertIn('cleanup\n  cache_idle_days', text)
+        self.assertEqual(before, sorted(str(p) for p in self.base.rglob('*')))
 
 
 if __name__ == '__main__':

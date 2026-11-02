@@ -128,10 +128,19 @@ local/committed/pushed/merged/published state. Do not claim independent review f
 your own edits. New branches use purpose-based `feat/`, `fix/`, `docs/`, `chore/`
 or `refactor/` names without agent/vendor/model branding.
 
-Library maintainers give standing cleanup authority: after a task's PR merges, its
-owner retires that task's own worktree under
-[retire at delivery](skills/orbyn-worktree/references/task-closeout.md#retire-at-delivery).
-This covers no other owner's tree, and never covers `repo/` targets or emptying the trash.
+Library maintainers give standing cleanup authority. At task closeout, before creating
+a worktree and when `harness.py resolve` prints `LOW DISK`, agents run the cleanup
+`report` and may `apply` it: finished worktrees under `repo/` and the library's sibling
+`<library>-wt/`, their rebuildable caches, and the library's `output/`,
+`output/worktree-archive/` and `orbyn-references/`, under the rules in
+[retire at delivery](skills/orbyn-worktree/references/task-closeout.md#retire-at-delivery)
+and [retention](skills/orbyn-workflow/references/artifact-lifecycle.md#retention-and-growth-decisions).
+A target clone can opt out with `cleanup.enabled: false` in its `.orbyn/harness.json`, and
+target rules come first. Everything else in `repo/` stays report-only. Items move to the
+system Trash and the tool deletes no files, but a retired worktree restored from the
+Trash is files only (Git's own record of it is cleared), and recovery depends on the
+Trash staying unemptied, which Finder's 30-day setting can undo by itself: never empty it, never remove files by hand, and tell the user when `apply`
+cannot free enough space.
 
 For worktree isolation, naming and cleanup, follow
 [orbyn-worktree](skills/orbyn-worktree/SKILL.md). Use the primary clone’s sibling
