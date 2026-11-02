@@ -62,36 +62,24 @@ yes. No file in a repository can grant an agent permission.
 Every request follows one path, and checks hold it to the rules at each step.
 
 ```mermaid
+%%{init: {"flowchart": {"nodeSpacing": 24, "rankSpacing": 28}}}%%
 flowchart TB
   accTitle: How Orbyn skills run
-  accDescr: You ask the host agent. AGENTS.md and the harness resolve the rules and limits, and the skill library supplies the method. A lead briefs scouts and workers. The change then passes local checks, CI, the PR gate and your approval before reaching main.
-  subgraph ask["You ask"]
+  accDescr: You ask the host agent. AGENTS.md routes the request and the harness resolves tiers and limits. A lead uses the owning skill and briefs scouts and workers. The change then passes checks, the PR gate and your approval before reaching main.
+  subgraph start["1. Start"]
     direction LR
-    you(["You"]) ==> host["Host agent<br/>Claude Code, Codex, Cursor"]
+    you(["You"]) ==> host["Host agent"] ==> rules["AGENTS.md"] ==> harness["Harness: tiers, limits"]
   end
-  subgraph start["Start of every task"]
+  subgraph agents["2. Work"]
     direction LR
-    rules["AGENTS.md<br/>shared rules"] ==> harness["Harness<br/>tiers and limits"]
-    settings["Repo settings"] --> harness
+    skill["Owning skill"] --> lead["Lead: Opus, Sol"] ==> worker["Worker: Sonnet, Terra"]
+    lead --> scout["Scout: Haiku, Luna"]
   end
-  subgraph library["Skill library"]
+  subgraph merge["3. Prove"]
     direction LR
-    workflow["orbyn-workflow<br/>picks the playbook"] --> skill["Owning skill<br/>method on demand"]
+    checks["Checks and CI"] ==> gate["PR gate"] ==> review["You approve"] ==> main["main"]
   end
-  subgraph agents["Agents"]
-    direction LR
-    scout["Scout<br/>Haiku or Luna"] ~~~ lead["Lead<br/>Opus or Sol"]
-    lead ==> worker["Worker<br/>Sonnet or Terra"]
-  end
-  subgraph merge["Before merge"]
-    direction LR
-    checks["Local checks and CI"] ==> gate["PR gate"] ==> review["You approve"] ==> main["main"]
-  end
-  ask ==> start
-  start --> library
-  start ==> agents
-  library --> agents
-  agents ==> merge
+  start ==> agents ==> merge
 ```
 
 The thick line is one request. Thin lines show what guides it. The [guide](docs/guide.md#full-diagrams) has the full versions of these diagrams.
