@@ -17,29 +17,87 @@ from test_tools import ROOT, module
 tool = module('worktree_retire', ROOT/'skills/orbyn-worktree/scripts/worktree_retire.py')
 ORIGINAL = {name: getattr(tool, name) for name in ('open_prs', 'open_paths', 'landed', 'run', 'trash')}
 BASE = 'origin/main'
+# scripts/run_tests.py runs each of these classes as its own process; plain unittest runs them all.
+SHARDS = ['TrashAndFinishedTests', 'SecretsAndNamesTests', 'IdleAndKeepTests', 'RecheckAndHoldTests', 'ClassTests', 'SecondReviewTests',
+          'LastRoundTests']
 
 
-class CleanupTests(unittest.TestCase):
+DEFAULT_IGNORE = 'target/\nnode_modules/\n.venv/\ndist/\nbuild/\nvenv/\n*.log\n.orbyn/\n'
+APP_FILES = {'Cargo.lock': 'x', 'REBUILD.txt': 'cargo build', 'src.txt': 'src\n'}
+
+
+def sh(path, *args):
+    return subprocess.run(['git', '-C', str(path), *args], check=True, capture_output=True, text=True).stdout
+
+
+def commit(path, message):
+    sh(path, '-c', 'user.name=T', '-c', 'user.email=t@example.test', 'commit', '-qm', message)
+
+
+def write(path, text='x', size=None):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(b'x'*size if size else text.encode())
+    return path
+
+
+def make_clone(base, lib, name, files, gitignore=DEFAULT_IGNORE):
+    bare = base/f'{name}.git'
+    sh(base, 'init', '-q', '--bare', '-b', 'main', str(bare))
+    path = lib/'repo'/name
+    path.mkdir(parents=True)
+    sh(path, 'init', '-q', '-b', 'main')
+    sh(path, 'remote', 'add', 'origin', str(bare))
+    write(path/'.gitignore', gitignore)
+    for relative, text in files.items():
+        write(path/relative, text)
+    sh(path, 'add', '.')
+    sh(path, 'add', '-f', *files)
+    commit(path, 'base')
+    sh(path, 'push', '-q', '-u', 'origin', 'main')
+    return path
+
+
+def build_template(base):
+    """The library, its origin and the `app` clone with remotes, built once and copied for each test."""
+    origin = base/'orbyn-fullstack-skills.git'
+    sh(base, 'init', '-q', '--bare', '-b', 'main', str(origin))
+    lib = base/'lib'
+    lib.mkdir()
+    sh(lib, 'init', '-q', '-b', 'main')
+    sh(lib, 'remote', 'add', 'origin', str(origin))
+    for relative, text in (('skills/catalog.json', '{"schema_version": 1, "skills": {"x": {}}}'), ('scripts/sync-agent-models.py', ''),
+                           ('.claude/skills/x', 'link'), ('.gitignore', 'repo/\noutput/\norbyn-references/\n.orbyn/\n')):
+        write(lib/relative, text)
+    sh(lib, 'add', '.')
+    commit(lib, 'library')
+    sh(lib, 'push', '-q', '-u', 'origin', 'main')
+    (lib/'repo').mkdir()
+    (lib/'output').mkdir()
+    (base/'trash').mkdir()
+    make_clone(base, lib, 'app', APP_FILES)
+
+
+class CleanupCase(unittest.TestCase):
+    """Fixtures only. The tests below are split into classes so scripts/run_tests.py can run them in parallel."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.template_dir = tempfile.TemporaryDirectory()
+        cls.addClassCleanup(cls.template_dir.cleanup)
+        cls.template = Path(os.path.realpath(cls.template_dir.name))
+        build_template(cls.template)
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.base = Path(os.path.realpath(self.temp.name))
+        # Fresh mtimes (copy, not copy2) keep age checks honest; remotes are repointed at this copy.
+        shutil.copytree(self.template, self.base, symlinks=True, dirs_exist_ok=True, copy_function=shutil.copy)
         self.origin = self.base/'orbyn-fullstack-skills.git'
-        self.sh(self.base, 'init', '-q', '--bare', '-b', 'main', str(self.origin))
         self.lib = self.base/'lib'
-        self.lib.mkdir()
-        self.sh(self.lib, 'init', '-q', '-b', 'main')
-        self.sh(self.lib, 'remote', 'add', 'origin', str(self.origin))
-        for relative, text in (('skills/catalog.json', '{"schema_version": 1, "skills": {"x": {}}}'), ('scripts/sync-agent-models.py', ''),
-                               ('.claude/skills/x', 'link'), ('.gitignore', 'repo/\noutput/\norbyn-references/\n.orbyn/\n')):
-            self.write(self.lib/relative, text)
-        self.sh(self.lib, 'add', '.')
-        self.commit(self.lib, 'library')
-        self.sh(self.lib, 'push', '-q', '-u', 'origin', 'main')
-        (self.lib/'repo').mkdir()
-        (self.lib/'output').mkdir()
+        self.sh(self.lib, 'remote', 'set-url', 'origin', str(self.origin))
         self.trashed, self.bin, self.clock = [], self.base/'trash', 0
-        self.bin.mkdir()
         for name, value in (('open_paths', set()), ('open_prs', [])):
             patcher = mock.patch.object(tool, name, return_value=value)
             patcher.start()
@@ -48,37 +106,22 @@ class CleanupTests(unittest.TestCase):
             patcher = mock.patch.object(tool, name, side_effect=self.fake_trash if name == 'trash' else lambda: time.time() + self.clock*86400)
             patcher.start()
             self.addCleanup(patcher.stop)
-        self.app = self.clone('app', {'Cargo.lock': 'x', 'REBUILD.txt': 'cargo build', 'src.txt': 'src\n'})
+        self.app = self.lib/'repo/app'
+        self.sh(self.app, 'remote', 'set-url', 'origin', str(self.base/'app.git'))
 
     # --- fixtures
 
     def sh(self, path, *args):
-        return subprocess.run(['git', '-C', str(path), *args], check=True, capture_output=True, text=True).stdout
+        return sh(path, *args)
 
     def commit(self, path, message):
-        self.sh(path, '-c', 'user.name=T', '-c', 'user.email=t@example.test', 'commit', '-qm', message)
+        commit(path, message)
 
     def write(self, path, text='x', size=None):
-        path = Path(path)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(b'x'*size if size else text.encode())
-        return path
+        return write(path, text, size)
 
-    def clone(self, name, files, gitignore='target/\nnode_modules/\n.venv/\ndist/\nbuild/\nvenv/\n*.log\n.orbyn/\n'):
-        bare = self.base/f'{name}.git'
-        self.sh(self.base, 'init', '-q', '--bare', '-b', 'main', str(bare))
-        path = self.lib/'repo'/name
-        path.mkdir(parents=True)
-        self.sh(path, 'init', '-q', '-b', 'main')
-        self.sh(path, 'remote', 'add', 'origin', str(bare))
-        self.write(path/'.gitignore', gitignore)
-        for relative, text in files.items():
-            self.write(path/relative, text)
-        self.sh(path, 'add', '.')
-        self.sh(path, 'add', '-f', *files)
-        self.commit(path, 'base')
-        self.sh(path, 'push', '-q', '-u', 'origin', 'main')
-        return path
+    def clone(self, name, files, gitignore=DEFAULT_IGNORE):
+        return make_clone(self.base, self.lib, name, files, gitignore)
 
     def tree(self, name, repo=None, where=None):
         repo = repo or self.app
@@ -163,6 +206,7 @@ class CleanupTests(unittest.TestCase):
         folder.mkdir(exist_ok=True)
         (folder/'harness.json').write_text(json.dumps({'schema_version': 1, 'cleanup': cleanup}))
 
+class TrashAndFinishedTests(CleanupCase):
     # --- 1 and 2: the whole folder goes to the Trash
 
     def test_a_finished_tree_moves_whole_with_its_ignored_files_and_leaves_only_a_record(self):
@@ -379,6 +423,7 @@ class CleanupTests(unittest.TestCase):
         self.assertTrue(elsewhere.is_dir())
         self.assertFalse(sibling.exists())
 
+class SecretsAndNamesTests(CleanupCase):
     # --- 7: secrets
 
     def test_secrets_hold_in_every_class_and_a_crowd_of_fixtures_cannot_hide_one(self):
@@ -464,6 +509,7 @@ class CleanupTests(unittest.TestCase):
         self.apply()
         self.assertTrue((path/'target/blob').is_file())
 
+class IdleAndKeepTests(CleanupCase):
     # --- 11: idle time
 
     def test_idle_time_follows_ctime_folders_and_unreadable_parts(self):
@@ -601,6 +647,7 @@ class CleanupTests(unittest.TestCase):
         self.assertEqual(sorted(r['outcome'] for r in data['results']), ['failed', 'trashed'])
         self.assertTrue(task.is_dir() and not other.exists())
 
+class RecheckAndHoldTests(CleanupCase):
     # --- 16 to 18: recheck, lock, scope
 
     def test_the_recheck_reads_the_registry_and_head_again(self):
@@ -781,6 +828,7 @@ class CleanupTests(unittest.TestCase):
         self.apply()
         self.assertEqual(self.trashed, [])
 
+class ClassTests(CleanupCase):
     # --- classes
 
     def test_report_changes_nothing_and_lists_each_class_without_the_primary_checkouts(self):
@@ -969,6 +1017,7 @@ class CleanupTests(unittest.TestCase):
         with self.assertRaisesRegex(tool.Refused, 'Not a linked worktree'):
             tool.retire(self.app, self.app, BASE, self.base/'rec')
 
+class SecondReviewTests(CleanupCase):
     # --- second review: N1 to N16 and the low list
 
     def test_n1_private_refs_and_stale_remote_refs_cannot_hide_a_reflog_only_commit(self):
@@ -1260,6 +1309,7 @@ class CleanupTests(unittest.TestCase):
         self.sh(self.lib, 'remote', 'remove', 'origin')
         self.assertEqual(tool.verify_workspace(self.lib), self.lib)
 
+class LastRoundTests(CleanupCase):
     # --- last round: A (commit-creating reflog entries), C (unreadable folder) and N9 names
 
     def test_a_rebase_or_fast_forward_cherry_pick_alone_is_not_a_commit_of_its_own(self):

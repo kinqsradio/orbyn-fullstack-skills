@@ -28,6 +28,8 @@ when the task requires it and that change is within scope; do not add automation
 for every task. Reuse existing affected-target selection before building another
 classifier or mandatory manifest.
 
+In this library, `scripts/run_tests.py --changed-from <base>` is that selection for unit tests: it adds a protected set and runs everything when a change maps to no test.
+
 Before expensive checks or delegation, designate the worktree's gates in the
 existing task brief, PR or verification guide. For a small task, a few lines are
 enough; no new tracker or configuration file is mandatory. Record:
