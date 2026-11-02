@@ -89,6 +89,10 @@ def load_executable(folder=EXECUTABLE):
         hints = case.get('tier_hints', {})
         if not isinstance(hints, dict) or any(LEAD_OR_BANNED.search(str(v)) for v in hints.values()):
             raise ValueError(f'{path.name}: tier hints may not name a lead or refused tier')
+        depends = case.get('depends_on', [])
+        if (not isinstance(depends, list) or len(depends) > 40
+                or any(not isinstance(d, str) or not d or PurePosixPath(d).is_absolute() or '..' in PurePosixPath(d).parts or '\\' in d for d in depends)):
+            raise ValueError(f'{path.name}: depends_on must be a list of at most 40 relative repository paths')
         for field in ('answer_must_match', 'answer_must_not_match'):
             patterns = case.get(field, [])
             if not isinstance(patterns, list):

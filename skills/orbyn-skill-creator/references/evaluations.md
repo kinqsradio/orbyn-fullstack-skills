@@ -152,6 +152,38 @@ A judge model is for subjective cases only, taken from the other vendor, and use
 against the user's own labels. The default judge is the cheapest calibrated model: haiku or luna, then
 sonnet or terra only if the cheaper one fails calibration.
 
+## Evals on a pull request
+
+Evals run on the author's machine with whichever host they use, never in GitHub Actions, and reach GitHub through
+`gh`, so it does not matter which AI tool ran them. The reviewer sees two things: the PR, and an advisory
+`agent-evals` check shown like CI, plus a trend dashboard. The check is never required.
+
+When a PR changes a core skill, the harness or the model registry, or a file an executable case depends on, run only
+the affected cases on the cheapest ladder, inside the per-PR cap:
+
+1. `python3 skills/orbyn-skill-creator/scripts/eval_report.py affected --base origin/main` prints the case ids. A
+   case's `case.json` may declare `depends_on` (repository paths; a folder matches everything under it). Without it
+   a case depends on its expected skill's folder, `skills/orbyn-workflow/` and `docs/agents/models.json`, and always
+   on its own folder.
+2. Read the cap from `harness.py resolve`: `evals.max_runs_per_pr`. Only the owner's local file or the user's `--set`
+   sets it; a target's committed file is rejected. With no cap set, ask the user before spending anything.
+3. Run `eval_run.py` with `--case` for each id, `--ladder`, `--live`, `--max-runs <cap>` and `--out`.
+4. `eval_report.py summarize --run <out>/with/*/run.json --run <out>/without/*/run.json --out summary.json --pr <n>`
+   keeps counts, tiers, pass^k, tokens, reported cost, holdout flags and local evidence paths. It drops transcripts and
+   key text and redacts secret-looking text. Cost stays null when the CLI did not report one.
+5. `eval_report.py publish --summary summary.json --pr <n> --repo owner/name` is a dry run that prints every write.
+   Add `--send` to set the `agent-evals` status on the PR head, create or update one marked PR comment and add the
+   summary to `history/` on the `eval-results` branch (created from an orphan commit; the working tree is never
+   touched). It refuses a summary from a commit that is not the PR head, runs from a dirty checkout and text over
+   GitHub's limits.
+
+For a main baseline, run the same cases on main, `summarize --main`, and `publish --history-only --send`; later PR
+comments then show the change from it. `eval_report.py fetch --repo owner/name --out history` copies the history
+and `eval_report.py dashboard --history history --out dashboard.html` writes one self-contained page (no external
+requests, light and dark, phone-readable) with pass rate by case, tier and host, with versus without skills, runs and
+cost per evaluation, and non-discriminating cases flagged. `dashboard --publish [--send]` also writes `index.html` to
+`eval-results`; it is a dry run by default, and GitHub Pages stays off unless the owner turns it on.
+
 ## Suite evolution
 
 When adding development cases, keep existing holdout criteria unchanged and record

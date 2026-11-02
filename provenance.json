@@ -917,6 +917,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Executable evals at least cost: eval_run.py runner, harvest.py, ten executable cases, cheap-tier policy and tests"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Eval report: agent-evals status, PR comment, history and dashboard"
         }
       ]
     },
@@ -1422,6 +1429,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Pointer from the answer-key reference to harvest.py"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Harness evals.max_runs_per_pr cap for automatic PR evals"
         }
       ]
     },
