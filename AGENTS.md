@@ -104,7 +104,7 @@ persistence, clients and operations. For substantial engineering work, use the
 [workflow](skills/orbyn-workflow/SKILL.md) and bounded delegation within the resolved
 harness limits when the required host configuration is available. A child completes
 its assigned slice directly. Name each child and session
-`Orbyn [Role] [N] - [Model] - [Task] - [Evidence or ID]`.
+`Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]`.
 If a named model/processing mode cannot be preserved, report the limitation and
 continue permitted direct work. No recursive agent chains or unrequested chats.
 

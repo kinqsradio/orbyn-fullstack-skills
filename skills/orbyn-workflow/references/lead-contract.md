@@ -58,7 +58,7 @@ the lead, who owns integration and review.
 Name every child and session so its work can be traced at a glance:
 
 ```text
-Orbyn [Role] [N] - [Model] - [Task] - [Evidence or ID]
+Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]
 ```
 
 | Field | Use |
@@ -66,13 +66,14 @@ Orbyn [Role] [N] - [Model] - [Task] - [Evidence or ID]
 | Role | Lead, Engineer, Research, Architect, Reviewer, Verifier, Security or Scout |
 | N | Counts up per role in this session from 1: Orbyn Engineer 1, Orbyn Engineer 2 |
 | Model | The model that actually runs, such as Sonnet 5.5 or Terra |
+| Effort | The effort that actually runs, such as Medium |
 | Task | A few words on the outcome |
 | Evidence or ID | Optional: a PR, issue, finding, threat id or commit |
 
-For example, `Orbyn Engineer 2 - Sonnet 5.5 - Fix icon fetch - PR 71`, or
-`Orbyn Security 1 - Opus 5.5 - Verify ledger guard - T9`. A reused child keeps its
+For example, `Orbyn Engineer 2 - Sonnet 5.5 - Medium - Fix icon fetch - PR 71`, or
+`Orbyn Security 1 - Opus 5.5 - Medium - Verify ledger guard - T9`. A reused child keeps its
 number, and a replacement takes the next one, so a number always means one child. Rename a child that
-escalates, so the name never reports a model it is not using. Where the host's name
+escalates, so the name never reports a model or effort it is not using. Where the host's name
 field is short, keep Role and Task and open the brief with the full name. A name the
 user chose wins. Names are labels: they grant nothing, and in public repositories they
 carry no private names or secrets.
