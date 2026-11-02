@@ -39,5 +39,7 @@ Downloaded code and research belong in ignored `orbyn-references/`, separate
 from the reviewed offline support above. The
 [upstream maintenance skill](../../skills/orbyn-upstream-review/SKILL.md) owns
 baseline/candidate comparison, provenance, exclusion checks and selective updates.
+A [weekly watcher](../../.github/workflows/upstream-watch.yml) reports upstream
+changes to pinned sources as issues; it never downloads upstream code or moves a pin.
 The [pstack review](../../tools/research/2026-10-24-pstack.md) records one dated
 assessment; its candidate revision does not replace the original import pin.

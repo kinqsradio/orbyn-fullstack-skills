@@ -186,6 +186,13 @@
           "model": "unrecorded",
           "date": "2026-11-02",
           "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Recorded source_root in the statechart snapshot for the upstream watcher"
         }
       ]
     },
@@ -812,6 +819,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Cleanup evaluation cases"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Added upstream watcher evaluation cases"
         }
       ]
     },
@@ -1736,6 +1750,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Reference cleanup rules after safety review"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5",
+          "effort": "medium",
+          "date": "2026-11-02",
+          "scope": "Added the upstream watcher issue workflow"
         }
       ]
     },

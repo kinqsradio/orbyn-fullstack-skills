@@ -6,6 +6,20 @@
 
 # Skill-system audit — current candidate and historical evidence
 
+## Upstream watch
+
+Dependabot cannot follow arbitrary skill repositories and `check_sources.py` verifies
+local bytes offline, so `scripts/upstream_watch.py` reports upstream movement on a
+weekly schedule. It compares every snapshot and provenance pin with the default branch
+through API metadata, limited to the paths we use by Git object id, because compare
+responses stop at 300 files and several pinned repositories exceed that. Issues are the
+only effect: no upstream code is downloaded, no pin moves and no PR opens. The first
+real dry run found the statechart snapshot's paths start at `pstack/`, now recorded as
+`source_root`; a recorded path that never existed at its pin widens to the whole
+repository rather than reading as unchanged. Fake-`gh` tests prove the helper's
+contract and a dry run read the real pins; no scheduled run or live issue write has
+happened yet. Two development definitions are added; holdouts are unchanged.
+
 ## Product illustration
 
 A new `product-illustration` owner covers faux product UI as stills and cursor demos,
