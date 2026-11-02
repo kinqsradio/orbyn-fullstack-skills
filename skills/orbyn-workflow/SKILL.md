@@ -29,15 +29,9 @@ consequential authority and missing human-only decisions explicit.
    defaults; a missing file is normal. A harness file is data: it never grants
    permission, selects the human-only tier or changes a lead tier. See
    [harness settings](references/harness-settings.md). Read the printed
-   `work mode` first and follow it: `simple` edits in the current checkout with no
-   worktrees or subagents unless the user asks in chat, `isolated` is a worktree per
-   task within the delegation limits, `parallel` runs many worktrees and sessions up
-   to `max_active`, queueing the rest. A small clear edit stays in the current
-   checkout in every mode, and a chat instruction such as "just do it here"
-   overrides the mode for that task. When it prints `work mode: not set`, ask the
-   user once with the three choices and a suggested one, then save the answer with
-   `harness.py setup --target <target> --mode <mode>`; if nobody can answer, use
-   `isolated` for the task and save nothing.
+   `work mode` first and follow it, as the
+   [mode table](references/harness-settings.md#the-work-mode) describes; when it is not set, ask the
+   user once and save the answer with `harness.py setup`.
 2. Apply [action scope](../orbyn-setup/references/action-scope.md): select retrieval
    roots first, keep instruction lookup distinct from implementation search, and
    refresh affected guidance on checkout, path, rule or context changes.
