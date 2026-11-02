@@ -91,9 +91,20 @@ and report the limitation; do not copy shared policy into the target to mask it.
 python3 scripts/sync-agent-skills.py --write
 python3 scripts/library_manifest.py --write
 python3 scripts/check-library.py
-python3 -m unittest discover -s tests -v
+python3 scripts/run_tests.py --changed-from origin/main
 git diff --check
 ```
+
+Tests: `scripts/run_tests.py` runs each test module in its own process, in parallel
+(`--jobs N`, default the CPU count), and prints a summary with the slowest modules.
+
+- Fast suite, for a pull request: `python3 scripts/run_tests.py --changed-from origin/main`
+  runs the modules that reference the changed paths or scripts, plus a protected set that
+  guards destructive and security code. It prints why each module was chosen. When a changed
+  path maps to no module, or touches `tests/` helpers, `scripts/`, `.github/`, `distribution/`
+  or the selection logic, it runs everything. This is what the pull-request check runs.
+- Full suite: `python3 scripts/run_tests.py`. Pushes to `main` and a nightly schedule run it.
+  `python3 -m unittest discover -s tests -v` runs the same tests in one process.
 
 The manifest update makes the proposed shared-file changes explicit; inspect it
 with the diff. Do not edit hashes to conceal a mismatched source or missing file.
