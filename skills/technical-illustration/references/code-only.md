@@ -26,6 +26,11 @@ The motion kit's optional Three.js graphics profile and Lottie input fall under 
 rule, as do `still_to_layers.py` (OpenCV), `analyze-audio.py` (librosa and numpy) and any
 speech model. Leave them out unless the user approves them for the job.
 
+The [product-illustration](../../product-illustration/SKILL.md) kit is adapted MIT source
+held in this library, and React is its host runtime. Web illustrations built with it are
+outside this video rule. A video that uses the kit needs the user's approval for React and
+must list it as an allowance in the report. Everything else in this rule still applies.
+
 ## Treat missing things as code to write
 
 Never answer "that needs an asset" or "that needs an animation tool". New poses, walks,

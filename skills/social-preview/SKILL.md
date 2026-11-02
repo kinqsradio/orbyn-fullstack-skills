@@ -77,5 +77,6 @@ the relevant platform. Layout dimensions are design choices; confirm current
 platform requirements when necessary.
 
 Website Open Graph changes belong to the owning website task, and product flow/layout
-changes to [orbyn-ui-design](../orbyn-ui-design/SKILL.md). Do not create a site,
+changes to [orbyn-ui-design](../orbyn-ui-design/SKILL.md). Faux product UI for a page
+hero or feature card belongs to [product-illustration](../product-illustration/SKILL.md). Do not create a site,
 publish, schedule or modify account settings as a side effect of preview generation.

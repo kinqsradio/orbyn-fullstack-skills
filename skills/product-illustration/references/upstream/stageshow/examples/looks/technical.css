@@ -1,0 +1,38 @@
+/* A technical product look: cool grays, one indigo accent, medium radius.
+   Copy this file to start a look for a product: set the tokens its design
+   system defines and leave the rest to the kit. */
+
+.look-technical .ss-stage {
+  /* Color: cool grays for surfaces, lines and text, indigo for the accent */
+  --ss-canvas: #f8f9fb;
+  --ss-surface: #fff;
+  --ss-chrome: #fff;
+  --ss-well: #eff1f5;
+  --ss-line: #e6e8ee;
+  --ss-line-faint: #eff1f5;
+  --ss-text: #5e6470;
+  --ss-text-strong: #1b2028;
+  --ss-text-faint: #8a8f9c;
+  --ss-icon: #5e6470;
+  --ss-icon-faint: #b8bcc8;
+  --ss-accent: #3f5fd8;
+  --ss-accent-2: #3f5fd8;
+  --ss-accent-soft: #e3e9fd;
+  --ss-success: #2f9e6b;
+  --ss-danger: #dc4a4e;
+
+  /* Type: the system stack */
+  --ss-font: system-ui, sans-serif;
+
+  /* Shape: 4px for small controls, 6px for fields, 8px for panels, 12px for
+     the window, full for badges */
+  --ss-radius-sm: 4px;
+  --ss-radius-md: 6px;
+  --ss-radius-lg: 8px;
+  --ss-radius-window: 12px;
+  --ss-radius-pill: 9999px;
+
+  /* Density: 32px controls, 24px rows */
+  --ss-control: 32px;
+  --ss-row: 24px;
+}
