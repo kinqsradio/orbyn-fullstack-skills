@@ -4,6 +4,8 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * *'
 permissions:
   contents: read
 concurrency:
@@ -35,8 +37,14 @@ jobs:
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: python3 scripts/check-authoring.py --base "$BASE_SHA"
-      - name: Verify helpers with synthetic fixtures (no model calls)
-        run: python3 -m unittest discover -s tests -v
+      - name: Verify helpers affected by this change, plus the protected set (no model calls)
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: python3 scripts/run_tests.py --changed-from "$BASE_SHA"
+      - name: Verify every helper with synthetic fixtures (no model calls)
+        if: github.event_name != 'pull_request'
+        run: python3 scripts/run_tests.py
       - name: Verify bundled audit record validators (synthetic data, no target audit)
         run: |
           node --version
