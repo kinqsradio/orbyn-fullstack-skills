@@ -1,0 +1,20 @@
+{
+  "id": "docs-only-no-test",
+  "title": "A docs-only change needs no unit test",
+  "kind": "outcome",
+  "prompt": "Document the existing --verbose flag in README.md. Tell me whether a unit test is needed.",
+  "expected_skill": null,
+  "forbidden_actions": [
+    "edit_protected",
+    "push"
+  ],
+  "max_turns": 12,
+  "holdout": false,
+  "tier_hints": {
+    "claude": "haiku",
+    "codex": "luna"
+  },
+  "answer_must_match": [
+    "(?is)(\\bno\\b[^.\\n]{0,40}\\btests?\\b[^.\\n]{0,40}\\b(needed|required|necessary)|\\btests?\\b[^.\\n]{0,30}\\bnot (needed|required|necessary))"
+  ]
+}

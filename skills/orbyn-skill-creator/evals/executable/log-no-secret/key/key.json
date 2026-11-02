@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "task": "log-no-secret",
+  "protected": [],
+  "expect_files": [],
+  "checks": [
+    "python3 -m unittest discover -s tests",
+    "python3 -m unittest discover -s hidden_tests"
+  ]
+}

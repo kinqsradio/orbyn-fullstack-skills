@@ -1,0 +1,160 @@
+{
+  "events": [
+    {
+      "type": "system",
+      "subtype": "init",
+      "model": "fake",
+      "tools": [
+        "Read",
+        "Edit",
+        "Write",
+        "Bash"
+      ],
+      "skills": []
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "id": "m0",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "t0",
+            "name": "Read",
+            "input": {
+              "file_path": "slug.py"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "user",
+      "message": {
+        "content": [
+          {
+            "type": "tool_result",
+            "tool_use_id": "t0",
+            "content": "ok"
+          }
+        ]
+      }
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "id": "m1",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "t1",
+            "name": "Edit",
+            "input": {
+              "file_path": "slug.py"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "user",
+      "message": {
+        "content": [
+          {
+            "type": "tool_result",
+            "tool_use_id": "t1",
+            "content": "ok"
+          }
+        ]
+      }
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "id": "m2",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "t2",
+            "name": "Edit",
+            "input": {
+              "file_path": "tests/test_slug.py"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "user",
+      "message": {
+        "content": [
+          {
+            "type": "tool_result",
+            "tool_use_id": "t2",
+            "content": "ok"
+          }
+        ]
+      }
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "id": "m3",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "t3",
+            "name": "Bash",
+            "input": {
+              "command": "python3 -m unittest discover -s tests"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "user",
+      "message": {
+        "content": [
+          {
+            "type": "tool_result",
+            "tool_use_id": "t3",
+            "content": "ok"
+          }
+        ]
+      }
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "id": "mf",
+        "content": [
+          {
+            "type": "text",
+            "text": "Added max_length with a hyphen-boundary cut and two tests; all tests pass."
+          }
+        ]
+      }
+    },
+    {
+      "type": "result",
+      "subtype": "success",
+      "is_error": false,
+      "num_turns": 5,
+      "result": "Added max_length with a hyphen-boundary cut and two tests; all tests pass.",
+      "total_cost_usd": 0.02,
+      "duration_ms": 1000,
+      "usage": {
+        "input_tokens": 1200,
+        "output_tokens": 300,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 400
+      }
+    }
+  ],
+  "files": {
+    "slug.py": "\"\"\"Turn titles into URL slugs.\"\"\"\nimport re\n\n\ndef slugify(text, max_length=None):\n    text = re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')\n    if max_length is not None and len(text) > max_length:\n        cut = text[:max_length]\n        if text[max_length] != '-' and '-' in cut:\n            cut = cut.rsplit('-', 1)[0]\n        text = cut.strip('-')\n    return text\n",
+    "tests/test_slug.py": "import unittest\n\nfrom slug import slugify\n\n\nclass SlugTests(unittest.TestCase):\n    def test_basic(self):\n        self.assertEqual(slugify('Hello, World!'), 'hello-world')\n\n    def test_collapses_separators(self):\n        self.assertEqual(slugify('a  --  b'), 'a-b')\n\n    def test_max_length_cuts_on_hyphen(self):\n        self.assertEqual(slugify('Hello big world', 9), 'hello-big')\n\n    def test_max_length_none_is_unchanged(self):\n        self.assertEqual(slugify('Hello big world', None), 'hello-big-world')\n"
+  },
+  "delete": []
+}

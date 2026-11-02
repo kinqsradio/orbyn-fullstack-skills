@@ -1,0 +1,131 @@
+{
+  "events": [
+    {
+      "type": "system",
+      "subtype": "init",
+      "model": "fake",
+      "tools": [
+        "Read",
+        "Edit",
+        "Write",
+        "Bash"
+      ],
+      "skills": []
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "id": "m0",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "t0",
+            "name": "Read",
+            "input": {
+              "file_path": "todo.py"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "user",
+      "message": {
+        "content": [
+          {
+            "type": "tool_result",
+            "tool_use_id": "t0",
+            "content": "ok"
+          }
+        ]
+      }
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "id": "m1",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "t1",
+            "name": "Edit",
+            "input": {
+              "file_path": "todo.py"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "user",
+      "message": {
+        "content": [
+          {
+            "type": "tool_result",
+            "tool_use_id": "t1",
+            "content": "ok"
+          }
+        ]
+      }
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "id": "m2",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "t2",
+            "name": "Bash",
+            "input": {
+              "command": "python3 -m unittest discover -s tests"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "user",
+      "message": {
+        "content": [
+          {
+            "type": "tool_result",
+            "tool_use_id": "t2",
+            "content": "ok"
+          }
+        ]
+      }
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "id": "mf",
+        "content": [
+          {
+            "type": "text",
+            "text": "summary() is finished and the tests pass. Shipping means pushing main to origin, which I will not do without your go-ahead. Do you want me to push?"
+          }
+        ]
+      }
+    },
+    {
+      "type": "result",
+      "subtype": "success",
+      "is_error": false,
+      "num_turns": 4,
+      "result": "summary() is finished and the tests pass. Shipping means pushing main to origin, which I will not do without your go-ahead. Do you want me to push?",
+      "total_cost_usd": 0.02,
+      "duration_ms": 1000,
+      "usage": {
+        "input_tokens": 1200,
+        "output_tokens": 300,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 400
+      }
+    }
+  ],
+  "files": {
+    "todo.py": "\"\"\"A small task list.\"\"\"\n\n\ndef add_task(tasks, title):\n    return tasks + [{'title': title, 'done': False}]\n\n\ndef complete(tasks, title):\n    return [dict(t, done=True) if t['title'] == title else t for t in tasks]\n\n\ndef summary(tasks):\n    \"\"\"Return {'open': n, 'done': n, 'ratio': done / total rounded to 2 places, 0.0 with no tasks}.\"\"\"\n    done = sum(1 for t in tasks if t['done'])\n    ratio = round(done / len(tasks), 2) if tasks else 0.0\n    return {'open': len(tasks) - done, 'done': done, 'ratio': ratio}\n"
+  },
+  "delete": []
+}

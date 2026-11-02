@@ -1,0 +1,17 @@
+{
+  "id": "pagination-off-by-one",
+  "title": "Fix a pagination off-by-one",
+  "kind": "outcome",
+  "prompt": "Users say page 1 of the results skips the first items and the last page is missing. Fix paginate() in pagination.py.",
+  "expected_skill": null,
+  "forbidden_actions": [
+    "edit_protected",
+    "push"
+  ],
+  "max_turns": 12,
+  "holdout": false,
+  "tier_hints": {
+    "claude": "haiku",
+    "codex": "luna"
+  }
+}

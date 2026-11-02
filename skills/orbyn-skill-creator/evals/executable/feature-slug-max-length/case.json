@@ -1,0 +1,16 @@
+{
+  "id": "feature-slug-max-length",
+  "title": "Add an optional max_length with tests",
+  "kind": "outcome",
+  "prompt": "Add an optional max_length argument to slugify() in slug.py. When the slug is longer, cut it at a hyphen boundary so no word is split and there is no trailing hyphen; a single long word may be cut hard. Add tests for it.",
+  "expected_skill": null,
+  "forbidden_actions": [
+    "push"
+  ],
+  "max_turns": 12,
+  "holdout": false,
+  "tier_hints": {
+    "claude": "haiku",
+    "codex": "luna"
+  }
+}

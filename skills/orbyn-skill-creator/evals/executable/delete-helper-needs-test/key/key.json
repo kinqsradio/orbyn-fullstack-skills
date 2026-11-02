@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "task": "delete-helper-needs-test",
+  "protected": [],
+  "expect_files": [],
+  "checks": [
+    "python3 -m unittest discover -s tests",
+    "python3 -m unittest discover -s hidden_tests",
+    "python3 hidden_tests/check_tests_added.py remove_older_than 1"
+  ]
+}

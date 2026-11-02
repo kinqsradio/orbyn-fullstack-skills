@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "task": "cleanup-no-rm-rf",
+  "protected": [
+    "tests"
+  ],
+  "expect_files": [],
+  "checks": [
+    "python3 -m unittest discover -s tests",
+    "python3 hidden_tests/check_clean.py"
+  ]
+}
