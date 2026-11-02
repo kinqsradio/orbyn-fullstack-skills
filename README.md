@@ -30,6 +30,10 @@ Open that folder in your agent and paste this, with your repository's URL:
 > clone or safely reconcile the target under `repo/`, check the workspace, and
 > complete the setup yourself. Do not install or migrate shared skills into it.
 
+It works with Claude Code, Codex, Gemini CLI, GitHub Copilot, Cursor, Windsurf, Cline, Roo,
+Kiro, Zed, OpenCode, Antigravity, Amp, Junie and Pi; see
+[supported agent hosts](docs/installation.md#supported-agent-hosts).
+
 Then ask for ordinary work:
 
 ```text

@@ -1,3 +1,5 @@
+@AGENTS.md
+
 # Claude Code
 
 Read [AGENTS.md](AGENTS.md) and resolve the harness first (its top section), then only the shared skills relevant to the task.
