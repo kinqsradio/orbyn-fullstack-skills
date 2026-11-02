@@ -1,1 +1,3 @@
-* @kinqsradio
+# Intentionally empty. A rule here would tag the maintainer on every PR the moment it
+# opens. The PR gate in .github/workflows/pr-gate.yml requests review instead, once the
+# agent disclosure is complete and CI is green.

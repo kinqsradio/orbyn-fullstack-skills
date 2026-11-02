@@ -1,10 +1,17 @@
 # Coordination and host limits
 
-The lead owns outcome, design, integration, review and actual delivery. For
-substantial engineering work, use bounded native delegates when the required
+The lead owns outcome, design, integration, review and actual delivery. Resolve
+the [harness](harness.md) before dispatch: it sets the tiers, `max_children`,
+`max_depth` and `read_only_children_extra` for this repository. For substantial
+engineering work, use bounded native delegates when the required
 host/model/processing settings are available. A small clear edit stays direct.
-Default to one child and at most two active children. Never create user-owned
-project chats unless the human explicitly requests them.
+Start with one child and never exceed the resolved limits (defaults in the
+[model policy](model-policy.md#default-routing-and-delegation)). Never create
+user-owned project chats unless the human explicitly requests them.
+
+Name each child and session `Orbyn [Role] [N] - [Model] - [Task] - [Evidence or ID]`,
+as the [lead contract](../../skills/orbyn-workflow/references/lead-contract.md#name-children-and-sessions)
+defines.
 
 Before dispatch, identify blocking facts, independent artifacts and shared writes.
 One implementer is appropriate when the files/contracts are coupled. Give each
@@ -18,7 +25,10 @@ inspect its evidence and preserve unresolved scope before resuming. Record
 validation is not permission to create a session or send a message.
 
 Use the consuming project's named roles and model policy when defined; the
-library's reference definitions are optional. Preserve standard processing.
+library's reference definitions are optional. A target's harness file only lowers
+cost or tightens limits (delegation numbers above the default are clamped); only
+the owner's local `repo/.harness/` file can raise them, and only the user can
+change a lead tier. Preserve standard processing.
 If the required configuration cannot be supported, say so and do permitted work
 directly. Do not silently switch models, launch hidden CLI inference processes
 or claim unavailable review separation. Missing runtime metadata stays unverified.

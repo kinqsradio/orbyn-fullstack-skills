@@ -4,6 +4,8 @@
   "effortLevel": "medium",
   "fastMode": false,
   "env": {
-    "CLAUDE_CODE_DISABLE_FAST_MODE": "1"
+    "CLAUDE_CODE_DISABLE_FAST_MODE": "1",
+    "CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS": "2",
+    "CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH": "1"
   }
 }

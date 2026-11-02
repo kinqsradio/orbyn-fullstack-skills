@@ -29,6 +29,14 @@ calm-caption adjacent control. Static validation does not establish live routing
 rendered quality or a measured baseline/candidate improvement. Existing holdout
 criteria and source attribution remain unchanged.
 
+## Per-repository harness and security workflow
+
+Model routing moved from fixed agents to lead, worker and scout tiers, with settings resolved
+per repository by `harness.py`, and effort capped at medium on the expensive models. Concurrent
+children are enforced by host settings where a host offers them; depth on Codex, routing and
+escalation are policy. Security gained one workflow: threat model, audit, remediation and
+independent verification. The worker tier's quality on this library's work is unmeasured.
+
 ## Diagrams, motion measurement and interface defects
 
 `stack-diagram` and `motion-match` adapt two MIT skills, and `ui_check.py` adds a small
@@ -335,8 +343,8 @@ to their owner instead of duplicating a complete workflow.
 | [orbyn-data-migration](../skills/orbyn-data-migration/SKILL.md)                                                             | Retained substantive local method | Old/new representation and active readers/writers → Compatible phases, bounded backfill and cutover evidence           | Legacy writers, partial batches and lossy recovery                        |
 | [orbyn-plan](../skills/orbyn-plan/SKILL.md)                                                                                 | Retained substantive local method | Requested outcome, scope and current source → Ordered owned units and checkable completion                             | Plan-only boundary and consequential missing decisions                    |
 | [orbyn-research](../skills/orbyn-research/SKILL.md)                                                                         | Retained substantive local method | Decision and specific unresolved fact → Primary-source evidence, implication and uncertainty                           | Version/account applicability and offline freshness                       |
-| [orbyn-security-audit](../skills/orbyn-security-audit/SKILL.md)                                                             | Retained substantive local method | Explicit audit scope and source candidate → Coverage, structured findings and honest independence limits               | Unreachable claims, blocked execution and unavailable verifier            |
-| [orbyn-security-remediation](../skills/orbyn-security-remediation/SKILL.md)                                                 | Retained substantive local method | Saved finding IDs and current source → Boundary fix, finding ledger and preventive control                             | Duplicate/stale findings and no implicit new scan                         |
+| [orbyn-security-audit](../skills/orbyn-security-audit/SKILL.md) | Retained substantive local method, extended | Threat-model request or design stage, or explicit audit scope → evidence-traced threats with path:line locators, then coverage, structured findings and honest independence limits | Unevidenced threats, live-system temptation, publication of a private model, blocked execution, unavailable verifier |
+| [orbyn-security-remediation](../skills/orbyn-security-remediation/SKILL.md) | Retained substantive local method, extended | Confirmed finding or accepted threat with a stable id → boundary fix, ledger and preventive check, handed back for independent verification | Unverified hypotheses, duplicate or stale findings, self-graded fixes, no implicit new scan |
 | [orbyn-setup](../skills/orbyn-setup/SKILL.md)                                                                               | Retained substantive local method | Consumer checkout, existing skills/docs and host capability → Backed-up setup, selected discovery and context pointers | Foreign collisions, private content and unauthorized model changes        |
 | [orbyn-skill-creator](../skills/orbyn-skill-creator/SKILL.md)                                                               | Retained substantive local method | Routing gap and shared versus consumer ownership → Integrated local method, links, provenance and checks               | Duplicate owners, source aliases and false originality claims             |
 | [orbyn-stack-selection](../skills/orbyn-stack-selection/SKILL.md)                                                           | Retained substantive local method | Workload, team, constraints and installed baseline → Bounded evidence-led recommendation and revisit trigger           | Hard constraint failure, invented scores and unverified current cost      |

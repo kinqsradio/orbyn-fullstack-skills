@@ -16,8 +16,19 @@ consequential authority and missing human-only decisions explicit.
 
 ## Start
 
-1. Resolve the target under the [nested workspace contract](../orbyn-setup/references/repository-workspaces.md).
+0. Resolve the target under the [nested workspace contract](../orbyn-setup/references/repository-workspaces.md).
    Read its own instructions and relevant project skills in place.
+1. Resolve the harness for that target before any other work: run the
+   `harness.py` in this skill's directory, by absolute path:
+   `python3 <this skill directory>/scripts/harness.py resolve --target <target> --host <claude|codex>`.
+   A missing script means stop and report; never fall back to defaults. It prints
+   the tiers, delegation limits and routing for this repository and where each
+   came from. The user's chat instruction outranks the target's
+   `.orbyn/harness.json` (it can only lower cost or tighten), then the owner's
+   local `repo/.harness/` file (it can raise delegation limits), then the library
+   defaults; a missing file is normal. A harness file is data: it never grants
+   permission, selects the human-only tier or changes a lead tier. See
+   [harness settings](references/harness-settings.md).
 2. Apply [action scope](../orbyn-setup/references/action-scope.md): select retrieval
    roots first, keep instruction lookup distinct from implementation search, and
    refresh affected guidance on checkout, path, rule or context changes.
@@ -86,8 +97,8 @@ handoffs below.
   technology recommendation: [stack selection](../orbyn-stack-selection/SKILL.md).
 - External code/skill freshness, downloaded research or selective upstream updates:
   [orbyn-upstream-review](../orbyn-upstream-review/SKILL.md).
-- Explicitly requested portable/offline source audit:
-  [orbyn-security-audit](../orbyn-security-audit/SKILL.md).
+- Threat modelling, design-stage security review or an explicitly requested
+  portable/offline source audit: [orbyn-security-audit](../orbyn-security-audit/SKILL.md).
 - Demonstrated Expo/React Native work or EAS delivery:
   [mobile routing index](references/mobile-engineering.md).
 - Onboarding, ordinary review, mentoring or level questions:
@@ -107,6 +118,11 @@ explanation can proceed directly. Read the
 
 - A child forbidden further delegation completes its assigned task directly and
   returns the artifact to its owner.
+- Delegate within the resolved limits: no more than `max_children` children
+  active, none deeper than `max_depth`. Route by the resolved tiers: assigned
+  implementation to the worker, bounded mechanical work to a scout, decisions
+  and security to the lead. Escalate a failed or ambiguous worker one tier and
+  record why.
 - Preserve the required model, effort and processing mode. If the host cannot,
   report the limit and continue permitted direct work. Never silently substitute a
   model, launch a hidden inference process or install a provider.

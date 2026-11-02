@@ -176,7 +176,8 @@
         "how",
         "orbyn-security-remediation",
         "orbyn-backend-design",
-        "orbyn-ci-design"
+        "orbyn-ci-design",
+        "architect"
       ]
     },
     {
@@ -184,7 +185,8 @@
       "category": "Engineering practice",
       "related": [
         "how",
-        "orbyn-backend-design"
+        "orbyn-backend-design",
+        "orbyn-security-audit"
       ]
     },
     {

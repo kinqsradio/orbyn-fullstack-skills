@@ -34,6 +34,9 @@ ownership or dependencies.
 
 ## Delegate within the current session
 
+Resolve the [harness](harness-settings.md) first; its limits and tiers are the
+default for what follows.
+
 Follow the [consumer host and coordination boundary](project-policy.md#delegation-and-host-configuration).
 Use configured named roles and preserve the required model, effort and processing
 mode. If the host cannot do so, report the limit and continue permitted direct
@@ -42,10 +45,37 @@ install a provider. Library model presets are optional; consumer-owned policy wi
 
 Give each child its role, outcome, source/candidate, owned files, allowed effects,
 exclusions, relevant pointers and stopping condition. Reuse matching children;
-tell writers they share the checkout and must preserve others' work. Default to
-one child, at most two, without recursive delegation. Split independent outputs
+tell writers they share the checkout and must preserve others' work. Start with
+one child and stay within the resolved `max_children` and `max_depth` (a read-only
+child may use `read_only_children_extra` more), without recursive delegation.
+Choose each child's tier from the resolved routing and pass the resolved settings
+in its brief. Split independent outputs
 only; serialize shared generated files and fixtures. Children return evidence to
 the lead, who owns integration and review.
+
+## Name children and sessions
+
+Name every child and session so its work can be traced at a glance:
+
+```text
+Orbyn [Role] [N] - [Model] - [Task] - [Evidence or ID]
+```
+
+| Field | Use |
+| --- | --- |
+| Role | Lead, Engineer, Research, Architect, Reviewer, Verifier, Security or Scout |
+| N | Counts up per role in this session from 1: Orbyn Engineer 1, Orbyn Engineer 2 |
+| Model | The model that actually runs, such as Sonnet 5.5 or Terra |
+| Task | A few words on the outcome |
+| Evidence or ID | Optional: a PR, issue, finding, threat id or commit |
+
+For example, `Orbyn Engineer 2 - Sonnet 5.5 - Fix icon fetch - PR 71`, or
+`Orbyn Security 1 - Opus 5.5 - Verify ledger guard - T9`. A reused child keeps its
+number, and a replacement takes the next one, so a number always means one child. Rename a child that
+escalates, so the name never reports a model it is not using. Where the host's name
+field is short, keep Role and Task and open the brief with the full name. A name the
+user chose wins. Names are labels: they grant nothing, and in public repositories they
+carry no private names or secrets.
 
 New sidebar/project chats require an explicit human request. This workflow
 authorizes bounded native children, not extra user-owned sessions or messages.

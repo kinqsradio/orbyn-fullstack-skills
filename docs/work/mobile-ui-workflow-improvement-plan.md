@@ -292,7 +292,7 @@ needs a maintained local equivalent or an explicit open gap.
 
 One lead owns integration; Skills Builder owns the approved writing slice, and a
 separate reviewer checks a frozen candidate when that collaboration is authorized.
-At most two bounded children, current model presets unchanged. Roles below name
+At most the resolved harness limit of bounded children, resolved tiers unchanged. Roles below name
 responsibility, not a new chat or permission to message anyone.
 
 | Unit | Owner and concrete files | Dependencies | Completion condition |

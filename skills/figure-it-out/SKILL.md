@@ -24,6 +24,6 @@ A service or API extraction unit includes shared schema, consumers, routing, con
 
 ## Delegation and records
 
-Follow the [workflow lead contract](../orbyn-workflow/SKILL.md). Keep coupled contract/caller edits with one owner, isolate genuinely independent output paths, and keep no more than two active children. Route corrections to the same owner. A child executes its owned unit directly without delegation.
+Follow the [workflow lead contract](../orbyn-workflow/SKILL.md). Keep coupled contract/caller edits with one owner, isolate genuinely independent output paths, and stay within the resolved harness `max_children`. Route corrections to the same owner. A child executes its owned unit directly without delegation.
 
 Use [show-me-your-work](../show-me-your-work/SKILL.md) for decisions that matter later.

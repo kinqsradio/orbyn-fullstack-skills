@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "generated_from": "docs/agents/models.json by scripts/sync-agent-models.py; do not edit",
+  "tiers": {
+    "claude": {
+      "lead": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "worker": {
+        "model": "sonnet",
+        "effort": "medium"
+      },
+      "scout": {
+        "model": "haiku",
+        "effort": "medium"
+      }
+    },
+    "codex": {
+      "lead": {
+        "model": "gpt-6.1-sol",
+        "effort": "medium"
+      },
+      "worker": {
+        "model": "gpt-6.1-terra",
+        "effort": "medium"
+      },
+      "scout": {
+        "model": "gpt-6-luna",
+        "effort": "medium"
+      }
+    }
+  },
+  "agents": {
+    "lead": "orbyn-lead",
+    "worker": "orbyn-worker",
+    "scout": "orbyn-scout"
+  },
+  "delegation": {
+    "max_children": 2,
+    "max_depth": 1,
+    "read_only_children_extra": 0
+  },
+  "routing": {
+    "lead": "lead",
+    "architect": "lead",
+    "reviewer": "lead",
+    "security": "lead",
+    "security_verifier": "lead",
+    "security_engineer": "lead",
+    "engineer": "worker",
+    "engineer_complex": {
+      "claude": "worker",
+      "codex": "lead"
+    },
+    "investigator": "worker",
+    "verifier": "worker",
+    "mechanical": "scout",
+    "tiny_edit": "scout"
+  },
+  "escalation": {
+    "scout": "worker",
+    "worker": "lead"
+  },
+  "allowed_models": {
+    "claude": {
+      "lead": [
+        "opus",
+        "claude-opus-5-5"
+      ],
+      "worker": [
+        "sonnet",
+        "claude-sonnet-5-5"
+      ],
+      "scout": [
+        "haiku",
+        "claude-haiku-5-5"
+      ]
+    },
+    "codex": {
+      "lead": [
+        "gpt-6.1-sol"
+      ],
+      "worker": [
+        "gpt-6.1-terra"
+      ],
+      "scout": [
+        "gpt-6-luna"
+      ]
+    }
+  },
+  "effort_caps": {
+    "gpt-6.1-sol": "medium",
+    "gpt-6.1-terra": "medium",
+    "sonnet": "medium",
+    "fable": "medium"
+  },
+  "claude_minimum_versions": {
+    "opus": "2.1.280",
+    "sonnet": "2.1.284",
+    "haiku": "2.1.293"
+  },
+  "human_only": {
+    "claude": [
+      "fable"
+    ],
+    "codex": [
+      "gpt-6-astra"
+    ]
+  }
+}

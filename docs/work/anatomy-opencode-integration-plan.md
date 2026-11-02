@@ -54,7 +54,7 @@ Retain the [workspace contract](../../skills/orbyn-setup/references/repository-w
 
 Instruction lookup stays separate from narrowed code search. Resolve actual target/worktree and required instructions first, then constrain code queries. A search no-match, catalog entry or successful file read does not establish model-request inclusion or runtime enforcement. Continue preferring usable shell `rg`/`rg --files`; native search remains valid. Preserve project policies, private material, licenses and unrelated changes.
 
-Keep Luna High and Sol Medium defaults, optional Terra Medium, standard processing, at most two active children and no recursive delegation. Source-specific model fallback never grants permission to change these defaults. [Memory](../../skills/reflect/references/memory.md) remains explicitly requested, scoped and outside Git; source session APIs and automatic learning hooks do not turn it on.
+Keep the resolved harness tiers and effort (the lead, worker and scout agents and their defaults), standard processing, no more active children than the resolved `max_children` and no recursive delegation. Source-specific model fallback never grants permission to change these defaults. [Memory](../../skills/reflect/references/memory.md) remains explicitly requested, scoped and outside Git; source session APIs and automatic learning hooks do not turn it on.
 
 This proposal adds conditional references only when their task is selected. Ordinary bug fixes must not load illustration, RTL, GPU or OpenCode internals. The research register is a review artifact, not a runtime manifest an agent must maintain for every task.
 

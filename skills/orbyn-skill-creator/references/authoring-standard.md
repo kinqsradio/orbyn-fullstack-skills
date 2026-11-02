@@ -99,6 +99,22 @@ These cases check that the suite is coherent. They become behaviour evidence onl
 after a recorded trial under the [evaluation guide](evaluations.md). Say which of
 the two you have when you report the change.
 
+## Say how it was built
+
+Add an `authoring` entry to the skill's record in `provenance.json` for every change:
+`tool`, exact `model`, `effort`, `date` and `scope`. A PR also fills in its Agent
+disclosure section. Never guess past work: older history stays `unrecorded`. Both are
+**checked**, so a changed skill with no new entry fails CI.
+
+## Credit every source
+
+Reference every external skill or project you used, with its link, exact commit and
+licence, in `provenance.json`. Copy or adapt only what we may modify and redistribute with
+credit as the only obligation, such as MIT, Apache-2.0, BSD, ISC, CC-BY or CC0, and keep
+its licence text and any NOTICE file. Copyleft, non-commercial and unlicensed sources may be
+reviewed for ideas, with no text copied. **Checked:** a bundle under another licence
+fails `check-library`.
+
 ## Before you finish
 
 - [ ] The skill changes a decision you can name.
@@ -108,4 +124,5 @@ the two you have when you report the change.
 - [ ] Attribution lives in provenance, and no project paths are hard-coded.
 - [ ] Cases cover a positive, an adjacent request and a holdout.
 - [ ] `python3 scripts/sync-agent-skills.py --write` ran and you reviewed its diff.
+- [ ] `provenance.json` has a new `authoring` entry for this change.
 - [ ] `python3 scripts/check-library.py` passes.

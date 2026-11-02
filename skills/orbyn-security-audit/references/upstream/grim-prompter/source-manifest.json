@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/jmanico/grim-prompter",
+  "revision": "14d7292ad60434f5bf96f1792412f07e1b7531ed",
+  "source_path": ".",
+  "license": "MIT",
+  "credit": "Jim Manico; maintained Orbyn adaptations by Anh Dang and contributors",
+  "files": {
+    "references/threat-model.md": {
+      "sha256": "5cc56db0c17c38e24cb761dbf1cfb83c45e8ceee8a932c7f6beec8e6e0074246",
+      "source_path": "runbook.md",
+      "original_sha256": "a2642db8fdef5e0a7ab973f9e2dd48bc34d40b1106f62b17898f65609a4d415b",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/architecture-selector.md": {
+      "sha256": "dad804d14d521b30885de05873e71a762cdecef81fa0034954cbe42cae079b18",
+      "source_path": "helpers/architecture-selector.md",
+      "original_sha256": "5092359948234de98c332b4346dde066eff73776b85d952803e6c2e8f293eb56",
+      "relationship": "maintained-adaptation",
+      "also_from": [
+        {
+          "source_path": "reference/composition-guide.md",
+          "original_sha256": "bc42c8c61b3d67be2e9f6837ec079f79049ca5df9cca2af258f02ca629bb2796"
+        }
+      ]
+    },
+    "references/threat-model/architectures/agentic-ai.md": {
+      "sha256": "0511ed660b931e25c4cc5d648761f68039e073cff832c7915d24c21341a01357",
+      "source_path": "quick/agentic-ai.md",
+      "original_sha256": "50496606ffa87de7667513ab44c8d1802b477bdaaaa0fffa1cb78f24d8f67ef9",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/architectures/api.md": {
+      "sha256": "d64c4c4033bb1f5b325d110f85155bc878c5b6a5e2ab42c511617ee3097e102b",
+      "source_path": "quick/api.md",
+      "original_sha256": "7daf4b02fc8e1c66240cffab694ee0d390cc03a156c09f4d5947693df291c139",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/architectures/cicd-supply-chain.md": {
+      "sha256": "4a5bfd4e04e51f06d7a5891ebeb9c0c830823865ccc1dc096eebffbcfe991195",
+      "source_path": "quick/cicd-supply-chain.md",
+      "original_sha256": "b30b0e96200d6e26ff97771d50addf365504118b8ab1c9675b085a3ddf11063b",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/architectures/cli-developer-tools.md": {
+      "sha256": "89cdc8936cad5caa3324c323529001c075133de044f7bb43d631c07b568df5c8",
+      "source_path": "quick/cli-developer-tools.md",
+      "original_sha256": "a8f548bb05b427a043fad370fd30e9e50faafa04fac36b7a19a3f37c42be2241",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/architectures/data-platform.md": {
+      "sha256": "38e105fca6a60a1462dad5f031df01a7c0d55e0d318e92585fffd73b710d7eff",
+      "source_path": "quick/data-platform.md",
+      "original_sha256": "cef6afe4f059cc9c90a61fc642034ac2ae55fb1264f70646aa3a0d00862eaa4f",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/architectures/desktop.md": {
+      "sha256": "bf37ca965eadd0508d3af76d26a3921253fadd0795a034ff5c5c224f5ee6ff10",
+      "source_path": "quick/desktop.md",
+      "original_sha256": "a1695a78b89794d7691312a3dbf05a22f74032bf7d09fc011411a583982d6b3d",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/architectures/microservices.md": {
+      "sha256": "fbfaf3bf1584ec6caf1c327f7dbca9281d17bf7b32b6128e92b83280de914a3c",
+      "source_path": "quick/microservices.md",
+      "original_sha256": "3e1001967f6c0839e24774263c126e0da3a3afe84c49212e9464808edd2cffbb",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/architectures/mobile.md": {
+      "sha256": "3e810b9b06ea881b87f3b71ddc4505dc0a05dba2bdbbe2fc1fbe42c1c389ee65",
+      "source_path": "quick/mobile.md",
+      "original_sha256": "f206509b42beb0d3f08482d60fbcbd5933d7ba2a851136c207938f431706b4b2",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/architectures/multi-tenant-saas.md": {
+      "sha256": "2a9f5a7555bf54db0212972c29489297d52d907d89799967d7916ddf41c1f022",
+      "source_path": "quick/multi-tenant-saas.md",
+      "original_sha256": "e39236b20431f7d3c77e5033773d0ffee1d3456edf044c993721d2794fc20ba7",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/architectures/rag.md": {
+      "sha256": "8c5c2a1b16afbc744a344dc8bcf695bf82e45fbf4a8bd4613a8a5337759cdfcd",
+      "source_path": "quick/rag.md",
+      "original_sha256": "81de81d04f0dba69f11a37cdbc62c366baed9bedb5655fca426ab7ed92dad00e",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/architectures/serverless.md": {
+      "sha256": "4a697e14d40631d43947a685fad23370b8f0b82b66a8039d2064001d4b714bf6",
+      "source_path": "quick/serverless.md",
+      "original_sha256": "77e0b3b5e5833c533ec343e11226efcbbe93bfd94a0250870a63ae7f6479219c",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/architectures/web.md": {
+      "sha256": "4643115eccbafa913c059120dcefcc2a49a09ea52f2b0f0e4255a746b20c21b6",
+      "source_path": "quick/web.md",
+      "original_sha256": "b76018d6ecee93ecb3ffa8347e591b95b10f16c21bbd4ca624d2ee29ed55f254",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/artifact-contract.md": {
+      "sha256": "12decccb1aefd2d639468f7376cc4ad0afb74af8da74851b953736a18c3e3a22",
+      "source_path": "reference/artifact-contract.md",
+      "original_sha256": "2da882285b69aaeaa4c87c0aeecd1478648cb6401738b6cd24d80e2adc7c0c6b",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/change-reviewer.md": {
+      "sha256": "15a39161d0cdc702a89c564506db180fb57b4dcc614bbbc99d1333aac48c26a1",
+      "source_path": "helpers/change-reviewer.md",
+      "original_sha256": "db86068785c96152d470bdc880e5323fd2e94cf5b7367cff938a1f60ba366175",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/evidence-guide.md": {
+      "sha256": "f788dbf1277694d6f3ca55f4fd33f2bf655af5c103fa076a8adeaf3e40ce77fe",
+      "source_path": "helpers/evidence-guide.md",
+      "original_sha256": "7c65cb1bd3b7c3b53a73b11ed90e68e0603f8b137cb436638e60e40632666656",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/method-notes.md": {
+      "sha256": "2fec7809f1728442cd1f9d15f946c54b7f4eba60c806334df925c154cf99b40c",
+      "source_path": "README.md",
+      "original_sha256": "7e603a8f6eea6f88bad5c24a439be2f882a88271655f9ede199751f5bbd9ccb5",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/method-selector.md": {
+      "sha256": "01a9709e5769de4e0787dc0a6562439248621abd0dc1c30d60eafea9377ca2bb",
+      "source_path": "helpers/method-selector.md",
+      "original_sha256": "c781c863d5dca2c6ba814bb48d0fb92ee63ed3e30750abb7e593c2a19ddfb032",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/model-challenger.md": {
+      "sha256": "edd939f37232ecdd8e182f69ff27e5a1c9a93d514a04aa6bea5e775587c6213f",
+      "source_path": "helpers/model-challenger.md",
+      "original_sha256": "55390dc65d95958061a8280f0e19dcdefdcdb5f55da2d2ee7ceb3801bbd897db",
+      "relationship": "maintained-adaptation"
+    },
+    "references/threat-model/tool-credential-boundaries.md": {
+      "sha256": "53a55b3ccdec2702d0da379c85cfacaaeb79b08ec237fae0ff9aba2f2055d313",
+      "source_path": "reference/tool-credential-boundaries.md",
+      "original_sha256": "95d1e058fcaa5cbec4769c1498654716ec2d9e086ee792fd5a97bd08994421ee",
+      "relationship": "maintained-adaptation"
+    },
+    "scripts/check_threat_model.py": {
+      "sha256": "765ab115ef2402099e4de1e63d8fbc536fa3293e57e0e66f5f099ea7989c6544",
+      "source_path": "Orbyn-authored maintained support record/helper",
+      "original_sha256": null,
+      "relationship": "original-helper-or-record"
+    }
+  }
+}

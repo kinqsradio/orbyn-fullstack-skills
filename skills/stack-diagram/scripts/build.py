@@ -88,6 +88,8 @@ class LoadFinder(HTMLParser):
     def handle_starttag(self, tag, attrs):
         if tag in BLOCKED_TAGS:
             self.found.append(f'<{tag}>')
+        if tag == 'meta' and any(k == 'http-equiv' and (v or '').lower() == 'refresh' for k, v in attrs):
+            self.found.append('<meta refresh>')
         self.in_style = tag == 'style'
         for name, value in attrs:
             value = (value or '').strip()

@@ -33,6 +33,7 @@ import json
 import os
 from pathlib import Path
 import re
+import signal
 import socket
 import sys
 import threading
@@ -157,10 +158,31 @@ class HttpsRedirects(urllib.request.HTTPRedirectHandler):
 FETCH_STATE = threading.local()
 
 
+def pinned_connection(address, timeout=socket.getdefaulttimeout(), source_address=None):
+    """Resolve once, check every answer and connect only to a checked address."""
+    host, port = address
+    answers = socket.getaddrinfo(host, port, type=socket.SOCK_STREAM)
+    if not answers or not all(is_public(info[4][0]) for info in answers):
+        raise FetchRefused(f'refused non-public address: {host}')
+    error = None
+    for info in answers:  # Like create_connection: a dead address must not hide a working one.
+        try:
+            return socket.create_connection(info[4][:2], timeout, source_address)
+        except OSError as failure:
+            error = failure
+    raise error
+
+
 class GuardedConnection(http.client.HTTPSConnection):
     def connect(self):
+        tunnelled = self._tunnel_host is not None
+        if not tunnelled:
+            self._create_connection = pinned_connection
         super().connect()
-        require_public_peer(self.sock)
+        # Through a proxy the socket's peer is the proxy, not the destination, and the proxy
+        # resolves the name, so the public-address checks cannot cover the destination.
+        if not tunnelled:
+            require_public_peer(self.sock)
         sockets = getattr(FETCH_STATE, 'sockets', None)
         if sockets is not None:
             sockets.append(self.sock)
@@ -417,8 +439,10 @@ def use_pictogram(outdir, name, kind):
     return {'source': 'generic', 'pictogram': kind, 'file': path.name, 'bytes': len(data)}
 
 
-def fetch_one(outdir, name, tries):
-    """Save the first source that passes every check. Returns (entry or None, last reason)."""
+def fetch_one(outdir, name, tries, record=None):
+    """Save the first source that passes every check. Returns (entry or None, last reason).
+
+    record(entry) runs as soon as the icon is stored, before the optional dark variant is fetched."""
     reason = 'no source has it'
     for source, url, dark_url in tries:
         try:
@@ -440,6 +464,8 @@ def fetch_one(outdir, name, tries):
             entry['white_fill'] = True
             entry['note'] = ('white fill detected. It may be an inner detail on a coloured logo: inspect '
                              'the SVG and use a dark tile only for a mark that is white overall. Never recolour.')
+        if record:
+            record(entry)  # The manifest must name the stored file even if the dark fetch is interrupted.
         if dark_url:
             try:
                 dark, dark_ext, _ = admit(read(dark_url))
@@ -479,27 +505,36 @@ def main(argv=None):
     if not isinstance(manifest, dict):
         parser.exit(2, f'{manifest_path} is corrupt: expected an object\n')
     fallbacks = []
-    for name, kind, value, fallback in specs:
-        if kind == 'generic':
-            manifest[name] = use_pictogram(outdir, name, value)
-            print(f'OK   {name:<16} generic pictogram {value}')
-            continue
-        if not args.allow_network:
-            entry, reason = None, 'network not allowed for this run'
-        else:
-            tries = [('explicit', value, None)] if kind == 'url' else sources(value)
-            entry, reason = fetch_one(outdir, name, tries)
-        if entry:
-            flags = ' [WHITE FILL: check for a dark tile]' if entry.get('white_fill') else ''
-            flags += f" [sanitised: {', '.join(entry['sanitised'])}]" if entry.get('sanitised') else ''
-            print(f"OK   {name:<16} {entry['source']:<12} {entry['bytes']:>7}B{flags}")
-        else:
-            entry = use_pictogram(outdir, name, fallback)
-            entry.update(fallback=True, reason=reason)
-            fallbacks.append(name)
-            print(f'FALLBACK {name}: neutral {fallback} pictogram ({reason})')
-        manifest[name] = entry
-    write_atomic(manifest_path, (json.dumps(manifest, indent=2)+'\n').encode())
+    previous = None
+    if threading.current_thread() is threading.main_thread():
+        def terminate(signum, frame):
+            raise SystemExit(128+signum)  # Unwinds through the finally below, which writes the manifest.
+        previous = signal.signal(signal.SIGTERM, terminate)
+    try:  # Stored icons must reach the manifest, or a later build calls them supplied (Ctrl-C, SIGTERM).
+        for name, kind, value, fallback in specs:
+            if kind == 'generic':
+                manifest[name] = use_pictogram(outdir, name, value)
+                print(f'OK   {name:<16} generic pictogram {value}')
+                continue
+            if not args.allow_network:
+                entry, reason = None, 'network not allowed for this run'
+            else:
+                tries = [('explicit', value, None)] if kind == 'url' else sources(value)
+                entry, reason = fetch_one(outdir, name, tries, lambda found: manifest.__setitem__(name, found))
+            if entry:
+                flags = ' [WHITE FILL: check for a dark tile]' if entry.get('white_fill') else ''
+                flags += f" [sanitised: {', '.join(entry['sanitised'])}]" if entry.get('sanitised') else ''
+                print(f"OK   {name:<16} {entry['source']:<12} {entry['bytes']:>7}B{flags}")
+            else:
+                entry = use_pictogram(outdir, name, fallback)
+                entry.update(fallback=True, reason=reason)
+                fallbacks.append(name)
+                print(f'FALLBACK {name}: neutral {fallback} pictogram ({reason})')
+            manifest[name] = entry
+    finally:
+        if previous is not None:
+            signal.signal(signal.SIGTERM, previous)
+        write_atomic(manifest_path, (json.dumps(manifest, indent=2)+'\n').encode())
     if fallbacks:
         print(f"{len(fallbacks)} of {len(specs)} icons are neutral pictograms, not logos: {', '.join(fallbacks)}. "
               'Tell the user. To retry one, pass name=URL with the official file.')
