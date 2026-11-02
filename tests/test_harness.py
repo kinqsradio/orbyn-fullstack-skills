@@ -825,5 +825,234 @@ class CleanupSettings(HarnessCase):
         self.assertEqual(before, sorted(str(p) for p in self.base.rglob('*')))
 
 
-if __name__ == '__main__':
-    unittest.main()
+class WorkMode(HarnessCase):
+    def setup_tool(self, *extra, target=None, ok=0):
+        return self.run_tool('setup', '--target', str(target or self.target), '--workspace', str(self.workspace), *extra, ok=ok)
+
+    def text(self, *extra):
+        return self.run_tool('resolve', '--target', str(self.target), '--workspace', str(self.workspace), '--no-probe',
+                             '--host', 'claude', *extra).stdout
+
+    def local_path(self):
+        return self.workspace / 'repo' / '.harness' / 'app.json'
+
+    def tree(self):
+        return sorted(str(p) for p in self.base.rglob('*'))
+
+    def resolve_auto_with_workspace(self, target):
+        return json.loads(self.run_tool('resolve', '--target', str(target), '--workspace', str(self.workspace),
+                                        '--no-probe', '--json').stdout)
+
+    def link(self, name):
+        """A linked worktree of the primary clone `self.target`, with the back-link Git writes."""
+        gitdir = self.target / '.git' / 'worktrees' / name
+        gitdir.mkdir(parents=True)
+        (gitdir / 'commondir').write_text('../..\n')
+        tree = self.target.parent / f'{self.target.name}-wt' / name
+        tree.mkdir(parents=True)
+        (tree / '.git').write_text(f'gitdir: {gitdir}\n')
+        (gitdir / 'gitdir').write_text(f'{tree / ".git"}\n')
+        return tree
+
+    def in_place(self):
+        outside = self.base / 'elsewhere' / 'tool'
+        (outside / '.git').mkdir(parents=True)
+        return outside
+
+    def inplace_file(self, outside):
+        import hashlib
+        common = (outside / '.git').resolve()
+        digest = hashlib.sha256(str(common).encode()).hexdigest()[:12]
+        return self.workspace / 'repo' / '.harness' / f'inplace--{outside.name}--{digest}.json'
+
+    def linked(self, outside, name):
+        gitdir = outside / '.git' / 'worktrees' / name
+        gitdir.mkdir(parents=True)
+        (gitdir / 'commondir').write_text('../..\n')
+        tree = outside.parent / f'{outside.name}-wt' / name
+        tree.mkdir(parents=True)
+        (tree / '.git').write_text(f'gitdir: {gitdir}\n')
+        (gitdir / 'gitdir').write_text(f'{tree / ".git"}\n')
+        return tree
+
+    def test_each_mode_resolves_with_its_source(self):
+        for mode in ('simple', 'isolated', 'parallel'):
+            with self.subTest(mode=mode):
+                self.write_local(valid(work={'mode': mode}))
+                work = self.resolve()['work']
+                self.assertEqual((work['mode']['value'], work['set'], work['effective_mode'], work['ask']), (mode, True, mode, None))
+                self.assertTrue(work['mode']['source'].startswith('local file (repo/.harness/app.json)'))
+                self.assertEqual(work['max_active']['value'], 10)
+                self.assertIn(f'work mode: {mode}   [local file', self.text())
+
+    def test_parallel_prints_max_active_and_the_cleanup_reminder(self):
+        self.write_local(valid(work={'mode': 'parallel', 'max_active': 4}))
+        text = self.text()
+        self.assertIn('max_active                4   [local file', text)
+        self.assertIn('parallel creates more worktrees: run the cleanup report at every closeout', text)
+        self.write_local(valid(work={'mode': 'isolated'}))
+        self.assertNotIn('parallel creates', self.text())
+
+    def test_unset_prints_the_ask_once_line_in_text_and_json(self):
+        text = self.text()
+        self.assertIn('work mode: not set', text)
+        self.assertIn('Ask the user once', text)
+        self.assertIn('simple', text)
+        self.assertIn('suggesting isolated', text)
+        self.assertIn('nobody can answer', text)
+        self.assertIn('--mode <mode>', text)
+        work = self.resolve()['work']
+        self.assertEqual((work['mode'], work['set'], work['effective_mode'], work['fallback_mode']), (None, False, 'isolated', 'isolated'))
+        self.assertIn('setup --target', work['setup_command'])
+        self.assertIn('Ask the user once', work['ask'])
+        self.assertEqual(work['max_active']['value'], 10)
+
+    def test_the_registry_default_is_ask_then_isolated_with_ten_active(self):
+        self.assertEqual(json.loads(REGISTRY.read_text())['work'], {'max_active': 10, 'fallback_mode': 'isolated'})
+
+    def test_a_target_file_cannot_raise_the_mode_but_can_lower_it(self):
+        self.write_local(valid(work={'mode': 'isolated'}))
+        self.write_target(valid(work={'mode': 'parallel'}))
+        result = self.resolve()
+        self.assertEqual(result['work']['mode']['value'], 'isolated')
+        self.assertTrue(any('work.mode parallel; clamped to isolated' in n for n in result['notices']))
+        self.write_target(valid(work={'mode': 'simple'}))
+        result = self.resolve()
+        self.assertEqual(result['work']['mode']['value'], 'simple')
+        self.assertTrue(result['work']['mode']['source'].startswith('target file'))
+        self.assertEqual([o['value'] for o in result['work']['mode']['overridden']], ['isolated'])
+        self.assertFalse(any('work.mode' in n for n in result['notices']))
+
+    def test_a_target_file_may_only_lower_max_active(self):
+        self.write_local(valid(work={'mode': 'parallel', 'max_active': 6}))
+        self.write_target(valid(work={'max_active': 20}))
+        result = self.resolve()
+        self.assertEqual(result['work']['max_active']['value'], 6)
+        self.assertTrue(any('work.max_active 20; clamped to 6' in n for n in result['notices']))
+        self.write_target(valid(work={'max_active': 3}))
+        self.assertEqual(self.resolve()['work']['max_active']['value'], 3)
+        self.write_local(valid(work={'mode': 'parallel'}))
+        self.write_target(valid(work={'max_active': 12}))
+        self.assertEqual(self.resolve()['work']['max_active']['value'], 10)
+
+    def test_the_local_file_may_raise_max_active_and_set_is_the_user_and_wins(self):
+        self.write_local(valid(work={'mode': 'parallel', 'max_active': 20}))
+        self.assertEqual(self.resolve()['work']['max_active']['value'], 20)
+        self.write_local(valid(work={'mode': 'isolated'}))
+        self.write_target(valid(work={'mode': 'simple'}))
+        result = self.resolve('--set', 'work.mode=parallel', '--set', 'work.max_active=3')
+        self.assertEqual((result['work']['mode']['value'], result['work']['max_active']['value']), ('parallel', 3))
+        self.assertTrue(result['work']['mode']['source'].startswith('user instruction'))
+        self.assertEqual([o['value'] for o in result['work']['mode']['overridden']], ['simple', 'isolated'])
+        self.assertFalse(any('clamped' in n for n in result['notices']))
+        self.assertTrue(self.resolve('--set', 'work.mode=simple')['work']['set'])
+        self.assertEqual(self.resolve('--set', 'work.mode=huge', ok=2).returncode, 2)
+
+    def test_values_are_validated_in_every_file(self):
+        for bad in ({'mode': 'turbo'}, {'mode': 1}, {'mode': ['simple']}, {'max_active': 0}, {'max_active': 33},
+                    {'max_active': True}, {'max_active': '4'}, {'path': '/tmp/x'}, {'fallback_mode': 'simple'}):
+            with self.subTest(bad=bad):
+                self.write_target(valid(work=bad))
+                self.assertEqual(self.resolve(ok=1).returncode, 1)
+                self.validate(valid(work=bad), 1)
+        self.write_target(valid(work='parallel'))
+        self.assertIn('work must be an object', self.resolve(ok=1).stderr)
+        self.validate(valid(work={'mode': 'parallel', 'max_active': 32}), 0)
+
+    def test_resolve_stays_read_only_for_work_settings(self):
+        self.write_local(valid(work={'mode': 'parallel'}))
+        before = self.tree()
+        self.resolve()
+        self.text('--explain')
+        self.assertEqual(before, self.tree())
+
+    def test_setup_writes_the_local_file_atomically_and_keeps_other_settings(self):
+        result = self.setup_tool('--mode', 'parallel', '--max-active', '4')
+        self.assertIn('saved work.mode=parallel work.max_active=4', result.stdout)
+        self.assertEqual(json.loads(self.local_path().read_text()), {'schema_version': 1, 'work': {'mode': 'parallel', 'max_active': 4}})
+        self.write_local(valid(delegation={'max_children': 4}, notes='keep', work={'mode': 'simple'}))
+        self.setup_tool('--mode', 'isolated')
+        saved = json.loads(self.local_path().read_text())
+        self.assertEqual((saved['work'], saved['delegation'], saved['notes']), ({'mode': 'isolated'}, {'max_children': 4}, 'keep'))
+        self.assertEqual(sorted(p.name for p in self.local_path().parent.iterdir()), ['app.json'])
+        self.assertEqual(self.resolve()['work']['mode']['value'], 'isolated')
+        self.assertFalse((self.target / '.orbyn').exists())
+
+    def test_setup_leaves_the_file_whole_when_the_replace_fails(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('harness_setup_under_test', TOOL)
+        harness = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(harness)
+        self.write_local(valid(work={'mode': 'simple'}))
+        before = self.local_path().read_text()
+        with mock.patch.object(harness.os, 'replace', side_effect=OSError('disk gone')):
+            with self.assertRaises(OSError):
+                harness.main(['setup', '--target', str(self.target), '--workspace', str(self.workspace), '--mode', 'parallel'])
+        self.assertEqual(self.local_path().read_text(), before)
+        self.assertEqual(sorted(p.name for p in self.local_path().parent.iterdir()), ['app.json'])
+
+    def test_setup_validates_its_arguments_and_the_existing_file_first(self):
+        self.setup_tool('--mode', 'simple', '--max-active', '2', ok=2)
+        self.setup_tool('--mode', 'parallel', '--max-active', '0', ok=1)
+        self.setup_tool('--mode', 'parallel', '--max-active', '33', ok=1)
+        self.setup_tool('--mode', 'turbo', ok=2)
+        self.assertFalse(self.local_path().exists())
+        self.local_path().parent.mkdir(parents=True)
+        self.local_path().write_text('{"schema_version": 1, "surprise": 1}')
+        self.assertIn('unknown key', self.setup_tool('--mode', 'simple', ok=1).stderr)
+        self.assertEqual(self.local_path().read_text(), '{"schema_version": 1, "surprise": 1}')
+
+    def test_setup_refuses_a_tracked_path(self):
+        git = ['git', '-C', str(self.workspace)]
+        self.write_local(valid(work={'mode': 'simple'}))
+        subprocess.run([*git, 'init', '-q'], check=True, capture_output=True)
+        subprocess.run([*git, 'add', '-f', 'repo/.harness/app.json'], check=True, capture_output=True)
+        before = self.local_path().read_text()
+        self.assertIn('tracked', self.setup_tool('--mode', 'parallel', ok=2).stderr)
+        self.assertEqual(self.local_path().read_text(), before)
+
+    def test_setup_refuses_symbolic_links(self):
+        real = self.base / 'real.json'
+        real.write_text(json.dumps(valid()))
+        folder = self.workspace / 'repo' / '.harness'
+        folder.mkdir(parents=True)
+        os.symlink(real, folder / 'app.json')
+        self.assertIn('symbolic link', self.setup_tool('--mode', 'parallel', ok=1).stderr)
+        self.assertEqual(real.read_text(), json.dumps(valid()))
+        (folder / 'app.json').unlink()
+        folder.rmdir()
+        elsewhere = self.base / 'elsewhere'
+        elsewhere.mkdir()
+        os.symlink(elsewhere, folder)
+        self.assertIn('not a plain directory', self.setup_tool('--mode', 'parallel', ok=2).stderr)
+        self.assertEqual(list(elsewhere.iterdir()), [])
+
+    def test_a_linked_worktree_shares_its_primary_clones_mode(self):
+        tree = self.link('feature')
+        self.setup_tool('--mode', 'parallel', '--max-active', '5', target=tree)
+        self.assertEqual(json.loads(self.local_path().read_text())['work'], {'mode': 'parallel', 'max_active': 5})
+        out = self.resolve_auto_with_workspace(tree)
+        self.assertEqual((out['slug'], out['work']['mode']['value'], out['work']['max_active']['value']), ('app', 'parallel', 5))
+        self.assertEqual(self.resolve()['work']['mode']['value'], 'parallel')
+
+    def test_a_hostile_target_file_cannot_redirect_setup(self):
+        victim = self.base / 'victim'
+        victim.mkdir()
+        for raw in (json.dumps(valid(work={'mode': 'simple', 'path': str(victim / 'x.json')}, setup_path=str(victim))),
+                    json.dumps(valid(work={'mode': 'simple'}, notes=f'write to {victim}'))):
+            with self.subTest(raw=raw[:40]):
+                self.write_target(None, raw=raw)
+                self.setup_tool('--mode', 'parallel')
+                self.assertEqual(list(victim.iterdir()), [])
+                self.assertEqual(json.loads(self.local_path().read_text())['work']['mode'], 'parallel')
+                self.local_path().unlink()
+        # A target .orbyn folder or file that is a link to elsewhere is never written through.
+        (self.target / '.orbyn' / 'harness.json').unlink()
+        (self.target / '.orbyn').rmdir()
+        os.symlink(victim, self.target / '.orbyn')
+        self.setup_tool('--mode', 'simple')
+        self.assertEqual(list(victim.iterdir()), [])
+        self.assertEqual(sorted(p.name for p in (self.workspace / 'repo').iterdir() if p.is_file()), [])
+        self.assertTrue(self.local_path().is_file())
+        self.assertEqual(self.resolve(ok=1).returncode, 1)
+
