@@ -62,24 +62,25 @@ yes. No file in a repository can grant an agent permission.
 Every request follows one path, and checks hold it to the rules at each step.
 
 ```mermaid
-%%{init: {"flowchart": {"nodeSpacing": 24, "rankSpacing": 28}}}%%
-flowchart TB
+flowchart LR
   accTitle: How Orbyn skills run
-  accDescr: You ask the host agent. AGENTS.md routes the request and the harness resolves tiers and limits. A lead uses the owning skill and briefs scouts and workers. The change then passes checks, the PR gate and your approval before reaching main.
-  subgraph start["1. Start"]
-    direction LR
-    you(["You"]) ==> host["Host agent"] ==> rules["AGENTS.md"] ==> harness["Harness: tiers, limits"]
+  accDescr: You ask the host agent. AGENTS.md and the harness set the rules and limits. A lead uses the owning skill and briefs scouts and workers. The change then passes checks and CI, the PR gate and your approval before reaching main.
+  you(["You"]) ==> host["Host<br/>agent"]
+  subgraph start["Start"]
+    rules["AGENTS.md"] ==> harness["Harness"]
   end
-  subgraph agents["2. Work"]
-    direction LR
-    skill["Owning skill"] --> lead["Lead: Opus, Sol"] ==> worker["Worker: Sonnet, Terra"]
-    lead --> scout["Scout: Haiku, Luna"]
+  subgraph work["Work"]
+    skill["Owning<br/>skill"] --> lead["Lead<br/>Opus, Sol"]
+    lead ==> worker["Worker<br/>Sonnet, Terra"]
+    lead --> scout["Scout<br/>Haiku, Luna"]
   end
-  subgraph merge["3. Prove"]
-    direction LR
-    checks["Checks and CI"] ==> gate["PR gate"] ==> review["You approve"] ==> main["main"]
+  subgraph prove["Prove"]
+    checks["Checks<br/>and CI"] ==> gate["PR<br/>gate"] ==> review["You<br/>approve"]
   end
-  start ==> agents ==> merge
+  host ==> rules
+  harness ==> lead
+  worker ==> checks
+  review ==> main["main"]
 ```
 
 The thick line is one request. Thin lines show what guides it. The [guide](docs/guide.md#full-diagrams) has the full versions of these diagrams.
