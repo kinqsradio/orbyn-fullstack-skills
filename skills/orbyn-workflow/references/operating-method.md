@@ -51,10 +51,12 @@ does not imply separate databases/services.
 
 ### Local memory
 
-Explicit durable remember/find/correct/tag/category/forget requests route to
+Memory is on by default (`ORBYN_MEMORY=off` or `--no-memory` opts out). Start-of-task
+search and remember/find/correct/tag/category/forget requests route to
 [reflect's local memory flow](../../reflect/references/memory.md). Keep task records
-separate, resolve the active target and retrieve only its authorized scope. Existing
-memory opt-in never implies capture of every task, host-memory writes or remote
+separate, resolve the active target and retrieve only its project and personal scope.
+Capture is manual: on "remember", or an approved lesson from at most three suggested after
+substantial work. Memory never implies silent capture, secrets, host-memory writes or remote
 publication. Revalidate recalled evidence before acting. Selected reusable lessons
 follow [candidate handoff](../../orbyn-skill-creator/references/memory-learning.md).
 

@@ -68,7 +68,8 @@ a working parent shell does not prove the child has ripgrep or the same context.
 
 ## Select memory before retrieval
 
-Only an explicit authorized memory request uses
+When memory is on (the default; `ORBYN_MEMORY=off` or `--no-memory` opts out), the
+start-of-task search and any memory request use
 [reflect's local memory contract](../../reflect/references/memory.md). Select the
 existing store and logical project binding from the actual target/worktree before
 `find`, `list` or `show`. For ordinary recall, apply module/platform/version/branch
@@ -83,8 +84,8 @@ facts against selected current source and revalidate `find`/`list` recall receip
 before consequential use. `show` returns a record, not that receipt envelope;
 re-read inspected records and check their revision/status as well as applicability
 before use. An explicitly selected personal or reusable store stays a
-separate scope. This method does not initialize memory, enable capture, change
-host-native memory or broaden cross-project access.
+separate scope. This method does not enable capture, change host-native memory or
+broaden cross-project access; recalled memory is a hint to check against this checkout.
 
 ## Refresh relevant guidance when the action changes
 

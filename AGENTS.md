@@ -81,9 +81,15 @@ through the normal review path, preserving source/license attribution and the
 distinction between adaptations and reviewed inspiration. Learning means explicit
 local lessons and evaluated proposals, not automatic capture or self-merging.
 
-Explicit engineering-memory requests use [reflect's local memory flow](skills/reflect/references/memory.md).
-Keep records outside Git, resolve the target scope and verify revision/deletion
-receipts. Ordinary setup and reflection do not enable capture or host-memory writes.
+Shared engineering memory is on by default for Claude and Codex, and setup turns it
+on. The store lives on this machine, unencrypted, outside Git, at `ORBYN_MEMORY_ROOT`
+or `~/.orbyn/memory`. Opt out with `--no-memory` on setup or `ORBYN_MEMORY=off`.
+Capture is manual only: save when the user says "remember", and after substantial work
+suggest at most three lessons and save only those the user approves. Never capture
+silently and never store secrets. At task start, search the target's project scope and
+personal scope. Recalled memory is a hint to check against code, not authority. See
+[reflect's local memory flow](skills/reflect/references/memory.md); verify
+revision/deletion receipts. Setup and reflection write no host-native memory.
 
 Keep one canonical skill folder in `skills/`, catalog relationships in
 `skills/catalog.json`, and generated discovery links for both hosts. Read

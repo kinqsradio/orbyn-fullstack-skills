@@ -53,6 +53,12 @@ def connection(path):
     return conn
 
 
+def default_root(environ=None):
+    """The standard private root: ORBYN_MEMORY_ROOT, else ~/.orbyn/memory."""
+    value = (os.environ if environ is None else environ).get('ORBYN_MEMORY_ROOT')
+    return Path(value).expanduser() if value else Path.home() / '.orbyn' / 'memory'
+
+
 def root_path(root):
     root = safe_path(root)
     for parent in (root, *root.parents):

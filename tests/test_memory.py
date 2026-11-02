@@ -711,5 +711,55 @@ c.execute('DELETE FROM records'); print('ready',flush=True); time.sleep(30)
         self.assertEqual(forgotten.returncode, 0, forgotten.stderr)
 
 
+class DefaultRootTests(unittest.TestCase):
+    """The standard root: ORBYN_MEMORY_ROOT, else ~/.orbyn/memory, with an explicit --root winning."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.base = Path(self.temp.name).resolve()
+        self.home = self.base / 'home'
+        self.home.mkdir()
+
+    def where(self, *args, **env):
+        base = {k: v for k, v in os.environ.items() if k != 'ORBYN_MEMORY_ROOT'}
+        result = subprocess.run([sys.executable, str(CLI), *map(str, args), 'where'], text=True, capture_output=True,
+                                env={**base, 'HOME': str(self.home), **env})
+        return result, (json.loads(result.stdout)['result'] if result.returncode == 0 else None)
+
+    def test_default_is_under_home_and_nothing_is_created(self):
+        result, found = self.where()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual((found['root'], found['source'], found['initialized']),
+                         (str(self.home / '.orbyn/memory'), 'default', False))
+        self.assertEqual(list(self.home.iterdir()), [])
+
+    def test_env_root_replaces_the_default(self):
+        _, found = self.where(ORBYN_MEMORY_ROOT=str(self.base / 'env-root'))
+        self.assertEqual((found['root'], found['source']), (str(self.base / 'env-root'), 'ORBYN_MEMORY_ROOT'))
+
+    def test_explicit_root_wins_over_env(self):
+        _, found = self.where('--root', self.base / 'flag-root', ORBYN_MEMORY_ROOT=str(self.base / 'env-root'))
+        self.assertEqual((found['root'], found['source']), (str(self.base / 'flag-root'), 'argument'))
+
+    def test_resolver_function(self):
+        self.assertEqual(store.default_root({'ORBYN_MEMORY_ROOT': '/x/y'}), Path('/x/y'))
+        with mock.patch.dict(os.environ, {'HOME': str(self.home)}):
+            self.assertEqual(store.default_root({}), self.home / '.orbyn/memory')
+
+    def test_git_checkout_root_is_refused_whether_default_env_or_flag(self):
+        checkout = self.base / 'checkout'
+        checkout.mkdir()
+        subprocess.run(['git', '-C', str(checkout), 'init', '-q'], check=True)
+        for kwargs, args in (({'ORBYN_MEMORY_ROOT': str(checkout / 'mem')}, ()), ({}, ('--root', checkout / 'mem'))):
+            result, _ = self.where(*args, **kwargs)
+            self.assertEqual(result.returncode, 1)
+            self.assertIn('outside Git', result.stderr)
+        subprocess.run(['git', '-C', str(self.home), 'init', '-q'], check=True)
+        result, _ = self.where()
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(list(self.home.glob('.orbyn')), [])
+
+
 if __name__ == '__main__':
     unittest.main()

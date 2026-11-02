@@ -1,6 +1,7 @@
 """Natural-language agents call this explicit CLI; it never captures chats or pushes Git."""
 import argparse
 import json
+import os
 from pathlib import Path
 import sqlite3
 import subprocess
@@ -11,8 +12,8 @@ from .schema import CATEGORIES, DOMAINS, Error, VERSION, require
 
 
 def parser():
-    p = argparse.ArgumentParser(description='Opt-in local engineering memory (Python 3.11+). No daemon or remote effects.')
-    p.add_argument('--root', type=Path, required=True, help='Explicit private data directory outside Git')
+    p = argparse.ArgumentParser(description='Local engineering memory, manual capture (Python 3.11+). No daemon or remote effects.')
+    p.add_argument('--root', type=Path, help='Private data directory outside Git; default ORBYN_MEMORY_ROOT or ~/.orbyn/memory')
     scope = p.add_mutually_exclusive_group()
     scope.add_argument('--project', type=Path)
     scope.add_argument('--personal', action='store_true')
@@ -22,6 +23,7 @@ def parser():
         s = sub.add_parser(command)
         s.add_argument('--mode', choices=['off', 'manual'], default='off')
     sub.add_parser('register')
+    sub.add_parser('where', help='Show the resolved root without creating it')
     sub.add_parser('taxonomy')
     sub.add_parser('cleanup')
     sub.add_parser('backup')
@@ -80,6 +82,11 @@ def parser():
 
 def dispatch(args):
     selection = dict(project=args.project, personal=args.personal, reusable=args.reusable)
+    if args.command == 'where':
+        root = store.root_path(args.root)
+        return {'root': str(root), 'source': 'argument' if args.explicit_root else
+                ('ORBYN_MEMORY_ROOT' if os.environ.get('ORBYN_MEMORY_ROOT') else 'default'),
+                'initialized': (root / 'registry.sqlite3').is_file()}
     if args.command == 'init':
         return store.init(args.root, args.mode)
     if args.command == 'mode':
@@ -135,7 +142,10 @@ def dispatch(args):
 
 def main(argv=None):
     args = parser().parse_args(argv)
+    args.explicit_root = args.root is not None
     try:
+        if args.root is None:
+            args.root = store.default_root()
         require(sys.version_info >= (3, 11), 'Python 3.11+ required')
         result = dispatch(args)
         print(json.dumps({'ok': True, 'result': result}, ensure_ascii=False, indent=2))
