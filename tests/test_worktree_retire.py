@@ -8,6 +8,7 @@ import stat
 import subprocess
 import tempfile
 import time
+from types import SimpleNamespace
 import unicodedata
 import unittest
 from unittest import mock
@@ -510,6 +511,13 @@ class SecretsAndNamesTests(CleanupCase):
         self.assertTrue((path/'target/blob').is_file())
 
 class IdleAndKeepTests(CleanupCase):
+    def test_scan_estimates_size_when_allocated_blocks_are_unavailable(self):
+        info = SimpleNamespace(st_mtime=0, st_ctime=0, st_mode=stat.S_IFREG, st_size=2048)
+        with mock.patch.object(tool.os, 'lstat', return_value=info):
+            self.assertEqual(tool.scan('file')['kb'], 2)
+            info.st_blocks = 0
+            self.assertEqual(tool.scan('file')['kb'], 0)
+
     # --- 11: idle time
 
     def test_idle_time_follows_ctime_folders_and_unreadable_parts(self):

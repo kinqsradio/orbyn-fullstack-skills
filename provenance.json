@@ -2245,6 +2245,13 @@
       "changes": "Original worktree ownership/lifecycle guidance: sibling repo-wt roots, neutral purpose names, reuse, verified base and preservation before cleanup. Includes local-first branch ownership, bounded delegate branches, stable personal contribution fork names and verified authorized publication. Prefer private contribution storage when supported, retain local work if privacy is unavailable, and distinguish a public native fork from a private standalone backup. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Added exact-topology host readiness and blocked-metadata preservation guidance; primary-clone readiness does not qualify linked-worktree writes. Clarified independently authored one-time workspace layout selection: ask when unresolved, recommend nested for new contribution workspaces, honor explicit existing paths/delegated default and preserve active work. Installer destination API and source lineage remain unchanged. Added independently authored instruction/search re-resolution after selecting a worktree; shared history or memory does not prove branch applicability. Existing lineage and notices retained. Added independently authored designated feature-worktree verification guidance or synthetic development cases: affected checks, stage boundaries, exclusions, widening triggers, required-status preservation and no per-task CI/CD automation. Existing lineage and notices retained; no upstream text or code imported. Added independently authored task/resource closeout, checkout/replacement or retention/cache-reuse guidance and synthetic development boundaries. Original additions preserve all prior attribution/import records; no upstream source text, runtime, cleanup helper or automatic scheduler imported.",
       "authoring": [
         {
+          "tool": "Codex",
+          "model": "gpt-6.1-sol",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "Windows cleanup scan size fallback"
+        },
+        {
           "tool": "unrecorded",
           "model": "unrecorded",
           "date": "2026-11-02",

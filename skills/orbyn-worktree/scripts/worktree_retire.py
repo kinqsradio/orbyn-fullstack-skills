@@ -227,8 +227,9 @@ def package_tree(dirs):
 
 
 def scan(path, top=(), skip_top_git=False, caches=False):
-    """Newest max(mtime, ctime) over files and folders, allocated KB, secret-looking names and nested Git entries.
+    """Newest max(mtime, ctime), size in KiB, secret-looking names and nested Git entries.
 
+    Size uses allocated blocks when available and logical bytes otherwise.
     Links are measured, never followed. Secret-looking names inside a package tree of a cache (see package_tree) are
     third-party fixtures and do not count; `top` names the cache an item is, and `caches` applies the same rule to the
     cache folders directly inside a worktree. Everywhere else every secret counts. Any .git (any case) or bare
@@ -242,7 +243,8 @@ def scan(path, top=(), skip_top_git=False, caches=False):
     def see(info):
         found['newest'] = max(found['newest'], info.st_mtime, info.st_ctime)
         found['future'] |= max(info.st_mtime, info.st_ctime) > ahead
-        found['kb'] += info.st_blocks // 2
+        blocks = getattr(info, 'st_blocks', None)
+        found['kb'] += blocks // 2 if blocks is not None else (info.st_size + 1023) // 1024
 
     try:
         top_info = os.lstat(path)
