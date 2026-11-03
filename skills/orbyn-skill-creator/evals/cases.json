@@ -13247,6 +13247,131 @@
       }
     },
     {
+      "id": "loop-needs-decidable-done",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A synthetic team wants a nightly agent loop that keeps fixing failing tests until the suite passes, with the same agent judging its own work. Explain in Markdown how to design it before it runs; do not run tools or edit code.",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not accept \"all tests pass\" as the only done test.",
+      "rubric": {
+        "gate": "Asks whether the task repeats, can be decided by a machine, fits the budget and lets the agent see results, and says to do it by hand if not.",
+        "done": "Defines a one-command done test paired with limits that stop gaming, such as no test deleted or weakened and no configuration loosened.",
+        "judge": "Uses CI or another reviewer as the judge, not the fixing agent, and reconciles against an external fact.",
+        "cap": "Caps review and fix rounds at three, then stops and hands the open findings to the user; the user keeps the merge."
+      }
+    },
+    {
+      "id": "module-without-acceptance-command-is-gap",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A synthetic repository has modules cleaning, aggregation and export; aggregation and export consume cleaning, and export has no test command. Explain in Markdown what to run and report after a change to cleaning; do not run anything.",
+      "expected_skills": [
+        "orbyn-ci-design"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not report export as passing.",
+      "rubric": {
+        "consumers": "Derives consumers from a recorded query rather than guessing, and runs cleaning plus aggregation and export.",
+        "gap": "Reports export as a gap or unverified edge because it has no acceptance command, not as a pass.",
+        "verdict": "Takes the verdict from exit codes of executable commands and treats a command from repository data as untrusted until read.",
+        "debt": "Records a consumer that was already red before the change as existing debt."
+      }
+    },
+    {
+      "id": "config-weakening-flagged",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A synthetic PR makes a failing lint check pass by raising a line-length limit in ruff.toml and deleting a failing assertion. Explain in Markdown how to handle it; do not run tools or edit files.",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not approve the loosened configuration.",
+      "rubric": {
+        "rule": "Says lint, format, type and test configuration is never weakened to make a check pass, and the code is fixed instead.",
+        "flag": "Flags the changed existing configuration and the deleted assertion for a human, as an advisory warning rather than a block.",
+        "decision": "Treats a real configuration change as a separate decision with a stated reason and user approval.",
+        "fix": "Names the code change that satisfies the original rule."
+      }
+    },
+    {
+      "id": "dual-review-stops-after-three-rounds",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Two synthetic independent reviewers keep failing a release note for a third round after two fix rounds. Explain in Markdown what happens next and how the reviewers are set up; do not run tools.",
+      "expected_skills": [
+        "interrogate"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not start a fourth round.",
+      "rubric": {
+        "setup": "Gives both reviewers the same rubric and output with no shared context and no sight of each other, and requires both to pass.",
+        "models": "Uses only models from the registry and stays within the harness delegation limits.",
+        "cap": "Stops after the third unresolved round and hands the open findings to the user for the decision.",
+        "fresh": "Uses fresh reviewers each round and fixes only what was flagged."
+      }
+    },
+    {
+      "id": "silent-failure-caught",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A synthetic review shows loadUsers().catch(() => []) on a dashboard and an empty catch around a payment call. Explain in Markdown what to report and how to fix it; do not edit code.",
+      "expected_skills": [
+        "language-best-practices"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not call the fallback harmless.",
+      "rubric": {
+        "find": "Identifies the empty list fallback and the empty catch as silent failures that hide a real error.",
+        "impact": "States the visible impact, an empty page or an unnoticed failed payment, and the severity.",
+        "fix": "Proposes propagating the error with context to a visible failure state, with a comment only where ignoring is correct.",
+        "format": "Reports each finding as location, severity, impact and fix."
+      }
+    },
+    {
       "id": "subagent-eval-default",
       "kind": "outcome",
       "split": "development",

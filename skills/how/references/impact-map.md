@@ -63,3 +63,30 @@ and live-entry control, not a rewritten mock. Distinguish checked-and-cleared ri
 from still-unproven assumptions in the result. No textual caller match cannot clear
 dynamic consumers, generated registration or older deployed writers. Preserve
 compatibility when the relevant mixed-version observation is unavailable.
+
+## Trace state actions through a handler
+
+Use this when a control works in isolation but the screen ends in the wrong state.
+Reading each function alone misses a later call that undoes an earlier one.
+
+1. For each store or context in scope, map every action to what it sets and what
+   it resets: `selectThread -> sets {thread}, resets {composeMode}`. Mark any
+   action that clears state it does not own.
+2. For each handler, list its calls in order with the state each reads, sets and
+   resets. Check that no later call reverses an earlier one.
+3. Compare the final state with what the control's label promises.
+4. For async calls, check that the result order cannot change the final state.
+
+Synthetic example: "New draft" calls `setCompose(true)` and then
+`selectThread(null)`; the second call resets `compose` to false, so the button
+appears to do nothing. The fix reorders or removes the reset, and a test asserts
+the final state.
+
+## Reconcile the diff with the planned impact
+
+After implementation, compare the actual diff and checks with the impact you
+planned before. List the callers, data, interfaces, tests, docs and release steps
+the diff touched that the plan did not name, and planned ones it left alone. Mark
+every consumer you could not check as `unverified`, and report any scope drift or
+remaining risk. Do not infer an edge from directory names; use imports, calls,
+routes, schemas and `git diff`.

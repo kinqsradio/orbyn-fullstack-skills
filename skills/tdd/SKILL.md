@@ -35,6 +35,13 @@ Record the choice in one line in the task record or PR evidence, for example
 
 For a stale version write, place the regression at the API/version boundary. Arrange an existing record and newer version, send the stale mutation, and assert both rejection and unchanged persisted data. A snapshot of the error string alone misses a write that succeeds before returning an error. Include a legitimate current-version control when it distinguishes an overbroad rejection. Add a UI check only when the changed user flow needs separate evidence and that check is authorized.
 
+A model that reviews its own code repeats the blind spot that produced it, so its
+"looks correct" is not evidence. Give every fixed bug an automated test, and make
+it cover every path that can reach the bug, including the alternate ones (sandbox
+and production, flag on and off, cached and fresh). Synthetic example: a field was
+added to the production query but not the sandbox one; a test run over both modes
+fails at once.
+
 ## When the ideal test is out of reach
 
 - Baseline execution unavailable: record that limit. A passing new test without a demonstrated baseline failure is weaker regression evidence, so state that distinction and do not call it failing-before evidence.

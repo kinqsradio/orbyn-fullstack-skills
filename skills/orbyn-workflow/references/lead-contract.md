@@ -126,8 +126,14 @@ or surface evidence is unavailable or excluded, report that limit explicitly.
 Additional independent Verifier/Reviewer assignments are optional unless requested.
 Requested independent qualification uses the same frozen candidate and at most
 three full review rounds under [delivery](project-policy.md#verification-and-review).
-This limit applies to requested independent qualification, not ordinary lead
-correction loops.
+The same cap holds for any review or fix loop: after the third unresolved round,
+stop and hand the decision to the user with the open findings. With PR authority,
+that hand-off is a draft PR, never a ready one; see
+[opening a PR](../playbooks/opening-a-pr.md#when-three-rounds-do-not-resolve-it).
+
+Never weaken lint, format, type or test configuration, and never delete or loosen
+a test, to make a check pass. Fix the code. A change to existing configuration
+needs its own stated reason and the user's approval.
 
 ## Deliver
 

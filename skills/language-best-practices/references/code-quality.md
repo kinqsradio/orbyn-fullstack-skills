@@ -38,6 +38,20 @@ Handle an error only where you can act on it. Otherwise add context and propagat
 - Avoid: `catch (e) { return null }`. The caller cannot tell "not found" from "database down".
 - Avoid: empty catches, and catch-alls that turn failure into success. When ignoring an error is correct, such as best-effort cleanup after a reported failure, say why in a comment.
 
+Hunt for silent failure when you review:
+
+- Empty catches, and ignored exceptions turned into `null` or an empty list.
+- `.catch(() => [])` and defaults that hide a real failure, so the next bug is
+  harder to find.
+- Swallowed errors: a log with no context or the wrong severity, a generic rethrow
+  that loses the cause, an unawaited promise.
+- Network, file and database calls with no timeout or error path, and transactional
+  work with no rollback.
+
+Report each as location, severity, impact and fix. Synthetic example:
+`loadUsers().catch(() => [])` shows an empty page when the service is down; let the
+error reach a visible failure state.
+
 ## Release what you acquire
 
 Give every file, connection, lock, timer, subscription and temporary path one owner that releases it on success, failure and cancellation.

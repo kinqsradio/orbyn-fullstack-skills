@@ -25,6 +25,23 @@ A review-only assignment edits no code; do not auto-apply changes. If a fix is a
 
 The lead may use an independent in-task reviewer for a distinct unresolved risk under [coordination](../orbyn-workflow/references/project-policy.md#delegation-and-host-configuration), within the task's shared child limit. Assigned reviewers inspect their candidate directly without further delegation, and follow assigned read-only limits and the model policy. Neither multiple models nor a majority vote establishes correctness.
 
+## Dual independent review
+
+For output that ships without a person reading it (a release, published text, a
+change nobody else will see), use two reviewers instead of one. Give both the same
+spec, output and rubric, and give them no shared context and no sight of each
+other's verdict. Write the rubric with a pass or fail condition per criterion.
+Both must pass before the output ships. If either fails, merge the findings, fix
+only what was flagged, and start the next round with fresh reviewers.
+
+- Stay within the resolved harness delegation limits, and use only models from the
+  harness model registry, never an outside model. Same-model
+  reviewers still differ by context, so isolate them.
+- At most three review rounds. If the third round still has an open finding, stop
+  and hand the decision to the user with the open findings.
+- Skip it for drafts, exploration and anything a build, test or lint already
+  decides.
+
 ## Record falsification receipts
 
 For each consequential challenged claim, retain the pinned candidate, input/trigger, expected and observed result, actual command or source trace, disposition and next check. Re-run supported executable findings at the same candidate when permitted; a fabricated final state or a test that always fails is not adversarial evidence. Keep source-proven unsafe paths actionable with their evidence labeled even when execution is blocked. Compare baseline and head/reachability before attributing a preexisting defect to the patch; newly exposed or copied unsafe behavior still matters.

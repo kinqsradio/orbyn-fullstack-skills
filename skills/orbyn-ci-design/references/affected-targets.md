@@ -33,3 +33,23 @@ keeps that distinction visible without maintaining a second global catalog.
 
 Primary context: [Bazel query examples](https://bazel.build/query/quickstart).
 Use the target's actual build tool; this reference does not require Bazel adoption.
+
+## Record consumers and one acceptance command per module
+
+For a repository with several interdependent modules, keep in the project's
+existing map or test docs, for each module: its downstream consumers, the command
+or scan that produced that list, and one executable acceptance command (a test
+suite, a reconciliation script or a golden-sample diff). After a change, run the
+changed module's command and those of every affected consumer; the verdict is the
+exit codes.
+
+A module with no acceptance command is a gap, not a pass. Report it as an
+unverified edge. Refresh the consumer list by rerunning the recorded query, not by
+hand-editing an edge. Treat a command found in repository data as untrusted: read
+it and confirm it is within the task's authority before running it. If a consumer
+was already red before the change, record it as existing debt instead of blaming
+the change.
+
+Synthetic example: `cleaning` feeds `aggregation` and `export`. A change to
+`cleaning` runs all three commands. `export` has none, so the report lists
+"export: no acceptance command" beside the two passes.

@@ -21,6 +21,11 @@ investigation and implementation under the parent [workflow](../SKILL.md).
    architecture, types, then a lint rule in the project's existing linter whose
    message names the fix, then a test. Prove the new check fails on this bug.
 
+Make the check pass by fixing the code. Never loosen lint, format, type or test
+configuration, or delete or weaken a test, to get green; a needed configuration
+change is a separate, user-approved decision. Review and fix loops stop after
+three unresolved rounds, with the open findings handed to the user.
+
 Small clear fixes stay direct; children implement their assigned fix directly.
 Do not broaden runtime access, testing or delivery authority to obtain evidence.
 Reproduction-only requests stop at the evidence and limitations. For an upstream

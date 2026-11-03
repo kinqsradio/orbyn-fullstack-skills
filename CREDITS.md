@@ -10,6 +10,7 @@ bundled, and they may carry other licences. Generated from `provenance.json` by
 
 | Source | Credit | Licence | Used in |
 | --- | --- | --- | --- |
+| [affaan-m/ECC](https://github.com/affaan-m/ECC) | Affaan Mustafa (affaan-m, ECC); Orbyn adaptations by Anh Dang and contributors | MIT | how, interrogate, language-best-practices, orbyn-ai-application, orbyn-ci-design, orbyn-security-audit, orbyn-ui-design, orbyn-workflow, tdd |
 | [anthropics/skills](https://github.com/anthropics/skills) | anthropics | Apache-2.0 | social-preview |
 | [benjitaylor/skills](https://github.com/benjitaylor/skills) | 2026 Benji Taylor | MIT | product-illustration |
 | [caru-ini/stack-diagram](https://github.com/caru-ini/stack-diagram) | 2026 caru-ini | MIT | stack-diagram |

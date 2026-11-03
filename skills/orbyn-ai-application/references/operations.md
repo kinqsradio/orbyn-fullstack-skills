@@ -51,3 +51,19 @@ Original local synthesis; no source text, SDK or runtime imported. These methods
 work offline; current provider/version claims still need applicable verification.
 
 For requested voice/dictation/read-aloud behavior use the [speech lifecycle](speech.md). For a run adapter, distinguish startup auth failure (not run), partial execution error (reconcile retained effects), and stream end from the supported terminal result; dispose/cancel only through actual supported APIs.
+
+## Prompt caching
+
+For repeated requests that share instructions, tools or reference material, keep
+that content stable and first, and put volatile content (the question, timestamps,
+fresh retrieval) last. A changed prefix stops reuse from that point. Check the
+provider's current minimum prefix, retention and pricing before choosing.
+
+Cache reuse is not authorization. Check access before any lookup, scope any
+application cache key to the approved user, workspace, model and content revision,
+and expire it when permissions or content change. Do not log private prompt text.
+
+Treat savings as unmeasured until you record the provider's usage counters
+(cache reads, cache writes and ordinary input) for a real workload. Synthetic
+example: moving the timestamp from the top of the system prompt to the end lets
+the tools and instructions repeat exactly; confirm with the read counter.
