@@ -8,6 +8,7 @@ import stat
 import subprocess
 import tempfile
 import time
+from types import SimpleNamespace
 import unicodedata
 import unittest
 from unittest import mock
@@ -510,6 +511,27 @@ class SecretsAndNamesTests(CleanupCase):
         self.assertTrue((path/'target/blob').is_file())
 
 class IdleAndKeepTests(CleanupCase):
+    def test_scan_estimates_size_when_allocated_blocks_are_unavailable(self):
+        info = SimpleNamespace(st_mtime=0, st_ctime=0, st_mode=stat.S_IFREG, st_size=2048)
+        with mock.patch.object(tool.os, 'lstat', return_value=info):
+            self.assertEqual(tool.scan('file')['kb'], 2)
+            info.st_blocks = 0
+            self.assertEqual(tool.scan('file')['kb'], 0)
+
+    def test_estimate_sizes_are_marked_in_report_and_apply_output(self):
+        no_blocks = SimpleNamespace(st_mtime=0, st_ctime=0, st_mode=stat.S_IFREG, st_size=2048)
+        with_blocks = SimpleNamespace(st_mtime=0, st_ctime=0, st_mode=stat.S_IFREG, st_size=2048, st_blocks=8)
+        with mock.patch.object(tool.os, 'lstat', return_value=no_blocks):
+            self.assertTrue(tool.sizes_are_estimates())
+        with mock.patch.object(tool.os, 'lstat', return_value=with_blocks):
+            self.assertFalse(tool.sizes_are_estimates())
+        data = self.report()
+        self.assertEqual(data['sizes_estimate'], tool.sizes_are_estimates())
+        self.assertIn('logical-byte estimates', tool.render_report({**data, 'sizes_estimate': True}))
+        self.assertNotIn('logical-byte estimates', tool.render_report({**data, 'sizes_estimate': False}))
+        apply_data = {'workspace': data['workspace'], 'dry_run': True, 'results': [], 'sizes_estimate': True}
+        self.assertIn('logical-byte estimates', tool.render_apply(apply_data))
+
     # --- 11: idle time
 
     def test_idle_time_follows_ctime_folders_and_unreadable_parts(self):
