@@ -593,7 +593,8 @@ def is_library(path):
 def find_workspace(primary, explicit, root=None):
     """The outer workspace: the one --workspace names, else the outermost repo/ above the clone that holds this library.
 
-    A target that is the library holding this script is its own workspace, so its in-place file is found without --workspace."""
+    A target that is the library holding this script is its own workspace, so its in-place file is found without --workspace.
+    From a linked worktree of the library, that workspace is the verified primary clone, where the owner saved it."""
     if explicit:
         workspace = Path(explicit)
         if not workspace.is_dir():
@@ -603,7 +604,7 @@ def find_workspace(primary, explicit, root=None):
         if parent.name == 'repo' and is_library(parent.parent):
             return parent.parent
     if root is not None and root.resolve() == SCRIPT.parents[3] and is_library(root.resolve()):
-        return root.resolve()
+        return primary.resolve() if is_library(primary.resolve()) else root.resolve()
     return None
 
 

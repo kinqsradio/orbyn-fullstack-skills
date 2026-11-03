@@ -1091,6 +1091,27 @@ class LibraryAsTarget(HarnessCase):
         self.assertEqual(implicit['work']['mode']['value'], 'simple')
         self.assertEqual(implicit['work'], explicit['work'])
 
+    def test_a_worktree_of_the_library_uses_the_mode_saved_in_its_primary_clone(self):
+        import hashlib
+        shutil.rmtree(self.library_root / '.git')
+        git = ['git', '-c', 'user.name=t', '-c', 'user.email=t@t', '-c', 'commit.gpgsign=false', '-C']
+        for args in (['init', '-q'], ['add', '-A'], ['commit', '-qm', 'library']):
+            subprocess.run(git + [str(self.library_root), *args], check=True, capture_output=True)
+        tree = self.base / 'library-wt' / 'task'
+        subprocess.run(git + [str(self.library_root), 'worktree', 'add', '-q', str(tree)], check=True, capture_output=True)
+        common = (self.library_root / '.git').resolve()
+        name = f'inplace--library--{hashlib.sha256(str(common).encode()).hexdigest()[:12]}'
+        saved = self.library_root / 'repo' / '.harness' / f'{name}.json'
+        saved.parent.mkdir(parents=True)
+        saved.write_text(json.dumps(valid(work={'mode': 'simple'})))
+        result = subprocess.run([sys.executable, str(tree / 'skills/orbyn-workflow/scripts/harness.py'), 'resolve',
+                                 '--target', str(tree), '--host', 'claude', '--no-probe', '--json'],
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        data = json.loads(result.stdout)
+        self.assertEqual(data['workspace'], str(self.library_root.resolve()))
+        self.assertEqual(data['work']['mode']['value'], 'simple')
+
     def test_another_checkout_is_not_given_the_library_as_workspace(self):
         elsewhere = self.base / 'elsewhere' / 'app'
         (elsewhere / '.git').mkdir(parents=True)
