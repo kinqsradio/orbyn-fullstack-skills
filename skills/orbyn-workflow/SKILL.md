@@ -132,6 +132,7 @@ explanation can proceed directly. Read the
   report the limit and continue permitted direct work. Never silently substitute a
   model, launch a hidden inference process or install a provider.
 - New sidebar/project chats require an explicit human request.
+- Never poll a background job or child (`sleep`, `ps`, `pgrep`, `top`); [wait without polling](references/waiting.md).
 - For substantial work, write the [answer key](references/answer-key.md) first; the worker gets the outcome only.
 - Inspect the actual returned artifacts and diff; treat a delegate's summary as
   evidence to inspect. The lead writes the final assessment.

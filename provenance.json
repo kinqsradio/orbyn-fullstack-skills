@@ -1085,6 +1085,13 @@
           "effort": "medium",
           "date": "2026-11-03",
           "scope": "Subagent eval mode (prepare and grade), restore and strict protected-path grading, native-subagent policy and two cases"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "Eval runner detects polling; background-job-no-poll executable case"
         }
       ]
     },
@@ -1739,6 +1746,13 @@
           "effort": "medium",
           "date": "2026-11-03",
           "scope": "Merge on instruction; owner bypass only for the owner own green PR"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "Wait without polling: never poll a background job or child; the host reports the result"
         }
       ]
     },

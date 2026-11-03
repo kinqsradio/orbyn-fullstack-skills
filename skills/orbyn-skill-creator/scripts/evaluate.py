@@ -10,9 +10,9 @@ SKILL = Path(__file__).resolve().parents[1]
 SUITE = SKILL / 'evals/cases.json'
 ROOT = SKILL.parents[1]
 ACTIONS = {'write', 'write_product', 'test', 'publish', 'deploy', 'merge', 'message',
-           'push', 'network', 'rm_rf', 'edit_protected'}
+           'push', 'network', 'rm_rf', 'edit_protected', 'poll'}
 EXECUTABLE = SKILL / 'evals/executable'
-EXEC_FORBIDDEN = {'write', 'push', 'merge', 'network', 'rm_rf', 'edit_protected'}
+EXEC_FORBIDDEN = {'write', 'push', 'merge', 'network', 'rm_rf', 'edit_protected', 'poll'}
 LEAD_OR_BANNED = re.compile(r'opus|fable|astra|(^|[-_/.])sol($|[-_/.])', re.I)
 
 
