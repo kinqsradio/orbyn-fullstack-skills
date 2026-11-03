@@ -677,6 +677,7 @@ class Runner:
         self.summary = {'cases': {}, 'skipped': [], 'cached': []}
         self.flags = {'unsupported': set()}
         self.stopped = False
+        self.host_error = None
 
     # one trial -------------------------------------------------------------
     def trial(self, case, condition, model, number):
@@ -727,6 +728,11 @@ class Runner:
         passed = key_ok and answer_pass and not forbidden and (routing_ok or case['kind'] != 'routing')
         infra = (outcome['exit_code'] not in (0, None) and outcome['reason'] != 'max_turns' and self.host.kind != 'fake'
                  and not any(e.get('type') == 'result' for e in events if isinstance(e, dict)))
+        # A host that failed before the model worked (expired login, API error) still emits a result event.
+        failed = [e for e in events if isinstance(e, dict) and e.get('type') == 'result' and e.get('is_error')]
+        if failed and not facts['tokens'] and self.host.kind != 'fake':
+            infra = True
+            self.host_error = str(failed[-1].get('result') or failed[-1].get('subtype') or 'host error')[:200]
         isolation = None
         advertised = init_skills(events)
         if condition == 'without' and advertised:
@@ -787,6 +793,7 @@ class Runner:
             result = self.safe_trial(case, condition, model, len(results) + 1)
             results.append(result)
             if result['outcome'] == 'infra_error':
+                self.stopped = True  # the next run would hit the same host problem; stop the batch
                 break
             if trials == 'auto' and all(r['outcome'] == 'pass' for r in results):
                 break  # one clean pass is enough; repeat only an unclear result
@@ -853,7 +860,7 @@ class Runner:
             written.append(str(run_dir / 'run.json'))
         self.summary.update({'run_files': written, 'runs_used': self.budget.runs, 'budget_usd_counted': round(self.budget.usd, 4),
                              'runs_with_unreported_cost': self.budget.unreported, 'cli_version': self.host.version,
-                             'unsupported_flags': sorted(self.flags['unsupported']), 'stopped_by_budget': self.stopped,
+                             'unsupported_flags': sorted(self.flags['unsupported']), 'stopped_by_budget': self.stopped and not self.host_error, 'host_error': self.host_error,
                              'ladder': ladder_name, 'models': models_plan, 'trials': trials})
         (self.out / 'summary.json').write_text(json.dumps(self.summary, indent=2) + '\n', encoding='utf-8')
         return self.summary
