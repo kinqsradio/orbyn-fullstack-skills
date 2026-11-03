@@ -8,6 +8,7 @@ import importlib.util
 import io
 import json
 from pathlib import Path
+import shutil
 import sys
 import tempfile
 import unittest
@@ -398,6 +399,191 @@ class AllCasesTests(RunnerCase):
         runner.finish(1, None, ['fake'])
         report = evaluate.compare(self.base / 'out/without/fake/run.json', self.base / 'out/with/fake/run.json')
         self.assertEqual(report['candidate']['outcome'], {'passed': 2, 'total': 2})
+
+
+class ProtectedModeTests(RunnerCase):
+    def fake(self, case_id, name, files):
+        case = self.cases[case_id]
+        script = json.loads((case['dir'] / 'fake/good.json').read_text())
+        script['files'].update(files)
+        folder = self.base / 'fake' / case_id
+        folder.mkdir(parents=True, exist_ok=True)
+        (folder / f'{name}.json').write_text(json.dumps(script))
+        return eval_run.FakeHost(name, self.base / 'fake')
+
+    def outcome(self, host, case_id, condition='with'):
+        runner = self.runner(host, [case_id], out=f'o-{case_id}-{host.agent}')
+        runner.run_case(self.cases[case_id], condition, ['fake'], 1)
+        return runner.results[(condition, 'fake')][0]
+
+    def test_ten_cases_declare_their_mode_and_only_one_is_strict(self):
+        modes = {i: c['key']['protected_mode'] for i, c in self.cases.items() if c['key'].get('protected')}
+        self.assertEqual(modes.pop('test-looks-wrong'), 'strict')
+        self.assertEqual(set(modes.values()), {'restore'})
+        for case in self.cases.values():
+            self.assertEqual('edit_protected' in case['forbidden_actions'], case['key']['protected_mode'] == 'strict'
+                             and bool(case['key'].get('protected')), case['id'])
+
+    def test_a_fix_with_an_appended_regression_test_passes_under_restore(self):
+        case = self.cases['pagination-off-by-one']
+        host = eval_run.FakeHost('good_with_tests')
+        result = self.outcome(host, case['id'])
+        self.assertEqual((result['outcome'], result['forbidden']), ('pass', []))
+        report = json.loads((self.base / f'o-{case["id"]}-good_with_tests/with/fake/grades/{case["id"]}-t1.json').read_text())['report']
+        self.assertEqual(report['protected']['status'], 'pass')
+        self.assertEqual(report['protected_changed'], [{'path': 'tests/test_pagination.py', 'reason': 'modified'}])
+
+    def test_a_weakened_original_assertion_with_the_bug_left_fails(self):
+        result = self.outcome(eval_run.FakeHost('weakened'), 'pagination-off-by-one')
+        self.assertEqual(result['outcome'], 'fail')
+
+    def test_strict_still_fails_any_change_to_the_tests(self):
+        case_id = 'test-looks-wrong'
+        original = (self.cases[case_id]['dir'] / 'fixture/tests/test_price.py').read_text()
+        host = self.fake(case_id, 'appends', {'tests/test_price.py': original + '\n# note\n'})
+        result = self.outcome(host, case_id)
+        self.assertEqual(result['outcome'], 'fail')
+        self.assertEqual(result['forbidden'], ['edit_protected'])
+
+    def test_a_key_with_no_mode_restores_unless_editing_is_forbidden(self):
+        folder = self.base / 'cases'
+        for name in ('pagination-off-by-one', 'test-looks-wrong'):
+            target = folder / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copytree(self.cases[name]['dir'], target)
+            key = json.loads((target / 'key/key.json').read_text())
+            del key['protected_mode']
+            (target / 'key/key.json').write_text(json.dumps(key))
+        pagination = json.loads((folder / 'pagination-off-by-one/case.json').read_text())
+        pagination['forbidden_actions'].append('edit_protected')  # Editing the tests is forbidden here, so strict.
+        (folder / 'pagination-off-by-one/case.json').write_text(json.dumps(pagination))
+        loaded = {c['id']: c['key']['protected_mode'] for c in evaluate.load_executable(folder)}
+        self.assertEqual(loaded, {'pagination-off-by-one': 'strict', 'test-looks-wrong': 'strict'})
+        pagination['forbidden_actions'].remove('edit_protected')
+        (folder / 'pagination-off-by-one/case.json').write_text(json.dumps(pagination))
+        loaded = {c['id']: c['key']['protected_mode'] for c in evaluate.load_executable(folder)}
+        self.assertEqual(loaded['pagination-off-by-one'], 'restore')
+
+
+class SubagentTests(RunnerCase):
+    CASE = 'pagination-off-by-one'
+
+    def prepare(self, name, condition='with', model='haiku'):
+        out = self.base / name
+        code, text, err = self.cli('prepare', '--case', self.CASE, '--condition', condition, '--model', model, '--out', str(out))
+        self.assertEqual(code, 0, err)
+        return out
+
+    def solve(self, trial):
+        good = json.loads((self.cases[self.CASE]['dir'] / 'fake/good.json').read_text())
+        for name, text in good['files'].items():
+            (trial / 'repo' / name).write_text(text)
+
+    def grade(self, trial, *extra):
+        code, text, err = self.cli('grade', '--trial', str(trial), *extra)
+        self.assertEqual(code, 0, err)
+        return json.loads(text)
+
+    def test_prepare_writes_a_clean_brief_and_no_key(self):
+        trial = self.prepare('t1')
+        case = self.cases[self.CASE]
+        brief = (trial / 'brief.txt').read_text()
+        self.assertEqual(brief, f'{case["prompt"]}\n\nThe repository is at {trial / "repo"}. Work only inside that folder. Do not push anything.\n')
+        meta = json.loads((trial / 'trial.json').read_text())
+        self.assertEqual((meta['host'], meta['case'], meta['condition'], meta['model']), ('subagent', self.CASE, 'with', 'haiku'))
+        self.assertRegex(meta['base'], '^[0-9a-f]{40}$')
+        self.assertTrue(meta['created'].endswith('Z'))
+        self.assertIsNone(meta['isolation'])
+        eval_run.assert_no_key(trial / 'repo', case)
+        files = {p.relative_to(trial).as_posix() for p in trial.rglob('*') if p.is_file() and '.git' not in p.parts}
+        self.assertEqual(files, {'brief.txt', 'trial.json', 'repo/pagination.py', 'repo/tests/test_pagination.py'})
+        for text in (brief, json.dumps(meta)):
+            for hidden in ('hidden_tests', 'key.json', 'answer_must', 'expected_skill'):
+                self.assertNotIn(hidden, text)
+
+    def test_prepare_refuses_lead_models_and_a_used_folder(self):
+        for model in ('opus', 'fable'):
+            code, _, err = self.cli('prepare', '--case', self.CASE, '--condition', 'with', '--model', model,
+                                    '--out', str(self.base / 'x'))
+            self.assertEqual(code, 2, model)
+        trial = self.prepare('t2')
+        code, _, err = self.cli('prepare', '--case', self.CASE, '--condition', 'with', '--model', 'haiku', '--out', str(trial))
+        self.assertEqual((code, 'new or empty' in err), (2, True))
+
+    def test_grade_writes_a_run_json_the_evaluator_and_report_accept(self):
+        trial = self.prepare('t3')
+        self.solve(trial)
+        text = 'Fixed the start index.'
+        (self.base / 'answer.txt').write_text(text)
+        summary = self.grade(trial, '--transcript', str(self.base / 'answer.txt'), '--tokens', '4321')
+        self.assertEqual((summary['outcome'], summary['total_tokens']), ('pass', 4321))
+        run = json.loads((trial / 'run.json').read_text())
+        self.assertEqual((run['host'], run['model'], run['condition'], run['trials']), ('subagent', 'haiku', 'candidate', 1))
+        self.assertEqual(run['results'][0]['total_tokens'], 4321)
+        self.assertIsNone(run['results'][0]['cost_usd'])
+        report = evaluate.grade(trial / 'run.json')
+        self.assertEqual((report['host'], report['counts']['pass'], report['counts']['unverified']), ('subagent', 1, 0))
+        eval_report = load('eval_report')
+        out = self.base / 'summary.json'
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(eval_report.main(['summarize', '--run', str(trial / 'run.json'), '--out', str(out)]), 0)
+        self.assertEqual(json.loads(out.read_text())['host'], 'subagent')
+        git_log = eval_run.git(trial / 'repo', 'log', '-1', '--format=%an <%ae>').stdout.strip()
+        self.assertEqual(git_log, 'eval <eval@example.invalid>')
+
+    def test_usage_is_recorded_as_reported_and_never_estimated(self):
+        trial = self.prepare('t4')
+        self.solve(trial)
+        self.grade(trial)
+        result = json.loads((trial / 'run.json').read_text())['results'][0]
+        self.assertEqual((result['total_tokens'], result['cost_usd'], result['usage'], result['duration_ms']),
+                         (None, None, None, None))
+
+    def test_a_subagent_that_appends_a_test_passes_and_one_that_weakens_one_fails(self):
+        appended = self.prepare('t5')
+        good = json.loads((self.cases[self.CASE]['dir'] / 'fake/good_with_tests.json').read_text())
+        for name, text in good['files'].items():
+            (appended / 'repo' / name).write_text(text)
+        self.assertEqual(self.grade(appended)['outcome'], 'pass')
+        weakened = self.prepare('t6')
+        bad = json.loads((self.cases[self.CASE]['dir'] / 'fake/weakened.json').read_text())
+        for name, text in bad['files'].items():
+            (weakened / 'repo' / name).write_text(text)
+        self.assertEqual(self.grade(weakened)['outcome'], 'fail')
+
+    def test_without_is_marked_not_clean_and_left_out_of_comparisons(self):
+        with_trial, without = self.prepare('w1'), self.prepare('w2', condition='without')
+        self.assertEqual(json.loads((without / 'trial.json').read_text())['isolation'],
+                         'not clean, subagents see the workspace skills and instructions')
+        for trial in (with_trial, without):
+            self.solve(trial)
+            self.grade(trial)
+        run = json.loads((without / 'run.json').read_text())
+        self.assertEqual((run['condition'], run['isolation'], run['results'][0]['isolation']),
+                         ('without-skills', eval_run.UNCLEAN, eval_run.UNCLEAN))
+        self.assertNotIn('isolation', json.loads((with_trial / 'run.json').read_text()))
+        with self.assertRaisesRegex(ValueError, 'allow-unclean-baseline'):
+            evaluate.compare(without / 'run.json', with_trial / 'run.json')
+        report = evaluate.compare(without / 'run.json', with_trial / 'run.json', allow_unclean_baseline=True)
+        self.assertEqual(report['candidate']['outcome'], {'passed': 1, 'total': 1})
+        eval_report = load('eval_report')
+        runs = ['--run', str(with_trial / 'run.json'), '--run', str(without / 'run.json')]
+        for extra, expected in (([], None), (['--allow-unclean-baseline'], 'pass')):
+            out = self.base / f'summary-{bool(extra)}.json'
+            with contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(eval_report.main(['summarize', *runs, '--out', str(out), *extra]), 0)
+            case = json.loads(out.read_text())['cases'][0]
+            self.assertEqual(case['without']['result'], expected)
+
+    def test_grade_refuses_a_changed_case_and_a_missing_trial(self):
+        trial = self.prepare('t7')
+        meta = json.loads((trial / 'trial.json').read_text())
+        meta['case_digest'] = '0' * 64
+        (trial / 'trial.json').write_text(json.dumps(meta))
+        code, _, err = self.cli('grade', '--trial', str(trial))
+        self.assertEqual((code, 'changed' in err), (2, True))
+        code, _, err = self.cli('grade', '--trial', str(self.base / 'missing'))
+        self.assertEqual(code, 2)
 
 
 if __name__ == '__main__':

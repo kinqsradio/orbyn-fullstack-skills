@@ -37,7 +37,8 @@ ownership or dependencies.
 For substantial work, write the [answer key](answer-key.md) before implementation:
 the commands that prove success, the expected end state and the protected paths. The
 worker's brief names the outcome, not the key; a separate verifier checks the
-committed candidate from a clean copy, and a changed protected path fails the task.
+committed candidate from a clean copy. Protected files are restored to their base before the
+checks run (adding tests is welcome), unless the key marks a path strict, where any change fails.
 Decide unit tests with tdd's [rule](../../tdd/SKILL.md#do-we-need-a-unit-test-here)
 and record the choice in one line (`Tests: none, docs only`).
 
