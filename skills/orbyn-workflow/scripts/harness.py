@@ -39,6 +39,7 @@ import secrets
 import stat
 import subprocess
 import sys
+from contextlib import ExitStack
 from pathlib import Path
 
 SCRIPT = Path(__file__).resolve()
@@ -1096,6 +1097,45 @@ def tracked(path, directory):
 DIR_FLAGS = os.O_RDONLY | getattr(os, 'O_NOFOLLOW', 0) | getattr(os, 'O_DIRECTORY', 0)
 
 
+def windows_plain_path(path, *, directory):
+    """Hold an ordinary file or directory in place without following reparse points."""
+    import ctypes
+    from ctypes import wintypes
+
+    kernel = ctypes.WinDLL('kernel32', use_last_error=True)
+    create = kernel.CreateFileW
+    create.argtypes = (wintypes.LPCWSTR, wintypes.DWORD, wintypes.DWORD, wintypes.LPVOID,
+                       wintypes.DWORD, wintypes.DWORD, wintypes.HANDLE)
+    create.restype = wintypes.HANDLE
+    close = kernel.CloseHandle
+    close.argtypes = (wintypes.HANDLE,)
+    close.restype = wintypes.BOOL
+    get_info = kernel.GetFileInformationByHandleEx
+    get_info.argtypes = (wintypes.HANDLE, ctypes.c_int, wintypes.LPVOID, wintypes.DWORD)
+    get_info.restype = wintypes.BOOL
+    read_data_and_attributes = 0x81  # FILE_LIST_DIRECTORY and FILE_READ_ATTRIBUTES for a folder.
+    share_read_write = 0x3  # Omit FILE_SHARE_DELETE so the entry cannot be renamed or replaced.
+    open_existing = 3
+    open_reparse_point = 0x00200000
+    backup_semantics = 0x02000000  # Required to open directories.
+    handle = create(str(path), read_data_and_attributes, share_read_write, None, open_existing,
+                    open_reparse_point | backup_semantics, None)
+    if handle == wintypes.HANDLE(-1).value:
+        raise ctypes.WinError(ctypes.get_last_error())
+    try:
+        file_attribute_tag_info = 9
+        attributes_and_tag = (wintypes.DWORD * 2)()
+        if not get_info(handle, file_attribute_tag_info, attributes_and_tag, ctypes.sizeof(attributes_and_tag)):
+            raise ctypes.WinError(ctypes.get_last_error())
+        attributes = attributes_and_tag[0]
+        if attributes & stat.FILE_ATTRIBUTE_REPARSE_POINT or bool(attributes & stat.FILE_ATTRIBUTE_DIRECTORY) != directory:
+            raise OSError(22, 'not a plain directory' if directory else 'not a plain file')
+        return lambda: close(handle)
+    except BaseException:
+        close(handle)
+        raise
+
+
 def open_dir(name, parent_fd=None):
     """Open a real directory without following a link; None when it is absent."""
     try:
@@ -1122,6 +1162,22 @@ def read_in(folder_fd, name, label):
     if len(raw) > MAX_BYTES:
         raise Invalid(f'{label}: larger than {MAX_BYTES} bytes')
     return parse_json(raw, label)
+
+
+def read_windows_setup_file(path, label):
+    try:
+        release = windows_plain_path(path, directory=False)
+    except FileNotFoundError:
+        return None
+    except OSError as error:
+        if getattr(error, 'winerror', None) == 32:
+            raise CannotRun(f'{label}: settings file is in use ({error.strerror})') from error
+        raise Invalid(f'{label}: refusing symbolic link or unreadable file ({error.strerror})')
+    try:
+        return read_file(path, label, required=True)
+    finally:
+        # The destination must be released before os.replace can replace it.
+        release()
 
 
 def owner_file(root, workspace, slug):
@@ -1151,17 +1207,38 @@ def command_setup(args):
     defaults = load_defaults(args.defaults)
     root = git_root(args.target)
     ws, filename, label = owner_file(root, args.workspace, args.slug)
-    repo_fd = open_dir(ws / 'repo')
-    if repo_fd is None:
-        raise CannotRun(f'workspace repo/ folder does not exist: {ws / "repo"}')
-    folder_fd = None
-    try:
-        folder_fd = open_dir('.harness', repo_fd)
-        destination = ws / 'repo' / '.harness' / filename
-        git_directory = destination.parent if folder_fd is not None else ws / 'repo'
+    with ExitStack() as stack:
+        windows = os.name == 'nt'
+
+        def open_setup_dir(path, parent_fd=None):
+            if windows:
+                try:
+                    stack.callback(windows_plain_path(path, directory=True))
+                except FileNotFoundError:
+                    return None
+                except OSError as error:
+                    if getattr(error, 'winerror', None) == 32:
+                        raise CannotRun(f'folder is in use: {path} ({error.strerror})') from error
+                    raise CannotRun(f'refusing folder {path}: not a plain directory ({error.strerror})')
+                return path
+            fd = open_dir(path if parent_fd is None else path.name, parent_fd)
+            if fd is not None:
+                stack.callback(os.close, fd)
+            return fd
+
+        repo = ws / 'repo'
+        repo_handle = open_setup_dir(repo)
+        if repo_handle is None:
+            raise CannotRun(f'workspace repo/ folder does not exist: {repo}')
+        folder = repo / '.harness'
+        folder_handle = open_setup_dir(folder, repo_handle)
+        destination = folder / filename
+        git_directory = folder if folder_handle is not None else repo
         if tracked(destination, git_directory):
             raise CannotRun(f'refusing to write a tracked path: {destination}')
-        existing = None if folder_fd is None else read_in(folder_fd, filename, label)
+        existing = None
+        if folder_handle is not None:
+            existing = read_windows_setup_file(destination, label) if windows else read_in(folder_handle, filename, label)
         data = existing if existing is not None else {'schema_version': 1}
         work = dict(data.get('work', {})) if isinstance(data.get('work', {}), dict) else {}
         work['mode'] = args.mode
@@ -1176,28 +1253,33 @@ def command_setup(args):
         text = json.dumps(data, indent=2) + '\n'
         if len(text.encode()) > MAX_BYTES:
             raise Invalid(f'{label}: larger than {MAX_BYTES} bytes')
-        if folder_fd is None:
-            os.mkdir('.harness', 0o755, dir_fd=repo_fd)
-            folder_fd = open_dir('.harness', repo_fd)
+        if folder_handle is None:
+            if windows:
+                folder.mkdir(mode=0o755)
+            else:
+                os.mkdir(folder.name, 0o755, dir_fd=repo_handle)
+            folder_handle = open_setup_dir(folder, repo_handle)
+            if folder_handle is None:
+                raise CannotRun(f'folder disappeared: {folder}')
         temporary = f'.harness-{secrets.token_hex(8)}.tmp'
-        # Everything below is relative to the open folder handle, so the folder cannot be swapped after the checks.
-        descriptor = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, 'O_NOFOLLOW', 0), 0o644, dir_fd=folder_fd)
+        # On Windows the directory handles deny deletion. On POSIX the write stays relative to the open directory.
+        directory = {} if windows else {'dir_fd': folder_handle}
+        replace_dirs = {} if windows else {'src_dir_fd': folder_handle, 'dst_dir_fd': folder_handle}
+        source = folder / temporary if windows else temporary
+        target = destination if windows else filename
+        descriptor = os.open(source, os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, 'O_NOFOLLOW', 0), 0o644, **directory)
         try:
-            with os.fdopen(descriptor, 'w') as handle:
+            with os.fdopen(descriptor, 'w', encoding='utf-8', newline='\n') as handle:
                 handle.write(text)
                 handle.flush()
                 os.fsync(handle.fileno())
-            os.replace(temporary, filename, src_dir_fd=folder_fd, dst_dir_fd=folder_fd)
+            os.replace(source, target, **replace_dirs)
         except BaseException:
             try:
-                os.unlink(temporary, dir_fd=folder_fd)
+                os.unlink(source, **directory)
             except OSError:
                 pass
             raise
-    finally:
-        if folder_fd is not None:
-            os.close(folder_fd)
-        os.close(repo_fd)
     print(f'OK: saved work.mode={args.mode}' + (f' work.max_active={args.max_active}' if args.max_active is not None else '')
           + f' to {label}. Nothing else was written.')
     return 0

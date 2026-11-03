@@ -479,7 +479,12 @@ class HostileInput(HarnessCase):
         (self.target / '.orbyn').unlink()
         folder = self.workspace / 'repo' / '.harness'
         folder.mkdir(parents=True)
-        os.symlink(real, folder / 'app.json')
+        try:
+            os.symlink(real, folder / 'app.json')
+        except OSError as error:
+            if getattr(error, 'winerror', None) == 1314:
+                self.skipTest('creating symbolic links requires Windows Developer Mode or elevation')
+            raise
         self.assertIn('symbolic link', self.resolve(ok=1).stderr)
         (folder / 'app.json').unlink()
         folder.rmdir()
@@ -1038,6 +1043,41 @@ class WorkMode(HarnessCase):
         os.symlink(elsewhere, folder)
         self.assertIn('not a plain directory', self.setup_tool('--mode', 'parallel', ok=2).stderr)
         self.assertEqual(list(elsewhere.iterdir()), [])
+
+    @unittest.skipUnless(os.name == 'nt', 'Windows junctions')
+    def test_setup_refuses_windows_junctions(self):
+        elsewhere = self.base / 'elsewhere'
+        elsewhere.mkdir()
+        folder = self.local_path().parent
+        subprocess.run(['cmd.exe', '/d', '/c', 'mklink', '/J', str(folder), str(elsewhere)],
+                       check=True, capture_output=True)
+        try:
+            result = self.setup_tool('--mode', 'parallel', ok=2)
+            self.assertIn('not a plain directory', result.stderr)
+            self.assertEqual(list(elsewhere.iterdir()), [])
+        finally:
+            folder.rmdir()
+
+    @unittest.skipUnless(os.name == 'nt', 'Windows directory handles')
+    def test_setup_holds_windows_directories_in_place_during_replace(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('harness_setup_under_test', TOOL)
+        harness = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(harness)
+        self.write_local(valid(work={'mode': 'simple'}))
+        folder = self.local_path().parent
+        replace = os.replace
+
+        def try_rename_then_replace(source, destination):
+            for path in (folder, folder.parent):
+                with self.assertRaises(PermissionError):
+                    path.rename(path.with_name(path.name + '-moved'))
+            replace(source, destination)
+
+        with mock.patch.object(harness.os, 'replace', side_effect=try_rename_then_replace):
+            self.assertEqual(harness.main(['setup', '--target', str(self.target), '--workspace',
+                                           str(self.workspace), '--mode', 'parallel']), 0)
+        self.assertEqual(json.loads(self.local_path().read_text())['work']['mode'], 'parallel')
 
     def test_a_linked_worktree_shares_its_primary_clones_mode(self):
         tree = self.link('feature')
