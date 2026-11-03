@@ -1064,6 +1064,13 @@
           "effort": "medium",
           "date": "2026-11-03",
           "scope": "ECC adoption eval cases for loops, module commands, config weakening, dual review and silent failure"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "Eval runner treats host errors such as an expired login as not run and stops the batch"
         }
       ]
     },

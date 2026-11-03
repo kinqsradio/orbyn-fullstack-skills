@@ -233,6 +233,32 @@ class TrialTests(RunnerCase):
         with self.assertRaises(RuntimeError):
             eval_run.assert_no_key(work, case)
 
+    def test_a_host_login_failure_is_not_graded_and_stops_the_batch(self):
+        # Replays the shape Claude Code 2.1.309 emitted for an expired login: a result event marked as an error,
+        # with no model usage, after exit 0.
+        case_id = 'pagination-off-by-one'
+        folder = self.base / 'scripts' / case_id
+        folder.mkdir(parents=True)
+        (folder / 'auth.json').write_text(json.dumps({'events': [
+            {'type': 'system', 'subtype': 'init', 'model': 'claude-haiku-5-5', 'tools': ['Bash', 'Read']},
+            {'type': 'result', 'subtype': 'success', 'is_error': True, 'num_turns': 1,
+             'result': 'Failed to authenticate: OAuth session expired and could not be refreshed',
+             'usage': {'input_tokens': 0, 'output_tokens': 0}}]}))
+
+        class LoggedOutHost(eval_run.FakeHost):
+            kind = 'claude'
+
+        host = LoggedOutHost('auth', fake_dir=self.base / 'scripts')
+        runner = self.runner(host, [case_id])
+        info = runner.run_case(self.cases[case_id], 'with', ['haiku', 'sonnet'], 'auto')
+        self.assertEqual([t['model'] for t in info['tiers']], ['haiku'])
+        self.assertEqual(info['tiers'][0]['outcomes'], ['infra_error'])
+        self.assertIsNone(info['cheapest_passed'])
+        self.assertTrue(runner.stopped)
+        self.assertIn('authenticate', runner.host_error)
+        result = runner.results[('with', 'haiku')][0]
+        self.assertEqual(result['status'], 'not_run')
+
     def test_temporary_folders_are_removed(self):
         runner = self.runner(eval_run.FakeHost('good'), ['docs-only-no-test'])
         runner.run_case(self.cases['docs-only-no-test'], 'without', ['fake'], 1)
