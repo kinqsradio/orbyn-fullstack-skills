@@ -1262,11 +1262,14 @@ def primary_script():
         return None
     # Hand over only when this copy is a past version of the main checkout's file. A copy carrying new,
     # unmerged work (committed on a branch or edited in place) keeps running, so it can be tested.
-    blob = subprocess.run(['git', 'hash-object', str(SCRIPT)], capture_output=True, text=True)
-    if blob.returncode or not blob.stdout.strip():
+    try:  # without Git there is no way to tell, so this copy keeps running
+        blob = subprocess.run(['git', 'hash-object', str(SCRIPT)], capture_output=True, text=True)
+        if blob.returncode or not blob.stdout.strip():
+            return None
+        seen = subprocess.run(['git', '-C', str(main), 'log', '-1', '--format=%H', f'--find-object={blob.stdout.strip()}',
+                               'HEAD', '--', str(SCRIPT.relative_to(here))], capture_output=True, text=True)
+    except OSError:
         return None
-    seen = subprocess.run(['git', '-C', str(main), 'log', '-1', '--format=%H', f'--find-object={blob.stdout.strip()}',
-                           'HEAD', '--', str(SCRIPT.relative_to(here))], capture_output=True, text=True)
     return other if seen.returncode == 0 and seen.stdout.strip() else None
 
 
