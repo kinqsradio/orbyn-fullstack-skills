@@ -92,6 +92,26 @@ scope; wait for separate publication authority. For an approved public PR:
    or target changes. After acceptance, updating the outer workspace preserves
    active work; never announce a proposed change as a released improvement.
 
+## Read where contributions and problems come from
+
+Every PR is labelled automatically by `scripts/pr_labels.py` (area, community or first
+contribution, tool from the disclosure, size, eval run, agent hand-off). To learn from
+that, run the read-only `python3 scripts/pr_insights.py --repo <owner/repo> --limit 50
+--format markdown`. It lists the last merged PRs and counts by label; it posts nothing.
+
+- **Skills that need the most fixes:** a skill with a high share under
+  `skill_update_share` keeps being corrected after release. Look at its merged PRs for a
+  repeated cause, then fix the owner or add a regression case instead of another patch.
+- **Which tools contributors use:** `built_with` shows which hosts the instructions must
+  work for. A large `built with: other` means the tool allowlist is missing a common host.
+- **Where review time goes:** many `size: xl` or `agent hand-off` PRs mean the contribution
+  path or a template needs tightening; `eval run` counts show how often evals must run.
+- **Community share:** `community` and `first contribution` show whether guidance reaches
+  outsiders. Labels use GitHub's `author_association` only and say nothing about employers.
+
+Counts are a hint, not proof. Read a few PRs before changing a skill, and do not read a
+small sample as a trend.
+
 ## Worked boundaries
 
 **Reusable repair:** a CI method accepted an older green result after a newer

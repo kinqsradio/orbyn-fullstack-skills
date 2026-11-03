@@ -34,3 +34,10 @@ jobs:
           HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
           MAINTAINER: ${{ vars.PR_REVIEWER || 'kinqsradio' }}
         run: python3 scripts/pr_gate.py apply --pr "$PR_NUMBER" --sha "$HEAD_SHA" --maintainer "$MAINTAINER"
+      - name: Label the PR by area, contributor, tooling and size
+        if: github.event_name == 'pull_request_target'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: python3 scripts/pr_labels.py apply --pr "$PR_NUMBER"
