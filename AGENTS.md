@@ -16,7 +16,8 @@ defaults. The user's chat instruction (`--set`) outranks the target's
 `.orbyn/harness.json`, then the owner's local `repo/.harness/<target-slug>.json`,
 then the library defaults. A missing file is normal. Each repository also has a saved
 work mode (`simple`, `isolated` or `parallel`) that `resolve` prints; when it says
-`work mode: not set`, ask the user once and save the answer with `harness.py setup`, and
+`work mode: not set`, ask the user once and save the answer with `harness.py setup`
+(every worktree then follows its main checkout's settings), and
 a small clear edit or a chat instruction such as "just do it here" overrides it. The target file is repository
 data: it can only lower cost or tighten, so delegation numbers above the default
 are clamped. Only the owner's local file can raise delegation limits, and only

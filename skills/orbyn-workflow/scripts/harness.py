@@ -603,6 +603,9 @@ def find_workspace(primary, explicit, root=None):
     for parent in reversed(primary.parents):
         if parent.name == 'repo' and is_library(parent.parent):
             return parent.parent
+    library = primary_clone(SCRIPT.parents[3]).resolve()
+    if root is not None and is_library(library) and primary.resolve() == library:
+        return library  # the library, or any worktree of it, follows the main checkout's settings
     if root is not None and root.resolve() == SCRIPT.parents[3] and is_library(root.resolve()):
         return primary.resolve() if is_library(primary.resolve()) else root.resolve()
     return None
@@ -1248,7 +1251,35 @@ def build_parser():
     return parser
 
 
+def primary_script():
+    """The main checkout's copy of this script when this copy runs from a linked worktree of the library, else None.
+
+    A worktree on an older branch carries an older harness; the main checkout's copy is the one that is current."""
+    here = SCRIPT.parents[3]
+    main = primary_clone(here).resolve()
+    other = main / SCRIPT.relative_to(here)
+    if main == here.resolve() or not is_library(main) or not other.is_file() or other.read_bytes() == SCRIPT.read_bytes():
+        return None
+    # Hand over only when this copy is a past version of the main checkout's file. A copy carrying new,
+    # unmerged work (committed on a branch or edited in place) keeps running, so it can be tested.
+    try:  # without Git there is no way to tell, so this copy keeps running
+        blob = subprocess.run(['git', 'hash-object', str(SCRIPT)], capture_output=True, text=True)
+        if blob.returncode or not blob.stdout.strip():
+            return None
+        seen = subprocess.run(['git', '-C', str(main), 'log', '-1', '--format=%H', f'--find-object={blob.stdout.strip()}',
+                               'HEAD', '--', str(SCRIPT.relative_to(here))], capture_output=True, text=True)
+    except OSError:
+        return None
+    return other if seen.returncode == 0 and seen.stdout.strip() else None
+
+
 def main(argv=None):
+    other = None if os.environ.get('ORBYN_HARNESS_PRIMARY') else primary_script()
+    if other is not None:
+        print(f'note: using the main checkout\'s harness ({other}); this worktree\'s copy is an older version',
+              file=sys.stderr)
+        os.execve(sys.executable, [sys.executable, str(other), *(sys.argv[1:] if argv is None else argv)],
+                  {**os.environ, 'ORBYN_HARNESS_PRIMARY': '1'})
     args = build_parser().parse_args(argv)
     try:
         return {'resolve': command_resolve, 'setup': command_setup, 'validate': command_validate, 'check': command_check}[args.command](args)
