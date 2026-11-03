@@ -93,7 +93,8 @@ revision/deletion receipts. Setup and reflection write no host-native memory.
 
 When a PR changes a core skill, the harness, the model registry or a file an executable eval case depends on,
 run only the affected executable cases on the cheapest ladder, within `evals.max_runs_per_pr` from the harness (ask the
-user first when it is unset), then `eval_report.py summarize` and `publish --send`, as in
+user first when it is unset). Native subagents are the default runner: they use the session's login and a model chosen per
+subagent, and the headless CLI is only for a clean baseline or unattended runs. Then `eval_report.py summarize` and `publish --send`, as in
 [evaluations](skills/orbyn-skill-creator/references/evaluations.md#evals-on-a-pull-request). The result is an advisory
 check, never a required one.
 

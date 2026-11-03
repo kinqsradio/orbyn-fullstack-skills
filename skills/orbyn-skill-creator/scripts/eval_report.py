@@ -169,7 +169,7 @@ def condition_result(tiers, condition):
     return 'fail' if any(s['completed'] for s in seen) else 'error'
 
 
-def summarize(run_paths, pr=None, is_main=False):
+def summarize(run_paths, pr=None, is_main=False, allow_unclean_baseline=False):
     runs, names = [], []
     for path in run_paths:
         run = read_json(path)
@@ -177,6 +177,8 @@ def summarize(run_paths, pr=None, is_main=False):
             raise Refused(f'{path}: not an eval_run.py run.json (schema_version 1 with results)')
         if run.get('condition') not in CONDITIONS or not isinstance(run.get('model'), str):
             raise Refused(f'{path}: unknown condition or missing model')
+        if run['condition'] == 'without-skills' and run.get('isolation') and not allow_unclean_baseline:
+            continue  # A baseline that is not clean (a subagent sees the workspace skills) is left out of with-versus-without.
         runs.append(run)
         parts = Path(path).resolve().parts
         names.append('/'.join(parts[-3:]) if len(parts) >= 3 else Path(path).name)
@@ -799,6 +801,8 @@ def build_parser():
     s.add_argument('--out', required=True)
     s.add_argument('--pr', type=int)
     s.add_argument('--main', action='store_true', help='mark the result as from main, the baseline later PRs compare with')
+    s.add_argument('--allow-unclean-baseline', action='store_true',
+                   help='keep a without-skills run whose isolation is not clean (a subagent baseline)')
     p = sub.add_parser('publish', help='status, PR comment and history (dry run unless --send)')
     p.add_argument('--summary', required=True)
     p.add_argument('--pr', type=int)
@@ -830,7 +834,7 @@ def main(argv=None):
     args = build_parser().parse_args(argv)
     try:
         if args.command == 'summarize':
-            summary = summarize(args.run, args.pr, args.main)
+            summary = summarize(args.run, args.pr, args.main, args.allow_unclean_baseline)
             text = render_history(summary)
             if len(text) > SUMMARY_LIMIT:
                 raise Refused('summary is over the size limit')

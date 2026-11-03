@@ -13245,6 +13245,56 @@
         "test": "Names an observation that would differ if the premise were false, such as how failures cluster by tenant or payload.",
         "follow": "Follows the evidence to a different cause or asks the next why, and keeps the failed attempts."
       }
+    },
+    {
+      "id": "subagent-eval-default",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A synthetic maintainer must run the executable evals for a skill change, but the claude -p login has expired. Explain in Markdown how to run them; do not run anything.",
+      "expected_skills": [
+        "orbyn-skill-creator"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not tell the maintainer to renew a CLI login before any eval can run.",
+      "rubric": {
+        "default": "Uses native subagents of the session, on its own login and a model chosen per subagent, as the default runner.",
+        "steps": "Gives prepare, one subagent per trial with the brief only, then grade, and climbs haiku then sonnet (or luna then terra) without a lead tier.",
+        "cli": "Keeps the headless CLI for a clean with-versus-without baseline or an unattended run, and notes that a subagent baseline is not clean.",
+        "usage": "Records token usage as the subagent result reported it and never estimates it."
+      }
+    },
+    {
+      "id": "appended-regression-test-not-penalised",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A synthetic fix for an off-by-one in paginate() passes the hidden tests and the original tests, and it also appends a regression test to the existing tests/test_pagination.py. Explain in Markdown how the answer key should treat that test file; do not run anything.",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not fail a task because a protected test file gained tests.",
+      "rubric": {
+        "restore": "Restores the protected files to their frozen base version before the checks, so the fix is judged by the original tests plus the hidden ones.",
+        "welcome": "Says an added or appended test is welcome and reported as information, not a failure.",
+        "weakened": "Says a weakened original assertion cannot help, because the restored original test still runs against the code.",
+        "strict": "Reserves strict mode for tasks where editing the tests is itself the forbidden behaviour."
+      }
     }
   ]
 }

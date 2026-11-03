@@ -4,6 +4,7 @@
   "protected": [
     "tests"
   ],
+  "protected_mode": "restore",
   "expect_files": [
     "THREAT_MODEL.md"
   ],

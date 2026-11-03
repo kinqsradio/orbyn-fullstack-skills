@@ -4,6 +4,7 @@
   "protected": [
     "tests"
   ],
+  "protected_mode": "strict",
   "expect_files": [],
   "checks": [
     "python3 -m unittest discover -s tests",

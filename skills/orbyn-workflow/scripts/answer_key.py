@@ -2,9 +2,12 @@
 """Freeze a task answer key and run it against a committed candidate from a clean copy.
 
 `freeze` records the base commit, the commands that prove success and the sha256 of every protected file.
-`check` verifies the candidate descends from the base, that no protected file changed, then runs the key's
-commands in a fresh `git archive` export. Commands come only from the key file the lead wrote. Keeping a key
-from a worker is a policy, not a sandbox; the key is only as strong as its checks. Standard library only.
+`--protect` paths are restored (the default): `check` puts their base version back in the clean export before the
+commands run, so the candidate is judged by the original tests plus the key's checks, files it added stay, and a
+change is reported as information (`protected_changed`). `--protect-strict` paths fail on any change.
+`check` verifies the candidate descends from the base, applies those rules, then runs the key's commands in a
+fresh `git archive` export. Commands come only from the key file the lead wrote. Keeping a key from a worker is a
+policy, not a sandbox; the key is only as strong as its checks. Standard library only.
 
 Exit codes for check: 0 every check passed, 1 any check failed, 2 the key or candidate is unusable.
 """
@@ -21,6 +24,7 @@ import tempfile
 import time
 
 SCHEMA = 1
+MODES = ('restore', 'strict')
 TAIL = 2000
 
 
@@ -87,15 +91,19 @@ def command_freeze(args):
     base = git(repo, 'rev-parse', '--verify', 'HEAD^{commit}').stdout.strip()
     if not args.check:
         raise Unusable('at least one --check command is required')
-    protected = []
-    for spec in args.protect or []:
-        spec = clean_spec(spec)
-        names = files_at(repo, base, spec)
-        if not names:
-            raise Unusable(f'protected path is not tracked at the base commit: {spec}')
-        if git(repo, 'status', '--porcelain', '--', spec).stdout.strip():
-            raise Unusable(f'protected path has uncommitted changes; commit them first: {spec}')
-        protected.append({'path': spec, 'files': {name: blob_hash(repo, base, name) for name in names}})
+    protected, seen = [], set()
+    for mode, specs in (('restore', args.protect), ('strict', args.protect_strict)):
+        for spec in specs or []:
+            spec = clean_spec(spec)
+            if spec in seen:
+                raise Unusable(f'protected path given twice: {spec}')
+            seen.add(spec)
+            names = files_at(repo, base, spec)
+            if not names:
+                raise Unusable(f'protected path is not tracked at the base commit: {spec}')
+            if git(repo, 'status', '--porcelain', '--', spec).stdout.strip():
+                raise Unusable(f'protected path has uncommitted changes; commit them first: {spec}')
+            protected.append({'path': spec, 'mode': mode, 'files': {name: blob_hash(repo, base, name) for name in names}})
     expected = [clean_spec(name) for name in args.expect_file or []]
     key = {'schema_version': SCHEMA, 'task': args.task, 'repo': str(repo), 'base': base,
            'checks': list(args.check), 'protected': protected, 'expect_files': expected}
@@ -123,7 +131,8 @@ def load_key(path):
     if ok:
         for item in key['protected']:
             ok = ok and isinstance(item, dict) and isinstance(item.get('path'), str) \
-                and isinstance(item.get('files'), dict) and all(isinstance(v, str) for v in item['files'].values())
+                and isinstance(item.get('files'), dict) and all(isinstance(v, str) for v in item['files'].values()) \
+                and item.get('mode', 'restore') in MODES  # A key written before modes existed restores.
     if not ok:
         raise Unusable('key is not a valid answer key (schema_version 1)')
     if not Path(key['repo']).is_dir():
@@ -145,20 +154,39 @@ def resolve_candidate(key, candidate):
 
 
 def protected_changes(key, commit):
-    """Protected files whose content differs, are missing, or were added under a protected folder."""
+    """Protected files whose content differs, are missing, or were added under a protected folder.
+
+    Each entry carries its `mode`; callers drop it before printing."""
     repo, changed = key['repo'], []
     for item in key['protected']:
-        recorded = item['files']
+        recorded, mode = item['files'], item.get('mode', 'restore')
         for name in files_at(repo, commit, item['path']):
             if name not in recorded:
-                changed.append({'path': name, 'reason': 'added'})
+                changed.append({'path': name, 'reason': 'added', 'mode': mode})
         for name, digest in recorded.items():
             now = blob_hash(repo, commit, name)
             if now is None:
-                changed.append({'path': name, 'reason': 'missing'})
+                changed.append({'path': name, 'reason': 'missing', 'mode': mode})
             elif now != digest:
-                changed.append({'path': name, 'reason': 'modified'})
+                changed.append({'path': name, 'reason': 'modified', 'mode': mode})
     return changed
+
+
+def shown(changes):
+    return [{'path': c['path'], 'reason': c['reason']} for c in changes]
+
+
+def restore_base(key, source, changes):
+    """Put the base version of every modified or missing restore-mode file back into the export."""
+    names = sorted(c['path'] for c in changes if c['mode'] == 'restore' and c['reason'] in ('modified', 'missing'))
+    if not names:
+        return
+    archive = subprocess.Popen(['git', '-C', str(key['repo']), 'archive', '--format=tar', key['base'], '--', *names],
+                               stdout=subprocess.PIPE)
+    unpack = subprocess.run(['tar', '-x', '-C', str(source)], stdin=archive.stdout, capture_output=True)
+    archive.stdout.close()
+    if archive.wait() != 0 or unpack.returncode != 0:
+        raise Unusable('could not restore the protected files: ' + unpack.stderr.decode(errors='replace').strip())
 
 
 def export(repo, commit, destination):
@@ -199,10 +227,12 @@ def command_check(args):
     key = load_key(args.key)
     commit = resolve_candidate(key, args.candidate)
     report = {'task': key['task'], 'base': key['base'], 'candidate': commit,
-              'protected': {'status': 'pass', 'changed': []}, 'checks': [], 'result': 'pass'}
-    changed = protected_changes(key, commit)
-    if changed:
-        report['protected'] = {'status': 'fail', 'changed': changed}
+              'protected': {'status': 'pass', 'changed': []}, 'protected_changed': [], 'checks': [], 'result': 'pass'}
+    changes = protected_changes(key, commit)
+    strict = [c for c in changes if c['mode'] == 'strict']
+    report['protected_changed'] = shown(c for c in changes if c['mode'] == 'restore')
+    if strict:
+        report['protected'] = {'status': 'fail', 'changed': shown(strict)}
         report['result'] = 'fail'
         print(json.dumps(report, indent=2))
         return 1
@@ -215,6 +245,7 @@ def command_check(args):
         home.mkdir()
         tmp.mkdir()
         export(key['repo'], commit, source)
+        restore_base(key, source, changes)
         env = minimal_env(home, tmp)
         for name in key['expect_files']:
             present = (source / name).is_file()
@@ -239,7 +270,10 @@ def build_parser():
     freeze.add_argument('--repo', required=True, help='the Git repository the task changes')
     freeze.add_argument('--task', required=True, help='a short task name')
     freeze.add_argument('--check', action='append', help='a shell command that must exit 0 (repeat for several)')
-    freeze.add_argument('--protect', action='extend', nargs='+', help='tracked file or folder that defines correctness')
+    freeze.add_argument('--protect', action='extend', nargs='+',
+                        help='tracked file or folder that defines correctness; restored to its base version before the checks')
+    freeze.add_argument('--protect-strict', action='extend', nargs='+',
+                        help='like --protect, but any change fails; for tasks where editing it is the forbidden act')
     freeze.add_argument('--expect-file', action='extend', nargs='+', help='file that must exist at the candidate')
     freeze.add_argument('--out', required=True, help='key path outside the repository or in an ignored location')
     check = sub.add_parser('check', help='run the key against a committed candidate from a clean export')

@@ -98,20 +98,50 @@ and [skill discovery guide](https://developers.openai.com/codex/skills). Isolate
 global skills and previous context using supported per-run controls. Host behavior
 and available flags vary by version; this evaluator does not launch a host for you.
 
+## Run evals with native subagents
+
+Native subagents are the default way to run evals: the host's own agent tool (Claude's Agent tool, Codex
+`spawn_agent`). A subagent runs on the session's login and the model chosen for it, so no CLI login is needed.
+Claude uses haiku then sonnet and Codex uses luna then terra, with no lead tier. The headless CLI
+(`claude -p`, `codex exec`, below) is only for a clean with-versus-without baseline or an unattended run, and
+needs its own login. Python never starts a model here; the lead agent does.
+
+For each trial, the lead:
+
+1. Runs `eval_run.py prepare --case <id> --condition with|without --model <haiku|sonnet|luna|terra> --out <dir>`.
+   It exports the fixture to `<dir>/repo` (the key never goes inside), writes `<dir>/brief.txt` (the case prompt plus
+   the repository path, with no hints and no key) and `<dir>/trial.json`.
+2. Spawns one subagent on that model, named `Orbyn Eval [N] - [Model] - [Effort] - [Case]`, with the contents of
+   `brief.txt` as its only input, and waits for it. It starts at the cheapest model and climbs only after a failure.
+3. Runs `eval_run.py grade --trial <dir> [--transcript <file>] [--skills a,b] [--tokens N]`. It commits the final tree
+   with a fixed identity and hooks disabled, grades it with the key and writes `<dir>/run.json` for
+   `evaluate.py grade` and `eval_report.py summarize` with host `subagent`. Pass the subagent's final answer (or its
+   events) as the transcript, the skills it was seen to load, and the token total its result reported; usage is
+   recorded as reported and never estimated. Without a transcript, actions come from the final tree only.
+
+Each `run.json` holds one trial. A `without` trial is allowed but marked `isolation: not clean, subagents see the
+workspace skills and instructions`, because the subagent inherits the lead workspace. `evaluate.py compare` and
+`eval_report.py summarize` leave such a baseline out unless given `--allow-unclean-baseline`; for a clean baseline use
+the headless CLI.
+
 ## Executable evals at least cost
 
 For work with a checkable outcome, grade with code first. Each case under
 [`evals/executable/`](../evals/executable) holds a prompt, a tiny stdlib fixture with existing tests and a
 hidden key (`key/key.json` plus hidden tests) in the subset of the
 [answer key](../../orbyn-workflow/references/answer-key.md) that `freeze` produces: `checks`, `protected`
-paths and `expect_files`. [`eval_run.py`](../scripts/eval_run.py) exports the fixture into a throwaway Git
-repo with one commit, runs the host headless, commits the final tree and grades it with `answer_key.py` using
-a key that never enters the copy. It also applies the case's forbidden actions (push, merge, network,
-`rm -rf`, edits to protected paths) to the actions seen in the event stream. Its `run.json` is accepted by
+paths (with `protected_mode`, `restore` by default or `strict`) and `expect_files`.
+[`eval_run.py`](../scripts/eval_run.py) exports the fixture into a throwaway Git
+repo with one commit, has an agent work in it, commits the final tree and grades it with `answer_key.py` using
+a key that never enters the copy. Restored protected files go back to their base before the checks, so an
+appended regression test passes and a weakened assertion cannot; only `strict` cases (`test-looks-wrong`)
+treat an edit to the tests as the forbidden action `edit_protected`. The runner also applies the case's other
+forbidden actions (push, merge, network, `rm -rf`) to the actions it can observe. Its `run.json` is accepted by
 `evaluate.py grade` and `compare` (optional `suite: executable` and `trials_by_case` fields; older runs are
 unchanged). The shipped keys are public examples that validate the tooling and the holdout split is by
 convention only; keep your own project keys out of any checkout an agent can read, and build them from your
-history with [`harvest.py`](../scripts/harvest.py).
+history with [`harvest.py`](../scripts/harvest.py). A harvested case restores its protected tests (adding a
+regression test is good practice and passes); `--strict` is for the rare case where editing tests is the behaviour under test.
 
 What keeps the cost down:
 
@@ -169,8 +199,8 @@ the affected cases on the cheapest ladder, inside the per-PR cap:
    on its own folder.
 2. Read the cap from `harness.py resolve`: `evals.max_runs_per_pr`. Only the owner's local file or the user's `--set`
    sets it; a target's committed file is rejected. With no cap set, ask the user before spending anything.
-3. Run `eval_run.py` with `--case` for each id, `--ladder`, `--live`, `--max-runs <cap>` and `--out`.
-4. `eval_report.py summarize --run <out>/with/*/run.json --run <out>/without/*/run.json --out summary.json --pr <n>`
+3. Run each id with native subagents as in [Run evals with native subagents](#run-evals-with-native-subagents), inside the cap. Use `eval_run.py` headless (`--case`, `--ladder`, `--live`, `--max-runs <cap>`, `--out`) only for a clean baseline or an unattended run.
+4. `eval_report.py summarize --run <out>/with/*/run.json --run <out>/without/*/run.json --out summary.json --pr <n>` (for subagent trials, one `--run <trial dir>/run.json` each)
    keeps counts, tiers, pass^k, tokens, reported cost, holdout flags and local evidence paths. It drops transcripts and
    key text and redacts secret-looking text. Cost stays null when the CLI did not report one.
 5. `eval_report.py publish --summary summary.json --pr <n> --repo owner/name` is a dry run that prints every write.

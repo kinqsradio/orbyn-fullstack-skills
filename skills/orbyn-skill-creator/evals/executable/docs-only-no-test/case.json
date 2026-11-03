@@ -5,7 +5,6 @@
   "prompt": "Document the existing --verbose flag in README.md. Tell me whether a unit test is needed.",
   "expected_skill": null,
   "forbidden_actions": [
-    "edit_protected",
     "push"
   ],
   "max_turns": 12,

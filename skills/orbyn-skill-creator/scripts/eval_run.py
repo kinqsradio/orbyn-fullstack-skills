@@ -4,6 +4,9 @@
 Each trial exports a case fixture into a throwaway one-commit Git repo, runs a headless host (claude, codex or a
 scripted fake), commits the final tree and grades it with answer_key.py using a key that never enters the copy.
 Writes run.json files that `evaluate.py grade` and `compare` accept. Standard library only.
+
+Subagent mode, the default way to run evals, calls no model: `prepare` exports the repository and writes the brief,
+the lead agent has one host subagent work in it, and `grade` commits and grades the result.
 """
 import argparse
 import hashlib
@@ -541,18 +544,42 @@ def run_key(args, cwd):
     return result.returncode, report, result.stderr.strip()
 
 
+def protected_mode(case):
+    """restore (the default) or strict; a key without a mode is strict only where editing it is forbidden."""
+    mode = case['key'].get('protected_mode')
+    return mode or ('strict' if 'edit_protected' in case['forbidden_actions'] else 'restore')
+
+
+def strict_paths(case):
+    """Protected paths whose change counts as the forbidden action `edit_protected`."""
+    return list(case['key'].get('protected') or []) if protected_mode(case) == 'strict' else []
+
+
+def restore_protected(clone, base, names):
+    """Commit the base version of each named protected file on top of the candidate, so the checks judge its code."""
+    names = [n for n in names if git(clone, 'cat-file', '-e', f'{base}:{n}', check=False).returncode == 0]
+    if names:
+        git(clone, 'checkout', '-q', base, '--', *names)
+        git(clone, 'commit', '-q', '--allow-empty', '--no-verify', '-m', 'restore protected files')
+
+
 def grade_candidate(case, work, base, final, grade_dir, timeout=120):
-    """Grade the committed final tree. The key and the hidden tests live only in `grade_dir`, outside the copy."""
+    """Grade the committed final tree. The key and the hidden tests live only in `grade_dir`, outside the copy.
+
+    Protected paths are restored to their base version before the checks run (strict: any change fails), and
+    a change to one is reported as `protected_changed` for information."""
     key = case['key']
     clone = grade_dir / 'repo'
     git(grade_dir, 'clone', '-q', '--no-hardlinks', str(work), str(clone))
-    report = {'result': 'pass', 'protected': {'status': 'pass', 'changed': []}, 'checks': []}
+    report = {'result': 'pass', 'protected': {'status': 'pass', 'changed': []}, 'protected_changed': [], 'checks': []}
     if git(clone, 'merge-base', '--is-ancestor', base, final, check=False).returncode != 0:
         return {'result': 'unusable', 'error': 'the candidate does not descend from the fixture commit'}
-    protected = key.get('protected') or []
+    protected, restored = key.get('protected') or [], []
     if protected:
+        mode = protected_mode(case)
         git(clone, 'checkout', '-q', '--detach', base)
-        code, _, err = run_key(['freeze', '--repo', str(clone), '--task', case['id'], '--check', 'true', '--protect',
+        code, _, err = run_key(['freeze', '--repo', str(clone), '--task', case['id'], '--check', 'true',
+                                '--protect-strict' if mode == 'strict' else '--protect',
                                 *protected, '--out', str(grade_dir / 'protected.json')], grade_dir)
         if code != 0:
             return {'result': 'unusable', 'error': err}
@@ -560,10 +587,13 @@ def grade_candidate(case, work, base, final, grade_dir, timeout=120):
         if code == 2 or not found:
             return {'result': 'unusable', 'error': err}
         report['protected'] = found['protected']
+        report['protected_changed'] = found.get('protected_changed', [])
         if code != 0:
             report['result'] = 'fail'
             return report
+        restored = [c['path'] for c in report['protected_changed'] if c['reason'] in ('modified', 'missing')]
     git(clone, 'checkout', '-q', '--detach', final)
+    restore_protected(clone, base, restored)
     hidden = case['dir'] / 'key' / key.get('hidden', 'hidden')
     if hidden.is_dir():
         shutil.copytree(hidden, clone, dirs_exist_ok=True)
@@ -712,7 +742,7 @@ class Runner:
             changed = git(work, 'diff', '--name-only', base, final).stdout.split()
         except RuntimeError:
             changed = []
-        protected = case['key'].get('protected') or []
+        protected = strict_paths(case)
         facts = derive(events, protected, str(work))
         if any(under(name, protected) for name in changed):
             facts['actions'] = sorted(set(facts['actions']) | {'edit_protected'})
@@ -861,6 +891,193 @@ class Runner:
     cases_dir = None
 
 
+# ---------------------------------------------------------------- subagent mode
+# The lead agent spawns one host subagent per trial (its own Agent tool or Codex spawn_agent) and Python never calls a
+# model: `prepare` builds the repository and the brief, the subagent works in it, `grade` commits and grades it.
+
+SUBAGENT_HOST = 'subagent'
+UNCLEAN = 'not clean, subagents see the workspace skills and instructions'
+SUBAGENT_NOTE = 'Work only inside that folder. Do not push anything.'
+
+
+def utc_now():
+    return time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
+
+
+def subagent_case(args):
+    cases = evaluate.load_executable(args.cases_dir)
+    found = [c for c in cases if c['id'] == args.case]
+    if not found:
+        raise Refused(f'unknown case: {args.case}')
+    return found[0]
+
+
+def subagent_prepare(args):
+    case = subagent_case(args)
+    model = check_model(args.model, args.allow_lead_tier)
+    out = Path(args.out).expanduser().resolve()
+    if out.exists() and (not out.is_dir() or any(out.iterdir())):
+        raise Refused(f'--out must be new or empty: {out}')
+    out.mkdir(parents=True, exist_ok=True)
+    repo = out / 'repo'
+    base = export_fixture(case, repo)
+    exclude_from_commit(repo)
+    assert_no_key(repo, case)  # The key and the hidden tests never go inside the agent's repository.
+    brief = f'{case["prompt"].rstrip()}\n\nThe repository is at {repo}. {SUBAGENT_NOTE}\n'
+    (out / 'brief.txt').write_text(brief, encoding='utf-8')
+    trial = {'schema_version': 1, 'host': SUBAGENT_HOST, 'case': case['id'], 'case_digest': case['digest'],
+             'condition': args.condition, 'model': model, 'base': base, 'created': utc_now(), 'repo': str(repo),
+             'cases_dir': None if Path(args.cases_dir).resolve() == evaluate.EXECUTABLE.resolve() else str(Path(args.cases_dir).resolve()),
+             'isolation': UNCLEAN if args.condition == 'without' else None}
+    (out / 'trial.json').write_text(json.dumps(trial, indent=2) + '\n', encoding='utf-8')
+    print(json.dumps({'trial': str(out), 'brief': str(out / 'brief.txt'), 'repo': str(repo), 'case': case['id'],
+                      'condition': args.condition, 'model': model, 'isolation': trial['isolation']}, indent=2))
+    return 0
+
+
+def read_transcript(path):
+    """Events when the file is JSON lines of host events, else the lead's plain text, which is the final answer."""
+    text = Path(path).read_text(encoding='utf-8', errors='replace')
+    events = []
+    for line in text.splitlines():
+        try:
+            value = json.loads(line)
+        except ValueError:
+            return [], text
+        events.append(value)
+    return ([e for e in events if isinstance(e, dict)], '') if events and all(isinstance(e, dict) for e in events) else ([], text)
+
+
+def subagent_grade(args):
+    trial_dir = Path(args.trial).expanduser().resolve()
+    try:
+        trial = json.loads((trial_dir / 'trial.json').read_text(encoding='utf-8'))
+    except (OSError, ValueError) as error:
+        raise Refused(f'cannot read trial.json: {error}')
+    if trial.get('host') != SUBAGENT_HOST or not all(isinstance(trial.get(k), str) for k in ('case', 'condition', 'model', 'base')):
+        raise Refused('trial.json is not a subagent trial')
+    cases_dir = Path(trial['cases_dir']) if trial.get('cases_dir') else evaluate.EXECUTABLE
+    case = next((c for c in evaluate.load_executable(cases_dir) if c['id'] == trial['case']), None)
+    if case is None or case['digest'] != trial.get('case_digest'):
+        raise Refused('the case changed since prepare; prepare the trial again')
+    work, base, condition = trial_dir / 'repo', trial['base'], trial['condition']
+    if not (work / '.git').is_dir() or git(work, 'cat-file', '-e', f'{base}^{{commit}}', check=False).returncode != 0:
+        raise Refused('the trial repository is missing or lost its base commit')
+    git(work, 'add', '-A')
+    git(work, 'commit', '-q', '--allow-empty', '--no-verify', '-m', 'final tree')  # fixed identity, hooks disabled
+    final = git(work, 'rev-parse', 'HEAD').stdout.strip()
+    changed = git(work, 'diff', '--name-only', base, final).stdout.split()
+    events, answer_text = read_transcript(args.transcript) if args.transcript else ([], '')
+    protected = strict_paths(case)
+    facts = derive(events, protected, str(work))
+    if changed:
+        facts['actions'] = sorted(set(facts['actions']) | {'write'})
+    if any(under(name, protected) for name in changed):
+        facts['actions'] = sorted(set(facts['actions']) | {'edit_protected'})
+    answer = facts['answer'] or answer_text
+    known = {e['name'] for e in evaluate.read(ROOT / 'skills/catalog.json')['skills']}
+    reported = [s.strip() for s in (args.skills or '').split(',') if s.strip()]
+    skills = sorted(set(facts['skills']) | set(reported))
+    selected = [s for s in skills if s in known]
+    grade_dir = Path(tempfile.mkdtemp(prefix='orbyn-eval-grade-'))
+    try:
+        report = grade_candidate(case, work, base, final, grade_dir)
+    finally:
+        shutil.rmtree(grade_dir, ignore_errors=True)
+    if report['result'] == 'unusable':
+        raise RuntimeError(f'grading could not run: {report.get("error")}')
+    forbidden = sorted(set(facts['actions']) & set(case['forbidden_actions']))
+    key_ok = report['result'] == 'pass'
+    answer_pass = answer_ok(case, answer)
+    routing_ok = (case['expected_skill'] in selected) if case['expected_skill'] else True
+    passed = key_ok and answer_pass and not forbidden and (routing_ok or case['kind'] != 'routing')
+    stem = f'{case["id"]}-t1'
+    for sub in ('transcripts', 'grades', 'events'):
+        (trial_dir / sub).mkdir(exist_ok=True)
+    observed = 'transcript events and the final tree diff' if events else 'the final tree diff only (no event transcript)'
+    note = (f'[subagent trial] case {case["id"]}, model {trial["model"]}, condition {condition}\n'
+            f'[observed] actions come from {observed}; skills as reported by the lead: {", ".join(reported) or "none"}\n')
+    transcript = trial_dir / 'transcripts' / f'{stem}.txt'
+    transcript.write_text(note + (render_transcript(events) if events else (answer_text or '(no transcript supplied)')),
+                          encoding='utf-8')
+    event_stream = None
+    if events:
+        event_stream = f'events/{stem}.jsonl'
+        shutil.copy2(args.transcript, trial_dir / event_stream)
+    evidence = {'answer_key_result': report['result'], 'answer_check_result': 'pass' if answer_pass else 'fail',
+                'forbidden_actions': forbidden, 'unmet_routing': not routing_ok, 'report': report}
+    (trial_dir / 'grades' / f'{stem}.json').write_text(json.dumps(evidence, indent=2) + '\n', encoding='utf-8')
+    rubric = {'answer_key': {'status': 'pass' if key_ok else 'fail', 'evidence': f'"answer_key_result": "{report["result"]}"'}}
+    if case.get('answer_must_match') or case.get('answer_must_not_match'):
+        rubric['answer_check'] = {'status': 'pass' if answer_pass else 'fail',
+                                  'evidence': f'"answer_check_result": "{"pass" if answer_pass else "fail"}"'}
+    tokens = args.tokens if args.tokens is not None else facts['tokens']  # as reported by the lead; never estimated
+    isolation = trial.get('isolation')
+    result = {'case_id': case['id'], 'trial': 1, 'status': 'completed', 'selected_skills': selected,
+              'actions': facts['actions'], 'transcript': f'transcripts/{stem}.txt', 'artifacts': [f'grades/{stem}.json'],
+              'reviewer': 'eval_run.py subagent grade with answer_key.py (code grading)', 'rubric': rubric,
+              'duration_ms': None, 'total_tokens': tokens, 'event_stream': event_stream,
+              'outcome': 'pass' if passed else 'fail', 'cost_usd': facts['cost_usd'], 'usage': facts['usage'],
+              'turns': facts['turns'], 'forbidden': forbidden, 'host_exit': None, 'stopped_for': None,
+              'other_skills': [s for s in skills if s not in known], 'isolation': isolation, 'cli_version': None,
+              'final_commit': final, 'protected_changed': report.get('protected_changed', [])}
+    digest = evaluate.executable_suite(cases_dir)[1]
+    protocol = {'runner': 'eval_run.py subagent', 'host': SUBAGENT_HOST, 'model': trial['model'],
+                'cases': {case['id']: case['digest']}, 'max_turns': {case['id']: case['max_turns']},
+                'isolation': 'the repository copy holds no skills; the subagent sees the lead workspace skills and instructions',
+                'effects': 'no remote in the copy; actions are observed from the final tree and any transcript supplied'}
+    protocol_bytes = (json.dumps(protocol, indent=2, sort_keys=True) + '\n').encode()
+    (trial_dir / 'protocol.json').write_bytes(protocol_bytes)
+    run = {'schema_version': 1, 'suite': 'executable', 'suite_sha256': digest,
+           'revision': git(ROOT, 'rev-parse', 'HEAD').stdout.strip(),
+           'library_dirty': bool(git(ROOT, 'status', '--porcelain').stdout.strip()),
+           'host': SUBAGENT_HOST, 'model': trial['model'],
+           'condition': 'candidate' if condition == 'with' else 'without-skills', 'trials': 1,
+           'trials_by_case': {case['id']: 1}, 'case_ids': [case['id']],
+           'protocol_sha256': hashlib.sha256(protocol_bytes).hexdigest(), 'results': [result]}
+    if cases_dir != evaluate.EXECUTABLE:
+        run['suite_dir'] = str(cases_dir)
+    if isolation:
+        run['isolation'] = isolation
+    (trial_dir / 'run.json').write_text(json.dumps(run, indent=2) + '\n', encoding='utf-8')
+    print(json.dumps({'run': str(trial_dir / 'run.json'), 'case': case['id'], 'outcome': result['outcome'],
+                      'answer_key_result': report['result'], 'protected_changed': result['protected_changed'],
+                      'forbidden': forbidden, 'total_tokens': tokens, 'isolation': isolation}, indent=2))
+    return 0
+
+
+def subagent_parser():
+    p = argparse.ArgumentParser(prog='eval_run.py', description='Prepare and grade a trial a host subagent runs. No model is called.')
+    sub = p.add_subparsers(dest='command', required=True)
+    a = sub.add_parser('prepare', help='export the fixture and write brief.txt and trial.json')
+    a.add_argument('--case', required=True)
+    a.add_argument('--condition', choices=['with', 'without'], required=True)
+    a.add_argument('--model', required=True, help='the model the subagent will run on (haiku, sonnet, luna, terra)')
+    a.add_argument('--out', type=Path, required=True)
+    a.add_argument('--cases-dir', type=Path, default=evaluate.EXECUTABLE)
+    a.add_argument('--allow-lead-tier', action='store_true')
+    g = sub.add_parser('grade', help='commit the final tree, grade it and write run.json')
+    g.add_argument('--trial', type=Path, required=True)
+    g.add_argument('--transcript', type=Path, help='the subagent transcript (JSON lines) or its final answer as text')
+    g.add_argument('--skills', help='comma-separated skills the subagent loaded, as the lead observed them')
+    g.add_argument('--tokens', type=int, help='total tokens the subagent result reported; omit when it reported none')
+    return p
+
+
+def subagent_main(argv):
+    args = subagent_parser().parse_args(argv)
+    try:
+        if args.command == 'grade' and args.tokens is not None and args.tokens < 0:
+            raise Refused('--tokens must not be negative')
+        return subagent_prepare(args) if args.command == 'prepare' else subagent_grade(args)
+    except Refused as error:
+        print(f'eval_run: refused: {error}', file=sys.stderr)
+        return 2
+    except (OSError, RuntimeError, ValueError, KeyError) as error:
+        print(f'eval_run: {error}', file=sys.stderr)
+        return 2
+
+
 # ---------------------------------------------------------------- plan and cli
 
 def build_host(args):
@@ -978,6 +1195,9 @@ def build_parser():
 
 
 def main(argv=None, hook=None):
+    raw = sys.argv[1:] if argv is None else list(argv)
+    if raw and raw[0] in {'prepare', 'grade'}:
+        return subagent_main(raw)
     args = build_parser().parse_args(argv)
     try:
         if args.trials != 'auto' and (not args.trials.isdigit() or not 1 <= int(args.trials) <= 20):

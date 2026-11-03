@@ -106,6 +106,11 @@ def load_executable(folder=EXECUTABLE):
               and isinstance(key.get('protected', []), list) and isinstance(key.get('expect_files', []), list))
         if not ok or not fixture.is_dir():
             raise ValueError(f'{path.name}: needs fixture/ and a valid key/key.json (schema_version 1)')
+        mode = key.get('protected_mode')
+        if mode not in {None, 'restore', 'strict'}:
+            raise ValueError(f'{path.name}: protected_mode must be restore or strict')
+        # A key with no mode restores, except where editing the protected paths is itself forbidden.
+        key = {**key, 'protected_mode': mode or ('strict' if 'edit_protected' in case['forbidden_actions'] else 'restore')}
         for spec in key.get('protected', []):
             if PurePosixPath(spec).is_absolute() or '..' in PurePosixPath(spec).parts or not (fixture / spec).exists():
                 raise ValueError(f'{path.name}: protected path is not in the fixture: {spec}')
@@ -120,7 +125,7 @@ def executable_suite(folder=EXECUTABLE):
     cases = load_executable(folder)
     adapted = []
     for case in cases:
-        rubric = {'answer_key': 'Hidden checks pass from a clean export and no protected file changed'}
+        rubric = {'answer_key': 'Hidden checks pass from a clean export with the protected paths restored (strict keys: unchanged)'}
         if case.get('answer_must_match') or case.get('answer_must_not_match'):
             rubric['answer_check'] = 'The final answer matches the case expectations'
         adapted.append({'id': case['id'], 'kind': case['kind'],
@@ -296,16 +301,21 @@ def grade(path):
             if value is not None and (type(value) is not int or value < 0):
                 raise ValueError('Metrics must be observed non-negative integers or null')
             row[metric] = value
-    return {'schema_version': 1, 'suite_sha256': digest, 'protocol_sha256': protocol_digest,
-            'revision': run['revision'], 'host': run['host'], 'model': run['model'],
-            'condition': run['condition'], 'evidence_kind': 'synthetic-fixture' if run['condition'] == 'fixture' else 'recorded-trial',
-            'limits': 'Selection/actions and rubric verdicts are observer-recorded; excerpts/hashes do not independently verify model behavior.',
-            'counts': {status: sum(r['status'] == status for r in rows) for status in ['pass', 'fail', 'unverified']},
-            'results': rows}
+    report = {'schema_version': 1, 'suite_sha256': digest, 'protocol_sha256': protocol_digest,
+              'revision': run['revision'], 'host': run['host'], 'model': run['model'],
+              'condition': run['condition'], 'evidence_kind': 'synthetic-fixture' if run['condition'] == 'fixture' else 'recorded-trial',
+              'limits': 'Selection/actions and rubric verdicts are observer-recorded; excerpts/hashes do not independently verify model behavior.',
+              'counts': {status: sum(r['status'] == status for r in rows) for status in ['pass', 'fail', 'unverified']},
+              'results': rows}
+    if run.get('isolation'):  # Subagent baselines see the workspace skills; compare refuses them by default.
+        report['isolation'] = str(run['isolation'])
+    return report
 
 
-def compare(baseline_path, candidate_path):
+def compare(baseline_path, candidate_path, allow_unclean_baseline=False):
     baseline, candidate = grade(baseline_path), grade(candidate_path)
+    if baseline.get('isolation') and not allow_unclean_baseline:
+        raise ValueError(f'The baseline is not clean ({baseline["isolation"]}); pass --allow-unclean-baseline to compare anyway')
     if baseline['condition'] not in {'baseline', 'without-skills'} or candidate['condition'] != 'candidate':
         raise ValueError('Compare a recorded baseline/without-skills run with a candidate; fixtures are not benchmarks')
     if not baseline['protocol_sha256'] or not candidate['protocol_sha256']:
@@ -346,6 +356,8 @@ def main():
     pair = commands.add_parser('compare')
     pair.add_argument('--baseline', type=Path, required=True)
     pair.add_argument('--candidate', type=Path, required=True)
+    pair.add_argument('--allow-unclean-baseline', action='store_true',
+                      help='accept a without-skills run whose isolation is not clean (a subagent baseline)')
     args = parser.parse_args()
     try:
         if args.command == 'validate':
@@ -357,7 +369,7 @@ def main():
             prepare(args.output, args.revision, args.host, args.model, args.condition, args.trials, args.split, args.protocol, args.case)
             print('Prepared task inputs and unverified result slots. Execute through an authorized host and capture actual evidence.')
         else:
-            report = grade(args.run.resolve()) if args.command == 'grade' else compare(args.baseline.resolve(), args.candidate.resolve())
+            report = grade(args.run.resolve()) if args.command == 'grade' else compare(args.baseline.resolve(), args.candidate.resolve(), args.allow_unclean_baseline)
             print(json.dumps(report, indent=2))
             if args.command == 'grade' and (report['counts']['fail'] or report['counts']['unverified']):
                 return 1

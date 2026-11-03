@@ -134,14 +134,42 @@ class HarvestTests(HarvestCase):
         grade_dir2 = self.base / 'grade2'
         grade_dir2.mkdir()
         self.assertEqual(eval_run.grade_candidate(case, work, base, final, grade_dir2)['result'], 'pass')
-        # editing a protected test is a failure even when the code is right
-        (work / 'tests/test_calc.py').write_text('import unittest\n')
+        key = json.loads((out / 'key/key.json').read_text())
+        self.assertEqual(key['protected_mode'], 'restore')
+        self.assertNotIn('edit_protected', json.loads((out / 'case.json').read_text())['forbidden_actions'])
+        original = (case['dir'] / 'fixture/tests/test_calc.py').read_text()
+        fixed = 'def add(a, b):\n    return a + b\n'
+        for label, files, expected in (
+                ('fix plus appended test', {'calc.py': fixed, 'tests/test_calc.py': original + '\n# extra\n'}, 'pass'),
+                ('weakened test, bug left', {'tests/test_calc.py': 'import unittest\n'}, 'fail')):
+            work = self.base / f'work-{expected}'
+            base = eval_run.export_fixture(case, work)
+            for name, text in files.items():
+                (work / name).write_text(text)
+            eval_run.git(work, 'add', '-A')
+            eval_run.git(work, 'commit', '-q', '-m', label)
+            final = eval_run.git(work, 'rev-parse', 'HEAD').stdout.strip()
+            grade_dir3 = self.base / f'grade-{expected}'
+            grade_dir3.mkdir()
+            report = eval_run.grade_candidate(case, work, base, final, grade_dir3)
+            self.assertEqual((label, report['result']), (label, expected))
+
+    def test_strict_flag_keeps_edits_to_protected_tests_forbidden(self):
+        out = self.base / 'cases' / 'calc-strict'
+        self.assertEqual(self.run_harvest('--repo', str(self.repo), '--commit', self.fix, '--out', str(out),
+                                          '--check', self.check, '--id', 'calc-strict', '--strict')[0], 0)
+        case = evaluate.load_executable(out.parent)[0]
+        self.assertEqual(case['key']['protected_mode'], 'strict')
+        self.assertIn('edit_protected', case['forbidden_actions'])
+        work, grade_dir = self.base / 'work-s', self.base / 'grade-s'
+        grade_dir.mkdir()
+        base = eval_run.export_fixture(case, work)
+        (work / 'calc.py').write_text('def add(a, b):\n    return a + b\n')
+        (work / 'tests/test_calc.py').write_text((work / 'tests/test_calc.py').read_text() + '\n# extra\n')
         eval_run.git(work, 'add', '-A')
         eval_run.git(work, 'commit', '-q', '-m', 'tamper')
         final = eval_run.git(work, 'rev-parse', 'HEAD').stdout.strip()
-        grade_dir3 = self.base / 'grade3'
-        grade_dir3.mkdir()
-        report = eval_run.grade_candidate(case, work, base, final, grade_dir3)
+        report = eval_run.grade_candidate(case, work, base, final, grade_dir)
         self.assertEqual((report['result'], report['protected']['status']), ('fail', 'fail'))
 
     def test_output_inside_the_repository_is_refused(self):

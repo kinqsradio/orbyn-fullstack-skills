@@ -56,10 +56,10 @@ class AnswerKeyCase(unittest.TestCase):
         self.assertEqual(result.returncode, expect, result.stdout + result.stderr)
         return result
 
-    def freeze(self, *extra, out=None, expect=0):
+    def freeze(self, *extra, out=None, expect=0, protect='--protect-strict'):
         out = out or self.base / 'key.json'
         args = ['freeze', '--repo', str(self.repo), '--task', 'demo', '--check', self.check_cmd,
-                '--protect', 'tests', *extra, '--out', str(out)]
+                protect, 'tests', *extra, '--out', str(out)]
         self.run_tool(*args, expect=expect)
         return out
 
@@ -138,6 +138,76 @@ class FreezeAndCheck(AnswerKeyCase):
                       '--out', str(key), expect=0)
         result = self.run_tool('check', '--key', str(key), '--candidate', self.base_commit, '--timeout', '1', expect=1)
         self.assertIn('timed out', json.loads(result.stdout)['checks'][0]['note'])
+
+
+class RestoreAndStrict(AnswerKeyCase):
+    def test_restore_is_the_default_and_strict_is_recorded(self):
+        restore, strict = self.freeze(protect='--protect'), self.freeze(out=self.base / 'strict.json')
+        self.assertEqual(json.loads(restore.read_text())['protected'][0]['mode'], 'restore')
+        self.assertEqual(json.loads(strict.read_text())['protected'][0]['mode'], 'strict')
+
+    def test_appended_tests_and_new_files_pass_and_are_reported_not_failed(self):
+        key = self.freeze(protect='--protect')
+        self.write('tests/test_app.py', (self.repo / 'tests/test_app.py').read_text() + '\n# a regression test\n')
+        self.write('tests/test_more.py', 'pass\n')
+        _, report = self.check(key, self.solve(), 0)
+        self.assertEqual((report['result'], report['protected']['status']), ('pass', 'pass'))
+        self.assertEqual({(c['path'], c['reason']) for c in report['protected_changed']},
+                         {('tests/test_app.py', 'modified'), ('tests/test_more.py', 'added')})
+
+    def test_a_weakened_assertion_is_restored_and_the_unfixed_code_fails(self):
+        key = self.freeze(protect='--protect')
+        self.write('tests/test_app.py', 'import sys\nsys.exit(0)\n')
+        _, report = self.check(key, self.commit('weaken the test, leave the bug'), 1)
+        self.assertEqual(report['protected']['status'], 'pass')
+        self.assertEqual(report['protected_changed'], [{'path': 'tests/test_app.py', 'reason': 'modified'}])
+        self.assertEqual([c['status'] for c in report['checks']], ['fail'])  # the original test ran against the old code
+
+    def test_a_deleted_protected_test_comes_back_before_the_checks(self):
+        key = self.freeze(protect='--protect')
+        (self.repo / 'tests' / 'test_app.py').unlink()
+        self.write('app.txt', 'wrong\n')
+        _, report = self.check(key, self.commit('delete the test'), 1)
+        self.assertEqual(report['protected_changed'], [{'path': 'tests/test_app.py', 'reason': 'missing'}])
+        self.assertEqual(report['checks'][0]['status'], 'fail')  # restored, so it ran and caught the wrong code
+
+    def test_strict_fails_any_change_including_an_appended_test(self):
+        key = self.freeze()
+        self.write('tests/test_app.py', (self.repo / 'tests/test_app.py').read_text() + '\n# more\n')
+        _, report = self.check(key, self.solve(), 1)
+        self.assertEqual(report['protected']['changed'], [{'path': 'tests/test_app.py', 'reason': 'modified'}])
+        self.assertEqual(report['checks'], [])
+
+    def test_a_key_with_no_mode_restores(self):
+        key = self.freeze(protect='--protect')
+        data = json.loads(key.read_text())
+        for item in data['protected']:
+            del item['mode']
+        key.write_text(json.dumps(data))
+        self.write('tests/test_app.py', (self.repo / 'tests/test_app.py').read_text() + '\n# more\n')
+        _, report = self.check(key, self.solve(), 0)
+        self.assertEqual(report['result'], 'pass')
+
+    def test_an_unknown_mode_or_a_path_in_both_lists_is_unusable(self):
+        key = self.freeze(protect='--protect')
+        data = json.loads(key.read_text())
+        data['protected'][0]['mode'] = 'lenient'
+        key.write_text(json.dumps(data))
+        self.check(key, self.base_commit, 2)
+        self.run_tool('freeze', '--repo', str(self.repo), '--task', 'x', '--check', 'true', '--protect', 'tests',
+                      '--protect-strict', 'tests', '--out', str(self.base / 'both.json'), expect=2)
+
+    def test_modes_mix_in_one_key(self):
+        self.write('docs/readme.txt', 'a\n')
+        self.commit('docs')
+        out = self.base / 'mixed.json'
+        self.run_tool('freeze', '--repo', str(self.repo), '--task', 'x', '--check', self.check_cmd, '--protect', 'tests',
+                      '--protect-strict', 'docs', '--out', str(out), expect=0)
+        self.write('tests/test_app.py', (self.repo / 'tests/test_app.py').read_text() + '\n# more\n')
+        self.write('docs/readme.txt', 'b\n')
+        _, report = self.check(out, self.solve(), 1)
+        self.assertEqual([c['path'] for c in report['protected']['changed']], ['docs/readme.txt'])
+        self.assertEqual([c['path'] for c in report['protected_changed']], ['tests/test_app.py'])
 
 
 class KeyLocation(AnswerKeyCase):
