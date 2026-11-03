@@ -124,6 +124,11 @@ Each repository has a saved work mode that agents read first. `resolve` prints i
 with its source, or `work mode: not set` with the ask-once instruction, in both text
 and JSON.
 
+Every worktree follows its main checkout: settings saved once for a repository apply
+to all its worktrees, wherever they sit, and nothing extra is saved per worktree. In a
+worktree of this library, `harness.py` hands over to the main checkout's copy when
+its own is older, so an old branch never runs an old harness.
+
 | Mode | Checkouts | Subagents |
 | --- | --- | --- |
 | `simple` | Edit in the current checkout; no worktrees. | None unless the user asks in chat. |

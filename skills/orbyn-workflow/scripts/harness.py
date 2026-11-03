@@ -603,6 +603,9 @@ def find_workspace(primary, explicit, root=None):
     for parent in reversed(primary.parents):
         if parent.name == 'repo' and is_library(parent.parent):
             return parent.parent
+    library = primary_clone(SCRIPT.parents[3]).resolve()
+    if root is not None and is_library(library) and primary.resolve() == library:
+        return library  # the library, or any worktree of it, follows the main checkout's settings
     if root is not None and root.resolve() == SCRIPT.parents[3] and is_library(root.resolve()):
         return primary.resolve() if is_library(primary.resolve()) else root.resolve()
     return None
@@ -1248,7 +1251,25 @@ def build_parser():
     return parser
 
 
+def primary_script():
+    """The main checkout's copy of this script when this copy runs from a linked worktree of the library, else None.
+
+    A worktree on an older branch carries an older harness; the main checkout's copy is the one that is current."""
+    here = SCRIPT.parents[3]
+    main = primary_clone(here).resolve()
+    other = main / SCRIPT.relative_to(here)
+    if main == here.resolve() or not is_library(main) or not other.is_file() or other.read_bytes() == SCRIPT.read_bytes():
+        return None
+    return other
+
+
 def main(argv=None):
+    other = None if os.environ.get('ORBYN_HARNESS_PRIMARY') else primary_script()
+    if other is not None:
+        print(f'note: using the main checkout\'s harness ({other}); this worktree\'s copy is older or different',
+              file=sys.stderr)
+        os.execve(sys.executable, [sys.executable, str(other), *(sys.argv[1:] if argv is None else argv)],
+                  {**os.environ, 'ORBYN_HARNESS_PRIMARY': '1'})
     args = build_parser().parse_args(argv)
     try:
         return {'resolve': command_resolve, 'setup': command_setup, 'validate': command_validate, 'check': command_check}[args.command](args)

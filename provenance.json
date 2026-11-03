@@ -1711,6 +1711,13 @@
           "effort": "medium",
           "date": "2026-11-03",
           "scope": "Restore and strict protected-path semantics in the answer key"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "Every worktree follows its main checkout harness"
         }
       ]
     },

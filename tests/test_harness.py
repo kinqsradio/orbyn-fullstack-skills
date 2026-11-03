@@ -1112,6 +1112,48 @@ class LibraryAsTarget(HarnessCase):
         self.assertEqual(data['workspace'], str(self.library_root.resolve()))
         self.assertEqual(data['work']['mode']['value'], 'simple')
 
+    def make_git_library(self):
+        shutil.rmtree(self.library_root / '.git')
+        git = ['git', '-c', 'user.name=t', '-c', 'user.email=t@t', '-c', 'commit.gpgsign=false', '-C']
+        for args in (['init', '-q'], ['add', '-A'], ['commit', '-qm', 'library']):
+            subprocess.run(git + [str(self.library_root), *args], check=True, capture_output=True)
+        return git
+
+    def save_mode(self, mode):
+        import hashlib
+        common = (self.library_root / '.git').resolve()
+        name = f'inplace--library--{hashlib.sha256(str(common).encode()).hexdigest()[:12]}'
+        saved = self.library_root / 'repo' / '.harness' / f'{name}.json'
+        saved.parent.mkdir(parents=True, exist_ok=True)
+        saved.write_text(json.dumps(valid(work={'mode': mode})))
+
+    def test_an_app_worktree_inside_the_main_checkout_follows_its_settings(self):
+        git = self.make_git_library()
+        tree = self.library_root / '.claude' / 'worktrees' / 'task'
+        subprocess.run(git + [str(self.library_root), 'worktree', 'add', '-q', str(tree)], check=True, capture_output=True)
+        self.save_mode('parallel')
+        result = subprocess.run([sys.executable, str(self.tool), 'resolve', '--target', str(tree), '--host', 'claude',
+                                 '--no-probe', '--json'], capture_output=True, text=True,
+                                env={**os.environ, 'ORBYN_HARNESS_PRIMARY': '1'})
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        data = json.loads(result.stdout)
+        self.assertEqual(data['workspace'], str(self.library_root.resolve()))
+        self.assertEqual(data['work']['mode']['value'], 'parallel')
+
+    def test_an_older_worktree_copy_hands_over_to_the_main_checkout_script(self):
+        git = self.make_git_library()
+        tree = self.base / 'library-wt' / 'old'
+        subprocess.run(git + [str(self.library_root), 'worktree', 'add', '-q', str(tree)], check=True, capture_output=True)
+        self.save_mode('simple')
+        old = tree / 'skills/orbyn-workflow/scripts/harness.py'
+        old.write_text(old.read_text() + '\n# an older copy\n')
+        env = {k: v for k, v in os.environ.items() if k != 'ORBYN_HARNESS_PRIMARY'}
+        result = subprocess.run([sys.executable, str(old), 'resolve', '--target', str(tree), '--host', 'claude',
+                                 '--no-probe', '--json'], capture_output=True, text=True, env=env)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("using the main checkout's harness", result.stderr)
+        self.assertEqual(json.loads(result.stdout)['work']['mode']['value'], 'simple')
+
     def test_another_checkout_is_not_given_the_library_as_workspace(self):
         elsewhere = self.base / 'elsewhere' / 'app'
         (elsewhere / '.git').mkdir(parents=True)
