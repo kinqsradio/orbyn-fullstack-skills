@@ -1083,10 +1083,11 @@ def command_check(args):
     return 0
 
 
-def tracked(path):
-    """True when Git, run in the folder that holds the file, lists it as a tracked path."""
+def tracked(path, directory):
+    """True when Git lists the path from an existing directory above it."""
     try:
-        listed = subprocess.run(['git', '-C', str(path.parent), 'ls-files', '--error-unmatch', '--', path.name],
+        listed = subprocess.run(['git', '-C', str(directory), 'ls-files', '--error-unmatch', '--',
+                                 path.relative_to(directory).as_posix()],
                                 capture_output=True, text=True, timeout=10, env={**os.environ, 'GIT_OPTIONAL_LOCKS': '0'})
     except (OSError, subprocess.SubprocessError):
         raise CannotRun(f'cannot tell whether {path} is tracked; refusing to write')
@@ -1232,7 +1233,8 @@ def command_setup(args):
         folder = repo / '.harness'
         folder_handle = open_setup_dir(folder, repo_handle)
         destination = folder / filename
-        if folder_handle is not None and tracked(destination):
+        git_directory = folder if folder_handle is not None else repo
+        if tracked(destination, git_directory):
             raise CannotRun(f'refusing to write a tracked path: {destination}')
         existing = None
         if folder_handle is not None:

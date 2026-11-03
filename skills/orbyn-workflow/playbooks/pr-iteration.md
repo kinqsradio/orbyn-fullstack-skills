@@ -118,7 +118,9 @@ when required, without inventing progress or abandoning user steering.
 
 An observation call timing out is not the live watch ending or the requested wait
 expiring. Check handle/liveness and distinguish pending, terminal, failed and
-interrupted states before resuming. Once a handle is terminal, inspect its result;
+interrupted states before resuming. A host that reports a finished background job
+is a working watch: do not poll that job ([wait without polling](../references/waiting.md)).
+Once a handle is terminal, inspect its result;
 do not keep waiting on a closed handle. If checks remain pending after a watcher
 failure/exit, reconcile current state once and resume one supported watch, or use
 paced, state-aware polling only when no working watch exists. Back off unchanged

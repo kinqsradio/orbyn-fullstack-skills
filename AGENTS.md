@@ -124,6 +124,9 @@ its assigned slice directly. Name each child and session
 `Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]`.
 If a named model/processing mode cannot be preserved, report the limitation and
 continue permitted direct work. No recursive agent chains or unrequested chats.
+Never poll a background job or child (`sleep`, `ps`, `pgrep`, `top`); do other work
+or end the reply and let the host wake you with its result
+([wait without polling](skills/orbyn-workflow/references/waiting.md)).
 
 Preserve unrelated changes, user data and configuration. Make public contributions
 from an explicit allowlist; never copy a consumer's history, environment files,
