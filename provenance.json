@@ -1595,6 +1595,13 @@
       ],
       "authoring": [
         {
+          "tool": "Codex",
+          "model": "gpt-6.1-sol",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "Refuse tracked harness settings when the parent is absent"
+        },
+        {
           "tool": "unrecorded",
           "model": "unrecorded",
           "date": "2026-11-02",

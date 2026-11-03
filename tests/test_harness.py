@@ -1011,6 +1011,18 @@ class WorkMode(HarnessCase):
         self.assertIn('tracked', self.setup_tool('--mode', 'parallel', ok=2).stderr)
         self.assertEqual(self.local_path().read_text(), before)
 
+    def test_setup_refuses_a_tracked_path_when_its_folder_is_missing(self):
+        git = ['git', '-C', str(self.workspace)]
+        self.write_local(valid(work={'mode': 'simple'}))
+        subprocess.run([*git, 'init', '-q'], check=True, capture_output=True)
+        subprocess.run([*git, 'add', '-f', 'repo/.harness/app.json'], check=True, capture_output=True)
+        destination = self.local_path()
+        destination.unlink()
+        destination.parent.rmdir()
+
+        self.assertIn('tracked', self.setup_tool('--mode', 'parallel', ok=2).stderr)
+        self.assertFalse(destination.parent.exists())
+
     def test_setup_refuses_symbolic_links(self):
         real = self.base / 'real.json'
         real.write_text(json.dumps(valid()))
