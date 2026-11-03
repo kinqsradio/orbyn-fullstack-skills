@@ -4,7 +4,8 @@
 `check` reads a PR description and reports what is missing; it needs no network.
 `apply` is what the workflow runs: it labels the PR and requests review only when the
 disclosure is complete and CI is green. It reads the PR through the GitHub CLI and never
-runs code from the PR. Standard library only.
+runs code from the PR. `config-check` lists changes to existing lint, format, type and test
+configuration as a warning; it never blocks. Standard library only.
 """
 import argparse
 import json
@@ -26,6 +27,13 @@ FULL_COMMIT = re.compile(r'\b[0-9a-f]{40}\b')
 GITHUB_COMMIT_LINK = re.compile(r'https://\S+/(?:tree|blob|commit)/[0-9a-f]{7,40}\b')
 # A family name alone says too little to reproduce the work: sonnet, or gpt.
 SPECIFIC_MODEL = re.compile(r'\d')
+# Existing lint, format, type and test configuration. Weakening one makes a check pass without
+# fixing the code, so a PR that edits or deletes one is flagged for a human to read.
+CONFIG_FILE = re.compile(
+    r'(^|/)(\.?eslintrc(\.\w+)?|eslint\.config\.\w+|\.?prettierrc(\.\w+)?|prettier\.config\.\w+'
+    r'|biome\.jsonc?|\.?ruff\.toml|\.shellcheckrc|\.stylelintrc(\.\w+)?|\.markdownlint(rc|\.\w+)?'
+    r'|tsconfig(\.[\w-]+)?\.json|mypy\.ini|\.flake8|pytest\.ini|\.?rustfmt\.toml|clippy\.toml'
+    r'|\.golangci\.ya?ml|\.editorconfig|(vitest|jest)\.config\.\w+|lint-ratchet-baseline\.json)$')
 
 
 def section(body, title):
@@ -95,6 +103,25 @@ def check(body):
     return problems
 
 
+def weakened_configs(name_status):
+    """Existing config files a diff modified or deleted; adding a new config is not flagged.
+
+    `name_status` is the output of `git diff --name-status --no-renames`.
+    """
+    found = []
+    for line in name_status.splitlines():
+        status, _, path = line.partition('\t')
+        if status[:1] in {'M', 'D', 'T'} and CONFIG_FILE.search(path):
+            found.append((status[:1], path))
+    return found
+
+
+def config_warnings(changes):
+    return [f'{path} was {"deleted" if status == "D" else "changed"}. Confirm the change fixes the code '
+            'or the rule on its merits and does not loosen the check to get a pass.'
+            for status, path in changes]
+
+
 def decide(pr):
     """Pure decision for one PR record: labels to set, and whether to request review."""
     author = pr.get('author', {}).get('login', '')
@@ -151,6 +178,8 @@ def main():
     commands = parser.add_subparsers(dest='command', required=True)
     checking = commands.add_parser('check', help='Report what a PR description is missing')
     checking.add_argument('body_file')
+    configuring = commands.add_parser('config-check', help='Warn about changed lint, format, type or test config')
+    configuring.add_argument('--base', required=True)
     applying = commands.add_parser('apply', help='Label one PR and request review when it is ready')
     applying.add_argument('--pr', default='')
     applying.add_argument('--sha', default='')
@@ -162,6 +191,16 @@ def main():
                 problems = check(file.read())
             print(json.dumps({'status': 'fail' if problems else 'pass', 'problems': problems}, indent=2))
             return 1 if problems else 0
+        if options.command == 'config-check':
+            diff = subprocess.run(['git', 'diff', '--name-status', '--no-renames', f'{options.base}...HEAD'],
+                                  check=True, capture_output=True, text=True, timeout=60).stdout
+            changes = weakened_configs(diff)
+            annotate = os.environ.get('GITHUB_ACTIONS') == 'true'
+            for (_, path), message in zip(changes, config_warnings(changes)):
+                print(f'::warning file={path}::{message}' if annotate else f'warning: {message}')
+            if not changes:
+                print('No existing lint, format, type or test configuration changed.')
+            return 0
         number = options.pr or find_number(options.sha)
         if not number:
             print('No open pull request for this commit.')
