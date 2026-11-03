@@ -1753,6 +1753,13 @@
           "effort": "medium",
           "date": "2026-11-03",
           "scope": "Wait without polling: never poll a background job or child; the host reports the result"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "bg.py: portable background start and one blocking wait for hosts that cannot wake the agent"
         }
       ]
     },
