@@ -26,6 +26,11 @@ Reproduce, or label the diagnosis source-derived. Seek the smallest authorized r
 
 If runtime access is unavailable, continue bounded source tracing and name the missing check without claiming a reproduction. Use the [reproduction and reduction method](references/reproduction.md) to pin the environment, confirm real runner selection and choose a behavioral oracle. Keep reproduction-only scope distinct from an authorized repair.
 
+When a control works alone but the screen ends wrong, trace its handler call by
+call and look for a later call that resets an earlier one: see
+[state actions through a handler](references/impact-map.md#trace-state-actions-through-a-handler).
+After implementing a mapped change, [reconcile the diff](references/impact-map.md#reconcile-the-diff-with-the-planned-impact).
+
 ## Delegate substantial investigation
 
 The owning lead delegates bounded source questions to named native Orbyn Investigators under the [workflow](../orbyn-workflow/SKILL.md). Pass file pointers and ask for a compact source-cited result. Stay within the resolved harness limits (`max_children`, `max_depth`) and use a scout for purely mechanical lookups; no recursive delegation; a child traces its assigned path directly. Narrow explanations stay direct. The lead inspects the evidence, reconciles contradictions and owns the final explanation.

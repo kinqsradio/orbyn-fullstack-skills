@@ -5,6 +5,9 @@ screen lifetime. Read the actual framework/lifecycle and shared domain contract.
 Keep loading, domain progress and presentation state distinct; a view should not
 invent its own durable operation lifecycle.
 
+When a button's handler calls several state actions, trace their order for a
+later reset of an earlier change: [state actions through a handler](../../how/references/impact-map.md#trace-state-actions-through-a-handler).
+
 ## Own each request and result
 
 Identify the inputs, identity/scope, operation key or request generation, and

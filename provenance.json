@@ -388,6 +388,30 @@
           "local_path": "skills/how/references/principles/guard-the-context-window.md",
           "license_file": "skills/how/references/principles/LICENSE.txt",
           "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Affaan Mustafa (affaan-m, ECC); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Affaan Mustafa",
+          "license": "MIT",
+          "source": "https://github.com/affaan-m/ECC/blob/b38be6a7f6350964d59328b52f0624e1d1d552d1/skills/click-path-audit/SKILL.md",
+          "revision": "b38be6a7f6350964d59328b52f0624e1d1d552d1",
+          "local_path": "skills/how/references/impact-map.md",
+          "license_file": "skills/how/references/ecc-LICENSE.txt",
+          "license_sha256": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
+          "changes": "Map each state action sets and resets and trace handler call order, rewritten with a synthetic example; the audit report format and bug counts are not adopted. Reviewed at the pinned ECC revision only; written in Orbyn voice with synthetic examples, nothing run from the source."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Affaan Mustafa (affaan-m, ECC); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Affaan Mustafa",
+          "license": "MIT",
+          "source": "https://github.com/affaan-m/ECC/blob/b38be6a7f6350964d59328b52f0624e1d1d552d1/skills/change-impact/SKILL.md",
+          "revision": "b38be6a7f6350964d59328b52f0624e1d1d552d1",
+          "local_path": "skills/how/references/impact-map.md",
+          "license_file": "skills/how/references/ecc-LICENSE.txt",
+          "license_sha256": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
+          "changes": "Post-implementation reconciliation of the diff with the planned impact, unknowns marked unverified; the MAP/STATUS/LOG artifact set is not adopted. Reviewed at the pinned ECC revision only; written in Orbyn voice with synthetic examples, nothing run from the source."
         }
       ],
       "reviewed_sources": [
@@ -418,6 +442,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Harness and security workflow revision"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "ECC adoptions: state-action handler trace and diff-versus-impact reconciliation"
         }
       ]
     },
@@ -451,6 +482,39 @@
           "model": "unrecorded",
           "date": "2026-11-02",
           "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "ECC adoption: dual independent review with 3-round cap"
+        }
+      ],
+      "incorporated_material": [
+        {
+          "relationship": "adapted",
+          "credit": "Affaan Mustafa (affaan-m, ECC); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Affaan Mustafa",
+          "license": "MIT",
+          "source": "https://github.com/affaan-m/ECC/blob/b38be6a7f6350964d59328b52f0624e1d1d552d1/skills/santa-method/SKILL.md",
+          "revision": "b38be6a7f6350964d59328b52f0624e1d1d552d1",
+          "local_path": "skills/interrogate/SKILL.md",
+          "license_file": "skills/interrogate/references/ecc-LICENSE.txt",
+          "license_sha256": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
+          "changes": "Two isolated reviewers on one rubric, both must pass. The cap of three rounds with user hand-off and registry-only models are Orbyn rules; pseudocode and external-model usage not adopted. Reviewed at the pinned ECC revision only; written in Orbyn voice with synthetic examples, nothing run from the source."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Affaan Mustafa (affaan-m, ECC); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Affaan Mustafa",
+          "license": "MIT",
+          "source": "https://github.com/affaan-m/ECC/blob/b38be6a7f6350964d59328b52f0624e1d1d552d1/commands/santa-loop.md",
+          "revision": "b38be6a7f6350964d59328b52f0624e1d1d552d1",
+          "local_path": "skills/interrogate/SKILL.md",
+          "license_file": "skills/interrogate/references/ecc-LICENSE.txt",
+          "license_sha256": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
+          "changes": "Dual-review loop idea only; the slash command and outside-model reviewer are not adopted. Reviewed at the pinned ECC revision only; written in Orbyn voice with synthetic examples, nothing run from the source."
         }
       ]
     },
@@ -593,6 +657,18 @@
           "license_sha256": "49c5f9c7097c9a940ff663a54c27a4c60e379df6cc2b3052df0d37a09a85df93",
           "relationship": "selected-method-adaptation",
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Affaan Mustafa (affaan-m, ECC); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Affaan Mustafa",
+          "license": "MIT",
+          "source": "https://github.com/affaan-m/ECC/blob/b38be6a7f6350964d59328b52f0624e1d1d552d1/skills/module-regression/SKILL.md",
+          "revision": "b38be6a7f6350964d59328b52f0624e1d1d552d1",
+          "local_path": "skills/orbyn-ci-design/references/affected-targets.md",
+          "license_file": "skills/orbyn-ci-design/references/ecc-LICENSE.txt",
+          "license_sha256": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
+          "changes": "Consumers plus one executable acceptance command per module, and a missing command is a gap; the REGRESSION.md ledger ritual is not adopted. Reviewed at the pinned ECC revision only; written in Orbyn voice with synthetic examples, nothing run from the source."
         }
       ],
       "authoring": [
@@ -615,6 +691,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Compressed first-download size budget gate"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "ECC adoption: per-module consumers and acceptance command"
         }
       ]
     },
@@ -974,6 +1057,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Eval report: agent-evals status, PR comment, history and dashboard"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "ECC adoption eval cases for loops, module commands, config weakening, dual review and silent failure"
         }
       ]
     },
@@ -1196,6 +1286,18 @@
           "license_sha256": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b",
           "relationship": "selected-method-adaptation",
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Affaan Mustafa (affaan-m, ECC); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Affaan Mustafa",
+          "license": "MIT",
+          "source": "https://github.com/affaan-m/ECC/blob/b38be6a7f6350964d59328b52f0624e1d1d552d1/skills/accessibility/SKILL.md",
+          "revision": "b38be6a7f6350964d59328b52f0624e1d1d552d1",
+          "local_path": "skills/orbyn-ui-design/references/design-rules.md",
+          "license_file": "skills/orbyn-ui-design/references/ecc-LICENSE.txt",
+          "license_sha256": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
+          "changes": "Compact WCAG 2.2 checklist in our own words; cross-platform mapping table and diagram not adopted. Reviewed at the pinned ECC revision only; written in Orbyn voice with synthetic examples, nothing run from the source."
         }
       ],
       "reviewed_sources": [
@@ -1270,6 +1372,13 @@
           "model": "unrecorded",
           "date": "2026-11-02",
           "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "ECC adoption: WCAG 2.2 checklist and handler-order link"
         }
       ]
     },
@@ -1404,6 +1513,42 @@
           "license_file": "skills/orbyn-workflow/references/principles/LICENSE.txt",
           "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4",
           "changes": "Benchmark-checklist questions and report form, merged with the explain-the-number principle in the same file. Reviewed at candidate ae5650f only; this is not an advance of the whole upstream."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Affaan Mustafa (affaan-m, ECC); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Affaan Mustafa",
+          "license": "MIT",
+          "source": "https://github.com/affaan-m/ECC/blob/b38be6a7f6350964d59328b52f0624e1d1d552d1/skills/loop-design-check/SKILL.md",
+          "revision": "b38be6a7f6350964d59328b52f0624e1d1d552d1",
+          "local_path": "skills/orbyn-workflow/playbooks/autonomous-run.md",
+          "license_file": "skills/orbyn-workflow/references/ecc-LICENSE.txt",
+          "license_sha256": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
+          "changes": "Decidable done test with anti-gaming limits, independent judge, retry cap with human escalation and external reconciliation, rewritten as a short section with a synthetic example. The 3-round cap is our own rule. Not adopted: cybernetic loop-type taxonomy and lineage notes. Reviewed at the pinned ECC revision only; written in Orbyn voice with synthetic examples, nothing run from the source."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Affaan Mustafa (affaan-m, ECC); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Affaan Mustafa",
+          "license": "MIT",
+          "source": "https://github.com/affaan-m/ECC/blob/b38be6a7f6350964d59328b52f0624e1d1d552d1/skills/contract-first/SKILL.md",
+          "revision": "b38be6a7f6350964d59328b52f0624e1d1d552d1",
+          "local_path": "skills/orbyn-workflow/references/fullstack-contract.md",
+          "license_file": "skills/orbyn-workflow/references/ecc-LICENSE.txt",
+          "license_sha256": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
+          "changes": "One authoritative consumer-first boundary artifact, spec text as data, allowlisted $ref and least-privilege generators, condensed from the source; no sample spec copied. Reviewed at the pinned ECC revision only; written in Orbyn voice with synthetic examples, nothing run from the source."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Affaan Mustafa (affaan-m, ECC); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Affaan Mustafa",
+          "license": "MIT",
+          "source": "https://github.com/affaan-m/ECC/blob/b38be6a7f6350964d59328b52f0624e1d1d552d1/hooks/hermes/config-protection.py",
+          "revision": "b38be6a7f6350964d59328b52f0624e1d1d552d1",
+          "local_path": "skills/orbyn-workflow/references/lead-contract.md",
+          "license_file": "skills/orbyn-workflow/references/ecc-LICENSE.txt",
+          "license_sha256": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
+          "changes": "Idea only: never weaken lint, format, type or test configuration to pass a check. Adopted as a rule and an advisory PR check (scripts/pr_gate.py config-check), never a hook; no code copied. The untrusted-data clause in generated agent definitions adapts the Prompt Defense Baseline idea from the source agents, in our own words. Reviewed at the pinned ECC revision only; written in Orbyn voice with synthetic examples, nothing run from the source."
         }
       ],
       "reviewed_sources": [
@@ -1517,6 +1662,20 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Harness evals.max_runs_per_pr cap for automatic PR evals"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "ECC adoptions: loop design check and 3-round cap, consumer-first contract, no-config-weakening rule"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "Unresolved loops after three rounds become draft PRs"
         }
       ]
     },
@@ -1829,6 +1988,18 @@
           "license_file": "skills/tdd/references/verification-LICENSE.txt",
           "license_sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
           "changes": "Added the two-edit test judgment with synthetic examples. Reviewed at candidate ae5650f only; earlier pins for other material are unchanged and this is not an advance of the whole upstream."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Affaan Mustafa (affaan-m, ECC); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Affaan Mustafa",
+          "license": "MIT",
+          "source": "https://github.com/affaan-m/ECC/blob/b38be6a7f6350964d59328b52f0624e1d1d552d1/skills/ai-regression-testing/SKILL.md",
+          "revision": "b38be6a7f6350964d59328b52f0624e1d1d552d1",
+          "local_path": "skills/tdd/SKILL.md",
+          "license_file": "skills/tdd/references/ecc-LICENSE.txt",
+          "license_sha256": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
+          "changes": "Self-review shares the author blind spot, so every fixed bug gets an automated test over every code path; sandbox-mode framework code and Vitest setup not adopted. Reviewed at the pinned ECC revision only; written in Orbyn voice with synthetic examples, nothing run from the source."
         }
       ],
       "reviewed_sources": [
@@ -1872,6 +2043,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Project-local verification check, drift stop and two-edit test judgment"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "ECC adoption: AI self-review blind spot and all-paths regression tests"
         }
       ]
     },
@@ -1965,6 +2143,18 @@
           "relationship": "selected-maintained-adaptation",
           "copyright": "Copyright (c) 2026 Jim Manico",
           "license_sha256": "e12b09de9f3d07a057e95b07681ed0f1bf29d156148156b02fc4ef945b677f2a"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Affaan Mustafa (affaan-m, ECC); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Affaan Mustafa",
+          "license": "MIT",
+          "source": "https://github.com/affaan-m/ECC/blob/b38be6a7f6350964d59328b52f0624e1d1d552d1/skills/mcp-dependency-review/SKILL.md",
+          "revision": "b38be6a7f6350964d59328b52f0624e1d1d552d1",
+          "local_path": "skills/orbyn-security-audit/references/threat-boundaries.md",
+          "license_file": "skills/orbyn-security-audit/references/ecc-LICENSE.txt",
+          "license_sha256": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
+          "changes": "Static classification of npm, Python and Docker selectors as exact, range, tag or digest, with no execution; condensed, no CI script copied. Reviewed at the pinned ECC revision only; written in Orbyn voice with synthetic examples, nothing run from the source."
         }
       ],
       "authoring": [
@@ -1980,6 +2170,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Harness and security workflow revision"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "ECC adoption: static dependency selector classification"
         }
       ]
     },
@@ -2148,6 +2345,18 @@
           "license_sha256": "4ff5bdb7887ec1435c9cab0e8d1a7caee704d894d65c2a008ccc68b1cc2f260b",
           "relationship": "selected-method-adaptation",
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Affaan Mustafa (affaan-m, ECC); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Affaan Mustafa",
+          "license": "MIT",
+          "source": "https://github.com/affaan-m/ECC/blob/b38be6a7f6350964d59328b52f0624e1d1d552d1/agents/silent-failure-hunter.md",
+          "revision": "b38be6a7f6350964d59328b52f0624e1d1d552d1",
+          "local_path": "skills/language-best-practices/references/code-quality.md",
+          "license_file": "skills/language-best-practices/references/ecc-LICENSE.txt",
+          "license_sha256": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
+          "changes": "Empty catches, swallowed errors and dangerous fallbacks as a review list with a synthetic example; agent prompt and its baseline block not copied. Reviewed at the pinned ECC revision only; written in Orbyn voice with synthetic examples, nothing run from the source."
         }
       ],
       "reviewed_sources": [
@@ -2177,6 +2386,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Bug-class lint rule examples for TypeScript and Python"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "ECC adoption: silent failure review list"
         }
       ]
     },
@@ -2314,6 +2530,27 @@
           "model": "unrecorded",
           "date": "2026-11-02",
           "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead), claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "ECC adoption: prompt caching operation rules"
+        }
+      ],
+      "incorporated_material": [
+        {
+          "relationship": "adapted",
+          "credit": "Affaan Mustafa (affaan-m, ECC); Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Affaan Mustafa",
+          "license": "MIT",
+          "source": "https://github.com/affaan-m/ECC/blob/b38be6a7f6350964d59328b52f0624e1d1d552d1/skills/prompt-caching-strategy/SKILL.md",
+          "revision": "b38be6a7f6350964d59328b52f0624e1d1d552d1",
+          "local_path": "skills/orbyn-ai-application/references/operations.md",
+          "license_file": "skills/orbyn-ai-application/references/ecc-LICENSE.txt",
+          "license_sha256": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
+          "changes": "Stable prefix with volatile content last, cache reuse is not authorization, savings unmeasured until measured. Source frontmatter names cyberspace-cs as author inside the MIT repository; provider tables and pricing not copied. Reviewed at the pinned ECC revision only; written in Orbyn voice with synthetic examples, nothing run from the source."
         }
       ]
     },
