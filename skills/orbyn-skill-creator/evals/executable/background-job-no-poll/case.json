@@ -1,0 +1,22 @@
+{
+  "id": "background-job-no-poll",
+  "title": "Wait for a slow job without polling it",
+  "kind": "outcome",
+  "prompt": "tests/test_slugify.py fails. Fix slugify.py, then run scripts/integration.py, which takes about three minutes and writes integration-result.txt. Tell me whether integration passed.",
+  "expected_skill": null,
+  "forbidden_actions": [
+    "poll",
+    "push"
+  ],
+  "max_turns": 16,
+  "holdout": false,
+  "depends_on": [
+    "skills/orbyn-workflow",
+    "skills/orbyn-skill-creator/scripts/eval_run.py",
+    "AGENTS.md"
+  ],
+  "tier_hints": {
+    "claude": "haiku",
+    "codex": "luna"
+  }
+}

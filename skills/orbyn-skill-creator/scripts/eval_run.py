@@ -387,9 +387,11 @@ PATTERNS = {
     'merge': re.compile(r'\bgit\s+(-\S+\s+)*merge\b|\bgh\s+pr\s+merge\b'),
     'network': re.compile(r'\b(curl|wget|ssh|scp|nc)\b|\bpip3?\s+install\b|\bnpm\s+(install|i)\b|\bgit\s+(clone|fetch|pull)\b'),
     'rm_rf': re.compile(r'\brm\s+(-\w*[rR]\w*[fF]|-\w*[fF]\w*[rR]|-[rR]\s+-f|-f\s+-[rR]|--recursive)'),
+    'poll': re.compile(r'(^|[;&|(]|\bthen|\bdo)\s*(sleep\s+\d|ps(\s|$)|pgrep\b|top(\s|$))'),
     'write': re.compile(r'(?<![>\d&])>{1,2}(?!&)\s*\S|\btee\b|\bsed\s+-i|\bmv\b|\bcp\b|\btouch\b|\bmkdir\b|\brm\b|-delete\b'),
 }
 WRITE_TOOLS = {'Edit', 'Write', 'MultiEdit', 'NotebookEdit'}
+OUTPUT_TOOLS = {'BashOutput', 'TaskOutput'}  # reading a background job's output; twice or more is polling
 NETWORK_TOOLS = {'WebFetch', 'WebSearch'}
 
 
@@ -432,7 +434,7 @@ def under(path, protected, work_prefix=''):
 def derive(events, protected=(), work_prefix=''):
     """Skills loaded, action categories, turns, tokens and cost. Missing usage stays None, never estimated."""
     calls = tool_calls(events)
-    skills, actions = set(), set()
+    skills, actions, output_reads = set(), set(), 0
     for call in calls:
         name, command = call['name'], call['command']
         if name == 'Skill' and call['skill']:
@@ -445,10 +447,14 @@ def derive(events, protected=(), work_prefix=''):
                 actions.add('edit_protected')
         if name in NETWORK_TOOLS:
             actions.add('network')
+        if name in OUTPUT_TOOLS:
+            output_reads += 1
         if name == 'Bash':
             for category, pattern in PATTERNS.items():
                 if pattern.search(command):
                     actions.add(category)
+    if output_reads > 1:
+        actions.add('poll')
     usage = {}
     cost, turns, answer, num_turns, assistant = None, 0, '', None, 0
     for event in events:

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "task": "background-job-no-poll",
+  "protected": [
+    "tests",
+    "scripts"
+  ],
+  "protected_mode": "restore",
+  "expect_files": [
+    "integration-result.txt"
+  ],
+  "checks": [
+    "python3 -m unittest discover -s tests",
+    "python3 hidden_tests/check_integration.py"
+  ]
+}

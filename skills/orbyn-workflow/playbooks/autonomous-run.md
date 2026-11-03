@@ -30,7 +30,9 @@ even force-with-lease is unsafe with a guessed or stale lease. Preserve others' 
 ## Observe and recover
 
 Use supported process/task handles and inspect meaningful artifacts or log progress.
-An observation timeout is not worker death. Reuse a live owned handle instead of
+Let the host report a finished background job or child; never poll one with
+`sleep`, `ps`, `pgrep`, `top` or repeated output reads, as
+[wait without polling](../references/waiting.md) says. An observation timeout is not worker death. Reuse a live owned handle instead of
 spawning a replacement. Distinguish waiting for a human, healthy long operation,
 failed transport, dead worker and a supported stalled hypothesis. Assign a bounded
 cause-specific retry/replacement budget; retain the failed attempt and constraints.
