@@ -67,6 +67,32 @@ or report the actual blocker; never relax the target or retry indefinitely. Paus
 at the safe boundary on explicit stop, preserving dirty work/resources and next
 action under [pause](pause-safely.md). Resume from actual current state.
 
+## Decide whether to loop, and bound it
+
+Before wrapping a repeating task in a loop, check four things: it repeats often,
+a machine can decide when it is done, the budget covers every retry, and the agent
+can run the work and see the result. If one is missing, do the task once by hand.
+A loop on a task that fails these checks only repeats its errors faster.
+
+- **Done test.** One command gives yes or no. Pair it with limits that block
+  gaming: no test deleted or weakened, no lint, format, type or test configuration
+  loosened, coverage not lowered. "All tests pass" alone invites deleting the
+  failing test.
+- **External fact over self-report.** Reconcile against something the agent does
+  not control, such as a golden sample, an upstream total or CI on a fresh
+  checkout. The agent's own claim of success does not count.
+- **Independent judge.** The agent that wrote the change does not decide it is done.
+- **Retry cap.** At most three review or fix rounds on the same finding. After the
+  third unresolved round, stop and hand the decision to the user with the open
+  findings, through a draft PR when the task has PR authority (see
+  [opening a PR](opening-a-pr.md#when-three-rounds-do-not-resolve-it)). Settle every clarification before the loop starts, because a running
+  loop guesses instead of asking.
+- **Last switch stays human.** A loop opens the PR; the user merges it.
+
+Synthetic example: a nightly loop that fixes failing tests uses "suite green, no
+test file changed, coverage not lower, change list written" as its done test and
+CI as its judge. After three rounds on one failure it stops and lists the failure.
+
 ## Close out each unit before expanding the queue
 
 Apply the [task closeout decision](../../orbyn-worktree/references/task-closeout.md)

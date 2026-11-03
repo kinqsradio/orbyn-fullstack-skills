@@ -60,7 +60,7 @@ Use local source and bundled references offline. Without isolation, keep inspect
 ## Read when needed
 
 - For coverage ledgers, validators, record schema, execution sandbox and deliverables, read [the audit protocol](references/protocol.md).
-- For which boundaries to question, and the row names a model must use, read [threat boundaries](references/threat-boundaries.md).
+- For which boundaries to question, and the row names a model must use, read [threat boundaries](references/threat-boundaries.md), including how to classify package selectors in tool configuration.
 - For depth, modes, the read-only rules, the run folder and the baseline questions, read [the threat-model method](references/threat-model.md).
 - For the artifact files and the JSON the checker enforces, read [the artifact contract](references/threat-model/artifact-contract.md).
 - For agents, RAG, tools or supply chain, read the matching file in `references/threat-model/architectures/` and [tool credential boundaries](references/threat-model/tool-credential-boundaries.md).
