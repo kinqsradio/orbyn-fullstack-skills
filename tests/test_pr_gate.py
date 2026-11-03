@@ -263,5 +263,37 @@ class RegistryTests(unittest.TestCase):
                 self.assertTrue(entry['tool'] and entry['model'] and entry['date'], name)
 
 
+class ConfigWeakeningTests(unittest.TestCase):
+    def test_changing_or_deleting_an_existing_config_is_flagged(self):
+        diff = 'M\teslint.config.js\nD\tpkg/.prettierrc.json\nM\tsrc/app.ts\nM\tpkg/tsconfig.base.json\n'
+        self.assertEqual(gate.weakened_configs(diff), [('M', 'eslint.config.js'),
+                                                       ('D', 'pkg/.prettierrc.json'),
+                                                       ('M', 'pkg/tsconfig.base.json')])
+
+    def test_adding_a_new_config_or_editing_source_is_not_flagged(self):
+        self.assertEqual(gate.weakened_configs('A\truff.toml\nM\tscripts/ruff_helper.py\nM\tdocs/eslint.md\n'), [])
+
+    def test_warnings_name_the_file_and_never_block(self):
+        warnings = gate.config_warnings([('D', 'biome.json'), ('M', 'ruff.toml')])
+        self.assertIn('biome.json was deleted', warnings[0])
+        self.assertIn('ruff.toml was changed', warnings[1])
+
+    def test_the_command_exits_zero_on_a_flagged_diff(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            git = lambda *a: subprocess.run(['git', '-C', tmp, '-c', 'user.name=t', '-c', 'user.email=t@t', *a],
+                                            check=True, capture_output=True, text=True)
+            git('init', '-q', '-b', 'main')
+            Path(tmp, 'ruff.toml').write_text('line-length = 80\n')
+            git('add', '.')
+            git('commit', '-q', '-m', 'base')
+            git('checkout', '-q', '-b', 'change')
+            Path(tmp, 'ruff.toml').write_text('line-length = 400\n')
+            git('commit', '-q', '-am', 'loosen')
+            run = subprocess.run([sys.executable, str(ROOT/'scripts/pr_gate.py'), 'config-check', '--base', 'main'],
+                                 cwd=tmp, capture_output=True, text=True)
+            self.assertEqual(run.returncode, 0, run.stderr)
+            self.assertIn('ruff.toml was changed', run.stdout)
+
+
 if __name__ == '__main__':
     unittest.main()

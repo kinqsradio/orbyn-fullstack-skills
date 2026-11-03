@@ -28,6 +28,23 @@ Check actual text, control and focus contexts separately; gradients/transparency
 need known composition and thresholds use unrounded ratios. Do not rely on colour
 alone for status or treat a decorative border as a required control boundary.
 
+### WCAG 2.2 checklist
+
+Check these against the actual rendered control, then stop; a checklist pass is
+not a conformance claim.
+
+- Target size (2.5.8): pointer targets at least 24 by 24 CSS pixels, or enough
+  spacing around smaller ones.
+- Focus appearance (2.4.11 and 2.4.7): focus is visible and not hidden under a
+  sticky header or overlay.
+- Dragging alternatives (2.5.7): every drag has a single-pointer alternative.
+- Redundant entry (3.3.7): do not ask again for data already given in the same flow.
+- Accessible authentication (3.3.8): no cognitive test that blocks paste or a
+  password manager.
+- Name, role and value (4.1.2): a native element first; each control exposes an
+  accessible name, role and current state, and dynamic status uses a live region.
+- Errors (3.3.1, 3.3.3): name the field and suggest the correction.
+
 ## Layout, panels, and overlays
 
 For a substantial workspace change, [workspace composition](workspace-composition.md)

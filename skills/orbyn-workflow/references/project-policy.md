@@ -83,7 +83,8 @@ evidence distinct. Preserve failed attempts and explain missing required checks.
 Independent review is optional unless requested or required by the consumer;
 self-review must not be described as independent. Requested separate qualification
 uses the same frozen candidate and a bounded review loop (at most three rounds
-under the library default); consumer policy may specify another process.
+under the library default; after the third unresolved round stop and hand the
+open findings to the user); consumer policy may specify another process.
 
 ## Development resources
 
