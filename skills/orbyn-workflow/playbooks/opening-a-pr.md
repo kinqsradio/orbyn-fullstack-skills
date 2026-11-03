@@ -86,6 +86,15 @@ mark that PR ready for review and never merge it; the PR gate ignores drafts. Th
 user decides: fix it, give a hint and allow more rounds, or close it. Without PR
 authority, report the same three items in chat and keep the branch local.
 
+## Merge only on the user's instruction
+
+Merge when the user says to, never because checks went green. Confirm every required
+check passed on the exact head you tested, and merge with that head pinned (for
+example `gh pr merge --squash --match-head-commit <sha>`). If a review rule blocks a
+PR the user authored and owns, and the repository lets its owner bypass that rule,
+use the bypass on the user's instruction (`--admin` on GitHub). Never use a bypass to
+skip a failing or missing check, or for someone else's PR.
+
 ## Make the review path explicit
 
 For a substantial diff, point reviewers first to the core behavior, then wiring,
