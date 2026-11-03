@@ -84,7 +84,8 @@ A loop on a task that fails these checks only repeats its errors faster.
 - **Independent judge.** The agent that wrote the change does not decide it is done.
 - **Retry cap.** At most three review or fix rounds on the same finding. After the
   third unresolved round, stop and hand the decision to the user with the open
-  findings. Settle every clarification before the loop starts, because a running
+  findings, through a draft PR when the task has PR authority (see
+  [opening a PR](opening-a-pr.md#when-three-rounds-do-not-resolve-it)). Settle every clarification before the loop starts, because a running
   loop guesses instead of asking.
 - **Last switch stays human.** A loop opens the PR; the user merges it.
 

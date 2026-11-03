@@ -1669,6 +1669,13 @@
           "effort": "medium",
           "date": "2026-11-03",
           "scope": "ECC adoptions: loop design check and 3-round cap, consumer-first contract, no-config-weakening rule"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "Unresolved loops after three rounds become draft PRs"
         }
       ]
     },

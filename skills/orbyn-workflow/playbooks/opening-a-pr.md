@@ -76,6 +76,16 @@ own PR template and policy where it has one. Fill these in from the record of th
 and never guess. In this library, review is requested automatically once the section is
 complete and CI is green.
 
+## When three rounds do not resolve it
+
+When the task has PR authority and a review or fix loop ends its third round with
+a finding still open, push the work and open it, or keep it, as a **draft** PR. Do
+not leave it only in chat, and do not drop it. The description lists each open
+finding, what each round tried, and the failing check or reviewer verdict. Never
+mark that PR ready for review and never merge it; the PR gate ignores drafts. The
+user decides: fix it, give a hint and allow more rounds, or close it. Without PR
+authority, report the same three items in chat and keep the branch local.
+
 ## Make the review path explicit
 
 For a substantial diff, point reviewers first to the core behavior, then wiring,

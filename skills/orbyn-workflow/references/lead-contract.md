@@ -126,7 +126,9 @@ Additional independent Verifier/Reviewer assignments are optional unless request
 Requested independent qualification uses the same frozen candidate and at most
 three full review rounds under [delivery](project-policy.md#verification-and-review).
 The same cap holds for any review or fix loop: after the third unresolved round,
-stop and hand the decision to the user with the open findings.
+stop and hand the decision to the user with the open findings. With PR authority,
+that hand-off is a draft PR, never a ready one; see
+[opening a PR](../playbooks/opening-a-pr.md#when-three-rounds-do-not-resolve-it).
 
 Never weaken lint, format, type or test configuration, and never delete or loosen
 a test, to make a check pass. Fix the code. A change to existing configuration
