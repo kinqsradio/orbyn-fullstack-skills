@@ -87,6 +87,21 @@ and report the limitation; do not copy shared policy into the target to mask it.
    sent for review. Maintainers review routing, authority, portability, evidence and
    licensing. A green check is necessary evidence, not automatic merge approval.
 
+   The gate also labels every PR automatically, so you do not set labels yourself. They
+   come from the changed paths, GitHub's `author_association` and your Tools line, and
+   never from anyone's employer or email.
+
+   | Label | Meaning |
+   | --- | --- |
+   | `skill: new`, `skill: update` | A new skill, or a change under an existing one |
+   | `area: harness`, `evals`, `security`, `ci`, `hosts`, `docs` | The part of the library changed (`docs` is docs only) |
+   | `upstream adaptation` | Adds `incorporated_material` or files under `references/upstream/` |
+   | `community`, `first contribution` | Author is not an owner, member or collaborator; first PR |
+   | `built with: <tool>`, `human only` | From Tools under Agent disclosure: claude code, codex, cursor, copilot, gemini or other |
+   | `size: s`, `m`, `l`, `xl` | Under 100, 500, 2000 or more changed lines, without generated files |
+   | `eval run` | Touches what an executable eval case depends on |
+   | `agent hand-off` | A draft with an "Open findings" section for a person to take over |
+
 ```sh
 python3 scripts/sync-agent-skills.py --write
 python3 scripts/library_manifest.py --write
