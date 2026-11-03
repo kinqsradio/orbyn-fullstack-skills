@@ -1718,6 +1718,13 @@
           "effort": "medium",
           "date": "2026-11-03",
           "scope": "Every worktree follows its main checkout harness"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "Merge on instruction; owner bypass only for the owner own green PR"
         }
       ]
     },

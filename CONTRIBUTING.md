@@ -86,6 +86,9 @@ and report the limitation; do not copy shared policy into the target to mask it.
    `ready-for-review` and the maintainer is asked to review. Incomplete PRs are not
    sent for review. Maintainers review routing, authority, portability, evidence and
    licensing. A green check is necessary evidence, not automatic merge approval.
+   Merging needs one approving review from someone with write access. The maintainer's
+   own PRs are the exception: once every required check is green on the exact head,
+   the maintainer merges them through the admin bypass, with no reviewer.
 
    The gate also labels every PR automatically, so you do not set labels yourself. They
    come from the changed paths, GitHub's `author_association` and your Tools line, and
