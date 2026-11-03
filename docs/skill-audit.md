@@ -906,3 +906,39 @@ text is in our own words with synthetic examples; no new skill was added.
 
 Four development eval cases are added (592 to 596); prior cases and holdouts are
 unchanged. They are static definitions, not recorded trials.
+
+## ECC revision `b38be6a` — 3 November 2026
+
+Review-only pin of [affaan-m/ECC](https://github.com/affaan-m/ECC/tree/b38be6a7f6350964d59328b52f0624e1d1d552d1)
+(MIT, Affaan Mustafa), read from ignored `orbyn-references/`; nothing from it was run
+and its unverifiable numbers and marketing are not repeated. Adapted text is in our own
+words with synthetic examples, each owner carries the MIT notice, and no new skill was
+added.
+
+| ECC item | Disposition | Owner |
+| --- | --- | --- |
+| `skills/loop-design-check` | Adopted | [decide whether to loop](../skills/orbyn-workflow/playbooks/autonomous-run.md#decide-whether-to-loop-and-bound-it); loop types and lineage not adopted |
+| `skills/module-regression` | Adopted (delta) | [affected targets](../skills/orbyn-ci-design/references/affected-targets.md#record-consumers-and-one-acceptance-command-per-module); the `REGRESSION.md` ledger ritual is declined |
+| `skills/contract-first` | Adopted | [boundary artifact](../skills/orbyn-workflow/references/fullstack-contract.md#one-authoritative-boundary-artifact) |
+| `skills/ai-regression-testing` | Adopted (idea) | [tdd](../skills/tdd/SKILL.md); sandbox-mode framework code declined |
+| `skills/click-path-audit` | Adopted | [state actions through a handler](../skills/how/references/impact-map.md#trace-state-actions-through-a-handler), linked from async state |
+| `skills/change-impact` | Adopted (delta) | [reconcile the diff](../skills/how/references/impact-map.md#reconcile-the-diff-with-the-planned-impact); the artifact set is declined |
+| `skills/mcp-dependency-review` | Adopted | [dependency selectors](../skills/orbyn-security-audit/references/threat-boundaries.md#dependency-selectors-in-tool-and-agent-configuration), static only |
+| `skills/santa-method`, `commands/santa-loop.md` | Adopted with our limits | [dual independent review](../skills/interrogate/SKILL.md); three rounds then hand to the user, registry models only. Outside-model reviewer and slash command declined |
+| `agents/silent-failure-hunter.md` | Adopted | [code quality](../skills/language-best-practices/references/code-quality.md) |
+| `hooks/hermes/config-protection.py` | Adopted as rule and advisory check | [lead contract](../skills/orbyn-workflow/references/lead-contract.md), [bug fix](../skills/orbyn-workflow/playbooks/bug-fix.md) and `pr_gate.py config-check`; no hook |
+| `skills/accessibility` | Adopted (delta) | [WCAG 2.2 checklist](../skills/orbyn-ui-design/references/design-rules.md#wcag-22-checklist) |
+| `skills/prompt-caching-strategy` | Adopted (delta) | [prompt caching](../skills/orbyn-ai-application/references/operations.md#prompt-caching); provider tables and pricing declined as stale |
+| "Prompt Defense Baseline" | Adopted (idea) | Three-line untrusted-data clause in the generated agent definitions via `scripts/sync-agent-models.py`; the long block is declined |
+
+Declined across the repository, with reasons:
+
+- Auto-running hooks: they act without a decision; we keep rules and advisory checks.
+- Silent memory and "instincts": capture stays manual and approved under [reflect](../skills/reflect/SKILL.md).
+- Installers that write user configuration: setup never edits user or host settings implicitly.
+- Publishing and posting tools: publication needs explicit user authority.
+- Unverifiable savings and benchmark claims: we state savings as unmeasured until measured.
+- Per-framework and per-language skill sprawl: framework guidance lives in `language-best-practices` references.
+
+Five development eval cases are added (597 to 601); prior cases and holdouts are
+unchanged. They are static definitions, not recorded trials.
