@@ -1599,6 +1599,13 @@
           "model": "gpt-6.1-sol",
           "effort": "medium",
           "date": "2026-11-03",
+          "scope": "Refuse tracked harness settings when the parent is absent"
+        },
+        {
+          "tool": "Codex",
+          "model": "gpt-6.1-sol",
+          "effort": "medium",
+          "date": "2026-11-03",
           "scope": "Windows harness setup compatibility and regression tests"
         },
         {
