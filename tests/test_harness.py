@@ -1140,18 +1140,34 @@ class LibraryAsTarget(HarnessCase):
         self.assertEqual(data['workspace'], str(self.library_root.resolve()))
         self.assertEqual(data['work']['mode']['value'], 'parallel')
 
+    def run_copy(self, script, tree):
+        env = {k: v for k, v in os.environ.items() if k != 'ORBYN_HARNESS_PRIMARY'}
+        result = subprocess.run([sys.executable, str(script), 'resolve', '--target', str(tree), '--host', 'claude',
+                                 '--no-probe', '--json'], capture_output=True, text=True, env=env)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        return result
+
     def test_an_older_worktree_copy_hands_over_to_the_main_checkout_script(self):
         git = self.make_git_library()
         tree = self.base / 'library-wt' / 'old'
         subprocess.run(git + [str(self.library_root), 'worktree', 'add', '-q', str(tree)], check=True, capture_output=True)
+        main_copy = self.library_root / 'skills/orbyn-workflow/scripts/harness.py'
+        main_copy.write_text(main_copy.read_text() + '\n# a newer main copy\n')
+        subprocess.run(git + [str(self.library_root), 'commit', '-qam', 'newer harness'], check=True, capture_output=True)
         self.save_mode('simple')
-        old = tree / 'skills/orbyn-workflow/scripts/harness.py'
-        old.write_text(old.read_text() + '\n# an older copy\n')
-        env = {k: v for k, v in os.environ.items() if k != 'ORBYN_HARNESS_PRIMARY'}
-        result = subprocess.run([sys.executable, str(old), 'resolve', '--target', str(tree), '--host', 'claude',
-                                 '--no-probe', '--json'], capture_output=True, text=True, env=env)
-        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        result = self.run_copy(tree / 'skills/orbyn-workflow/scripts/harness.py', tree)
         self.assertIn("using the main checkout's harness", result.stderr)
+        self.assertEqual(json.loads(result.stdout)['work']['mode']['value'], 'simple')
+
+    def test_a_worktree_with_new_harness_work_keeps_its_own_copy(self):
+        git = self.make_git_library()
+        tree = self.base / 'library-wt' / 'new'
+        subprocess.run(git + [str(self.library_root), 'worktree', 'add', '-q', str(tree)], check=True, capture_output=True)
+        own = tree / 'skills/orbyn-workflow/scripts/harness.py'
+        own.write_text(own.read_text() + '\n# unmerged work in this worktree\n')
+        self.save_mode('simple')
+        result = self.run_copy(own, tree)
+        self.assertNotIn("using the main checkout's harness", result.stderr)
         self.assertEqual(json.loads(result.stdout)['work']['mode']['value'], 'simple')
 
     def test_another_checkout_is_not_given_the_library_as_workspace(self):

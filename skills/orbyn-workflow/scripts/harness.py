@@ -1260,13 +1260,20 @@ def primary_script():
     other = main / SCRIPT.relative_to(here)
     if main == here.resolve() or not is_library(main) or not other.is_file() or other.read_bytes() == SCRIPT.read_bytes():
         return None
-    return other
+    # Hand over only when this copy is a past version of the main checkout's file. A copy carrying new,
+    # unmerged work (committed on a branch or edited in place) keeps running, so it can be tested.
+    blob = subprocess.run(['git', 'hash-object', str(SCRIPT)], capture_output=True, text=True)
+    if blob.returncode or not blob.stdout.strip():
+        return None
+    seen = subprocess.run(['git', '-C', str(main), 'log', '-1', '--format=%H', f'--find-object={blob.stdout.strip()}',
+                           'HEAD', '--', str(SCRIPT.relative_to(here))], capture_output=True, text=True)
+    return other if seen.returncode == 0 and seen.stdout.strip() else None
 
 
 def main(argv=None):
     other = None if os.environ.get('ORBYN_HARNESS_PRIMARY') else primary_script()
     if other is not None:
-        print(f'note: using the main checkout\'s harness ({other}); this worktree\'s copy is older or different',
+        print(f'note: using the main checkout\'s harness ({other}); this worktree\'s copy is an older version',
               file=sys.stderr)
         os.execve(sys.executable, [sys.executable, str(other), *(sys.argv[1:] if argv is None else argv)],
                   {**os.environ, 'ORBYN_HARNESS_PRIMARY': '1'})
