@@ -1517,6 +1517,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Harness evals.max_runs_per_pr cap for automatic PR evals"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-03",
+          "scope": "Library worktrees read the work mode saved in the primary clone"
         }
       ]
     },
