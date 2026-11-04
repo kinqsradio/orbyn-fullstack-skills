@@ -122,8 +122,11 @@ persistence, clients and operations. For substantial engineering work, use the
 harness limits when the required host configuration is available. A child completes
 its assigned slice directly. Name each child and session
 `Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]`.
-If a named model/processing mode cannot be preserved, report the limitation and
-continue permitted direct work. No recursive agent chains or unrequested chats.
+Delegate only a slice that does not block your next step, and tell the user in one
+line when a child starts and what it returned. A host without the tier's models runs
+children on the session's model, named as such
+([delegate on any host](skills/orbyn-workflow/references/lead-contract.md#delegate-on-any-host)).
+No recursive agent chains or unrequested chats.
 Never poll a background job or child (`sleep`, `ps`, `pgrep`, `top`); do other work
 or end the reply and let the host wake you with its result
 ([wait without polling](skills/orbyn-workflow/references/waiting.md)).

@@ -49,9 +49,9 @@ default for what follows.
 
 Follow the [consumer host and coordination boundary](project-policy.md#delegation-and-host-configuration).
 Use configured named roles and preserve the required model, effort and processing
-mode. If the host cannot do so, report the limit and continue permitted direct
-work. Never silently substitute a model, launch a hidden inference process or
-install a provider. Library model presets are optional; consumer-owned policy wins.
+mode. Where the host has no such model, follow [delegate on any host](#delegate-on-any-host).
+Never silently substitute a model, launch a hidden inference process or install a
+provider. Library model presets are optional; consumer-owned policy wins.
 
 Give each child its role, outcome, source/candidate, owned files, allowed effects,
 exclusions, relevant pointers and stopping condition. Reuse matching children;
@@ -62,6 +62,37 @@ Choose each child's tier from the resolved routing and pass the resolved setting
 in its brief. Split independent outputs
 only; serialize shared generated files and fixtures. Children return evidence to
 the lead, who owns integration and review.
+
+## Delegate on any host
+
+The harness names tiers for Claude and Codex, but other hosts (OpenCode, Gemini CLI,
+Cursor and more) can run children too. On every host, take these steps in order:
+
+1. **Decide once.** Delegate a slice that does not block your next step: read-only
+   exploration while you read other code, an implementation with its own files, or
+   a review of a finished diff. Otherwise do the work yourself. State the choice in
+   one line and move on. Permission to use subagents allows delegation; it does not
+   require it, and a small clear task needs none.
+2. **Pick the model.** Use the resolved tier where the host offers that model. Where
+   the host cannot choose a model, or the tier's models are not on it, the child runs
+   on the session's own model. That is allowed, because the name and announcement say
+   so; it is a silent substitution only when nobody is told. Set a model parameter only
+   to a resolved tier model or one the user named. With no effort control, write
+   `Default` in the Effort field.
+3. **Announce it.** In the same message as the spawn, tell the user the child's full
+   name and task in one line. When it returns, say in one line what it found or
+   changed. A child the user never hears about is a defect, even when its work is good.
+4. **Background or foreground.** Run it in the background when you have other work,
+   and in the foreground when its result is your next step. Never poll it
+   ([wait without polling](waiting.md)).
+5. **Limits.** `max_children`, `max_depth` and `read_only_children_extra` hold on every
+   host. On a host other than Claude or Codex, run `harness.py resolve` with either
+   `--host` value: its delegation limits, work mode and cleanup apply, and step 2
+   picks the model.
+
+For example, on a host running only `deepseek-v4.1-flash`:
+`Orbyn Scout 1 - DeepSeek V4.1 Flash - Default - Map settings panel` is announced as
+"Starting Orbyn Scout 1 on the session model to map the settings panel, read-only."
 
 ## Name children and sessions
 

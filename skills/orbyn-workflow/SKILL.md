@@ -128,9 +128,9 @@ explanation can proceed directly. Read the
   implementation to the worker, bounded mechanical work to a scout, decisions
   and security to the lead. Escalate a failed or ambiguous worker one tier and
   record why.
-- Preserve the required model, effort and processing mode. If the host cannot,
-  report the limit and continue permitted direct work. Never silently substitute a
-  model, launch a hidden inference process or install a provider.
+- Use the resolved tier's model and effort. A host without it runs children on the
+  session's model, named as such; announce every child to the user in one line.
+  See [delegate on any host](references/lead-contract.md#delegate-on-any-host).
 - New sidebar/project chats require an explicit human request.
 - Never poll a background job or child (`sleep`, `ps`, `pgrep`, `top`); [wait without polling](references/waiting.md).
 - For substantial work, write the [answer key](references/answer-key.md) first; the worker gets the outcome only.
