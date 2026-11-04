@@ -1760,6 +1760,13 @@
           "effort": "medium",
           "date": "2026-11-03",
           "scope": "bg.py: portable background start and one blocking wait for hosts that cannot wake the agent"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-04",
+          "scope": "Delegate on any host: decide once, session model on hosts without tier models, announce every child"
         }
       ]
     },

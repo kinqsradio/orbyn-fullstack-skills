@@ -130,7 +130,8 @@ log or tracker.
 - “Use a child to implement this migration”: that child completes its owned slice;
   it does not recursively spawn engineers. The parent supplies review separation.
 - “Use a named delegate” when it is unavailable: state the capability failure and
-  permitted direct fallback; do not substitute a generic inherited model.
+  permitted direct fallback; do not substitute a generic inherited model. A host that
+  has no tier models at all follows [delegate on any host](../../skills/orbyn-workflow/references/lead-contract.md#delegate-on-any-host).
 
 - “Write a LinkedIn update from these feature notes”: social writing produces
   a supported draft; it does not infer release status from implementation alone.
