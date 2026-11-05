@@ -470,6 +470,20 @@ class SecretsAndNamesTests(CleanupCase):
         self.clock = 2
         self.assertIn('secret-looking', self.item(done)['reason'])
 
+    def test_tracked_secret_looking_source_does_not_hold_a_worktree(self):
+        path = self.tree('tracked')
+        self.write(path/'web/src/api/token.ts', 'export const token = () => null\n')
+        self.write(path/'web/src/api/token.test.ts', 'test\n')
+        done = self.finish(path)
+        self.clock = 2
+        self.assertNotIn('secret-looking', self.item(done)['reason'])
+        self.write(done/'web/src/api/token.ts', 'changed\n')
+        self.assertEqual(self.status(done), 'held')
+        self.assertNotIn('secret-looking', self.item(done)['reason'])
+        self.sh(done, 'checkout', '--', 'web/src/api/token.ts')
+        self.write(done/'.env', 'KEY=1')
+        self.assertIn('secret-looking', self.item(done)['reason'])
+
     # --- 8: nested repositories
 
     def test_nested_git_and_registered_worktrees_hold_the_item(self):

@@ -2354,6 +2354,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Implement the work mode setting, setup command, tests and eval cases"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-05",
+          "scope": "Cleanup ignores secret-looking names that Git tracks in a worktree"
         }
       ]
     },
