@@ -115,6 +115,12 @@ class SourceTests(unittest.TestCase):
         value = 'https://github.com/acme/a/tree/8020574 MIT reviewed; https://github.com/acme/b/tree/8020575 GPL reviewed'
         self.assertEqual(gate.check(self.body(value)), [])
 
+    def test_a_web_page_reviewed_for_ideas_needs_an_observed_date_not_a_commit(self):
+        page = 'https://example.org/article, no licence, reviewed for ideas, observed 2026-11-05'
+        self.assertEqual(gate.check(self.body(page)), [])
+        self.assertTrue(any('commit' in p for p in gate.check(self.body(page.replace(', observed 2026-11-05', '')))))
+        self.assertTrue(any('commit' in p for p in gate.check(self.body(page.replace('reviewed', 'adapted')))))
+
 
 class DecideTests(unittest.TestCase):
     def test_review_is_requested_only_when_complete_and_green(self):

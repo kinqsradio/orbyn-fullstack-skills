@@ -75,7 +75,8 @@ and report the limitation; do not copy shared policy into the target to mask it.
    in. CI fails a changed skill with no new entry.
 
    Credit everything. List every external skill or project you used, with its link,
-   exact commit and licence. Copy or adapt only what we may modify and redistribute with
+   exact commit and licence. A web page reviewed for ideas only has no commit: give the
+   date you read it as "observed YYYY-MM-DD". Copy or adapt only what we may modify and redistribute with
    credit as the only obligation, such as MIT, Apache-2.0, BSD, ISC, CC-BY or CC0. Record
    it in `provenance.json`, and keep its licence text and any NOTICE file. Copyleft licences
    such as GPL and AGPL, non-commercial terms, and code with no licence may only be
