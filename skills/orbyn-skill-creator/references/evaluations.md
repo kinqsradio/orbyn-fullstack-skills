@@ -165,7 +165,8 @@ recorded only when the stream reports them and never estimated, and `--max-runs`
 works. `--max-budget-usd` (Claude only) is passed to the CLI per run and also counted across runs.
 
 Nothing runs without `--live`. A live run needs `--max-runs` (any host) or `--max-budget-usd` (Claude), and
-`--out`. Print the dry plan first: it lists the cases, tiers, the maximum run count and the budget cap.
+`--out`. Print the dry plan first: it lists the cases, tiers, the maximum run count and the budget cap. Start the
+live run in the background and wait for the host to report it ([wait without polling](../../orbyn-workflow/references/waiting.md)).
 
 ```sh
 python3 skills/orbyn-skill-creator/scripts/eval_run.py --host claude --ladder claude --condition both --case pagination-off-by-one --case docs-only-no-test

@@ -107,6 +107,7 @@ compare the baseline and diagnose shared causes before iterating. A readable
 top list must not hide required failures, missing shards or discarded retries.
 
 For an authorized wait, prefer one owned live watch/subscription when supported,
+started in the background (`gh pr checks <n> --watch`, for example),
 bound to the actual repository/PR/head and selected gates. Retain its process/run
 handle and wait for changes using bounded host waits so user input stays responsive.
 Do not start a second watch or poll the same status API beside a healthy watch.
