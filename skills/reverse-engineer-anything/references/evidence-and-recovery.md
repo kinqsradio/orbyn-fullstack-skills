@@ -66,7 +66,7 @@ Follow actual remediation, rather than guessing settings or fields.
 
 | Observation | Next step | Stop / preserve |
 | --- | --- | --- |
-| No tools or missing registration | Inspect supported local registration diagnostics, such as `rea doctor`, when available and in scope. Inspect the host connection state separately. | A skill install does not register MCP; doctor cannot establish a live connection. Prepare scoped setup only if authorized. |
+| No tools or missing registration | Inspect supported local registration diagnostics, such as `rea doctor`, when available and in scope. Inspect the host connection state separately. | A skill install does not register MCP; doctor cannot establish a live connection. Prepare scoped setup only if authorized. When a client plugin supplied REA, the plugin owns the server: doctor and setup may report it missing, and applying setup would add a second server. Check the client's plugin list and launch error instead. |
 | Connection dropped | Retry once only if safe to repeat or known not to have started. | If effects may already have happened, preserve uncertainty and inspect supported status/receipts first. Repeated drops need client reconnection, not repeated target actions. |
 | Server cannot start | Read the launch error; inspect actual PATH/runtime and registration. One retry is useful only with a transient explanation or changed condition. | Do not repeat the same unchanged startup failure. Explain a required human-only restart when the host cannot reconnect itself. |
 | `invalid_request` | Correct every reported field against the actual schema. | No unchanged retry or guessed newer fields. |

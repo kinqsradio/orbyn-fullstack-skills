@@ -10,6 +10,9 @@ test-suite speed. Route suite costs to [REA CI audit](../rea-ci-tests-audit/SKIL
 Read the consuming checkout's instructions and current implementation; use
 [how](../how/SKILL.md) to trace unfamiliar source.
 
+Measure only when the change targets performance or a regression is suspected.
+Routine cleanup needs correctness checks, not this workflow or synthetic benchmarks.
+
 This local procedure needs no upstream webpage. It does not authorize target
 execution, tests or edits outside the task.
 

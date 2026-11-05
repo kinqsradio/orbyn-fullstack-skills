@@ -141,8 +141,8 @@
           "changes": "Selected behavioral modeling, falsification and drift methods integrated into existing owners; target conventions, proportional preview rigor and exact source identity preserved. No upstream scripts imported."
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/architect/references/mobile-boundaries.md",
@@ -207,6 +207,12 @@
           "source": "https://github.com/macro-inc/macro/tree/fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "revision": "fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "relationship": "reviewed-inspiration; independent engineering methods, no source text/code/assets/runtime imported; source review is not observed enforcement"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "bundled_compiler": {
@@ -243,6 +249,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Repeated-mistake ladder, attack-the-premise and model-the-domain principles"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead) with claude-sonnet-5-5 (review workers)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Expo module migration notes: payload-less events, shared overloads, lifecycle hooks, autolinking class names"
         }
       ]
     },
@@ -260,6 +273,12 @@
           "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -292,6 +311,12 @@
           "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -427,6 +452,12 @@
           "revision": "f0160a12627fcf9107bcb5914bba2b012bd1d23e",
           "license": "MIT",
           "relationship": "reviewed-inspiration; independently authored generic engineering guidance, no product host/usage integration or OpenCode source runtime imported"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -474,6 +505,12 @@
           "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -551,8 +588,8 @@
           "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/orbyn-backend-design/references/expo-api-routes.md",
@@ -574,6 +611,12 @@
           "source": "https://github.com/macro-inc/macro/tree/fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "revision": "fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "relationship": "reviewed-inspiration; independent engineering methods, no source text/code/assets/runtime imported; source review is not observed enforcement"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -611,12 +654,18 @@
           "source": "https://github.com/macro-inc/macro/tree/fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "revision": "fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "relationship": "reviewed-inspiration; independent engineering methods, no source text/code/assets/runtime imported; source review is not observed enforcement"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "incorporated_material": [
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/orbyn-ci-design/references/mobile/workflows-and-hosting.md",
@@ -626,8 +675,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/orbyn-ci-design/references/mobile/build-and-upgrade.md",
@@ -637,8 +686,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/orbyn-ci-design/references/mobile/distribution.md",
@@ -648,8 +697,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/orbyn-ci-design/references/mobile/updates-and-health.md",
@@ -813,6 +862,12 @@
           "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -906,6 +961,12 @@
           "revision": "f0160a12627fcf9107bcb5914bba2b012bd1d23e",
           "license": "MIT",
           "relationship": "reviewed-inspiration; independently authored generic engineering guidance, no product host/usage integration or OpenCode source runtime imported"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -972,6 +1033,12 @@
           "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -1168,8 +1235,8 @@
           "license_sha256": "06088a8b94598626f27612dea42300154bf7be967c85d9d3eee4490cb056af7d"
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/stress-fixtures.md",
@@ -1179,8 +1246,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/motion.md",
@@ -1190,8 +1257,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/animation-performance.md",
@@ -1201,8 +1268,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/mobile-web.md",
@@ -1212,8 +1279,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/mobile/motion.md",
@@ -1223,8 +1290,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/mobile/navigation.md",
@@ -1234,8 +1301,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/mobile/native-ui.md",
@@ -1245,8 +1312,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/mobile/data-and-lifecycle.md",
@@ -1256,8 +1323,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
-          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "source": "https://github.com/emilkowalski/skills/tree/c8a79627b59d72d764d6ab6f2c87c09a48169833",
+          "revision": "c8a79627b59d72d764d6ab6f2c87c09a48169833",
           "copyright": "Copyright (c) 2026 Emil Kowalski",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/stress-fixtures.md",
@@ -1267,8 +1334,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
-          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "source": "https://github.com/emilkowalski/skills/tree/c8a79627b59d72d764d6ab6f2c87c09a48169833",
+          "revision": "c8a79627b59d72d764d6ab6f2c87c09a48169833",
           "copyright": "Copyright (c) 2026 Emil Kowalski",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/motion.md",
@@ -1278,8 +1345,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
-          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "source": "https://github.com/emilkowalski/skills/tree/c8a79627b59d72d764d6ab6f2c87c09a48169833",
+          "revision": "c8a79627b59d72d764d6ab6f2c87c09a48169833",
           "copyright": "Copyright (c) 2026 Emil Kowalski",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/animation-performance.md",
@@ -1289,8 +1356,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
-          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "source": "https://github.com/emilkowalski/skills/tree/c8a79627b59d72d764d6ab6f2c87c09a48169833",
+          "revision": "c8a79627b59d72d764d6ab6f2c87c09a48169833",
           "copyright": "Copyright (c) 2026 Emil Kowalski",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/mobile-web.md",
@@ -1300,8 +1367,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
-          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "source": "https://github.com/emilkowalski/skills/tree/c8a79627b59d72d764d6ab6f2c87c09a48169833",
+          "revision": "c8a79627b59d72d764d6ab6f2c87c09a48169833",
           "copyright": "Copyright (c) 2026 Emil Kowalski",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/mobile/motion.md",
@@ -1311,8 +1378,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
-          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "source": "https://github.com/emilkowalski/skills/tree/c8a79627b59d72d764d6ab6f2c87c09a48169833",
+          "revision": "c8a79627b59d72d764d6ab6f2c87c09a48169833",
           "copyright": "Copyright (c) 2026 Emil Kowalski",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/mobile/navigation.md",
@@ -1322,8 +1389,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
-          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "source": "https://github.com/emilkowalski/skills/tree/c8a79627b59d72d764d6ab6f2c87c09a48169833",
+          "revision": "c8a79627b59d72d764d6ab6f2c87c09a48169833",
           "copyright": "Copyright (c) 2026 Emil Kowalski",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/mobile/native-ui.md",
@@ -1333,8 +1400,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
-          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "source": "https://github.com/emilkowalski/skills/tree/c8a79627b59d72d764d6ab6f2c87c09a48169833",
+          "revision": "c8a79627b59d72d764d6ab6f2c87c09a48169833",
           "copyright": "Copyright (c) 2026 Emil Kowalski",
           "license": "MIT",
           "local_path": "skills/orbyn-ui-design/references/mobile/data-and-lifecycle.md",
@@ -1393,6 +1460,19 @@
           "source": "https://github.com/enmerasoftware/ai-design-check/tree/bc1ddbcffa5cf464bc814216e8d218e77bcece91",
           "revision": "bc1ddbcffa5cf464bc814216e8d218e77bcece91",
           "relationship": "reviewed-inspiration; measured on a real application, then rejected as a dependency; ui_check.py is independently written and covers objective defects only, with no source text, code or taste rules imported; not an advanced pin"
+        },
+        {
+          "credit": "Hallmark contributors; existing notices retained",
+          "source": "https://github.com/nutlope/hallmark/tree/407fa689f4a276f2fd389208d271d0fef08f5058/skills/hallmark",
+          "revision": "407fa689f4a276f2fd389208d271d0fef08f5058",
+          "license": "MIT",
+          "relationship": "reviewed; adapted files byte-identical to 7ec8682; new themes, layout, flow and script changes not imported; not an advance of the import pin"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "palette_reference": {
@@ -1435,6 +1515,13 @@
           "effort": "medium",
           "date": "2026-11-03",
           "scope": "ECC adoption: WCAG 2.2 checklist and handler-order link"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead) with claude-sonnet-5-5 (review workers)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Removing motion, adapted from Emil remove-animations; upstream review records for Expo, Emil and Hallmark"
         }
       ]
     },
@@ -1543,8 +1630,8 @@
           "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/orbyn-workflow/references/mobile-engineering.md",
@@ -1633,6 +1720,12 @@
           "source": "https://github.com/macro-inc/macro/tree/fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "revision": "fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "relationship": "reviewed-inspiration; independent engineering methods, no source text/code/assets/runtime imported; source review is not observed enforcement"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -1854,6 +1947,13 @@
           "model": "unrecorded",
           "date": "2026-11-02",
           "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead) with claude-sonnet-5-5 (review workers)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Measure only for performance work, from REA upstream review"
         }
       ]
     },
@@ -1905,6 +2005,13 @@
           "model": "unrecorded",
           "date": "2026-11-02",
           "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead) with claude-sonnet-5-5 (review workers)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Provider and audit checks, from REA upstream review"
         }
       ]
     },
@@ -1936,6 +2043,12 @@
           "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -1975,6 +2088,14 @@
           "revision": "2250e67bc271c83f9e200ee298aa04a2457438a6",
           "relationship": "selected-guidance-adaptation; documentation review only, historical engine/source pin unchanged",
           "local_record": "skills/reverse-engineer-anything/references/source-record.md"
+        },
+        {
+          "credit": "REA contributors",
+          "source": "https://github.com/morluto/rea/tree/0beedcd712e39a7d93e4558ee56fd596eaa22838/.agents/skills",
+          "revision": "0beedcd712e39a7d93e4558ee56fd596eaa22838",
+          "license": "MIT",
+          "relationship": "selected-guidance-adaptation; benchmark scope, provider and audit checks and plugin-owned server recovery adapted in our words; new tool inventory reviewed only; historical source pin unchanged",
+          "local_record": "skills/reverse-engineer-anything/references/source-record.md"
         }
       ],
       "authoring": [
@@ -1983,6 +2104,13 @@
           "model": "unrecorded",
           "date": "2026-11-02",
           "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead) with claude-sonnet-5-5 (review workers)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Plugin-owned REA server recovery, from REA upstream review"
         }
       ]
     },
@@ -2000,6 +2128,12 @@
           "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -2025,6 +2159,15 @@
           "date": "2026-11-02",
           "scope": "Work before this record existed"
         }
+      ],
+      "reviewed_sources": [
+        {
+          "credit": "Corey Haines (marketingskills)",
+          "source": "https://github.com/coreyhaines31/marketingskills/tree/88c79f6528a9347420e57ceb1fff9a60de651768/skills/social",
+          "revision": "88c79f6528a9347420e57ceb1fff9a60de651768",
+          "license": "MIT",
+          "relationship": "reviewed; version bump and a cross-reference to a skill we do not carry; no source text imported; not an advance of the pin"
+        }
       ]
     },
     "social-preview": {
@@ -2040,6 +2183,12 @@
           "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -2112,8 +2261,8 @@
           "changes": "Selected behavioral modeling, falsification and drift methods integrated into existing owners; target conventions, proportional preview rigor and exact source identity preserved. No upstream scripts imported."
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/tdd/references/mobile-verification.md",
@@ -2123,8 +2272,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
-          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "source": "https://github.com/emilkowalski/skills/tree/c8a79627b59d72d764d6ab6f2c87c09a48169833",
+          "revision": "c8a79627b59d72d764d6ab6f2c87c09a48169833",
           "copyright": "Copyright (c) 2026 Emil Kowalski",
           "license": "MIT",
           "local_path": "skills/tdd/references/mobile-verification.md",
@@ -2201,6 +2350,12 @@
           "source": "https://github.com/macro-inc/macro/tree/fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "revision": "fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "relationship": "reviewed-inspiration; independent engineering methods, no source text/code/assets/runtime imported; source review is not observed enforcement"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -2269,6 +2424,12 @@
           "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -2315,6 +2476,12 @@
           "source": "https://github.com/cursor/plugins/tree/c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "revision": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
           "relationship": "reviewed-inspiration; independently authored selective methods, no source text/code imported; not an advance of original import pins"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -2525,8 +2692,8 @@
           "license_sha256": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4"
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/language-best-practices/references/swift.md",
@@ -2536,8 +2703,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/expo/skills/tree/8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
-          "revision": "8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db",
+          "source": "https://github.com/expo/skills/tree/a9e5bd3fa00b4e61f632e43f85da73aee1942582",
+          "revision": "a9e5bd3fa00b4e61f632e43f85da73aee1942582",
           "copyright": "Copyright (c) 2025-present 650 Industries, Inc. (aka Expo)",
           "license": "MIT",
           "local_path": "skills/language-best-practices/references/mobile/expo-runtime.md",
@@ -2547,8 +2714,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
-          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "source": "https://github.com/emilkowalski/skills/tree/c8a79627b59d72d764d6ab6f2c87c09a48169833",
+          "revision": "c8a79627b59d72d764d6ab6f2c87c09a48169833",
           "copyright": "Copyright (c) 2026 Emil Kowalski",
           "license": "MIT",
           "local_path": "skills/language-best-practices/references/swift.md",
@@ -2558,8 +2725,8 @@
           "changes": "Orbyn-owned conditional guidance and synthetic examples; no upstream active skill collection, host, cloud helper or evaluation runner imported."
         },
         {
-          "source": "https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
-          "revision": "2d228630ba1446365f614a108cb8252f1feda202",
+          "source": "https://github.com/emilkowalski/skills/tree/c8a79627b59d72d764d6ab6f2c87c09a48169833",
+          "revision": "c8a79627b59d72d764d6ab6f2c87c09a48169833",
           "copyright": "Copyright (c) 2026 Emil Kowalski",
           "license": "MIT",
           "local_path": "skills/language-best-practices/references/mobile/expo-runtime.md",
@@ -2593,6 +2760,12 @@
           "source": "https://github.com/macro-inc/macro/tree/fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "revision": "fb7ca4b7c4c10519413e592da81d5e04a44ce977",
           "relationship": "reviewed-inspiration; independent engineering methods, no source text/code/assets/runtime imported; source review is not observed enforcement"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -2744,6 +2917,12 @@
           "source": "https://github.com/Anil-matcha/open-duet/tree/881de25e941bb7c53380ffddb17c39d3d01ad06b",
           "revision": "881de25e941bb7c53380ffddb17c39d3d01ad06b",
           "relationship": "reviewed-inspiration; source-based outcome and recovery questions, no rendered qualification or source/runtime import"
+        },
+        {
+          "credit": "Cursor plugin contributors; existing pstack and other upstream notices retained",
+          "source": "https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "revision": "2776ddd2355d6d6c8747d3964600f28daf62f049",
+          "relationship": "reviewed; pstack tree unchanged since c742dd6, later commits outside pstack; no source text or code imported; not an advance of original import pins"
         }
       ],
       "authoring": [
@@ -2884,6 +3063,15 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Harness and security workflow revision"
+        }
+      ],
+      "reviewed_sources": [
+        {
+          "credit": "caru-ini",
+          "source": "https://github.com/caru-ini/stack-diagram/tree/1ed53e3e9525364ae5d82e0430f2bb3f7ef4c838/skills/stack-diagram",
+          "revision": "1ed53e3e9525364ae5d82e0430f2bb3f7ef4c838",
+          "license": "MIT",
+          "relationship": "reviewed; public gallery share step not adopted (publishing option excluded); Google Cloud and Azure icon support left as a possible follow-up; no source text or code imported; not an advance of the pin"
         }
       ]
     },
