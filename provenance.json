@@ -1092,6 +1092,13 @@
           "effort": "medium",
           "date": "2026-11-03",
           "scope": "Eval runner detects polling; background-job-no-poll executable case"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-05",
+          "scope": "Development eval case proof-intent-both-ways-and-trust-list"
         }
       ]
     },
