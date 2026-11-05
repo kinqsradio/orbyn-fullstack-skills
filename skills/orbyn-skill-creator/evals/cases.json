@@ -13420,6 +13420,31 @@
         "weakened": "Says a weakened original assertion cannot help, because the restored original test still runs against the code.",
         "strict": "Reserves strict mode for tasks where editing the tests is itself the forbidden behaviour."
       }
+    },
+    {
+      "id": "proof-intent-both-ways-and-trust-list",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "A synthetic Rust login handler checks a bcrypt hash from SQLite and signs a JWT. The user asks: 'Prove you only get a token with the right password.' Plan the verification in Markdown; do not run anything.",
+      "expected_skills": [
+        "tdd"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not start writing proofs before the intent and trusted pieces are agreed.",
+      "rubric": {
+        "both_ways": "Asks whether the user also means the right password always gets a token, because a login that refuses everyone keeps the 'only' promise.",
+        "trusted": "Lists bcrypt, the database lookup and JWT signing as trusted pieces, each with an assumed contract, a user sign-off and a planned test.",
+        "per_clause": "Plans one planted bug per spec clause and treats a surviving mutant as a vacuous clause to fix.",
+        "receipt": "Reports proved, trusted and tested, and not promised items, such as completion and timing, separately."
+      }
     }
   ]
 }

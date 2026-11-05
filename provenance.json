@@ -1092,6 +1092,13 @@
           "effort": "medium",
           "date": "2026-11-03",
           "scope": "Eval runner detects polling; background-job-no-poll executable case"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-05",
+          "scope": "Development eval case proof-intent-both-ways-and-trust-list"
         }
       ]
     },
@@ -2009,6 +2016,11 @@
           "revision": "519d36aa98955bf680db01bcde5fdfba686dc901",
           "license": "MIT",
           "relationship": "reviewed-inspiration; independently authored projection and per-property receipt examples; no upstream compiler code or runtime imported"
+        },
+        {
+          "credit": "GitHub Next and Microsoft Research",
+          "source": "https://githubnext.com/projects/pdd-kit/",
+          "relationship": "reviewed-inspiration; article read 2026-11-05; independently authored intent, trust-list, per-clause mutant and receipt guidance; no text or code copied"
         }
       ],
       "incorporated_material": [
@@ -2162,6 +2174,13 @@
           "effort": "medium",
           "date": "2026-11-03",
           "scope": "Note that appending a regression test is expected under a restoring key"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-05",
+          "scope": "Proof intent both ways, trusted-piece list with tests, one mutant per clause, PR receipt"
         }
       ]
     },

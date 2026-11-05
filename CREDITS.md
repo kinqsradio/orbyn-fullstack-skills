@@ -43,6 +43,7 @@ bundled, and they may carry other licences. Generated from `provenance.json` by
 | https://doi.org/10.6028/NIST.AI.600-1 | NIST AI 600-1, July 2024 | See source | orbyn-ai-application |
 | https://genai.owasp.org/llmrisk/llm01-prompt-injection/ | OWASP LLM01:2025 | See source | orbyn-ai-application |
 | https://genai.owasp.org/llmrisk/llm062025-excessive-agency/ | OWASP LLM06:2025 | See source | orbyn-ai-application |
+| https://githubnext.com/projects/pdd-kit/ | GitHub Next and Microsoft Research | See source | tdd |
 | https://learn.microsoft.com/en-us/azure/search/search-security-trimming-for-azure-search | Microsoft — Azure search security-filter limitations | See source | orbyn-ai-application |
 | https://pair.withgoogle.com/chapter/feedback-controls/ | Google PAIR feedback/control | See source | orbyn-ai-application |
 | https://pair.withgoogle.com/chapter/user-needs/ | Google PAIR user needs | See source | orbyn-ai-application |

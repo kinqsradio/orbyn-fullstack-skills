@@ -42,6 +42,40 @@ VIEW/SYMMETRY/constraint interpretation follow the architect's
 Report an intentional terminal and disabled/unchecked deadlock detection separately;
 a safety pass or terminal stutter cannot stand in for a checked temporal property.
 
+## Pin the intent before the spec
+
+A proof holds the code to its spec, so a wrong or weak spec gives a green check that
+protects nothing. Settle intent with the person who owns the behavior first:
+
+- **Ask both ways.** "Only X gets Y" and "X always gets Y" are different promises. The
+  first alone is kept by code that refuses everyone. Ask which the user means; often
+  it is both.
+- **Map each clause to the request.** Keep a short intent map: each spec clause, the
+  user's words it comes from, and clauses added to keep today's behavior (existing
+  error codes, say), marked as such.
+- **Write the "not promised" list.** Whether a call finishes, how fast, rate limits,
+  anything nobody wrote down. A safety spec says nothing about these.
+- **Explain before asking.** When a question depends on how the code works, explain
+  that part in a sentence first, so the user can answer without opening the source.
+
+Have someone other than the spec's author check it against the intent map before any
+proof work: does it say what was asked, and does it promise more than a proof could
+show? A spec the user has not agreed to is a draft.
+
+## List what the proof trusts
+
+Every proof rests on code it cannot see: databases, hashing and crypto libraries,
+clocks, other crates or services. For each one:
+
+1. Wrap it in one small function whose contract states exactly what the proof assumes.
+2. Say what breaks if the assumption is wrong, by naming the spec clauses that rest on it.
+3. Have the user accept it as its own decision, not as part of approving the whole spec.
+4. Give it a test, planned before the proof work, that checks the assumed contract on
+   the real dependency. A passing test is evidence, not proof; label it so.
+
+Keep the list short and in one place. The guarantee is only as strong as its weakest
+trusted piece, so name the ones most promises rest on.
+
 ## Establish a falsifiable check
 
 1. State the property and user harm in plain words. Separate safety (a bad state
@@ -69,7 +103,11 @@ a safety pass or terminal stutter cannot stand in for a checked temporal propert
    property protects. Show that the check detects this broken variant, then
    restore the original and rerun. Do not merely flip a separate model flag while
    claiming to have validated detection of a product regression. A model-only
-   negative control is labelled as such. Preserve both outcomes.
+   negative control is labelled as such. Preserve both outcomes. For a code-level
+   spec with several clauses, plant one bug per clause, each aimed at that clause,
+   and confirm the verifier rejects each on the clause it targets. A mutant that
+   passes means that clause rules out nothing: strengthen or remove it, never keep it
+   as decoration.
 6. Replay a model counterexample against actual entry points where feasible,
    forcing ordering with barriers rather than timing guesses. Assert observable
    state/effects, including absence of rejected effects. Record which steps were
@@ -121,7 +159,19 @@ The generated skill must let a cold reader tell whether a change touches the cov
 ## Deliver and maintain
 
 Return the property, tool rationale, command, actual result, negative control,
-counterexample/replay, bounds and omissions. Report deadlock and temporal results
+counterexample/replay, bounds and omissions. In a PR, write it as a short receipt,
+one line per item ([short by default](../../unslop/references/short-by-default.md)):
+
+```markdown
+- Proved: <requirement> (<function>, <verifier and version>)
+- Trusted and tested: <piece> (<test name, result>)
+- Not promised: <what, such as completion or timing>
+- Per-clause mutants: <n> of <n> rejected
+```
+
+The reviewer checks the receipt against the intent they agreed, not every generated
+line. Once a proof runs in CI, tests that only re-check proved behavior can go; keep
+the tests on the trusted pieces. Report deadlock and temporal results
 separately from state invariants. A bounded pass covers this model/configuration,
 not production scheduling, all deployments or the whole codebase.
 
