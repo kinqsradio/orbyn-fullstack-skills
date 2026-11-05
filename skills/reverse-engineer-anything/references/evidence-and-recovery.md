@@ -58,6 +58,22 @@ unsupported facets as unknown and avoid equating root-byte equality with runtime
 equivalence. Shorter JSON proves smaller delivery, not fewer total tokens or
 faster completed investigations.
 
+## Scope, status and size rules
+
+- **Passive traffic capture follows the page origin.** A browser capture defaults to
+  the selected page's current origin, so calls to a separate API origin are not
+  recorded. Add the API origins to the allowed set, then read the excluded counts
+  before saying an API is absent or unused. Zero captured calls under a narrow origin
+  filter is not zero calls.
+- **Hardening and signature checks report four states:** enabled, disabled, partial
+  or unknown. A missing import or table is unknown, not proof the protection was
+  omitted. A signature row's presence is not its validity or the publisher's trust;
+  validity needs its own signature check. Report each protection per image or slice.
+- **Large batch results arrive in full** unless the connected tool offers a summary
+  mode. Check the schema first; if there is none, select a smaller set up front. Do
+  not truncate a returned batch silently, and with a summary keep the parent evidence
+  identity for the full rows.
+
 ## Diagnose before retrying
 
 Separate host-policy rejection, transport failure and a returned REA error. A
