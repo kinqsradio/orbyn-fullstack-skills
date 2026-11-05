@@ -1,6 +1,6 @@
 {
   "files": {
-    "skills/README.md": "717363467f68911115197215e7de2980708313c39d819058c6d789f37ae680ca",
+    "skills/README.md": "e22e38dc4421fb216115242c3aef1ff23a73ef248757b13e70bf3c0abb7af773",
     "skills/architect/LICENSE": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4",
     "skills/architect/SKILL.md": "9a240cb3958efaf9afa4ca848926d1b5a73765a9f9a6a0f8836e3a4d8a7b358f",
     "skills/architect/examples/illustrated-statechart/guide.md": "b097472533a542257072d29c716cacfc24f9f68b2366f554bbfb8091ea102d84",
@@ -584,7 +584,7 @@
     "skills/orbyn-workflow/references/answer-key.md": "347aeca1adbab333dc4151b64260fcb719b09d9d8f1849ad54537df1f4ac9a84",
     "skills/orbyn-workflow/references/artifact-lifecycle.md": "af622796467a343f212cad0264d9da1383e53494498a6e224410038ea3df4963",
     "skills/orbyn-workflow/references/contribution-examples.md": "79b0bdf0a81cae400f2ccc044272c59330fbc6bce0c7d67c5d2d76f80a9dee3b",
-    "skills/orbyn-workflow/references/contribution-publication.md": "bfe78c74f2fefd76d6c1a2fbeb5d695ff9faa0444b471c172fb52fbbefdbec42",
+    "skills/orbyn-workflow/references/contribution-publication.md": "0c3eb9652afaa3474dc5d5c8ff85e9a1ab0b58424bb1112782cb39e437506ff9",
     "skills/orbyn-workflow/references/contribution-sources.md": "614f926e6782833342cc35de8d186d8f449c37c52d5660d5d9cc85eba1900a84",
     "skills/orbyn-workflow/references/ecc-LICENSE.txt": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
     "skills/orbyn-workflow/references/engineering-scope.md": "78a96c298712dc5fb1b3dc81f5daf1b8be40f27584e975bd47038f74c2a63e43",
@@ -1123,7 +1123,8 @@
     "skills/technical-illustration/scripts/package_figure.py": "a244505ef471b93c0f92abe28c9b27d1dc067ccbd2fe0db288cf921ae4c62e15",
     "skills/technical-illustration/scripts/still_to_layers.py": "ff42a37accfdf70b07293bb6f89cafcbc59230e6b797b5f5fb37ec1df40fa30a",
     "skills/unslop/LICENSE": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4",
-    "skills/unslop/SKILL.md": "95039a240e00d9bf0422fe8a4a38b3ff8bbdb02d3ff942747f19e31b7a44b555",
+    "skills/unslop/SKILL.md": "e7d26ad741e0f663ab35400159942864ad2fbe1562677164011bbcbc9f3887fa",
+    "skills/unslop/references/short-by-default.md": "1599d8070c1cd61aa4d0642e2c7894386fda4c06a9232636686c33397bbb49f6",
     "skills/unslop/references/source-comments.md": "e5d34648c9d9431ce7e57df8805ab64fba1cf470359fdfecf182722bde854f49",
     "skills/why/LICENSE": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4",
     "skills/why/SKILL.md": "56cf1aef0d624a2568c5f999bdca459a5194ed92f82688e9b65257b505bca6ac"

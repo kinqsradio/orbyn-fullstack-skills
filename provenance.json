@@ -1767,6 +1767,13 @@
           "effort": "medium",
           "date": "2026-11-04",
           "scope": "Delegate on any host: decide once, session model on hosts without tier models, announce every child"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-05",
+          "scope": "PR and issue bodies follow short by default; no repair history or repeated CI results"
         }
       ]
     },
@@ -2195,6 +2202,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Encode claimed constraints sentence in source comments"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-05",
+          "scope": "Short by default: chat replies, PRs, issues and checklists answer first, in bullets, with word targets"
         }
       ]
     },

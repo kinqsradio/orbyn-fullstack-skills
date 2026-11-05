@@ -40,7 +40,7 @@ This index is generated in the full library from `catalog.json` and frontmatter 
 - [language-best-practices](language-best-practices/SKILL.md) — Implement or review TypeScript, JavaScript, Python, Go, Rust, Java, Kotlin, C#, Swift, C, C++, SQL or shell code using its actual runtime, ownership and error contracts. Select only the affected local guide, including TypeScript schemas and lifecycle contracts.
 - [orbyn-stack-selection](orbyn-stack-selection/SKILL.md) — Choose or reassess a language, framework, database, runtime, hosting or build-versus-buy option from project constraints and current primary evidence. Produce a decision with operating and migration costs; ordinary implementation keeps the established stack.
 - [tdd](tdd/SKILL.md) — Design focused contract tests, failing-before regressions or verification of critical properties; use for requested TDD, model checking and verification drift, with practical boundaries and explicit evidence limits.
-- [unslop](unslop/SKILL.md) — Edit agent prose and documentation for clear factual communication while preserving the requested voice and evidence. Use orbyn-content-design for interface copy and social-content for posts.
+- [unslop](unslop/SKILL.md) — Edit agent prose, chat replies, PR and issue text and documentation for short, clear factual communication while preserving the requested voice and evidence. Use orbyn-content-design for interface copy and social-content for posts.
 - [why](why/SKILL.md) — Investigate design rationale, regressions and trade-offs using Git history and relevant authorized records; distinguish documented intent from inference.
 
 ## Fullstack contracts and delivery

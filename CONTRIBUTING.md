@@ -80,7 +80,8 @@ and report the limitation; do not copy shared policy into the target to mask it.
    it in `provenance.json`, and keep its licence text and any NOTICE file. Copyleft licences
    such as GPL and AGPL, non-commercial terms, and code with no licence may only be
    reviewed for ideas, with no text copied. [CREDITS.md](CREDITS.md) is generated from those records.
-6. Push your branch and open a PR to `kinqsradio/orbyn-fullstack-skills:main`. The
+6. Push your branch and open a PR to `kinqsradio/orbyn-fullstack-skills:main`, with a
+   [short](skills/unslop/references/short-by-default.md) description. The
    [PR gate](.github/workflows/pr-gate.yml) labels it `needs-disclosure` until the
    description is complete. Once it is complete and CI is green, it is labelled
    `ready-for-review` and the maintainer is asked to review. Incomplete PRs are not
