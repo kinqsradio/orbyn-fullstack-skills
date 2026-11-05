@@ -19,6 +19,19 @@ Poll only external state the host cannot report, such as a CI run or a deploy, a
 the pace that state actually changes: one check near the expected finish time,
 not one a minute. The [PR iteration playbook](../playbooks/pr-iteration.md) covers CI watches.
 
+## Commands that run long
+
+Start these in the background from the first call, with the host's background run or
+`bg.py start`, then do other work:
+
+- The library test suite: `scripts/run_tests.py` (about two minutes, longer under load)
+- Live evals: `eval_run.py --live`, and subagent eval trials
+- CI watches: `gh pr checks <n> --watch`
+- A project's full build, test or end-to-end suite, and anything else likely to pass
+  the host's foreground limit
+
+Run `bg.py wait` itself in the foreground: it is the one blocking wait.
+
 ## Pick the wait by what the host can do
 
 This works on every host: Claude, Codex, DeepSeek, Gemini, OpenCode or any other.

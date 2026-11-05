@@ -115,6 +115,9 @@ python3 scripts/run_tests.py --changed-from origin/main
 git diff --check
 ```
 
+`run_tests.py` takes about two minutes. An agent starts it in the background and does
+other work until the host reports it, as in [wait without polling](skills/orbyn-workflow/references/waiting.md).
+
 Tests: `scripts/run_tests.py` runs each test module in its own process, in parallel
 (`--jobs N`, default the CPU count), and prints a summary with the slowest modules.
 
