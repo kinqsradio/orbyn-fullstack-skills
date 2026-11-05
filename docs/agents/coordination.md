@@ -15,9 +15,9 @@ task within these limits, and `parallel` runs many worktrees and sessions up to
 `max_active` (default 10) with the rest queued. A small clear edit stays direct in
 every mode, and "just do it here" in chat overrides the mode for that task.
 
-Name each child and session `Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]`,
-as the [lead contract](../../skills/orbyn-workflow/references/lead-contract.md#name-children-and-sessions)
-defines.
+Name each subagent or session you start `Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]`,
+as the [lead contract](../../skills/orbyn-workflow/references/lead-contract.md#name-the-children-you-start)
+defines. The main session the user opened keeps its own title.
 
 Before dispatch, identify blocking facts, independent artifacts and shared writes.
 One implementer is appropriate when the files/contracts are coupled. Give each

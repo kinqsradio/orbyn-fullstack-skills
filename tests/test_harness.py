@@ -138,6 +138,7 @@ class DefaultsAndPrecedence(HarnessCase):
         result = subprocess.run([sys.executable, str(TOOL), 'resolve', '--target', str(self.target), '--workspace',
                                  str(self.workspace)], capture_output=True, text=True)
         self.assertIn('Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]', result.stdout)
+        self.assertIn('children you start, not this session', result.stdout)
 
     def test_resolve_prints_the_wait_helper_by_absolute_path(self):
         waiting = self.resolve()['waiting']

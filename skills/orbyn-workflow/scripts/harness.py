@@ -999,7 +999,7 @@ def render_text(result, explain):
             if explain:
                 for old in item['overridden']:
                     lines.append(f'    overridden: {old["value"]} from {old["source"]}')
-    lines.append('naming: Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]')
+    lines.append('naming (children you start, not this session): Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]')
     lines.append('waiting: never poll a long command or child. If the host wakes you when a job ends, use that. If it has a '
                  'wait tool, make one call with its longest timeout. Otherwise:')
     lines.append(f'  {result["waiting"]["start"]}')
