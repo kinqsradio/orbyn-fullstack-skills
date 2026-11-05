@@ -226,14 +226,26 @@ def package_tree(dirs):
     return False
 
 
+def tracked_files(path):
+    """Paths Git tracks in a worktree, relative and with forward slashes; empty when Git cannot say."""
+    try:
+        out = subprocess.run(['git', '-C', str(path), 'ls-files', '-z'], capture_output=True, timeout=60)
+    except (OSError, subprocess.SubprocessError):
+        return frozenset()
+    if out.returncode != 0:
+        return frozenset()
+    return frozenset(name for name in out.stdout.decode('utf-8', 'surrogateescape').split('\0') if name)
+
+
 def scan(path, top=(), skip_top_git=False, caches=False):
     """Newest max(mtime, ctime), size in KiB, secret-looking names and nested Git entries.
 
     Size uses allocated blocks when available and logical bytes otherwise.
     Links are measured, never followed. Secret-looking names inside a package tree of a cache (see package_tree) are
     third-party fixtures and do not count; `top` names the cache an item is, and `caches` applies the same rule to the
-    cache folders directly inside a worktree. Everywhere else every secret counts. Any .git (any case) or bare
-    repository below the root is reported, and times ahead of the clock are flagged."""
+    cache folders directly inside a worktree. In a worktree (`skip_top_git`), files Git tracks do not count either:
+    they are already in its history, and an edited one is held as an uncommitted change. Everywhere else every secret
+    counts. Any .git (any case) or bare repository below the root is reported, and times ahead of the clock are flagged."""
     found = {'newest': 0.0, 'kb': 0, 'secrets': [], 'git': [], 'unreadable': False, 'future': False}
     ahead = now() + DAY
 
@@ -253,6 +265,7 @@ def scan(path, top=(), skip_top_git=False, caches=False):
     see(top_info)
     if not stat.S_ISDIR(top_info.st_mode):
         return found
+    tracked = tracked_files(path) if skip_top_git else frozenset()
     for here, folders, files in os.walk(path, onerror=bad, followlinks=False):
         parts = Path(here).relative_to(path).parts
         dirs = (*top, *parts)
@@ -266,9 +279,10 @@ def scan(path, top=(), skip_top_git=False, caches=False):
                 found['unreadable'] = True
             if name.casefold() == '.git' and (parts or not skip_top_git):
                 found['git'].append(os.path.relpath(full, path))
-            if secret_name(name) and len(found['secrets']) < 20 and not ((top or (caches and dirs and dirs[0].casefold() in CACHE_DIRS))
-                                                                            and package_tree(dirs)):
-                found['secrets'].append(os.path.relpath(full, path))
+            relative = os.path.relpath(full, path)
+            if (secret_name(name) and len(found['secrets']) < 20 and relative.replace(os.sep, '/') not in tracked
+                    and not ((top or (caches and dirs and dirs[0].casefold() in CACHE_DIRS)) and package_tree(dirs))):
+                found['secrets'].append(relative)
         folders[:] = [f for f in folders if f.casefold() != '.git']
     return found
 
