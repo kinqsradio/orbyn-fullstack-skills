@@ -3004,13 +3004,13 @@
       "credit": "Benji Taylor (Stageshow); Orbyn adaptations by Anh Dang and contributors",
       "copyright": "Copyright (c) 2026 Benji Taylor",
       "license": "MIT",
-      "source": "https://github.com/benjitaylor/skills/tree/802057409787133703c56001080169e347305572/stageshow",
-      "revision": "802057409787133703c56001080169e347305572",
+      "source": "https://github.com/benjitaylor/skills/tree/299140fafd08df55a9c234e610c3f64af3f45531/stageshow",
+      "revision": "299140fafd08df55a9c234e610c3f64af3f45531",
       "changes": "Selected MIT kit, examples, teaching pairs, playground and verification tools held under references/upstream/stageshow with per-file original and maintained hashes; guides adapted beside the entrypoint with hashes in guides.json. App icons, third-party marks and their registry, photographs, real-product studies, the brand-marks and monochrome examples, the repository PNG, lockfile and optional portless dependency excluded. BrandMark reworked for a consumer-supplied logo. Real company and product names, name-as-a-look values and named device or OS terms replaced with fictional or generic ones; status bar glyphs and the desktop arrow redrawn from plain geometry. hero-demo reworked and its gate faults fixed. Entrypoint rewritten to the Orbyn authoring standard with host, offline and worktree rules kept; install-to-global advice removed.",
       "incorporated_material": [
         {
-          "source": "https://github.com/benjitaylor/skills/tree/802057409787133703c56001080169e347305572/stageshow",
-          "revision": "802057409787133703c56001080169e347305572",
+          "source": "https://github.com/benjitaylor/skills/tree/299140fafd08df55a9c234e610c3f64af3f45531/stageshow",
+          "revision": "299140fafd08df55a9c234e610c3f64af3f45531",
           "license": "MIT",
           "local_path": "skills/product-illustration/references/upstream/stageshow/SOURCE.md",
           "license_file": "skills/product-illustration/references/upstream/stageshow/LICENSE",
@@ -3026,6 +3026,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Adapted and reviewed in Orbyn"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Refreshed Stageshow to 1.1.1: new Button, Card, Divider, Kbd and Draft parts, Collapse and Roll fixes, stricter film gate, buttons and cards examples; guides merged"
         }
       ]
     },
