@@ -94,9 +94,11 @@ For example, on a host running only `deepseek-v4.1-flash`:
 `Orbyn Scout 1 - DeepSeek V4.1 Flash - Default - Map settings panel` is announced as
 "Starting Orbyn Scout 1 on the session model to map the settings panel, read-only."
 
-## Name children and sessions
+## Name the children you start
 
-Name every child and session so its work can be traced at a glance:
+Name every subagent or session you start so its work can be traced at a glance. The
+pattern is for children only: the main session, the one the user opened and talks to,
+keeps its own title. Never rename it to this pattern.
 
 ```text
 Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]
@@ -104,7 +106,7 @@ Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]
 
 | Field | Use |
 | --- | --- |
-| Role | Lead, Engineer, Research, Architect, Reviewer, Verifier, Security or Scout |
+| Role | Engineer, Research, Architect, Reviewer, Verifier, Security or Scout |
 | N | Counts up per role in this session from 1: Orbyn Engineer 1, Orbyn Engineer 2 |
 | Model | The model that actually runs, such as Sonnet 5.5 or Terra |
 | Effort | The effort that actually runs, such as Medium |

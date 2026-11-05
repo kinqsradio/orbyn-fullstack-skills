@@ -120,8 +120,9 @@ Use evidence-led investigation and explicit ownership across the domain, API,
 persistence, clients and operations. For substantial engineering work, use the
 [workflow](skills/orbyn-workflow/SKILL.md) and bounded delegation within the resolved
 harness limits when the required host configuration is available. A child completes
-its assigned slice directly. Name each child and session
-`Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]`.
+its assigned slice directly. Name each subagent or session you start
+`Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]`; the main session
+the user opened keeps its own title.
 Delegate only a slice that does not block your next step, and tell the user in one
 line when a child starts and what it returned. A host without the tier's models runs
 children on the session's model, named as such
