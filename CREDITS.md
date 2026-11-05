@@ -61,5 +61,6 @@ bundled, and they may carry other licences. Generated from `provenance.json` by
 | [Lelekhoa1812/prompt-me](https://github.com/Lelekhoa1812/prompt-me) | Listed in provenance | See source | orbyn-plan |
 | [macro-inc/macro](https://github.com/macro-inc/macro) | Macro contributors | See source | architect, language-best-practices, orbyn-ai-application, orbyn-backend-design, orbyn-ci-design, orbyn-content-design, orbyn-ui-design, orbyn-workflow, tdd |
 | [mattpocock/skills](https://github.com/mattpocock/skills) | Matt Pocock | See source | architect, how, interrogate, orbyn-plan, orbyn-workflow, tdd |
+| [microsoft/TokenEconomizer](https://github.com/microsoft/TokenEconomizer) | Microsoft Research and UC Berkeley (TokenEconomizer) | Apache-2.0 | orbyn-workflow, reflect |
 | [microsoft/vscode](https://github.com/microsoft/vscode) | Microsoft and VS Code contributors | See source | orbyn-ui-design |
 | [obra/superpowers](https://github.com/obra/superpowers) | Jesse Vincent (obra/superpowers) | MIT | how, orbyn-workflow, tdd |

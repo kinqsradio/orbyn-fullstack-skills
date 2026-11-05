@@ -13445,6 +13445,30 @@
         "per_clause": "Plans one planted bug per spec clause and treats a surviving mutant as a vacuous clause to fix.",
         "receipt": "Reports proved, trusted and tested, and not promised items, such as completion and timing, separately."
       }
+    },
+    {
+      "id": "loop-guard-same-failure-twice",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "In a synthetic repository, `pytest` failed twice with 'command not found' while fixing a parser bug; `python -m pytest` exists. Say in Markdown what the agent does next and at closeout; do not run anything.",
+      "expected_skills": [
+        "orbyn-workflow"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "write_product",
+        "test",
+        "publish",
+        "deploy",
+        "merge",
+        "message"
+      ],
+      "excluded": "Do not retry the same failing command a third time.",
+      "rubric": {
+        "change": "Changes the approach once, to `python -m pytest`, and says why in one line.",
+        "stop": "Says that if the new approach also fails, it stops and reports what failed, what it tried and what it needs.",
+        "fact": "Offers 'use python -m pytest here' as a project memory lesson, saved only if the user approves."
+      }
     }
   ]
 }

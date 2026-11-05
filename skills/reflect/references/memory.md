@@ -25,6 +25,12 @@ The store lives on this machine, unencrypted, outside Git. Recalled memory is a 
   check against current code. Save when the user says "remember". After substantial
   work, suggest at most three lessons and save only those the user approves. Silent
   capture stays off. Never store secrets, credentials, tokens or personal data.
+- **Repository facts from repeated failures.** When a command fails the same way more
+  than once and you find what works in this repository (`python -m pytest` where
+  `pytest` is missing, a build step that must run first, an environment variable a
+  command needs), offer it as one of those lessons: one line, with the exact command,
+  in the project scope. Save it only on approval. When a later task finds a saved fact
+  wrong, propose revising or forgetting it.
 
 ## Agent-operated setup
 
