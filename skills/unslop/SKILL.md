@@ -1,9 +1,13 @@
 ---
 name: unslop
-description: "Edit agent prose and documentation for clear factual communication while preserving the requested voice and evidence. Use orbyn-content-design for interface copy and social-content for posts."
+description: "Edit agent prose, chat replies, PR and issue text and documentation for short, clear factual communication while preserving the requested voice and evidence. Use orbyn-content-design for interface copy and social-content for posts."
 ---
 
 # Unslop
+
+Chat replies, PR descriptions, issues and checklists are short by default: answer
+first, fragments and bullets, only what the reader needs to act. Follow
+[short by default](references/short-by-default.md) for the rules and word targets.
 
 ## Edit the passage
 
