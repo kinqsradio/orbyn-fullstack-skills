@@ -1,4 +1,5 @@
 """Per-repository harness resolution: precedence, rejections, trust and drift (no network or model)."""
+import importlib.util
 import json
 import shlex
 import os
@@ -142,14 +143,28 @@ class DefaultsAndPrecedence(HarnessCase):
 
     def test_resolve_prints_the_wait_helper_by_absolute_path(self):
         waiting = self.resolve()['waiting']
-        helper = Path(shlex.split(waiting['wait'])[1])
+        native = 'bg.ps1' if os.name == 'nt' else 'bg.sh'
+        helper = Path(waiting['wait'].split('"')[1] if os.name == 'nt' else shlex.split(waiting['wait'])[1])
         self.assertTrue(helper.is_absolute() and helper.is_file(), helper)
-        self.assertEqual(helper.name, 'bg.py')
+        self.assertEqual(helper.name, native)
         self.assertIn('start', waiting['start'])
+        fallback = Path(shlex.split(waiting['fallback_wait'])[1])
+        self.assertTrue(fallback.is_absolute() and fallback.is_file(), fallback)
+        self.assertEqual(fallback.name, 'bg.py')
         text = self.run_tool('resolve', '--target', str(self.target), '--workspace', str(self.workspace),
                              '--host', 'codex', '--no-probe').stdout
         self.assertIn('waiting: never poll', text)
         self.assertIn(str(helper), text)
+        self.assertIn(str(fallback), text)
+
+    def test_the_windows_wait_helper_is_the_powershell_script(self):
+        spec = importlib.util.spec_from_file_location('harness_under_test', TOOL)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        waiting = module.wait_commands(windows=True)
+        self.assertRegex(waiting['wait'], r'^powershell -ExecutionPolicy Bypass -File ".*bg\.ps1" wait ')
+        self.assertTrue(Path(waiting['wait'].split('"')[1]).is_file())
+        self.assertIn('bg.py', waiting['fallback_wait'])
 
     def test_resolve_never_writes_into_the_target_or_workspace(self):
         self.write_target(valid(notes='x'))

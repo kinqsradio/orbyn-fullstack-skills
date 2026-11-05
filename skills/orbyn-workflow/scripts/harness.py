@@ -924,11 +924,18 @@ def resolve(target, hosts, sets=(), workspace=None, slug=None, defaults_path=DEF
     return result
 
 
-def wait_commands():
-    """The portable wait helper, by absolute path, for hosts that cannot wake the agent."""
-    helper = shlex.quote(str(SCRIPT.parent / 'bg.py'))
-    return {'start': f'python3 {helper} start --name <name> -- <command>',
-            'wait': f'python3 {helper} wait <job id> --max 540'}
+def wait_commands(windows=None):
+    """The native wait helper for this platform, by absolute path, plus bg.py for hosts where a shell script cannot run."""
+    windows = os.name == 'nt' if windows is None else windows
+    fallback = shlex.quote(str(SCRIPT.parent / 'bg.py'))
+    result = {'fallback_start': f'python3 {fallback} start --name <name> -- <command>',
+              'fallback_wait': f'python3 {fallback} wait <job id> --max 540'}
+    if windows:
+        helper = f'powershell -ExecutionPolicy Bypass -File "{SCRIPT.parent / "bg.ps1"}"'
+    else:
+        helper = f'sh {shlex.quote(str(SCRIPT.parent / "bg.sh"))}'
+    return {'start': f'{helper} start --name <name> -- <command>',
+            'wait': f'{helper} wait <job id> --max 540', **result}
 
 
 def render_text(result, explain):
@@ -1004,6 +1011,8 @@ def render_text(result, explain):
                  'wait tool, make one call with its longest timeout. Otherwise:')
     lines.append(f'  {result["waiting"]["start"]}')
     lines.append(f'  {result["waiting"]["wait"]}   (exit 3: still running, wait again)')
+    lines.append(f'  where a shell script cannot run: {result["waiting"]["fallback_start"]}')
+    lines.append(f'                                   {result["waiting"]["fallback_wait"]}')
     lines.append('escalation: ' + ', '.join(f'{a} -> {b}' for a, b in result['escalation'].items())
                  + ' (record the reason; effort never rises with the tier)')
     checks = result['verification']['required_checks']

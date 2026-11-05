@@ -9,7 +9,7 @@ import re
 REPOSITORY = 'https://github.com/kinqsradio/orbyn-fullstack-skills'
 MANIFEST = 'distribution/manifest.json'
 NAME = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+)*')
-EXTENSIONS = {'.md', '.json', '.py', '.sh', '.cjs', '.mjs', '.html', '.css', '.txt', '.yaml', '.yml', '.tla', '.cfg'}
+EXTENSIONS = {'.md', '.json', '.py', '.sh', '.ps1', '.cjs', '.mjs', '.html', '.css', '.txt', '.yaml', '.yml', '.tla', '.cfg'}
 ORIGINAL_SVG_ROOT = 'skills/stack-diagram/assets/generic/'  # The one folder that ships SVG, all of it neutral.
 PINNED_SUPPORT_EXTENSIONS = {'.ts', '.tsx', '.css', '.png'}
 
