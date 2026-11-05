@@ -25,6 +25,7 @@ ALLOWED_LICENCE = re.compile(r'\b(MIT|Apache|BSD|ISC|Zlib|CC[- ]?BY|CC0|Unlicens
 OTHER_LICENCE = re.compile(r'\b(A?GPL|LGPL|MPL|EUPL|SSPL|BSL|Elastic|CC[- ]?BY[- ](?:NC|ND|SA)\S*|proprietary|no licen[cs]e|source[- ]available)\b', re.I)
 FULL_COMMIT = re.compile(r'\b[0-9a-f]{40}\b')
 GITHUB_COMMIT_LINK = re.compile(r'https://\S+/(?:tree|blob|commit)/[0-9a-f]{7,40}\b')
+OBSERVED = re.compile(r'\bobserved \d{4}-\d{2}-\d{2}\b', re.I)  # a web page has no commit; its date stands in
 # A family name alone says too little to reproduce the work: sonnet, or gpt.
 SPECIFIC_MODEL = re.compile(r'\d')
 # Existing lint, format, type and test configuration. Weakening one makes a check pass without
@@ -60,8 +61,11 @@ def source_problems(text):
     problems = []
     if 'https://' not in text:
         problems.append('Link every external source under "External sources".')
-    if not FULL_COMMIT.search(text) and not GITHUB_COMMIT_LINK.search(text):
-        problems.append('Pin every external source to an exact commit.')
+    reviewed_page = (OBSERVED.search(text) and re.search(r'\breviewed\b', text, re.I)
+                     and not re.search(r'\b(copied|adapted|bundled)\b', text, re.I))
+    if not FULL_COMMIT.search(text) and not GITHUB_COMMIT_LINK.search(text) and not reviewed_page:
+        problems.append('Pin every external source to an exact commit, or for a web page reviewed for ideas only, '
+                        'give the date you read it as "observed YYYY-MM-DD".')
     if not ALLOWED_LICENCE.search(text) and not OTHER_LICENCE.search(text):
         problems.append('State the licence of every external source.')
     match = OTHER_LICENCE.search(text)

@@ -14,7 +14,7 @@ fields below. See skills/unslop/references/short-by-default.md. -->
 - Models: <!-- exact IDs and role, such as claude-opus-5-5 (lead) -->
 - Effort: <!-- low, medium, high -->
 - Human role: <!-- what a person decided or reviewed -->
-- External sources: <!-- URL, exact commit, licence, copied or reviewed; or "none" -->
+- External sources: <!-- URL, exact commit (or "observed YYYY-MM-DD" for a web page reviewed only), licence, copied or reviewed; or "none" -->
 
 ## Evidence
 
