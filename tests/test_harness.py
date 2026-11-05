@@ -1,5 +1,6 @@
 """Per-repository harness resolution: precedence, rejections, trust and drift (no network or model)."""
 import json
+import shlex
 import os
 import re
 from pathlib import Path
@@ -137,6 +138,17 @@ class DefaultsAndPrecedence(HarnessCase):
         result = subprocess.run([sys.executable, str(TOOL), 'resolve', '--target', str(self.target), '--workspace',
                                  str(self.workspace)], capture_output=True, text=True)
         self.assertIn('Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]', result.stdout)
+
+    def test_resolve_prints_the_wait_helper_by_absolute_path(self):
+        waiting = self.resolve()['waiting']
+        helper = Path(shlex.split(waiting['wait'])[1])
+        self.assertTrue(helper.is_absolute() and helper.is_file(), helper)
+        self.assertEqual(helper.name, 'bg.py')
+        self.assertIn('start', waiting['start'])
+        text = self.run_tool('resolve', '--target', str(self.target), '--workspace', str(self.workspace),
+                             '--host', 'codex', '--no-probe').stdout
+        self.assertIn('waiting: never poll', text)
+        self.assertIn(str(helper), text)
 
     def test_resolve_never_writes_into_the_target_or_workspace(self):
         self.write_target(valid(notes='x'))

@@ -1774,6 +1774,13 @@
           "effort": "medium",
           "date": "2026-11-05",
           "scope": "PR and issue bodies follow short by default; no repair history or repeated CI results"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-05",
+          "scope": "Wait per host capability; harness resolve prints the bg.py commands by absolute path"
         }
       ]
     },
