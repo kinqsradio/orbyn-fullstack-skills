@@ -40,15 +40,14 @@ for a requested fix discussion, local preview or PR.
 
 ## Scale the body to the review decision
 
-Size an issue or PR description by the change, target template and reviewer’s
-needed decision, not by the length of the investigation. Lead with the concrete
-trigger/problem and resulting behavior. For an issue, include the smallest useful
-reproduction, expected/actual result and material version/environment limits. For
-a PR, explain the correction, actual validation and material risks or tradeoffs.
-A small PR often needs one or two paragraphs plus validation. An issue of roughly
-250–400 words can be useful for a bounded defect; that is an example, not a quota
-or universal cap. Preserve required template fields, and use more space when a
-complex migration or compatibility decision needs it.
+Write issues and PR descriptions [short by default](../../unslop/references/short-by-default.md):
+under about 150 words outside required template fields, in bullets and fragments.
+Size by the reviewer's decision, not the length of the investigation. An issue gives
+the problem in one line, the smallest reproduction, expected and actual, and the
+version. A PR gives what changes, checks CI does not show, and what is not tested.
+Leave out repair rounds, retries, CI results the page already shows and local test
+counts. Preserve required template fields, and use more space only when a decision
+needs it, such as a migration's recovery plan.
 
 Keep full source traces, experiment matrices, chronology, alternatives and process
 receipts in existing supporting evidence unless they change that decision. Do not

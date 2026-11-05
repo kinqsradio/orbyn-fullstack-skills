@@ -145,6 +145,10 @@ required repository checks. Library CI and helper checks are normal contribution
 consumer application or live agent behavior. Never launch a Codex Security scan
 without a specific user request. [Security](SECURITY.md) defines private reporting.
 
+Keep chat replies, PR descriptions and issues short: answer first, bullets and
+fragments, only what the reader needs to act, no history of how you got there
+([short by default](skills/unslop/references/short-by-default.md)).
+
 Before delivery, run the relevant library checks in [CONTRIBUTING.md](CONTRIBUTING.md),
 inspect the actual diff, and report artifacts, evidence, limits and actual
 local/committed/pushed/merged/published state. Do not claim independent review for
