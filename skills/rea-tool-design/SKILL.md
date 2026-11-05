@@ -14,6 +14,13 @@ represent different revisions; record which supports each decision.
 No runtime installation, source-pin change, publication or model configuration
 follows from this skill; follow the user's scope and existing project policy.
 
+For provider-backed work, run the analyst's task through REA and compare it with the
+native provider and independent artifact observations where available. Check partial
+results, recovery and session boundaries, and report what was not exercised. In an
+audit, keep reproduced bugs, supported limits, design opportunities and unverified
+claims apart. Check rendered prompts, guided workflows and packaged skill advice
+against the live contracts, and try the handoffs they suggest.
+
 ## Choose the boundary
 
 State the analyst question, target identity, expected facts, allowed effects and

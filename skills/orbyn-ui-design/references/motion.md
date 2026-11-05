@@ -57,6 +57,21 @@ position/velocity tolerance. A glossary helps feedback without restricting langu
 
 [Selected methods and notices](mobile/sources.md) preserve adaptation lineage.
 
+## Removing motion
+
+Removal is subtraction: keep motion that has a stated reason or prevents a jarring
+jump. Before deleting an animation, check:
+
+- hidden start states (opacity 0, an initial state, fill-forwards)
+- code that waits for it (transition end, exit-complete callbacks, timeouts)
+- unmount timing
+- a layout animation masking a shift (keep it and report the shift)
+- focus moved in an animation callback
+- tests that wait on its classes or durations
+
+Then delete orphaned keyframes, wrappers and imports. Propose dropping a motion
+dependency; do not remove it unasked.
+
 ## Code-driven composition
 
 For code-driven UI motion and an editable preview, use the existing

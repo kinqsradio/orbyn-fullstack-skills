@@ -1,6 +1,7 @@
 # Selected Expo and UI methods
 
 Reviewed 28 October 2026 against Expo `8a0dc4fa57ae345923c357e1451cbcd8b6f2a7db` and Emil `2d228630ba1446365f614a108cb8252f1feda202`.
+Rechecked 6 November 2026 at Expo `a9e5bd3fa00b4e61f632e43f85da73aee1942582` (frontmatter `version` removed; module migration notes adapted in architect) and Emil `c8a79627b59d72d764d6ab6f2c87c09a48169833` (remove-animations adapted as [removing motion](../motion.md#removing-motion); Motion 14.2 shorthand notes and the new choreograph skill reviewed only); counts below are from the first review.
 These are selected licensed method adaptations and original synthetic examples,
 not imported active skills, measured author superiority or a runtime upgrade.
 The complete per-file disposition and acceptance map (`docs/work/mobile-ui-workflow-coverage.json` in the source repository)

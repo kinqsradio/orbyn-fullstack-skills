@@ -85,7 +85,11 @@ Migration is conditional, not a stable automatic rewrite. Verify paired macro an
 ExpoModulesCore support in installed packages, build configuration and deployment
 target. Maintain an API map of JS names, events/payloads, defaults/requiredness,
 static/class placement, queue/actor and errors. Preserve unsupported DSL rather
-than force-converting it. Check for duplicate Name/registration/events/hooks and
+than force-converting it. Inventory events sent with no payload (the old DSL sent an
+empty object, and a bare new-style event may not), several overloads sharing one JS
+name (keep them on the DSL) and app-lifecycle hooks with no macro equivalent (keep them
+in the module definition). Autolinking may list module classes by name, so a renamed
+class can build yet never load. Check for duplicate Name/registration/events/hooks and
 changed pre-first-await behavior. Compile native code, resolve module in the running
 app and roundtrip TS/native sync/async/event/view behavior. No macro/compiler mode
 change is implied by a missing API. Retain old implementation and recovery until
