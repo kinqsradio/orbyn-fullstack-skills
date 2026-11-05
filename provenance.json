@@ -1113,6 +1113,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Mark long commands (test suite, live evals, CI watches) to start in the background"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Development eval case loop-guard-same-failure-twice"
         }
       ]
     },
@@ -1477,6 +1484,13 @@
           "source": "https://github.com/google/eng-practices/blob/3bb3ec25b3b0199f4940b1aa75f0ac5c5753301c/review/reviewer/comments.md",
           "revision": "3bb3ec25b3b0199f4940b1aa75f0ac5c5753301c",
           "relationship": "reviewed-inspiration; independently authored review feedback or source rationale guidance and synthetic development cases; no upstream text or code imported"
+        },
+        {
+          "credit": "Microsoft Research and UC Berkeley (TokenEconomizer)",
+          "source": "https://github.com/microsoft/TokenEconomizer/tree/1b02972adb20c08535e5aa959f2505cbf738a0c7",
+          "revision": "1b02972adb20c08535e5aa959f2505cbf738a0c7",
+          "license": "Apache-2.0",
+          "relationship": "reviewed-inspiration; loop guard and repeated-failure facts reworked as manual, consented rules; no text or code imported"
         }
       ],
       "incorporated_material": [
@@ -1816,6 +1830,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "The Orbyn naming pattern is for spawned children only; the main session keeps its title"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Loop guard: same failure twice, change approach once, then stop and report"
         }
       ]
     },
@@ -1900,6 +1921,13 @@
           "source": "https://github.com/cursor/plugins/commit/7054003c3723e82d099fb7620e3bc8d7d63eebc6",
           "revision": "7054003c3723e82d099fb7620e3bc8d7d63eebc6",
           "relationship": "reviewed-inspiration; original import and license retained"
+        },
+        {
+          "credit": "Microsoft Research and UC Berkeley (TokenEconomizer)",
+          "source": "https://github.com/microsoft/TokenEconomizer/tree/1b02972adb20c08535e5aa959f2505cbf738a0c7",
+          "revision": "1b02972adb20c08535e5aa959f2505cbf738a0c7",
+          "license": "Apache-2.0",
+          "relationship": "reviewed-inspiration; loop guard and repeated-failure facts reworked as manual, consented rules; no text or code imported"
         }
       ],
       "reviewed_sources": [
@@ -1923,6 +1951,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Shared memory on by default: standard root resolver, default-use agent rules and opt-out wording"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Offer repository facts learned from repeated failures as approved lessons"
         }
       ]
     },

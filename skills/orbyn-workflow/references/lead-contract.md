@@ -140,6 +140,19 @@ missing checks as limits. Read the conditional methods for
 For requested rollout or incident work, use the CI owner's
 [health and recovery method](../../orbyn-ci-design/references/rollout-recovery.md).
 
+### Loop guard
+
+When the same step fails the same way twice in one task (the same command or edit,
+the same error), do not try it a third time:
+
+1. Change the approach once, and say why in one line.
+2. If that fails too, stop and tell the user what failed, what you tried and what you
+   need from them.
+
+A different error, a passing step or new evidence is progress and resets the count.
+A long command still producing output is not stuck. A child follows the same rule and
+reports to its lead. Stopping the user's running work is the user's call, never yours.
+
 ## Review
 
 For substantial work, the lead must inspect the actual returned artifacts and
