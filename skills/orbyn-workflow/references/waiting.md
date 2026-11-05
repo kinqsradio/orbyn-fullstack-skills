@@ -19,12 +19,27 @@ Poll only external state the host cannot report, such as a CI run or a deploy, a
 the pace that state actually changes: one check near the expected finish time,
 not one a minute. The [PR iteration playbook](../playbooks/pr-iteration.md) covers CI watches.
 
-## Hosts that cannot wake you
+## Pick the wait by what the host can do
+
+This works on every host: Claude, Codex, DeepSeek, Gemini, OpenCode or any other.
+Check what the host's tools offer, top row first:
+
+| The host can | Wait like this | Seen on |
+| --- | --- | --- |
+| Wake you when a background job or child ends | Start it in the background, then do other work or end the reply | Claude Code (`run_in_background`, task notifications) |
+| Wait on a running command or child with a timeout | One wait call with the longest timeout the host allows, not many short ones | Codex (`write_stdin` with no input, up to 5 minutes; `wait_agent`, up to 1 hour) |
+| Only run shell commands | `bg.py`, below | Any host with a shell |
+
+When you cannot tell which row fits, use `bg.py`. A host's own instruction, such as a
+cap on wait length, wins over this table.
+
+## The bg.py helper
 
 Only the host can give an idle agent another turn, so no script adds a wake-up
 where the host has none. What a script can do is make a long wait cost one turn.
-On any host with a shell, use [`bg.py`](../scripts/bg.py) (standard library only,
-POSIX and Windows):
+`harness.py resolve` prints both commands with the absolute path, so an agent in
+any repository can run [`bg.py`](../scripts/bg.py) (standard library only, POSIX
+and Windows):
 
 ```sh
 python3 <skill directory>/scripts/bg.py start --name tests -- python3 -m pytest

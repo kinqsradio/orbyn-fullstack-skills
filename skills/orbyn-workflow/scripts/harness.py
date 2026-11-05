@@ -884,6 +884,7 @@ def resolve(target, hosts, sets=(), workspace=None, slug=None, defaults_path=DEF
         'cleanup_status': cleanup_status(root, ws, effective['cleanup.low_disk_free_percent']['value']),
         'read_only_cap': cap,
         'escalation': defaults['escalation'],
+        'waiting': wait_commands(),
         'verification': {'required_checks': effective.get('verification.required_checks',
                                                           {'value': [], 'source': 'library default (none)', 'overridden': []})},
         'notes': effective.get('notes'),
@@ -921,6 +922,13 @@ def resolve(target, hosts, sets=(), workspace=None, slug=None, defaults_path=DEF
                 'note': 'max_threads is an older name for the same limit; depth is policy only on Codex'}
         result['hosts'][host] = entry
     return result
+
+
+def wait_commands():
+    """The portable wait helper, by absolute path, for hosts that cannot wake the agent."""
+    helper = shlex.quote(str(SCRIPT.parent / 'bg.py'))
+    return {'start': f'python3 {helper} start --name <name> -- <command>',
+            'wait': f'python3 {helper} wait <job id> --max 540'}
 
 
 def render_text(result, explain):
@@ -992,6 +1000,10 @@ def render_text(result, explain):
                 for old in item['overridden']:
                     lines.append(f'    overridden: {old["value"]} from {old["source"]}')
     lines.append('naming: Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]')
+    lines.append('waiting: never poll a long command or child. If the host wakes you when a job ends, use that. If it has a '
+                 'wait tool, make one call with its longest timeout. Otherwise:')
+    lines.append(f'  {result["waiting"]["start"]}')
+    lines.append(f'  {result["waiting"]["wait"]}   (exit 3: still running, wait again)')
     lines.append('escalation: ' + ', '.join(f'{a} -> {b}' for a, b in result['escalation'].items())
                  + ' (record the reason; effort never rises with the tier)')
     checks = result['verification']['required_checks']

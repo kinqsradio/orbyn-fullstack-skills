@@ -127,9 +127,9 @@ line when a child starts and what it returned. A host without the tier's models 
 children on the session's model, named as such
 ([delegate on any host](skills/orbyn-workflow/references/lead-contract.md#delegate-on-any-host)).
 No recursive agent chains or unrequested chats.
-Never poll a background job or child (`sleep`, `ps`, `pgrep`, `top`); do other work
-or end the reply and let the host wake you with its result
-([wait without polling](skills/orbyn-workflow/references/waiting.md)).
+Never poll a background job or child (`sleep`, `ps`, `pgrep`, `top`). Use the host's
+wake-up or one long wait call; on any other host, run the `bg.py` commands that
+`harness.py resolve` prints ([wait without polling](skills/orbyn-workflow/references/waiting.md)).
 
 Preserve unrelated changes, user data and configuration. Make public contributions
 from an explicit allowlist; never copy a consumer's history, environment files,

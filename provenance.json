@@ -1767,6 +1767,13 @@
           "effort": "medium",
           "date": "2026-11-04",
           "scope": "Delegate on any host: decide once, session model on hosts without tier models, announce every child"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-05",
+          "scope": "Wait per host capability; harness resolve prints the bg.py commands by absolute path"
         }
       ]
     },
