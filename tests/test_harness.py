@@ -143,8 +143,8 @@ class DefaultsAndPrecedence(HarnessCase):
 
     def test_resolve_prints_the_wait_helper_by_absolute_path(self):
         waiting = self.resolve()['waiting']
-        native = 'bg.ps1' if os.name == 'nt' else 'bg.sh'
-        helper = Path(waiting['wait'].split('"')[1] if os.name == 'nt' else shlex.split(waiting['wait'])[1])
+        native = 'bg.py' if os.name == 'nt' else 'bg.sh'
+        helper = Path(shlex.split(waiting['wait'])[1])
         self.assertTrue(helper.is_absolute() and helper.is_file(), helper)
         self.assertEqual(helper.name, native)
         self.assertIn('start', waiting['start'])
@@ -157,14 +157,13 @@ class DefaultsAndPrecedence(HarnessCase):
         self.assertIn(str(helper), text)
         self.assertIn(str(fallback), text)
 
-    def test_the_windows_wait_helper_is_the_powershell_script(self):
+    def test_windows_uses_the_python_wait_helper(self):
         spec = importlib.util.spec_from_file_location('harness_under_test', TOOL)
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         waiting = module.wait_commands(windows=True)
-        self.assertRegex(waiting['wait'], r'^powershell -ExecutionPolicy Bypass -File ".*bg\.ps1" wait ')
-        self.assertTrue(Path(waiting['wait'].split('"')[1]).is_file())
-        self.assertIn('bg.py', waiting['fallback_wait'])
+        self.assertEqual(waiting['wait'], waiting['fallback_wait'])
+        self.assertTrue(Path(shlex.split(waiting['wait'])[1]).is_file())
 
     def test_resolve_never_writes_into_the_target_or_workspace(self):
         self.write_target(valid(notes='x'))

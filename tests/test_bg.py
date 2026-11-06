@@ -1,4 +1,4 @@
-"""bg.py, bg.sh and bg.ps1: start returns at once, wait blocks until the job ends or --max, exit codes, on-done and a lost supervisor."""
+"""bg.py and bg.sh: start returns at once, wait blocks until the job ends or --max, exit codes, on-done and a lost supervisor."""
 import json
 import os
 from pathlib import Path
@@ -11,7 +11,6 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / 'skills/orbyn-workflow/scripts'
-POWERSHELL = shutil.which('pwsh') or shutil.which('powershell')
 
 
 class BackgroundJobTests:
@@ -132,11 +131,6 @@ def _shell_class(shell):
 for _shell in ('sh', 'bash', 'dash', 'zsh'):
     if shutil.which(_shell) and os.name != 'nt':
         globals()[f'{_shell.capitalize()}HelperTests'] = _shell_class(_shell)
-
-
-@unittest.skipUnless(POWERSHELL, 'PowerShell is not installed')
-class PowerShellHelperTests(BackgroundJobTests, unittest.TestCase):
-    launcher = [POWERSHELL or 'powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', str(SCRIPTS / 'bg.ps1')]
 
 
 if __name__ == '__main__':

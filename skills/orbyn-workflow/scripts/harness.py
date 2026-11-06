@@ -925,15 +925,14 @@ def resolve(target, hosts, sets=(), workspace=None, slug=None, defaults_path=DEF
 
 
 def wait_commands(windows=None):
-    """The native wait helper for this platform, by absolute path, plus bg.py for hosts where a shell script cannot run."""
+    """The wait helper for this platform by absolute path: bg.sh on POSIX, bg.py on Windows and as the fallback."""
     windows = os.name == 'nt' if windows is None else windows
     fallback = shlex.quote(str(SCRIPT.parent / 'bg.py'))
     result = {'fallback_start': f'python3 {fallback} start --name <name> -- <command>',
               'fallback_wait': f'python3 {fallback} wait <job id> --max 540'}
     if windows:
-        helper = f'powershell -ExecutionPolicy Bypass -File "{SCRIPT.parent / "bg.ps1"}"'
-    else:
-        helper = f'sh {shlex.quote(str(SCRIPT.parent / "bg.sh"))}'
+        return {'start': result['fallback_start'], 'wait': result['fallback_wait'], **result}
+    helper = f'sh {shlex.quote(str(SCRIPT.parent / "bg.sh"))}'
     return {'start': f'{helper} start --name <name> -- <command>',
             'wait': f'{helper} wait <job id> --max 540', **result}
 

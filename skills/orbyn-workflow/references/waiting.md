@@ -22,7 +22,7 @@ not one a minute. The [PR iteration playbook](../playbooks/pr-iteration.md) cove
 ## Commands that run long
 
 Start these in the background from the first call, with the host's background run or
-`bg.sh start` (`bg.ps1` on Windows), then do other work:
+`bg.sh start` (`bg.py` on Windows), then do other work:
 
 - The library test suite: `scripts/run_tests.py` (about two minutes, longer under load)
 - Live evals: `eval_run.py --live`, and subagent eval trials
@@ -41,7 +41,7 @@ Check what the host's tools offer, top row first:
 | --- | --- | --- |
 | Wake you when a background job or child ends | Start it in the background, then do other work or end the reply | Claude Code (`run_in_background`, task notifications) |
 | Wait on a running command or child with a timeout | One wait call with the longest timeout the host allows, not many short ones | Codex (`write_stdin` with no input, up to 5 minutes; `wait_agent`, up to 1 hour) |
-| Only run shell commands | `bg.sh` or `bg.ps1`, below | Any host with a shell |
+| Only run shell commands | `bg.sh` (or `bg.py`), below | Any host with a shell |
 
 When you cannot tell which row fits, use the native helper. A host's own instruction, such as a
 cap on wait length, wins over this table.
@@ -51,14 +51,13 @@ cap on wait length, wins over this table.
 Only the host can give an idle agent another turn, so no script adds a wake-up
 where the host has none. What a script can do is make a long wait cost one turn.
 The helper is a native shell script, so no Python is needed: [`bg.sh`](../scripts/bg.sh)
-(POSIX sh under bash, dash or zsh; macOS and Linux) and [`bg.ps1`](../scripts/bg.ps1)
-(Windows PowerShell 5.1 and PowerShell 7). `harness.py resolve` prints the commands for
+(POSIX sh under bash, dash or zsh; macOS, Linux and Git Bash on Windows). On Windows
+without Git Bash, use `bg.py`. `harness.py resolve` prints the commands for
 this platform with the absolute path, so an agent in any repository can run them:
 
 ```sh
 sh <skill directory>/scripts/bg.sh start --name tests -- python3 -m pytest
 sh <skill directory>/scripts/bg.sh wait <job id> --max 540
-powershell -ExecutionPolicy Bypass -File <skill directory>\scripts\bg.ps1 wait <job id> --max 540   # Windows
 ```
 
 [`bg.py`](../scripts/bg.py) (standard library only) has the same interface and stays as
