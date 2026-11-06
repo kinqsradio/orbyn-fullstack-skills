@@ -1100,8 +1100,7 @@ class SecondReviewTests(CleanupCase):
         self.sh(done, 'push', '-q', 'origin', 'HEAD:side')
         self.sh(done, 'reset', '-q', '--hard', 'HEAD~1')
         base = self.sh(done, 'rev-parse', 'HEAD').strip()
-        for number in range(200):
-            self.sh(done, 'push', '-q', 'origin', f'{base}:refs/heads/many-{number}')
+        self.sh(done, 'push', '-q', 'origin', *(f'{base}:refs/heads/many-{number}' for number in range(200)))
         calls, real = [], tool.git
         def counting(path, *args, **kwargs):
             calls.append(args)
