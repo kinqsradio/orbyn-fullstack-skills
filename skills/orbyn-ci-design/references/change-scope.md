@@ -125,6 +125,9 @@ reviewed cosmetic edit without pretending hosted checks were executed.
 
 ## Keep CD separate
 
+For several services or environments, route with one manifest and a per-service matrix as in
+[pipeline structure](pipeline-structure.md).
+
 A documentation/skill-only success must not automatically redeploy the product.
 For automated deployment, require the existing authorized promotion setting,
 successful checks, trusted canonical push event and a runtime-change decision

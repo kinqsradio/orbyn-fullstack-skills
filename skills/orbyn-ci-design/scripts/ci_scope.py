@@ -111,6 +111,59 @@ def deployment_allowed(record, head, repository):
     return record['deploy']
 
 
+def glob_match(path, pattern):
+    """A path glob where `**` spans folders and `*` stays within one."""
+    regex = re.escape(pattern).replace(r'\*\*/', '(?:.*/)?').replace(r'\*\*', '.*').replace(r'\*', '[^/]*')
+    return re.fullmatch(regex, path) is not None
+
+
+def validate_services(manifest):
+    services = manifest.get('services') if isinstance(manifest, dict) else None
+    if manifest.get('schema_version') != 1 or not isinstance(services, dict) or not services:
+        raise ValueError('Expected a services manifest, schema_version 1, with at least one service')
+    for name, spec in services.items():
+        if not re.fullmatch(r'[a-zA-Z_][a-zA-Z0-9_-]*', name) or not isinstance(spec, dict):
+            raise ValueError(f'Invalid service: {name}')
+        if not spec.get('paths') or not all(isinstance(p, str) and safe_path(p.replace('*', 'x')) for p in spec['paths']):
+            raise ValueError(f'{name}: paths must be a nonempty list of repository-relative globs')
+        for env, target in (spec.get('deploy') or {}).items():
+            if not isinstance(target, dict) or not isinstance(target.get('target'), str):
+                raise ValueError(f'{name}: deploy.{env} needs a target')
+    shared = manifest.get('shared_paths', [])
+    if not isinstance(shared, list) or not all(isinstance(p, str) for p in shared):
+        raise ValueError('shared_paths must be a list of globs')
+    return manifest
+
+
+def services_matrix(paths, manifest, environment, complete=True):
+    """One entry per affected service, with its checks and, for `environment`, its deploy target and approval.
+
+    Unknown or incomplete changes select every service: a path no service owns could affect any of them."""
+    validate_services(manifest)
+    services, shared = manifest['services'], manifest.get('shared_paths', [])
+    reasons = {}
+    touched_shared = [p for p in paths if any(glob_match(p, g) for g in shared)]
+    unowned = [p for p in paths if p not in touched_shared
+               and not any(glob_match(p, g) for s in services.values() for g in s['paths'])
+               and not any(glob_match(p, g) for g in manifest.get('ignored_paths', []))]
+    if not complete or unowned or touched_shared:
+        why = 'incomplete change evidence' if not complete else (
+            f'shared path {touched_shared[0]}' if touched_shared else f'unowned path {unowned[0]}')
+        reasons = {name: why for name in services}
+    else:
+        for name, spec in services.items():
+            hit = next((p for p in paths if any(glob_match(p, g) for g in spec['paths'])), None)
+            if hit:
+                reasons[name] = f'changed {hit}'
+    matrix = []
+    for name in sorted(reasons):
+        spec, deploy = services[name], (services[name].get('deploy') or {}).get(environment) if environment else None
+        matrix.append({'service': name, 'checks': spec.get('checks', []), 'reason': reasons[name],
+                       'environment': environment if deploy else None, 'target': (deploy or {}).get('target'),
+                       'approval': (deploy or {}).get('approval') == 'required'})
+    return matrix
+
+
 def output(path, values):
     if path:
         with path.open('a') as stream:
@@ -139,6 +192,14 @@ def main():
     deploy.add_argument('--head', required=True)
     deploy.add_argument('--repository', required=True)
     deploy.add_argument('--github-output', type=Path)
+    plan = subs.add_parser('services', help='per-service matrix from a services manifest and the change set')
+    plan.add_argument('--root', type=Path, default=Path.cwd())
+    plan.add_argument('--manifest', type=Path, required=True)
+    plan.add_argument('--base', default='')
+    plan.add_argument('--head', required=True)
+    plan.add_argument('--event', choices=['pull_request', 'push', 'workflow_dispatch'], required=True)
+    plan.add_argument('--environment', help='deploy environment to plan for; omit for checks only')
+    plan.add_argument('--github-output', type=Path)
     args = parser.parse_args()
     try:
         if args.command == 'select':
@@ -154,6 +215,12 @@ def main():
             args.record.write_text(json.dumps(record, indent=2)+'\n')
             output(args.github_output, {k: record[k] for k in ['scope', 'run_app']})
             print(json.dumps(record, sort_keys=True))
+        elif args.command == 'services':
+            paths, complete = changed_paths(args.root, args.base, args.head, args.event)
+            matrix = services_matrix(paths, json.loads(args.manifest.read_text()), args.environment, complete)
+            output(args.github_output, {'matrix': json.dumps({'include': matrix}, separators=(',', ':')),
+                                        'any': bool(matrix)})
+            print(json.dumps({'include': matrix}, indent=2))
         elif args.command == 'gate':
             check_gate(json.loads(args.needs_json), json.loads(args.config.read_text()))
             print('Selected CI scope satisfied; intentionally skipped jobs are not test passes.')

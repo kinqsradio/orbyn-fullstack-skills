@@ -11,6 +11,9 @@ import unittest
 
 from test_tools import ROOT
 
+# Classes run_tests.py runs as parallel processes; keep in step with the classes below.
+SHARDS = ["ReportTests", "AlertTests", "LicenceTests", "IssueLifecycleTests", "SafetyTests", "ShippedTests"]
+
 SCRIPT = ROOT/'scripts/upstream_watch.py'
 PIN, HEAD, OTHER = 'a'*40, 'b'*40, 'c'*40
 SLUG = 'acme/kit'
