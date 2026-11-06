@@ -2,7 +2,7 @@
 
 This is an inactive provenance record, not an agent entrypoint. Selected kit, example,
 playground and verification source derives from Stageshow by Benji Taylor (MIT) at
-<https://github.com/benjitaylor/skills/tree/802057409787133703c56001080169e347305572/stageshow>.
+<https://github.com/benjitaylor/skills/tree/299140fafd08df55a9c234e610c3f64af3f45531/stageshow>.
 The bundled `LICENSE` is the upstream notice, unchanged. `LICENSE-Orbyn.txt` covers Orbyn
 adaptations and additions. Use the maintained `product-illustration` skill.
 `source-manifest.json` lists every file with its upstream path and original and
@@ -12,7 +12,7 @@ maintained hashes.
 
 `kit/` (except `kit/brands/`), `teaching/`, `scripts/`, `playground/`, `LICENSE`,
 `NOTICE.md` (rewritten), `README.md` (rewritten), `package.json`, and these examples:
-ai-cards, ai-chat, annotations, backgrounds, bento, calendar, chart-scrub, choreography,
+ai-cards, ai-chat, annotations, backgrounds, bento, buttons, cards, calendar, chart-scrub, choreography,
 chrome, close-up, controls, corner-chip, cursor-morph, cursor-resize, cursors, dark-bento,
 dark-hero, device-pair, dynamic-island (renamed status-island), fade-crop, form-error,
 freeform-drag, glass, hero-demo, hero-grid, kit-extras, loading, looks, many-of-one,

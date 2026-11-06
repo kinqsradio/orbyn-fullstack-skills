@@ -56,7 +56,7 @@ Catalogs of parts and grounds, described in `kit.md` (Specimen sheets). Look up 
 
 | Need | Example | What to learn |
 |---|---|---|
-| Kit specimens | `chrome`, `phones`, `controls`, `parts`, `kit-extras` | Every frame and part |
+| Kit specimens | `chrome`, `phones`, `controls`, `buttons`, `cards`, `parts`, `kit-extras` | Every frame and part |
 | Glass | `glass` | Frosted surfaces over a color field |
 | Backgrounds | `backgrounds` | One interface over twenty grounds; `backgrounds.md` |
 | A product's look | `looks` | Type, shape and color working together |
@@ -68,5 +68,5 @@ Copy `kit/` into the project and import from `kit/index.ts`. It needs React, rea
 - **The stage.** `Stage`: design size and scale-to-fit, `compact`, scene state, playback, the look, the cursor. The script gets an `Act`.
 - **Frames.** `Window`, `Phone` with `LockScreen` and `Notification`, `Keyboard`, `Thread` with `Bubble`, `Stamp`, `Receipt`. Never draw a window, device or bubble by hand.
 - **Motion.** `Collapse`, `Roll`, `Swap`, `Count`, `Connector`, `Fly`, `Follow`, `States`, `Stream`, `Popover`, `Scroll`, `Camera`, `Expand`.
-- **Small parts.** `Bar`, `Text`, `Row`, `Avatar`, `Pin`, `Icon`, `Menu`, `Field`, `Segmented`, `Toggle`, `Tabs`, `Badge`, `Chip`, `BrandMark`, `Code`, `Chart`. Restyle them to the product; never reshape a kit part's geometry from outside.
+- **Small parts.** `Bar`, `Text`, `Row`, `Card`, `Divider`, `Avatar`, `Pin`, `Icon`, `Menu`, `Field`, `Draft`, `Button`, `Segmented`, `Toggle`, `Tabs`, `Badge`, `Chip`, `Kbd`, `BrandMark`, `Code`, `Chart`. Restyle them to the product; never reshape a kit part's geometry from outside.
 - **`stageshow.css`**: tokens, looks, edge fades, chrome, phones, keycaps.

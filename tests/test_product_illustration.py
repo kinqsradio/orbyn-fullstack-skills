@@ -149,7 +149,7 @@ class ProductIllustrationContract(unittest.TestCase):
 
     def test_manifest_matches_maintained_bytes(self):
         manifest = json.loads((ROOT/KIT/'source-manifest.json').read_text())
-        self.assertEqual(manifest['revision'], '802057409787133703c56001080169e347305572')
+        self.assertEqual(manifest['revision'], '299140fafd08df55a9c234e610c3f64af3f45531')
         for name, entry in manifest['files'].items():
             digest = hashlib.sha256((ROOT/KIT/name).read_bytes()).hexdigest()
             self.assertEqual(digest, entry['sha256'], name)
