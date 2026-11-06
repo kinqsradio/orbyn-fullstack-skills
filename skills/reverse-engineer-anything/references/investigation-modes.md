@@ -40,3 +40,22 @@ specific missing observation when it changes the answer; avoid an unbounded
 catalog dump, whole-application decompilation or runtime session by default.
 
 See [evidence and recovery](evidence-and-recovery.md) before retrying or comparing.
+
+## Task for an exported desktop-application environment
+
+When asked for a task on an exported desktop-application environment, work from a
+capture's described net change, a CLI-only flow. Check the installed commands first.
+
+- Only files under the owned paths can be graded; read what changed between the
+  first and last version of each.
+- Write the prompt in the user's words and the app's terms, never file formats,
+  paths, keys or the checks themselves.
+- Keep checks that state only what the user did. Drop changes that follow from how
+  the app saves (format rewrites, renumbered lines, counters) and values it stamps
+  (times, assigned ids, window sizes). Prefer a few robust checks: whole lines over
+  positions, rows by meaningful columns, "at least" when more is allowed.
+- A valid task fails on the seed and passes on the captured end state. A refusal
+  names the check to fix; do not weaken it to pass.
+- Do not fetch a vendor package yourself; ask the user for the file they installed
+  from. The seed is the user's real data: keep it local, and run no agents unless
+  asked.

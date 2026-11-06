@@ -22,7 +22,7 @@
       "relationship": "byte-identical-selected-source"
     },
     "SKILL.md": {
-      "sha256": "44d2a134698322bbf9c0e475051b7ac0de64c5a35816c3f7995d59d4a86ad5a8",
+      "sha256": "80f6812f1a04742a2345fb5efb6405af1fb98c64ca6da6c1410e35076053361b",
       "source_path": "skills/stack-diagram/SKILL.md",
       "original_sha256": "b32b05b7eeb0f93fcc297fa1e1d8e56a7306b6b7c989c4ed4f8522a996a9086e",
       "relationship": "maintained-adaptation"
@@ -106,13 +106,19 @@
       "relationship": "byte-identical-selected-source"
     },
     "assets/template.html": {
-      "sha256": "195d0e4a1d4c6a79ad872ecfcb3a3cecd7ae8aa6eb1386deef65aaeaff5b8bef",
+      "sha256": "b0d0bff529695786bbbd09aa1704de78871bfae86fb99d322413bafcaed1f720",
       "source_path": "skills/stack-diagram/assets/template.html",
       "original_sha256": "6b4a32f762de15684e3ae09f51524c92edf5b27092f4fd6cf88ba73fb8811be0",
       "relationship": "maintained-adaptation"
     },
     "references/aws.md": {
-      "sha256": "c89f9464ab9affc5809dc29762663b7f1c23e5407b6abe847ef059b9e4a22e56",
+      "sha256": "093ffc59a37a20022ddf319b6bd3fc135c21ec056eba58ec1a5093a1479b6f17",
+      "source_path": "skills/stack-diagram/SKILL.md",
+      "original_sha256": "b32b05b7eeb0f93fcc297fa1e1d8e56a7306b6b7c989c4ed4f8522a996a9086e",
+      "relationship": "maintained-adaptation"
+    },
+    "references/gcp-azure.md": {
+      "sha256": "53759c43aae575392ceba17e5ae1a83a930996c87c4ea7eebdf13b2ef5762c69",
       "source_path": "skills/stack-diagram/SKILL.md",
       "original_sha256": "b32b05b7eeb0f93fcc297fa1e1d8e56a7306b6b7c989c4ed4f8522a996a9086e",
       "relationship": "maintained-adaptation"
@@ -124,7 +130,7 @@
       "relationship": "maintained-adaptation"
     },
     "references/icons.md": {
-      "sha256": "7cb9d76a7babe61a58a016f93bd1feb91fe3192e26a80c0a5e75a6f619ddd1ac",
+      "sha256": "26ff8588e02bfa571dc1c5fe104b9fb9410cf8d0cfd8c4c7a39dacc8556b2447",
       "source_path": "skills/stack-diagram/SKILL.md",
       "original_sha256": "b32b05b7eeb0f93fcc297fa1e1d8e56a7306b6b7c989c4ed4f8522a996a9086e",
       "relationship": "maintained-adaptation"
@@ -148,25 +154,25 @@
       "relationship": "original-helper-or-record"
     },
     "references/upstream/stack-diagram/SOURCE.md": {
-      "sha256": "9680ea83c81674fb4f2f7b558515d99c4fc3cf16b76f7097a98382ba8b76e799",
+      "sha256": "40d4986a20b44b7bd4a869a29103a91ba464cadb5c6021af2462a1dfb56d408c",
       "source_path": "Orbyn-authored maintained support record/helper",
       "original_sha256": null,
       "relationship": "original-helper-or-record"
     },
     "scripts/build.py": {
-      "sha256": "38920374d0e23e617a11523e9e68d591aaab02ec2a47a715b4d9d4fa58205746",
+      "sha256": "d98893e4a3b345f6d1e740f2904bf5fb0c1ad6b097f82cab7a0c827e774984e2",
       "source_path": "skills/stack-diagram/scripts/build.py",
       "original_sha256": "28049a14bbec3a1264a9b61a7d6abe435f1932393ba9b991068ea5690e83d3a7",
       "relationship": "maintained-adaptation"
     },
     "scripts/fetch_icons.py": {
-      "sha256": "5efe2513342ac966454f5d6fcb54d4112476ca99512f6ad93f75186c7c747b57",
+      "sha256": "5d2208761e2b23715b332be7823663f12f7d8d9d2ec8eef20728fc9c8ac13ffc",
       "source_path": "skills/stack-diagram/scripts/fetch_icons.py",
       "original_sha256": "7d33945bd80aebef01d601295347021a2b74dc3c6772b86be0cf2fb0da74730a",
       "relationship": "maintained-adaptation"
     },
     "scripts/render_png.py": {
-      "sha256": "5ae695759c52f195237c971ba4e529c3eab53e3cfa8a40eedf630a75f0039f3d",
+      "sha256": "aa5db87a17d7e026958fdd215cf90eca3a5d593a5be39d86ece5f8bec9bfc115",
       "source_path": "skills/stack-diagram/scripts/render_png.py",
       "original_sha256": "588873e0441cf4e796a1f916e00f90975c23c952def4a9477f01ef8ebb0f206b",
       "relationship": "maintained-adaptation"

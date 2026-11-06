@@ -96,6 +96,21 @@ cleanup or scans do not grant authority. A new version or skill count is not a
 reason to import everything. Do not edit an installed plugin cache: an update may
 replace it.
 
+## Propose the gaps, then wait for approval
+
+When the update concerns this skill library or its harness, do not stop at "does the
+pin still hold". Read what the source now does that we do not, and propose it to the
+human as one table before editing any skill:
+
+| Gap | Upstream source (path at commit) | Our owner | Proposed change | Size |
+| --- | --- | --- | --- | --- |
+| What we lack, in a few words | `path` at the candidate | skill and reference | Adapt, already covered, skip and why | S, M or L |
+
+One row per gap, including the ones you recommend skipping, so the reader sees the
+whole picture. Then stop and wait: adopt only the rows the human approves. A pin
+that still holds with nothing new is closed as reviewed without a table. In a
+consuming project, follow that project's own update policy instead.
+
 ## Apply and verify only the agreed change
 
 For an authorized update, use a suitable owned branch/worktree under
