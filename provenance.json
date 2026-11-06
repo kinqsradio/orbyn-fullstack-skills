@@ -1684,6 +1684,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Page metadata, evidence-backed UI audit and DESIGN.md methods adapted from ibelick/ui-skills 00db7d6"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Orbyn house style: the author's own Openship tokens renamed, Geist and JetBrains Mono hosted fonts, generated tokens.css, generator script and test"
         }
       ]
     },

@@ -101,6 +101,8 @@ inspector or handing a preview to a person.
 - Changing an existing UI: [redesign contract](references/redesign-contract.md).
 - Substantial workspace composition, collections, editors or review surfaces:
   [workspace composition](references/workspace-composition.md).
+- New application with no design system of its own: start from the
+  [Orbyn house style](references/house-style/README.md).
 - Colour direction, semantic light/dark roles or contrast review:
   [reference palettes and semantic colour](references/colour-palettes.md).
 - Validation with people: [user evidence](../orbyn-research/references/user-evidence.md).
