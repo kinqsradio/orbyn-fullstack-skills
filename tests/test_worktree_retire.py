@@ -495,6 +495,22 @@ class SecretsAndNamesTests(CleanupCase):
         self.write(done/'.env', 'KEY=1')
         self.assertIn('secret-looking', self.item(done)['reason'])
 
+    def test_package_files_in_a_nested_dependency_folder_do_not_hold_a_worktree(self):
+        done = self.done()
+        self.write(done/'web/package-lock.json', '{}')
+        for name in ('web/node_modules/katex/src/Token.ts', 'web/node_modules/parse5/dist/common/token.d.ts',
+                     'web/node_modules/mermaid/node_modules/katex/src/Token.ts'):
+            self.write(done/name)
+        self.clock = 2
+        self.assertNotIn('secret-looking', self.item(done)['reason'])
+        for leak in ('web/node_modules/.env', 'web/node_modules/.cache/x/.npmrc', 'web/.env'):
+            with self.subTest(leak):
+                self.write(done/leak, 'K=1')
+                self.assertIn('secret-looking', self.item(done)['reason'])
+                (done/leak).unlink()
+        (done/'web/package-lock.json').unlink()
+        self.assertIn('secret-looking', self.item(done)['reason'])
+
     # --- 8: nested repositories
 
     def test_nested_git_and_registered_worktrees_hold_the_item(self):
