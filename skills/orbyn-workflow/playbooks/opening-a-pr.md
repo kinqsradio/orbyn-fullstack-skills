@@ -76,6 +76,25 @@ own PR template and policy where it has one. Fill these in from the record of th
 and never guess. In this library, review is requested automatically once the section is
 complete and CI is green.
 
+## State how to test, the risk and how to undo it
+
+Every PR says, in a line each, using the target's own template fields when it has them:
+
+- **How to test:** the command, page or steps a reviewer can repeat, and what they show.
+- **Risk:** `low`, `medium` or `high`, set by what the change can break, never by who
+  wrote it. Low: docs, tests, isolated internals, behind a flag. Medium: ordinary
+  behavior change with tests. High: data, money, auth, security, migrations, public
+  APIs, CI or release workflows, or anything hard to undo. Name who or what is affected.
+- **How to undo:** revert the merge commit, turn off a flag, or the exact steps when a
+  plain revert is not enough (data written, a migration, a published release).
+
+Some paths always need a person, whatever the risk level: the target's CODEOWNERS and
+sensitive paths such as auth, billing, CI workflows and release. Follow the target's
+rules for how many approvals each level needs. An agent's review or approval never
+fills a slot that calls for a human, and an approval covers only the commit it saw.
+Prefer small, reversible changes: when undo is hard, say so and ask for a human review
+instead of a quick approval.
+
 ## When three rounds do not resolve it
 
 When the task has PR authority and a review or fix loop ends its third round with

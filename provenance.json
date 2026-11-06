@@ -2141,6 +2141,13 @@
           "effort": "medium",
           "date": "2026-11-07",
           "scope": "Report workarounds of wrong or stale instructions; harness verification.test_layer"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-07",
+          "scope": "PRs state how to test, risk and how to undo; human-only paths; review rounds converge (tags, class of bug, diff-only re-review, decline nits, three-round cap)"
         }
       ]
     },
