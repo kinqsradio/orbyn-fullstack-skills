@@ -28,3 +28,18 @@ For old copied Orbyn installations, use the explicit preservation and ownership
 steps in the [workspace contract](repository-workspaces.md#retiring-old-installations).
 Never delete foreign guidance merely to make the target resemble Orbyn's cleanup.
 No target skill registration or migration helper remains supported.
+
+## Rules beside the code they govern
+
+Give each rule one home and link to it from everywhere else:
+
+| File | Holds | Never |
+| --- | --- | --- |
+| Root `AGENTS.md` | Standing orders every session needs, one to three lines each, linking to where the detail lives | Stories, worked examples, procedures for one situation |
+| A subtree `AGENTS.md` (`packages/`, `docs/`, one service) | Rules only for work inside that folder | Anything the root already says |
+| An architecture map | How the parts fit: groups, contracts, extension points | Per-package detail |
+| A package or group README | Its contract, consumers and known limitations | Rules for other packages |
+| A decision record | Why something was chosen and what was given up | Current behaviour, which lives in the README |
+
+Nesting alone does not prove a host loads a subtree file, so read the subtree's
+`AGENTS.md` explicitly before editing there.
