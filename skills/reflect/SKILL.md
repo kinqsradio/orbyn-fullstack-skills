@@ -20,6 +20,8 @@ histories or private workspace transcripts.
 5. **Apply or propose.** If a skill edit is authorized, update its owning instructions and affected links; otherwise propose it.
 6. **Return** the applied change or proposal, the changed owner, the evidence and limits behind the lesson, and a nearby situation where it does not apply. Preserve historical notices and failed receipts.
 
+A workaround reported under the [lead contract](../orbyn-workflow/references/lead-contract.md#report-workarounds) is a lesson with its evidence already attached: the stale instruction, what was true and the working path. Route it to the instruction's owner.
+
 For a failed sync, identify whether the cause was stale baseline, shared write ownership or an unsafe path, and repair that owner when authorized. For a failed pin update, guard the expected baseline and managed-file hashes. That guard prevents the race, where a generic “always double-check everything” paragraph would fail. One interrupted run does not justify a permanent extra approval phase.
 
 ## Authorization limits

@@ -46,6 +46,27 @@ If the premise is already covered or intentional, report that evidence; a no-cha
 result is valid. Contribution value and delivery boundaries remain with
 [contribution intake](../../orbyn-workflow/playbooks/contribution-intake.md#establish-value-separately-from-correctness).
 
+## Cover each behavior once
+
+Agents tend to add too many tests. A behavior needs one test that fails when it breaks,
+at one layer. Before adding a test, look for one that already covers the contract,
+including at another layer, and extend that instead. Do not:
+
+- test one contract at unit and end-to-end level when one of them already sees it;
+- write several tests that differ only in input when they cross no new boundary
+  (use one table-driven test, or one case per boundary such as empty, limit, error);
+- add a test for a private helper the behavior test already exercises.
+
+Write the test at the repository's preferred layer: `verification.test_layer` from
+`harness.py resolve` (unit, integration or end_to_end), or the layer its instructions
+name. Use another layer only when the preferred one cannot observe the behavior (for
+example a pure calculation under an end-to-end preference), and say why in one line.
+With no preference, choose the cheapest layer that observes the behavior.
+
+A reviewer flags a test that duplicates existing coverage or that repeats a case at a
+second layer, and asks for it to be merged or removed. Fewer tests that each catch a
+real defect beat a larger suite that costs every later change.
+
 ## Choose data and failures deliberately
 
 Use representative boundary values, malformed input and one relevant interrupted
