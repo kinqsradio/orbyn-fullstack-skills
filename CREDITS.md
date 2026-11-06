@@ -19,6 +19,7 @@ bundled, and they may carry other licences. Generated from `provenance.json` by
 | [cursor/plugins](https://github.com/cursor/plugins) | 2026 Lauren Tan | MIT | architect, arena, automate-me, figure-it-out, how, interrogate, language-best-practices, orbyn-backend-design, orbyn-plan, orbyn-setup, orbyn-skill-creator, orbyn-ui-design, orbyn-workflow, reflect, show-me-your-work, tdd, unslop, why |
 | [emilkowalski/skills](https://github.com/emilkowalski/skills) | 2026 Emil Kowalski | MIT | language-best-practices, orbyn-ui-design, tdd |
 | [expo/skills](https://github.com/expo/skills) | 2025-present 650 Industries, Inc. (aka Expo) | MIT | architect, language-best-practices, orbyn-backend-design, orbyn-ci-design, orbyn-ui-design, orbyn-workflow, tdd |
+| [ibelick/ui-skills](https://github.com/ibelick/ui-skills) | 2026 Julien Thibeaut | MIT | orbyn-ui-design |
 | [jmanico/grim-prompter](https://github.com/jmanico/grim-prompter) | 2026 Jim Manico | MIT | orbyn-security-audit |
 | [morluto/rea](https://github.com/morluto/rea) | 2026 morluto | MIT | rea-analysis-optimization, rea-changelog-update, rea-ci-tests-audit, rea-tool-design, reverse-engineer-anything |
 | [NiazMorshed2007/reanimate](https://github.com/NiazMorshed2007/reanimate) | 2026 Niaz Morshed | MIT | motion-match |

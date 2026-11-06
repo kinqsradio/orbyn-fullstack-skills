@@ -45,6 +45,25 @@ not a conformance claim.
   accessible name, role and current state, and dynamic status uses a live region.
 - Errors (3.3.1, 3.3.3): name the field and suggest the correction.
 
+### Quick polish pass
+
+For a fast cleanup, check these before larger changes. Skip any the product's
+tokens or components already settle.
+
+- Headings wrap balanced (`text-wrap: balance`, Tailwind `text-balance`); body
+  copy wraps pretty (`text-wrap: pretty`, `text-pretty`).
+- Numbers in tables, counters and timers use tabular figures
+  (`font-variant-numeric: tabular-nums`) so columns and live values do not jitter.
+- Dense rows, chips and cards truncate (`text-overflow: ellipsis`) or clamp
+  (`-webkit-line-clamp`) long text, with the full value reachable on demand.
+- Stacking uses one fixed z-index scale (for example content, sticky, overlay,
+  toast), not ad hoc values per component.
+- Leave `letter-spacing` alone unless the brief or the type scale asks for it.
+- Loading shows a skeleton shaped like the final layout, not a generic spinner
+  block that makes the page jump when data arrives.
+- Glow and heavy shadow do not carry meaning or mark the primary action; use
+  size, weight, position and the existing accent.
+
 ## Layout, panels, and overlays
 
 For a substantial workspace change, [workspace composition](workspace-composition.md)
