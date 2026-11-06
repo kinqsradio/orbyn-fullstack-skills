@@ -72,6 +72,39 @@ jump. Before deleting an animation, check:
 Then delete orphaned keyframes, wrappers and imports. Propose dropping a motion
 dependency; do not remove it unasked.
 
+## Choreography
+
+For two or more things moving on one event, cast and relate them before timing.
+
+1. **Cast.** Name the lead (the one thing to notice; moves first, furthest), supports
+   (follow, shorter and smaller), decoration (fade only, or nothing) and what stays
+   still. Several leads is a hierarchy problem; motion will not fix it. Most groups
+   shrink here: a panel slides and its rows are simply there.
+2. **Relate each pair.** Same object or moment: run together. Order carries no
+   meaning: together. Order carries meaning (reading order, cause then effect, one
+   arrives first) and both at once would look broken: sequence, starting the second
+   just before the first ends. Otherwise overlap with a short stagger. When a child's
+   motion cannot be driven directly (shared layout), move the parent and let it carry.
+3. **Rules.** One entrance per container (no parent entrance plus child stagger).
+   No stagger on frequent or keyboard-opened surfaces. Vary distance, duration and
+   delay by role; equal steps read as a queue. A leaving item stops taking space at
+   once so siblings close the gap while it fades. Exits run together, shorter, and
+   mirror the entry direction. Nothing visible waits to be clickable.
+4. **Sync secondary motion** to the moment it belongs to (the press, the landing), not
+   to an earlier trigger. Scale duration by the size of the change.
+5. **Check.** Re-trigger mid-sequence stops in-flight animations; reduced motion
+   collapses the group to one appearance rather than shortening it; scrub a
+   recording, since a wave and a queue sound alike in the head.
+
+Product groups are usually under about 300 ms in total; first-run or marketing
+moments may take longer. These are starting values, not laws.
+
+## Library note
+
+Motion 14.2 and later hardware-accelerates the `x`, `y`, `scale` and `rotate`
+shorthands on HTML elements; older versions need a full `transform` string to stay
+smooth under a busy main thread. Check the installed version.
+
 ## Code-driven composition
 
 For code-driven UI motion and an editable preview, use the existing

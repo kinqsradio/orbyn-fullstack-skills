@@ -18,7 +18,7 @@ runtime, binary, dependency tree or new upstream skill entrypoint.
 | --- | --- | --- |
 | Original five adapter sources | [`ccc7da309d7db385d5c6d73b0a3a8e093be33504`](https://github.com/morluto/rea/tree/ccc7da309d7db385d5c6d73b0a3a8e093be33504/.agents/skills) | Historical source lineage remains unchanged; the consuming Orbyn engine snapshot remains here. |
 | Later guidance reviewed on 2026-10-24 | [`2250e67bc271c83f9e200ee298aa04a2457438a6`](https://github.com/morluto/rea/tree/2250e67bc271c83f9e200ee298aa04a2457438a6/.agents/skills/reverse-engineer-anything) | Selected recovery, evidence and effect guidance incorporated locally. This is a documentation review revision, not an engine pin. |
-| Later guidance reviewed on 2026-11-06 | [`0beedcd712e39a7d93e4558ee56fd596eaa22838`](https://github.com/morluto/rea/tree/0beedcd712e39a7d93e4558ee56fd596eaa22838/.agents/skills) | Benchmark scope, provider and audit checks and plugin-owned server recovery adapted in our words; new tool inventory reviewed only. Historical source pins unchanged. |
+| Later guidance reviewed on 2026-11-06 | [`0beedcd712e39a7d93e4558ee56fd596eaa22838`](https://github.com/morluto/rea/tree/0beedcd712e39a7d93e4558ee56fd596eaa22838/.agents/skills) | Benchmark scope, provider and audit checks and plugin-owned server recovery adapted in our words; new tool inventory reviewed only; origin-scoped capture, tri-state hardening, full batch results and desktop-application task rules added in our words. Historical source pins unchanged. |
 
 The four REA development skill entrypoints are unchanged between those revisions.
 The later reverse-engineering entrypoint and six references changed. Both engine

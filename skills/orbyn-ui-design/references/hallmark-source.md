@@ -31,6 +31,18 @@ They do not imply Hallmark's authors contributed to or endorsed Orbyn.
 | Photos, fonts, screenshots and other assets | Not imported; each asset retains its own licensing requirements |
 | Mandatory questions, clean-tree demand, automatic reviews/fanout and CSS stamps | Not imported; user scope, bounded delegation, project conventions and artifact lifecycle remain authoritative |
 
+## Later review (6 November 2026)
+
+Rechecked at `407fa689f4a276f2fd389208d271d0fef08f5058`. Method-level typeface and loading, page-composition and app-screen checks were reworded into [visual direction](visual-direction.md); sources:
+
+| Upstream path | SHA-256 of reviewed bytes |
+| --- | --- |
+| `skills/hallmark/references/layout.md` | `fa904b5b46f19ca08ee325c99deb1cf30c67acb00106e7b74945c30e428c7eab` |
+| `skills/hallmark/references/fonts.md` | `87d50b1b32b9c901d9df5376870cf6d8e39334f468fe9a582a2720d9da5586ec` |
+| `skills/hallmark/references/flow.md` | `d24fa0bbfd8ea6f8add579029598e09815a697fc99a4abdb8c17f67155e368e5` |
+
+Not imported: font lists and banned-face lists, theme-tied sizes and pixel values, the composition and hero catalogue, section counts, harness tables, scripts, hooks, stamps and logs. The first-review pin above is unchanged.
+
 Raw downloaded text/scripts stay under ignored `orbyn-references/hallmark/`.
 Only these maintained methods, this source record and the original license enter
 the public library. This is a selected guidance adaptation, not a vendored or

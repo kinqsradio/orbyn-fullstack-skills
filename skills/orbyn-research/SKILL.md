@@ -30,4 +30,5 @@ For a retry or streaming API, record the supported version, cancellation/unknown
 
 - Technology recommendations: feed current primary evidence and uncertainty to [stack selection](../orbyn-stack-selection/SKILL.md).
 - Consequential protocol, lifecycle, platform or performance uncertainty: [comparable implementations](references/comparable-implementations.md). Start with the local question and constraints, study relevant mechanisms and mismatches, then feed the decision into contracts and regression checks. Skip the external repository survey for familiar bounded work.
+- How another company grew, and what to copy: [growth teardown](references/growth-teardown.md). Label every finding observed, inferred or not found, and treat timing as a lead, not a cause.
 - User needs, demand or usability evidence: [user research](references/user-evidence.md). Reuse available authorized evidence, and distinguish observation from inference and research plans from completed studies. Do not invent users/results or initiate recruitment, recording or telemetry. Product investment decisions belong to [planning](../orbyn-plan/references/product-discovery.md).
