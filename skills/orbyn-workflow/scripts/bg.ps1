@@ -217,7 +217,10 @@ function Invoke-Start([string]$Root, [string[]]$Rest) {
 
     $shell = (Get-Process -Id $PID).Path
     $arguments = '-NoProfile -ExecutionPolicy Bypass -File ' + (Quote-Arg $SelfPath) + ' _supervise ' + (Quote-Arg $dir)
-    Start-Process -FilePath $shell -ArgumentList $arguments -WindowStyle Hidden | Out-Null
+    # -WindowStyle exists only on Windows; Windows PowerShell 5.1 has no $IsWindows, so unset means Windows.
+    $hide = @{}
+    if ($null -eq $IsWindows -or $IsWindows) { $hide['WindowStyle'] = 'Hidden' }
+    Start-Process -FilePath $shell -ArgumentList $arguments @hide | Out-Null
 
     $out = [ordered]@{ id = $id; root = $Root; log = (Join-Path $dir 'output.log'); wait = ('bg.ps1 wait ' + $id) }
     Write-Output (ConvertTo-Json -InputObject $out -Depth 3)
