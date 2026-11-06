@@ -15,7 +15,7 @@ import subprocess
 import sys
 
 READY, NEEDS = 'ready-for-review', 'needs-disclosure'
-REQUIRED_CHECKS = ('Validate (Python 3.11)', 'Validate (Python 3.13)')
+REQUIRED_CHECKS = ('Validate (Python 3.11)',)  # 3.13 runs on main and nightly, not on PRs
 DISCLOSURE_FIELDS = ('Tools', 'Models', 'Effort', 'Human role')
 EVIDENCE_FIELDS = ('Static/helper checks', 'Recorded host trials')
 EMPTY = {'', 'none', 'n/a', 'na', 'tbd', 'todo', 'unknown', '-', '?'}

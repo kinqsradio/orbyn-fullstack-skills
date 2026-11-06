@@ -775,6 +775,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Pipeline structure for many services and environments, ci_scope services matrix, CI speed guidance"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-07",
+          "scope": "Make it fast: one PR lane, cheap checks first, cheaper slow tests, time budget, flaky quarantine, merge queue; fewer runs per PR"
         }
       ]
     },
@@ -2148,6 +2155,13 @@
           "effort": "medium",
           "date": "2026-11-07",
           "scope": "PRs state how to test, risk and how to undo; human-only paths; review rounds converge (tags, class of bug, diff-only re-review, decline nits, three-round cap)"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-07",
+          "scope": "A standing user instruction naming a class of PR counts as the merge instruction for that class"
         }
       ]
     },
