@@ -90,6 +90,12 @@ inspector or handing a preview to a person.
 
 - Interactive sketch to resolve a design question: [prototyping](references/prototypes.md).
 - Unknown platform or accessibility requirements: `orbyn-research`.
+- Page titles, descriptions, canonical, social cards, icons or structured data:
+  [page metadata](references/page-metadata.md).
+- Documenting a product's design language for agents:
+  [DESIGN.md](references/design-md.md).
+- Read-only audit of an existing UI with plans for another agent:
+  [evidence-backed audit](references/visual-review.md#audit-an-existing-surface-from-evidence).
 - New visual direction, a requested redesign or a design-quality audit:
   [visual direction](references/visual-direction.md).
 - Changing an existing UI: [redesign contract](references/redesign-contract.md).
