@@ -2675,6 +2675,13 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Added the upstream watcher issue workflow"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Library updates end in a gap table the human approves before any skill changes"
         }
       ]
     },
