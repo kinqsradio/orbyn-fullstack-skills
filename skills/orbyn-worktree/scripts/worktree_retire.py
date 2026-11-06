@@ -216,10 +216,13 @@ def secret_name(name):
 def package_tree(dirs):
     """True when a secret-looking file sits inside a real third-party package: node_modules/<pkg>/ or site-packages/<pkg>/.
 
-    dirs are the folder names from a cache root (named first) down to the file's folder. target/, dist/ and build/ have
-    no exemption, and neither has a dot-folder such as node_modules/.cache."""
+    dirs are the folder names from a cache root (named first) down to the file's folder. pnpm's store,
+    node_modules/.pnpm/<name@version>/node_modules/<pkg>/, counts as a package too. target/, dist/ and build/ have
+    no exemption, and neither has any other dot-folder such as node_modules/.cache."""
     kind, rest = dirs[0].casefold(), dirs[1:]
     if kind == 'node_modules':
+        if len(rest) >= 3 and rest[0] == '.pnpm' and rest[2] == 'node_modules':
+            return package_tree(rest[2:])
         return bool(rest) and not rest[0].startswith('.') and (not rest[0].startswith('@') or len(rest) > 1)
     if kind in REQUIREMENTS_FOR:
         return any(name == 'site-packages' and len(rest) > i + 1 and not rest[i + 1].startswith('.') for i, name in enumerate(rest))

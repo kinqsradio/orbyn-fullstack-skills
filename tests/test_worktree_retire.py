@@ -464,6 +464,17 @@ class SecretsAndNamesTests(CleanupCase):
         self.write(self.app/'target/debug/key.pem')
         self.assertIn('secret-looking', self.item(self.app/'target')['reason'])
 
+    def test_pnpm_package_files_do_not_hold_but_other_dot_folders_do(self):
+        self.write(self.app/'node_modules/.pnpm/katex@0.18.10/node_modules/katex/src/Token.ts')
+        self.write(self.app/'node_modules/.pnpm/openai@6.49.0/node_modules/openai/resources/service-accounts.ts')
+        self.clock = 30
+        self.assertNotIn('secret-looking', self.item(self.app/'node_modules')['reason'])
+        for leak in ('node_modules/.pnpm/.env', 'node_modules/.pnpm/x@1/credentials.json', 'node_modules/.cache/x/.env'):
+            with self.subTest(leak):
+                self.write(self.app/leak, 'K=1')
+                self.assertIn('secret-looking', self.item(self.app/'node_modules')['reason'])
+                (self.app/leak).unlink()
+
     def test_a_secret_below_a_pruned_name_holds_the_worktree(self):
         done = self.done()
         self.write(done/'packages/api/build/.env', 'K=1')
