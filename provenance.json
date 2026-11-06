@@ -1452,6 +1452,39 @@
           "license_file": "skills/orbyn-ui-design/references/ecc-LICENSE.txt",
           "license_sha256": "326146379f01bb137c0a5d3c54770c1aa31076705c8b88a7f6b26a460f6221b2",
           "changes": "Compact WCAG 2.2 checklist in our own words; cross-platform mapping table and diagram not adopted. Reviewed at the pinned ECC revision only; written in Orbyn voice with synthetic examples, nothing run from the source."
+        },
+        {
+          "source": "https://github.com/ibelick/ui-skills/tree/00db7d656719c399c091f3ea138c6f42a7fa4d98/skills/baseline-ui",
+          "revision": "00db7d656719c399c091f3ea138c6f42a7fa4d98",
+          "copyright": "Copyright (c) 2026 Julien Thibeaut",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/design-rules.md",
+          "license_file": "skills/orbyn-ui-design/references/ui-skills-LICENSE.txt",
+          "license_sha256": "c615621c4cc1676ccde194e7a01b6469ba477780251bd71e007fc473a49c2c2b",
+          "relationship": "selected-method-adaptation; quick polish checklist",
+          "changes": "Typography, stacking and loading polish checklist in our own words; Tailwind-only stack, component and design-taste mandates not adopted."
+        },
+        {
+          "source": "https://github.com/ibelick/ui-skills/tree/00db7d656719c399c091f3ea138c6f42a7fa4d98/skills/fixing-accessibility",
+          "revision": "00db7d656719c399c091f3ea138c6f42a7fa4d98",
+          "copyright": "Copyright (c) 2026 Julien Thibeaut",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/accessibility.md",
+          "license_file": "skills/orbyn-ui-design/references/ui-skills-LICENSE.txt",
+          "license_sha256": "c615621c4cc1676ccde194e7a01b6469ba477780251bd71e007fc473a49c2c2b",
+          "relationship": "selected-method-adaptation; prioritized accessibility audit order",
+          "changes": "Audit order and boundaries in our own words, merged with the existing WCAG checklist; skill command, rule tables and snippets not copied."
+        },
+        {
+          "source": "https://github.com/ibelick/ui-skills/tree/00db7d656719c399c091f3ea138c6f42a7fa4d98/skills/fixing-motion-performance",
+          "revision": "00db7d656719c399c091f3ea138c6f42a7fa4d98",
+          "copyright": "Copyright (c) 2026 Julien Thibeaut",
+          "license": "MIT",
+          "local_path": "skills/orbyn-ui-design/references/animation-performance.md",
+          "license_file": "skills/orbyn-ui-design/references/ui-skills-LICENSE.txt",
+          "license_sha256": "c615621c4cc1676ccde194e7a01b6469ba477780251bd71e007fc473a49c2c2b",
+          "relationship": "selected-method-adaptation; frame-cost rules",
+          "changes": "Frame-cost rules in our own words added to the existing diagnosis guide; skill command and example code not copied."
         }
       ],
       "reviewed_sources": [
@@ -1560,6 +1593,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Choreography method and Motion shorthand note from Emil c8a7962; Hallmark 407fa68 font, layout and app-screen methods in visual-direction"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Quick polish checklist, accessibility audit reference and frame-cost motion rules adapted from ibelick/ui-skills 00db7d6"
         }
       ]
     },
