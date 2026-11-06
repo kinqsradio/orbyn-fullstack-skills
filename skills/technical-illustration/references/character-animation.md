@@ -69,8 +69,12 @@ the samples once into a table. Pin the first link, and let the last link move mo
 
 Keep the face simple and let timing do the work.
 
-- **Eyes:** blink at irregular seeded gaps, closing over 2 frames and opening over 3 or
-  4. Move the eyes a moment before the head turns.
+- **Eyes:** blink at irregular seeded gaps, and set the timing in seconds, never frames,
+  so it holds at 24, 30 or 60 fps. A quick blink closes in about 0.08 s and opens in
+  0.12 s. For a calm or stylised piece, offer a soft blink of about 0.75 s: close
+  0.26 s, hold 0.1 s, open 0.42 s, each on a sine ease. In one music-video review a
+  0.23 s blink was sent back as far too fast, and two frames at 60 fps is only 33 ms.
+  Move the eyes a moment before the head turns.
 - **Mouth:** a few timed shapes are enough: closed, open wide, rounded, and teeth. Drive
   them from the supplied lyrics' timing, with the shape switched just before the sound.
 - **Brows:** usually carry more feeling than the mouth, so change them on emotional
@@ -80,7 +84,9 @@ Keep the face simple and let timing do the work.
 
 Choose a role for each body part, so everything doesn't react at once. Use sustained
 energy for slow sway, onsets for one chosen accent, and section changes for new poses.
-Plan poses on phrases, then let the beat nudge them.
+Plan poses on phrases, then let the beat nudge them. Give every accent a rise of at
+least two frames at the delivery rate and a slower fall: a value that jumps in one frame
+reads as stutter, not as a hit.
 
 ## Check before rendering
 

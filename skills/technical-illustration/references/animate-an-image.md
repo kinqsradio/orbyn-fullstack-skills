@@ -31,6 +31,21 @@ only new pixels.
 5. **Add camera and effects last.** They support the character's motion and never
    replace it.
 
+## Frame the shot
+
+A portrait image in a 16:9 frame leaves a choice: crop it, or fit it with something
+beside it. When the user asks for a crop, pick one framing and hold it for the whole
+film. A drifting or punching camera reads as "the image keeps moving around", and the
+character's own motion is what should carry the shot.
+
+Check the scale before you commit. A 675-pixel-wide image cropped to 1920 wide is
+enlarged 2.8 times, which softens fine lines. Say so, and ask whether a full-size
+original exists. Choose the crop for the face and hands, and keep it clear of anything
+the platform would object to.
+
+To find region coordinates, overlay a labelled grid on the source and zoom in on the
+eyes, hands and hair roots. Guessed coordinates put an eyelid on the cheek.
+
 Every region needs a unique `id`, a `kind` and a `polygon`. `validateRegions` throws if a
 required setting below is missing. Distances are fractions of the image; `amp` on `sway`
 is in radians.
@@ -52,6 +67,13 @@ part of the way, then the drawing takes over and the warp lets go. These small p
 states are the one thing added to the picture. Redraw them in `paintPicture` for each
 real face.
 
+For the drawn lid, mark the eye opening as two outlines, upper and lower, running corner
+to corner with the same number of points. Smooth both into curves first, because a lid
+edge that follows straight segments looks cut out. Move the lid edge from the upper
+outline to the lower one, and fill above it with skin estimated from around the eye.
+Leave lash and hair pixels out of that estimate, or the lid comes out smudged and dark.
+Fade the lash line in over the first third of the close, so it does not pop on.
+
 Keep the eye region tight. Everything inside it moves with the lid, so fringe or blush
 caught in the region gets dragged into spikes and smears. In a real image, cut hair that
 crosses an eye into its own layer above the face. Long hair needs the same care, because
@@ -59,6 +81,10 @@ a mesh bends everything under a polygon. A lock over the shoulders drags the jac
 it. Split the character into layers before you rig: back hair, body and face, then the
 fringe and front locks. Each layer bends under its own regions only, and the head region
 turns all of them together. The demo's `layers` list shows this.
+
+Parts that move as one, such as a head and the hairpins in it, belong in one region or
+one layer. Two overlapping regions with the same pivot add their motion and bend the
+pins where they overlap.
 
 Start small, then raise amplitude until it reads at phone size. Give everything a
 different period, because shared timing makes the whole figure pulse as one block.
@@ -69,6 +95,18 @@ Keep the idle running all the time, and add accents on top. Sustained energy can
 the hair's sway and deepen breathing. Pick one onset type for one accent, such as a head
 bob or a hand snap on the snare. For a hard style, cut between two held poses on the beat
 as [video styles](video-styles.md) describes.
+
+When the brief is "make it react to the beat", put the beat in the light, not the body.
+Kicks drive soft flashes, bloom, light rays, sparkles and the brightness of drifting
+dust. The puppet and the camera follow only smoothed loudness. In one review, a cut that
+punched the zoom, shook the camera, split colour channels by whole pixels and pushed
+particles on every kick was called "not smooth at all". The same rig was accepted once the
+beat moved only light. Give particle speed the smoothed loudness, never the kick, because
+a speed surge on each kick makes every particle jump.
+
+Blend added light onto bright artwork with screen, not addition. Bloom, rays and leaks
+added on top of a pale illustration washed the whole frame to white in testing. Check
+stills on the strongest beat and between beats before rendering.
 
 ## What a warp cannot do
 
@@ -91,6 +129,8 @@ in code under [character animation](character-animation.md). Say so before start
   adds, so use the sum: the demo's hair locks set their own wider feather.
 - A blink looks natural at full size, with no smeared iris, and the drawn closed eye
   matches the skin around it. Step through the frames where the drawing takes over.
+  Render a strip of zoomed eye crops at 0, 0.2, 0.4, 0.6, 0.8 and 1 closed, and check
+  its length in seconds, as [character animation](character-animation.md#faces) gives.
 - Step through a complete hair and breathing cycle. Keep the character's head and
   hands attached.
 - A viewer would say the character moved, without seeing the camera at all. If the

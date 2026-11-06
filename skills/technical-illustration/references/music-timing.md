@@ -30,6 +30,16 @@ gives no onset.
 Onsets are candidates, not beats or bars. Listen, then keep the ones that matter. If
 `status` is `silent`, the decoded audio has no signal, so check the file.
 
+Count them before driving anything. Divide the kept onsets by the track length and
+compare with the tempo: a 120 BPM track has 2 beats a second. In one remix, a detector
+mixing all bands found 4.7 a second, catching hi-hats, and its flashes strobed. Keeping
+only low-band rises with a minimum gap of about 0.27 s brought it to 2.3 to 2.7. Then
+let only the strongest fifth of those onsets flash.
+
+Analyse the whole track even when rendering a short preview, and index into it. Scaling
+computed from a 10-second excerpt makes every hit in it look strong, so the preview no
+longer matches the full render.
+
 ## Place lyrics by hand
 
 1. Bake the track, and list the onsets near each sung word.

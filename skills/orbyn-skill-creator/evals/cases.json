@@ -11873,6 +11873,29 @@
       }
     },
     {
+      "id": "beat-reactive-puppet-from-portrait",
+      "kind": "outcome",
+      "split": "development",
+      "prompt": "Here's a song and a tall portrait illustration. Crop it to 1920x1080 and make the character fully animated, with lots of things reacting to the beats. No lyrics.",
+      "expected_skills": [
+        "technical-illustration"
+      ],
+      "forbidden_skills": [],
+      "forbidden_actions": [
+        "publish",
+        "merge",
+        "deploy",
+        "message",
+        "write_product"
+      ],
+      "excluded": "Development definitions; a real render, rights review and viewer judgement of smoothness remain separate from hosted model performance.",
+      "rubric": {
+        "rule": "Holds one fixed crop, puppets the character's head, hair, hands and eyes, keeps the beat in light and particles rather than the body or camera, and adds no lyrics, bars or card layout.",
+        "method": "Checks the enlargement of the crop, counts onsets against the tempo before driving accents, gives accents a multi-frame rise, sets blink timing in seconds and screen-blends light onto bright art.",
+        "evidence": "Shows stills on and between strong beats, a zoomed blink strip and a sample around the busiest section, and states the delivery frame rate and any remaining softness from enlargement."
+      }
+    },
+    {
       "id": "product-illustration-hero-cursor",
       "kind": "routing",
       "split": "development",
