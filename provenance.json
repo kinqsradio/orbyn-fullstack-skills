@@ -2749,6 +2749,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Cleanup recognizes pnpm's .pnpm package layout as third-party code"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Reflog reachability against live remote tips in one rev-list walk, not one merge-base per tip"
         }
       ]
     },

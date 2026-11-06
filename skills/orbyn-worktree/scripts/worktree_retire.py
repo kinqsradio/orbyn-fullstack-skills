@@ -619,7 +619,16 @@ class Context:
         if not unreached:
             return False
         tips = self.live_tips(repo)
-        return tips is None or any(not any(git(path, 'merge-base', '--is-ancestor', s, tip).returncode == 0 for tip in tips) for s in unreached)
+        if tips is None:
+            return True
+        # One walk instead of a merge-base per (commit, tip) pair: a remote with thousands of branches made that tens
+        # of thousands of git calls. A tip missing locally proves nothing, as before, so only present tips exclude.
+        listed = git(path, 'cat-file', '--batch-check=%(objectname) %(objecttype)', input=''.join(t + '\n' for t in tips))
+        if listed.returncode:
+            return True
+        present = [line.split()[0] for line in listed.stdout.splitlines() if line.endswith(' commit')]
+        walk = git(path, 'rev-list', '--stdin', input=''.join(s + '\n' for s in unreached) + ''.join('^' + t + '\n' for t in present))
+        return walk.returncode != 0 or bool(unreached & set(walk.stdout.split()))
 
     def not_rebased(self, path, shas, floor):
         """The commits still unaccounted for after removing those whose stable patch-id equals a commit that did land

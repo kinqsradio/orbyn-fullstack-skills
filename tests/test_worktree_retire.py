@@ -1092,6 +1092,30 @@ class SecondReviewTests(CleanupCase):
         self.assertEqual(found['status'], 'held')
         self.assertIn('only in the reflog', found['reason'])
 
+    def test_many_remote_branches_take_one_reachability_walk(self):
+        done = self.done()
+        self.write(done/'side.txt')
+        self.sh(done, 'add', 'side.txt')
+        self.commit(done, 'pushed aside')
+        self.sh(done, 'push', '-q', 'origin', 'HEAD:side')
+        self.sh(done, 'reset', '-q', '--hard', 'HEAD~1')
+        base = self.sh(done, 'rev-parse', 'HEAD').strip()
+        for number in range(200):
+            self.sh(done, 'push', '-q', 'origin', f'{base}:refs/heads/many-{number}')
+        calls, real = [], tool.git
+        def counting(path, *args, **kwargs):
+            calls.append(args)
+            return real(path, *args, **kwargs)
+        tool.git = counting
+        try:
+            self.clock = 2
+            self.assertEqual(self.status(done), 'eligible')  # the commit is on a live remote branch
+        finally:
+            tool.git = real
+        self.assertLess(len([a for a in calls if a[:2] == ('merge-base', '--is-ancestor')]), 10)  # was one per tip
+        self.sh(done, 'push', '-q', 'origin', ':side')
+        self.assertEqual(self.item(done)['status'], 'held')
+
     def test_n1_the_record_keeps_the_head_reflog_and_says_recovery_is_files_only(self):
         done = self.done()
         self.clock = 2
