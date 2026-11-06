@@ -36,7 +36,7 @@ from repo_guard import require_ignored  # noqa: E402
 
 LOGO_MARKER = '<meta name="stack-diagram-logos" content="fetched">'
 
-TIMEOUT = 30
+TIMEOUT = float(os.environ.get('STACK_DIAGRAM_RENDER_TIMEOUT') or 90)  # seconds per Chrome reply; a cold start can be slow
 SQUARE_CORNERS = ('.scroller{border-radius:0!important;border:none!important}'
                   '.canvas{border-radius:0!important}')
 BINARIES = ('google-chrome', 'google-chrome-stable', 'chromium', 'chromium-browser', 'chrome')

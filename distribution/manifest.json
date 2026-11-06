@@ -996,7 +996,7 @@
     "skills/stack-diagram/references/upstream/stack-diagram/source-manifest.json": "7876425f0c0070252f763cc3757183156e6ad943426735e5aaa2e46cce6dadef",
     "skills/stack-diagram/scripts/build.py": "d98893e4a3b345f6d1e740f2904bf5fb0c1ad6b097f82cab7a0c827e774984e2",
     "skills/stack-diagram/scripts/fetch_icons.py": "5d2208761e2b23715b332be7823663f12f7d8d9d2ec8eef20728fc9c8ac13ffc",
-    "skills/stack-diagram/scripts/render_png.py": "5ae695759c52f195237c971ba4e529c3eab53e3cfa8a40eedf630a75f0039f3d",
+    "skills/stack-diagram/scripts/render_png.py": "aa5db87a17d7e026958fdd215cf90eca3a5d593a5be39d86ece5f8bec9bfc115",
     "skills/stack-diagram/scripts/repo_guard.py": "390b1db098bf0034f720fbf9b3288fb741db089235f8f8e21c669dcccc82caa7",
     "skills/stack-diagram/scripts/sanitise_svg.py": "7da2ea698422bceec7dc6855c32c032558a7658b5220ab61fd81286d77445094",
     "skills/tdd/LICENSE": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4",

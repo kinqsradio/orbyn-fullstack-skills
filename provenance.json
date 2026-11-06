@@ -3140,6 +3140,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Google Cloud and Azure icon support"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Render timeout 90s per Chrome reply, configurable with STACK_DIAGRAM_RENDER_TIMEOUT; cold starts were timing out"
         }
       ],
       "reviewed_sources": [
