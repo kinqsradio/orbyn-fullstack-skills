@@ -43,6 +43,10 @@ Check what the host's tools offer, top row first:
 | Wait on a running command or child with a timeout | One wait call with the longest timeout the host allows, not many short ones | Codex (`write_stdin` with no input, up to 5 minutes; `wait_agent`, up to 1 hour) |
 | Only run shell commands | `bg.sh` (or `bg.py`), below | Any host with a shell |
 
+Where the host or app already watches pull requests and reports CI results (Claude
+desktop's Auto-fix, for example), do not schedule CI checks or timers yourself; wait for
+its report. A coordinator of several sessions waits for their reports the same way.
+
 When you cannot tell which row fits, use the native helper. A host's own instruction, such as a
 cap on wait length, wins over this table.
 
