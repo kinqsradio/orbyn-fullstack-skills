@@ -2055,6 +2055,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Loop guard: same failure twice, change approach once, then stop and report"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Sessions vs subagents on any host, default delegation triggers, session naming, no timer CI checks where a watcher reports"
         }
       ]
     },

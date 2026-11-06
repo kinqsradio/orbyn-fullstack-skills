@@ -123,11 +123,13 @@ harness limits when the required host configuration is available. A child comple
 its assigned slice directly. Name each subagent or session you start
 `Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]`; the main session
 the user opened keeps its own title.
-Delegate only a slice that does not block your next step, and tell the user in one
-line when a child starts and what it returned. A host without the tier's models runs
+Pieces of one task go to subagents; a task with its own branch or PR may get its own
+session in `parallel` mode or on request. Send wide read-only searches to a scout and a
+substantial diff to an independent reviewer before its PR. Tell the user in one line
+when a child starts and what it returned. A host without the tier's models runs
 children on the session's model, named as such
 ([delegate on any host](skills/orbyn-workflow/references/lead-contract.md#delegate-on-any-host)).
-No recursive agent chains or unrequested chats.
+No recursive agent chains.
 When the same step fails the same way twice, change the approach once, then stop and
 report ([loop guard](skills/orbyn-workflow/references/lead-contract.md#loop-guard)).
 Never poll a background job or child (`sleep`, `ps`, `pgrep`, `top`). Use the host's

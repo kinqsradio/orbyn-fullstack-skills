@@ -133,7 +133,7 @@ its own is older, so an old branch never runs an old harness.
 | --- | --- | --- |
 | `simple` | Edit in the current checkout; no worktrees. | None unless the user asks in chat. |
 | `isolated` | A worktree per task. Today's behaviour. | The resolved default limits. |
-| `parallel` | Many worktrees and sessions, at most `max_active` (default 10) at once; the rest queue. | The resolved limits per task. |
+| `parallel` | Many worktrees; a task of its own (its own branch or PR) may get its own session where the host can start one, at most `max_active` (default 10) at once; the rest queue. | The resolved limits per task, for pieces of each task. |
 
 A small clear edit stays in the current checkout in every mode, and a chat
 instruction such as "just do it here" overrides the mode for that task. `parallel`

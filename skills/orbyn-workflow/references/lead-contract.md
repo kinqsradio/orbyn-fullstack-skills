@@ -68,11 +68,19 @@ the lead, who owns integration and review.
 The harness names tiers for Claude and Codex, but other hosts (OpenCode, Gemini CLI,
 Cursor and more) can run children too. On every host, take these steps in order:
 
-1. **Decide once.** Delegate a slice that does not block your next step: read-only
-   exploration while you read other code, an implementation with its own files, or
-   a review of a finished diff. Otherwise do the work yourself. State the choice in
-   one line and move on. Permission to use subagents allows delegation; it does not
-   require it, and a small clear task needs none.
+1. **Decide once.** Pick the unit by what the work is, on any host:
+
+   | The work | Use | On a host that |
+   | --- | --- | --- |
+   | A piece of the current task whose result you need before you finish | A subagent (child) | Can run children in this turn (Claude's agent tool, Codex `spawn_agent`, OpenCode's task tool) |
+   | A task of its own that ends in its own branch or PR | A separate session | Can start sessions (linked or side sessions, cloud tasks), only in `parallel` mode or when the user asks |
+   | Either, where the host has neither | Do it yourself, one task after another | Has neither |
+
+   Delegate these by default: a read-only search across many files or folders (a
+   scout), and an independent review of a substantial diff before its PR (a
+   reviewer, since you cannot claim independent review of your own edits). Otherwise
+   delegate a slice only when it does not block your next step. A small clear task
+   needs none. State the choice in one line and move on.
 2. **Pick the model.** Use the resolved tier where the host offers that model. Where
    the host cannot choose a model, or the tier's models are not on it, the child runs
    on the session's own model. That is allowed, because the name and announcement say
@@ -96,9 +104,11 @@ For example, on a host running only `deepseek-v4.1-flash`:
 
 ## Name the children you start
 
-Name every subagent or session you start so its work can be traced at a glance. The
-pattern is for children only: the main session, the one the user opened and talks to,
-keeps its own title. Never rename it to this pattern.
+Name every subagent or session you start so its work can be traced at a glance,
+including a session that owns one issue: `Orbyn Engineer 3 - Sonnet 5.5 - Medium -
+Automations - #181`, not just the issue title. The pattern is for children only: the
+main session, the one the user opened and talks to, keeps its own title. Never rename
+it to this pattern.
 
 ```text
 Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]
@@ -121,9 +131,10 @@ field is short, keep Role and Task and open the brief with the full name. A name
 user chose wins. Names are labels: they grant nothing, and in public repositories they
 carry no private names or secrets.
 
-New sidebar/project chats require an explicit human request. This workflow
-authorizes bounded native children, not extra user-owned sessions or messages.
-Do not create sessions recursively or turn design comparison into a model panel.
+Start separate sessions only as step 1 of [delegate on any host](#delegate-on-any-host)
+allows: in `parallel` mode, within `max_active`, or when the user asks. They follow the
+same naming. Do not create sessions recursively or turn design comparison into a model
+panel.
 
 ## Execution invariants
 
