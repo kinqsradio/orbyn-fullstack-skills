@@ -57,6 +57,18 @@ position/velocity tolerance. A glossary helps feedback without restricting langu
 
 [Selected methods and notices](mobile/sources.md) preserve adaptation lineage.
 
+## Scroll reveal on server-rendered pages
+
+Hidden-until-revealed content must stay indexable and readable without JS.
+
+- Hide content only under a root attribute the script sets (`html[data-js]`) and
+  `prefers-reduced-motion: no-preference`. Drive it with data attributes
+  (`data-reveal`) so pages stay server-rendered and need no client wrapper.
+- Tilt and magnetic effects run only on `(pointer: fine)`.
+- A reveal transform and a tilt transform on one element conflict; put one on a
+  wrapper.
+- Trigger with `IntersectionObserver`; see [frame-cost rules](animation-performance.md#frame-cost-rules).
+
 ## Removing motion
 
 Removal is subtraction: keep motion that has a stated reason or prevents a jarring

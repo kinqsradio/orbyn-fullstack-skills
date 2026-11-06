@@ -95,6 +95,10 @@ read in the source research on 30 October 2026. No underlying skill implementati
 license or claimed results were verified; no article/skill text or assets imported.
 Existing Hallmark adaptation notices remain applicable.
 
+Never redesign a brand mark unasked. When a logo or mark is in scope, study the named
+references, confirm the direction on a sheet of options before building, and keep 3D
+for hero visuals, not marks.
+
 ## Typefaces and loading
 
 Choose type for the content, not from a favourite list. Shortlist two or three faces
@@ -111,6 +115,8 @@ licence before using a non-free face; a font file keeps its own licence.
   metric-matched fallback (`size-adjust` and the ascent/descent/line-gap overrides) so
   the swap does not reflow the fold. Prefer one variable font to several statics.
 - Set `font-synthesis: none` and load the real italic or bold a heading uses.
+- If the brand face ships only 400 and 500, map semibold and bold to 500 in the font
+  declarations rather than letting the browser synthesize a fake bold.
 - Inspect the page with fonts ready, as in the concept comparison below.
 
 ## Check a page composition
