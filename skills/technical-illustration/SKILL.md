@@ -99,7 +99,8 @@ No browser bypass, publisher, auth edit, history capture or model call is implie
   [motion sequences](references/motion-sequences.md#check-flashing-on-the-rendered-file).
 
 - For any video built from an image, read [animate an image](references/animate-an-image.md):
-  the character in it must move, and camera motion alone never counts.
+  the character in it must move, and camera motion alone never counts. It also covers
+  holding a fixed crop, slow drawn blinks and keeping the beat in the light.
 - For a music video, lyric video, anime-style or ambient background, full animation,
   motion graphics or a visualizer, read [video scenarios](references/video-scenarios.md)
   first; it sets what each kind needs and how it fails.
