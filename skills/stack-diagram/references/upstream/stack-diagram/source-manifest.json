@@ -172,7 +172,7 @@
       "relationship": "maintained-adaptation"
     },
     "scripts/render_png.py": {
-      "sha256": "5ae695759c52f195237c971ba4e529c3eab53e3cfa8a40eedf630a75f0039f3d",
+      "sha256": "aa5db87a17d7e026958fdd215cf90eca3a5d593a5be39d86ece5f8bec9bfc115",
       "source_path": "skills/stack-diagram/scripts/render_png.py",
       "original_sha256": "588873e0441cf4e796a1f916e00f90975c23c952def4a9477f01ef8ebb0f206b",
       "relationship": "maintained-adaptation"
