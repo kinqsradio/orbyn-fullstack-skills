@@ -145,15 +145,28 @@ def changed_paths(base, root=ROOT):
 
 
 def shards(name, tests=TESTS):
-    """Classes a module lists in a literal `SHARDS = [...]`, so its slowest module can run as parallel processes."""
+    """Units a module lists in a literal `SHARDS = [...]`, so its slowest parts run as parallel processes.
+
+    An entry is a class name, or `Class.*` for one process per test method of that class."""
     try:
-        for node in ast.parse(read(Path(tests)/f'{name}.py')).body:
-            if isinstance(node, ast.Assign) and any(getattr(t, 'id', None) == 'SHARDS' for t in node.targets):
+        tree = ast.parse(read(Path(tests)/f'{name}.py'))
+    except SyntaxError:
+        return []
+    methods = {node.name: [f.name for f in node.body if isinstance(f, ast.FunctionDef) and f.name.startswith('test')]
+               for node in tree.body if isinstance(node, ast.ClassDef)}
+    for node in tree.body:
+        if isinstance(node, ast.Assign) and any(getattr(t, 'id', None) == 'SHARDS' for t in node.targets):
+            try:
                 found = ast.literal_eval(node.value)
-                if isinstance(found, (list, tuple)) and all(isinstance(c, str) for c in found):
-                    return list(found)
-    except (SyntaxError, ValueError):
-        pass
+            except ValueError:
+                return []
+            if not isinstance(found, (list, tuple)) or not all(isinstance(c, str) for c in found):
+                return []
+            units = []
+            for entry in found:
+                cls, _, star = entry.partition('.')
+                units += [f'{cls}.{m}' for m in methods.get(cls, [])] if star == '*' else [entry]
+            return units
     return []
 
 
@@ -199,7 +212,7 @@ def main(argv=None):
     for module in sorted(reasons):
         print(f'  {module}: {reasons[module]}')
     units = [(m, c) for m in reasons for c in (shards(m) or [None])]
-    units.sort(key=lambda u: -(TESTS/f'{u[0]}.py').stat().st_size)  # biggest first keeps the workers busy
+    units.sort(key=lambda u: (-(TESTS/f'{u[0]}.py').stat().st_size, u[1] or ''))  # biggest first keeps the workers busy
     started = time.monotonic()
     results = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, args.jobs)) as pool:

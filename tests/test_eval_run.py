@@ -351,21 +351,23 @@ class TrialTests(RunnerCase):
 
 
 class AllCasesTests(RunnerCase):
-    def test_every_key_passes_the_good_agent_and_fails_the_bad_one(self):
-        for agent, expected in (('good', 'pass'), ('bad', 'fail')):
-            runner = self.runner(eval_run.FakeHost(agent), list(self.cases), out=agent, cache=f'cache-{agent}')
-            for case in self.cases.values():
-                runner.run_case(case, 'with', ['fake'], 1)
-            runner.cleanup.close()
-            runner.finish(1, None, ['fake'])
-            results = json.loads((self.base / agent / 'with/fake/run.json').read_text())['results']
-            self.assertEqual({r['case_id']: r['outcome'] for r in results}, {i: expected for i in self.cases}, agent)
-            report = evaluate.grade(self.base / agent / 'with/fake/run.json')  # run.json is accepted by the evaluator
-            self.assertEqual(report['counts']['unverified'], 0)
-            if agent == 'good':
-                self.assertEqual(report['counts']['fail'], 0)
-            else:
-                self.assertEqual(report['counts']['pass'], 0)
+    def test_every_key_passes_the_good_agent(self):
+        self.every_key('good', 'pass')
+
+    def test_every_key_fails_the_bad_agent(self):
+        self.every_key('bad', 'fail')
+
+    def every_key(self, agent, expected):
+        runner = self.runner(eval_run.FakeHost(agent), list(self.cases), out=agent, cache=f'cache-{agent}')
+        for case in self.cases.values():
+            runner.run_case(case, 'with', ['fake'], 1)
+        runner.cleanup.close()
+        runner.finish(1, None, ['fake'])
+        results = json.loads((self.base / agent / 'with/fake/run.json').read_text())['results']
+        self.assertEqual({r['case_id']: r['outcome'] for r in results}, {i: expected for i in self.cases}, agent)
+        report = evaluate.grade(self.base / agent / 'with/fake/run.json')  # run.json is accepted by the evaluator
+        self.assertEqual(report['counts']['unverified'], 0)
+        self.assertEqual(report['counts']['fail' if agent == 'good' else 'pass'], 0)
         self.assertEqual(list(self.work.iterdir()), [])
 
     def test_forbidden_actions_fail_a_passing_tree(self):

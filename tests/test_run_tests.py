@@ -92,7 +92,11 @@ class ShardTests(unittest.TestCase):
             loaded = __import__(name)
             with_tests = {c for c in vars(loaded).values() if isinstance(c, type) and issubclass(c, unittest.TestCase)
                           and c.__module__ == name and unittest.defaultTestLoader.loadTestsFromTestCase(c).countTestCases()}
-            self.assertEqual({c.__name__ for c in with_tests}, set(listed), name)
+            self.assertEqual({c.__name__ for c in with_tests}, {unit.split('.')[0] for unit in listed}, name)
+            for cls in with_tests:  # a class split into single tests lists every one of them
+                split = {unit.split('.', 1)[1] for unit in listed if unit.startswith(cls.__name__ + '.')}
+                if split:
+                    self.assertEqual(split, set(unittest.defaultTestLoader.getTestCaseNames(cls)), f'{name}.{cls.__name__}')
 
 
 if __name__ == '__main__':
