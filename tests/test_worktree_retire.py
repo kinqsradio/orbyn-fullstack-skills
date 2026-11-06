@@ -1116,6 +1116,16 @@ class SecondReviewTests(CleanupCase):
         self.sh(done, 'push', '-q', 'origin', ':side')
         self.assertEqual(self.item(done)['status'], 'held')
 
+    def test_git_never_fetches_a_missing_object_in_a_partial_clone(self):
+        origin = self.base/'partial-origin.git'
+        self.sh(self.base, 'clone', '-q', '--bare', str(self.app), str(origin))
+        self.sh(origin, 'config', 'uploadpack.allowFilter', 'true')
+        partial = self.base/'partial'
+        self.sh(self.base, 'clone', '-q', '--filter=blob:none', '--no-checkout', f'file://{origin}', str(partial))
+        blob = self.sh(partial, 'rev-parse', 'HEAD:' + self.sh(partial, 'ls-tree', '--name-only', 'HEAD').split()[0]).strip()
+        self.assertNotEqual(tool.git(partial, 'cat-file', '-e', blob).returncode, 0)  # missing stays missing
+        self.assertNotEqual(tool.git(partial, 'cat-file', '-e', blob).returncode, 0)  # and was not fetched
+
     def test_n1_the_record_keeps_the_head_reflog_and_says_recovery_is_files_only(self):
         done = self.done()
         self.clock = 2

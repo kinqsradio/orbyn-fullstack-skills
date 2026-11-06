@@ -74,7 +74,10 @@ def run(*args, cwd=None, env=None, timeout=120, input=None):
 def git(path, *args, cfg=(), timeout=120, input=None):
     """Git on exactly this folder: an environment allowlist (no inherited GIT_* switches), no walking up, no index writes."""
     env = {k: os.environ[k] for k in GIT_ENV if k in os.environ}
-    env.update(GIT_OPTIONAL_LOCKS='0', GIT_TERMINAL_PROMPT='0', GIT_CEILING_DIRECTORIES=str(Path(path).parent))
+    # GIT_NO_LAZY_FETCH: in a partial clone, a missing object must count as missing, not be downloaded one at a
+    # time from the remote; that turned a cleanup report on a blobless microsoft/vscode clone into minutes.
+    env.update(GIT_OPTIONAL_LOCKS='0', GIT_TERMINAL_PROMPT='0', GIT_NO_LAZY_FETCH='1',
+               GIT_CEILING_DIRECTORIES=str(Path(path).parent))
     return run('git', '-C', str(path), *[x for key in cfg for x in ('-c', key)], *args, env=env, timeout=timeout, input=input)
 
 
