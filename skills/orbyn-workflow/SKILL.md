@@ -8,11 +8,11 @@ description: "Route engineering work through investigation, design, implementati
 Follow the consuming project's instructions and requested scope; use the
 [portable defaults](references/project-policy.md) only where guidance is missing.
 
-Select skills and helpers from the user's ordinary request; the human does not
-need to name or invoke each step. When a host lacks a Skill tool, read the relevant
-reference directly. Carry authorized work through its handoffs and checks, and run
-executable setup commands yourself even when another skill owns them. Keep
-consequential authority and missing human-only decisions explicit.
+These rules cover every task, code or not. Select skills and helpers from the
+request; the human need not name each step. Without a Skill tool, read the
+reference directly. Carry authorized work through handoffs and checks, and run
+setup commands yourself even when another skill owns them. Keep consequential
+authority and human-only decisions explicit.
 
 ## Start
 
@@ -35,9 +35,8 @@ consequential authority and missing human-only decisions explicit.
 2. Apply [action scope](../orbyn-setup/references/action-scope.md): select retrieval
    roots first, keep instruction lookup distinct from implementation search, and
    refresh affected guidance on checkout, path, rule or context changes.
-3. Use [local resources first](../orbyn-setup/references/offline.md). Fetch only
-   when current information is required and network access is available and
-   authorized. Report stale or unavailable evidence.
+3. Use [local resources first](../orbyn-setup/references/offline.md); fetch only
+   current facts you need, when allowed. Report stale or missing evidence.
 4. Start from the requested outcome, current source and
    [stack ownership](references/project-policy.md#stack-and-ownership). Choose one
    playbook below; a clear small edit can proceed directly. Keep the plan as short
@@ -63,6 +62,7 @@ consequential authority and missing human-only decisions explicit.
 | Author reusable instructions | [Skill authoring](playbooks/authoring-a-skill.md) |
 | Compare prompt/skill behavior | [Evaluation](playbooks/eval.md) |
 | Autonomous task, PR queue, no-merge handoff, dependent stack or standing program | [Autonomous run](playbooks/autonomous-run.md) |
+| Research, answers, writing, other non-code work | [General task](playbooks/general-task.md) |
 | Resume existing work | [Session pickup](playbooks/session-pickup.md) |
 | User requests a pause | [Pause safely](playbooks/pause-safely.md) |
 | Large migration or staged delivery | [Multi-phase plan](playbooks/multi-phase-plan.md) |
