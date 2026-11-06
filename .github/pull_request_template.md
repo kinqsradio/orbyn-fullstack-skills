@@ -5,6 +5,7 @@ fields below. See skills/unslop/references/short-by-default.md. -->
 
 - <!-- what was wrong or missing, one line -->
 - <!-- what changes for a user of the skill, one line -->
+- How to test, risk (low/medium/high) and how to undo: <!-- one line; usually "revert the squash commit" -->
 
 ## Agent disclosure
 

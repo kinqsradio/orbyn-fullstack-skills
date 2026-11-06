@@ -60,6 +60,27 @@ was inspected. A source review is not human approval, passing CI or production
 qualification. Use the [PR feedback method](../playbooks/pr-iteration.md#deliver-line-anchored-feedback)
 for current diff anchors, supported host surfaces and posting authority.
 
+### Make review rounds converge
+
+An agent author fixes every comment it gets, so each nit costs a commit, another
+round and code nobody needed. Review to finish, not to find one more thing:
+
+- **Tag each finding** `important` (a supported defect this change introduces), `nit`
+  or `pre-existing` (real, but not introduced here: report it, never charge it to
+  this PR). Drop style-only and cleanup findings unless the user asked for them.
+- **Name the class of bug,** not one line: say where else the same mistake appears so
+  the author fixes every instance in one round.
+- **After the first full pass, review only the new diff** and the findings still open.
+  Never repeat a finding already raised or resolved with a reason.
+- **As the author, decline nits** and out-of-scope suggestions with a one-line reason
+  instead of fixing them. Watch the diff size: a fix that grows the PR well past its
+  purpose is the wrong fix.
+- **Cap the rounds** at three; then step back and reconsider the approach, or stop as
+  [opening a PR](../playbooks/opening-a-pr.md#when-three-rounds-do-not-resolve-it)
+  describes. Two agents can keep each other busy forever.
+
+Before a human looks, every `important` finding is fixed or answered with a reason.
+
 Synthetic example: a queue may yield between items, and its pending-work marker
 prevents later submissions from reusing partial state. If a proposed early return
 clears that marker, explain the interrupted-run trigger, unsafe reuse and required
