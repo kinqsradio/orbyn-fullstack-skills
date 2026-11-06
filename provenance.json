@@ -2062,6 +2062,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Sessions vs subagents on any host, default delegation triggers, session naming, no timer CI checks where a watcher reports"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Rules cover every task; general-task playbook delegates by volume (scouts for five or more sources), never for a simple question"
         }
       ]
     },

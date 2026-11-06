@@ -8,7 +8,8 @@ target checkout and [project context](docs/agents/stack.md) before applying exam
 ## Resolve the harness first
 
 Before any other step, resolve the target's harness: tiers, delegation limits and
-routing differ per repository. Run the `harness.py` in the directory of the loaded
+routing differ per repository. This holds for every task, code or not; with no target
+repository, resolve the library itself. Run the `harness.py` in the directory of the loaded
 `orbyn-workflow` skill, by absolute path:
 `python3 <skill directory>/scripts/harness.py resolve --target <target> --host <claude|codex>`,
 and follow the result. A missing script means stop and report; never fall back to
@@ -123,7 +124,9 @@ harness limits when the required host configuration is available. A child comple
 its assigned slice directly. Name each subagent or session you start
 `Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]`; the main session
 the user opened keeps its own title.
-Pieces of one task go to subagents; a task with its own branch or PR may get its own
+Delegate by volume, not by kind: a simple question stays with you, and reading about
+five or more independent sources goes to scouts on the cheapest tier while you keep the
+judgement ([general task](skills/orbyn-workflow/playbooks/general-task.md)). Pieces of one task go to subagents; a task with its own branch or PR may get its own
 session in `parallel` mode or on request. Send wide read-only searches to a scout and a
 substantial diff to an independent reviewer before its PR. Tell the user in one line
 when a child starts and what it returned. A host without the tier's models runs
