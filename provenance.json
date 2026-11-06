@@ -1246,6 +1246,18 @@
           "credit": "Hallmark contributors; Orbyn adaptations by Anh Dang and contributors",
           "copyright": "Copyright (c) 2026 Hallmark contributors",
           "license": "MIT",
+          "source": "https://github.com/nutlope/hallmark/tree/407fa689f4a276f2fd389208d271d0fef08f5058/skills/hallmark",
+          "revision": "407fa689f4a276f2fd389208d271d0fef08f5058",
+          "changes": "Method-level typeface and loading, page composition and app-screen checks reworded from layout, fonts and flow references; no theme catalogue, font list, scripts, images or stamps imported. Hashes in hallmark-source.md.",
+          "local_path": "skills/orbyn-ui-design/references/visual-direction.md",
+          "license_file": "skills/orbyn-ui-design/references/hallmark-LICENSE.txt",
+          "license_sha256": "06088a8b94598626f27612dea42300154bf7be967c85d9d3eee4490cb056af7d"
+        },
+        {
+          "relationship": "adapted",
+          "credit": "Hallmark contributors; Orbyn adaptations by Anh Dang and contributors",
+          "copyright": "Copyright (c) 2026 Hallmark contributors",
+          "license": "MIT",
           "source": "https://github.com/nutlope/hallmark/tree/7ec868225c6caa040558c321ee0fefa0e73f83a8/skills/hallmark",
           "revision": "7ec868225c6caa040558c321ee0fefa0e73f83a8",
           "changes": "Selective portable design and behavior-preserving redesign method; source paths and hashes in hallmark-source.md.",
@@ -1541,6 +1553,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Removing motion, adapted from Emil remove-animations; upstream review records for Expo, Emil and Hallmark"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Choreography method and Motion shorthand note from Emil c8a7962; Hallmark 407fa68 font, layout and app-screen methods in visual-direction"
         }
       ]
     },
@@ -2130,6 +2149,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Plugin-owned REA server recovery, from REA upstream review"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Origin-scoped capture, tri-state hardening, full batch results and desktop-application task rules, from REA 0beedcd review"
         }
       ]
     },

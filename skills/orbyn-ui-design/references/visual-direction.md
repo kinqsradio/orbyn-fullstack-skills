@@ -95,6 +95,60 @@ read in the source research on 30 October 2026. No underlying skill implementati
 license or claimed results were verified; no article/skill text or assets imported.
 Existing Hallmark adaptation notices remain applicable.
 
+## Typefaces and loading
+
+Choose type for the content, not from a favourite list. Shortlist two or three faces
+in the class the idea calls for and judge them on the real headline set on the page,
+by shape and colour; a name, reputation or subject association is not a reason. A
+face every first answer reaches for (generic UI sans, default serif) is fine when the
+project already uses it or the user asked; otherwise state why it fits. Confirm the
+licence before using a non-free face; a font file keeps its own licence.
+
+- One display and one body face, or one family; an extra face carries one role, such
+  as a wordmark. A wordmark set in the plain body weight reads as un-branded unless
+  the body voice is the brand.
+- Load only the weights used, with `font-display: swap`, preconnect to the host, and a
+  metric-matched fallback (`size-adjust` and the ascent/descent/line-gap overrides) so
+  the swap does not reflow the fold. Prefer one variable font to several statics.
+- Set `font-synthesis: none` and load the real italic or bold a heading uses.
+- Inspect the page with fonts ready, as in the concept comparison below.
+
+## Check a page composition
+
+For a marketing or content page, scroll one screen at a time: each screen needs one
+idea at a size that carries it. A screen holding only a heading and a line wants a
+bigger visual, a statement, or a merge with its neighbour.
+
+- Fix the container width and gutters once; align section edges to that grid.
+- Section heads clearly outrank item titles, and body text stays at a readable size.
+  An undersized heading is a common reason a page looks unfinished.
+- Space follows mass: a large gap frames a large section and leaves a hole under a
+  small one. Fix an empty-looking page with a bigger visual or fuller section, not a
+  smaller gap.
+- Do not repeat one skeleton (head then block) in more than two neighbours; alternate
+  dense sections with quiet ones; end on what the visitor came to do.
+- Narrow widths stack in reading order; visuals keep aspect ratio; only a named rail
+  or table scrolls sideways.
+- Squint with the words blurred: each section still has a shape.
+
+## Check an app screen
+
+A working screen is judged on familiarity, not on marketing composition.
+
+- Borrow a theme's palette, faces and radius, not its layout. Use the accent for the
+  primary action and the current selection; a second neutral carries panels.
+- Keep the project's shell. Add a sidebar only for many destinations, and prefer
+  inline editing or disclosure before a modal.
+- Density is a design choice: tables before cards for comparison, control heights
+  consistent with a comfortable hit target.
+- Every region that loads data shows loading, empty, error and full states; draw the
+  states the logic has and list the rest for the owner.
+- Filters, tabs and pagination live in the URL; a destructive action is undone or
+  confirmed. Motion marks state change, not decoration.
+- A single component needs every interactive state (default, hover, focus-visible,
+  active, disabled, loading, error, success) rendered in a labelled preview.
+- A framework page renders through its dev server; say when the render check did not run.
+
 ## Separate defects from taste
 
 Review in this order and name the evidence for each finding:
