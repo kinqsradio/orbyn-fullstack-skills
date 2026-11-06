@@ -35,10 +35,38 @@ Use the relevant local language reference before selecting an enforcement tool.
   vendor details behind the effect adapter when callers should not depend on them.
 - Introduce a seam for a demonstrated variation, effect or ownership boundary.
   Avoid a generic strategy/plugin framework for one concrete implementation.
+  The same holds for an option or a compatibility path: each needs a current
+  consumer, or it goes.
 - For a dependency cycle, trace the shared decision before adding a barrel file
   or service locator. Move that decision to its real owner, then migrate callers.
 - Record compatibility for published packages, released clients and stored data.
   A monorepo search cannot inventory consumers outside the repository.
+
+## Package conventions
+
+Language-neutral; TypeScript shown. Where the language lacks the feature, keep
+the intent.
+
+- **One public entry point.** In TypeScript, `index.ts` re-exports the supported
+  surface and `package.json` `exports` allows nothing deeper.
+- **A types-only file** (`types.ts`) holds the contract with no runtime code, so
+  consumers import it without pulling in an implementation.
+- **Tests at package level** in `tests/`, not mixed into `src/`.
+- **A README per package** stating its contract, its consumers and "Known
+  limitations". Update it in the same commit as the behavior.
+- **No new module-level globals or singletons** for shared state. Hang state on a
+  service or instance that the caller creates and passes in.
+
+## Operation rules
+
+- **Publish at the commit point.** Emit state changes and notifications only
+  after the operation commits. A failed or rolled-back attempt tells no one.
+- **Enforce where the decision is made.** A rule lives in the operation that
+  performs the action, not in a prompt filter, a wrapper or the UI. Those can
+  stay as hints; none of them is the check.
+- **Limit the complete result.** Apply byte, token, item and time limits to the
+  final assembled result, not to each part. Parts that fit can still add up to
+  too much.
 
 ## A small review table
 
