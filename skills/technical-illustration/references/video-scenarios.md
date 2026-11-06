@@ -32,10 +32,11 @@ Ask only what you cannot infer. A wrong answer here means a full re-render.
   layout around a still.
 - **Motion budget:** what actually moves, given the sources?
 
-In one session, a framed card with a spectrum, karaoke lyrics and a moving camera was
-built from a brief that only said "lyric video" and "fully animated". The user wanted
-none of those three: a fixed full-frame crop, a puppeted character and beat-reactive
-light. Three long renders were stopped and redone. When the look is not stated, ask.
+In one session, a brief for a video "with lyrics" and "fully animated" was built as a
+framed card with a spectrum, karaoke lyrics and a moving camera. On review the user
+wanted none of those three: a fixed full-frame crop, a puppeted character and
+beat-reactive light, with no lyrics. Three long renders were stopped and redone. When
+the look is not stated, ask, and show a still before rendering.
 
 Use these defaults when the brief is silent, and say that you chose them.
 
