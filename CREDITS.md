@@ -35,6 +35,7 @@ bundled, and they may carry other licences. Generated from `provenance.json` by
 | [anomalyco/opencode](https://github.com/anomalyco/opencode) | OpenCode contributors | MIT | architect, how, orbyn-ai-application, orbyn-content-design, orbyn-setup, orbyn-ui-design, orbyn-upstream-review, orbyn-workflow, tdd |
 | [assistant-ui/assistant-ui](https://github.com/assistant-ui/assistant-ui) | Agentbase AI and assistant-ui contributors | MIT | orbyn-ai-application, orbyn-ui-design |
 | [CopilotKit/CopilotKit](https://github.com/CopilotKit/CopilotKit) | CopilotKit contributors | MIT | orbyn-ai-application |
+| [deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) | DeepSeek | MIT | architect, orbyn-setup |
 | [enmerasoftware/ai-design-check](https://github.com/enmerasoftware/ai-design-check) | Enmera (ai-design-check) | See source | orbyn-ui-design |
 | [getsentry/skills](https://github.com/getsentry/skills) | Sentry (getsentry/skills) | Apache-2.0 | orbyn-workflow |
 | [github/awesome-copilot](https://github.com/github/awesome-copilot) | GitHub awesome-copilot contributors; bug-reproduction-brief credits skyestrela/ai-agent-skill-preview | MIT | how, orbyn-workflow |

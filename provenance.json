@@ -29,6 +29,13 @@
           "revision": "7b7b918bcc069941854a2973b2a26f71091c6fab",
           "license": "MIT",
           "relationship": "reviewed-inspiration; independently authored illustrated-statechart method and workshop replay plate; no upstream drawing code, fonts, models or assets imported"
+        },
+        {
+          "credit": "DeepSeek",
+          "source": "https://github.com/deepseek-ai/deepseek-harness/tree/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+          "revision": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+          "license": "MIT",
+          "relationship": "reviewed-inspiration; capability-family layout, package conventions and design rules adapted in our words; no text or code copied"
         }
       ],
       "incorporated_material": [
@@ -256,6 +263,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Expo module migration notes: payload-less events, shared overloads, lifecycle hooks, autolinking class names"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Capability-family package layout, package conventions and operation rules in architect references"
         }
       ]
     },
@@ -1029,6 +1043,22 @@
           "effort": "medium",
           "date": "2026-11-02",
           "scope": "Setup initializes and registers shared memory by default, with a --no-memory and ORBYN_MEMORY=off opt-out"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Rules beside the code they govern: one home per rule across root and subtree AGENTS.md, architecture map, package README and decision record"
+        }
+      ],
+      "reviewed_inspiration": [
+        {
+          "credit": "DeepSeek",
+          "source": "https://github.com/deepseek-ai/deepseek-harness/tree/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/docs/AGENTS.md",
+          "revision": "fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159",
+          "license": "MIT",
+          "relationship": "reviewed-inspiration; one-home-per-fact tiers adapted in our words; no text copied"
         }
       ]
     },

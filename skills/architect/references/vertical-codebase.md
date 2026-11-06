@@ -54,6 +54,47 @@ Explain the cost: local implementations may duplicate work, shared interfaces
 require coordination, and package boundaries add build/configuration work. Choose
 the smallest boundary that makes likely changes easier to reason about.
 
+## Group packages by capability family
+
+Applies when a repository already has, or needs, several packages: more than one
+implementation of a capability, plugins, separate distribution or build
+isolation. Without one of those, keep a single app with folders of the same
+shape; split into packages only after a folder boundary proves too weak. The
+"smallest boundary" rule above still decides.
+
+A family has three roles:
+
+- **Contract**: the seam or service definition, with types and no behavior.
+- **Providers**: one or more implementations of the contract.
+- **Consumers**: tools, UI or commands that call the contract.
+
+Consumers and providers depend on the contract, never on each other. Business
+rules sit in their own package and attach through a registry. The generic
+runtime or gateway does not import them.
+
+```text
+packages/
+  README.md              every group, one row each
+  storage/
+    README.md            what the group owns
+    contract/            types and service definition
+    local-disk/          provider
+    cloud-bucket/        provider
+  reports/
+    README.md
+    contract/
+    pdf-export/          consumer of storage/contract
+    rules/               business rules, registered by the app
+  runtime/               generic host; knows contracts and the registry only
+```
+
+Group rules:
+
+- Every package belongs to exactly one group.
+- A new package joins an existing group. A new group adds its own README stating
+  what it owns.
+- The top packages README lists every group and its role in one table.
+
 ## Return a reviewable design
 
 Provide an owner/path map, the public API and private details, allowed imports,
@@ -86,3 +127,8 @@ are independently written for Orbyn Engineering. No article text, code or images
 were imported; its website's copyright remains with the author. This citation is
 reviewed inspiration, not an MIT license grant or a claim of author endorsement.
 The architect skill's existing source attribution and license remain applicable.
+
+Capability-family layout was shaped by DeepSeek's
+[deepseek-harness](https://github.com/deepseek-ai/deepseek-harness/tree/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159)
+(MIT, commit `fcc0ad4`; notice in [deepseek-harness-LICENSE.txt](deepseek-harness-LICENSE.txt)).
+Reviewed inspiration; the wording and example are ours.
