@@ -164,6 +164,17 @@ A different error, a passing step or new evidence is progress and resets the cou
 A long command still producing output is not stuck. A child follows the same rule and
 reports to its lead. Stopping the user's running work is the user's call, never yours.
 
+### Report workarounds
+
+When an instruction you were given is wrong, stale or missing (a skill, AGENTS.md, a
+README, a harness setting, a script's usage) and you found your own way around it,
+say so in your report: the instruction, what was actually true, and the fix it needs.
+Examples: a documented port or command that no longer works, a setup step you had to
+discover by probing, a helper whose flags changed. A working result does not make the
+detour invisible: it costs every later run the same time. Propose the fix; edit
+the instruction only within your task's scope. A child reports it to its lead, and the
+lead passes it to the user.
+
 ## Review
 
 For substantial work, the lead must inspect the actual returned artifacts and

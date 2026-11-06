@@ -286,6 +286,7 @@ class Rejections(HarnessCase):
         self.assert_rejected(valid(verification={'required_checks': [1]}), 'required_checks[0]')
         self.assert_rejected(valid(verification={'required_checks': ['x'] * 33}), 'at most 32')
         self.assert_rejected(valid(verification={'required_checks': 'make'}), 'at most 32')
+        self.assert_rejected(valid(verification={'test_layer': 'e2e'}), 'test_layer must be one of')
         self.assert_rejected(valid(notes='n' * 2001), 'notes')
         self.assert_rejected(valid(notes=5), 'notes')
 
@@ -383,6 +384,19 @@ class TrustBoundary(HarnessCase):
         result = self.resolve()
         self.assertEqual(result['verification']['required_checks']['value'], [f'touch {marker}'])
         self.assertFalse(marker.exists())
+
+    def test_test_layer_is_reported_and_keeps_lower_required_checks(self):
+        self.write_target(valid(verification={'required_checks': ['make test'], 'test_layer': 'integration'}))
+        result = self.resolve()
+        self.assertEqual(result['verification']['test_layer']['value'], 'integration')
+        both = self.resolve('--set', 'verification.test_layer=end_to_end')
+        self.assertEqual(both['verification']['test_layer']['value'], 'end_to_end')
+        self.assertEqual(both['verification']['required_checks']['value'], ['make test'])
+        self.assertIsNone(self.resolve_default_layer())
+
+    def resolve_default_layer(self):
+        self.write_target(valid())
+        return self.resolve()['verification']['test_layer']['value']
 
 
 class HostileInput(HarnessCase):

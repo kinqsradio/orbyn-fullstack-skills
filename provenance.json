@@ -2134,6 +2134,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "pr_watch.py: wait for owned PRs and wake on new head, CI result, review threads, conflicts and requested changes"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-07",
+          "scope": "Report workarounds of wrong or stale instructions; harness verification.test_layer"
         }
       ]
     },
@@ -2275,6 +2282,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Offer repository facts learned from repeated failures as approved lessons"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-07",
+          "scope": "Route reported workarounds to the instruction owner"
         }
       ]
     },
@@ -2610,6 +2624,13 @@
           "effort": "medium",
           "date": "2026-11-05",
           "scope": "Proof intent both ways, trusted-piece list with tests, one mutant per clause, PR receipt"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-07",
+          "scope": "Cover each behavior once: no duplicate tests across layers, preferred test layer"
         }
       ]
     },

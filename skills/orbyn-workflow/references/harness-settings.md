@@ -73,7 +73,7 @@ repository text" label and must be one line without control characters.
   "tiers": { "claude": { "worker": { "model": "sonnet", "effort": "low" } } },
   "delegation": { "max_children": 2, "max_depth": 1, "read_only_children_extra": 0 },
   "routing": { "investigator": "scout" },
-  "verification": { "required_checks": ["python3 -m unittest"] },
+  "verification": { "required_checks": ["python3 -m unittest"], "test_layer": "integration" },
   "notes": "Why this repository differs."
 }
 ```
@@ -88,6 +88,9 @@ repository text" label and must be one line without control characters.
   reviewer, security, security_verifier, security_engineer, engineer,
   engineer_complex, investigator, verifier, mechanical, tiny_edit.
 - `verification.required_checks`: up to 32 one-line strings.
+- `verification.test_layer`: `unit`, `integration` or `end_to_end`, the layer the
+  repository prefers for new behavior ([cover each behavior once](../../tdd/references/test-strategy.md#cover-each-behavior-once)).
+  Unset means the cheapest layer that observes the behavior.
 - `cleanup`: limits for `worktree_retire.py report` and `apply`. `enabled` (true) is a
   boolean; the rest are positive integers: `cache_idle_days` (7), `worktree_idle_days`
   (1), `output_idle_days` (14), `archive_max_days` (30), `archive_max_mb` (500),
