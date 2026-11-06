@@ -68,6 +68,51 @@ Use the [artifact lifecycle](../../orbyn-workflow/references/artifact-lifecycle.
 for storage, server lifetime and cleanup. Confirm the human can exercise the
 interaction; a source file or screenshot alone leaves that open.
 
+## Audit an existing surface from evidence
+
+Use for "review/refine/clean up this UI" or a design handoff, not for a change
+you are verifying. Read-only on product source: write nothing except a plan
+folder the user names or approves, and record documentation changes in the plan
+for its executor.
+
+1. **Select the surface.** Honor the stated scope; otherwise one deployable app
+   and one surface family for a main task. Say what you picked. Trace from routes
+   and layouts through components, variants and resolved tokens. A link counts
+   only if proven by render, import, props, config or inheritance; similar names
+   or proximity do not.
+2. **Reconstruct the product's own system.** Check the design document and local
+   guidance. Use one only if it is current and governs this surface; drafts and
+   migrations are intent. Resolve tokens and variants on the traced path. Missing
+   documentation is not a finding. Note audited surface, sources, documented
+   decisions, owners and consumers, explicit exceptions (`None documented` if no
+   source names one).
+3. **Prove each finding.** Candidates from search or repetition are not findings.
+   Keep one only with all three: a binding rule for this property and scope (or a
+   direct contradiction within one task); proof the owner or value reaches the
+   surface at runtime; one correction the evidence determines, naming the token,
+   variant or exemplar. Reject candidates that need invented intent or offer
+   alternatives. Source proves token, type, colour, spacing, layout, copy and
+   variant violations. Hierarchy, density, clarity and discoverability need a
+   screenshot or user evidence. Drop functional bugs, accessibility semantics,
+   routes and performance unless asked.
+4. **Vet.** Re-open every cited line and try to falsify it. Delete a candidate
+   when it mismatches the code, the rule does not govern it, a deliberate reason
+   exists, several corrections fit or another finding shares its root cause.
+5. **Report.** Top three at most, ordered by confidence, user impact, reach and
+   cost: a table of problem, evidence, one proposed change, scope, confidence.
+   Then one "improve first" pick, or "No supported findings were found." Ask
+   which to plan; never implement unasked.
+6. **Write plans** for selected findings, one per change. A plan is self-contained
+   because its executor has not seen this audit: outcome, commit written against,
+   evidence chain (surface, problem, design evidence, owner, affected surfaces,
+   uncertainty), design decision, reuse (tokens, components, exemplar path; a new
+   primitive only with proof the system cannot express it), numbered changes with
+   path, change, what to preserve and how to verify, scope (inherit, verify,
+   exclude), validation (task, states and viewports, reuse check, exact repository
+   command), stop conditions, and the decision to record in design documentation
+   after acceptance. Re-open sources first and reconcile an existing plan rather
+   than duplicate it.
+
 ## Check for objective defects
 
 Run `python3 scripts/ui_check.py <source>` from the skill folder before review. Exit 1 means

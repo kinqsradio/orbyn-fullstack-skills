@@ -1485,6 +1485,39 @@
           "license_sha256": "c615621c4cc1676ccde194e7a01b6469ba477780251bd71e007fc473a49c2c2b",
           "relationship": "selected-method-adaptation; frame-cost rules",
           "changes": "Frame-cost rules in our own words added to the existing diagnosis guide; skill command and example code not copied."
+        },
+        {
+          "source": "https://github.com/ibelick/ui-skills/tree/00db7d656719c399c091f3ea138c6f42a7fa4d98/skills/fixing-metadata",
+          "revision": "00db7d656719c399c091f3ea138c6f42a7fa4d98",
+          "copyright": "Copyright (c) 2026 Julien Thibeaut",
+          "license": "MIT",
+          "license_file": "skills/orbyn-ui-design/references/ui-skills-LICENSE.txt",
+          "license_sha256": "c615621c4cc1676ccde194e7a01b6469ba477780251bd71e007fc473a49c2c2b",
+          "relationship": "selected-method-adaptation; Orbyn-reworded",
+          "local_path": "skills/orbyn-ui-design/references/page-metadata.md",
+          "changes": "Page-metadata checklist reworded and shortened; no upstream text, scripts or runtime imported."
+        },
+        {
+          "source": "https://github.com/ibelick/ui-skills/tree/00db7d656719c399c091f3ea138c6f42a7fa4d98/skills/improve-ui",
+          "revision": "00db7d656719c399c091f3ea138c6f42a7fa4d98",
+          "copyright": "Copyright (c) 2026 Julien Thibeaut",
+          "license": "MIT",
+          "license_file": "skills/orbyn-ui-design/references/ui-skills-LICENSE.txt",
+          "license_sha256": "c615621c4cc1676ccde194e7a01b6469ba477780251bd71e007fc473a49c2c2b",
+          "relationship": "selected-method-adaptation; Orbyn-reworded",
+          "local_path": "skills/orbyn-ui-design/references/visual-review.md",
+          "changes": "Evidence-backed audit and plan method added as a section; plan template summarised, no upstream text or runtime imported."
+        },
+        {
+          "source": "https://github.com/ibelick/ui-skills/tree/00db7d656719c399c091f3ea138c6f42a7fa4d98/skills/create-design-md",
+          "revision": "00db7d656719c399c091f3ea138c6f42a7fa4d98",
+          "copyright": "Copyright (c) 2026 Julien Thibeaut",
+          "license": "MIT",
+          "license_file": "skills/orbyn-ui-design/references/ui-skills-LICENSE.txt",
+          "license_sha256": "c615621c4cc1676ccde194e7a01b6469ba477780251bd71e007fc473a49c2c2b",
+          "relationship": "selected-method-adaptation; Orbyn-reworded",
+          "local_path": "skills/orbyn-ui-design/references/design-md.md",
+          "changes": "DESIGN.md creation method reworded; brand catalogue and tooling not imported."
         }
       ],
       "reviewed_sources": [
@@ -1600,6 +1633,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Quick polish checklist, accessibility audit reference and frame-cost motion rules adapted from ibelick/ui-skills 00db7d6"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Page metadata, evidence-backed UI audit and DESIGN.md methods adapted from ibelick/ui-skills 00db7d6"
         }
       ]
     },
