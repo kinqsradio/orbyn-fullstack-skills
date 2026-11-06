@@ -154,6 +154,24 @@ reconciliation, later local commits and dependent work before retirement. The
 record names a retained reason/review trigger without authorizing cleanup. See the
 [worked examples](../references/contribution-examples.md).
 
+## Watch the PRs you own
+
+Act only on PRs the person owns: the author is the person, or the PR closes an issue assigned to them.
+Review requests, commits and PR assignees do not count. Run `pr_watch.py scope` once to see them and the
+person's merge authority. Then run `pr_watch.py wait` in the background: the host's background run, or
+`bg.sh start --name pr-watch -- python3 <skill directory>/scripts/pr_watch.py wait`, then `bg.sh wait`
+([wait without polling](../references/waiting.md)). It only reads GitHub. It exits 0 with one line per event
+(new head, CI result, review threads, conflict, requested changes, ready, closed) and 3 when nothing happened:
+call it again. Where the host already watches PRs (Claude desktop Auto-fix), use that instead.
+
+- Review the event, fix on the PR's own branch, push (never force-push), let CI re-run.
+- CI events judge the required checks only; `optional failing: X` is a note, not a failure.
+- Merge only when `ready=yes`: authority, `mergeStateStatus` CLEAN, required checks green on the current head,
+  and the user's delivery scope covers merging. Follow the repo's merge method and attribution rules.
+- Never approve your own PR.
+- `ready=owner` means only the approval GitHub will not let an admin give their own PR is missing. Report it to
+  the user. Never admin-merge on your own.
+
 ## Dependent stacks and current context
 
 Resolve the actual repository/fork identity and PR base graph; do not infer a

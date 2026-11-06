@@ -27,6 +27,7 @@ Start these in the background from the first call, with the host's background ru
 - The library test suite: `scripts/run_tests.py` (about two minutes, longer under load)
 - Live evals: `eval_run.py --live`, and subagent eval trials
 - CI watches: `gh pr checks <n> --watch`
+- Owned PR watch: `pr_watch.py wait` ([watch the PRs you own](../playbooks/pr-iteration.md#watch-the-prs-you-own))
 - A project's full build, test or end-to-end suite, and anything else likely to pass
   the host's foreground limit
 
