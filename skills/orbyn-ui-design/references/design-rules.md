@@ -64,6 +64,20 @@ tokens or components already settle.
 - Glow and heavy shadow do not carry meaning or mark the primary action; use
   size, weight, position and the existing accent.
 
+## Theming web pages
+
+- Define theme tokens as CSS variables and switch them with `data-theme` on
+  `<html>`. Keep ink and paper as RGB channel variables and expose them as
+  `rgb(var(--ink) / <alpha-value>)`, so opacity steps (`bg-ink/5`) work in every
+  theme. Never hard-code white or black utilities; they break the other theme.
+- Set the theme before first paint with a small inline script in `<head>`: the stored
+  choice, else `prefers-color-scheme`. The server must not render the theme attribute
+  or a JS-state class on `<html>`: hydration (seen with React 19) rewrites
+  server-rendered attributes and wipes what the script set. Use attributes the
+  server never renders, such as `data-theme` and `data-js` added only by the script.
+- The default primary button inverts (ink fill, paper text) and follows the theme. A
+  colourful accent button is opt-in and suits app chrome more than a content site.
+
 ## Layout, panels, and overlays
 
 For a substantial workspace change, [workspace composition](workspace-composition.md)

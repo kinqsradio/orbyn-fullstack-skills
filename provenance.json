@@ -1684,6 +1684,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Page metadata, evidence-backed UI audit and DESIGN.md methods adapted from ibelick/ui-skills 00db7d6"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Web theming, SEO-safe scroll reveal, font-weight mapping and brand-mark lessons, written independently from a site redesign; no external source imported"
         }
       ]
     },
