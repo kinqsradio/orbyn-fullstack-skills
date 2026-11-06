@@ -232,6 +232,24 @@ def package_tree(dirs):
     return False
 
 
+def nested_package(root, dirs):
+    """True when a secret-looking file sits in a real package tree of a dependency folder below a worktree's root.
+
+    The first node_modules, .venv or venv on the way down counts only when its parent folder holds that kind's
+    lockfile (requirements*.txt also proves a Python environment), so web/node_modules next to web/package-lock.json
+    is an installed tree; package_tree then applies its usual rules from there."""
+    for i, part in enumerate(dirs):
+        kind = part.casefold()
+        if kind not in ('node_modules', '.venv', 'venv'):
+            continue
+        parent = Path(root, *dirs[:i])
+        proved = any((parent/lock).is_file() for lock in CACHE_LOCKS[kind])
+        if kind in REQUIREMENTS_FOR:
+            proved = proved or any(parent.glob('requirements*.txt'))
+        return proved and package_tree(dirs[i:])
+    return False
+
+
 def tracked_files(path):
     """Paths Git tracks in a worktree, relative and with forward slashes; empty when Git cannot say."""
     try:
@@ -249,7 +267,8 @@ def scan(path, top=(), skip_top_git=False, caches=False):
     Size uses allocated blocks when available and logical bytes otherwise.
     Links are measured, never followed. Secret-looking names inside a package tree of a cache (see package_tree) are
     third-party fixtures and do not count; `top` names the cache an item is, and `caches` applies the same rule to the
-    cache folders directly inside a worktree. In a worktree (`skip_top_git`), files Git tracks do not count either:
+    cache folders directly inside a worktree and to a dependency folder deeper in it that its lockfile proves
+    (see nested_package). In a worktree (`skip_top_git`), files Git tracks do not count either:
     they are already in its history, and an edited one is held as an uncommitted change. Everywhere else every secret
     counts. Any .git (any case) or bare repository below the root is reported, and times ahead of the clock are flagged."""
     found = {'newest': 0.0, 'kb': 0, 'secrets': [], 'git': [], 'unreadable': False, 'future': False}
@@ -287,7 +306,8 @@ def scan(path, top=(), skip_top_git=False, caches=False):
                 found['git'].append(os.path.relpath(full, path))
             relative = os.path.relpath(full, path)
             if (secret_name(name) and len(found['secrets']) < 20 and relative.replace(os.sep, '/') not in tracked
-                    and not ((top or (caches and dirs and dirs[0].casefold() in CACHE_DIRS)) and package_tree(dirs))):
+                    and not ((top or (caches and dirs and dirs[0].casefold() in CACHE_DIRS)) and package_tree(dirs))
+                    and not (caches and not top and nested_package(path, dirs))):
                 found['secrets'].append(relative)
         folders[:] = [f for f in folders if f.casefold() != '.git']
     return found
