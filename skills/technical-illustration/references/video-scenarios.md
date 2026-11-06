@@ -60,8 +60,13 @@ delivery is still 1080p. A 16-second 1080p sample at CRF 17 was 120 MB, too larg
 reach a remote viewer.
 
 View frames at full size as well as on a contact sheet, and step through a whole
-cycle. `ffmpeg -i sample.mp4 -vf "select='not(mod(n\,15))',scale=480:-1,tile=4x3" -frames:v 1 sheet.png`
-gives one sheet of every fifteenth frame. In a one-image test, every script passed while the haze blotched the sky, and a
+cycle. This makes one sheet of every fifteenth frame:
+
+```sh
+ffmpeg -i sample.mp4 -vf "select='not(mod(n\,15))',scale=480:-1,tile=4x3" -frames:v 1 sheet.png
+```
+
+In a one-image test, every script passed while the haze blotched the sky, and a
 mask error only showed in some frames. Crop in on horizons and any edge near a moved
 layer. Keep new haze or light subtle, and judge it against the source image.
 
