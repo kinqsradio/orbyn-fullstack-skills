@@ -26,7 +26,17 @@ Ask only what you cannot infer. A wrong answer here means a full re-render.
   used this way? All visuals are generated, so a cover beside the track stays unused.
 - **Delivery:** platform, aspect ratio, length and whether it must loop.
 - **Words:** lyrics, narration, titles or none?
+- **Look:** full-frame artwork or a framed card, and whether bars, a spectrum or a
+  progress line appear at all. "Fully animated" with a supplied image means the
+  character moves, as in [animate an image](animate-an-image.md), not a visualizer
+  layout around a still.
 - **Motion budget:** what actually moves, given the sources?
+
+In one session, a brief for a video "with lyrics" and "fully animated" was built as a
+framed card with a spectrum, karaoke lyrics and a moving camera. On review the user
+wanted none of those three: a fixed full-frame crop, a puppeted character and
+beat-reactive light, with no lyrics. Three long renders were stopped and redone. When
+the look is not stated, ask, and show a still before rendering.
 
 Use these defaults when the brief is silent, and say that you chose them.
 
@@ -35,6 +45,7 @@ Use these defaults when the brief is silent, and say that you chose them.
 | Anime-style, full animation         | 24         | Matches held-drawing timing             |
 | Lyric video, ambient, motion design | 30         | Smooth type with smaller files          |
 | Visualizer, fast camera moves       | 60         | Beat response stays sharp               |
+| Puppeted image with continuous sway | 60         | Slow warps and drifting particles judder at 30 |
 
 Render 1920x1080 unless told otherwise. Before a full render, review a 10-second
 sample around the busiest section. Anything over 120 seconds or 3,600 frames uses
@@ -43,8 +54,19 @@ sample around the busiest section. Anything over 120 seconds or 3,600 frames use
 Every video finishes with `flash-check.py`, a real viewing of the file and the
 [legibility check](#check-words-and-logos) when it carries words or a logo.
 
+When the user reviews on a phone or through a host with an upload limit, send a
+re-encoded 720p copy of the sample (about 2 to 5 MB for 10 seconds) and say the
+delivery is still 1080p. A 16-second 1080p sample at CRF 17 was 120 MB, too large to
+reach a remote viewer.
+
 View frames at full size as well as on a contact sheet, and step through a whole
-cycle. In a one-image test, every script passed while the haze blotched the sky, and a
+cycle. This makes one sheet of every fifteenth frame:
+
+```sh
+ffmpeg -i sample.mp4 -vf "select='not(mod(n\,15))',scale=480:-1,tile=4x3" -frames:v 1 sheet.png
+```
+
+In a one-image test, every script passed while the haze blotched the sky, and a
 mask error only showed in some frames. Crop in on horizons and any edge near a moved
 layer. Keep new haze or light subtle, and judge it against the source image.
 

@@ -1206,6 +1206,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Development eval case loop-guard-same-failure-twice"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5",
+          "effort": "medium",
+          "date": "2026-11-05",
+          "scope": "Added outcome eval case beat-reactive-puppet-from-portrait for technical-illustration"
         }
       ]
     },
@@ -3163,6 +3170,20 @@
           "model": "unrecorded",
           "date": "2026-11-02",
           "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5",
+          "effort": "medium",
+          "date": "2026-11-05",
+          "scope": "Image-puppet music video lessons: settle the look first, fixed crop and enlargement check, beat drives light not body or camera, 60 fps for puppets, blink timing in seconds with a soft-blink option, curved drawn lids, onset density check, whole-track analysis for previews, screen-blended light, remote review copies, new outcome eval case"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Review fix: contact-sheet ffmpeg command as its own code block"
         }
       ]
     },
