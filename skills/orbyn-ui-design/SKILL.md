@@ -116,6 +116,8 @@ inspector or handing a preview to a person.
 - Code-driven UI motion and an editable preview:
   [motion composition and inspector](examples/spatial-review/motion/README.md).
 - Browser touch/keyboard/viewport: [mobile web](references/mobile-web.md).
+- Accessibility audit or fix of controls, forms and dialogs:
+  [accessibility](references/accessibility.md).
 - Real schema/data extremes: [stress fixtures](references/stress-fixtures.md).
 - Demonstrated Expo/RN screens: [native UI](references/mobile/native-ui.md),
   [navigation](references/mobile/navigation.md),

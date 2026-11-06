@@ -29,3 +29,32 @@ but incomplete interaction cannot win. Browser emulation and debug JS traces do
 not establish release-device smoothness. Use the existing performance playbook
 for cause/budget, then [motion](motion.md) for correction and [mobile verification](../../tdd/references/mobile-verification.md)
 for native evidence.
+
+## Frame-cost rules
+
+Start from these when writing or reviewing motion code; the profiler decides
+exceptions.
+
+- Never interleave layout reads and writes in one frame (read `getBoundingClientRect`,
+  write style, read again). Batch every read, then every write.
+- Measure once, then animate with `transform`/`opacity`. For layout-like effects
+  use FLIP: record first, apply the final state, record last, play the inverse
+  transform back to identity.
+- Do not drive animation from `scroll` events or `scrollY`. Prefer scroll or view
+  timelines (`animation-timeline: scroll()` / `view()`) where supported, with a
+  non-animated fallback.
+- Every `requestAnimationFrame` loop has a stop condition (finished, hidden,
+  unmounted). Do not run several animation systems that each measure or mutate
+  layout on the same element.
+- Pause looping or offscreen animation with `IntersectionObserver`; do not poll
+  scroll position for visibility.
+- Layout, paint-heavy and filter animation (width, height, gradients, masks, blur)
+  belongs only on small isolated surfaces. Keep animated blur small, brief and
+  never continuous or full-screen; try opacity and translate first.
+- Animated CSS variables that inherit invalidate every descendant. Scope them to
+  the element, and do not use them to drive transform or opacity.
+- View transitions suit navigation-level changes. Avoid them for interaction-heavy
+  UI or anything needing interruption or cancellation, and treat size changes as
+  layout work.
+- Work within the existing animation library; do not migrate or mix APIs in one
+  component to fix performance.
