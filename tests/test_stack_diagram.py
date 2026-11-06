@@ -24,6 +24,7 @@ from unittest import mock
 import urllib.error
 import urllib.request
 import urllib.response
+import zipfile
 from email.message import Message
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -557,6 +558,121 @@ class FetchRun(unittest.TestCase):
             code, _ = quiet(fetch.main, [str(repo/'output/logos'), f'hono={LOGO_URL}', '--allow-network'])
         self.assertEqual(code, 0)
         self.assertTrue((repo/'output/logos/hono.svg').exists())
+
+
+def zipped(files):
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, 'w') as archive:
+        for name, body in files.items():
+            archive.writestr(name, body)
+    return buffer.getvalue()
+
+
+def mark(colour):
+    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#{colour}" d="M0 0h24v24H0z"/></svg>'.encode()
+
+
+GCP_CORE = zipped({'Unique Icons/Cloud Run/SVG/CloudRun-512-color.svg': mark('4285f4'),
+                   'Unique Icons/Cloud Storage/SVG/CloudStorage-512-color.svg': mark('4285f5')})
+GCP_CATEGORY = zipped({'Category Icons/Networking/SVG/Networking-512-color.svg': mark('34a853'),
+                       'Category Icons/Databases/SVG/Databases-512-color.svg': mark('ea4335')})
+AZURE_PAGE = b'<a href="https://arch-center.azureedge.net/icons/Azure_Public_Service_Icons_V23.zip">download</a>'
+AZURE_ZIP = zipped({
+    'Azure_Public_Service_Icons/Icons/compute/10035-icon-service-App-Services.svg': mark('0078d4'),
+    'Azure_Public_Service_Icons/Icons/networking/10061-icon-service-Virtual-Networks.svg': mark('0078d5'),
+    'Azure_Public_Service_Icons/Icons/general/10000-icon-service-Azure-A.svg': mark('0078d6')})
+CLOUD_ROUTES = {
+    fetch.GCP_PACKAGES[0]: (200, {}, GCP_CORE), fetch.GCP_PACKAGES[1]: (200, {}, GCP_CATEGORY),
+    fetch.AZURE_ICONS_PAGE: (200, {}, AZURE_PAGE),
+    'https://arch-center.azureedge.net/icons/Azure_Public_Service_Icons_V23.zip': (200, {}, AZURE_ZIP)}
+
+
+class CloudIcons(unittest.TestCase):
+    def setUp(self):
+        self.directory = tempfile.TemporaryDirectory()
+        self.addCleanup(self.directory.cleanup)
+        self.out = Path(self.directory.name)/'icons'
+        for name, package in (('GCP', fetch.GcpPackages()), ('AZURE', fetch.AzurePackage())):
+            patcher = mock.patch.object(fetch, name, package)
+            patcher.start()
+            self.addCleanup(patcher.stop)
+
+    def manifest(self):
+        return json.loads((self.out/'manifest.json').read_text())
+
+    def test_specs_parse_like_the_aws_form(self):
+        self.assertEqual(fetch.parse_spec('run:gcp/Cloud-Run'), ('run', 'slug', 'gcp/Cloud-Run', 'box'))
+        self.assertEqual(fetch.parse_spec('app:azure/app-service~server'), ('app', 'slug', 'azure/app-service', 'server'))
+        for spec in ('x:gcp/a/b', 'x:azure/a b'):
+            with self.assertRaises(ValueError):
+                fetch.parse_spec(spec)
+
+    def test_offline_runs_use_pictograms_and_never_touch_the_network(self):
+        with stub({}) as handler:
+            code, output = quiet(fetch.main, [str(self.out), 'run:gcp/cloud-run', 'app:azure/app-service'])
+        self.assertEqual(code, 0)
+        self.assertEqual(handler.requested, [])
+        self.assertEqual(output.count('FALLBACK'), 2)
+        self.assertTrue(all(entry['source'] == 'generic' for entry in self.manifest().values()))
+
+    def test_gcp_products_azure_names_and_their_forms_land_in_the_manifest(self):
+        specs = ['run:gcp/cloud-run', 'gcs:gcp/gcs', 'lb:gcp/Cloud-Load-Balancing', 'sql:gcp/memorystore',
+                 'tree:gcp-run', 'app:azure/app-service', 'net:azure/vnet', 'mark:azure/Azure-A', 'azure']
+        with mock.patch.object(fetch, 'require_ignored'), stub(CLOUD_ROUTES) as handler:
+            code, output = quiet(fetch.main, [str(self.out), *specs, '--allow-network'])
+        manifest = self.manifest()
+        self.assertEqual(code, 0)
+        self.assertEqual(manifest['run']['source'], 'gcp')
+        self.assertIn('Cloud Run', manifest['run']['url'])
+        self.assertIn('Cloud Storage', manifest['gcs']['url'])  # A short form resolves to the product's icon.
+        self.assertIn('Networking', manifest['lb']['url'])  # A product without its own icon takes its category's.
+        self.assertIn('Databases', manifest['sql']['url'])
+        self.assertIn('Cloud Run', manifest['tree']['url'])  # gcp-* uses the same package.
+        self.assertEqual(manifest['app']['source'], 'azure')
+        self.assertIn('Virtual-Networks', manifest['net']['url'])
+        self.assertIn('Azure-A', manifest['mark']['url'])
+        self.assertEqual(manifest['azure']['source'], 'azure')
+        self.assertTrue(all(entry['source'] in ('gcp', 'azure') and not entry.get('fallback') for entry in manifest.values()))
+        self.assertTrue((self.out/'run.svg').read_bytes().startswith(b'<svg'))
+        self.assertNotIn('FALLBACK', output)
+        self.assertEqual(set(handler.requested), set(CLOUD_ROUTES))  # Nothing beyond the vendors' own hosts.
+
+    def test_a_miss_lists_names_and_falls_back_instead_of_using_a_third_party_copy(self):
+        with mock.patch.object(fetch, 'require_ignored'), stub(CLOUD_ROUTES) as handler:
+            code, output = quiet(fetch.main, [str(self.out), 'bq:gcp/nothing', 'kv:azure/nothing', '--allow-network'])
+        self.assertEqual(code, 0)
+        self.assertIn('Names: ', output)
+        self.assertEqual(output.count('FALLBACK'), 2)
+        self.assertTrue(all(entry['source'] == 'generic' for entry in self.manifest().values()))
+        self.assertFalse([url for url in handler.requested if 'svgl' in url or 'jsdelivr' in url])
+
+    def test_an_unreachable_package_falls_back(self):
+        with mock.patch.object(fetch, 'require_ignored'), stub({}):
+            code, output = quiet(fetch.main, [str(self.out), 'run:gcp/cloud-run', 'app:azure/app-service', '--allow-network'])
+        self.assertEqual(code, 0)
+        self.assertIn('GCP  icon packages unavailable', output)
+        self.assertIn('Azure icon package unavailable', output)
+        self.assertEqual(output.count('FALLBACK'), 2)
+
+    def test_package_members_are_size_checked(self):
+        package = fetch.GcpPackages()
+        package.archives = [mock.Mock()]
+        package.archives[0].getinfo.return_value = mock.Mock(file_size=fetch.MAX_ICON_BYTES + 1)
+        with self.assertRaises(fetch.FetchRefused):
+            package.read('0:big.svg')
+        package.archives[0].read.assert_not_called()
+
+    def test_credits_name_the_vendor_icons(self):
+        self.assertEqual(build.label_for({'source': 'gcp'}), 'Google Cloud icons')
+        self.assertEqual(build.label_for({'source': 'azure'}), 'Azure icons')
+
+    def test_template_has_the_vendor_group_styles_and_no_hard_gallery(self):
+        template = (SKILL/'assets/template.html').read_text()
+        for selector in ('.group.gcp.region', '.group.gcp.vpc', '.group.gcp.subnet', '.group.gcp.zone',
+                         '.group.azure.rg', '.group.azure.region', '.group.azure.vnet', '.group.azure.subnet',
+                         '.group.azure.zone'):
+            self.assertIn(selector, template)
+        self.assertFalse((SCRIPTS/'share.py').exists())
 
 
 class Build(unittest.TestCase):

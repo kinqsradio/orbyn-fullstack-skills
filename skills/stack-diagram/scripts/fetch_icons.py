@@ -13,8 +13,14 @@ Spec forms (add ~KIND to any of them to choose the fallback pictogram, default b
   name:slug          different slug                betterauth:better-auth
   name=URL           explicit https URL            orpc=https://orpc.example/logo.webp
   name:aws/Service   AWS's own icon                lambda:aws/lambda
+  name:gcp/Product   Google Cloud's own icon       run:gcp/cloud-run
+  name:azure/Name    Azure's own icon              vault:azure/key-vault
   name:lucide/icon   Lucide pictogram              cron:lucide/clock
   name:generic/kind  bundled pictogram, no fetch   client:generic/user
+
+aws/, gcp/ and azure/ specs (and the slugs aws-*, gcp-*, google-cloud-* and azure-*) read the
+vendor's own icon package at run time, held in memory, and never fall back to a third-party copy.
+The slugs gcp, google-cloud and azure alone are the vendor's mark, from the usual chain or package.
 
 Sources tried for a slug: svgl, devicon, gilbarbara/logos. svgl must match the title
 exactly, because its search is fuzzy and a loose hit would ship another brand's logo.
@@ -77,6 +83,90 @@ AWS_ALIASES = {
     'iam': 'AWS-Identity-and-Access-Management', 'kms': 'AWS-Key-Management-Service',
     'msk': 'Amazon-Managed-Streaming-for-Apache-Kafka', 'opensearch': 'Amazon-OpenSearch-Service',
     'vpc': 'Virtual-private-cloud-VPC',
+}
+
+GCP_PACKAGES = ('https://services.google.com/fh/files/misc/core-products-icons.zip',
+                'https://services.google.com/fh/files/misc/category-icons.zip')
+GCP_ICON_RE = re.compile(r'(?:Unique|Category) Icons/([^/]+)/SVG/[^/]+\.svg')
+# Product -> icon folder, from Google's guide on cloud.google.com/icons. Most products share their
+# category's icon. Adapted from caru-ini/stack-diagram (MIT); the bare "SQL" row is left out so gcp/sql is Cloud SQL.
+GCP_PRODUCTS = {
+    'Agents': 'AI Applications & Agents, Customer Engagement Suite, Conversational Agents, Agent Assist, '
+              'Conversational Insights, Contact Center as a Service',
+    'AI _ Machine Learning': 'AI and Machine Learning, AI Hub, AI Platform, AI Platform Unified, AutoML, '
+              'Cloud GPU, Cloud Healthcare API, Cloud Natural Language API, Cloud TPU, Cloud Translation API, '
+              'Cloud Vision API, Data Labeling, Dialogflow ES, Document AI, Genomics, Recommendations AI, '
+              'Speech to Text, Tensorflow Enterprise, Text To Speech, Visual Inspection AI',
+    'Collaboration': 'Google Workspace',
+    'Compute': 'Batch, Container Optimized OS, Migrate To Virtual Machines, OS Config Management, VMware Engine',
+    'Containers': 'Backup for GKE, Knative serving, Migrate To Containers',
+    'Data Analytics': 'Analytics Hub, BigLake, Cloud Composer, Cloud Data Fusion, Data Catalog, '
+                      'Data Loss Prevention API, Dataflow, Dataplex, Dataprep, Dataproc, Dataproc Metastore, '
+                      'Datastream, Pub/Sub',
+    'Databases': 'Bare Metal Solution, Bigtable, Database Center, Database Migration Service, Datastore, '
+                 'Firestore, Memorystore',
+    'Developer Tools': 'Cloud Code, Cloud Deployment Manager, Cloud Scheduler, Cloud Shell, Cloud Tasks, '
+                       'Cloud Workstations, Service Catalog',
+    'DevOps': 'Cloud Build, Cloud Deploy, Container Registry',
+    'Hybrid & Multicloud': 'Hybrid and Multicloud',
+    'Integration Services': 'Advanced API Security, API Analytics, Application Integration, Cloud API Gateway, '
+                            'Cloud APIs, Cloud Endpoints, Connectors, Developer Portal, Eventarc, Workflows',
+    'Management Tools': 'Carbon Footprint, Producer Portal',
+    'Maps & Geospatial': 'Maps and Geospatial, Earth Engine, Google Earth, Google Maps Platform',
+    'Marketplace': 'Google Cloud Marketplace',
+    'Migration': 'Migrate For Compute Engine, Transfer Appliance',
+    'Networking': 'Cloud Armor, Cloud CDN, Cloud DNS, Cloud Domains, Cloud Firewall Rules, Cloud IDS, '
+                  'Cloud Interconnect, Cloud Load Balancing, Load Balancer, Cloud NAT, Cloud Network, '
+                  'Cloud Router, Cloud VPN, Connectivity Test, Network Connectivity Center, '
+                  'Network Intelligence Center, Network Security, Network Tiers, Packet Mirroring, '
+                  'Partner Interconnect, Private Service Connect, Routes, Service Mesh, '
+                  'Virtual Private Cloud, VPC',
+    'Observability': 'Cloud Audit Logs, Cloud Logging, Cloud Monitoring, Error Reporting, '
+                     'Google Cloud Observability, Profiler, Trace',
+    'Operations': 'App Hub, Backup and DR, Capacity Planner, Performance Dashboard',
+    'Security Identity': 'Security and Identity, Access Context Manager, Asset Inventory, Assured Workloads, '
+                         'BeyondCorp, Binary Authorization, Certificate Authority Service, Certificate Manager, '
+                         'Cloud Asset Inventory, Cloud HSM, Identity and Access Management, IAM, '
+                         'Identity Aware Proxy, IAP, Identity Platform, Key Management Service, KMS, '
+                         'Recaptcha Enterprise, Secret Manager, Web Risk, Web Security Scanner, '
+                         'Workload Identity Federation',
+    'Serverless Computing': 'Serverless, App Engine, Cloud Functions, Cloud Run functions',
+    'Storage': 'Filestore, Google Cloud NetApp Volumes, Local SSD, Parallelstore, Storage Transfer Service',
+    'Web & Mobile': 'Web and Mobile',
+    'Web3': 'Blockchain Node Engine, Blockchain RPC',
+    'AlloyDB': 'AlloyDB Omni',
+    'BigQuery': 'BigQuery Functions, BigQuery Omni',
+    'Cloud Spanner': 'Spanner',
+    'Cloud Storage': 'GCS',
+    'Compute Engine': 'GCE',
+    'Distributed Cloud': 'Google Distributed Cloud',
+    'GKE': 'Google Kubernetes Engine, Kubernetes Engine',
+    'Hyperdisk': 'Persistent Disk',
+    'Looker': 'Looker Studio, Looker Studio Pro',
+    'Security Operations': 'Google Security Operations, SecOps',
+    'Threat Intelligence': 'Google Threat Intelligence',
+}
+AZURE_ICONS_PAGE = 'https://learn.microsoft.com/en-us/azure/architecture/icons/'
+AZURE_PACKAGE_RE = re.compile(r'https://arch-center\.azureedge\.net/icons/Azure_Public_Service_Icons_V\d+\.zip')
+AZURE_ICON_RE = re.compile(r'Azure_Public_Service_Icons/Icons/[^/]+/\d+\s*-icon-service-(.+)\.svg')
+AZURE_ALIASES = {
+    'webapp': 'App-Services', 'functions': 'Function-Apps', 'azurefunctions': 'Function-Apps',
+    'aks': 'Kubernetes-Services', 'vm': 'Virtual-Machine', 'vmss': 'VM-Scale-Sets',
+    'containerapp': 'Container-Apps-Environments', 'containerapps': 'Container-Apps-Environments',
+    'acr': 'Container-Registries', 'aci': 'Container-Instances', 'staticwebapp': 'Static-Apps',
+    'staticwebapps': 'Static-Apps', 'frontdoor': 'Front-Door-and-CDN-Profiles',
+    'appgateway': 'Application-Gateways', 'lb': 'Load-Balancers', 'vnet': 'Virtual-Networks',
+    'nsg': 'Network-Security-Groups', 'waf': 'Web-Application-Firewall-Policies(WAF)', 'dns': 'DNS-Zones',
+    'expressroute': 'ExpressRoute-Circuits', 'trafficmanager': 'Traffic-Manager-Profiles',
+    'vpngateway': 'Virtual-Network-Gateways', 'storage': 'Storage-Accounts', 'blob': 'Storage-Accounts',
+    'blobstorage': 'Storage-Accounts', 'cosmos': 'Azure-Cosmos-DB', 'redis': 'Azure-Managed-Redis',
+    'managedredis': 'Azure-Managed-Redis', 'postgres': 'Azure-Database-PostgreSQL-Server',
+    'postgresql': 'Azure-Database-PostgreSQL-Server', 'mysql': 'Azure-Database-MySQL-Server',
+    'eventgrid': 'Event-Grid-Topics', 'apim': 'API-Management-Services', 'apimanagement': 'API-Management-Services',
+    'foundry': 'AI-Foundry', 'aisearch': 'Cognitive-Search', 'search': 'Cognitive-Search',
+    'appinsights': 'Application-Insights', 'loganalytics': 'Log-Analytics-Workspaces',
+    'datafactory': 'Data-Factories', 'synapse': 'Azure-Synapse-Analytics', 'resourcegroup': 'Resource-Groups',
+    'rg': 'Resource-Groups', 'managedidentity': 'Managed-Identities',
 }
 
 
@@ -318,6 +408,13 @@ def svgl_lookup(slug):
     return None
 
 
+def read_member(archive, member):
+    info = archive.getinfo(member)
+    if info.file_size > MAX_ICON_BYTES:  # zipfile stops at this size, and a lie fails the CRC.
+        raise FetchRefused(f'{member} exceeds the {MAX_ICON_BYTES} byte limit')
+    return archive.read(info)
+
+
 class AwsPackage:
     """AWS's icon package, held in memory for this run and never written to disk."""
 
@@ -343,10 +440,7 @@ class AwsPackage:
                 self.index.setdefault(norm(name), (name, member, dark if dark in members else None))
 
     def read(self, member):
-        info = self.archive.getinfo(member)
-        if info.file_size > MAX_ICON_BYTES:  # zipfile stops at this size, and a lie fails the CRC.
-            raise FetchRefused(f'{member} exceeds the {MAX_ICON_BYTES} byte limit')
-        return self.archive.read(info)
+        return read_member(self.archive, member)
 
     def sources(self, query):
         """Exact name or acronym, AWS-/Amazon- prefix optional. A miss lists every name."""
@@ -366,9 +460,107 @@ class AwsPackage:
 
 AWS = AwsPackage()
 
+def open_zip(url):
+    return zipfile.ZipFile(io.BytesIO(get(url, MAX_PACKAGE_BYTES, PACKAGE_DEADLINE)))
+
+
+class GcpPackages:
+    """Google's core-product and category icon packages, held in memory and never written to disk."""
+
+    def __init__(self):
+        self.archives = []
+        self.index = {}
+
+    def load(self):
+        if self.archives:
+            return
+        archives, index = [], {}
+        for number, url in enumerate(GCP_PACKAGES):
+            archive = open_zip(url)
+            archives.append(archive)
+            for member in sorted(archive.namelist()):
+                match = GCP_ICON_RE.fullmatch(member)
+                if match:  # Core products come first, so a category never replaces a product's own icon.
+                    index.setdefault(norm(match.group(1)), (match.group(1), f'gcp:{number}:{member}'))
+        self.archives, self.index = archives, index
+
+    def read(self, ref):
+        number, _, member = ref.partition(':')
+        return read_member(self.archives[int(number)], member)
+
+    def sources(self, query):
+        """Exact product or icon name, Cloud/Google prefix optional. A miss lists every name."""
+        try:
+            self.load()
+        except FETCH_ERRORS as error:
+            print(f'GCP  icon packages unavailable: {error}')
+            return []
+        products = {product: icon for icon, names in GCP_PRODUCTS.items() for product in names.split(', ')}
+        targets = {key: key for key in self.index} | {norm(product): norm(icon) for product, icon in products.items()}
+        wanted = norm(query)
+        key = targets.get(wanted) or next(
+            (value for name, value in targets.items() if re.sub(r'^(google|cloud)+', '', name) == wanted), None)
+        hit = self.index.get(key)
+        if hit:
+            return [('gcp', hit[1], None)]
+        names = sorted({value[0] for value in self.index.values()} | set(products), key=str.lower)
+        print(f"GCP  {query!r} is not a product or icon name. Names: {', '.join(names)}")
+        return []
+
+
+class AzurePackage:
+    """Microsoft's Azure icon package, held in memory and never written to disk."""
+
+    def __init__(self):
+        self.archive = None
+        self.index = {}
+
+    def load(self):
+        if self.archive:
+            return
+        page = get(AZURE_ICONS_PAGE).decode('utf-8', 'ignore')
+        link = AZURE_PACKAGE_RE.search(page)
+        if not link:
+            raise OSError(f'no icon package link on {AZURE_ICONS_PAGE}')
+        archive = open_zip(urllib.parse.urljoin(AZURE_ICONS_PAGE, link.group()))
+        index = {}
+        for member in sorted(archive.namelist()):
+            match = AZURE_ICON_RE.fullmatch(member)
+            if match:  # A name can sit in several folders; the first one wins.
+                index.setdefault(norm(match.group(1)), (match.group(1).strip(), member))
+        self.archive, self.index = archive, index
+
+    def read(self, member):
+        return read_member(self.archive, member)
+
+    def sources(self, query):
+        """Exact name or short form, Azure-/Microsoft- prefix and a plural s optional. A miss lists every name."""
+        try:
+            self.load()
+        except FETCH_ERRORS as error:
+            print(f'Azure icon package unavailable: {error}')
+            return []
+        wanted = norm(AZURE_ALIASES.get(norm(query), query))
+        short = lambda key: re.sub(r'^(azure|microsoft)|s$', '', key)
+        hit = self.index.get(wanted) or next((value for key, value in self.index.items() if short(key) == short(wanted)), None)
+        if hit:
+            return [('azure', f'azure:{hit[1]}', None)]
+        print(f"Azure {query!r} is not a name in the package. Names: {', '.join(sorted(v[0] for v in self.index.values()))}")
+        return []
+
+
+GCP = GcpPackages()
+AZURE = AzurePackage()
+
 
 def read(url):
-    return AWS.read(url[4:]) if url.startswith('aws:') else get(url)
+    if url.startswith('aws:'):
+        return AWS.read(url[4:])
+    if url.startswith('gcp:'):
+        return GCP.read(url[4:])
+    if url.startswith('azure:'):
+        return AZURE.read(url[6:])
+    return get(url)
 
 
 def sources(slug):
@@ -380,6 +572,18 @@ def sources(slug):
         return AWS.sources('AWS-Cloud-logo')
     if slug[:4].lower() == 'aws-':
         return AWS.sources(slug[4:])
+    if slug.startswith('gcp/'):
+        return GCP.sources(slug[4:])
+    if slug.startswith('azure/'):
+        return AZURE.sources(slug[6:])
+    if norm(slug) in ('azure', 'microsoftazure'):
+        return AZURE.sources('Azure-A')
+    if norm(slug) in ('gcp', 'googlecloudplatform'):
+        slug = 'google-cloud'  # The Google Cloud mark itself, through the usual chain.
+    elif re.match(r'(?:gcp-|google-cloud-)', slug, re.I):
+        return GCP.sources(re.sub(r'^(?:gcp-|google-cloud-)', '', slug, flags=re.I))
+    elif re.match(r'azure-', slug, re.I):
+        return AZURE.sources(slug[6:])
     found = svgl_lookup(slug)
     return ([('svgl', *found)] if found else []) + [
         ('devicon', f'https://cdn.jsdelivr.net/gh/devicons/devicon@{DEVICON_VERSION}/icons/{slug}/{slug}-original.svg', None),

@@ -1,6 +1,6 @@
 # AWS diagrams
 
-Read this when the stack runs on AWS. AWS diagrams follow AWS's own drawing rules, and people who work with AWS notice when they don't.
+Read this when the stack runs on AWS. AWS diagrams follow AWS's own drawing rules, and people who work with AWS notice when they don't. These rules apply only inside the AWS group; see [Google Cloud and Azure](gcp-azure.md) for the vendor rule.
 
 ## Icons
 
