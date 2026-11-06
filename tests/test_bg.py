@@ -1,7 +1,8 @@
-"""bg.py: start returns at once, wait blocks until the job ends or --max, exit codes, on-done and a lost supervisor."""
+"""bg.py and bg.sh: start returns at once, wait blocks until the job ends or --max, exit codes, on-done and a lost supervisor."""
 import json
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -9,38 +10,54 @@ import time
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-TOOL = ROOT / 'skills/orbyn-workflow/scripts/bg.py'
+SCRIPTS = ROOT / 'skills/orbyn-workflow/scripts'
 
 
-class BackgroundJobTests(unittest.TestCase):
+class BackgroundJobTests:
+    """The behavior every helper shares; each subclass sets `launcher`, the command prefix that runs one helper."""
+    launcher = None
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name).resolve() / 'jobs'
 
     def bg(self, *args):
-        result = subprocess.run([sys.executable, str(TOOL), '--root', str(self.root), *args],
+        result = subprocess.run([*self.launcher, '--root', str(self.root), *args],
                                 capture_output=True, text=True, timeout=60)
         return result.returncode, json.loads(result.stdout) if result.stdout.strip().startswith('{') else result.stderr
 
     def stop(self, job):
         """End a test's long child so the temporary folder can go."""
         info = json.loads((self.root / job / 'supervisor.json').read_text())
-        if os.name == 'nt':
-            subprocess.run(['taskkill', '/F', '/T', '/PID', str(info['child_pid'])], capture_output=True)
-        else:
-            os.kill(info['child_pid'], 9)
+        self.kill(info['child_pid'])
         self.bg('wait', job, '--max', '10')
+
+    @staticmethod
+    def kill(pid):
+        if os.name == 'nt':
+            subprocess.run(['taskkill', '/F', '/T', '/PID', str(pid)], capture_output=True)
+        else:
+            os.kill(pid, 9)
 
     def start(self, code, *extra):
         rc, out = self.bg('start', *extra, '--', sys.executable, '-c', code)
         self.assertEqual(rc, 0, out)
+        self.await_supervisor(out['id'])
         return out['id']
+
+    def await_supervisor(self, job):
+        """The supervisor starts detached, so give a slow machine time to record the running child."""
+        path = self.root / job
+        deadline = time.monotonic() + 20
+        while not (path / 'supervisor.json').exists() and not (path / 'exit.json').exists() and time.monotonic() < deadline:
+            time.sleep(0.05)
 
     def test_start_returns_before_the_job_and_wait_returns_its_output(self):
         began = time.monotonic()
-        job = self.start('import time; time.sleep(1.5); print("finished")')
-        self.assertLess(time.monotonic() - began, 1.5)
+        rc, out = self.bg('start', '--', sys.executable, '-c', 'import time; time.sleep(3); print("finished")')
+        self.assertLess(time.monotonic() - began, 3)
+        job = out['id']
         rc, out = self.bg('wait', job, '--max', '30')
         self.assertEqual((rc, out['state'], out['exit_code']), (0, 'done', 0))
         self.assertIn('finished', out['tail'])
@@ -88,7 +105,6 @@ class BackgroundJobTests(unittest.TestCase):
             self.assertIn('no job', err)
         self.stop(job)
 
-    @unittest.skipIf(os.name == 'nt', 'POSIX signal')
     def test_a_killed_supervisor_is_reported_lost(self):
         job = self.start('import time; time.sleep(30)')
         path = self.root / job
@@ -96,10 +112,25 @@ class BackgroundJobTests(unittest.TestCase):
         while not (path / 'supervisor.json').exists() and time.monotonic() < deadline:
             time.sleep(0.05)
         info = json.loads((path / 'supervisor.json').read_text())
-        os.kill(info['pid'], 9)
-        os.kill(info['child_pid'], 9)
+        self.kill(info['pid'])
+        self.kill(info['child_pid'])
         rc, out = self.bg('wait', job, '--max', '10')
         self.assertEqual((rc, out['state']), (4, 'lost'))
+
+
+class PythonHelperTests(BackgroundJobTests, unittest.TestCase):
+    launcher = [sys.executable, str(SCRIPTS / 'bg.py')]
+
+
+def _shell_class(shell):
+    path = shutil.which(shell)
+    return type(f'{shell.capitalize()}HelperTests', (BackgroundJobTests, unittest.TestCase),
+                {'launcher': [path, str(SCRIPTS / 'bg.sh')]})
+
+
+for _shell in ('sh', 'bash', 'dash', 'zsh'):
+    if shutil.which(_shell) and os.name != 'nt':
+        globals()[f'{_shell.capitalize()}HelperTests'] = _shell_class(_shell)
 
 
 if __name__ == '__main__':

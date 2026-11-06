@@ -22,7 +22,7 @@ not one a minute. The [PR iteration playbook](../playbooks/pr-iteration.md) cove
 ## Commands that run long
 
 Start these in the background from the first call, with the host's background run or
-`bg.py start`, then do other work:
+`bg.sh start` (`bg.py` on Windows), then do other work:
 
 - The library test suite: `scripts/run_tests.py` (about two minutes, longer under load)
 - Live evals: `eval_run.py --live`, and subagent eval trials
@@ -30,7 +30,7 @@ Start these in the background from the first call, with the host's background ru
 - A project's full build, test or end-to-end suite, and anything else likely to pass
   the host's foreground limit
 
-Run `bg.py wait` itself in the foreground: it is the one blocking wait.
+Run `bg.sh wait` itself in the foreground: it is the one blocking wait.
 
 ## Pick the wait by what the host can do
 
@@ -41,23 +41,27 @@ Check what the host's tools offer, top row first:
 | --- | --- | --- |
 | Wake you when a background job or child ends | Start it in the background, then do other work or end the reply | Claude Code (`run_in_background`, task notifications) |
 | Wait on a running command or child with a timeout | One wait call with the longest timeout the host allows, not many short ones | Codex (`write_stdin` with no input, up to 5 minutes; `wait_agent`, up to 1 hour) |
-| Only run shell commands | `bg.py`, below | Any host with a shell |
+| Only run shell commands | `bg.sh` (or `bg.py`), below | Any host with a shell |
 
-When you cannot tell which row fits, use `bg.py`. A host's own instruction, such as a
+When you cannot tell which row fits, use the native helper. A host's own instruction, such as a
 cap on wait length, wins over this table.
 
-## The bg.py helper
+## The native helper
 
 Only the host can give an idle agent another turn, so no script adds a wake-up
 where the host has none. What a script can do is make a long wait cost one turn.
-`harness.py resolve` prints both commands with the absolute path, so an agent in
-any repository can run [`bg.py`](../scripts/bg.py) (standard library only, POSIX
-and Windows):
+The helper is a native shell script, so no Python is needed: [`bg.sh`](../scripts/bg.sh)
+(POSIX sh under bash, dash or zsh; macOS, Linux and Git Bash on Windows). On Windows
+without Git Bash, use `bg.py`. `harness.py resolve` prints the commands for
+this platform with the absolute path, so an agent in any repository can run them:
 
 ```sh
-python3 <skill directory>/scripts/bg.py start --name tests -- python3 -m pytest
-python3 <skill directory>/scripts/bg.py wait <job id> --max 540
+sh <skill directory>/scripts/bg.sh start --name tests -- python3 -m pytest
+sh <skill directory>/scripts/bg.sh wait <job id> --max 540
 ```
+
+[`bg.py`](../scripts/bg.py) (standard library only) has the same interface and stays as
+the fallback where a shell script cannot run.
 
 `start` runs the command detached and prints a job id at once; do other work. `wait`
 blocks inside the script until the job ends or `--max` seconds pass. It prints JSON

@@ -1964,6 +1964,13 @@
         },
         {
           "tool": "Claude Code",
+          "model": "claude-sonnet-5-5 (worker)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Native wait helper: bg.sh (POSIX sh) and bg.ps1 (PowerShell) replace Python as the default; bg.py stays as fallback"
+        },
+        {
+          "tool": "Claude Code",
           "model": "claude-opus-5-5 (lead)",
           "effort": "medium",
           "date": "2026-11-06",

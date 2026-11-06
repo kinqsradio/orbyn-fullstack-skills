@@ -1,4 +1,5 @@
 """Per-repository harness resolution: precedence, rejections, trust and drift (no network or model)."""
+import importlib.util
 import json
 import shlex
 import os
@@ -142,14 +143,27 @@ class DefaultsAndPrecedence(HarnessCase):
 
     def test_resolve_prints_the_wait_helper_by_absolute_path(self):
         waiting = self.resolve()['waiting']
+        native = 'bg.py' if os.name == 'nt' else 'bg.sh'
         helper = Path(shlex.split(waiting['wait'])[1])
         self.assertTrue(helper.is_absolute() and helper.is_file(), helper)
-        self.assertEqual(helper.name, 'bg.py')
+        self.assertEqual(helper.name, native)
         self.assertIn('start', waiting['start'])
+        fallback = Path(shlex.split(waiting['fallback_wait'])[1])
+        self.assertTrue(fallback.is_absolute() and fallback.is_file(), fallback)
+        self.assertEqual(fallback.name, 'bg.py')
         text = self.run_tool('resolve', '--target', str(self.target), '--workspace', str(self.workspace),
                              '--host', 'codex', '--no-probe').stdout
         self.assertIn('waiting: never poll', text)
         self.assertIn(str(helper), text)
+        self.assertIn(str(fallback), text)
+
+    def test_windows_uses_the_python_wait_helper(self):
+        spec = importlib.util.spec_from_file_location('harness_under_test', TOOL)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        waiting = module.wait_commands(windows=True)
+        self.assertEqual(waiting['wait'], waiting['fallback_wait'])
+        self.assertTrue(Path(shlex.split(waiting['wait'])[1]).is_file())
 
     def test_resolve_never_writes_into_the_target_or_workspace(self):
         self.write_target(valid(notes='x'))
