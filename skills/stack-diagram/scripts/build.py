@@ -39,7 +39,8 @@ BLOCKED_TAGS = {'script', 'link', 'iframe', 'object', 'embed', 'base', 'audio', 
 CSS_LOAD = re.compile(r"""@import\b|image-set\s*\(|url\(\s*(?!["']?\s*(?:#|data:))""", re.I)
 LOGO_MARKER = '<meta name="stack-diagram-logos" content="fetched">'
 LABELS = {'svgl': 'svgl', 'devicon': 'devicon', 'gilbarbara': 'gilbarbara/logos', 'lucide': 'Lucide',
-          'aws': 'AWS Architecture Icons', 'generic': 'neutral pictograms',
+          'aws': 'AWS Architecture Icons', 'gcp': 'Google Cloud icons',
+          'azure': 'Azure icons', 'generic': 'neutral pictograms',
           'supplied': 'files supplied for this diagram'}
 NOT_LOGOS = {'lucide', 'generic'}
 

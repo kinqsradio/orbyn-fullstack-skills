@@ -36,6 +36,7 @@ Fetch logos only when the user asked for them and the network is available. Othe
 ```bash
 python3 scripts/fetch_icons.py <job>/icons client:generic/user api:generic/server
 python3 scripts/fetch_icons.py <job>/icons --allow-network hono~server "betterauth:better-auth"
+python3 scripts/fetch_icons.py <job>/icons --allow-network "run:gcp/cloud-run" "app:azure/app-service"
 ```
 
 Logos are fetched per job, sanitised, stored in the ignored folder and embedded in that job's output. `build.py` and `render_png.py` refuse a folder Git would commit unless the user asked for `--allow-tracked`. Nothing branded goes into a repository or into this skill, and the script refuses a folder Git would commit.
@@ -86,7 +87,7 @@ Fix and render again until clean.
 - **PNG** always comes from `render_png.py`. Never draw a separate image with another library, because the HTML is the single source of truth. Deliver both themes unless the user asked for one.
 - **TSX:** convert the built HTML per [TSX output](references/tsx.md).
 
-Build the HTML once and derive the rest. Keep the footer credit. It names the sources this diagram uses and states that logos remain the trademarks of their owners. Report any fallbacks.
+Build the HTML once and derive the rest. Keep the footer credit. It names the sources this diagram uses (`aws`, `gcp` and `azure` read as the vendor's icons) and states that logos remain the trademarks of their owners. Report any fallbacks.
 
 ## Boundaries
 
@@ -99,4 +100,5 @@ Build the HTML once and derive the rest. Keep the footer credit. It names the so
 - For coordinates, spacing, edge classes and a worked layout, read [geometry](references/geometry.md).
 - For spec forms, missed logos, fetch limits and placing marks, read [icons](references/icons.md).
 - For a stack on AWS, read [AWS diagrams](references/aws.md).
+- For a stack on Google Cloud or Azure, read [Google Cloud and Azure](references/gcp-azure.md): spec forms, network hosts and group rules.
 - For a React component, read [TSX output](references/tsx.md).

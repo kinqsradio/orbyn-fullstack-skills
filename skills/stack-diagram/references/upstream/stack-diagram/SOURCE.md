@@ -44,4 +44,14 @@ and `references/aws.md`.
 - Eight original pictograms in `assets/generic`: box, branch, check, database, document, folder,
   link, terminal.
 
+## Later incorporation
+
+Google Cloud and Azure icon support was adapted from the same upstream at
+`1ed53e3e9525364ae5d82e0430f2bb3f7ef4c838` (MIT, caru-ini): the `gcp/` and `azure/`
+spec forms and name tables in `scripts/fetch_icons.py`, the `group gcp` and `group azure`
+styles in `assets/template.html`, and the vendor rules in `references/gcp-azure.md`.
+The fetch code follows this skill's package class, limits and fallback rules, not
+upstream's structure. Upstream's gallery sharing (`share.py` and the publish step) posts
+to a third-party site and stays excluded. The pin above is unchanged.
+
 Source identity is not runtime proof.
