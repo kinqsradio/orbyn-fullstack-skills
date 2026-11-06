@@ -1206,6 +1206,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Development eval case loop-guard-same-failure-twice"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5",
+          "effort": "medium",
+          "date": "2026-11-05",
+          "scope": "Added outcome eval case beat-reactive-puppet-from-portrait for technical-illustration"
         }
       ]
     },
