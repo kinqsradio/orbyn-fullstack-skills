@@ -914,6 +914,25 @@
           "model": "unrecorded",
           "date": "2026-11-02",
           "scope": "Work before this record existed"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-06",
+          "scope": "Growth teardown method, adapted from marketingskills reverse-engineer-marketing"
+        }
+      ],
+      "incorporated_material": [
+        {
+          "source": "https://github.com/coreyhaines31/marketingskills/tree/88c79f6528a9347420e57ceb1fff9a60de651768/skills/reverse-engineer-marketing",
+          "revision": "88c79f6528a9347420e57ceb1fff9a60de651768",
+          "license": "MIT",
+          "copyright": "Copyright (c) 2025 Corey Haines",
+          "local_path": "skills/orbyn-research/references/growth-teardown.md",
+          "relationship": "selected-method-adaptation; stages and evidence standard condensed in our words; scripts, vendor commands, play routing and templates not imported",
+          "license_file": "skills/orbyn-research/references/marketingskills-LICENSE.txt",
+          "license_sha256": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591"
         }
       ]
     },
