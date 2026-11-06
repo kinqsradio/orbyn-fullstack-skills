@@ -59,13 +59,43 @@ with deploy secrets. Promotion stays the deliberate decision in
 
 ## Make it fast
 
-Measure the slowest step first, then:
+Measure first: the slowest step, and how long a PR waits to turn green. Then:
 
-- run only what the change affects, and the full suite on the main branch and nightly
-- split the slowest test module into parallel units and start the slowest first; the
-  run is never shorter than its longest unit
-- size worker counts to the work: subprocess-heavy tests wait on I/O and can use more
-  workers than cores
-- cache dependencies by lockfile hash, and build once and reuse the artifact downstream
-- cancel superseded runs on the same branch, and stop a job early only when nothing
-  after it is useful
+- **PRs run one lane.** Run the runtime and platform production uses on PRs, and the
+  full version and OS matrix on the main branch, nightly and before a release. Require
+  only the PR lane, so a PR never waits for a lane that does not run on it.
+- **Cheap checks first.** Format, lint, types and static checks run before the test
+  suite, so a typo fails in seconds rather than after it.
+- **Run only what the change affects** on a PR, and the full suite on the main branch
+  and nightly.
+- **Make slow tests cheaper before splitting them.** Build an expensive fixture once
+  per class and copy it per test; fake a slow side effect (the system Trash, the
+  network, a browser launch) and keep one real end-to-end test for it; inject a clock
+  instead of sleeping. Then split the slowest module into parallel units and start
+  the slowest first: the run is never shorter than its longest unit.
+- **Size worker counts to the work:** subprocess-heavy tests wait on I/O and can use
+  more workers than cores.
+- **Cache dependencies** by lockfile hash, and build once and reuse the artifact
+  downstream.
+- **Cancel superseded runs** on the same branch, and stop a job early only when
+  nothing after it is useful.
+- **Keep a time budget.** Give the PR lane a target, such as five minutes. A run that
+  goes over it is a defect: find and fix the slowest step instead of accepting drift.
+- **Never retry a failure into green.** A proven flaky test is quarantined, with an
+  issue and an owner, so it neither blocks PRs nor hides real failures; fix it or
+  delete it. See the [bulk method](bulk-failures.md) for many failures at once.
+- **Use a merge queue** when several PRs land a day and main breaks from combinations
+  that passed alone. It tests each PR on the latest main, so PRs need not re-run after
+  every merge.
+
+## Fewer runs per PR
+
+Every push is a full run, so the cheapest run is the one that never happens:
+
+- Push one batch of fixes, not one commit per comment.
+- Keep review rounds converging ([make review rounds converge](../../orbyn-workflow/references/engineering-scope.md#make-review-rounds-converge)).
+- Let a standing user instruction cover a low-risk class of PR, such as docs-only PRs
+  when every check is green ([merge only on the user's instruction](../../orbyn-workflow/playbooks/opening-a-pr.md#merge-only-on-the-users-instruction)).
+
+Track time to green per PR, rounds per PR and the flaky-test rate, not only run
+length. Waiting usually costs more than running.
