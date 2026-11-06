@@ -27,6 +27,9 @@ import urllib.response
 import zipfile
 from email.message import Message
 
+# Classes run_tests.py runs as parallel processes; keep in step with the classes below.
+SHARDS = ["Sanitiser", "FetchLimits", "FetchRun", "CloudIcons", "Build", "Library", "BrowserLookup", "BrowserRender", "GuardFailsClosed", "InlineSafety", "SvgPolicy", "ManifestShape", "RenderWritesLast"]
+
 ROOT = Path(__file__).resolve().parents[1]
 SKILL = ROOT/'skills/stack-diagram'
 RECORD = SKILL/'references/upstream/stack-diagram'

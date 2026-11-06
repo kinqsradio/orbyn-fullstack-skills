@@ -102,6 +102,49 @@ class ScopeTests(unittest.TestCase):
         self.assertFalse(scope.deployment_allowed(record, 'a'*40, 'acme/app'))
 
 
+SERVICES = dict(schema_version=1, shared_paths=['packages/shared/**'], ignored_paths=['docs/**', '*.md'],
+                services=dict(api=dict(paths=['services/api/**'], checks=['unit'],
+                                       deploy=dict(production=dict(target='api-prod', approval='required'))),
+                              web=dict(paths=['apps/web/**'], checks=['e2e'], deploy=dict(staging=dict(target='web-stg')))))
+
+
+class ServicesTests(unittest.TestCase):
+    def plan(self, paths, environment='production', complete=True):
+        return {e['service']: e for e in scope.services_matrix(paths, SERVICES, environment, complete)}
+
+    def test_a_change_selects_only_its_service_with_target_and_approval(self):
+        found = self.plan(['services/api/main.py'])
+        self.assertEqual(set(found), {'api'})
+        self.assertEqual((found['api']['target'], found['api']['approval']), ('api-prod', True))
+
+    def test_ignored_paths_select_nothing(self):
+        self.assertEqual(self.plan(['docs/guide.md', 'README.md']), {})
+
+    def test_shared_unowned_or_incomplete_changes_select_every_service(self):
+        for paths, complete, why in ((['packages/shared/a.ts'], True, 'shared path'), (['Makefile'], True, 'unowned path'),
+                                     (['services/api/x.py'], False, 'incomplete')):
+            with self.subTest(paths):
+                found = self.plan(paths, complete=complete)
+                self.assertEqual(set(found), {'api', 'web'})
+                self.assertTrue(all(why in e['reason'] for e in found.values()))
+
+    def test_an_environment_without_a_deploy_entry_plans_checks_only(self):
+        found = self.plan(['apps/web/a.tsx'])
+        self.assertEqual((found['web']['environment'], found['web']['target'], found['web']['checks']), (None, None, ['e2e']))
+        self.assertEqual(self.plan(['apps/web/a.tsx'], 'staging')['web']['target'], 'web-stg')
+
+    def test_globs_keep_single_stars_inside_one_folder(self):
+        self.assertTrue(scope.glob_match('services/api/a/b.py', 'services/api/**'))
+        self.assertFalse(scope.glob_match('services/apix/b.py', 'services/api/**'))
+        self.assertFalse(scope.glob_match('docs/a/b.md', 'docs/*.md'))
+
+    def test_an_invalid_manifest_is_refused(self):
+        for bad in ({}, dict(schema_version=1, services={}), dict(schema_version=1, services={'a b': {'paths': ['x']}}),
+                    dict(schema_version=1, services={'api': {'paths': ['../x']}})):
+            with self.subTest(bad), self.assertRaises(ValueError):
+                scope.validate_services(bad)
+
+
 class GitChangeTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()

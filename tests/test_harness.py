@@ -12,6 +12,9 @@ import tempfile
 import unittest
 from unittest import mock
 
+# Classes run_tests.py runs as parallel processes; keep in step with the classes below.
+SHARDS = ["DefaultsAndPrecedence", "Rejections", "TrustBoundary", "HostileInput", "ExitCodes", "HostVersions", "DriftAndPortableDefaults", "CleanupSettings", "WorkMode", "LibraryAsTarget"]
+
 ROOT = Path(__file__).resolve().parents[1]
 TOOL = ROOT / 'skills/orbyn-workflow/scripts/harness.py'
 REGISTRY = ROOT / 'docs/agents/models.json'
