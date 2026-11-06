@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "repository": "https://github.com/benjitaylor/skills",
-  "revision": "802057409787133703c56001080169e347305572",
+  "revision": "299140fafd08df55a9c234e610c3f64af3f45531",
   "entrypoint": {
     "source_path": "stageshow/SKILL.md",
-    "original_sha256": "a9b790ab20631961dcc71ae5955710d5bda10d62469f43767a6a38c650e5e9d7",
+    "original_sha256": "e4df76406d63644d5051d79855c3f7931d48fdbe9aec15b3d5c12a2601aa2de6",
     "relationship": "rewritten as skills/product-illustration/SKILL.md"
   },
   "guides": {
@@ -30,7 +30,7 @@
     },
     "craft.md": {
       "source_path": "stageshow/references/craft.md",
-      "original_sha256": "4251bc0e6d0c20808f6a166b4e1cf5c4e081541df807bdcdfa2a7256f4e5c2f7",
+      "original_sha256": "6b01824cb6e46797cbb57b517e6f31f12149cc3a43cb921aa5b1575cf8a106d1",
       "relationship": "maintained-adaptation"
     },
     "framing.md": {
@@ -50,7 +50,7 @@
     },
     "kit.md": {
       "source_path": "stageshow/references/kit.md",
-      "original_sha256": "6122536c2a7edf0712c753cafb5456d6b607905b5c3c81cb28a04a8c097603be",
+      "original_sha256": "6b8375f67d11f41af4bb8e1b1a0674fb782bb01cca754d0b1545249c29260b30",
       "relationship": "maintained-adaptation"
     },
     "logos.md": {
@@ -65,12 +65,12 @@
     },
     "motion.md": {
       "source_path": "stageshow/references/motion.md",
-      "original_sha256": "6ccf5899c7fd186c9d629d80618e1a54bc0193b468b919a33e02aec267cc5d0a",
+      "original_sha256": "7f9b717e8b2cf1c96186988796717f1cd74f64215ccb68966f6857cf73b22f91",
       "relationship": "maintained-adaptation"
     },
     "rehearse.md": {
       "source_path": "stageshow/references/rehearse.md",
-      "original_sha256": "03644a4bcbd614d842e53a54824c6560267570a82cc70de31ffb096fe416bdf4",
+      "original_sha256": "3d1e38bf7141fa1b06e7f096577c88fd56b48540c11e70d858ce8fd22c603ba1",
       "relationship": "maintained-adaptation"
     },
     "review.md": {
@@ -85,7 +85,7 @@
     },
     "verify.md": {
       "source_path": "stageshow/references/verify.md",
-      "original_sha256": "597f0cb24abe6fda20fb55de6ac379d981a4a63618b80b400b94e20abf1289bf",
+      "original_sha256": "1151dd3640d5f808cc9f86f2f615a7e8cad173dc73da47327eae70ea80891845",
       "relationship": "byte-identical-selected-source"
     }
   }
