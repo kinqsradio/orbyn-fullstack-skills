@@ -37,7 +37,7 @@ model; only the user's explicit `--set` can, and the resolver prints a notice.
 | Tier | Used by |
 | --- | --- |
 | lead | Parent session, Architect, consequential Reviewer, all security work, ambiguous diagnosis |
-| worker | Engineer: assigned implementation, tests and cleanup |
+| worker | Engineer: assigned implementation, tests and cleanup; Designer on Claude (product UI, copy and behavior drafts) |
 | scout | Investigator and Verifier on bounded mechanical work: file search, link checks, log extraction, classification, regenerating generated files, running a named check |
 
 Leads stay strong; workers go down a tier because writing code rarely needs the
@@ -48,7 +48,9 @@ top model.
 - **Codex worker (`gpt-6.1-terra`)** takes command-line fixes, boilerplate and
   bounded implementation. Complex engineering, multi-step changes and
   architecture stay with `gpt-6.1-sol`, so on Codex complex implementation routes
-  to the lead tier. This is a deliberate difference between the providers.
+  to the lead tier. This is a deliberate difference between the providers. The
+  Designer follows the same split: `sonnet` drafts product UI well on Claude, and
+  Codex keeps design on `gpt-6.1-sol`.
 - **Scouts never decide.** They search, extract, classify, regenerate and run a
   named check. They may also make tiny mechanical edits under clear instruction:
   a typo, a rename, a syntax adjustment, a tag. They never write new logic or
@@ -102,6 +104,7 @@ Default delegation: `max_children` 2, `max_depth` 1 (children never spawn), `rea
 | `security_engineer` | lead        | lead       |
 | `engineer`          | worker      | worker     |
 | `engineer_complex`  | worker      | lead       |
+| `designer`          | worker      | lead       |
 | `investigator`      | worker      | worker     |
 | `verifier`          | worker      | worker     |
 | `mechanical`        | scout       | scout      |

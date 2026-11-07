@@ -117,7 +117,7 @@ Orbyn [Role] [N] - [Model] - [Effort] - [Task] - [Evidence or ID]
 
 | Field | Use |
 | --- | --- |
-| Role | Engineer, Research, Architect, Reviewer, Verifier, Security or Scout |
+| Role | Engineer, Research, Architect, Designer, Reviewer, Verifier, Security or Scout |
 | N | Counts up per role in this session from 1: Orbyn Engineer 1, Orbyn Engineer 2 |
 | Model | The model that actually runs, such as Sonnet 5.5 or Terra |
 | Effort | The effort that actually runs, such as Medium |
@@ -175,6 +175,17 @@ discover by probing, a helper whose flags changed. A working result does not mak
 detour invisible: it costs every later run the same time. Propose the fix; edit
 the instruction only within your task's scope. A child reports it to its lead, and the
 lead passes it to the user.
+
+## Get a design draft first
+
+Before building product UI, copy or behavior that the designs, plan or existing
+artifacts do not cover, get a Designer draft instead of inventing it: the flow,
+every [state](../../orbyn-ui-design/references/async-state.md) and the exact copy.
+The Designer returns a draft and makes no product edits. Run it as a child at the
+resolved `designer` tier; when the user already has a designer session open, send
+the request there, and never start one yourself. Build from the approved draft, and send
+new gaps found while building back to the Designer. A fix that matches an existing
+design needs no draft.
 
 ## Review
 

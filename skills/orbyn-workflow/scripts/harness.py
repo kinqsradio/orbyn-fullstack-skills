@@ -49,7 +49,7 @@ PROVIDERS = ('claude', 'codex')
 TIERS = ('lead', 'worker', 'scout')
 EFFORTS = ('low', 'medium', 'high')
 ROLE_KEYS = ('lead', 'architect', 'reviewer', 'security', 'security_verifier', 'security_engineer', 'engineer',
-             'engineer_complex', 'investigator', 'verifier', 'mechanical', 'tiny_edit')
+             'engineer_complex', 'designer', 'investigator', 'verifier', 'mechanical', 'tiny_edit')
 LOCKED_ROLES = ('lead', 'security', 'security_verifier', 'security_engineer')
 FILE_KEYS = {'schema_version', 'tiers', 'delegation', 'cleanup', 'work', 'evals', 'routing', 'verification', 'notes'}
 DEFAULTS_KEYS = {'generated_from', 'agents', 'escalation', 'allowed_models', 'effort_caps', 'claude_minimum_versions',
@@ -418,10 +418,10 @@ def validate_layer(data, human_only=(), complete=False, allowed=None, is_file=Fa
                         errors.append(f'{where}: unknown tier {tier!r}')
                     elif role in LOCKED_ROLES and tier != 'lead':
                         errors.append(f'{where}: {role} work cannot be routed below the lead tier')
-                    elif role in ('architect', 'reviewer', 'engineer_complex') and tier == 'scout':
+                    elif role in ('architect', 'reviewer', 'engineer_complex', 'designer') and tier == 'scout':
                         errors.append(f'{where}: a scout never designs, reviews or builds complex changes')
-                    elif is_file and role == 'engineer_complex' and provider != 'claude' and tier != 'lead':
-                        errors.append(f'{where}: complex Codex engineering stays on the lead tier in a file')
+                    elif is_file and role in ('engineer_complex', 'designer') and provider != 'claude' and tier != 'lead':
+                        errors.append(f'{where}: Codex {role} work stays on the lead tier in a file')
             if complete:
                 for role in ROLE_KEYS:
                     if role not in routing:

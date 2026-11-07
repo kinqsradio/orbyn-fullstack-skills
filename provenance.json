@@ -2190,6 +2190,13 @@
           "effort": "medium",
           "date": "2026-11-07",
           "scope": "Repository moved to the orbyn-dev organization: repository links updated"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-07",
+          "scope": "Designer role: routing key designer (Claude worker, Codex lead), get a design draft before inventing product UI, copy or behavior"
         }
       ]
     },
