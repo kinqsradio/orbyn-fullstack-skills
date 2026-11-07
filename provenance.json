@@ -1705,6 +1705,13 @@
           "effort": "medium",
           "date": "2026-11-06",
           "scope": "Orbyn house style: the author's own Openship tokens renamed, Geist and JetBrains Mono hosted fonts, generated tokens.css, generator script and test"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5",
+          "effort": "medium",
+          "date": "2026-11-07",
+          "scope": "Desktop window chrome (unified title bar), browser-style side-panel tabs and tool activity in a conversation, from owner review of the Orbyn product designs"
         }
       ]
     },
