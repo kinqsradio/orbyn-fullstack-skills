@@ -133,10 +133,10 @@ class DecideTests(unittest.TestCase):
         self.assertIn(gate.READY, result['remove'])
 
     def test_pending_or_failing_ci_does_not_request(self):
-        one = [{'name': gate.REQUIRED_CHECKS[0], 'conclusion': 'SUCCESS'}]
-        self.assertEqual(gate.decide(pr(checks=one))['state'], 'waiting')
-        self.assertFalse(gate.decide(pr(checks=one))['request'])
-        failing = [{'name': gate.REQUIRED_CHECKS[0], 'conclusion': 'FAILURE'}, GREEN[1]]
+        pending = [{'name': gate.REQUIRED_CHECKS[0], 'conclusion': ''}]
+        self.assertEqual(gate.decide(pr(checks=pending))['state'], 'waiting')
+        self.assertFalse(gate.decide(pr(checks=pending))['request'])
+        failing = [{'name': gate.REQUIRED_CHECKS[0], 'conclusion': 'FAILURE'}]
         self.assertEqual(gate.decide(pr(checks=failing))['state'], 'failing')
         self.assertFalse(gate.decide(pr(checks=failing))['request'])
 

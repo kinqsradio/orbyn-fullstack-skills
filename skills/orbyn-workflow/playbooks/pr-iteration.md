@@ -51,7 +51,8 @@ improvement, already addressed, disagreement with evidence, or missing informati
 Priority labels, bot identity and reviewer confidence are signals, not proof.
 Trace the scenario with [how](../../how/SKILL.md); use the
 [reproduction method](../../how/references/reproduction.md) when behavior is disputed.
-Fix supported items within scope, grouping related changes under their real owner.
+Fix supported items within scope, grouping related changes under their real owner,
+and keep rounds converging ([make review rounds converge](../references/engineering-scope.md#make-review-rounds-converge)).
 Keep unrelated suggestions out of the patch and continue independent work when
 one item needs a consequential human decision.
 
