@@ -280,7 +280,7 @@ routing, policy boundaries and focused principles; it does not prove every
 removed procedural detail was replaced. The previous audit's generic dispositions
 were insufficient evidence of full operational completeness.
 
-Sources: [initial public export](https://github.com/kinqsradio/orbyn-fullstack-skills/commit/860e2dc),
+Sources: [initial public export](https://github.com/orbyn-dev/orbyn-fullstack-skills/commit/860e2dc),
 [pinned source how](https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/how/SKILL.md),
 [pinned source architect](https://github.com/cursor/plugins/blob/74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12/pstack/skills/architect/SKILL.md).
 The import/source relationship is recorded in provenance, not reconstructed

@@ -104,6 +104,6 @@ Keep consumer procedures and records outside the shared catalog and export. For
 shared skill maintenance, preserve source records, licensed material and generated
 links. Each distributed skill carries its LICENSE; incorporated methods carry
 local notices and source records. The full library's
-[provenance](https://github.com/kinqsradio/orbyn-fullstack-skills/blob/main/provenance.json)
-and [notices](https://github.com/kinqsradio/orbyn-fullstack-skills/blob/main/tools/THIRD_PARTY_NOTICES.md)
+[provenance](https://github.com/orbyn-dev/orbyn-fullstack-skills/blob/main/provenance.json)
+and [notices](https://github.com/orbyn-dev/orbyn-fullstack-skills/blob/main/tools/THIRD_PARTY_NOTICES.md)
 are optional attribution indexes, not required execution instructions.

@@ -207,5 +207,5 @@
     "Single host and single observation per final scale point; no portable throughput guarantee.",
     "Orbyn synchronization and REA engine/source upgrade deferred."
   ],
-  "review_pull_request": "https://github.com/kinqsradio/orbyn-fullstack-skills/pull/16"
+  "review_pull_request": "https://github.com/orbyn-dev/orbyn-fullstack-skills/pull/16"
 }

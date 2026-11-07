@@ -6,7 +6,7 @@ independent review. The original research findings and acceptance contract below
 are retained. See [current verification](mobile-ui-workflow-verification.md) for
 actual evidence and open qualification; approval does not imply every native,
 service or agent cell has passed.
-PR [#40](https://github.com/kinqsradio/orbyn-fullstack-skills/pull/40) was merged
+PR [#40](https://github.com/orbyn-dev/orbyn-fullstack-skills/pull/40) was merged
 after its checks passed. The research baseline is merged main
 `4e7dbe0bb1de2fb23c7ecb8c6582e8edeb9e3e35`; the primary checkout was fast-forwarded
 to that commit and its post-merge validation run passed.

@@ -51,7 +51,7 @@ At a natural completion/checkpoint, ask once for that distinct proposal:
 
 > I found a reusable improvement to `<skill>`: `<specific change and evidence>`.
 > Here is the proposed text/diff and what it would include. Would you like me to
-> open a public PR to `kinqsradio/orbyn-fullstack-skills`, show a local patch first,
+> open a public PR to `orbyn-dev/orbyn-fullstack-skills`, show a local patch first,
 > or keep this local?
 
 Public submission requires an explicit answer covering this change/content and

@@ -1405,7 +1405,7 @@ class SecondReviewTests(CleanupCase):
                 self.clock = 0
 
     def test_low_origin_must_be_this_library_when_present_and_may_be_absent(self):
-        for url, ok in (('https://github.com/kinqsradio/orbyn-fullstack-skills.git', True), ('git@github.com:x/orbyn-fullstack-skills', True),
+        for url, ok in (('https://github.com/orbyn-dev/orbyn-fullstack-skills.git', True), ('git@github.com:x/orbyn-fullstack-skills', True),
                         ('https://example.test/orbyn-tools.git', False), ('https://example.test/not-orbyn-fullstack-skills-fork.git', False)):
             with self.subTest(url):
                 self.sh(self.lib, 'remote', 'set-url', 'origin', url)

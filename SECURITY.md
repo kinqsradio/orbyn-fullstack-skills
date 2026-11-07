@@ -9,7 +9,7 @@ runtime belong to that upstream project unless the defect is in this integration
 
 ## Report privately
 
-Use [GitHub private vulnerability reporting](https://github.com/kinqsradio/orbyn-fullstack-skills/security/advisories/new).
+Use [GitHub private vulnerability reporting](https://github.com/orbyn-dev/orbyn-fullstack-skills/security/advisories/new).
 Include the affected revision, a minimal reproduction with synthetic data,
 expected/actual effects and any suggested correction. Do not attach real tokens,
 private project files, customer data or working credentials.

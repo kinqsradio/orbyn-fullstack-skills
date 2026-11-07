@@ -574,7 +574,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-backend-design",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/orbyn-backend-design",
       "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original retry/reconciliation example. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately. Added independently authored conditional engineering contract/evidence guidance or synthetic development cases after a pinned Macro source review. No upstream policy text, application code, assets, runtime, provider or default configuration imported; prior provenance and notices retained.",
       "incorporated_material": [
         {
@@ -654,7 +654,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-ci-design",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/orbyn-ci-design",
       "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added original proportional-verification policy and portable conservative Git change classifier, required-result gate and exact-revision deployment-decision validation; no line-count heuristic or automatic deployment authority. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Added independently authored designated feature-worktree verification guidance or synthetic development cases: affected checks, stage boundaries, exclusions, widening triggers, required-status preservation and no per-task CI/CD automation. Existing lineage and notices retained; no upstream text or code imported. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately. Added independently authored conditional engineering contract/evidence guidance or synthetic development cases after a pinned Macro source review. No upstream policy text, application code, assets, runtime, provider or default configuration imported; prior provenance and notices retained.",
       "reviewed_sources": [
         {
@@ -790,7 +790,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-content-design",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/orbyn-content-design",
       "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added independently authored conditional engineering guidance from reviewed pinned OpenCode methods; source-specific operating instructions are not adopted, and prior import/license lineage remains unchanged. Added original conditional workspace/task-acceptance or factual outcome/attention/authorization guidance and synthetic development examples; Macro and Open Duet are reviewed inspiration only, with no source/assets/runtime imported.",
       "reviewed_sources": [
         {
@@ -827,7 +827,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-data-migration",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/orbyn-data-migration",
       "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original writer-cutover example.",
       "authoring": [
         {
@@ -843,7 +843,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-plan",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/orbyn-plan",
       "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Improved the existing owning skill directly with independently written contract, slicing, diagnosis or behavior-check guidance; no duplicate skill collection was installed. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Connected substantive task handoffs to the local versioned continuation contract while keeping simple prompt rewrites direct. Reuse the owning project document for durable handoffs and avoid creating a separate log solely because planning occurred. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
       "reviewed_inspiration": [
         {
@@ -912,7 +912,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-research",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/orbyn-research",
       "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added original conditional comparative-implementation research guidance, owner handoffs or synthetic development evaluation coverage; no third-party material imported and historical lineage retained.",
       "reviewed_inspiration": [
         {
@@ -969,7 +969,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-security-remediation",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/orbyn-security-remediation",
       "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable.",
       "authoring": [
         {
@@ -1074,7 +1074,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-skill-creator",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/orbyn-skill-creator",
       "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an independently authored recorded-trial evaluator, cases and evidence guide; research inspiration is cited separately. Pinned paired-run fixture protocols and retained incomplete-attempt evidence. Added company/public ownership routing and offline source requirements. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added explicit evaluation subsets and development cases for stale continuation, Cursor setup and failed registration. Clarified concise public evaluation summaries and reproducible synthetic protocols; retain complete per-run captures outside tracked template content by default. Added live-evaluation input and discovery-isolation guidance: inspect actual prompt inventory, retain ambiguous observations as unverified, and freeze/report corrected development follow-ups separately. No upstream code or workflow text imported. Added independently authored disposable source/Git/PR fixtures and execution cases, calibration, fail-before source/test receipts, packaging preflight and controlled commit-failure support; no model calls in helpers or CI. Added independently authored bulk CI diagnosis, release evidence or disposable pipeline/capacity guidance appropriate to this owner, with offline stdlib helpers and failure-sensitive checks. Existing source lineage/licenses retained; no upstream code imported. Added independently authored optional contribution feedback: current-task evidence, concrete general proposal, scoped user consent, company/public separation, no repeated solicitation or automatic publication, and separate consumer promotion. Existing source notices retained. Added seven independently authored development evaluation cases for action scope, instruction refresh, retrieval boundaries and evidence limits; no model trials or research harness implemented. Added three original synthetic development cases for ripgrep environment readiness, authorized cross-platform installation planning and fallback/no-match coverage; prior cases and holdouts retained, no model trials implied. Added independently authored designated feature-worktree verification guidance or synthetic development cases: affected checks, stage boundaries, exclusions, widening triggers, required-status preservation and no per-task CI/CD automation. Existing lineage and notices retained; no upstream text or code imported. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored conditional retrospective guidance or synthetic development coverage for evidence-surface selection, submitted-endpoint feasibility, continuation/runtime readiness and state-aware PR waits. Existing owner boundaries and source/license lineage retained; no source text, runtime or provider imported. Added original conditional comparative-implementation research guidance, owner handoffs or synthetic development evaluation coverage; no third-party material imported and historical lineage retained. Added an original preparation-only Luna High/Terra Medium/Sol Medium pilot using existing development cases and per-run grading; no model calls, new case definitions or imported material. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately. Added two original development cases for proportional contribution descriptions; prior definitions and holdouts preserved.",
       "incorporated_material": [
         {
@@ -1257,6 +1257,13 @@
           "effort": "medium",
           "date": "2026-11-05",
           "scope": "Added outcome eval case beat-reactive-puppet-from-portrait for technical-illustration"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-07",
+          "scope": "Repository moved to the orbyn-dev organization: repository links updated"
         }
       ]
     },
@@ -1265,7 +1272,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-ui-design",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/orbyn-ui-design",
       "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Moved product conventions to consumer-owned profiles and added an original failed-save example. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Added selective Hallmark visual-direction and redesign adaptations with exact source revision and complete MIT notice; no upstream runtime, themes, assets or active entrypoint imported. Added independently authored product-evidence/outcome guidance, conditional AI application handoffs or synthetic development cases under the existing owner. Original additions preserve historical source/license lineage; reviewed primary research is cited locally, no source text/runtime imported. Added independently authored conditional retrospective guidance or synthetic development coverage for evidence-surface selection, submitted-endpoint feasibility, continuation/runtime readiness and state-aware PR waits. Existing owner boundaries and source/license lineage retained; no source text, runtime or provider imported. Added independently authored readable-first-preview guidance, a synthetic offline focus-session example and development cases for progressive context without hiding action consequences. No external source text/assets or runtime dependency imported; historical notices retained. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately. Added independently authored conditional engineering guidance from reviewed pinned OpenCode methods; source-specific operating instructions are not adopted, and prior import/license lineage remains unchanged. Added original conditional semantic-colour guidance, solid/known-alpha contrast helper, offline gallery and role proposals. User-supplied screenshot hex labels are recorded as facts with visible @uiuxaadi credit, one unknown position, editorial names and declared additions; no screenshot artwork/layout, post URL, reuse license or author collaboration is inferred. Historical source lineage remains unchanged. Added original conditional workspace/task-acceptance or factual outcome/attention/authorization guidance and synthetic development examples; Macro and Open Duet are reviewed inspiration only, with no source/assets/runtime imported. Added independently authored conditional engineering contract/evidence guidance or synthetic development cases after a pinned Macro source review. No upstream policy text, application code, assets, runtime, provider or default configuration imported; prior provenance and notices retained. Added independently authored invocation-target and actual-component capture-readiness examples with three synthetic development definitions after pinned VS Code source research. No upstream text, code, assets, runtime, registry or style constants imported; prior provenance retained. Added independently authored durable prototype review guidance, original dependency-free synthetic review workspace and validation/handoff tests, preserving prior source credits. No third-party code, skill text, UI assets, runtime or provider imported. Added independently authored spatial review adapter, original synthetic V12/timeline sources, strict schema-2 model and shared trusted save-bridge reuse, focused fixtures and development cases. Prepared packages reuse existing pinned Anatomy MIT support with notices; no duplicate upstream renderer is tracked. Reviewed Scenario motion method as inspiration only; no source code, fonts, media, runtime or provider imported. Added independently authored authorable motion-film specs, fourteen deterministic DOM/SVG/CSS-3D primitives, original generated raster studies, shared preview/export renderer, bounded MP4/audio/caption/effects pipeline and failure/qualification tests. No reviewed Scenario ZIP code, fonts or media copied; existing Anatomy lineage retained. Replaced active local-kinetic wording with motion films. Added independently authored code-driven motion composition/time/track/component/inspector contracts, rational film compatibility, source-bound motion review profile and development controls. Reviewed external methods inform the design; no Remotion skills, OBS/LosslessCut implementation, external authored assets or model weights imported. Optional runtime dependency profiles retain their own licenses/notices and qualify separately. Added independently authored conditional assistant-chat runtime/UI ownership, product-token and composer/viewport guidance or owner crosslink, with a provider-free teaching fixture and synthetic development cases. Reviewed assistant-ui source is inspiration only; no source/theme/runtime imported and existing attribution retained. Added independently authored lyric-performance guidance and synthetic development cases covering representative previews, bounded local puppeting, registered blink review, motion pacing, actual typography raster checks and cadence/mux evidence. No consumer scripts, media, lyrics or reports imported; historical source lineage is unchanged. Added an independently authored ui_check.py for objective interface defects.",
       "incorporated_material": [
         {
@@ -2176,6 +2183,13 @@
           "effort": "medium",
           "date": "2026-11-07",
           "scope": "A standing user instruction naming a class of PR counts as the merge instruction for that class"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-07",
+          "scope": "Repository moved to the orbyn-dev organization: repository links updated"
         }
       ]
     },
@@ -2410,7 +2424,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/social-content",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/social-content",
       "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an original source-bound announcement example and project voice pointers. Added an unmodified, pinned MIT social source/reference snapshot with its license; active guidance remains independently authored.",
       "authoring": [
         {
@@ -2435,7 +2449,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/social-preview",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/social-preview",
       "changes": "Maintained Orbyn Engineering workflow; reviewed ideas retain source citations where applicable. Added an unmodified Apache-2.0 canvas-design text snapshot with its license; source is optional reference material, not an active workflow import. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately.",
       "reviewed_sources": [
         {
@@ -2820,7 +2834,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-worktree",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/orbyn-worktree",
       "changes": "Original worktree ownership/lifecycle guidance: sibling repo-wt roots, neutral purpose names, reuse, verified base and preservation before cleanup. Includes local-first branch ownership, bounded delegate branches, stable personal contribution fork names and verified authorized publication. Prefer private contribution storage when supported, retain local work if privacy is unavailable, and distinguish a public native fork from a private standalone backup. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Added exact-topology host readiness and blocked-metadata preservation guidance; primary-clone readiness does not qualify linked-worktree writes. Clarified independently authored one-time workspace layout selection: ask when unresolved, recommend nested for new contribution workspaces, honor explicit existing paths/delegated default and preserve active work. Installer destination API and source lineage remain unchanged. Added independently authored instruction/search re-resolution after selecting a worktree; shared history or memory does not prove branch applicability. Existing lineage and notices retained. Added independently authored designated feature-worktree verification guidance or synthetic development cases: affected checks, stage boundaries, exclusions, widening triggers, required-status preservation and no per-task CI/CD automation. Existing lineage and notices retained; no upstream text or code imported. Added independently authored task/resource closeout, checkout/replacement or retention/cache-reuse guidance and synthetic development boundaries. Original additions preserve all prior attribution/import records; no upstream source text, runtime, cleanup helper or automatic scheduler imported.",
       "authoring": [
         {
@@ -2913,7 +2927,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-upstream-review",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/orbyn-upstream-review",
       "changes": "Original maintenance workflow across external code, skills and research: pinned comparisons, excluded local references, offline limits, selective adaptation and honest import/review/consumer revision ownership. Added original single-candidate, open-PR inspection and actual merged-release handoff guidance; consumer installation reports its actual source revision. Added independently written task-brief, nested contribution workspace or explicit consumer-promotion boundaries appropriate to this owner; no external source text or code imported. Added original conditional comparative-implementation research guidance, owner handoffs or synthetic development evaluation coverage; no third-party material imported and historical lineage retained. Added independently authored conditional engineering guidance from reviewed pinned OpenCode methods; source-specific operating instructions are not adopted, and prior import/license lineage remains unchanged. Added independently authored task/resource closeout, checkout/replacement or retention/cache-reuse guidance and synthetic development boundaries. Original additions preserve all prior attribution/import records; no upstream source text, runtime, cleanup helper or automatic scheduler imported.",
       "reviewed_sources": [
         {
@@ -2966,7 +2980,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/language-best-practices",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/language-best-practices",
       "changes": "Independently authored project-aware guidance and synthetic worked examples, informed by dated primary references linked locally; no external skill text or documentation snapshots imported. Consolidated the historically adapted TypeScript reference and its original Orbyn contract example into this owner, preserving the original MIT notice and source record; retired the separate discovery entrypoint. Added independently authored production best-practice guidance, relevant natural-language handoffs and development evaluation coverage; no third-party workflow text imported. TypeScript consolidation preserves historical source/license data and measured baselines. Review corrections clarify compiler/runtime and module contracts, distinguish original additions from retained adaptation, and pin the complete incorporated notice. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately. Added independently authored conditional engineering contract/evidence guidance or synthetic development cases after a pinned Macro source review. No upstream policy text, application code, assets, runtime, provider or default configuration imported; prior provenance and notices retained. Refined all 13 language routes with independently written, primary-source-checked runtime/ownership traps and adjacent legitimate controls; preserved prior examples, TypeScript adaptation/license, router and target-version gates. Added 13 synthetic development definitions; source review and structural validation do not establish live-model or all-toolchain qualification.",
       "incorporated_material": [
         {
@@ -3098,7 +3112,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-stack-selection",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/orbyn-stack-selection",
       "changes": "Independently authored project-aware guidance and synthetic worked examples, informed by dated primary references linked locally; no external skill text or documentation snapshots imported. Added original conditional comparative-implementation research guidance, owner handoffs or synthetic development evaluation coverage; no third-party material imported and historical lineage retained.",
       "authoring": [
         {
@@ -3114,7 +3128,7 @@
       "credit": "Anh Dang and Orbyn contributors",
       "copyright": "Copyright (c) 2026 Anh Dang and Orbyn contributors",
       "license": "MIT",
-      "source": "https://github.com/kinqsradio/orbyn-fullstack-skills/tree/main/skills/orbyn-ai-application",
+      "source": "https://github.com/orbyn-dev/orbyn-fullstack-skills/tree/main/skills/orbyn-ai-application",
       "changes": "Independently authored provider-neutral AI application operating methods and synthetic document-assistant example. Primary research pointers in local references and research contract are reviewed inspiration; no upstream text, skill, runtime or SDK imported. No live provider/model qualification implied. Added independently authored approved gap-closure guidance, conditional references or synthetic development cases under the existing owner. Reviewed pinned source methods selectively; no upstream source text, helper runtime, provider or model configuration imported. Existing import revisions, copyrights, licenses and notices remain unchanged; executable and host qualification are reported separately. Added independently authored conditional engineering guidance from reviewed pinned OpenCode methods; source-specific operating instructions are not adopted, and prior import/license lineage remains unchanged. Added original conditional workspace/task-acceptance or factual outcome/attention/authorization guidance and synthetic development examples; Macro and Open Duet are reviewed inspiration only, with no source/assets/runtime imported. Added independently authored conditional engineering contract/evidence guidance or synthetic development cases after a pinned Macro source review. No upstream policy text, application code, assets, runtime, provider or default configuration imported; prior provenance and notices retained. Added independently authored conditional streaming-interaction guidance and provider-free project-plan projection/decision fixture, connecting existing effect, UI, backend and TDD owners. No upstream code, workflow text, SDK or service imported; existing lineage/notices retained. Added independently authored conditional assistant-chat runtime/UI ownership, product-token and composer/viewport guidance or owner crosslink, with a provider-free teaching fixture and synthetic development cases. Reviewed assistant-ui source is inspiration only; no source/theme/runtime imported and existing attribution retained.",
       "reviewed_inspiration": [
         {
