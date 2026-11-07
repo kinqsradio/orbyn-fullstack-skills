@@ -213,7 +213,8 @@ def routing_table(data):
         rows.append([f'`{role}`'] + [value[p] if isinstance(value, dict) else value for p in ('claude', 'codex')])
     delegation = data['delegation']
     return (f"Default delegation: `max_children` {delegation['max_children']}, `max_depth` {delegation['max_depth']} "
-            f"(children never spawn), `read_only_children_extra` {delegation['read_only_children_extra']}.\n\n"
+            f"(children never spawn), `read_only_children_extra` {delegation['read_only_children_extra']}, "
+            f"`reviewer_children` {delegation['reviewer_children']}.\n\n"
             + table(rows) + '\n\nEscalation: ' + ', '.join(f'{a} to {b}' for a, b in data['escalation'].items()) + '.')
 
 
@@ -265,8 +266,8 @@ def main():
     delegation = data['delegation']
     require(all(type(delegation.get(k)) is int for k in harness.DELEGATION_RANGES) and set(delegation) == set(harness.DELEGATION_RANGES), 'Invalid delegation defaults')
     require(1 <= delegation['max_children'] <= 8 and 1 <= delegation['max_depth'] <= 3
-            and 0 <= delegation['read_only_children_extra'] <= 8
-            and delegation['max_children'] + delegation['read_only_children_extra'] <= 8,
+            and 0 <= delegation['read_only_children_extra'] <= 8 and 0 <= delegation['reviewer_children'] <= 1
+            and delegation['max_children'] + delegation['read_only_children_extra'] + delegation['reviewer_children'] <= 8,
             'Delegation defaults must allow delegation and stay within the host-enforceable range')
     require(set(data['routing']) == set(harness.ROLE_KEYS), 'Routing must name every role')
     require(data['escalation'] == {'scout': 'worker', 'worker': 'lead'}, 'Escalation must go scout, worker, lead')
@@ -287,7 +288,7 @@ def main():
     require(not stray, 'Unexpected agent definitions (only the three generated ones may exist): ' + ', '.join(stray))
     originals = {path: (path.read_text() if path.exists() else '') for path in owned}
     outputs = {DEFAULTS: harness.render_defaults(portable)}
-    cap = delegation['max_children'] + delegation['read_only_children_extra']
+    cap = harness.child_cap(delegation)
     path = ROOT / '.codex/config.toml'
     text = originals[path]
     default = agents[data['defaults']['codex']]['codex']

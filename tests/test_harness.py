@@ -77,6 +77,8 @@ class DefaultsAndPrecedence(HarnessCase):
         self.assertEqual(result['delegation']['max_children']['value'], 2)
         self.assertEqual(result['delegation']['max_depth']['value'], 1)
         self.assertEqual(result['delegation']['read_only_children_extra']['value'], 0)
+        self.assertEqual(result['delegation']['reviewer_children']['value'], 1)
+        self.assertEqual(result['read_only_cap'], 3)
         for item in result['delegation'].values():
             self.assertTrue(item['source'].startswith('library default'))
         tiers = result['hosts']['claude']['tiers']
@@ -217,6 +219,7 @@ class Rejections(HarnessCase):
         cases = [('max_children', v) for v in (9, -1, 1.5, '2', True, None, [2])]
         cases += [('max_depth', v) for v in (0, 4, 1.0, '1', False)]
         cases += [('read_only_children_extra', v) for v in (9, -1, 0.5, '0')]
+        cases += [('reviewer_children', v) for v in (2, -1, '1', True)]
         for key, value in cases:
             with self.subTest(key=key, value=value):
                 self.assert_rejected(valid(delegation={key: value}), f'delegation.{key}')
@@ -333,7 +336,15 @@ class TrustBoundary(HarnessCase):
         result = self.resolve()
         self.assertEqual([result['delegation'][k]['value'] for k in ('max_children', 'max_depth', 'read_only_children_extra')], [2, 1, 0])
         self.assertEqual(sum('clamped to the default' in n for n in result['notices']), 3)
-        self.assertEqual(result['read_only_cap'], 2)
+        self.assertEqual(result['read_only_cap'], 3)
+
+    def test_a_target_file_may_drop_the_reviewer_child_but_never_add_a_second(self):
+        self.write_target(valid(delegation={'reviewer_children': 0}))
+        result = self.resolve()
+        self.assertEqual((result['delegation']['reviewer_children']['value'], result['read_only_cap']), (0, 2))
+        self.assertEqual(result['hosts']['claude']['host_settings_not_written']['env']['CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS'], '2')
+        self.write_target(valid(delegation={'max_children': 0}))
+        self.assertTrue(any('reviewer_children is ignored' in n for n in self.resolve()['notices']))
 
     def test_a_target_file_cannot_raise_effort_or_route_work_to_a_dearer_tier(self):
         for data in [valid(tiers={'claude': {'scout': {'effort': 'high'}}}),
@@ -373,10 +384,10 @@ class TrustBoundary(HarnessCase):
         self.write_local(valid(delegation={'read_only_children_extra': 6}))
         self.assertEqual(self.resolve()['read_only_cap'], 8)
         result = self.resolve('--set', 'delegation.max_children=1')
-        self.assertEqual(result['read_only_cap'], 1)
+        self.assertEqual(result['read_only_cap'], 2)
         self.assertEqual(result['delegation']['read_only_children_extra']['value'], 0)
         both = self.resolve('--set', 'delegation.max_children=1', '--set', 'delegation.read_only_children_extra=1')
-        self.assertEqual(both['read_only_cap'], 2)
+        self.assertEqual(both['read_only_cap'], 3)
 
     def test_required_checks_are_reported_never_run(self):
         marker = self.base / 'ran'
@@ -659,9 +670,9 @@ class DriftAndPortableDefaults(HarnessCase):
         self.assertIn('SPAWN_DEPTH', self.check(1).stderr)
         shutil.copyfile(ROOT / '.claude/settings.json', settings)
         config = self.library / '.codex/config.toml'
-        config.write_text(config.read_text().replace('= 2\n', '= 6\n', 1))
+        config.write_text(config.read_text().replace('= 3\n', '= 6\n', 1))
         self.assertIn('max_concurrent_threads_per_session', self.check(1).stderr)
-        config.write_text(config.read_text().replace('= 6\n', '= 2\nmax_threads = 2\n', 1))
+        config.write_text(config.read_text().replace('= 6\n', '= 3\nmax_threads = 3\n', 1))
         self.assertIn('max_threads', self.check(1).stderr)
 
     def test_agent_definitions_are_held_to_the_generator(self):

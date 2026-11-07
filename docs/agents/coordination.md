@@ -2,7 +2,7 @@
 
 The lead owns outcome, design, integration, review and actual delivery. Resolve
 the [harness](harness.md) before dispatch: it sets the tiers, `max_children`,
-`max_depth` and `read_only_children_extra` for this repository. For substantial
+`max_depth`, `read_only_children_extra` and `reviewer_children` for this repository. For substantial
 engineering work, use bounded native delegates when the required
 host/model/processing settings are available. A small clear edit stays direct.
 Start with one child and never exceed the resolved limits (defaults in the

@@ -80,8 +80,11 @@ observed behavior; a successful parent run proves none of those for a child.
 Choose checks for the changed contract using the project's existing commands.
 Keep source-only, disposable runtime, native/rendered, live-provider and production
 evidence distinct. Preserve failed attempts and explain missing required checks.
-Independent review is optional unless requested or required by the consumer;
-self-review must not be described as independent. Requested separate qualification
+A reviewer child is required before a PR where
+[review before the PR](lead-contract.md#review-before-the-pr) says. An independent
+review (a human or a different model family) is optional unless requested or
+required by the consumer; self-review and a same-model reviewer must not be
+described as independent. Requested separate qualification
 uses the same frozen candidate and a bounded review loop (at most three rounds
 under the library default; after the third unresolved round stop and hand the
 open findings to the user); consumer policy may specify another process.

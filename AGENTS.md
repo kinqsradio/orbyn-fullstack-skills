@@ -128,7 +128,9 @@ Delegate by volume, not by kind: a simple question stays with you, and reading a
 five or more independent sources goes to scouts on the cheapest tier while you keep the
 judgement ([general task](skills/orbyn-workflow/playbooks/general-task.md)). Pieces of one task go to subagents; a task with its own branch or PR may get its own
 session in `parallel` mode or on request. Send wide read-only searches to a scout and a
-substantial diff to an independent reviewer before its PR. Tell the user in one line
+code or large docs diff to one reviewer child before its PR, in its own slot beside `max_children`
+([review before the PR](skills/orbyn-workflow/references/lead-contract.md#review-before-the-pr));
+a reviewer session only when the user asks. Tell the user in one line
 when a child starts and what it returned. A host without the tier's models runs
 children on the session's model, named as such
 ([delegate on any host](skills/orbyn-workflow/references/lead-contract.md#delegate-on-any-host)).

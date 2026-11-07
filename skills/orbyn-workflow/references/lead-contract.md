@@ -57,7 +57,8 @@ Give each child its role, outcome, source/candidate, owned files, allowed effect
 exclusions, relevant pointers and stopping condition. Reuse matching children;
 tell writers they share the checkout and must preserve others' work. Start with
 one child and stay within the resolved `max_children` and `max_depth` (a read-only
-child may use `read_only_children_extra` more), without recursive delegation.
+child may use `read_only_children_extra` more, and one reviewer child the
+`reviewer_children` slot), without recursive delegation.
 Choose each child's tier from the resolved routing and pass the resolved settings
 in its brief. Split independent outputs
 only; serialize shared generated files and fixtures. Children return evidence to
@@ -77,8 +78,8 @@ Cursor and more) can run children too. On every host, take these steps in order:
    | Either, where the host has neither | Do it yourself, one task after another | Has neither |
 
    Delegate these by default: a read-only search across many files or folders (a
-   scout), and an independent review of a substantial diff before its PR (a
-   reviewer, since you cannot claim independent review of your own edits). Otherwise
+   scout), and a review of the diff before its PR (a reviewer child; see
+   [review before the PR](#review-before-the-pr)). Otherwise
    delegate a slice only when it does not block your next step. A small clear task
    needs none. State the choice in one line and move on.
 2. **Pick the model.** Use the resolved tier where the host offers that model. Where
@@ -93,7 +94,7 @@ Cursor and more) can run children too. On every host, take these steps in order:
 4. **Background or foreground.** Run it in the background when you have other work,
    and in the foreground when its result is your next step. Never poll it
    ([wait without polling](waiting.md)).
-5. **Limits.** `max_children`, `max_depth` and `read_only_children_extra` hold on every
+5. **Limits.** `max_children`, `max_depth`, `read_only_children_extra` and `reviewer_children` hold on every
    host. On a host other than Claude or Codex, run `harness.py resolve` with either
    `--host` value: its delegation limits, work mode and cleanup apply, and step 2
    picks the model.
@@ -183,6 +184,29 @@ failure/recovery and unrelated changes. Treat a delegate's summary as evidence t
 inspect. Route concrete fixes back to the same child and review the resulting
 diff. The lead writes the final assessment.
 
+### Review before the PR
+
+- **When.** Spawn one reviewer child before opening a PR whose diff changes code,
+  scripts, tests, CI, the harness or generated host settings, or more than about 100
+  lines of documentation. A smaller documentation-only diff gets the lead's own
+  review, and the PR says "self-reviewed".
+- **How.** The reviewer is a subagent at the resolved `reviewer` tier. It uses the
+  `reviewer_children` slot, so it runs beside up to `max_children` other children
+  (by default 2 children plus 1 reviewer). Give it the diff, the PR's purpose and
+  [make review rounds converge](engineering-scope.md#make-review-rounds-converge),
+  not your own verdict. It reads and reports; it never edits, posts or merges. Run it
+  in the foreground when its verdict is your next step. With `reviewer_children` 0
+  or `max_children` 0, the lead reviews and the PR says so.
+- **Not a session.** A reviewer session costs another full context and a hand-off
+  for every PR. Start one only when the user asks for it, and confirm with them
+  first that a reviewer child would not do.
+- **What to call it.** A reviewer child, or another agent session on the same model
+  family, is a *separate review*; the PR names which. Only a human or a different
+  model family gives an *independent review*. Never call your own reading
+  independent.
+- **Rounds.** Fix or answer every `important` finding, then re-review only the new
+  diff; stop after three rounds.
+
 ## Verify
 
 The lead performs verification proportional to the changed contract and inspects
@@ -191,7 +215,8 @@ explicitly excluded; respect consumer limits and separate external effects.
 Documentation needs document/link checks rather than product builds. When runtime
 or surface evidence is unavailable or excluded, report that limit explicitly.
 
-Additional independent Verifier/Reviewer assignments are optional unless requested.
+The reviewer child in [review before the PR](#review-before-the-pr) is required where
+that section says; further Verifier or Reviewer assignments are optional unless requested.
 Requested independent qualification uses the same frozen candidate and at most
 three full review rounds under [delivery](project-policy.md#verification-and-review).
 The same cap holds for any review or fix loop: after the third unresolved round,

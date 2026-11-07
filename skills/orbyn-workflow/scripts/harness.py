@@ -54,7 +54,15 @@ LOCKED_ROLES = ('lead', 'security', 'security_verifier', 'security_engineer')
 FILE_KEYS = {'schema_version', 'tiers', 'delegation', 'cleanup', 'work', 'evals', 'routing', 'verification', 'notes'}
 DEFAULTS_KEYS = {'generated_from', 'agents', 'escalation', 'allowed_models', 'effort_caps', 'claude_minimum_versions',
                  'human_only'}
-DELEGATION_RANGES = {'max_children': (0, 8), 'max_depth': (1, 3), 'read_only_children_extra': (0, 8)}
+DELEGATION_RANGES = {'max_children': (0, 8), 'max_depth': (1, 3), 'read_only_children_extra': (0, 8),
+                     'reviewer_children': (0, 1)}
+
+
+def child_cap(delegation):
+    """Children one owner may have active at once, across every kind; 0 when delegation is off, never above 8."""
+    if delegation['max_children'] == 0:
+        return 0
+    return min(8, delegation['max_children'] + delegation['read_only_children_extra'] + delegation['reviewer_children'])
 CLEANUP_RANGES = {'cache_idle_days': (1, 3650), 'worktree_idle_days': (1, 3650), 'output_idle_days': (1, 3650),
                   'archive_max_days': (1, 3650), 'archive_max_mb': (1, 10_000_000), 'references_idle_days': (1, 3650),
                   'low_disk_free_percent': (1, 50)}
@@ -77,6 +85,8 @@ RULES = {
     'delegation.max_children': 'Most children one owner may have active at once; 0 means no delegation.',
     'delegation.max_depth': 'Spawn depth below the lead; 1 means children never spawn.',
     'delegation.read_only_children_extra': 'Extra read-only children allowed above max_children; ignored when max_children is 0.',
+    'delegation.reviewer_children': 'A reviewer child allowed above max_children to review a diff before its PR; '
+                                    'ignored when max_children is 0. A reviewer session only when the user asks.',
     'verification.required_checks': 'Checks the repository asks for. Data only: running one still needs ordinary authority.',
     'verification.test_layer': 'The test layer this repository prefers for new behavior (unit, integration or end_to_end). '
                                'Cover each behavior once, at this layer unless it cannot observe the behavior.',
@@ -861,13 +871,12 @@ def resolve(target, hosts, sets=(), workspace=None, slug=None, defaults_path=DEF
                                'allowed only because the user asked for it explicitly')
             elif cap:
                 raise Invalid(f'{effort["source"]}: tiers.{host}.{tier}.effort {effort["value"]!r} is above the {cap} cap for {model["value"]}')
-    children = effective['delegation.max_children']['value']
-    extra = effective[extra_key]['value']
-    if children == 0 and extra:
-        notices.append('read_only_children_extra is ignored because max_children is 0 (no delegation)')
-    cap = 0 if children == 0 else children + extra
-    if cap > 8:
-        cap = 8
+    values = {k: effective[f'delegation.{k}']['value'] for k in DELEGATION_RANGES}
+    if values['max_children'] == 0:
+        notices.extend(f'{k} is ignored because max_children is 0 (no delegation)'
+                       for k in ('read_only_children_extra', 'reviewer_children') if values[k])
+    cap = child_cap(values)
+    if values['max_children'] and values['max_children'] + values['read_only_children_extra'] > 8:
         notices.append('max_children plus read_only_children_extra is capped at 8')
 
     work_mode = effective.get('work.mode')
@@ -970,7 +979,7 @@ def render_text(result, explain):
             lines.append(f'    rule: {RULES["delegation." + key]}')
             for old in item['overridden']:
                 lines.append(f'    overridden: {old["value"]} from {old["source"]}')
-    lines.append(f'  read-only child cap       {result["read_only_cap"]}')
+    lines.append(f'  child cap (all kinds)     {result["read_only_cap"]}')
     work = result['work']
     if work['set']:
         lines.append(f'work mode: {work["mode"]["value"]}   [{work["mode"]["source"]}]')
@@ -1081,7 +1090,7 @@ def command_check(args):
         for section in sorted(set(expected) | set(defaults)):
             if expected.get(section) != defaults.get(section):
                 drift.append(f'harness-defaults.json differs from docs/agents/models.json in {section!r}')
-    cap = expected['delegation']['max_children'] + expected['delegation']['read_only_children_extra']
+    cap = child_cap(expected['delegation'])
     settings_path = root / '.claude/settings.json'
     if settings_path.is_file():
         env = json.loads(settings_path.read_text()).get('env', {})
