@@ -69,6 +69,10 @@
       "claude": "worker",
       "codex": "lead"
     },
+    "designer": {
+      "claude": "worker",
+      "codex": "lead"
+    },
     "investigator": "worker",
     "verifier": "worker",
     "mechanical": "scout",

@@ -58,7 +58,7 @@ repository text" label and must be one line without control characters.
   subagents.
 - **Neither file** may change `tiers.<provider>.lead`, move `lead`, `security`,
   `security_verifier` or `security_engineer` below the lead tier, or move
-  `engineer_complex` below the lead tier on Codex. Only `--set` can change a lead
+  `engineer_complex` or `designer` below the lead tier on Codex. Only `--set` can change a lead
   tier.
 - **`--set`** is the user. It may name a human-only model (printed as a notice)
   or an effort above the medium cap (also a notice). `max`, `ultra` and accelerated
@@ -89,7 +89,7 @@ repository text" label and must be one line without control characters.
   cannot hold the reviewer's slot free, so keeping it for the reviewer is policy only.
 - `routing.<role>`: a tier, or `{claude, codex}` tiers. Roles are lead, architect,
   reviewer, security, security_verifier, security_engineer, engineer,
-  engineer_complex, investigator, verifier, mechanical, tiny_edit.
+  engineer_complex, designer, investigator, verifier, mechanical, tiny_edit.
 - `verification.required_checks`: up to 32 one-line strings.
 - `verification.test_layer`: `unit`, `integration` or `end_to_end`, the layer the
   repository prefers for new behavior ([cover each behavior once](../../tdd/references/test-strategy.md#cover-each-behavior-once)).

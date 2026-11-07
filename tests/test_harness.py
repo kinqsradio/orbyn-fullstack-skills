@@ -93,6 +93,8 @@ class DefaultsAndPrecedence(HarnessCase):
         self.assertEqual(codex['routing']['engineer']['value'], 'worker')
         claude = self.resolve(host='claude')['hosts']['claude']
         self.assertEqual(claude['routing']['engineer_complex']['value'], 'worker')
+        self.assertEqual(claude['routing']['designer']['value'], 'worker')
+        self.assertEqual(codex['routing']['designer']['value'], 'lead')
         self.assertEqual(claude['routing']['tiny_edit']['value'], 'scout')
 
     def test_precedence_shows_the_source_of_each_key(self):
@@ -236,13 +238,16 @@ class Rejections(HarnessCase):
             for role in ('security_verifier', 'security_engineer'):
                 self.assert_rejected(valid(routing={role: tier}), 'cannot be routed below the lead tier')
                 self.assert_rejected(valid(routing={role: {'claude': 'lead', 'codex': tier}}), f'routing.{role}.codex')
-        for role in ('architect', 'reviewer', 'engineer_complex'):
+        for role in ('architect', 'reviewer', 'engineer_complex', 'designer'):
             self.assert_rejected(valid(routing={role: 'scout'}), 'scout')
         self.validate(valid(routing={'security': 'lead', 'architect': 'worker', 'mechanical': 'worker'}), ok=0)
 
     def test_complex_codex_engineering_stays_on_the_lead_tier_in_a_file(self):
         self.assert_rejected(valid(routing={'engineer_complex': {'codex': 'worker'}}), 'stays on the lead tier')
         self.assert_rejected(valid(routing={'engineer_complex': 'worker'}), 'stays on the lead tier')
+        self.assert_rejected(valid(routing={'designer': {'codex': 'worker'}}), 'stays on the lead tier')
+        self.assert_rejected(valid(routing={'designer': 'worker'}), 'stays on the lead tier')
+        self.validate(valid(routing={'designer': {'claude': 'worker', 'codex': 'lead'}}), ok=0)
         self.validate(valid(routing={'engineer_complex': {'claude': 'worker', 'codex': 'lead'}}), ok=0)
         self.validate(valid(routing={'engineer_complex': {'claude': 'lead'}}), ok=0)
 
