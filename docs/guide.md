@@ -73,7 +73,7 @@ when needed. They do not install reverse-engineering tools or upgrade the pinned
 ## Clone the engineering workspace, then ask your agent
 
 ```sh
-git clone https://github.com/kinqsradio/orbyn-fullstack-skills.git
+git clone https://github.com/orbyn-dev/orbyn-fullstack-skills.git
 ```
 
 Open **orbyn-fullstack-skills** as the agent workspace in Codex, Claude Code,

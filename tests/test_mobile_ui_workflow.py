@@ -51,7 +51,7 @@ class MobileWorkflowTests(unittest.TestCase):
 
     @unittest.skipUnless(shutil.which('node'), 'Node required for executable fixture')
     def test_shared_screen_and_reconciliation_contracts(self):
-        result = subprocess.run(['node', '--test', str(FIXTURE / 'contracts.test.mjs')], capture_output=True, text=True, timeout=45)
+        result = subprocess.run(['node', '--test', '--test-reporter=tap', str(FIXTURE / 'contracts.test.mjs')], capture_output=True, text=True, timeout=45)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn('# tests 14', result.stdout)
         self.assertIn('# fail 0', result.stdout)
@@ -68,7 +68,7 @@ class MobileWorkflowTests(unittest.TestCase):
             old = 'if (!active || current !== generation) return;'
             self.assertEqual(text.count(old), 2)
             source.write_text(text.replace(old, 'if (!active) return;'))
-            result = subprocess.run(['node', '--test', str(target / 'contracts.test.mjs')], capture_output=True, text=True, timeout=45)
+            result = subprocess.run(['node', '--test', '--test-reporter=tap', str(target / 'contracts.test.mjs')], capture_output=True, text=True, timeout=45)
             self.assertNotEqual(result.returncode, 0)
             self.assertIn('not ok 1 - screen boundary rejects late account completion', result.stdout)
 

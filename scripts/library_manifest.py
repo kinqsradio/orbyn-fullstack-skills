@@ -6,7 +6,7 @@ import json
 from pathlib import Path, PurePosixPath
 import re
 
-REPOSITORY = 'https://github.com/kinqsradio/orbyn-fullstack-skills'
+REPOSITORY = 'https://github.com/orbyn-dev/orbyn-fullstack-skills'
 MANIFEST = 'distribution/manifest.json'
 NAME = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+)*')
 EXTENSIONS = {'.md', '.json', '.py', '.sh', '.ps1', '.cjs', '.mjs', '.html', '.css', '.txt', '.yaml', '.yml', '.tla', '.cfg'}

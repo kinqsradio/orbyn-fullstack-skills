@@ -390,7 +390,7 @@
     "skills/orbyn-skill-creator/evals/executable/threat-model-routing/key/key.json": "f5912496d22773ff383b9338864f976b1c1c38117be7bfa4aab49ca0935cd7e4",
     "skills/orbyn-skill-creator/references/authoring-standard.md": "f32e45ee1f40b29c86a9392839995e4086f68e48b37a7528aa428918e672460b",
     "skills/orbyn-skill-creator/references/contribution-execution.md": "3cb027a33598744b818dd1553f618575eea270343d7e35578279799e3cbf8d5f",
-    "skills/orbyn-skill-creator/references/contribution-feedback.md": "558c319d0b82097391958a82336a114ced2c733c6bf7599dcca2fdacded76012",
+    "skills/orbyn-skill-creator/references/contribution-feedback.md": "7201dba8346e23c1ae77cbd8d56520d22a100ae1593f6a104111285842566b4e",
     "skills/orbyn-skill-creator/references/evaluations.md": "e6092f069379fb4a7f148cdabf9a90ee48771829fbce9e7fac4fab23da2b207d",
     "skills/orbyn-skill-creator/references/library-maintenance.md": "9b775af2b163fdb48722fc74f199832203afccf3ee4939a5fb502749233bc7bd",
     "skills/orbyn-skill-creator/references/memory-learning.md": "e1d2935523c12531ec6c9e3bb153bd80935dfcc1fc9df3d09adf7086014fccd9",
@@ -617,7 +617,7 @@
     "skills/orbyn-workflow/references/principles/outcome-oriented-execution.md": "d217fc9695eecd01c3a2b9531616a741759d03a8b26661a372bebe46d76b45ef",
     "skills/orbyn-workflow/references/principles/prove-it-works.md": "29fa62217848561f5f9e40dd56b3b81efa0377e9b741710079d672c609a04804",
     "skills/orbyn-workflow/references/principles/separate-before-serializing-shared-state.md": "1761e36a335233ff7fab02d4c7520a9fba4a5c46efcadf299a9947c2564ffbc0",
-    "skills/orbyn-workflow/references/project-policy.md": "3242031c3597336bc7c02ea7bdc3bff639b814298954df9d672780c931e32095",
+    "skills/orbyn-workflow/references/project-policy.md": "9cfeaf9c3c56331c03834003cee4b20c7619e6d9324c47d2aed7f7dabceeb2d9",
     "skills/orbyn-workflow/references/real-time-loops.md": "6ffe375abd8addb6983edfae046f18b40dbb18da8b520b91911c755c302365c8",
     "skills/orbyn-workflow/references/task-record.md": "655747475362676ab0576e27a75b459d0fbb1cccfd7665534a1282e87f5e1b98",
     "skills/orbyn-workflow/references/waiting.md": "9c93e27dbee5eb7e2722759c770086839d41c414a53812a9302e070c8da9a569",
@@ -1159,6 +1159,6 @@
     "skills/why/LICENSE": "9c31ea886ff0fdc36aab948579bbb74a2e44bcb5a9c8a165cabc1b38e24175d4",
     "skills/why/SKILL.md": "56cf1aef0d624a2568c5f999bdca459a5194ed92f82688e9b65257b505bca6ac"
   },
-  "repository": "https://github.com/kinqsradio/orbyn-fullstack-skills",
+  "repository": "https://github.com/orbyn-dev/orbyn-fullstack-skills",
   "schema_version": 1
 }

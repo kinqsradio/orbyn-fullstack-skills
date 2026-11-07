@@ -2,7 +2,7 @@
 
 **Hand your coding agent the engineering work that repeats, and spend your energy on what only you can decide.**
 
-[![Validate skills](https://github.com/kinqsradio/orbyn-fullstack-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/kinqsradio/orbyn-fullstack-skills/actions/workflows/validate.yml)
+[![Validate skills](https://github.com/orbyn-dev/orbyn-fullstack-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/orbyn-dev/orbyn-fullstack-skills/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Coding agents can write code. The rest of the job still falls on you: tracing the
@@ -20,7 +20,7 @@ their energy somewhere better.
 ## Try it
 
 ```sh
-git clone https://github.com/kinqsradio/orbyn-fullstack-skills.git
+git clone https://github.com/orbyn-dev/orbyn-fullstack-skills.git
 ```
 
 Open that folder in your agent and paste this, with your repository's URL:
@@ -116,4 +116,4 @@ sources used. Read [CONTRIBUTING.md](CONTRIBUTING.md) to add yours, and report
 vulnerabilities through [SECURITY.md](SECURITY.md).
 
 If this saves you time, star the repository and show someone else what your agent
-did. Maintained by [Anh Dang](https://github.com/kinqsradio) for **Orbyn Engineering**.
+did. Maintained by [Anh Dang](https://github.com/kinqsradio) for **Orbyn Engineering** in the [orbyn-dev](https://github.com/orbyn-dev) organization.

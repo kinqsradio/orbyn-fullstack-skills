@@ -17,7 +17,7 @@ bundled, and they may carry other licences. Generated from `provenance.json` by
 `scripts/credits.py`, so edit the records, not this file. Full notices are in
 [THIRD_PARTY_NOTICES.md](tools/THIRD_PARTY_NOTICES.md).
 """
-SELF = 'kinqsradio/orbyn-fullstack-skills'
+SELF = 'orbyn-dev/orbyn-fullstack-skills'
 
 
 def project(url):
