@@ -54,6 +54,12 @@ reference reading serves the task. Reuse the current object when appropriate;
 avoid spawning another duplicate pane at every click. Bound simultaneous panes
 according to usable task space, not an arbitrary universal cap.
 
+Side panels that hold working surfaces (diff, files, browser, activity, side chat)
+use browser-style tabs: each tab is closable, + opens one, tabs reorder, and two
+tabs of the same kind can be open. Inactive tabs collapse to an icon when the panel
+is narrow; the active tab keeps its label. Do not repeat a destination that already
+has a place in primary navigation as a panel tab.
+
 Keep object identity separate from placement. Moving, hiding or switching a pane
 must preserve its draft, scroll, selection and Back destination. Hidden panes yield
 focus and shortcuts; closing returns focus to a visible logical target. On narrow

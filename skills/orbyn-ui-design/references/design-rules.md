@@ -129,6 +129,20 @@ act, cancel/return, fail/recover outcomes; the matrix below selects relevant che
   space prevents collisions; compact chips and adjacent actions must remain
   separately reachable.
 
+## Desktop window chrome
+
+- Use a unified title bar on desktop apps. The window controls sit in the
+  sidebar's top row with the sidebar toggle and Back and Forward; there is no
+  separate title strip above the app. The content's own toolbar (title, status,
+  actions) shares that top row, so the window starts with content, not chrome.
+- Without a sidebar, keep one quiet toolbar row in the content colour with the
+  title centred. Never stack an OS title bar, an app title bar and a page header.
+- Draw the window controls at their platform size and position, and leave them
+  clear of search fields and buttons. A browser rendering keeps the browser's own
+  chrome and adds none of its own.
+- Check every desktop design and build against this before review; a separate
+  grey strip with the app name is a defect, not a style.
+
 ## Content and actions
 
 - A document editor starts with a writing surface. Do not put repeated Edit,
@@ -217,6 +231,26 @@ action controls reachable while the transcript and long input scroll. Preserve
 independent drafts, selections and history across panes; keyboard commands belong
 to the focused pane or its active dialog. On narrow widths, switch panes without
 losing work. Connection rows should expose relevant identity, status and consent.
+
+### Tool activity in a conversation
+
+Agent tool calls (commands, file reads, edits, searches, web fetches, MCP tools,
+subagents) read as one aligned column inside the transcript:
+
+- A collapsed group is one fixed-height row: icon, plain summary ("Ran 3 commands",
+  "Edited 2 files · +12 −3"), duration and one chevron at the far right. Running
+  shows a spinner and the current item; a failure names the item and exit code.
+- Expanded children are indented by one icon gutter and stay single-line, with the
+  command in mono and an ellipsis. Expanding pushes later rows down; content never
+  overlaps or covers the next row.
+- An expanded command is one block with one radius and fill: the command on top
+  (wraps, copy button), the output under a divider, capped at about 12 lines with
+  "Show all N lines". Long lines wrap or scroll inside the block only. A quiet
+  footer gives exit code, duration and working directory.
+- Design every state: running with streaming output, failed (stderr in red),
+  denied by the access mode (needs you, with the allow choices), cancelled, empty
+  output, output too large to show, binary output and keyboard focus on a row.
+
 
 ## Working pane ownership
 
