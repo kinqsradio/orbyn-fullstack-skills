@@ -39,7 +39,8 @@
   "delegation": {
     "max_children": 2,
     "max_depth": 1,
-    "read_only_children_extra": 0
+    "read_only_children_extra": 0,
+    "reviewer_children": 1
   },
   "cleanup": {
     "enabled": true,

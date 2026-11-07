@@ -90,7 +90,7 @@ also raise delegation limits; the resolved values are what the lead follows.
 
 <!-- harness-defaults:start -->
 
-Default delegation: `max_children` 2, `max_depth` 1 (children never spawn), `read_only_children_extra` 0.
+Default delegation: `max_children` 2, `max_depth` 1 (children never spawn), `read_only_children_extra` 0, `reviewer_children` 1.
 
 | Role or work        | Claude tier | Codex tier |
 | ------------------- | ----------- | ---------- |

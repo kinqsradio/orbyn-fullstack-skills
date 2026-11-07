@@ -19,7 +19,7 @@ How any request flows. Each step has one owner; this page only links them.
    assigned implementation, scout for bounded mechanical work. The tier cards are
    in [roles](roles.md) and [model policy](model-policy.md#which-tier-does-what).
 5. **Delegate within limits.** Never exceed the resolved `max_children`,
-   `max_depth` and `read_only_children_extra`. See [coordination](coordination.md)
+   `max_depth`, `read_only_children_extra` and `reviewer_children`. See [coordination](coordination.md)
    and the [lead contract](../../skills/orbyn-workflow/references/lead-contract.md).
 6. **Integrate and review.** The lead reads the actual diffs. Escalate a failed or
    ambiguous worker one tier to lead and record why.

@@ -124,7 +124,8 @@ explanation can proceed directly. Read the
 - A child forbidden further delegation completes its assigned task directly and
   returns the artifact to its owner.
 - Delegate within the resolved limits: no more than `max_children` children
-  active, none deeper than `max_depth`. Route by the resolved tiers: assigned
+  active, plus one reviewer child in the `reviewer_children` slot, none deeper
+  than `max_depth`. Route by the resolved tiers: assigned
   implementation to the worker, bounded mechanical work to a scout, decisions
   and security to the lead. Escalate a failed or ambiguous worker one tier and
   record why.

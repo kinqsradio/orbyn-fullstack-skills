@@ -14,7 +14,7 @@ Count what the task will read:
 | --- | --- |
 | A few files, pages or messages | Do it yourself. A simple question never needs a child |
 | About five or more independent sources (threads, issues, pages, logs, files) | Give the reading to scouts on the cheapest tier, a batch each, within `max_children` |
-| A finished draft or diff that matters | One reviewer child before it goes out |
+| A finished draft or diff that matters | One reviewer child before it goes out ([when and how](../references/lead-contract.md#review-before-the-pr)); a reviewer session only when the user asks |
 
 The lead keeps the judgement: choosing what to read, deciding, writing the final
 answer and anything that is posted, sent or merged. Scouts read and check; they never

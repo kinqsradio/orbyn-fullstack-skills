@@ -71,7 +71,7 @@ repository text" label and must be one line without control characters.
 {
   "schema_version": 1,
   "tiers": { "claude": { "worker": { "model": "sonnet", "effort": "low" } } },
-  "delegation": { "max_children": 2, "max_depth": 1, "read_only_children_extra": 0 },
+  "delegation": { "max_children": 2, "max_depth": 1, "read_only_children_extra": 0, "reviewer_children": 1 },
   "routing": { "investigator": "scout" },
   "verification": { "required_checks": ["python3 -m unittest"], "test_layer": "integration" },
   "notes": "Why this repository differs."
@@ -83,7 +83,10 @@ repository text" label and must be one line without control characters.
   it (names and full ids such as `claude-sonnet-5-5`); `inherit`, `best`, `default`,
   `opusplan`, `-latest` names and anything unknown are rejected.
 - `delegation.max_children` 0..8 (0 means no delegation), `max_depth` 1..3 (1 means
-  children never spawn), `read_only_children_extra` 0..8 extra read-only children.
+  children never spawn), `read_only_children_extra` 0..8 extra read-only children,
+  `reviewer_children` 0..1, a reviewer child above `max_children` (a target file may
+  set 0 to drop it). The host limit is the sum of all three, at most 8; the host
+  cannot hold the reviewer's slot free, so keeping it for the reviewer is policy only.
 - `routing.<role>`: a tier, or `{claude, codex}` tiers. Roles are lead, architect,
   reviewer, security, security_verifier, security_engineer, engineer,
   engineer_complex, investigator, verifier, mechanical, tiny_edit.

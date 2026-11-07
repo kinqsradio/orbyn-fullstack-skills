@@ -72,7 +72,7 @@ class ModelRegistryTests(unittest.TestCase):
         after = json.loads(settings_path.read_text())
         self.assertEqual(after['permissions'],{'allow':['Bash(ls)']})
         self.assertEqual(after['env']['FOREIGN'],'kept')
-        self.assertEqual(after['env']['CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS'],'2')
+        self.assertEqual(after['env']['CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS'],'3')
         self.assertEqual(after['env']['CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH'],'1')
         before=self.snapshot()
         self.run_sync('--write')
@@ -85,15 +85,15 @@ class ModelRegistryTests(unittest.TestCase):
         self.run_sync('--write')
         agents = tomllib.loads(config.read_text())['agents']
         self.assertNotIn('max_threads',agents)
-        self.assertEqual(agents['max_concurrent_threads_per_session'],2)
+        self.assertEqual(agents['max_concurrent_threads_per_session'],3)
 
     def test_delegation_defaults_drive_both_hosts(self):
         self.change(lambda d:d['delegation'].update(max_children=3,max_depth=2,read_only_children_extra=1))
         self.run_sync('--write')
         env = json.loads((self.root/'.claude/settings.json').read_text())['env']
-        self.assertEqual((env['CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS'],env['CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH']),('4','2'))
+        self.assertEqual((env['CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS'],env['CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH']),('5','2'))
         codex = tomllib.loads((self.root/'.codex/config.toml').read_text())
-        self.assertEqual(codex['agents']['max_concurrent_threads_per_session'],4)
+        self.assertEqual(codex['agents']['max_concurrent_threads_per_session'],5)
         self.assertNotIn('max_depth',codex['agents'])
         defaults = json.loads((self.root/'skills/orbyn-workflow/references/harness-defaults.json').read_text())
         self.assertEqual(defaults['delegation']['max_children'],3)
@@ -102,6 +102,7 @@ class ModelRegistryTests(unittest.TestCase):
         original=self.source.read_bytes()
         for patch in [dict(max_children=0),dict(max_children=9),dict(max_depth=4),dict(max_depth=0),
                       dict(read_only_children_extra=-1),dict(max_children=8,read_only_children_extra=1),
+                      dict(reviewer_children=2),dict(max_children=7,read_only_children_extra=1),
                       dict(max_children=True)]:
             with self.subTest(patch=patch):
                 self.source.write_bytes(original)

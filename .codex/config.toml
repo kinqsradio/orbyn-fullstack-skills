@@ -9,7 +9,7 @@ fast_mode = false
 ultrafast_mode = false
 
 [agents]
-max_concurrent_threads_per_session = 2
+max_concurrent_threads_per_session = 3
 
 [agents.orbyn-lead]
 description = "Planning, architecture, consequential review, security and ambiguous diagnosis"

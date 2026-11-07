@@ -2168,6 +2168,13 @@
           "model": "claude-opus-5-5 (lead)",
           "effort": "medium",
           "date": "2026-11-07",
+          "scope": "Review before the PR: a reviewer child in its own reviewer_children slot (2 children plus 1 reviewer), when one is required, separate versus independent review, reviewer sessions only on request"
+        },
+        {
+          "tool": "Claude Code",
+          "model": "claude-opus-5-5 (lead)",
+          "effort": "medium",
+          "date": "2026-11-07",
           "scope": "A standing user instruction naming a class of PR counts as the merge instruction for that class"
         }
       ]
