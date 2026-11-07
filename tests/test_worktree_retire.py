@@ -18,9 +18,9 @@ from test_tools import ROOT, module
 tool = module('worktree_retire', ROOT/'skills/orbyn-worktree/scripts/worktree_retire.py')
 ORIGINAL = {name: getattr(tool, name) for name in ('open_prs', 'open_paths', 'landed', 'run', 'trash')}
 BASE = 'origin/main'
-# scripts/run_tests.py runs each of these classes as its own process; plain unittest runs them all.
-SHARDS = ['TrashAndFinishedTests', 'SecretsAndNamesTests', 'IdleAndKeepTests', 'RecheckAndHoldTests', 'ClassTests', 'SecondReviewTests',
-          'LastRoundTests']
+# scripts/run_tests.py runs each entry as its own process (`Class.*`: one per test, for classes whose tests are each slow); plain unittest runs them all.
+SHARDS = ['TrashAndFinishedTests.*', 'SecretsAndNamesTests.*', 'IdleAndKeepTests', 'RecheckAndHoldTests.*', 'ClassTests', 'SecondReviewTests.*',
+          'LastRoundTests.*']
 
 
 DEFAULT_IGNORE = 'target/\nnode_modules/\n.venv/\ndist/\nbuild/\nvenv/\n*.log\n.orbyn/\n'
@@ -43,19 +43,26 @@ def write(path, text='x', size=None):
 
 
 def make_clone(base, lib, name, files, gitignore=DEFAULT_IGNORE):
+    """A clone under lib/repo with a bare origin at base/<name>.git, tracking origin/main.
+
+    Equivalent to `init`, `remote add`, `commit` and `push -u`, but with the remote bookkeeping written
+    directly: a push alone cost more than the rest of the fixture."""
     bare = base/f'{name}.git'
-    sh(base, 'init', '-q', '--bare', '-b', 'main', str(bare))
     path = lib/'repo'/name
     path.mkdir(parents=True)
     sh(path, 'init', '-q', '-b', 'main')
-    sh(path, 'remote', 'add', 'origin', str(bare))
     write(path/'.gitignore', gitignore)
     for relative, text in files.items():
         write(path/relative, text)
-    sh(path, 'add', '.')
-    sh(path, 'add', '-f', *files)
+    sh(path, 'add', '-f', '.gitignore', *files)
     commit(path, 'base')
-    sh(path, 'push', '-q', '-u', 'origin', 'main')
+    sh(base, 'clone', '-q', '--bare', str(path), str(bare))
+    with open(path/'.git/config', 'a') as config:
+        config.write(f'[remote "origin"]\n\turl = {bare}\n\tfetch = +refs/heads/*:refs/remotes/origin/*\n'
+                     '[branch "main"]\n\tremote = origin\n\tmerge = refs/heads/main\n')
+    tip = (path/'.git/refs/heads/main').read_text()
+    (path/'.git/refs/remotes/origin').mkdir(parents=True)
+    (path/'.git/refs/remotes/origin/main').write_text(tip)
     return path
 
 
@@ -97,7 +104,8 @@ class CleanupCase(unittest.TestCase):
         shutil.copytree(self.template, self.base, symlinks=True, dirs_exist_ok=True, copy_function=shutil.copy)
         self.origin = self.base/'orbyn-fullstack-skills.git'
         self.lib = self.base/'lib'
-        self.sh(self.lib, 'remote', 'set-url', 'origin', str(self.origin))
+        self.repoint(self.lib)
+        self.repoint(self.lib/'repo/app')
         self.trashed, self.bin, self.clock = [], self.base/'trash', 0
         for name, value in (('open_paths', set()), ('open_prs', [])):
             patcher = mock.patch.object(tool, name, return_value=value)
@@ -108,9 +116,13 @@ class CleanupCase(unittest.TestCase):
             patcher.start()
             self.addCleanup(patcher.stop)
         self.app = self.lib/'repo/app'
-        self.sh(self.app, 'remote', 'set-url', 'origin', str(self.base/'app.git'))
 
     # --- fixtures
+
+    def repoint(self, repo):
+        """Point a copied clone's origin at this test's copy of the remotes (what `remote set-url` would write)."""
+        config = repo/'.git/config'
+        config.write_text(config.read_text().replace(str(self.template), str(self.base)))
 
     def sh(self, path, *args):
         return sh(path, *args)

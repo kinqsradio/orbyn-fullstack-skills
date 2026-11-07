@@ -14,7 +14,7 @@ import tempfile
 import unittest
 
 # Classes run_tests.py runs as parallel processes; keep in step with the classes below.
-SHARDS = ["PolicyTests", "EventTests", "TrialTests", "AllCasesTests", "ProtectedModeTests", "SubagentTests"]
+SHARDS = ["PolicyTests", "EventTests", "TrialTests.*", "AllCasesTests.*", "ProtectedModeTests", "SubagentTests"]
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / 'skills/orbyn-skill-creator/scripts'
